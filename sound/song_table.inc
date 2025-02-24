@@ -643,7 +643,8 @@ gSongTable::
 	song mus_surf_2, 0, 0
 	song mus_vs_ozone, 0, 0
 	song mus_pisces_title, 0, 0
-	song mus_vs_legendary2_testing, 0, 0
+	song mus_vs_rising_legend, 0, 0
+	song mus_vs_falling_legend, 0, 0
 
 	.align 2
 dummy_song_header:
