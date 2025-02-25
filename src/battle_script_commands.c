@@ -4386,12 +4386,12 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     if (gBattleMons[gBattlerAttacker].species == SPECIES_MELOETTA)
                     {
                         gBattleMons[gBattlerAttacker].species = SPECIES_MELOETTA_PIROUETTE;
-                        BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeMoveEffect);
+                        BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeMoveEffectNoRapidSpin);
                     }
                     else if (gBattleMons[gBattlerAttacker].species == SPECIES_MELOETTA_PIROUETTE)
                     {
                         gBattleMons[gBattlerAttacker].species = SPECIES_MELOETTA;
-                        BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeMoveEffect);
+                        BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeMoveEffectNoRapidSpin);
                     }
                 }
                 break;
@@ -4402,22 +4402,18 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     {
                         gBattleMons[gBattlerAttacker].species = SPECIES_CINDRILLON_PIROUETTE;
                         BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeMoveEffect);
-                        BattleScriptPush(gBattlescriptCurrInstr + 1);
-                        gBattlescriptCurrInstr = BattleScript_RapidSpinAway;
 
                     }
                     else if (gBattleMons[gBattlerAttacker].species == SPECIES_CINDRILLON_FEAROUETTE)
                     {
                         gBattleMons[gBattlerAttacker].species = SPECIES_CINDRILLON_PIROUETTE;
                         BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeMoveEffect);
-                        BattleScriptPush(gBattlescriptCurrInstr + 1);
-                        gBattlescriptCurrInstr = BattleScript_RapidSpinAway;
                     }
-                    else
-                    {
-                        BattleScriptPush(gBattlescriptCurrInstr + 1);
-                        gBattlescriptCurrInstr = BattleScript_RapidSpinAway;
-                    }
+                }
+                else
+                {
+                    BattleScriptPush(gBattlescriptCurrInstr + 1);
+                    gBattlescriptCurrInstr = BattleScript_RapidSpinAway;
                 }
                 break;
             case MOVE_EFFECT_CINDER_DRILL:
@@ -4426,12 +4422,12 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     if (gBattleMons[gBattlerAttacker].species == SPECIES_CINDRILLON)
                     {
                         gBattleMons[gBattlerAttacker].species = SPECIES_CINDRILLON_FEAROUETTE;
-                        BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeMoveEffect);
+                        BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeMoveEffectNoRapidSpin);
                     }
                     else if (gBattleMons[gBattlerAttacker].species == SPECIES_CINDRILLON_PIROUETTE)
                     {
                         gBattleMons[gBattlerAttacker].species = SPECIES_CINDRILLON_FEAROUETTE;
-                        BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeMoveEffect);
+                        BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeMoveEffectNoRapidSpin);
                     }
                 }
                 break;

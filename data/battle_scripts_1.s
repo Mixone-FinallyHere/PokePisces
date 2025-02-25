@@ -14227,6 +14227,8 @@ BattleScript_AttackerFormChangeEnd3NoPopup::
 	end3
 
 BattleScript_AttackerFormChangeMoveEffect::
+	rapidspinfree
+BattleScript_AttackerFormChangeMoveEffectNoRapidSpin::
 	waitmessage 1
 	handleformchange BS_ATTACKER, 0
 	handleformchange BS_ATTACKER, 1
