@@ -647,8 +647,14 @@ Route125_Text_JoanPostBattle:
 	.string "post$"
 
 Route125_Text_ShellRiddle1:
-	.string "secret cave in mossdeep\p"
-	.string "bring me polish$"
+	.string "In shores along the mossy deep\n"
+	.string "a path for you to trail\l"
+	.string "Below the bluffs behind the tree\l"
+	.string "a gate beyond the veil\l"
+	.string "Beneath the silence two you find\l"
+	.string "clandestine and serene\l"
+	.string "Retrieve the pearly strand they hold\l"
+	.string "and earn your precious sheen$"
 
 Route125_Text_HereIsShellPolish:
 	.string "have this$"
@@ -688,13 +694,17 @@ Route125_Text_GotYouBitch:
 	.string "give us your money$"
 
 Route125_Text_ItsHumming:
-	.string "$"
+	.string "(This strange plant seems\n"
+	.string "to be humming a tune...)$"
 
 Route125_Text_ItsBellowing:
-	.string "$"
+	.string "(Your Pokemon used a singing move\n"
+	.string "to add to the harmony...)$"
 
 Route125_Text_NoSingingMove:
-	.string "$"
+	.string "(...Nothing you can really\n"
+	.string "do with it right now.)$"
 
 Route125_Text_ItBecameLively:
-	.string "$"
+	.string "(The plant became lively!\n"
+	.string "It's a Wild Pokemon!)$"

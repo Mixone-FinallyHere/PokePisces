@@ -127,6 +127,7 @@ StevenMaze_EventScript_ReceivedEerikoFanfare::
 	waitmessage
 	waitfanfare
 	bufferspeciesname STR_VAR_1, SPECIES_EERIKO
+	bufferspeciesname STR_VAR_2, SPECIES_EERIKO
 	return
 
 StevenMaze_Text_NameSteven:
