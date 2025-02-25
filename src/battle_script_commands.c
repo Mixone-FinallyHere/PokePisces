@@ -1604,7 +1604,11 @@ static void Cmd_attackcanceler(void)
         gProtectStructs[gBattlerAttacker].touchedProtectLike = TRUE;
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
-    else if (gProtectStructs[gBattlerTarget].defendOrder || gProtectStructs[gBattlerTarget].acidArmorCharge)
+    else if ((gProtectStructs[gBattlerTarget].defendOrder || gProtectStructs[gBattlerTarget].acidArmorCharge)
+    && (gCurrentMove != MOVE_CURSE || IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GHOST))
+    && ((!IsTwoTurnsMove(gCurrentMove) || (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)))
+    && !IS_MOVE_STATUS(gCurrentMove)
+    && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
     {
         gProtectStructs[gBattlerAttacker].touchedProtectLike = TRUE;
         gBattlescriptCurrInstr = cmd->nextInstr;
@@ -6554,7 +6558,7 @@ static void Cmd_moveend(void)
                     gBattlescriptCurrInstr = BattleScript_KingsShieldEffect;
                     effect = 1;
                 }
-                else if (gProtectStructs[gBattlerTarget].acidArmorCharge && gCurrentMove != MOVE_SUCKER_PUNCH && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
+                else if (gProtectStructs[gBattlerTarget].acidArmorCharge && gCurrentMove != MOVE_SUCKER_PUNCH)
                 {
                     gProtectStructs[gBattlerAttacker].touchedProtectLike = FALSE;
                     i = gBattlerAttacker;
@@ -7461,25 +7465,25 @@ static void Cmd_moveend(void)
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_SLICING_MOVE_TURNS:
-            if (gBattleMoves[gCurrentMove].slicingMove
-            && !gBattleStruct->slicingMoveTurns[gBattlerAttacker] > 4
+            if (gBattleMoves[gCurrentMove].slicingMove 
             && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT
-            && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT
-            && !gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
+            && gBattleStruct->slicingMoveTurns[gBattlerAttacker] != 5
+            && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
+            && (!(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)))
                 gBattleStruct->slicingMoveTurns[gBattlerAttacker]++;
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_DANCING_MOVE_TURNS:
-            if ((gCurrentMove == gLastResultingMoves[gBattlerAttacker] 
-                && gBattleMoves[gCurrentMove].danceMove)
-                || !gBattleMoves[gCurrentMove].danceMove
-                || gMoveResultFlags & MOVE_RESULT_NO_EFFECT 
-                || gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
+            if (((gCurrentMove == gLastResultingMoves[gBattlerAttacker] 
+            && gBattleMoves[gCurrentMove].danceMove)
+            || !gBattleMoves[gCurrentMove].danceMove)
+            && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
+            && (!(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)))
                 gBattleStruct->dancingMoveTurns[gBattlerAttacker] = 0;
             else if (gBattleMoves[gCurrentMove].danceMove 
-                && !gBattleStruct->dancingMoveTurns[gBattlerAttacker] > 4
-                && gCurrentMove != gLastResultingMoves[gBattlerAttacker] 
-                && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT)
+            && gBattleStruct->slicingMoveTurns[gBattlerAttacker] != 5
+            && gCurrentMove != gLastResultingMoves[gBattlerAttacker] 
+            && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT)
                 gBattleStruct->dancingMoveTurns[gBattlerAttacker]++;
             gBattleScripting.moveendState++;
             break;

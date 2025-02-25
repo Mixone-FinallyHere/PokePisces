@@ -9449,8 +9449,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && gBattlerAttacker != gBattlerTarget
                 && gBattleMons[gBattlerAttacker].hp != gBattleMons[gBattlerAttacker].maxHP
                 && IsBattlerAlive(gBattlerAttacker)
-                && (!(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
-                && GetBattlerAbility(battler) != ABILITY_STRONGHOLD)
+                && (!gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK)
+                && GetBattlerAbility(gBattlerAttacker) != ABILITY_STRONGHOLD)
             {
                 gLastUsedItem = atkItem;
                 gPotentialItemEffectBattler = gBattlerAttacker;
@@ -9495,12 +9495,14 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && TARGET_TURN_DAMAGED
                 && (gBattleMons[gBattlerAttacker].species == SPECIES_GLIGAR || gBattleMons[gBattlerAttacker].species == SPECIES_GLISCOR)
                 && CompareStat(gBattlerTarget, STAT_DEF, MIN_STAT_STAGE, CMP_GREATER_THAN)
-                && gBattleMons[gBattlerTarget].hp && RandomPercentage(RNG_HOLD_EFFECT_RAZOR_FANG, atkHoldEffectParam))
+                && gBattleMons[gBattlerTarget].hp 
+                && RandomPercentage(RNG_HOLD_EFFECT_RAZOR_FANG, atkHoldEffectParam))
             {
+                SET_STATCHANGER(STAT_DEF, 1, TRUE);
                 gBattleScripting.moveEffect = MOVE_EFFECT_DEF_MINUS_1;
                 BattleScriptPushCursor();
-                SetMoveEffect(FALSE, 0);
-                BattleScriptPop();
+                gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
+                effect++;
             }
         }
         break;
@@ -9515,7 +9517,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
                 && TARGET_TURN_DAMAGED
                 && CompareStat(gBattlerTarget, STAT_SPEED, MIN_STAT_STAGE, CMP_GREATER_THAN)
-                && gBattleMons[gBattlerTarget].hp && RandomPercentage(RNG_HOLD_EFFECT_STILETTO, atkHoldEffectParam)
+                && gBattleMons[gBattlerTarget].hp 
+                && RandomPercentage(RNG_HOLD_EFFECT_STILETTO, atkHoldEffectParam)
                 && gBattleMoves[gCurrentMove].kickingMove)
             {
                 SET_STATCHANGER(STAT_SPEED, 1, TRUE);

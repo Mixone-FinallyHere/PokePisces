@@ -810,6 +810,7 @@ static const struct TrainerMon sParty_PGeiger[] = {
     .iv = TRAINER_PARTY_IVS(31,31,31,31,31,31),
     .ev = TRAINER_PARTY_EVS(20, 15, 20, 15, 20, 15),
     .species = SPECIES_TRANSERA,
+    .moves = {MOVE_SHOCK_WAVE, MOVE_MEGA_DRAIN, MOVE_GLIMMER, MOVE_CHARGE},
     }
 };
 
@@ -996,17 +997,17 @@ static const struct TrainerMon sParty_PLiza[] = {
     .heldItem = ITEM_CURSED_AMULET,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(36, 16, 16, 16, 36, 36),
-    .moves = {MOVE_LIGHT_SCREEN, MOVE_MOONLIGHT, MOVE_HYPNOSIS, MOVE_GEM_BLASTER},
+    .moves = {MOVE_REFLECT, MOVE_DREAM_EATER, MOVE_HYPNOSIS, MOVE_COSMIC_POWER},
     .nature = NATURE_QUIRKY,
     },
     {
     .lvl = 20,
     .species = SPECIES_SOLROCK,
-    .ability = ABILITY_LEVITATE,
-    .heldItem = ITEM_TWISTED_SPOON,
+    .ability = ABILITY_SOLID_ROCK,
+    .heldItem = ITEM_SHELL_BELL,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(36, 36, 36, 16, 16, 16),
-    .moves = {MOVE_REFLECT, MOVE_ROCK_THROW, MOVE_CONFUSION, MOVE_MORNING_SUN},
+    .moves = {MOVE_LIGHT_SCREEN, MOVE_ROCK_THROW, MOVE_CONFUSION, MOVE_MORNING_SUN},
     .nature = NATURE_QUIRKY,
     }
 };

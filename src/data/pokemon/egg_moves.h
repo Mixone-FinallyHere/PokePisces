@@ -5553,7 +5553,8 @@ const u16 gEggMoves[] = {
         MOVE_FUTURE_SIGHT,
         MOVE_DARK_TIDE,
         MOVE_LUNAR_BLESSING,
-        MOVE_GRAVITY),
+        MOVE_GRAVITY,
+        MOVE_DREAM_EATER),
 
     egg_moves(SOLROCK,
         MOVE_FUTURE_SIGHT,
