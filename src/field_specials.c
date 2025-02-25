@@ -1465,7 +1465,7 @@ bool8 CheckMiniorRed(void)
     u8 partyCount = CalculatePlayerPartyCount();
     for (i = 0; i < partyCount; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_MINIOR)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_MINIOR_CORE_RED)
             return TRUE;
     }
     return FALSE;
@@ -1477,7 +1477,7 @@ bool8 CheckMiniorOrange(void)
     u8 partyCount = CalculatePlayerPartyCount();
     for (i = 0; i < partyCount; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_MINIOR_METEOR_ORANGE)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_MINIOR_CORE_ORANGE)
             return TRUE;
     }
     return FALSE;
@@ -1489,7 +1489,7 @@ bool8 CheckMiniorYellow(void)
     u8 partyCount = CalculatePlayerPartyCount();
     for (i = 0; i < partyCount; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_MINIOR_METEOR_YELLOW)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_MINIOR_CORE_YELLOW)
             return TRUE;
     }
     return FALSE;
@@ -1501,7 +1501,7 @@ bool8 CheckMiniorGreen(void)
     u8 partyCount = CalculatePlayerPartyCount();
     for (i = 0; i < partyCount; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_MINIOR_METEOR_GREEN)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_MINIOR_CORE_GREEN)
             return TRUE;
     }
     return FALSE;
@@ -1513,7 +1513,7 @@ bool8 CheckMiniorBlue(void)
     u8 partyCount = CalculatePlayerPartyCount();
     for (i = 0; i < partyCount; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_MINIOR_METEOR_BLUE)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_MINIOR_CORE_BLUE)
             return TRUE;
     }
     return FALSE;
@@ -1525,7 +1525,7 @@ bool8 CheckMiniorIndigo(void)
     u8 partyCount = CalculatePlayerPartyCount();
     for (i = 0; i < partyCount; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_MINIOR_METEOR_INDIGO)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_MINIOR_CORE_INDIGO)
             return TRUE;
     }
     return FALSE;
@@ -1537,7 +1537,7 @@ bool8 CheckMiniorViolet(void)
     u8 partyCount = CalculatePlayerPartyCount();
     for (i = 0; i < partyCount; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_MINIOR_METEOR_VIOLET)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_MINIOR_CORE_VIOLET)
             return TRUE;
     }
     return FALSE;

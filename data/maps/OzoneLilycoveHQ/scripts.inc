@@ -30,6 +30,7 @@ OzoneLilycoveHQ_EventScript_NoBusinessHere::
 	waitmovement 0
 	msgbox OzoneLilycoveHQ_Text_NoBusinessHere, MSGBOX_AUTOCLOSE
 	applymovement OBJ_EVENT_ID_PLAYER, OzoneLilycoveHQ_Movement_BackOutside
+	waitmovement 0
 	warp MAP_LILYCOVE_CITY, 64, 15
 	waitstate
 	release
@@ -92,7 +93,8 @@ OzoneLilycoveHQ_EventScript_HelpWithBrellas::
 	end
 
 OzoneLilycoveHQ_EventScript_GoGetBrellas::
-	msgbox OzoneLilycoveHQ_Text_BrellaGoGettem, MSGBOX_AUTOCLOSE
+	msgbox OzoneLilycoveHQ_Text_BrellaGoGettem, MSGBOX_DEFAULT
+	closemessage
 	release
 	end
 

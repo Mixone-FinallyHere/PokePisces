@@ -30,6 +30,8 @@ MangrottoRockSmashRoom_EventScript_YouWin::
 	setvar VAR_SS_TIDAL_STATE, SS_TIDAL_LAND_LILYCOVE
 	msgbox MangrottoRockSmashRoom_Text_ChallengeWon, MSGBOX_AUTOCLOSE
 	giveitem ITEM_TM_BREAKING_SWIPE
+	warp MAP_MANGROTTO_TUNNEL, 66, 31
+	waitstate
 	release
 	end
 
@@ -42,6 +44,7 @@ MangrottoRockSmashRoom_EventScript_RockSmashChallenge::
 	msgbox MangrottoRockSmashRoom_Text_WantToTakeOnChallenge, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, MangrottoRockSmashRoom_EventScript_StartRSChallenge
 	msgbox MangrottoRockSmashRoom_Text_MaybeNextTime, MSGBOX_AUTOCLOSE
+	special ResetSSTidalFlag
 	warp MAP_MANGROTTO_TUNNEL, 66, 31
 	waitstate
 	release
@@ -49,6 +52,7 @@ MangrottoRockSmashRoom_EventScript_RockSmashChallenge::
 
 MangrottoRockSmashRoom_EventScript_NoMoreChallenge::
 	msgbox MangrottoRockSmashRoom_Text_NoMoreChallenge, MSGBOX_AUTOCLOSE
+	special ResetSSTidalFlag
 	warp MAP_MANGROTTO_TUNNEL, 66, 31
 	waitstate
 	release
@@ -96,22 +100,36 @@ MangrottoRockSmashRoom_EventScript_SmashChallengeRock::
 	end
 
 MangrottoRockSmashRoom_Text_WantToTakeOnChallenge:
-	.string "want challenge?$"
+	.string "I see you've found my special cave!\p"
+	.string "I run a bit of a game here, you see.\n"
+	.string "If you can break all 11 rocks\l"
+	.string "in this room within a strict\l"
+	.string "step limit, I will gift you a TM!\p"
+	.string "Do you think you have\n"
+	.string "what it takes?$"
 
 MangrottoRockSmashRoom_Text_MaybeNextTime:
-	.string "maybe next time$"
+	.string "Guess not! Please leave\n"
+	.string "the cave for the next\l"
+	.string "potential challenger.$"
 
 MangrottoRockSmashRoom_Text_NoMoreChallenge:
-	.string "no more challenge$"
+	.string "You've already cleared\n"
+	.string "my challenge! Please don't hog\l"
+	.string "the cave if you've already done it.$"
 
 MangrottoRockSmashRoom_Text_StartChallenge:
-	.string "start challenge$"
+	.string "Let the challenge... begin!$"
 
 MangrottoRockSmashRoom_Text_FailedChallenge:
-	.string "failed challenge$"
+	.string "Challenge... failed!\n"
+	.string "You have maxed out your\l"
+	.string "available steps.$"
 
 MangrottoRockSmashRoom_Text_ChallengeWon:
-	.string "won challenge$"
+	.string "Challenge... SUCCESS!\n"
+	.string "Please take your reward.$"
 
 MangrottoRockSmashRoom_Text_MiddleOfChallenge:
-	.string "go do it dood!!$"
+	.string "What are you doing talking to me?\n"
+	.string "Get to smashin'!$"

@@ -245,3 +245,11 @@ MoveTutor_Text_MoveTaught:
 MoveTutor_Text_LearnMove:
 	.string "What move would your\n"
 	.string "Pokémon like to learn?$"
+
+MoveTutor_Text_NoCoralCrowns:
+	.string "You need at least one Coral Crown\n"
+	.string "to pay for this tutored move.$"
+
+MoveTutor_Text_WillTakeYourCoralCrown:
+	.string "I will take one Coral Crown\n"
+	.string "as a payment.$"
