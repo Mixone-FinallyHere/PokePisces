@@ -44,6 +44,7 @@ Route126_EventScript_StartInvasion::
 	speakername Route126_Text_NameLovelace
 	msgbox Route126_Text_UhefoeAppears, MSGBOX_DEFAULT
 	speakername NULL
+	closemessage
 	setflag FLAG_WILD_NO_CATCHING_FLAG
 	setflag FLAG_WILD_NO_RUNNING_FLAG
 	setflag FLAG_SMART_WILD_AI_FLAG
@@ -66,6 +67,7 @@ Route126_Movement_WalkToRocket:
 Route126_EventScript_YouDidIt::
 	setmetatile 62, 9, METATILE_Mossdeep_RocketNormalLeft, TRUE
 	setmetatile 63, 9, METATILE_Mossdeep_RocketNormalRight, TRUE
+	special DrawWholeMapView
 	speakername Route126_Text_NameLovelace
 	msgbox Route126_Text_YouDidIt, MSGBOX_DEFAULT
 	speakername NULL
@@ -78,7 +80,16 @@ Route126_EventScript_YouDidIt::
 	end
 
 Route126_EventScript_Lovelace::
-	msgbox Route126_Text_Lovelace, MSGBOX_NPC
+	lock
+	goto_if_ge VAR_SPACE_CENTER_QUEST_STATE, 3, Route126_EventScript_LovelacePost
+	msgbox Route126_Text_Lovelace, MSGBOX_AUTOCLOSE
+	release
+	end
+
+Route126_EventScript_LovelacePost::
+	speakername Route126_Text_NameLovelace
+	msgbox Route126_Text_LovelacePost, MSGBOX_AUTOCLOSE
+	release
 	end
 
 Route126_EventScript_Stella::
@@ -577,6 +588,11 @@ Route126_Text_YouDidIt:
 	.string "Here, take this;\n"
 	.string "the Pokémon was holding it.\p"
 	.string "Think of it as a… trophy.$"
+
+Route126_Text_LovelacePost:
+	.string "I'm on high alert for Uhefoe now.\n"
+	.string "None of those barrels of bolts\l"
+	.string "are making it past me!$"
 
 Route126_Text_GugumbirIntro:
 	.string "intro$"

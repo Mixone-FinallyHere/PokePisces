@@ -49,8 +49,7 @@ StevenMaze_EventScript_ShadowSteven6::
 
 StevenMaze_EventScript_ShadowStevenGone::
 	lock
-	applymovement VAR_LAST_TALKED, StevenMaze_Movement_Dissapear
-	waitmovement 0
+	removeobject VAR_LAST_TALKED
 	release
 	end
 
@@ -64,6 +63,7 @@ StevenMaze_EventScript_PokeDoll::
 
 StevenMaze_EventScript_FinalSteven::
 	lock
+	faceplayer
 	speakername StevenMaze_Text_NameSteven
 	msgbox StevenMaze_Text_AllDone, MSGBOX_DEFAULT
 	setvar VAR_NEW_COO_STATE, 4

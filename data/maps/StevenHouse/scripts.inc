@@ -23,6 +23,7 @@ StevenHouse_EventScript_MeetSteven::
 	applymovement LOCALID_STEVEN, StevenHouse_Movement_StevenLeaves
 	waitmovement 0
 	speakername NULL
+	removeobject LOCALID_STEVEN
 	setflag FLAG_HIDE_STEVEN_IN_HOUSE
 	setvar VAR_NEW_COO_STATE, 3
 	release

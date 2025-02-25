@@ -94,6 +94,7 @@ MossdeepCity_Movement_MeetPlayer2:
 
 MossdeepCity_EventScript_MonkTakeToHouse1::
 	msgbox MossdeepCity_Text_MonkGreeting, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_MONK, MossdeepCity_Movement_MonkTakePlayer1
 	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Movement_PlayerFollow1
 	waitmovement 0
@@ -198,6 +199,7 @@ MossdeepCity_Movement_PlayerFollow1:
 
 MossdeepCity_EventScript_MonkTakeToHouse2::
 	msgbox MossdeepCity_Text_MonkGreeting, MSGBOX_DEFAULT
+	closemessage
 	applymovement LOCALID_MONK, MossdeepCity_Movement_MonkTakePlayer2
 	applymovement OBJ_EVENT_ID_PLAYER, MossdeepCity_Movement_PlayerFollow2
 	waitmovement 0

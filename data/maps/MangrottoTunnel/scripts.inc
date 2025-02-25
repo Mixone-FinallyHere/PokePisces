@@ -6,10 +6,11 @@
 .set LOCALID_EGGNEGGMA5, 23
 
 MangrottoTunnel_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, MangrottoTunnel_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, MangrottoTunnel_OnLoad
 	.byte 0
 
 MangrottoTunnel_OnTransition:
+	call MangrottoTunnel_EventScript_RemoveBreadwinner
 	call MangrottoTunnel_EventScript_SetEggState
 	end
 
@@ -28,6 +29,11 @@ MangrottoTunnel_EventScript_EggGotten::
 	setflag FLAG_TEMP_14
 	setflag FLAG_TEMP_15
 	setvar VAR_TEMP_4, 5
+	return
+
+MangrottoTunnel_EventScript_RemoveBreadwinner::
+	removeobject LOCALID_BREAD
+	setflag FLAG_TEMP_A
 	return
 
 MangrottoTunnel_EventScript_EggEncounter1North::
@@ -383,8 +389,12 @@ MangrottoTunnel_Movement_PlayerBlockRight:
 MangrottoTunnel_EventScript_BreadwinnerEnc1::
 	lock
 	setflag FLAG_TEMP_16
+	clearflag FLAG_TEMP_A
+	addobject LOCALID_BREAD
+	delay 4
 	applymovement LOCALID_BREAD, MangrottoTunnel_Movement_BreadE1
 	waitmovement 0
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	playse SE_WALL_HIT
 	applymovement LOCALID_BREAD, MangrottoTunnel_Movement_BreadBackUp
 	waitmovement 0
@@ -407,8 +417,12 @@ MangrottoTunnel_Movement_BreadE1:
 MangrottoTunnel_EventScript_BreadwinnerEnc2::
 	lock
 	setflag FLAG_TEMP_17
+	clearflag FLAG_TEMP_A
+	addobject LOCALID_BREAD
+	delay 4
 	applymovement LOCALID_BREAD, MangrottoTunnel_Movement_BreadE2
 	waitmovement 0
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	playse SE_WALL_HIT
 	applymovement LOCALID_BREAD, MangrottoTunnel_Movement_BreadBackUp
 	waitmovement 0
@@ -449,6 +463,8 @@ MangrottoTunnel_EventScript_BreadEscape1::
 	applymovement LOCALID_BREAD, MangrottoTunnel_Movement_BreadEsc1
 	waitmovement 0
 	setflag FLAG_HIDE_TEAM_OZONE_COSMOSS
+	removeobject LOCALID_BREAD
+	setflag FLAG_TEMP_A
 	release
 	end
 
@@ -478,6 +494,8 @@ MangrottoTunnel_EventScript_BreadEscape2::
 	applymovement LOCALID_BREAD, MangrottoTunnel_Movement_BreadEsc2
 	waitmovement 0
 	setflag FLAG_HIDE_TEAM_OZONE_COSMOSS
+	removeobject LOCALID_BREAD
+	setflag FLAG_TEMP_A
 	release
 	end
 
