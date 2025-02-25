@@ -258,6 +258,12 @@ MoveTutor_EventScript_ExplosionTaught::
 	release
 	end
 
+MoveTutor_EventScript_NoCoralCrowns::
+	msgbox MoveTutor_Text_NoCoralCrowns, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
 ZotpyreInteriors_EventScript_MoveTutor1::
 	lock
 	faceplayer
@@ -281,6 +287,10 @@ ZotpyreInteriors_EventScript_MoveTutor1::
 	end
 
 MoveTutor_EventScript_FloralHealing::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_FLORAL_HEALING
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -289,6 +299,10 @@ MoveTutor_EventScript_FloralHealing::
 	end
 
 MoveTutor_EventScript_Hearthwarm::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_HEARTHWARM
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -297,6 +311,10 @@ MoveTutor_EventScript_Hearthwarm::
 	end
 
 MoveTutor_EventScript_Roost::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_ROOST
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -305,6 +323,10 @@ MoveTutor_EventScript_Roost::
 	end
 
 MoveTutor_EventScript_Ingrain::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_INGRAIN
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -313,6 +335,10 @@ MoveTutor_EventScript_Ingrain::
 	end
 
 MoveTutor_EventScript_PainSplit::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_PAIN_SPLIT
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -321,6 +347,10 @@ MoveTutor_EventScript_PainSplit::
 	end
 
 MoveTutor_EventScript_Wish::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_WISH
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -329,6 +359,10 @@ MoveTutor_EventScript_Wish::
 	end
 
 MoveTutor_EventScript_HealPulse::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_HEAL_PULSE
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -337,6 +371,10 @@ MoveTutor_EventScript_HealPulse::
 	end
 
 MoveTutor_EventScript_AquaRing::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_AQUA_RING
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -345,6 +383,10 @@ MoveTutor_EventScript_AquaRing::
 	end
 
 MoveTutor_EventScript_LifeDew::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_LIFE_DEW
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -353,6 +395,10 @@ MoveTutor_EventScript_LifeDew::
 	end
 
 MoveTutor_EventScript_SlackOff::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_SLACK_OFF
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -377,6 +423,10 @@ ZotpyreInteriors_EventScript_MoveTutor2::
 	end
 
 MoveTutor_EventScript_Aromatherapy::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_AROMATHERAPY
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -385,6 +435,10 @@ MoveTutor_EventScript_Aromatherapy::
 	end
 
 MoveTutor_EventScript_HealBell::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_HEAL_BELL
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -393,6 +447,10 @@ MoveTutor_EventScript_HealBell::
 	end
 
 MoveTutor_EventScript_Safeguard::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_SAFEGUARD
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -401,6 +459,10 @@ MoveTutor_EventScript_Safeguard::
 	end
 
 MoveTutor_EventScript_MagicCoat::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_MAGIC_COAT
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -427,6 +489,10 @@ ZotpyreInteriors_EventScript_MoveTutor3::
 	end
 
 MoveTutor_EventScript_LeechLife::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_LEECH_LIFE
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -435,6 +501,10 @@ MoveTutor_EventScript_LeechLife::
 	end
 
 MoveTutor_EventScript_PollenPuff::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_POLLEN_PUFF
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -443,6 +513,10 @@ MoveTutor_EventScript_PollenPuff::
 	end
 
 MoveTutor_EventScript_Paracharge::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_PARABOLIC_CHARGE
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -451,6 +525,10 @@ MoveTutor_EventScript_Paracharge::
 	end
 
 MoveTutor_EventScript_GigaDrain::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_GIGA_DRAIN
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -459,6 +537,10 @@ MoveTutor_EventScript_GigaDrain::
 	end
 
 MoveTutor_EventScript_VenomDrain::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_VENOM_DRAIN
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -467,6 +549,10 @@ MoveTutor_EventScript_VenomDrain::
 	end
 
 MoveTutor_EventScript_DreamEater::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_DREAM_EATER
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -492,6 +578,10 @@ ZotpyreInteriors_EventScript_MoveTutor4::
 	end
 
 MoveTutor_EventScript_FinalGambit::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_FINAL_GAMBIT
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -500,6 +590,10 @@ MoveTutor_EventScript_FinalGambit::
 	end
 
 MoveTutor_EventScript_Reversal::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_REVERSAL
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -508,6 +602,10 @@ MoveTutor_EventScript_Reversal::
 	end
 
 MoveTutor_EventScript_Flail::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_FLAIL
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -516,6 +614,10 @@ MoveTutor_EventScript_Flail::
 	end
 
 MoveTutor_EventScript_MiseryWail::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_MISERY_WAIL
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -524,6 +626,10 @@ MoveTutor_EventScript_MiseryWail::
 	end
 
 MoveTutor_EventScript_Substitute::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_SUBSTITUTE
 	call MoveTutor_EventScript_OpenPartyMenu
