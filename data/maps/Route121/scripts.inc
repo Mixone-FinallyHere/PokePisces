@@ -92,6 +92,7 @@ Route121_EventScript_OneWayTripDown::
 Route121_EventScript_WarpToLilycove::
 	msgbox Route121_Text_TryNotToSlip, MSGBOX_DEFAULT
 	warp MAP_LILYCOVE_CITY, 17, 14
+	waitstate
 	release
 	end
 
