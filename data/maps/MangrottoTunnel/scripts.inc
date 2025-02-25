@@ -6,7 +6,7 @@
 .set LOCALID_EGGNEGGMA5, 23
 
 MangrottoTunnel_MapScripts::
-	map_script MAP_SCRIPT_ON_LOAD, MangrottoTunnel_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, MangrottoTunnel_OnTransition
 	.byte 0
 
 MangrottoTunnel_OnTransition:

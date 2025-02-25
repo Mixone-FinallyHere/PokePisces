@@ -5036,28 +5036,28 @@
             "encounter_rate": 180,
             "mons": [
               {
-                "min_level": 16,
-                "max_level": 16,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_MINIOR"
               },
               {
-                "min_level": 16,
-                "max_level": 16,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_MINIOR_METEOR_BLUE"
               },
               {
-                "min_level": 16,
-                "max_level": 16,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_MINIOR_METEOR_YELLOW"
               },
               {
-                "min_level": 16,
-                "max_level": 16,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_MINIOR_METEOR_YELLOW"
               },
               {
-                "min_level": 16,
-                "max_level": 16,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_MINIOR_METEOR_YELLOW"
               }
             ]
@@ -9081,28 +9081,28 @@
             "encounter_rate": 180,
             "mons": [
               {
-                "min_level": 17,
-                "max_level": 17,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_MINIOR_METEOR_GREEN"
               },
               {
-                "min_level": 17,
-                "max_level": 17,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_MINIOR_METEOR_ORANGE"
               },
               {
-                "min_level": 17,
-                "max_level": 17,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_MINIOR_METEOR_VIOLET"
               },
               {
-                "min_level": 17,
-                "max_level": 17,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_MINIOR_METEOR_VIOLET"
               },
               {
-                "min_level": 17,
-                "max_level": 17,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_MINIOR_METEOR_VIOLET"
               }
             ]
