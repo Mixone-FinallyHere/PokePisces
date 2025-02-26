@@ -87,7 +87,7 @@ Route120_EventScript_AlreadyCut3::
 Route120_EventScript_CutPath3::
 	playse SE_M_CUT
 	waitse
-	setflag FLAG_TEMP_1A
+	setflag FLAG_TEMP_1C
 	setmetatile 17, 21, METATILE_General_SecretBase_VineRight, FALSE
 	special DrawWholeMapView
 	release

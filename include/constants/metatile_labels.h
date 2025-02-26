@@ -120,6 +120,7 @@
 
 // gTileset_BossCave
 #define METATILE_BossCave_GrottoTile  0x271
+#define METATILE_BossCave_NoPexTile   0x209
 
 // gTileset_BrendansMaysHouse
 #define METATILE_BrendansMaysHouse_BookOnTable       0x293
