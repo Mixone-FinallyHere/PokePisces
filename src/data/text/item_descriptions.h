@@ -2957,8 +2957,8 @@ static const u8 sQualotBerryDesc[] = _(
 static const u8 sHondewBerryDesc[] = _(
     "If a Pokémon holds one\n"
     "of these Berries, it\n"
-    "envelops itself in Aqua\n"
-    "Ring and Hearthwarm.");
+    "envelops itself in\n"
+    "Aqua Ring.");
 
 static const u8 sGrepaBerryDesc[] = _(
     "If a Pokémon holds one\n"

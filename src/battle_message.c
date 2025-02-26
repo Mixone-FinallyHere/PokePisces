@@ -651,6 +651,7 @@ static const u8 sText_TeravoltEnters[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is r
 static const u8 sText_TurboblazeEnters[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is radiating\na blazing aura!");
 static const u8 sText_SlowStartEnters[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} can't get it going!");
 static const u8 sText_SlowStartEnd[] = _("{B_ATK_NAME_WITH_PREFIX} finally got\nits act together!");
+static const u8 sText_StarsGraceEnters[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is calling the stars!");
 static const u8 sText_StarsGraceStart[] = _("{B_ATK_NAME_WITH_PREFIX} prayer has\nhas been answered...");
 static const u8 sText_SolarPowerHpDrop[] = _("The {B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY}\ntakes its toll!");
 static const u8 sText_AftermathDmg[] = _("{B_ATK_NAME_WITH_PREFIX} is hurt!");
@@ -1811,6 +1812,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_CROWNINFESTEDATTACKER - BATTLESTRINGS_TABLE_START] = sText_CrownInfestedAttacker,
     [STRINGID_USERGAINEDDAYBREAK - BATTLESTRINGS_TABLE_START] = sText_UserGainedDaybreak,
     [STRINGID_USERUSEDUPALLDAYBREAK - BATTLESTRINGS_TABLE_START] = sText_UserUsedUpAllDaybreak,
+    [STRINGID_STARSGRACEENTERS - BATTLESTRINGS_TABLE_START] = sText_StarsGraceEnters,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -1903,6 +1905,7 @@ const u16 gSwitchInAbilityStringIds[] =
     [B_MSG_SWITCHIN_WATER_VEIL] = STRINGID_WATERVEILENTERS,
     [B_MSG_SWITCHIN_NEUTRALIZING_GAS] = STRINGID_NEUTRALIZINGGASENTERS,
     [B_MSG_SWITCHIN_WATCHER] = STRINGID_WATCHERENTERS,
+    [B_MSG_SWITCHIN_STARSGRACE] = STRINGID_STARSGRACEENTERS,
 };
 
 const u16 gMissStringIds[] =

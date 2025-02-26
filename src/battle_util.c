@@ -3109,7 +3109,7 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_STARS_GRACE:
-            if (gDisableStructs[battler].slowStartTimer && ++gDisableStructs[battler].slowStartTimer == 4 && ability == ABILITY_STARS_GRACE)
+            if (gDisableStructs[battler].slowStartTimer && --gDisableStructs[battler].slowStartTimer == 0 && ability == ABILITY_STARS_GRACE)
             {
                 BattleScriptExecute(BattleScript_StarsGraceStarts);
                 effect++;
@@ -4664,8 +4664,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         case ABILITY_STARS_GRACE:
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
-                gDisableStructs[battler].slowStartTimer = 0;
-                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWITCHIN_SLOWSTART;
+                gDisableStructs[battler].slowStartTimer = 3;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWITCHIN_STARSGRACE;
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 BattleScriptPushCursorAndCallback(BattleScript_SwitchInAbilityMsg);
                 effect++;
@@ -7025,10 +7025,10 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && moveType == TYPE_PSYCHIC)
             {
                 SET_STATCHANGER(STAT_ATK, 1, TRUE);
-                gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_ATK_MINUS_1;
+                gBattleScripting.moveEffect = MOVE_EFFECT_ATK_MINUS_1;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_GooeyActivates;
+                gBattlescriptCurrInstr = BattleScript_StrongJawActivates;
                 gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
             }
@@ -7160,10 +7160,10 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && gBattleMoves[move].bitingMove)
             {
                 SET_STATCHANGER(STAT_DEF, 1, TRUE);
-                gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_DEF_MINUS_1;
+                gBattleScripting.moveEffect = MOVE_EFFECT_DEF_MINUS_1;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_GooeyActivates;
+                gBattlescriptCurrInstr = BattleScript_StrongJawActivates;
                 gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
             }
@@ -8238,7 +8238,7 @@ static u8 DamagedHondewBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 e
     u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
     u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
     gBattlerTarget = opposingBattler;
-    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) && !(gStatuses4[battler] & STATUS4_HEARTHWARM) && !(gStatuses3[battler] & STATUS3_AQUA_RING))
+    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) && !(gStatuses3[battler] & STATUS3_AQUA_RING))
     {
         BufferStatChange(battler, statId, STRINGID_STATROSE);
         gEffectBattler = battler;
@@ -8252,7 +8252,6 @@ static u8 DamagedHondewBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 e
         else
         {
             gStatuses3[battler] |= STATUS3_AQUA_RING;
-            gStatuses4[battler] |= STATUS4_HEARTHWARM;
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_HondewBerryActivatesRet;
         }
@@ -9606,6 +9605,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 gBattleScripting.moveEffect = MOVE_EFFECT_DEF_MINUS_2;
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
+                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
             }
         }
@@ -9625,10 +9625,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && IsBattlerAlive(gBattlerTarget)
                 && moveType == TYPE_GRASS)
             {
-                gBattleScripting.moveEffect = MOVE_EFFECT_BURN;
+                gBattleScripting.battler = gEffectBattler = gBattlerTarget;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUSED_BY_ITEM;
                 BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
-                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                gBattlescriptCurrInstr = BattleScript_MoveEffectBurn;
                 effect++;
             }
         }
@@ -9643,16 +9643,19 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             if (gBattleMoveDamage != 0 // Need to have done damage
                 && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
                 && TARGET_TURN_DAMAGED 
-                && gBattleMons[gBattlerTarget].hp 
-                && (moveType == (TYPE_BUG || TYPE_DARK))
-                && (CompareStat(gBattlerTarget, STAT_ATK, MIN_STAT_STAGE, CMP_GREATER_THAN) || CompareStat(gBattlerTarget, STAT_SPATK, MIN_STAT_STAGE, CMP_GREATER_THAN))
-                && (gBattleMons[gBattlerAttacker].species == SPECIES_MOSKOPO))
+                && IsBattlerAlive(gBattlerTarget)
+                && (moveType ==  TYPE_BUG || moveType == TYPE_DARK)
+                && (CompareStat(gBattlerTarget, STAT_ATK, MIN_STAT_STAGE, CMP_GREATER_THAN) 
+                || CompareStat(gBattlerTarget, STAT_SPATK, MIN_STAT_STAGE, CMP_GREATER_THAN)
+                || CompareStat(gBattlerTarget, STAT_ACC, MIN_STAT_STAGE, CMP_GREATER_THAN)
+                || CompareStat(gBattlerTarget, STAT_EVASION, MIN_STAT_STAGE, CMP_GREATER_THAN))
+                && gBattleMons[gBattlerAttacker].species == SPECIES_MOSKOPO)
             {
-                gBattleScripting.moveEffect = MOVE_EFFECT_ATK_SPATK_DOWN;
+                gBattleScripting.moveEffect = MOVE_EFFECT_LONG_NOSE;
                 BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_TargetItemStatRaise;
+                gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
+                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
-                SetMoveEffect(TRUE, 0);
             }
         }
         break;
@@ -9693,10 +9696,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             && gBattleMoves[gCurrentMove].type == TYPE_FAIRY
             && RandomPercentage(RNG_HOLD_EFFECT_BLACK_GLASSES, 20))
             {
-                gBattleScripting.moveEffect = MOVE_EFFECT_BURN;
+                gBattleScripting.battler = gEffectBattler = gBattlerTarget;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUSED_BY_ITEM;
                 BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
-                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                gBattlescriptCurrInstr = BattleScript_MoveEffectConfusion;
                 effect++;
             }
             break;
@@ -12281,7 +12284,7 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.5));
         break;
     case ABILITY_STARS_GRACE:
-        if (gDisableStructs[battlerAtk].slowStartTimer >= 4 && IS_MOVE_SPECIAL(move))
+        if (gDisableStructs[battlerAtk].slowStartTimer == 0 && IS_MOVE_SPECIAL(move))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         break;
     case ABILITY_WHITE_OUT:

@@ -675,6 +675,11 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectBlazingSoul             @ EFFECT_BLAZING_SOUL
 	.4byte BattleScript_EffectConfuseHit              @ EFFECT_BARRAGE
 	.4byte BattleScript_EffectRandomStatDropHit       @ EFFECT_PIN_MISSILE
+	.4byte BattleScript_EffectFirebrand               @ EFFECT_FIREBRAND
+
+BattleScript_EffectFirebrand::
+	setmoveeffect MOVE_EFFECT_FIREBRAND
+	goto BattleScript_EffectHit
 
 BattleScript_EffectRandomStatDropHit::
 	setmoveeffect MOVE_EFFECT_RANDOM_STAT_DROP
@@ -1334,7 +1339,7 @@ BattleScript_AttackerUsedFirebrand::
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
-	printstring STRINGID_PKMNREGAINEDHEALTH
+	printstring STRINGID_HEALINGWISHHEALED
 	waitmessage B_WAIT_TIME_LONG
 	moveendall
 	end
@@ -13860,6 +13865,39 @@ BattleScript_AtkSpAtkDown2TrySpDef::
 BattleScript_AtkSpAtkDown2Ret::
 	return
 
+BattleScript_LongNose::
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_ATK | BIT_SPATK | BIT_EVASION | BIT_ACC, STAT_CHANGE_CANT_PREVENT | STAT_CHANGE_NEGATIVE | STAT_CHANGE_MULTIPLE_STATS
+	playstatchangeanimation BS_TARGET, BIT_ATK, STAT_CHANGE_CANT_PREVENT | STAT_CHANGE_NEGATIVE
+	setstatchanger STAT_ATK, 1, TRUE
+	statbuffchange MOVE_EFFECT_CERTAIN | STAT_CHANGE_ALLOW_PTR, BattleScript_LongNoseTrySpAtk
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_LongNoseTrySpAtk
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_LongNoseTrySpAtk::
+	playstatchangeanimation BS_TARGET, BIT_SPATK, STAT_CHANGE_CANT_PREVENT | STAT_CHANGE_NEGATIVE
+	setstatchanger STAT_SPATK, 1, TRUE
+	statbuffchange MOVE_EFFECT_CERTAIN | STAT_CHANGE_ALLOW_PTR, BattleScript_LongNoseTryEvasion
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_LongNoseTryEvasion
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_LongNoseTryEvasion::
+	playstatchangeanimation BS_TARGET, BIT_EVASION, STAT_CHANGE_CANT_PREVENT | STAT_CHANGE_NEGATIVE
+	setstatchanger STAT_EVASION, 1, TRUE
+	statbuffchange MOVE_EFFECT_CERTAIN | STAT_CHANGE_ALLOW_PTR, BattleScript_LongNoseTryAccuracy
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_LongNoseTryAccuracy
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_LongNoseTryAccuracy::
+	playstatchangeanimation BS_TARGET, BIT_ACC, STAT_CHANGE_CANT_PREVENT | STAT_CHANGE_NEGATIVE
+	setstatchanger STAT_ACC, 1, TRUE
+	statbuffchange MOVE_EFFECT_CERTAIN | STAT_CHANGE_ALLOW_PTR, BattleScript_LongNoseRet
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_LongNoseRet
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_LongNoseRet::
+	return
+
 BattleScript_AtkSpeedDown::
 	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_AtkSpeedDownRet
 	jumpiftargetally BattleScript_AtkSpeedDownRet
@@ -16433,6 +16471,11 @@ BattleScript_GooeyActivates::
 	seteffectsecondary
 	return
 
+BattleScript_StrongJawActivates::
+	waitstate
+	call BattleScript_AbilityPopUp
+	seteffectsecondary
+	return
 
 BattleScript_AbilityStatusEffect::
 	waitstate
@@ -16442,7 +16485,7 @@ BattleScript_AbilityStatusEffect::
 
 BattleScript_ItemSecondaryEffect::
 	waitstate
-	call BattleScript_AbilityPopUp
+	seteffectsecondary
 	return
 
 BattleScript_AbilitySetGlaiveRush::
@@ -17542,7 +17585,7 @@ BattleScript_NanabBerryEnd::
 
 BattleScript_HondewBerryActivatesRet::
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
-	printstring STRINGID_PKMNSURROUNDEDWITHVEILS
+	printstring STRINGID_PKMNSURROUNDEDWITHVEILOFWATER
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_SCRIPTING
 BattleScript_HondewBerryEnd::

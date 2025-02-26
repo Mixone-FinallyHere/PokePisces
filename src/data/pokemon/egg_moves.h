@@ -5560,7 +5560,8 @@ const u16 gEggMoves[] = {
         MOVE_FUTURE_SIGHT,
         MOVE_INFERNO,
         MOVE_METEOR_MASH,
-        MOVE_GRAVITY),
+        MOVE_GRAVITY,
+        MOVE_HUNKER_DOWN),
 
     egg_moves(AETHEREAL,
         MOVE_HEALING_WISH,

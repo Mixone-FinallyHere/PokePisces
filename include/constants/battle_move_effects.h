@@ -652,7 +652,8 @@
 #define EFFECT_BLAZING_SOUL                 646
 #define EFFECT_BARRAGE                      647
 #define EFFECT_PIN_MISSILE                  648
+#define EFFECT_FIREBRAND                    649
 
-#define NUM_BATTLE_MOVE_EFFECTS             649
+#define NUM_BATTLE_MOVE_EFFECTS             650
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

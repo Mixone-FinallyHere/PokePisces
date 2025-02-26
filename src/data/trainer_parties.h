@@ -14016,7 +14016,7 @@ static const struct TrainerMon sParty_PMaxie[] = {
     .heldItem = ITEM_EJECT_PACK,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 77,
-    .moves = {MOVE_BRUTALIZE, MOVE_LEAF_STORM, MOVE_HIT_N_RUN, MOVE_JAW_LOCK},
+    .moves = {MOVE_BRUTALIZE, MOVE_LEAF_STORM, MOVE_HIT_N_RUN, MOVE_NONE},
     },
     {
     .species = SPECIES_GLISCOR,
@@ -14032,7 +14032,7 @@ static const struct TrainerMon sParty_PMaxie[] = {
     .heldItem = ITEM_BATTLE_HELM,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 78,
-    .moves = {MOVE_FIERY_DANCE, MOVE_SPRINGTIDE_STORM, MOVE_OBLIVION_WING, MOVE_BLAZING_SOUL},
+    .moves = {MOVE_RAZING_SUN, MOVE_SPRINGTIDE_STORM, MOVE_OBLIVION_WING, MOVE_BLAZING_SOUL},
     }
 };
 
@@ -14111,7 +14111,7 @@ static const struct TrainerMon sParty_PSteven[] = {
     },
     {
     .species = SPECIES_FERROR,
-    .ability = ABILITY_STRONGHOLD,
+    .ability = ABILITY_FILTER,
     .friendship = 255,
     .heldItem = ITEM_SHELL_BELL,
     .isShiny = TRUE,
