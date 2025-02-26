@@ -2130,6 +2130,7 @@
     .endm
 
     .macro doshunyongbattle
+    setwildbattlemusic MUS_VS_LEGENDARY2
     callnative ScriptSetShunyongBattle
     dowildbattle
     .endm
@@ -2142,4 +2143,9 @@
     @ Poisons 4 mons in the player's party
     .macro burnplayerparty
     special BurnPlayerParty
+    .endm
+
+    .macro setwildbattlemusic song:req
+	setflag FLAG_BATTLE_MUSIC_OVERRIDE		@ cleared internally
+    setvar VAR_0x800B \song
     .endm

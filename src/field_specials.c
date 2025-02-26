@@ -2571,6 +2571,316 @@ void ShowScrollableMultichoice(void)
         task->tKeepOpenAfterSelect = FALSE;
         task->tTaskId = taskId;
         break;
+    case SCROLL_MULTI_OZONE_INS_MOVE_TUTOR_1:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 6;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_OZONE_INS_MOVE_TUTOR_2:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 5;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_OZONE_INS_MOVE_TUTOR_3:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 4;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_OZONE_INS_MOVE_TUTOR_4:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 7;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_FORTREE_MOVE_TUTOR_1:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 4;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_FORTREE_MOVE_TUTOR_2:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 4;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_FORTREE_MOVE_TUTOR_3:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 4;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_FORTREE_MOVE_TUTOR_4:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 4;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_FORTREE_MOVE_TUTOR_5:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 3;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_FORTREE_MOVE_TUTOR_6:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 4;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_FORTREE_MOVE_TUTOR_7:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 6;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_LAVARIDGE_MOVE_TUTOR_1:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 9;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_1:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 12;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_2:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 5;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_3:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 6;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_4:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 10;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_5:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 14;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_6:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 8;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_7:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 10;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_DEWFORD_MOVE_TUTOR_1:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 8;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_DEWFORD_MOVE_TUTOR_2:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 3;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_RUSTBORO_MOVE_TUTOR_1:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 13;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_RUSTBORO_MOVE_TUTOR_2:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 9;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_RUSTBORO_MOVE_TUTOR_3:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 13;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_OLDALE_MOVE_TUTOR_1:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 7;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_OLDALE_MOVE_TUTOR_2:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 5;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_PETALBURG_MOVE_TUTOR_1:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 9;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_LITTLEROOT_MOVE_TUTOR_1:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 4;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_LITTLEROOT_MOVE_TUTOR_2:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 7;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_LITTLEROOT_MOVE_TUTOR_3:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 8;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_MULTI_LITTLEROOT_MOVE_TUTOR_4:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 8;
+        task->tLeft = 17;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
     default:
         gSpecialVar_Result = MULTI_B_PRESSED;
         DestroyTask(taskId);
@@ -2771,6 +3081,318 @@ static const u8 *const sScrollableMultichoiceOptions[][MAX_SCROLL_MULTI_LENGTH] 
         gMoveNames[MOVE_FLAIL],
         gMoveNames[MOVE_MISERY_WAIL],
         gMoveNames[MOVE_SUBSTITUTE],
+        gText_Exit
+    },
+    [SCROLL_MULTI_OZONE_INS_MOVE_TUTOR_1] =
+    {
+        gMoveNames[MOVE_HAIL],
+        gMoveNames[MOVE_BLIZZARD],
+        gMoveNames[MOVE_VERGLASTROM],
+        gMoveNames[MOVE_AURORA_VEIL],
+        gMoveNames[MOVE_COLD_MEND],
+        gText_Exit
+    },
+    [SCROLL_MULTI_OZONE_INS_MOVE_TUTOR_2] =
+    {
+        gMoveNames[MOVE_RAIN_DANCE],
+        gMoveNames[MOVE_AQUASCADE],
+        gMoveNames[MOVE_HURRICANE],
+        gMoveNames[MOVE_THUNDER],
+        gText_Exit
+    },
+    [SCROLL_MULTI_OZONE_INS_MOVE_TUTOR_3] =
+    {
+        gMoveNames[MOVE_SANDSTORM],
+        gMoveNames[MOVE_DUNE_SLICER],
+        gMoveNames[MOVE_RAZOR_BEAM],
+        gText_Exit
+    },
+    [SCROLL_MULTI_OZONE_INS_MOVE_TUTOR_4] =
+    {
+        gMoveNames[MOVE_SUNNY_DAY],
+        gMoveNames[MOVE_SOLAR_BEAM],
+        gMoveNames[MOVE_SOLAR_BLADE],
+        gMoveNames[MOVE_SYNTHESIS],
+        gMoveNames[MOVE_SUN_BASK],
+        gMoveNames[MOVE_GROWTH],
+        gText_Exit
+    },
+    [SCROLL_MULTI_FORTREE_MOVE_TUTOR_1] =
+    {
+        gMoveNames[MOVE_ELECTRIC_TERRAIN],
+        gMoveNames[MOVE_RISING_VOLTAGE],
+        gMoveNames[MOVE_CHARGE],
+        gText_Exit
+    },
+    [SCROLL_MULTI_FORTREE_MOVE_TUTOR_2] =
+    {
+        gMoveNames[MOVE_GRASSY_TERRAIN],
+        gMoveNames[MOVE_GRASSY_GLIDE],
+        gMoveNames[MOVE_GRASS_CANNON],
+        gText_Exit
+    },
+    [SCROLL_MULTI_FORTREE_MOVE_TUTOR_3] =
+    {
+        gMoveNames[MOVE_MISTY_TERRAIN],
+        gMoveNames[MOVE_MISTY_EXPLOSION],
+        gMoveNames[MOVE_AROMATIC_MIST],
+        gText_Exit
+    },
+    [SCROLL_MULTI_FORTREE_MOVE_TUTOR_4] =
+    {
+        gMoveNames[MOVE_PSYCHIC_TERRAIN],
+        gMoveNames[MOVE_EXPANDING_FORCE],
+        gMoveNames[MOVE_KINESIS],
+        gText_Exit
+    },
+    [SCROLL_MULTI_FORTREE_MOVE_TUTOR_5] =
+    {
+        gMoveNames[MOVE_TERRAIN_PULSE],
+        gMoveNames[MOVE_TERRAIN_SNAP],
+        gText_Exit
+    },
+    [SCROLL_MULTI_FORTREE_MOVE_TUTOR_6] =
+    {
+        gMoveNames[MOVE_TAILWIND],
+        gMoveNames[MOVE_AIR_CANNON],
+        gMoveNames[MOVE_SHARP_GLIDE],
+        gText_Exit
+    },
+    [SCROLL_MULTI_FORTREE_MOVE_TUTOR_7] =
+    {
+        gMoveNames[MOVE_CASTLE_CRASH],
+        gMoveNames[MOVE_DEFOG],
+        gMoveNames[MOVE_DEMOLISHER],
+        gMoveNames[MOVE_ICE_SPINNER],
+        gMoveNames[MOVE_STEEL_ROLLER],
+        gText_Exit
+    },
+    [SCROLL_MULTI_LAVARIDGE_MOVE_TUTOR_1] =
+    {
+        gMoveNames[MOVE_BRUTALIZE],
+        gMoveNames[MOVE_DRACO_METEOR],
+        gMoveNames[MOVE_FLEUR_CANNON],
+        gMoveNames[MOVE_CLOSE_COMBAT],
+        gMoveNames[MOVE_SUPERPOWER],
+        gMoveNames[MOVE_OVERHEAT],
+        gMoveNames[MOVE_LEAF_STORM],
+        gMoveNames[MOVE_HEADLONG_RUSH],
+        gText_Exit
+    },
+    [SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_1] =
+    {
+        gMoveNames[MOVE_U_TURN],
+        gMoveNames[MOVE_HIT_N_RUN],
+        gMoveNames[MOVE_VOLT_SWITCH],
+        gMoveNames[MOVE_GLACIAL_SHIFT],
+        gMoveNames[MOVE_ALLY_SWITCH],
+        gMoveNames[MOVE_POWER_SWAP],
+        gMoveNames[MOVE_GUARD_SWAP],
+        gMoveNames[MOVE_SPEED_SWAP],
+        gMoveNames[MOVE_SKILL_SWAP],
+        gMoveNames[MOVE_FLIP_TURN],
+        gMoveNames[MOVE_MANEUVER],
+        gText_Exit
+    },
+    [SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_2] =
+    {
+        gMoveNames[MOVE_EVAPORATE],
+        gMoveNames[MOVE_SNUFF_OUT],
+        gMoveNames[MOVE_FREEZE_DRY],
+        gMoveNames[MOVE_HEAT_SINK],
+        gText_Exit
+    },
+    [SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_3] =
+    {
+        gMoveNames[MOVE_THUNDER_PUNCH],
+        gMoveNames[MOVE_MACH_PUNCH],
+        gMoveNames[MOVE_FIRE_PUNCH],
+        gMoveNames[MOVE_ICE_PUNCH],
+        gMoveNames[MOVE_BULLET_PUNCH],
+        gText_Exit
+    },
+    [SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_4] =
+    {
+        gMoveNames[MOVE_X_SCISSOR],
+        gMoveNames[MOVE_NIGHT_SLASH],
+        gMoveNames[MOVE_SACRED_SWORD],
+        gMoveNames[MOVE_AERIAL_ACE],
+        gMoveNames[MOVE_SOUL_CUTTER],
+        gMoveNames[MOVE_CROSS_POISON],
+        gMoveNames[MOVE_PSYCHO_CUT],
+        gMoveNames[MOVE_SILVER_EDGE],
+        gMoveNames[MOVE_AQUA_CUTTER],
+        gText_Exit
+    },
+    [SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_5] =
+    {
+        gMoveNames[MOVE_PIN_MISSILE],
+        gMoveNames[MOVE_BEAT_UP],
+        gMoveNames[MOVE_SCALE_SHOT],
+        gMoveNames[MOVE_DOUBLE_SLAP],
+        gMoveNames[MOVE_TRIPLE_KICK],
+        gMoveNames[MOVE_FURY_ATTACK],
+        gMoveNames[MOVE_BULLET_SEED],
+        gMoveNames[MOVE_TRIPLE_AXEL],
+        gMoveNames[MOVE_BARB_BARRAGE],
+        gMoveNames[MOVE_COMET_PUNCH],
+        gMoveNames[MOVE_GEM_BLASTER],
+        gMoveNames[MOVE_SPIKE_CANNON],
+        gMoveNames[MOVE_BUBBLE],
+        gText_Exit
+    },
+    [SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_6] =
+    {
+        gMoveNames[MOVE_BUG_BITE],
+        gMoveNames[MOVE_CRUNCH],
+        gMoveNames[MOVE_THUNDER_FANG],
+        gMoveNames[MOVE_FIRE_FANG],
+        gMoveNames[MOVE_ICE_FANG],
+        gMoveNames[MOVE_PSYCHIC_FANGS],
+        gMoveNames[MOVE_JAW_LOCK],
+        gText_Exit
+    },
+    [SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_7] =
+    {
+        gMoveNames[MOVE_MEGAHORN],
+        gMoveNames[MOVE_BOLT_BEAK],
+        gMoveNames[MOVE_DRILL_PECK],
+        gMoveNames[MOVE_HORN_LEECH],
+        gMoveNames[MOVE_DRILL_RUN],
+        gMoveNames[MOVE_GLACIAL_LANCE],
+        gMoveNames[MOVE_BREAK_LANCE],
+        gMoveNames[MOVE_POISON_JAB],
+        gMoveNames[MOVE_PINPOINT],
+        gText_Exit
+    },
+    [SCROLL_MULTI_DEWFORD_MOVE_TUTOR_1] =
+    {
+        gMoveNames[MOVE_POWER_UP_PUNCH],
+        gMoveNames[MOVE_FLAME_CHARGE],
+        gMoveNames[MOVE_TRAILBLAZE],
+        gMoveNames[MOVE_RAPID_SPIN],
+        gMoveNames[MOVE_PSYSHIELD_BASH],
+        gMoveNames[MOVE_METEOR_BEAM],
+        gMoveNames[MOVE_STEEL_WING],
+        gText_Exit
+    },
+    [SCROLL_MULTI_DEWFORD_MOVE_TUTOR_2] =
+    {
+        gMoveNames[MOVE_POWER_TRIP],
+        gMoveNames[MOVE_STORED_POWER],
+        gText_Exit
+    },
+    [SCROLL_MULTI_RUSTBORO_MOVE_TUTOR_1] =
+    {
+        gMoveNames[MOVE_EMBARGO],
+        gMoveNames[MOVE_FLATTER],
+        gMoveNames[MOVE_TAUNT],
+        gMoveNames[MOVE_TORMENT],
+        gMoveNames[MOVE_FAIRY_LOCK],
+        gMoveNames[MOVE_SWEET_KISS],
+        gMoveNames[MOVE_CONFUSE_RAY],
+        gMoveNames[MOVE_NIGHTMARE],
+        gMoveNames[MOVE_TRICK_OR_TREAT],
+        gMoveNames[MOVE_FORESTS_CURSE],
+        gMoveNames[MOVE_LEECH_SEED],
+        gMoveNames[MOVE_ATTRACT],
+        gText_Exit
+    },
+    [SCROLL_MULTI_RUSTBORO_MOVE_TUTOR_2] =
+    {
+        gMoveNames[MOVE_BLOCK],
+        gMoveNames[MOVE_CAMOUFLAGE],
+        gMoveNames[MOVE_ENCORE],
+        gMoveNames[MOVE_ENTRAINMENT],
+        gMoveNames[MOVE_FORESIGHT],
+        gMoveNames[MOVE_MEAN_LOOK],
+        gMoveNames[MOVE_ODOR_SLEUTH],
+        gMoveNames[MOVE_PERISH_SONG],
+        gText_Exit
+    },
+    [SCROLL_MULTI_RUSTBORO_MOVE_TUTOR_3] =
+    {
+        gMoveNames[MOVE_REFLECT_TYPE],
+        gMoveNames[MOVE_SIMPLE_BEAM],
+        gMoveNames[MOVE_SWAGGER],
+        gMoveNames[MOVE_TEETER_DANCE],
+        gMoveNames[MOVE_YAWN],
+        gMoveNames[MOVE_GASTRO_ACID],
+        gMoveNames[MOVE_HEAL_BLOCK],
+        gMoveNames[MOVE_MAGIC_POWDER],
+        gMoveNames[MOVE_MIRACLE_EYE],
+        gMoveNames[MOVE_ROLE_PLAY],
+        gMoveNames[MOVE_TELEKINESIS],
+        gMoveNames[MOVE_SOAK],
+        gText_Exit
+    },
+    [SCROLL_MULTI_OLDALE_MOVE_TUTOR_1] =
+    {
+        gMoveNames[MOVE_CUT],
+        gMoveNames[MOVE_SURF],
+        gMoveNames[MOVE_STRENGTH],
+        gMoveNames[MOVE_ROCK_SMASH],
+        gMoveNames[MOVE_WATERFALL],
+        gMoveNames[MOVE_DIVE],
+        gText_Exit
+    },
+    [SCROLL_MULTI_OLDALE_MOVE_TUTOR_2] =
+    {
+        gMoveNames[MOVE_FLASH],
+        gMoveNames[MOVE_FLY],
+        gMoveNames[MOVE_ROCK_CLIMB],
+        gMoveNames[MOVE_WHIRLPOOL],
+        gText_Exit
+    },
+    [SCROLL_MULTI_PETALBURG_MOVE_TUTOR_1] =
+    {
+        gMoveNames[MOVE_FACADE],
+        gMoveNames[MOVE_FRUSTRATION],
+        gMoveNames[MOVE_RETURN],
+        gMoveNames[MOVE_GIGA_IMPACT],
+        gMoveNames[MOVE_GRAND_SLAM],
+        gMoveNames[MOVE_HYPER_BEAM],
+        gMoveNames[MOVE_WORK_UP],
+        gMoveNames[MOVE_SUBSTITUTE],
+        gText_Exit
+    },
+    [SCROLL_MULTI_LITTLEROOT_MOVE_TUTOR_1] =
+    {
+        gMoveNames[MOVE_FRENZY_PLANT],
+        gMoveNames[MOVE_BLAST_BURN],
+        gMoveNames[MOVE_HYDRO_CANNON],
+        gText_Exit
+    },
+    [SCROLL_MULTI_LITTLEROOT_MOVE_TUTOR_2] =
+    {
+        gMoveNames[MOVE_LEAF_BLADE],
+        gMoveNames[MOVE_SPIKY_SHIELD],
+        gMoveNames[MOVE_SPIRIT_SHACKLE],
+        gMoveNames[MOVE_DRUM_BEATING],
+        gMoveNames[MOVE_TRIPLE_ARROWS],
+        gMoveNames[MOVE_FLOWER_TRICK],
+        gText_Exit
+    },
+    [SCROLL_MULTI_LITTLEROOT_MOVE_TUTOR_3] =
+    {
+        gMoveNames[MOVE_BLAZE_KICK],
+        gMoveNames[MOVE_HEAT_CRASH],
+        gMoveNames[MOVE_MYSTICAL_FIRE],
+        gMoveNames[MOVE_DARKEST_LARIAT],
+        gMoveNames[MOVE_PYRO_BALL],
+        gMoveNames[MOVE_INFERNAL_PARADE],
+        gMoveNames[MOVE_TORCH_SONG],
+        gText_Exit
+    },
+    [SCROLL_MULTI_LITTLEROOT_MOVE_TUTOR_4] =
+    {
+        gMoveNames[MOVE_MUDDY_WATER],
+        gMoveNames[MOVE_RAZOR_SHELL],
+        gMoveNames[MOVE_WATER_SHURIKEN],
+        gMoveNames[MOVE_SPARKLING_ARIA],
+        gMoveNames[MOVE_SNIPE_SHOT],
+        gMoveNames[MOVE_CEASELESS_EDGE],
+        gMoveNames[MOVE_AQUA_STEP],
         gText_Exit
     }
 };
