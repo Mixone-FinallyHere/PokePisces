@@ -28,6 +28,8 @@ EventScript_CutTreeDown::
 	applymovement VAR_LAST_TALKED, Movement_CutTreeDown
 	waitmovement 0
 	removeobject VAR_LAST_TALKED
+	delay 4
+	giveitem ITEM_WEIRD_STICK, 1
 	releaseall
 	end
 

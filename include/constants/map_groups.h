@@ -123,6 +123,7 @@
 #define MAP_FORTREE_GYM_TRANSITION_BUILDING   (8 | (9 << 8))
 #define MAP_CANOPOUR_BUSHES                   (9 | (9 << 8))
 #define MAP_PERPLUME_TREEHOUSE                (10 | (9 << 8))
+#define MAP_SCUTTILL_INTERIORS                (11 | (9 << 8))
 
 // gMapGroup_PiscesLeg6Major
 #define MAP_OZONE_INSTITUTE    (0 | (10 << 8))

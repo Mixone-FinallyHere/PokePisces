@@ -4425,7 +4425,7 @@
       "id": "LAYOUT_SCUTTILL_HUTS",
       "name": "ScuttillHuts_Layout",
       "width": 55,
-      "height": 52,
+      "height": 64,
       "primary_tileset": "gTileset_SecretBase",
       "secondary_tileset": "gTileset_SecretBaseShrub",
       "border_filepath": "data/layouts/ScuttillHuts/border.bin",
@@ -6350,6 +6350,16 @@
       "secondary_tileset": "gTileset_Underwater",
       "border_filepath": "data/layouts/DetermaniteUnderwater/border.bin",
       "blockdata_filepath": "data/layouts/DetermaniteUnderwater/map.bin"
+    },
+    {
+      "id": "LAYOUT_SCUTTILL_INTERIORS",
+      "name": "ScuttillInteriors_Layout",
+      "width": 26,
+      "height": 19,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PrettyPetalFlowerShop",
+      "border_filepath": "data/layouts/ScuttillInteriors/border.bin",
+      "blockdata_filepath": "data/layouts/ScuttillInteriors/map.bin"
     }
   ]
 }

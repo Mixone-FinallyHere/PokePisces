@@ -1,6 +1,127 @@
 Route120_MapScripts::
 	.byte 0
 
+Route120_EventScript_TreePath1::
+	lock
+	goto_if_set FLAG_TEMP_1A, Route120_EventScript_AlreadyCut1
+	msgbox Route120_Text_PathThroughTree, MSGBOX_DEFAULT
+	goto_if_unset FLAG_BADGE03_GET, Route120_EventScript_CantCut
+	checkpartymove MOVE_CUT
+	goto_if_eq VAR_RESULT, PARTY_SIZE, Route120_EventScript_CantCut
+	msgbox Route120_Text_WantToUseCut, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Route120_EventScript_CutPath1
+	release
+	end
+
+Route120_EventScript_CantCut::
+	msgbox Route120_Text_NoCut, MSGBOX_AUTOCLOSE
+	release
+	end
+
+Route120_EventScript_AlreadyCut1::
+	setflag FLAG_TEMP_1A
+	setmetatile 20, 81, METATILE_General_SecretBase_VineRight, FALSE
+	special DrawWholeMapView
+	msgbox Route120_Text_AlreadyCut, MSGBOX_AUTOCLOSE
+	release
+	end
+
+Route120_EventScript_CutPath1::
+	playse SE_M_CUT
+	waitse
+	setflag FLAG_TEMP_1A
+	setmetatile 20, 81, METATILE_General_SecretBase_VineRight, FALSE
+	special DrawWholeMapView
+	release
+	end
+
+Route120_EventScript_TreePath2::
+	lock
+	goto_if_set FLAG_TEMP_1B, Route120_EventScript_AlreadyCut2
+	msgbox Route120_Text_PathThroughTree, MSGBOX_DEFAULT
+	goto_if_unset FLAG_BADGE03_GET, Route120_EventScript_CantCut
+	checkpartymove MOVE_CUT
+	goto_if_eq VAR_RESULT, PARTY_SIZE, Route120_EventScript_CantCut
+	msgbox Route120_Text_WantToUseCut, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Route120_EventScript_CutPath2
+	release
+	end
+
+Route120_EventScript_AlreadyCut2::
+	setflag FLAG_TEMP_1B
+	setmetatile 22, 26, METATILE_General_SecretBase_VineRight, FALSE
+	special DrawWholeMapView
+	msgbox Route120_Text_AlreadyCut, MSGBOX_AUTOCLOSE
+	release
+	end
+
+Route120_EventScript_CutPath2::
+	playse SE_M_CUT
+	waitse
+	setflag FLAG_TEMP_1B
+	setmetatile 22, 26, METATILE_General_SecretBase_VineRight, FALSE
+	special DrawWholeMapView
+	release
+	end
+
+Route120_EventScript_TreePath3::
+	lock
+	goto_if_set FLAG_TEMP_1C, Route120_EventScript_AlreadyCut3
+	msgbox Route120_Text_PathThroughTree, MSGBOX_DEFAULT
+	goto_if_unset FLAG_BADGE03_GET, Route120_EventScript_CantCut
+	checkpartymove MOVE_CUT
+	goto_if_eq VAR_RESULT, PARTY_SIZE, Route120_EventScript_CantCut
+	msgbox Route120_Text_WantToUseCut, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Route120_EventScript_CutPath3
+	release
+	end
+
+Route120_EventScript_AlreadyCut3::
+	setflag FLAG_TEMP_1C
+	setmetatile 17, 21, METATILE_General_SecretBase_VineRight, FALSE
+	special DrawWholeMapView
+	msgbox Route120_Text_AlreadyCut, MSGBOX_AUTOCLOSE
+	release
+	end
+
+Route120_EventScript_CutPath3::
+	playse SE_M_CUT
+	waitse
+	setflag FLAG_TEMP_1A
+	setmetatile 17, 21, METATILE_General_SecretBase_VineRight, FALSE
+	special DrawWholeMapView
+	release
+	end
+
+Route120_EventScript_TreePath4::
+	lock
+	goto_if_set FLAG_TEMP_1D, Route120_EventScript_AlreadyCut1
+	msgbox Route120_Text_PathThroughTree, MSGBOX_DEFAULT
+	goto_if_unset FLAG_BADGE03_GET, Route120_EventScript_CantCut
+	checkpartymove MOVE_CUT
+	goto_if_eq VAR_RESULT, PARTY_SIZE, Route120_EventScript_CantCut
+	msgbox Route120_Text_WantToUseCut, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Route120_EventScript_CutPath4
+	release
+	end
+
+Route120_EventScript_AlreadyCut4::
+	setflag FLAG_TEMP_1D
+	setmetatile 25, 9, METATILE_General_SecretBase_VineRight, FALSE
+	special DrawWholeMapView
+	msgbox Route120_Text_AlreadyCut, MSGBOX_AUTOCLOSE
+	release
+	end
+
+Route120_EventScript_CutPath4::
+	playse SE_M_CUT
+	waitse
+	setflag FLAG_TEMP_1D
+	setmetatile 25, 9, METATILE_General_SecretBase_VineRight, FALSE
+	special DrawWholeMapView
+	release
+	end
+
 Route120_EventScript_Colby::
     trainerbattle_single TRAINER_P_COLBY, Route120_Text_ColbyIntro, Route120_Text_ColbyDefeated
     msgbox Route120_Text_ColbyPostBattle, MSGBOX_AUTOCLOSE
@@ -212,3 +333,21 @@ Route120_Text_LeileiDefeated:
 
 Route120_Text_LeileiPostBattle:
 	.string "post$"
+
+Route120_Text_PathThroughTree:
+	.string "(There appears to be a path into\n"
+	.string "the thicket through this tree,\l"
+	.string "but there are many branches\l"
+	.string "in the way...)$"
+
+Route120_Text_WantToUseCut:
+	.string "(Would you like to have your\n"
+	.string "Pokemon cut through the branches?)$"
+
+Route120_Text_NoCut:
+	.string "(...But you have no means of\n"
+	.string "cutting through those branches.)$"
+
+Route120_Text_AlreadyCut:
+	.string "(The pathway into the thicket\n"
+	.string "has been opened.)$"
