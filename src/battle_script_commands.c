@@ -4073,13 +4073,6 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     gBattlescriptCurrInstr = BattleScript_AllStatsDown;
                 }
                 break;
-            case MOVE_EFFECT_HEART_CARVE:
-                if (!NoAliveMonsForEitherParty())
-                {
-                    BattleScriptPush(gBattlescriptCurrInstr + 1);
-                    gBattlescriptCurrInstr = BattleScript_HeartCarve;
-                }
-                break;
             case MOVE_EFFECT_RAPIDSPIN:
                 BattleScriptPush(gBattlescriptCurrInstr + 1);
                 gBattlescriptCurrInstr = BattleScript_RapidSpinAway;
@@ -11125,6 +11118,22 @@ static void Cmd_various(void)
         }
         break;
     }
+    case VARIOUS_TRY_ACTIVATE_HEART_CARVE:
+    {
+        VARIOUS_ARGS();
+        if (gBattleMoves[gCurrentMove].effect == EFFECT_HEART_CARVE
+            && HasAttackerFaintedTarget()
+            && !NoAliveMonsForEitherParty()
+            && gDisableStructs[gBattlerAttacker].frenzyCounter >= 3
+            && !BATTLER_MAX_HP(gBattlerAttacker)
+            && !(gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK))
+        {
+            BattleScriptPush(cmd->nextInstr);
+            gBattlescriptCurrInstr = BattleScript_HeartCarveHealHP;
+            return;
+        }
+        break;
+    }
     case VARIOUS_TRY_ACTIVATE_STAR_ASSAULT:
     {
         VARIOUS_ARGS();
@@ -12297,6 +12306,23 @@ static void Cmd_various(void)
                 gDisableStructs[battler].daybreakCounter++;
             }
             PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, gDisableStructs[battler].daybreakCounter);
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
+    case VARIOUS_APPLY_FRENZY_COUNTER:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+    
+        if (gDisableStructs[battler].frenzyCounter >= 3)
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        else
+        {
+            gDisableStructs[battler].frenzyCounter++;
+            PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, gDisableStructs[battler].frenzyCounter);
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
         return;

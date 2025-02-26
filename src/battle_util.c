@@ -1335,6 +1335,7 @@ bool32 IsHealBlockPreventingMove(u32 battler, u32 move)
     {
 #if B_HEAL_BLOCKING >= GEN_6
     case EFFECT_ABSORB:
+    case EFFECT_HEART_CARVE:
     case EFFECT_SPIRIT_AWAY:
     case EFFECT_STRENGTH_SAP:
     case EFFECT_POWER_DRAIN:
@@ -3803,7 +3804,9 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_IN_LOVE: // infatuation
-            if (!gBattleStruct->isAtkCancelerForCalledMove && gBattleMons[gBattlerAttacker].status2 & STATUS2_INFATUATION)
+            if (!gBattleStruct->isAtkCancelerForCalledMove 
+            && gBattleMons[gBattlerAttacker].status2 & STATUS2_INFATUATION
+            && gBattleMoves[gCurrentMove].effect != EFFECT_HEART_CARVE)
             {
                 gBattleScripting.battler = CountTrailingZeroBits((gBattleMons[gBattlerAttacker].status2 & STATUS2_INFATUATION) >> 0x10);
                 if (!RandomPercentage(RNG_INFATUATION, 25))
@@ -5429,6 +5432,18 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     effect++;
                 }
                 break;
+            case ABILITY_LOVESICK:
+                if (IsBattlerAlive(gBattlerAttacker)
+                && !gBattleMons[gBattlerAttacker].status2 & STATUS2_INFATUATION
+                && !IsAbilityOnSide(gBattlerAttacker, ABILITY_AROMA_VEIL))
+                {
+                    gBattlerAttacker = battler;
+                    gBattlerTarget = GetBattlerAtPosition(BATTLE_OPPOSITE(GetBattlerPosition(gBattlerAttacker)));
+                    gBattleMons[gBattlerAttacker].status2 |= STATUS2_INFATUATED_WITH(gBattlerTarget);
+                    BattleScriptExecute(BattleScript_LovesickActivates);
+                    effect++;
+                }
+                break;
             case ABILITY_RESET:
                 if (gBattleMons[battler].hp < gBattleMons[battler].maxHP && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK && !(gBattleMons[battler].status1 & STATUS1_ANY)))
                 {
@@ -6200,6 +6215,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             break;
         case ABILITY_LINGERING_AROMA:
         case ABILITY_MUMMY:
+        case ABILITY_LOVESICK:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
             && IsBattlerAlive(gBattlerAttacker) && TARGET_TURN_DAMAGED 
             && IsMoveMakingContact(move, gBattlerAttacker) 
@@ -6902,6 +6918,32 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
                 gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
+            }
+            break;
+        case ABILITY_LOVESICK:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+            && IsBattlerAlive(gBattlerTarget) && TARGET_TURN_DAMAGED 
+            && IsMoveMakingContact(move, gBattlerAttacker) 
+            && gBattleStruct->overwrittenAbilities[gBattlerTarget] != GetBattlerAbility(gBattlerAttacker))
+            {
+                if (IsGastroAcidBannedAbility(gBattleMons[gBattlerTarget].ability))
+                {
+                    break;
+                }
+                else
+                {
+                    if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_ABILITY_SHIELD)
+                    {
+                        RecordItemEffectBattle(gBattlerTarget, HOLD_EFFECT_ABILITY_SHIELD);
+                        break;
+                    }
+
+                    gLastUsedAbility = gBattleMons[gBattlerTarget].ability = gBattleStruct->overwrittenAbilities[gBattlerTarget] = gBattleMons[gBattlerAttacker].ability;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_LovesickMummyEffectActivates;
+                    effect++;
+                    break;
+                }
             }
             break;
         case ABILITY_ICE_SCALES:

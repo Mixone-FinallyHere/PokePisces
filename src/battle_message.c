@@ -325,6 +325,7 @@ static const u8 sText_PkmnsXWhippedUpSandstorm[] = _("{B_SCR_ACTIVE_NAME_WITH_PR
 static const u8 sText_PkmnsXIntensifiedSun[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nintensified the sun's rays!");
 static const u8 sText_PkmnsXPreventsYLoss[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nprevents {B_BUFF1} loss!");
 static const u8 sText_PkmnsXInfatuatedY[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY}\ninfatuated {B_ATK_NAME_WITH_PREFIX}!");
+static const u8 sText_PkmnsXInfatuatedY3[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_DEF_ABILITY} made it\ninfatuated with {B_DEF_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnsXInfatuatedYItemEdition[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1}\ninfatuated {B_ATK_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnsXMadeYIneffective[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY}\nmade {B_CURRENT_MOVE} ineffective!");
 static const u8 sText_PkmnsXCuredYProblem[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\ncured its {B_BUFF1} problem!");
@@ -964,6 +965,7 @@ static const u8 sText_WatmelBerryExploded[] = _("{B_ATK_NAME_WITH_PREFIX}'s BLOO
 static const u8 sText_IceScalesGains[] = _("{B_ATK_NAME_WITH_PREFIX} gained a layer of\nicy scales, putting it at {B_BUFF1}!");
 static const u8 sText_IceScalesLoss[] = _("Layers of {B_DEF_NAME_WITH_PREFIX}'s scales\nshattered and stifled the blow!");
 static const u8 sText_UserGainedDaybreak[] = _("{B_ATK_NAME_WITH_PREFIX} gained a Daybreak\nCounter, putting it at {B_BUFF1}!");
+static const u8 sText_UserHasEnteredAFrenzy[] = _("{B_ATK_NAME_WITH_PREFIX} gained a Frenzy\nCounter, putting it at {B_BUFF1}!");
 static const u8 sText_UserUsedUpAllDaybreak[] = _("{B_ATK_NAME_WITH_PREFIX} used up all\nof its Daybreak Counters!");
 static const u8 sText_PurpleHaze[] = _("The purple haze enflamed\n{B_ATK_NAME_WITH_PREFIX} with frenzy!");
 static const u8 sText_MagmaArmored[] = _("{B_ATK_NAME_WITH_PREFIX}'s magma armor\nhardened from {B_DEF_NAME_WITH_PREFIX}'s attack!");
@@ -1815,6 +1817,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_USERUSEDUPALLDAYBREAK - BATTLESTRINGS_TABLE_START] = sText_UserUsedUpAllDaybreak,
     [STRINGID_STARSGRACEENTERS - BATTLESTRINGS_TABLE_START] = sText_StarsGraceEnters,
     [STRINGID_PHANTOMDOESNTALLOW - BATTLESTRINGS_TABLE_START] = sText_PhantomDoesntAllow,
+    [STRINGID_USERHASENTEREDAFRENZY - BATTLESTRINGS_TABLE_START] = sText_UserHasEnteredAFrenzy,
+    [STRINGID_PKMNSXINFATUATEDY3 - BATTLESTRINGS_TABLE_START] = sText_PkmnsXInfatuatedY3,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

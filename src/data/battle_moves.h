@@ -14707,7 +14707,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_HEART_CARVE] =
     {
-        .effect = EFFECT_HEART_CARVE_HIT,
+        .effect = EFFECT_HEART_CARVE,
         .power = 90,
         .type = TYPE_POISON,
         .accuracy = 100,

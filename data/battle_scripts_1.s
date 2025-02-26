@@ -479,7 +479,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectTidyUp                  @ EFFECT_TIDY_UP
 	.4byte BattleScript_EffectAbsorb                  @ EFFECT_DRAINING_KISS
 	.4byte BattleScript_EffectHullbreaker             @ EFFECT_HULLBREAKER
-	.4byte BattleScript_EffectHeartCarveHit           @ EFFECT_HEART_CARVE_HIT
+	.4byte BattleScript_EffectHeartCarve              @ EFFECT_HEART_CARVE
 	.4byte BattleScript_EffectDragonPoker             @ EFFECT_DRAGON_POKER
 	.4byte BattleScript_EffectFlinchHit               @ EFFECT_WATERFALL
 	.4byte BattleScript_EffectDefenseDownHit          @ EFFECT_CUT
@@ -3439,6 +3439,7 @@ BattleScript_EffectRazingSun::
 	jumpifbattleend BattleScript_MoveEnd
 	checkdaybreakcounter 1, BattleScript_RazingSunWith1Daybreak
 	checkdaybreakcounter 3, BattleScript_RazingSunWith3Daybreak
+BattleScript_RazingSunSkipWeather::
 	applydaybreakcounter BS_ATTACKER, BattleScript_MoveEnd
 	printstring STRINGID_USERGAINEDDAYBREAK
 	waitmessage B_WAIT_TIME_LONG
@@ -3452,11 +3453,6 @@ BattleScript_RazingSunWith1Daybreak::
 	call BattleScript_CheckPrimalWeather
 	setsunny
 	goto BattleScript_MoveWeatherChange
-BattleScript_RazingSunSkipWeather::
-	applydaybreakcounter BS_ATTACKER, BattleScript_MoveEnd
-	printstring STRINGID_USERGAINEDDAYBREAK
-	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
 BattleScript_RazingSunWith3Daybreak::
 	jumpifabilitypresent ABILITY_AIR_LOCK, BattleScript_RazingSunSkipWeather2
 	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_SUN_PRIMAL, BattleScript_RazingSunSkipWeather2
@@ -3833,39 +3829,18 @@ BattleScript_DragonPokerRoyalFlush::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_HitFromCritCalc
 
-BattleScript_EffectHeartCarveHit::
-	jumpifstatus2 BS_ATTACKER, STATUS2_INFATUATION, BattleScript_HeartCarveUserInfatuated
+BattleScript_EffectHeartCarve::
+	jumpifstatus2 BS_ATTACKER, STATUS2_INFATUATION, BattleScript_HeartCarveApplyFrenzy
 	goto BattleScript_EffectHit
-BattleScript_HeartCarveUserInfatuated:
-	setmoveeffect MOVE_EFFECT_HEART_CARVE | MOVE_EFFECT_AFFECTS_USER
-	goto BattleScript_EffectHit
-
-BattleScript_HeartCarve::
-	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_HeartCarveTryAtk
-	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_HeartCarveTryAtk
-	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPEED, MAX_STAT_STAGE, BattleScript_HeartCarveRet
-BattleScript_HeartCarveTryAtk::
-	setbyte sSTAT_ANIM_PLAYED, FALSE
-	playstatchangeanimation BS_ATTACKER, BIT_ATK | BIT_SPATK | BIT_SPEED, 0
-	setstatchanger STAT_ATK, 1, FALSE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_HeartCarveTrySpAtk
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_HeartCarveTrySpAtk
-	printfromtable gStatUpStringIds
+BattleScript_HeartCarveApplyFrenzy::
+    call BattleScript_EffectHit_Ret
+	tryfaintmon BS_TARGET
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	jumpifbattleend BattleScript_MoveEnd
+	applyfrenzycounter BS_ATTACKER, BattleScript_MoveEnd
+	printstring STRINGID_USERHASENTEREDAFRENZY
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_HeartCarveTrySpAtk::
-	setstatchanger STAT_SPATK, 1, FALSE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_HeartCarveTrySpeed
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_HeartCarveTrySpeed
-	printfromtable gStatUpStringIds
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_HeartCarveTrySpeed::
-	setstatchanger STAT_SPEED, 1, FALSE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_HeartCarveRet
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_HeartCarveRet
-	printfromtable gStatUpStringIds
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_HeartCarveRet::
-	return
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectHullbreaker::
 	setmoveeffect MOVE_EFFECT_DEF_MINUS_2
@@ -12190,6 +12165,7 @@ BattleScript_FaintTarget::
 	printstring STRINGID_TARGETFAINTED
 	cleareffectsonfaint BS_TARGET
 	tryactivatefellstinger BS_ATTACKER
+	tryactivateheartcarve BS_ATTACKER
 	tryactivatestarassault BS_ATTACKER
 	tryactivateshadowforce BS_ATTACKER
 	tryactivatesoulheart
@@ -16183,6 +16159,12 @@ BattleScript_MummyActivates::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
+BattleScript_LovesickMummyEffectActivates::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNACQUIREDABILITY
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_WanderingSpiritActivates::
 .if B_ABILITY_POP_UP == TRUE
 	setbyte sFIXED_ABILITY_POPUP, TRUE
@@ -16309,6 +16291,16 @@ BattleScript_FellStingerRaisesStat::
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_FellStingerRaisesAtkEnd:
+	return
+
+BattleScript_HeartCarveHealHP::
+	tryhealhalfhealth BattleScript_HeartCarveRet, BS_ATTACKER
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	printstring STRINGID_PKMNREGAINEDHEALTH
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_HeartCarveRet:
 	return
 
 BattleScript_ShadowForceSelfPhantom::
@@ -16462,6 +16454,14 @@ BattleScript_CuteCharmActivates2::
 	printstring STRINGID_PKMNSXINFATUATEDY2
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryDestinyKnotInfatuateAttacker
+	return
+
+BattleScript_LovesickActivates::
+	call BattleScript_AbilityPopUp
+	status2animation BS_ATTACKER, STATUS2_INFATUATION
+	printstring STRINGID_PKMNSXINFATUATEDY3
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotInfatuateTarget
 	return
 
 BattleScript_GooeyActivates::
