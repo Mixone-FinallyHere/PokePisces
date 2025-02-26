@@ -5,12 +5,14 @@ NewMauvilleCenter2_MapScripts::
 
 NewMauvilleCenter2_EventScript_MoveRelearner::
 	lockall
+	setflag FLAG_LEVEL_1_TUTOR
 	applymovement LOCALID_MOVE_RELEARNER, Common_Movement_FacePlayer
 	waitmovement 0
 	goto_if_set FLAG_TEMP_1, NewMauvilleCenter2_EventScript_AskTeachMove
 	msgbox NewMauvilleCenter2_Text_ImTheMoveTutor, MSGBOX_DEFAULT
 	setflag FLAG_TEMP_1
 	goto NewMauvilleCenter2_EventScript_AskTeachMove
+	clearflag FLAG_LEVEL_1_TUTOR
 	end
 
 NewMauvilleCenter2_EventScript_AskTeachMove::
@@ -20,6 +22,7 @@ NewMauvilleCenter2_EventScript_AskTeachMove::
 	switch VAR_RESULT
 	case NO, NewMauvilleCenter2_EventScript_ComeBackWithHeartScale
 	goto NewMauvilleCenter2_EventScript_ChooseMon
+	clearflag FLAG_LEVEL_1_TUTOR
 	end
 
 NewMauvilleCenter2_EventScript_ChooseMon::
@@ -31,6 +34,7 @@ NewMauvilleCenter2_EventScript_ChooseMon::
 	goto_if_eq VAR_RESULT, TRUE, NewMauvilleCenter2_EventScript_CantTeachEgg
 	goto_if_eq VAR_0x8005, 0, NewMauvilleCenter2_EventScript_NoMoveToTeachMon
 	goto NewMauvilleCenter2_EventScript_ChooseMove
+	clearflag FLAG_LEVEL_1_TUTOR
 	end
 
 NewMauvilleCenter2_EventScript_ChooseMove::
@@ -41,20 +45,24 @@ NewMauvilleCenter2_EventScript_ChooseMove::
 	msgbox NewMauvilleCenter2_Text_HandedOverHeartScale, MSGBOX_DEFAULT
 	removeitem ITEM_CARROT_HORN
 	goto NewMauvilleCenter2_EventScript_ComeBackWithHeartScale
+	clearflag FLAG_LEVEL_1_TUTOR
 	end
 
 NewMauvilleCenter2_EventScript_NoMoveToTeachMon::
 	msgbox NewMauvilleCenter2_Text_DontHaveMoveToTeachPokemon, MSGBOX_DEFAULT
 	goto NewMauvilleCenter2_EventScript_ChooseMon
+	clearflag FLAG_LEVEL_1_TUTOR
 	end
 
 NewMauvilleCenter2_EventScript_CantTeachEgg::
 	msgbox NewMauvilleCenter2_Text_CantTeachEgg, MSGBOX_DEFAULT
 	goto NewMauvilleCenter2_EventScript_ChooseMon
+	clearflag FLAG_LEVEL_1_TUTOR
 	end
 
 NewMauvilleCenter2_EventScript_ComeBackWithHeartScale::
 	msgbox NewMauvilleCenter2_Text_ComeBackWithHeartScale, MSGBOX_DEFAULT
+	clearflag FLAG_LEVEL_1_TUTOR
 	releaseall
 	end
 
