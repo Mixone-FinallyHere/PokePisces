@@ -4018,11 +4018,11 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .effect = EFFECT_DEFENSE_UP_HIT,
         .power = 120,
         .type = TYPE_STEEL,
-        .accuracy = 80,
+        .accuracy = 90,
         .pp = 5,
-        .secondaryEffectChance = 30,
+        .secondaryEffectChance = 50,
         .target = MOVE_TARGET_SELECTED,
-        .priority = 0,
+        .priority = -6,
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
@@ -14707,7 +14707,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_HEART_CARVE] =
     {
-        .effect = EFFECT_HEART_CARVE_HIT,
+        .effect = EFFECT_HEART_CARVE,
         .power = 90,
         .type = TYPE_POISON,
         .accuracy = 100,
@@ -16709,7 +16709,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .accuracy = 100,
         .pp = 20,
         .secondaryEffectChance = 0,
-        .target = MOVE_TARGET_USER,
+        .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_NONE,
@@ -16779,7 +16779,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_HAYWIRE] =
     {
         .effect = EFFECT_HAYWIRE,
-        .power = 20,
+        .power = 15,
         .type = TYPE_STEEL,
         .accuracy = 90,
         .pp = 10,
@@ -17225,17 +17225,18 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_FIREBRAND] =
     {
-        .effect = EFFECT_HIT,
+        .effect = EFFECT_FIREBRAND,
         .power = 100,
         .type = TYPE_FIRE,
         .accuracy = 100,
         .pp = 10,
-        .secondaryEffectChance = 0,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
+        .argument = STATUS1_BURN,
     },
 
     // Z-Moves

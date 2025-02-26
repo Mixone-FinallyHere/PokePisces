@@ -1142,7 +1142,7 @@ static void DrawPartyMonIcons(void)
             icon_y = i < 3 ? MON_ICON_START_Y : MON_ICON_START_Y + MON_ICON_PADDING;
         }
         //get species
-        species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+        species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG);
 
         //create icon sprite
         #ifndef POKEMON_EXPANSION

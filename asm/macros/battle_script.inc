@@ -1694,6 +1694,10 @@
 	various \battler, VARIOUS_TRY_ACTIVATE_FELL_STINGER
 	.endm
 
+	.macro tryactivateheartcarve battler:req
+	various \battler, VARIOUS_TRY_ACTIVATE_HEART_CARVE
+	.endm
+
 	.macro tryactivatestarassault battler:req
 	various \battler, VARIOUS_TRY_ACTIVATE_STAR_ASSAULT
 	.endm
@@ -2131,6 +2135,11 @@
 
 	.macro applydaybreakcounter battler:req, failInstr:req
 	various \battler, VARIOUS_APPLY_DAYBREAK_COUNTER
+	.4byte \failInstr
+	.endm
+
+	.macro applyfrenzycounter battler:req, failInstr:req
+	various \battler, VARIOUS_APPLY_FRENZY_COUNTER
 	.4byte \failInstr
 	.endm
 

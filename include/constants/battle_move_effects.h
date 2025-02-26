@@ -456,7 +456,7 @@
 #define EFFECT_TIDY_UP                      450 //AI Flags added in from latest Expansion build
 #define EFFECT_DRAINING_KISS                451 //AI Flags complete, should not need a check for infatuation because AI factors in calculated damage increases
 #define EFFECT_HULLBREAKER                  452 //AI Flags added, combined stuff from EFFECT_FEINT and EFFECT_BRICK_BREAK, may cause a bug
-#define EFFECT_HEART_CARVE_HIT              453 //AI Flags complete
+#define EFFECT_HEART_CARVE                  453 //AI Flags complete
 #define EFFECT_DRAGON_POKER                 454 //AI Flags added, kinda just copied Magnitude but it doesnt have much. Added it and Magnitude to AI_Risky
 #define EFFECT_WATERFALL                    455 //AI Flags complete (For Waterfall through Whirlpool, EFFECT_RETURN was merged with their regular effects)
 #define EFFECT_CUT                          456 //AI Flags complete
@@ -652,7 +652,8 @@
 #define EFFECT_BLAZING_SOUL                 646
 #define EFFECT_BARRAGE                      647
 #define EFFECT_PIN_MISSILE                  648
+#define EFFECT_FIREBRAND                    649
 
-#define NUM_BATTLE_MOVE_EFFECTS             649
+#define NUM_BATTLE_MOVE_EFFECTS             650
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

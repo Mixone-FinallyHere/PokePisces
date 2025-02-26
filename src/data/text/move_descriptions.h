@@ -1078,7 +1078,7 @@ static const u8 sHealBellDescription[] = _(
 static const u8 sReturnDescription[] = _(
     "Increases in power based on the\n" 
     "user's friendship. Critical hits\n"
-    "land more easily at full health.");
+    "land more easily at full HP.");
 
 static const u8 sPresentDescription[] = _(
     "The foe is given a booby-trapped\n"
@@ -1151,9 +1151,9 @@ static const u8 sSweetScentDescription[] = _(
     "Pokémon's evasiveness.");
 
 static const u8 sIronTailDescription[] = _(
-    "The target is slammed with a\n"
-    "steel-hard tail. This may also\n"
-    "boost the user's Defense stat.");
+    "The foe is slammed with a steel\n"
+    "tail. This may boost the user's\n"
+    "Defense stat. Always goes last.");
 
 static const u8 sMetalClawDescription[] = _(
     "The target is raked with steel\n"
@@ -4107,7 +4107,7 @@ static const u8 sPixiePowDescription[] = _(
 static const u8 sBlazingSoulDescription[] = _(
     "Emits pure passionate aura. This\n"
     "may burn the foe and heal the\n"
-    "user when its health is low.");
+    "user when its HP is low.");
 
 static const u8 sPurgingFlamesDescription[] = _(
     "Spews flames that reset the\n"
@@ -4250,9 +4250,9 @@ static const u8 sChromaBeamDescription[] = _(
     "and is always super effective.");
 
 static const u8 sHeartCarveDescription[] = _(
-    "The user rapidly jabs the foe.\n"
-    "If the user is infatuated,\n"
-    "boosts Atk, Sp. Atk, and Spd.");
+    "If infatuated, gains Frenzy. On\n"
+    "KO at 3 stacks of Frenzy, heals\n"
+    "the user. Ignores infatuation.");
 
 static const u8 sRealTearsDescription[] = _(
     "The user just cries and sobs\n"
