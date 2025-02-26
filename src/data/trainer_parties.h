@@ -997,7 +997,7 @@ static const struct TrainerMon sParty_PLiza[] = {
     .heldItem = ITEM_CURSED_AMULET,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(36, 16, 16, 16, 36, 36),
-    .moves = {MOVE_REFLECT, MOVE_DREAM_EATER, MOVE_HYPNOSIS, MOVE_COSMIC_POWER},
+    .moves = {MOVE_REFLECT, MOVE_DREAM_EATER, MOVE_HYPNOSIS, MOVE_GEM_BLASTER},
     .nature = NATURE_QUIRKY,
     },
     {
@@ -1007,7 +1007,7 @@ static const struct TrainerMon sParty_PLiza[] = {
     .heldItem = ITEM_SHELL_BELL,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(36, 36, 36, 16, 16, 16),
-    .moves = {MOVE_LIGHT_SCREEN, MOVE_ROCK_THROW, MOVE_CONFUSION, MOVE_MORNING_SUN},
+    .moves = {MOVE_HUNKER_DOWN, MOVE_CUT, MOVE_ROCK_TOMB, MOVE_ROCK_SMASH},
     .nature = NATURE_QUIRKY,
     }
 };

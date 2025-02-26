@@ -702,6 +702,7 @@ static const u8 sText_TerrainBecomesElectric[] = _("An electric current runs acr
 static const u8 sText_TerrainBecomesPsychic[] = _("The battlefield got weird!");
 static const u8 sText_TargetElectrified[] = _("The {B_DEF_NAME_WITH_PREFIX}'s moves\nhave been electrified!");
 static const u8 sText_AssaultVestDoesntAllow[] = _("{B_LAST_ITEM}'s effects prevent\nstatus moves from being used!\p");
+static const u8 sText_PhantomDoesntAllow[] = _("The effects of being a phantom\nprevent status moves from being used!\p");
 static const u8 sText_StrongholdDoesntAllow[] = _("{B_DEF_NAME_WITH_PREFIX}'s Stronghold prevents\nstatus moves from being used!\p");
 static const u8 sText_GravityPreventsUsage[] = _("{B_ATK_NAME_WITH_PREFIX} can't use {B_CURRENT_MOVE}\nbecause of gravity!\p");
 static const u8 sText_HealBlockPreventsUsage[] = _("{B_ATK_NAME_WITH_PREFIX} was\nprevented from healing!\p");
@@ -1813,6 +1814,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_USERGAINEDDAYBREAK - BATTLESTRINGS_TABLE_START] = sText_UserGainedDaybreak,
     [STRINGID_USERUSEDUPALLDAYBREAK - BATTLESTRINGS_TABLE_START] = sText_UserUsedUpAllDaybreak,
     [STRINGID_STARSGRACEENTERS - BATTLESTRINGS_TABLE_START] = sText_StarsGraceEnters,
+    [STRINGID_PHANTOMDOESNTALLOW - BATTLESTRINGS_TABLE_START] = sText_PhantomDoesntAllow,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

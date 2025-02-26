@@ -587,7 +587,7 @@ static const u8 sSeriousMintDesc[] = _(
 
 // Candy
 static const u8 sRareCandyDesc[] = _(
-    "A candy that is packed\n"
+    "A candy that is filled\n"
     "with energy. If\n"
     "consumed, it raises a\n"
     "Pokémon's level by 1.");
@@ -852,10 +852,10 @@ static const u8 sShoalSaltDesc[] = _(
     "shells.");
 
 static const u8 sShoalShellDesc[] = _(
-    "A pretty seashell that\n"
-    "is striped in blue and\n"
-    "white. It could use some\n"
-    "salt, though.");
+    "A pretty shell that is\n"
+    "striped in blue and\n"
+    "white. It could use\n"
+    "some salt, though.");
 
 static const u8 sRedShardDesc[] = _(
     "A shard from an\n"
@@ -2753,7 +2753,7 @@ static const u8 sWeaknessPolicyDesc[] = _(
     "move it is weak to.");
 
 static const u8 sAssaultVestDesc[] = _(
-    "An offensive vest that\n"
+    "A defensive vest that\n"
     "boosts the holder's\n"
     "Sp. Def but stops the\n"
     "use of status moves.");

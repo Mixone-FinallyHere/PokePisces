@@ -5607,7 +5607,7 @@ Move_LOW_SWEEP::
 
 Move_ACID_SPRAY::
 	loadspritegfx ANIM_TAG_POISON_BUBBLE
-	monbg ANIM_TARGET
+	monbg ANIM_DEF_PARTNER
 	createsprite gAcidPoisonBubbleSpriteTemplate, ANIM_TARGET, 2, 20, 0, 40, 1, 0, -20, TRUE
 	playsewithpan SE_M_BUBBLE3, SOUND_PAN_ATTACKER
 	delay 33
@@ -5628,7 +5628,7 @@ Move_ACID_SPRAY::
 	delay 3
 	createsprite gAcidPoisonDropletSpriteTemplate, ANIM_TARGET, 2, 0, -20, 20, 15, 55, TRUE
 	waitforvisualfinish
-	clearmonbg ANIM_TARGET
+	clearmonbg ANIM_DEF_PARTNER
 	end
 
 Move_FOUL_PLAY::

@@ -1151,9 +1151,9 @@ static const u8 sSweetScentDescription[] = _(
     "Pokémon's evasiveness.");
 
 static const u8 sIronTailDescription[] = _(
-    "The target is slammed with a\n"
-    "steel-hard tail. This may also\n"
-    "boost the user's Defense stat.");
+    "The foe is slammed with a steel\n"
+    "tail. This may boost the user's\n"
+    "Defense stat. Always goes last.");
 
 static const u8 sMetalClawDescription[] = _(
     "The target is raked with steel\n"

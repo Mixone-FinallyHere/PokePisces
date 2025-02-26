@@ -1709,10 +1709,16 @@ static bool32 AccuracyCalcHelper(u16 move)
     }
 
     if ((gStatuses3[gBattlerTarget] & STATUS3_PHANTOM_FORCE)
-    || (gStatuses4[gBattlerTarget] & STATUS4_PHANTOM)
     || ((gStatuses3[gBattlerTarget] & STATUS3_ON_AIR) && !(gBattleMoves[move].damagesAirborne || gBattleMoves[move].damagesAirborneDoubleDamage))
     || ((gStatuses3[gBattlerTarget] & STATUS3_UNDERGROUND) && !gBattleMoves[move].damagesUnderground)
     || ((gStatuses3[gBattlerTarget] & STATUS3_UNDERWATER) && !gBattleMoves[move].damagesUnderwater))
+    {
+        gMoveResultFlags |= MOVE_RESULT_MISSED;
+        JumpIfMoveFailed(7, move);
+        return TRUE;
+    }
+
+    if (gStatuses4[gBattlerTarget] & STATUS4_PHANTOM && gBattleMoves[move].accuracy != 0)
     {
         gMoveResultFlags |= MOVE_RESULT_MISSED;
         JumpIfMoveFailed(7, move);

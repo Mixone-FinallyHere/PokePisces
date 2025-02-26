@@ -17117,13 +17117,17 @@ BattleScript_SelectingNotAllowedMoveAssaultVest::
 	printselectionstring STRINGID_ASSAULTVESTDOESNTALLOW
 	endselectionscript
 
-BattleScript_SelectingNotAllowedMoveStronghold::
-	printselectionstring STRINGID_STRONGHOLDDOESNTALLOW
-	endselectionscript
-
 BattleScript_SelectingNotAllowedMoveAssaultVestInPalace::
 	printstring STRINGID_ASSAULTVESTDOESNTALLOW
 	goto BattleScript_SelectingUnusableMoveInPalace
+
+BattleScript_SelectingNotAllowedMovePhantom::
+	printselectionstring STRINGID_PHANTOMDOESNTALLOW
+	endselectionscript
+
+BattleScript_SelectingNotAllowedMoveStronghold::
+	printselectionstring STRINGID_STRONGHOLDDOESNTALLOW
+	endselectionscript
 
 BattleScript_SelectingNotAllowedPlaceholder::
 	printselectionstring STRINGID_NOTDONEYET

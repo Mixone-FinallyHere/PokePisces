@@ -4292,7 +4292,9 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             score += 2;
         if (HasMoveEffect(battlerAtk, EFFECT_HAYWIRE))
             score += 2;
-        if (HasMoveEffect(battlerAtk, EFFECT_FROST_SHRED))
+        if (HasMoveEffect(battlerAtk, EFFECT_FROST_SHRED) && gBattleMons[battlerAtk].statStages[STAT_SPEED] < 9)
+            score += 6;
+        else if (HasMoveEffect(battlerAtk, EFFECT_FROST_SHRED))
             score += 2;
         if (!AI_STRIKES_FIRST(battlerAtk, battlerDef, move))
         {

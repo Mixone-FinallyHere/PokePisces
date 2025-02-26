@@ -1579,7 +1579,23 @@ u32 TrySetCantSelectMoveBattleScript(u32 battler)
             limitations++;
         }
     }
- 
+
+    if (gStatuses4[battler] & STATUS4_PHANTOM && IS_MOVE_STATUS(move) && move != MOVE_ME_FIRST)
+    {
+        gCurrentMove = move;
+        gLastUsedItem = gBattleMons[battler].item;
+        if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
+        {
+            gPalaceSelectionBattleScripts[battler] = BattleScript_SelectingNotAllowedMoveAssaultVestInPalace;
+            gProtectStructs[battler].palaceUnableToUseMove = TRUE;
+        }
+        else
+        {
+            gSelectionBattleScripts[battler] = BattleScript_SelectingNotAllowedMovePhantom;
+            limitations++;
+        }
+    }
+
     if ((GetBattlerAbility(battler) == ABILITY_GORILLA_TACTICS || GetBattlerAbility(battler) == ABILITY_ONE_WAY_TRIP) && *choicedMove != MOVE_NONE && *choicedMove != MOVE_UNAVAILABLE && *choicedMove != move)
     {
         gCurrentMove = *choicedMove;
