@@ -637,6 +637,1483 @@ MoveTutor_EventScript_Substitute::
 	goto MoveTutor_EventScript_MoveTaught
 	end
 
+OzoneInt_EventScript_MoveTutor1::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SCROLL_MULTI_OZONE_INS_MOVE_TUTOR_1
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_Hail
+	case 1, MoveTutor_EventScript_Blizzard
+	case 2, MoveTutor_EventScript_Verglastrom
+	case 3, MoveTutor_EventScript_AuroraVeil
+	case 4, MoveTutor_EventScript_ColdMend
+	case 5, MoveTutor_EventScript_ExitRules
+	case MULTI_B_PRESSED, MoveTutor_EventScript_ExitRules
+	end
+
+MoveTutor_EventScript_Hail::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_HAIL
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_Blizzard::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_BLIZZARD
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_Verglastrom::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_VERGLASTROM
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_AuroraVeil::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_AURORA_VEIL
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_ColdMend::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_COLD_MEND
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+OzoneInt_EventScript_MoveTutor2::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SCROLL_MULTI_OZONE_INS_MOVE_TUTOR_2
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_RainDance
+	case 1, MoveTutor_EventScript_Aquascade
+	case 2, MoveTutor_EventScript_Hurricane
+	case 3, MoveTutor_EventScript_Thunder
+	case 4, MoveTutor_EventScript_ExitRules
+	case MULTI_B_PRESSED, MoveTutor_EventScript_ExitRules
+	end
+
+MoveTutor_EventScript_RainDance::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_RAIN_DANCE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_Aquascade::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_AQUASCADE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_Hurricane::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_HURRICANE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_Thunder::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_THUNDER
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+OzoneInt_EventScript_MoveTutor3::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SCROLL_MULTI_OZONE_INS_MOVE_TUTOR_3
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_Sandstorm
+	case 1, MoveTutor_EventScript_DuneSlicer
+	case 2, MoveTutor_EventScript_RazorBeam
+	case 3, MoveTutor_EventScript_ExitRules
+	case MULTI_B_PRESSED, MoveTutor_EventScript_ExitRules
+	end
+
+MoveTutor_EventScript_Sandstorm::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_SANDSTORM
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_DuneSlicer::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_DUNE_SLICER
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_RazorBeam::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_RAZOR_BEAM
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+OzoneInt_EventScript_MoveTutor4::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SCROLL_MULTI_OZONE_INS_MOVE_TUTOR_4
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_SunnyDay
+	case 1, MoveTutor_EventScript_SolarBeam
+	case 2, MoveTutor_EventScript_SolarBlade
+	case 3, MoveTutor_EventScript_Synthesis
+	case 4, MoveTutor_EventScript_SunBask
+	case 5, MoveTutor_EventScript_Growth
+	case 6, MoveTutor_EventScript_ExitRules
+	case MULTI_B_PRESSED, MoveTutor_EventScript_ExitRules
+	end
+
+MoveTutor_EventScript_SunnyDay::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_SUNNY_DAY
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_SolarBeam::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_SOLAR_BEAM
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_SolarBlade::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_SOLAR_BLADE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_Synthesis::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_SYNTHESIS
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_SunBask::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_SUN_BASK
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_Growth::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_GROWTH
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+FortreeCity_EventScript_MoveTutor1::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SCROLL_MULTI_FORTREE_MOVE_TUTOR_1
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_ElectricTerrain
+	case 1, MoveTutor_EventScript_RisingVoltage
+	case 2, MoveTutor_EventScript_Charge
+	case 3, MoveTutor_EventScript_ExitRules
+	case MULTI_B_PRESSED, MoveTutor_EventScript_ExitRules
+	end
+
+MoveTutor_EventScript_ElectricTerrain::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_ELECTRIC_TERRAIN
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_RisingVoltage::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_RISING_VOLTAGE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_Charge::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_CHARGE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+FortreeCity_EventScript_MoveTutor2::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SCROLL_MULTI_FORTREE_MOVE_TUTOR_2
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_GrassyTerrain
+	case 1, MoveTutor_EventScript_GrassyGlide
+	case 2, MoveTutor_EventScript_GrassCannon
+	case 3, MoveTutor_EventScript_ExitRules
+	case MULTI_B_PRESSED, MoveTutor_EventScript_ExitRules
+	end
+
+MoveTutor_EventScript_GrassyTerrain::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_GRASSY_TERRAIN
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_GrassyGlide::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_GRASSY_GLIDE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_GrassCannon::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_GRASS_CANNON
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+FortreeCity_EventScript_MoveTutor3::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SCROLL_MULTI_FORTREE_MOVE_TUTOR_3
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_MistyTerrain
+	case 1, MoveTutor_EventScript_MistyExplosion
+	case 2, MoveTutor_EventScript_AromaticMist
+	case 3, MoveTutor_EventScript_ExitRules
+	case MULTI_B_PRESSED, MoveTutor_EventScript_ExitRules
+	end
+
+MoveTutor_EventScript_MistyTerrain::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_MISTY_TERRAIN
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_MistyExplosion::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_MISTY_EXPLOSION
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_AromaticMist::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_AROMATIC_MIST
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+FortreeCity_EventScript_MoveTutor4::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SCROLL_MULTI_FORTREE_MOVE_TUTOR_4
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_PsychicTerrain
+	case 1, MoveTutor_EventScript_ExpandingForce
+	case 2, MoveTutor_EventScript_Kinesis
+	case 3, MoveTutor_EventScript_ExitRules
+	case MULTI_B_PRESSED, MoveTutor_EventScript_ExitRules
+	end
+
+MoveTutor_EventScript_PsychicTerrain::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_PSYCHIC_TERRAIN
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_ExpandingForce::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_EXPANDING_FORCE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_Kinesis::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_KINESIS
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+FortreeCity_EventScript_MoveTutor5::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SCROLL_MULTI_FORTREE_MOVE_TUTOR_5
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_TerrainPulse
+	case 1, MoveTutor_EventScript_TerrainSnap
+	case 2, MoveTutor_EventScript_ExitRules
+	case MULTI_B_PRESSED, MoveTutor_EventScript_ExitRules
+	end
+
+MoveTutor_EventScript_TerrainPulse::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_TERRAIN_PULSE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_TerrainSnap::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_TERRAIN_SNAP
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+FortreeCity_EventScript_MoveTutor6::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SCROLL_MULTI_FORTREE_MOVE_TUTOR_6
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_Tailwind
+	case 1, MoveTutor_EventScript_AirCannon
+	case 2, MoveTutor_EventScript_SharpGlide
+	case 3, MoveTutor_EventScript_ExitRules
+	case MULTI_B_PRESSED, MoveTutor_EventScript_ExitRules
+	end
+
+MoveTutor_EventScript_Tailwind::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_TAILWIND
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_AirCannon::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_AIR_CANNON
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_SharpGlide::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_SHARP_GLIDE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+FortreeCity_EventScript_MoveTutor7::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SCROLL_MULTI_FORTREE_MOVE_TUTOR_7
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_CastleCrash
+	case 1, MoveTutor_EventScript_Defog
+	case 2, MoveTutor_EventScript_Demolisher
+	case 3, MoveTutor_EventScript_IceSpinner
+	case 4, MoveTutor_EventScript_SteelRoller
+	case 5, MoveTutor_EventScript_ExitRules
+	case MULTI_B_PRESSED, MoveTutor_EventScript_ExitRules
+	end
+
+MoveTutor_EventScript_CastleCrash::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_CASTLE_CRASH
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_Defog::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_DEFOG
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_Demolisher::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_DEMOLISHER
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_IceSpinner::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_ICE_SPINNER
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_SteelRoller::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_STEEL_ROLLER
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+LavaridgeInt_EventScript_MoveTutor1::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SCROLL_MULTI_LAVARIDGE_MOVE_TUTOR_1
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_Brutalize
+	case 1, MoveTutor_EventScript_DracoMeteor
+	case 2, MoveTutor_EventScript_FleurCannon
+	case 3, MoveTutor_EventScript_CloseCombat
+	case 4, MoveTutor_EventScript_SuperPower
+	case 5, MoveTutor_EventScript_Overheat
+	case 6, MoveTutor_EventScript_LeafStorm
+	case 7, MoveTutor_EventScript_HeadlongRush
+	case 8, MoveTutor_EventScript_ExitRules
+	case MULTI_B_PRESSED, MoveTutor_EventScript_ExitRules
+	end
+
+MoveTutor_EventScript_Brutalize::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_BRUTALIZE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_DracoMeteor::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_DRACO_METEOR
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_FleurCannon::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_FLEUR_CANNON
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_CloseCombat::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_CLOSE_COMBAT
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_SuperPower::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_SUPERPOWER
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_Overheat::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_OVERHEAT
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_LeafStorm::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_LEAF_STORM
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_HeadlongRush::
+	checkitem ITEM_CORAL_CROWN, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_CORAL_CROWN, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_HEADLONG_RUSH
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+NewMauvilleFloor1_EventScript_MoveTutor1::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_1
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_UTurn
+	case 1, MoveTutor_EventScript_HitNRun
+	case 2, MoveTutor_EventScript_VoltSwitch
+	case 3, MoveTutor_EventScript_GlacialShift
+	case 4, MoveTutor_EventScript_AllySwitch
+	case 5, MoveTutor_EventScript_PowerSwap
+	case 6, MoveTutor_EventScript_GuardSwap
+	case 7, MoveTutor_EventScript_SpeedSwap
+	case 8, MoveTutor_EventScript_SkillSwap
+	case 9, MoveTutor_EventScript_FlipTurn
+	case 10, MoveTutor_EventScript_Maneuver
+	case 11, MoveTutor_EventScript_ExitRules
+	case MULTI_B_PRESSED, MoveTutor_EventScript_ExitRules
+	end
+
+MoveTutor_EventScript_UTurn::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_U_TURN
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_HitNRun::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_HIT_N_RUN
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_VoltSwitch::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_VOLT_SWITCH
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_GlacialShift::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_GLACIAL_SHIFT
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_AllySwitch::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_ALLY_SWITCH
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_PowerSwap::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_POWER_SWAP
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_GuardSwap::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_GUARD_SWAP
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_SpeedSwap::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_SPEED_SWAP
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_SkillSwap::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_SKILL_SWAP
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_FlipTurn::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_FLIP_TURN
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_Maneuver::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_MANEUVER
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+NewMauvilleFloor1_EventScript_MoveTutor2::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_2
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_Evaporate
+	case 1, MoveTutor_EventScript_SnuffOut
+	case 2, MoveTutor_EventScript_FreezeDry
+	case 3, MoveTutor_EventScript_HeatSink
+	case 4, MoveTutor_EventScript_ExitRules
+	case MULTI_B_PRESSED, MoveTutor_EventScript_ExitRules
+	end
+
+MoveTutor_EventScript_Evaporate::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_EVAPORATE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_SnuffOut::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_SNUFF_OUT
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_FreezeDry::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_FREEZE_DRY
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_HeatSink::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_HEAT_SINK
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+NewMauvilleFloor1_EventScript_MoveTutor3::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_3
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_ThunderPunch
+	case 1, MoveTutor_EventScript_MachPunch
+	case 2, MoveTutor_EventScript_FirePunch
+	case 3, MoveTutor_EventScript_IcePunch
+	case 4, MoveTutor_EventScript_BulletPunch
+	case 5, MoveTutor_EventScript_ExitRules
+	case MULTI_B_PRESSED, MoveTutor_EventScript_ExitRules
+	end
+
+MoveTutor_EventScript_ThunderPunch::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_THUNDER_PUNCH
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_MachPunch::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_MACH_PUNCH
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_FirePunch::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_FIRE_PUNCH
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_IcePunch::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_ICE_PUNCH
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_BulletPunch::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_BULLET_PUNCH
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+NewMauvilleFloor1_EventScript_MoveTutor4::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_4
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_XScissor
+	case 1, MoveTutor_EventScript_NightSlash
+	case 2, MoveTutor_EventScript_SacredSword
+	case 3, MoveTutor_EventScript_AerialAce
+	case 4, MoveTutor_EventScript_SoulCutter
+	case 5, MoveTutor_EventScript_CrossPoison
+	case 6, MoveTutor_EventScript_PsychoCut
+	case 7, MoveTutor_EventScript_SilverEdge
+	case 8, MoveTutor_EventScript_AquaCutter
+	case 9, MoveTutor_EventScript_ExitRules
+	case MULTI_B_PRESSED, MoveTutor_EventScript_ExitRules
+	end
+
+MoveTutor_EventScript_XScissor::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_X_SCISSOR
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_NightSlash::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_NIGHT_SLASH
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_SacredSword::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_SACRED_SWORD
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_AerialAce::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_AERIAL_ACE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_SoulCutter::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_SOUL_CUTTER
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_CrossPoison::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_CROSS_POISON
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_PsychoCut::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_PSYCHO_CUT
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_SilverEdge::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_SILVER_EDGE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_AquaCutter::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_AQUA_CUTTER
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+NewMauvilleFloor1_EventScript_MoveTutor5::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_5
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_PinMissile
+	case 1, MoveTutor_EventScript_BeatUp
+	case 2, MoveTutor_EventScript_ScaleShot
+	case 3, MoveTutor_EventScript_DoubleSlap
+	case 4, MoveTutor_EventScript_TripleKick
+	case 5, MoveTutor_EventScript_FuryAttack
+	case 6, MoveTutor_EventScript_BulletSeed
+	case 7, MoveTutor_EventScript_TripleAxel
+	case 8, MoveTutor_EventScript_BarbBarrage
+	case 9, MoveTutor_EventScript_CometPunch
+	case 10, MoveTutor_EventScript_GemBlaster
+	case 11, MoveTutor_EventScript_SpikeCannon
+	case 12, MoveTutor_EventScript_Bubble
+	case 13, MoveTutor_EventScript_ExitRules
+	case MULTI_B_PRESSED, MoveTutor_EventScript_ExitRules
+	end
+
+MoveTutor_EventScript_PinMissile::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_PIN_MISSILE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_BeatUp::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_SCALE_SHOT
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_ScaleShot::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_SCALE_SHOT
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_DoubleSlap::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_DOUBLE_SLAP
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_TripleKick::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_TRIPLE_KICK
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_FuryAttack::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_FURY_ATTACK
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_BulletSeed::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_BULLET_SEED
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_TripleAxel::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_TRIPLE_AXEL
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_BarbBarrage::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_BARB_BARRAGE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_CometPunch::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_COMET_PUNCH
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_GemBlaster::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_GEM_BLASTER
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_SpikeCannon::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_SPIKE_CANNON
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_Bubble::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_BUBBLE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+NewMauvilleFloor1_EventScript_MoveTutor6::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
+	setvar VAR_0x8004, SCROLL_MULTI_NEW_MAUVILLE_MOVE_TUTOR_6
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_BugBite
+	case 1, MoveTutor_EventScript_Crunch
+	case 2, MoveTutor_EventScript_ThunderFang
+	case 3, MoveTutor_EventScript_FireFang
+	case 4, MoveTutor_EventScript_IceFang
+	case 5, MoveTutor_EventScript_PsychicFangs
+	case 6, MoveTutor_EventScript_JawLock
+	case 7, MoveTutor_EventScript_ExitRules
+	case MULTI_B_PRESSED, MoveTutor_EventScript_ExitRules
+	end
+
+MoveTutor_EventScript_BugBite::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_BUG_BITE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_Crunch::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_CRUNCH
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_ThunderFang::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_THUNDER_FANG
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_FireFang::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_FIRE_FANG
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_IceFang::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_ICE_FANG
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_PsychicFangs::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_PSYCHIC_FANGS
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
+MoveTutor_EventScript_JawLock::
+	checkitem ITEM_GOLD_TOOTH, 1
+	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoCoralCrowns
+	msgbox MoveTutor_Text_WillTakeYourCoralCrown, MSGBOX_DEFAULT
+	removeitem ITEM_GOLD_TOOTH, 1
+	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
+	setvar VAR_0x8005, MOVE_JAW_LOCK
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
+	goto MoveTutor_EventScript_MoveTaught
+	end
+
 MoveTutor_EventScript_ExitRules::
 	release
 	end

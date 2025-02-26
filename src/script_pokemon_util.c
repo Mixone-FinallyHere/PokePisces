@@ -294,6 +294,8 @@ void ScriptSetShunyongBattle(struct ScriptContext *ctx)
     struct Pokemon *mon = &gEnemyParty[0];
     u32 i, val;
     
+    ZeroEnemyPartyMons();
+
     CreateMonWithNature(mon, SPECIES_SHUNYONG, 100, 31, NATURE_HARDY);
     
     // even evs
@@ -308,5 +310,6 @@ void ScriptSetShunyongBattle(struct ScriptContext *ctx)
     
     // set 2v1
     gIsScriptedWildDouble = TRUE;
+    gBattleTypeFlags = BATTLE_TYPE_LEGENDARY;
 }
 
