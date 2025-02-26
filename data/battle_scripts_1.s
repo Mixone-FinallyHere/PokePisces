@@ -676,6 +676,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectConfuseHit              @ EFFECT_BARRAGE
 	.4byte BattleScript_EffectRandomStatDropHit       @ EFFECT_PIN_MISSILE
 	.4byte BattleScript_EffectFirebrand               @ EFFECT_FIREBRAND
+	.4byte BattleScript_EffectDefenseDownHit          @ EFFECT_STELLAR_FIST
 
 BattleScript_EffectFirebrand::
 	setmoveeffect MOVE_EFFECT_FIREBRAND
@@ -1763,11 +1764,15 @@ BattleScript_EffectPhantasm:
 	attackcanceler
 	attackstring
 	ppreduce
+	cuthp BattleScript_ButItFailed
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	applyphantom BattleScript_ButItFailed
 	attackanimation
 	waitanimation
 	printstring STRINGID_USERGAINSPHANTOM
 	waitmessage B_WAIT_TIME_LONG
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectWhirlwind::
@@ -3712,8 +3717,14 @@ BattleScript_EffectGunkFunk::
 	goto BattleScript_EffectAllStatsDownHit
 
 BattleScript_AllStatsDownHitCertain:
-	setmoveeffect MOVE_EFFECT_ALL_STATS_DOWN | MOVE_EFFECT_CERTAIN
-	goto BattleScript_EffectHit
+    call BattleScript_EffectHit_Ret
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	setmoveeffect MOVE_EFFECT_ALL_STATS_DOWN
+	seteffectprimary
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectAllStatsDownHit::
 	setmoveeffect MOVE_EFFECT_ALL_STATS_DOWN
@@ -4627,19 +4638,37 @@ BattleScript_MoveSwitchOpenPartyScreen:
 BattleScript_MoveSwitchEnd:
 	end
 
-BattleScript_EffectFilletAway:
+BattleScript_EffectFilletAway::
 	attackcanceler
 	attackstring
 	ppreduce
-	cutonethirdhpraisestats BattleScript_ButItFailed
+	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_FilletAwayTryAttack
+	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_FilletAwayTryAttack
+	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPEED, MAX_STAT_STAGE, BattleScript_ButItFailed
+BattleScript_FilletAwayTryAttack::
+	cuthp BattleScript_ButItFailed
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	attackanimation
 	waitanimation
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_ATTACKER, BIT_ATK | BIT_SPATK | BIT_SPEED, STAT_CHANGE_BY_TWO
+	setstatchanger STAT_ATK, 2, FALSE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_FilletAwayTrySpAtk
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_FilletAwayTrySpAtk::
+	setstatchanger STAT_SPATK, 2, FALSE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_FilletAwayTrySpeed
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_FilletAwayTrySpeed::
+	setstatchanger STAT_SPEED, 2, FALSE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_FilletAwayEnd
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_FilletAwayEnd::
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
-	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_ShellSmashTryAttack
-	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_ShellSmashTryAttack
-	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPEED, MAX_STAT_STAGE, BattleScript_ButItFailed
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectChillyAir:
@@ -14979,6 +15008,14 @@ BattleScript_AppetiteActivates::
 	datahpupdate BS_ATTACKER
 	return
 
+BattleScript_HeartCarveHealHP::
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	printstring STRINGID_PKMNREGAINEDHEALTH
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_CheekPouchActivates::
 	copybyte sSAVED_BATTLER, gBattlerAttacker
 	copybyte gBattlerAttacker, gBattlerAbility
@@ -16291,16 +16328,6 @@ BattleScript_FellStingerRaisesStat::
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_FellStingerRaisesAtkEnd:
-	return
-
-BattleScript_HeartCarveHealHP::
-	tryhealhalfhealth BattleScript_HeartCarveRet, BS_ATTACKER
-	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
-	healthbarupdate BS_ATTACKER
-	datahpupdate BS_ATTACKER
-	printstring STRINGID_PKMNREGAINEDHEALTH
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_HeartCarveRet:
 	return
 
 BattleScript_ShadowForceSelfPhantom::

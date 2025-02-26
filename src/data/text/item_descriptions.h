@@ -4693,7 +4693,7 @@ static const u8 sCarrotHornDesc[] = _(
     "A magnificent horn\n"
     "from the Welproot\n"
     "line. It can be traded\n"
-    "to the move relearner.");
+    "to a special tutor.");
 
 static const u8 sCoralCrownDesc[] = _(
     "A beautiful crown made\n"

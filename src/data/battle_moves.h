@@ -13386,6 +13386,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_RECOVER_HP,
         .snatchAffected = TRUE,
         .metronomeBanned = TRUE,
+        .argument = 3,
     },
 
     [MOVE_KOWTOW_CLEAVE] =
@@ -14889,23 +14890,23 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_STELLAR_FIST] =
     {
         #if B_UPDATED_MOVE_DATA >= GEN_6
-            .accuracy = 90,
+            .accuracy = 100,
         #else
-            .accuracy = 90,
+            .accuracy = 100,
         #endif
-        .effect = EFFECT_WILLPOWER,
-        .power = 25,
+        .effect = EFFECT_STELLAR_FIST,
+        .power = 40,
         .type = TYPE_BUG,
-        .pp = 10,
-        .secondaryEffectChance = 0,
+        .pp = 15,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
-        .priority = 0,
+        .priority = 1,
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
-        .strikeCount = 4,
         .makesContact = TRUE,
         .metronomeBanned = TRUE,
         .punchingMove = TRUE,
+        .highCritRatio = TRUE,
     },
 
     [MOVE_WILLPOWER] =
@@ -16054,6 +16055,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_RESET_STATS,
         .snatchAffected = TRUE,
+        .argument = 4,
     },
 
     [MOVE_PENALIZE] =
