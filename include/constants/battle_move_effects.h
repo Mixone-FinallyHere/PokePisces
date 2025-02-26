@@ -653,7 +653,8 @@
 #define EFFECT_BARRAGE                      647
 #define EFFECT_PIN_MISSILE                  648
 #define EFFECT_FIREBRAND                    649
+#define EFFECT_STELLAR_FIST                 650
 
-#define NUM_BATTLE_MOVE_EFFECTS             650
+#define NUM_BATTLE_MOVE_EFFECTS             651
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

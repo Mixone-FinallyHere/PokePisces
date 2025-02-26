@@ -12266,7 +12266,7 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
         atkStat = gBattleMons[battlerAtk].defense;
         atkStage = gBattleMons[battlerAtk].statStages[STAT_DEF];
     }
-    else if (gBattleMoves[move].effect == EFFECT_WILLPOWER)
+    else if (gBattleMoves[move].effect == EFFECT_WILLPOWER || gBattleMoves[move].effect == EFFECT_STELLAR_FIST)
     {
         atkStat = gBattleMons[battlerAtk].spDefense;
         atkStage = gBattleMons[battlerAtk].statStages[STAT_SPDEF];

@@ -24,9 +24,9 @@ static const u8 sDoubleSlapDescription[] = _(
     "and torments on Misty Terrain.");
 
 static const u8 sCometPunchDescription[] = _(
-    "The target is hit with a flurry\n"
-    "of punches that strike 2 to 5\n"
-    "times in a row.");
+    "The foe is hit with a flurry of\n"
+    "punches that hit 2 to 5 times.\n"
+    "Gains priority in Gravity.");
 
 static const u8 sMegaPunchDescription[] = _(
     "The target is slugged by a punch\n"
@@ -4299,9 +4299,9 @@ static const u8 sGunkFunkDescription[] = _(
     "always if the foe is poisoned.");
 
 static const u8 sStellarFistDescription[] = _(
-    "The user punches the foe with\n"
-    "cosmic fists 2 times. This move\n"
-    "uses Sp. Def to deal damage.");
+    "A cosmic punch that uses Sp. Def,\n"
+    "lands critical hits more easily,\n"
+    "always goes first, and cuts Def.");
 
 static const u8 sWillpowerDescription[] = _(
     "The user attacks by overpowering\n"
@@ -4629,9 +4629,9 @@ static const u8 sSpiritAwayDescription[] = _(
     "Abosrbs 3/4 the damage dealt.");
 
 static const u8 sPhantasmDescription[] = _(
-    "Boosts Spd and crits. Can't use\n"
-    "status moves or be attacked.\n"
-    "Goes away after attacking.");
+    "The user gains the Phantom status\n"
+    "status by sacrificing 1/4 of its\n"
+    "own HP.");
 
 static const u8 sSnapblossomDescription[] = _(
     "A 2-turn move that drains HP and\n"

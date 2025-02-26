@@ -2317,6 +2317,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro cuthp failInstr:req
+	various BS_ATTACKER, VARIOUS_CUT_HP
+	.4byte \failInstr
+	.endm
+
 	.macro photongeysercheck battler:req
 	various \battler, VARIOUS_PHOTON_GEYSER_CHECK
 	.endm

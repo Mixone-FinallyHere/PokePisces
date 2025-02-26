@@ -4896,6 +4896,10 @@ s8 GetMovePriority(u32 battler, u16 move)
     {
         priority++;
     }
+    else if (gCurrentMove == MOVE_COMET_PUNCH && gFieldStatuses & STATUS_FIELD_GRAVITY)
+    {
+        priority++;
+    }
     else if (ability == ABILITY_AMBUSHER && IS_MOVE_PHYSICAL(move) && (gDisableStructs[battler].isFirstTurn || IsTwoTurnsMove(move)))
     {
         priority++;

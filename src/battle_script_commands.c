@@ -11130,6 +11130,10 @@ static void Cmd_various(void)
         {
             BattleScriptPush(cmd->nextInstr);
             gBattlescriptCurrInstr = BattleScript_HeartCarveHealHP;
+            gBattleMoveDamage = gBattleMons[battler].maxHP / 2;
+            if (gBattleMoveDamage == 0)
+                gBattleMoveDamage = 1;
+            gBattleMoveDamage *= -1;
             return;
         }
         break;
@@ -13017,31 +13021,54 @@ static void Cmd_various(void)
         break;
     }
     case VARIOUS_CUT_1_3_HP_RAISE_STATS:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+
+        bool8 atLeastOneStatBoosted = FALSE;
+        u16 hpFraction = max(1, gBattleMons[gBattlerAttacker].maxHP / 3);
+
+        for (i = 1; i < NUM_STATS; i++)
         {
-            VARIOUS_ARGS(const u8 *failInstr);
-
-            bool8 atLeastOneStatBoosted = FALSE;
-            u16 hpFraction = max(1, gBattleMons[gBattlerAttacker].maxHP / 3);
-
-            for (i = 1; i < NUM_STATS; i++)
+            if (CompareStat(gBattlerAttacker, i, MAX_STAT_STAGE, CMP_LESS_THAN))
             {
-                if (CompareStat(gBattlerAttacker, i, MAX_STAT_STAGE, CMP_LESS_THAN))
-                {
-                    atLeastOneStatBoosted = TRUE;
-                    break;
-                }
+                atLeastOneStatBoosted = TRUE;
+                break;
             }
-            if (atLeastOneStatBoosted && gBattleMons[gBattlerAttacker].hp > hpFraction)
-            {
-                gBattleMoveDamage = hpFraction;
-                gBattlescriptCurrInstr = cmd->nextInstr;
-            }
-            else
-            {
-                gBattlescriptCurrInstr = cmd->failInstr;
-            }
-            return;
         }
+        if (atLeastOneStatBoosted && gBattleMons[gBattlerAttacker].hp > hpFraction)
+        {
+            gBattleMoveDamage = hpFraction;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        else
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        return;
+    }
+    case VARIOUS_CUT_HP:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+
+        u32 hpLoss = gBattleMons[gBattlerAttacker].maxHP / gBattleMoves[gCurrentMove].argument;
+    
+        if (!(gBattleMons[gBattlerAttacker].maxHP / gBattleMoves[gCurrentMove].argument))
+            hpLoss = 1;
+    
+        if (gBattleMons[gBattlerAttacker].hp > hpLoss)
+        {
+            gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / gBattleMoves[gCurrentMove].argument;
+            if (gBattleMoveDamage == 0)
+                gBattleMoveDamage = 1;
+    
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        else
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        return;
+    }
     case VARIOUS_SET_OCTOLOCK:
     {
         VARIOUS_ARGS(const u8 *failInstr);
