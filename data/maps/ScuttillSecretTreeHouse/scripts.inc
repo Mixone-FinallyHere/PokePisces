@@ -23,7 +23,7 @@ ScuttillSecretTreeHouse_EventScript_SetEggState::
 	goto_if_set FLAG_SCUTTILL_EGG, ScuttillSecretTreeHouse_EventScript_EggGotten
 	goto_if_set FLAG_FAKE_EGG, ScuttillSecretTreeHouse_EventScript_FakeEggGotten
 	setvar VAR_TEMP_4, 69
-	setvar VAR_TEMP_6, 2
+	setvar VAR_TEMP_6, 3
 	setflag FLAG_TEMP_10
 	setflag FLAG_TEMP_11
 	setflag FLAG_TEMP_12
@@ -34,7 +34,6 @@ ScuttillSecretTreeHouse_EventScript_SetEggState::
 	setflag FLAG_TEMP_17
 	setflag FLAG_TEMP_18
 	setflag FLAG_TEMP_19
-	setflag FLAG_TEMP_1C
 	setflag FLAG_TEMP_1D
 	return
 
@@ -96,7 +95,8 @@ ScuttillSecretTreeHouse_EventScript_ReceiveWannegg::
 	waitmovement 0
 	msgbox ScuttillSecretTreeHouse_Text_TakeCareOfThis, MSGBOX_DEFAULT
 	setvar VAR_TEMP_6, 0
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EGG
+	setflag FLAG_FAKE_EGG
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EXEGGCUTE
 	giveegg SPECIES_WANNEGG
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, ScuttillSecretTreeHouse_EventScript_ReceiveWanneggParty
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, ScuttillSecretTreeHouse_EventScript_ReceiveWanneggPC
@@ -116,7 +116,6 @@ ScuttillSecretTreeHouse_Movement_OldLadySayHello:
 	walk_left
 	walk_left
 	walk_left
-	walk_up
 	walk_up
 	face_right
 	step_end
@@ -437,8 +436,7 @@ ScuttillSecretTreeHouse_EventScript_EggEncounter5West::
 ScuttillSecretTreeHouse_Movement_EggRunAway5West:
 	emote_exclamation_mark
 	walk_fast_right
-	walk_fast_right
-	walk_fast_right
+	jump_2_right
 	walk_fast_right
 	walk_fast_right
 	step_end
@@ -782,7 +780,7 @@ ScuttillSecretTreeHouse_EventScript_CaughtEggneggma::
 	end
 
 ScuttillSecretTreeHouse_EventScript_ReceiveEgg::
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EGG
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EXEGGCUTE
 	giveegg SPECIES_CHIKA
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, ScuttillSecretTreeHouse_EventScript_ReceiveEggParty
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, ScuttillSecretTreeHouse_EventScript_ReceiveEggPC
@@ -828,7 +826,6 @@ ScuttillSecretTreeHouse_Movement_EggFlee:
 	walk_fast_left
 	walk_fast_down
 	walk_fast_down
-	walk_fast_down
 	walk_fast_right
 	walk_fast_right
 	walk_fast_right
@@ -845,17 +842,103 @@ ScuttillSecretTreeHouse_Movement_EggFlee:
 	walk_fast_down
 	step_end
 
+ScuttillSecretTreeHouse_EventScript_EggLadyState1::
+	lock
+	faceplayer
+	goto_if_set FLAG_FAKE_EGG, ScuttillSecretTreeHouse_EventScript_EggLadyState2
+	msgbox ScuttillSecretTreeHouse_Text_DontMindMe, MSGBOX_AUTOCLOSE
+	release
+	end
+
+ScuttillSecretTreeHouse_EventScript_EggLadyState2::
+	msgbox ScuttillSecretTreeHouse_Text_HatchThatEgg, MSGBOX_AUTOCLOSE
+	release
+	end
+
+ScuttillSecretTreeHouse_EventScript_EggLadyState3::
+	lock
+	faceplayer
+	goto_if_set FLAG_FAKE_EGG, ScuttillSecretTreeHouse_EventScript_EggLadyState4
+	msgbox ScuttillSecretTreeHouse_Text_ThisAreaHotspot, MSGBOX_AUTOCLOSE
+	release
+	end
+
+ScuttillSecretTreeHouse_EventScript_EggLadyState4::
+	msgbox ScuttillSecretTreeHouse_Text_MayNowBeSafe, MSGBOX_AUTOCLOSE
+	release
+	end
+
+ScuttillSecretTreeHouse_EventScript_HowToCatchEgg::
+	msgbox ScuttillSecretTreeHouse_Text_HowToCatchEgg, MSGBOX_NPC
+	end
+
+ScuttillSecretTreeHouse_Text_DontMindMe:
+	.string "Oh, don't mind an old hag like me...\n"
+	.string "I just enjoy looking after\l"
+	.string "the little Coffiddle...$"
+
 ScuttillSecretTreeHouse_Text_TakeCareOfThis:
-	.string "test$"
+	.string "So you're interested in this\n"
+	.string "Coffiddle nest?\p"
+	.string "These munchkins bring abandoned\n"
+	.string "eggs here and dance nearby\l"
+	.string "to them. It appears to help\l"
+	.string "them hatch somewhat quicker.\l"
+	.string "Then, the Coffiddle gets\l"
+	.string "a new dance partner!\p"
+	.string "You seem to be a Pokemon Trainer.\n"
+	.string "Take one of these eggs and\l"
+	.string "give it a good home.$"
 
 ScuttillSecretTreeHouse_Text_PlayerReceivedWanegg:
-	.string "test$"
+	.string "{PLAYER} took one of the Eggs!$"
+
+ScuttillSecretTreeHouse_Text_HatchThatEgg:
+	.string "Even I don't know what Pokemon\n"
+	.string "could hatch from that Egg...\l"
+	.string "They were all abandoned,\l"
+	.string "so it's anybody's guess.$"
+
+ScuttillSecretTreeHouse_Text_ThisAreaHotspot:
+	.string "That Coffiddle nest is\n"
+	.string "unfortunately a target for those\l"
+	.string "dastardly Eggneggma.\l"
+	.string "I try to get them shooed\l"
+	.string "whenever I'm able.$"
 
 ScuttillSecretTreeHouse_Text_EggWarning:
-	.string "test$"
+	.string "Oh! You have returned.\n"
+	.string "I see that Egg you took with you\l"
+	.string "turned out to be a Wannegg\l"
+	.string "in disguise.\p"
+	.string "It appears that an Eggneggma planted\n"
+	.string "one of its young to be taken\l"
+	.string "to the nest, so it could\l"
+	.string "determine where it was located.\p"
+	.string "...Oh, bother... an Eggneggma\n"
+	.string "is likely en route to the nest\l"
+	.string "right this moment...$"
 
 ScuttillSecretTreeHouse_Text_DroppedEgg:
-	.string "test$"
+	.string "(The Eggneggma dropped the\n"
+	.string "Egg it was holding!)$"
 
 ScuttillSecretTreeHouse_Text_PlayerReceivedEgg:
-	.string "test$"
+	.string "{PLAYER} rescued another Egg!$"
+
+ScuttillSecretTreeHouse_Text_MayNowBeSafe:
+	.string "The Eggneggma has been fended off\n"
+	.string "for now. On behalf of those\l"
+	.string "dancing critters, I thank you.$"
+
+ScuttillSecretTreeHouse_Text_HowToCatchEgg:
+	.string "Whenever those egg bandits show\n"
+	.string "their ugly mugs around here,\l"
+	.string "ya gotta chase 'em off.\p"
+	.string "Best way to intimidate them\n"
+	.string "is to make 'em feel cornered.\l"
+	.string "Even if it escapes an attempt,\l"
+	.string "if you manage to corner it for\l"
+	.string "even a moment, it will start\l"
+	.string "to panic, and maybe make\l"
+	.string "mistakes that it wouldn't normally.$"

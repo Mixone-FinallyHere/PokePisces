@@ -193,7 +193,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "ScuttillSecretTreeHouse_EventScript_HowToCatchEgg",
       "flag": "0"
     },
     {
@@ -206,7 +206,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "ScuttillSecretTreeHouse_EventScript_EggLadyState1",
       "flag": "FLAG_TEMP_1C"
     },
     {
@@ -219,7 +219,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "ScuttillSecretTreeHouse_EventScript_EggLadyState3",
       "flag": "FLAG_TEMP_1D"
     },
     {
@@ -315,8 +315,8 @@
     },
     {
       "type": "trigger",
-      "x": 12,
-      "y": 14,
+      "x": 21,
+      "y": 6,
       "elevation": 0,
       "var": "VAR_TEMP_4",
       "var_value": "5",
@@ -324,8 +324,8 @@
     },
     {
       "type": "trigger",
-      "x": 12,
-      "y": 13,
+      "x": 21,
+      "y": 5,
       "elevation": 0,
       "var": "VAR_TEMP_4",
       "var_value": "5",
@@ -450,8 +450,8 @@
     },
     {
       "type": "trigger",
-      "x": 12,
-      "y": 13,
+      "x": 22,
+      "y": 5,
       "elevation": 0,
       "var": "VAR_TEMP_4",
       "var_value": "6",
@@ -459,8 +459,8 @@
     },
     {
       "type": "trigger",
-      "x": 12,
-      "y": 14,
+      "x": 22,
+      "y": 6,
       "elevation": 0,
       "var": "VAR_TEMP_4",
       "var_value": "6",

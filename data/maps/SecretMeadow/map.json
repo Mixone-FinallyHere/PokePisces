@@ -75,7 +75,7 @@
       "x": 9,
       "y": 11,
       "elevation": 0,
-      "var": "VAR_TEMP_MIXED_RECORDS",
+      "var": "VAR_TEMP_4",
       "var_value": "0",
       "script": "NULL"
     },
@@ -84,7 +84,7 @@
       "x": 9,
       "y": 12,
       "elevation": 0,
-      "var": "VAR_TEMP_MIXED_RECORDS",
+      "var": "VAR_TEMP_4",
       "var_value": "0",
       "script": "NULL"
     },
@@ -93,7 +93,7 @@
       "x": 9,
       "y": 13,
       "elevation": 0,
-      "var": "VAR_TEMP_MIXED_RECORDS",
+      "var": "VAR_TEMP_4",
       "var_value": "0",
       "script": "NULL"
     }

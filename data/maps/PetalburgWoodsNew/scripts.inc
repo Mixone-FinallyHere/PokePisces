@@ -263,7 +263,7 @@ PetalburgWoodsNew_EventScript_ShishimaBattle::
 PetalburgWoodsNew_EventScript_ShishimaDefeat::
 	msgbox PetalburgWoodsNew_Text_ShishimaBecameEgg, MSGBOX_DEFAULT
 	setflag FLAG_DEFEATED_SHISHIMA
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EGG
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EXEGGCUTE
 	giveegg SPECIES_SHISHIMA
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, PetalburgWoodsNew_EventScript_ReceiveEggParty
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, PetalburgWoodsNew_EventScript_ReceiveEggPC
@@ -303,7 +303,7 @@ PetalburgWoodsNew_EventScript_OlFlookieBattle::
 PetalburgWoodsNew_EventScript_OlFlookieDefeat::
 	msgbox PetalburgWoodsNew_Text_OlFlookieBecameEgg, MSGBOX_DEFAULT
 	setflag FLAG_DEFEATED_OLFLOOKIE
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EGG
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EXEGGCUTE
 	giveegg SPECIES_OLFLOOKIE
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, PetalburgWoodsNew_EventScript_ReceiveEggParty
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, PetalburgWoodsNew_EventScript_ReceiveEggPC
@@ -343,7 +343,7 @@ PetalburgWoodsNew_EventScript_JustrichaBattle::
 PetalburgWoodsNew_EventScript_JustrichaDefeat::
 	msgbox PetalburgWoodsNew_Text_JustrichaBecameEgg, MSGBOX_DEFAULT
 	setflag FLAG_DEFEATED_JUSTRICHA
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EGG
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EXEGGCUTE
 	giveegg SPECIES_JUSTRICHA
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, PetalburgWoodsNew_EventScript_ReceiveEggParty
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, PetalburgWoodsNew_EventScript_ReceiveEggPC
