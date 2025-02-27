@@ -315,6 +315,7 @@
 #define VARIOUS_APPLY_FRENZY_COUNTER                 224
 #define VARIOUS_TRY_ACTIVATE_HEART_CARVE             225
 #define VARIOUS_CUT_HP                               226
+#define VARIOUS_INCREASE_BLOOMING_TURNS              227
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0
