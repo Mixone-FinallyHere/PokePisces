@@ -13992,20 +13992,52 @@ static const struct TrainerMon sParty_PCourtney2[] = {
 
 static const struct TrainerMon sParty_PShelly2[] = {
     {
-    .lvl = 29,
-    .species = SPECIES_MAGIKARP,
+    .species = SPECIES_TARDRITCH,
+    .ability = ABILITY_EXTREMO,
+    .heldItem = ITEM_POISON_ORB,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .lvl = 74,
+    .moves = {MOVE_DIRE_CLAW, MOVE_KNOCK_OFF, MOVE_NUZZLE, MOVE_RECOVER},
     },
     {
-    .lvl = 20,
-    .species = SPECIES_TENTACOOL,
+    .species = SPECIES_BLABBU,
+    .ability = ABILITY_GOOEY,
+    .heldItem = ITEM_HONDEW_BERRY,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .lvl = 74,
+    .moves = {MOVE_TOXIC, MOVE_RECOVER, MOVE_STOCKPILE, MOVE_SPIT_UP},
     },
     {
-    .lvl = 26,
-    .species = SPECIES_FEEBAS,
+    .species = SPECIES_MYSTICIAN,
+    .ability = ABILITY_DOMINEER,
+    .heldItem = ITEM_CLEANSE_TAG,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .lvl = 74,
+    .moves = {MOVE_PSYSHIELD_BASH, MOVE_SPIRIT_BREAK, MOVE_OBSTRUCT, MOVE_MEDITATE},
     },
     {
-    .lvl = 23,
-    .species = SPECIES_CARVANHA,
+    .species = SPECIES_LUVDISC,
+    .ability = ABILITY_FREE_LOVE,
+    .heldItem = ITEM_MYSTIC_WATER,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .lvl = 74,
+    .moves = {MOVE_LOVE_TAP, MOVE_FLIP_TURN, MOVE_LOVELY_KISS, MOVE_HEART_SWAP},
+    },
+    {
+    .species = SPECIES_ORROWHELM,
+    .ability = ABILITY_REGENERATOR,
+    .heldItem = ITEM_LIFE_ORB,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .lvl = 74,
+    .moves = {MOVE_THUNDER, MOVE_BLIZZARD, MOVE_SERPENT_SURGE, MOVE_FIRE_BLAST},
+    },
+    {
+    .species = SPECIES_SHELLYLOUH,
+    .ability = ABILITY_WITCHCRAFT,
+    .heldItem = ITEM_POWER_HERB,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .lvl = 75,
+    .moves = {MOVE_GEOMANCY, MOVE_ICE_BURN, MOVE_HUNKER_DOWN, MOVE_RAZOR_SHELL},
     }
 };
 

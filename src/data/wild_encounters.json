@@ -13427,7 +13427,7 @@
           "map": "MAP_SCUTTILL_HUTS",
           "base_label": "gScuttillHuts0",
           "land_mons": {
-            "encounter_rate": 10,
+            "encounter_rate": 30,
             "mons": [
               {
                 "min_level": 23,

@@ -1279,9 +1279,9 @@
 #define FLAG_LUOSHAN_ORB                                           0x4CD // Unused Flag
 #define FLAG_DEFEATED_GROTTO_SKELLYWARG                                           0x4CE // Unused Flag
 #define FLAG_ACTIVATED_COLD_MINES_ELECTRICIAN                                           0x4CF // Unused Flag
-#define FLAG_UNUSED_0x4D0                                           0x4D0 // Unused Flag
-#define FLAG_UNUSED_0x4D1                                           0x4D1 // Unused Flag
-#define FLAG_UNUSED_0x4D2                                           0x4D2 // Unused Flag
+#define FLAG_DEFEATED_CAVE_CULTIPEX                                           0x4D0 // Unused Flag
+#define FLAG_DEFEATED_FOREST_SHIFTRY                                          0x4D1 // Unused Flag
+#define FLAG_DEFEATED_YOLKWEEN                                           0x4D2 // Unused Flag
 #define FLAG_UNUSED_0x4D3                                           0x4D3 // Unused Flag
 #define FLAG_UNUSED_0x4D4                                           0x4D4 // Unused Flag
 #define FLAG_UNUSED_0x4D5                                           0x4D5 // Unused Flag

@@ -590,7 +590,7 @@ MossdeepCity_EventScript_EggEncounter6FinalLeft::
 	end
 
 MossdeepCity_EventScript_ReceiveEgg::
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EGG
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EXEGGCUTE
 	giveegg SPECIES_SQUEESHY
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, MossdeepCity_EventScript_ReceiveEggParty
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, MossdeepCity_EventScript_ReceiveEggPC

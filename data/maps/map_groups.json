@@ -91,7 +91,9 @@
     "SkyPillar_Outside",
     "SootopolisCity",
     "Route131",
-    "Route129"
+    "Route129",
+    "SecretMeadow",
+    "BasalinCave"
   ],
   "gMapGroup_PiscesLeg2Major": [
     "CaveOfOrigin",
@@ -174,7 +176,9 @@
     "FortreeInteriors",
     "FortreeGymTransitionBuilding",
     "CanopourBushes",
-    "PerplumeTreehouse"
+    "PerplumeTreehouse",
+    "ScuttillInteriors",
+    "ShiftryArena"
   ],
   "gMapGroup_PiscesLeg6Major": [
     "OzoneInstitute",
