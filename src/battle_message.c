@@ -966,6 +966,7 @@ static const u8 sText_IceScalesGains[] = _("{B_ATK_NAME_WITH_PREFIX} gained a la
 static const u8 sText_IceScalesLoss[] = _("Layers of {B_DEF_NAME_WITH_PREFIX}'s scales\nshattered and stifled the blow!");
 static const u8 sText_UserGainedDaybreak[] = _("{B_ATK_NAME_WITH_PREFIX} gained a Daybreak\nCounter, putting it at {B_BUFF1}!");
 static const u8 sText_UserHasEnteredAFrenzy[] = _("{B_ATK_NAME_WITH_PREFIX} gained a Frenzy\nCounter, putting it at {B_BUFF1}!");
+static const u8 sText_UserIncreasedBloomingDuration[] = _("{B_ATK_NAME_WITH_PREFIX} increased\nthe duration of blooming!");
 static const u8 sText_UserUsedUpAllDaybreak[] = _("{B_ATK_NAME_WITH_PREFIX} used up all\nof its Daybreak Counters!");
 static const u8 sText_PurpleHaze[] = _("The purple haze enflamed\n{B_ATK_NAME_WITH_PREFIX} with frenzy!");
 static const u8 sText_MagmaArmored[] = _("{B_ATK_NAME_WITH_PREFIX}'s magma armor\nhardened from {B_DEF_NAME_WITH_PREFIX}'s attack!");
@@ -1819,6 +1820,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PHANTOMDOESNTALLOW - BATTLESTRINGS_TABLE_START] = sText_PhantomDoesntAllow,
     [STRINGID_USERHASENTEREDAFRENZY - BATTLESTRINGS_TABLE_START] = sText_UserHasEnteredAFrenzy,
     [STRINGID_PKMNSXINFATUATEDY3 - BATTLESTRINGS_TABLE_START] = sText_PkmnsXInfatuatedY3,
+    [STRINGID_USERINCREASEDBLOOMINGDURATION - BATTLESTRINGS_TABLE_START] = sText_UserIncreasedBloomingDuration,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

@@ -2138,6 +2138,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro increasebloomingturns battler:req, failInstr:req
+	various \battler, VARIOUS_INCREASE_BLOOMING_TURNS
+	.4byte \failInstr
+	.endm
+
 	.macro applyfrenzycounter battler:req, failInstr:req
 	various \battler, VARIOUS_APPLY_FRENZY_COUNTER
 	.4byte \failInstr
