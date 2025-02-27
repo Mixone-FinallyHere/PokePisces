@@ -6907,10 +6907,13 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         switch (gLastUsedAbility)
         {
         case ABILITY_POISON_TOUCH:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerTarget].hp != 0 
-            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && CanBePoisoned(gBattlerAttacker, gBattlerTarget) 
-            && IsMoveMakingContact(move, gBattlerAttacker) && TARGET_TURN_DAMAGED // Need to actually hit the target
-                && (Random() % 3) == 0)
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+            && gBattleMons[gBattlerTarget].hp != 0 
+            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
+            && CanBePoisoned(gBattlerAttacker, gBattlerTarget) 
+            && IsMoveMakingContact(move, gBattlerAttacker) 
+            && TARGET_TURN_DAMAGED // Need to actually hit the target
+            && (Random() % 3) == 0)
             {
                 gBattleScripting.moveEffect = MOVE_EFFECT_POISON;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
@@ -7161,7 +7164,12 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_IRON_BARBS:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerTarget].hp != 0 && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED && (IsMoveMakingContact(move, gBattlerAttacker) || gBattleMoves[gBattlerAttacker].piercingMove))
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+            && gBattleMons[gBattlerTarget].hp != 0 
+            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
+            && TARGET_TURN_DAMAGED
+            && (IsMoveMakingContact(move, gBattlerAttacker)
+            || gBattleMoves[gCurrentMove].piercingMove))
             {
                 if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses))
                     gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 32;
@@ -7180,7 +7188,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && gBattleMons[gBattlerTarget].hp != 0 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
             && TARGET_TURN_DAMAGED 
-            && gBattleMoves[gBattlerAttacker].oozeMove)
+            && gBattleMoves[gCurrentMove].oozeMove)
             {
                 if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses))
                     gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 10;
@@ -9506,7 +9514,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && gBattlerAttacker != gBattlerTarget
                 && gBattleMons[gBattlerAttacker].hp != gBattleMons[gBattlerAttacker].maxHP
                 && IsBattlerAlive(gBattlerAttacker)
-                && (!gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK)
+                && !(gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK)
                 && GetBattlerAbility(gBattlerAttacker) != ABILITY_STRONGHOLD)
             {
                 gLastUsedItem = atkItem;

@@ -5459,7 +5459,7 @@ static void Cmd_getexp(void)
                             gLeveledUpInBattle = levelUpBits;
 
                             species = GetEvolutionTargetSpecies(&gPlayerParty[i], EVO_MODE_NORMAL, levelUpBits, NULL);
-                            if (species != SPECIES_NONE)
+                            if (species != SPECIES_NONE && species != SPECIES_LEPUCYTE)
                             {
                                 gBattlescriptCurrInstr = BattleScript_LevelUpWithEvoSugg;
                             }

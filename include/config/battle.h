@@ -198,16 +198,16 @@
 #define B_LAST_USED_BALL_CYCLE      TRUE      // If TRUE, then holding B_LAST_USED_BALL_BUTTON while pressing the D-Pad cycles through the balls
 
 // Other settings
-#define B_DOUBLE_WILD_CHANCE            20         // % chance of encountering two Pok?mon in a Wild Encounter.
-#define B_DOUBLE_WILD_REQUIRE_2_MONS    TRUE      // If set to TRUE, Wild Double Battles will default to Single Battles when the player only has 1 usable Pok?mon, ignoring B_DOUBLE_WILD_CHANCE and B_FLAG_FORCE_DOUBLE_WILD.
+#define B_DOUBLE_WILD_CHANCE            10         // % chance of encountering two Pok?mon in a Wild Encounter.
+#define B_DOUBLE_WILD_REQUIRE_2_MONS    TRUE       // If set to TRUE, Wild Double Battles will default to Single Battles when the player only has 1 usable Pok?mon, ignoring B_DOUBLE_WILD_CHANCE and B_FLAG_FORCE_DOUBLE_WILD.
 #define B_MULTI_BATTLE_WHITEOUT         GEN_LATEST // In Gen4+, multi battles end when the Player and also their Partner don't have any more Pok?mon to fight.
 #define B_EVOLUTION_AFTER_WHITEOUT      GEN_LATEST // In Gen6+, Pokemon that qualify for evolution after battle will evolve even if the player loses.
 #define B_WILD_NATURAL_ENEMIES          TRUE       // If set to TRUE, certain wild mon species will attack other species when partnered in double wild battles (eg. Zangoose vs Seviper)
 #define B_AFFECTION_MECHANICS           FALSE      // In Gen6+, there's a stat called affection that can trigger different effects in battle. From LGPE onwards, those effects use friendship instead.
 #define B_TRAINER_CLASS_POKE_BALLS      GEN_LATEST // In Gen7+, trainers will use certain types of Pok? Balls depending on their trainer class.
 #define B_OBEDIENCE_MECHANICS           GEN_7      // In PLA+ (here Gen8+), obedience restrictions also apply to non-outsider Pok?mon, albeit based on their level met rather than actual level
-#define B_USE_FROSTBITE                 TRUE      // In PLA, Frostbite replaces Freeze. Enabling this flag does the same here. Moves can still be cherry-picked to either Freeze or Frostbite. Freeze-Dry, Secret Power & Tri Attack depend on this config.
-#define B_OVERWORLD_SNOW                GEN_8    // In Gen9+, overworld Snow will summon snow instead of hail.
+#define B_USE_FROSTBITE                 TRUE       // In PLA, Frostbite replaces Freeze. Enabling this flag does the same here. Moves can still be cherry-picked to either Freeze or Frostbite. Freeze-Dry, Secret Power & Tri Attack depend on this config.
+#define B_OVERWORLD_SNOW                GEN_8      // In Gen9+, overworld Snow will summon snow instead of hail.
 
 // Animation Settings
 #define B_NEW_SWORD_PARTICLE            FALSE    // If set to TRUE, it updates Swords Dance's particle.

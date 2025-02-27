@@ -1494,7 +1494,8 @@ static const u8 sMudSportDescription[] = _(
     "Electric-type moves for 5 turns.");
 
 static const u8 sNeedleArmDescription[] = _(
-    "Deals bonus true damage. If the\n"
+    "An attack using thorns that\n"
+    "deals bonus true damage. If the\n"
     "user is blooming, sets Spikes.");
 
 static const u8 sSlackOffDescription[] = _(
@@ -2465,7 +2466,7 @@ static const u8 sAfterYouDescription[] = _(
 static const u8 sRoundDescription[] = _(
     "Attacks the foe with a song.\n"
     "Others can join in the Round to\n"
-    "increase the power of the attack.");
+    "increase the power of the move.");
 
 static const u8 sEchoedVoiceDescription[] = _(
     "Attacks the foe with an echoing\n"

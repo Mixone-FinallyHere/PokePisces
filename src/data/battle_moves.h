@@ -739,10 +739,10 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
             .power = 20,
             .accuracy = 90,
         #endif
-        .effect = EFFECT_MULTI_HIT,
+        .effect = EFFECT_PIN_MISSILE,
         .type = TYPE_BUG,
         .pp = 20,
-        .secondaryEffectChance = 0,
+        .secondaryEffectChance = 30,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_PHYSICAL,
