@@ -17,11 +17,23 @@ PrettyPetalsScuttill_OnFrame:
 	.2byte 0
 
 PrettyPetalsScuttill_OnLoad:
-	call_if_le VAR_OZONE_ADMINS_STATE, 3, PrettyPetalsScuttill_EventScript_SetSistersFlagsPre
+	call_if_lt VAR_OZONE_ADMINS_STATE, 3, PrettyPetalsScuttill_EventScript_SetSistersFlagsPre
+	call_if_eq VAR_OZONE_ADMINS_STATE, 3, PrettyPetalsScuttill_EventScript_SetSistersFlagsDuring
 	call_if_gt VAR_OZONE_ADMINS_STATE, 3, PrettyPetalsScuttill_EventScript_SetSistersFlagsPost
 	end
 
 PrettyPetalsScuttill_EventScript_SetSistersFlagsPre::
+	setflag FLAG_TEMP_11
+	setflag FLAG_TEMP_12
+	setflag FLAG_TEMP_13
+	setflag FLAG_TEMP_14
+	removeobject LOCALID_COURTNEY
+	removeobject LOCALID_SISTER1
+	removeobject LOCALID_SISTER2
+	removeobject LOCALID_SISTER3
+	return	
+
+PrettyPetalsScuttill_EventScript_SetSistersFlagsDuring::
 	setflag FLAG_TEMP_15
 	setflag FLAG_TEMP_16
 	setflag FLAG_TEMP_17
@@ -402,50 +414,115 @@ PrettyPetalsScuttill_Text_HaveAPrettyPleasantDay:
 	.string "Have a Pretty Pleasant day!$"
 
 PrettyPetalsScuttill_Text_NatPreBloom:
-	.string "hey im nat$"
+	.string "...\p"
+	.string "What? I'm busy!\n"
+	.string "A stranger like you isn't\l"
+	.string "worth my time!$"
 
 PrettyPetalsScuttill_Text_DoYouHaveKickMove:
-	.string "do u have a kickin move$"
+	.string "...Oh, it's YOU again. Hmph.\p"
+	.string "Look, you may have charmed my\n"
+	.string "sisters, but I'm still not\l"
+	.string "fond of you!\p"
+	.string "Maybe if you wanna get into my\n"
+	.string "hobby with me, I'd like talking\l"
+	.string "to you more...\p"
+	.string "What is my hobby?\n"
+	.string "...Kickboxing!$"
 
 PrettyPetalsScuttill_Text_YouHaveKickMove:
-	.string "u have one take this$"
+	.string "Oh! You're into kickboxing too?\n"
+	.string "Your Pokemon have kicking moves,\l"
+	.string "so I assume you train with 'em.\p"
+	.string "I'll have to teach you some\n"
+	.string "of my tried-and-true techniques!\p"
+	.string "Starting with this one!$"
 
 PrettyPetalsScuttill_Text_NoKickMove:
-	.string "no kick no dick$"
+	.string "Eh... you don't seem to\n"
+	.string "be into kickboxing at all.\p"
+	.string "If you WERE, I'd imagine\n"
+	.string "one of your Pokemon knew like,\l"
+	.string "at least one kicking move...$"
 
 PrettyPetalsScuttill_Text_PostTropKick:
-	.string "trop kick cool eh?$"
+	.string "If you need any practice, come\n"
+	.string "fight me. I'll enjoy beating\l"
+	.string "your butt into next Tuesday!$"
 
 PrettyPetalsScuttill_Text_NicPreBloom:
-	.string "hello im nicole$"
+	.string "I have been doing research on\n"
+	.string "status effects...\l"
+	.string "Is there any that you prefer\l"
+	.string "to use in battle?$"
 
 PrettyPetalsScuttill_Text_DoYouHaveIngrain:
-	.string "do u have ingrain$"
+	.string "Did you successfully learn a lot\n"
+	.string "from our Blooming demonstration?\p"
+	.string "I find it to be the most interesting\n"
+	.string "of all the statuses!\l"
+	.string "I hope you've tried using it!$"
 
 PrettyPetalsScuttill_Text_YouHaveIngrain:
-	.string "u do have this$"
+	.string "That's great! It seems like you\n"
+	.string "have been using Blooming, given\l"
+	.string "that you possess a Pokemon\l"
+	.string "with the move Ingrain.\p"
+	.string "Have one of these, I made it myself!\n"
+	.string "It'll help you use Blooming\l"
+	.string "even with non-Grass type moves.$"
 
 PrettyPetalsScuttill_Text_NoIngrain:
-	.string "no ingrain, ingrate$"
+	.string "A move that is easy to set Blooming\n"
+	.string "with is Ingrain.\l"
+	.string "You should come see me if\l"
+	.string "you have a Pokemon with Ingrain!\l"
+	.string "I'll give you something nice.$"
 
 PrettyPetalsScuttill_Text_PostFairyRing:
-	.string "wear dat fairy ring$"
+	.string "I make fairy rings with flowers\n"
+	.string "that were collected by my Butterwee!$"
 
 PrettyPetalsScuttill_Text_RitaPreBloom:
-	.string "me be rita$"
+	.string "Make yourself at home, traveller.\n"
+	.string "We hope you enjoy our selection.\l"
+	.string "My sisters and I hand-picked\l"
+	.string "them ourselves.$"
 
 PrettyPetalsScuttill_Text_AboutSticks:
-	.string "u get sticks from cut trees\n"
-	.string "here is 1 to start$"
+	.string "Hello, {PLAYER}.\n"
+	.string "I hope you have been well.\p"
+	.string "Do you have the ability to use\n"
+	.string "the field move Cut? It will\l"
+	.string "allow you to open paths that\l"
+	.string "you could not prior.\p"
+	.string "Every time you cut down a\n"
+	.string "cuttable bush, you will obtain\l"
+	.string "a stick from it. It is an\l"
+	.string "easily renewable way to\l"
+	.string "obtain wood to be used for\l"
+	.string "many other things. I have seen that\l"
+	.string "people will trade you valuable\l"
+	.string "goods for sticks, especially\l"
+	.string "those that work outdoors.\p"
+	.string "Here is one to start you off.\n$"
 
 PrettyPetalsScuttill_Text_Need100Sticks:
-	.string "bring me 100$"
+	.string "If you can collect and bring to me\n"
+	.string "one hundred sticks...\l"
+	.string "Well, I couldn't not be impressed!$"
 
 PrettyPetalsScuttill_Text_Wow100Sticks:
-	.string "wow holy shit have this$"
+	.string "You have brought to me...\n"
+	.string "one hundred sticks!?\p"
+	.string "That is incredible! You are awfully\n"
+	.string "dedicated, {PLAYER}.\p"
+	.string "Please take this as a show\n"
+	.string "of my admiration.$"
 
 PrettyPetalsScuttill_Text_StickMaster:
-	.string "stick master $"
+	.string "You should look into a\n"
+	.string "possible career as a Lumberjack.$"
 
 PrettyPetalsScuttill_Text_Courtney1:
 	.string "Welcome to Pretty Petal Flower Shop!\p"
