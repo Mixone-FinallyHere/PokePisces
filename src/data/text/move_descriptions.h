@@ -3084,8 +3084,9 @@ static const u8 sStrengthSapDescription[] = _(
     "blooming, makes the foe go last.");
 
 static const u8 sLeafageDescription[] = _(
-    "The user attacks by pelting the\n"
-    "target with leaves.");
+    "Pelts the foe with leaves. If the\n"
+    "user is blooming, always lands\n"
+    "critical hits and goes first.");
 
 static const u8 sSpotlightDescription[] = _(
     "The user shines a spotlight on\n"
@@ -4635,8 +4636,8 @@ static const u8 sPhantasmDescription[] = _(
 
 static const u8 sSnapblossomDescription[] = _(
     "A 2-turn move that drains HP and\n"
-    "makes the user bloom. Doesn't\n"
-    "charge if the user is blooming.");
+    "makes the user bloom or increases\n"
+    "the duration of its blooming.");
 
 static const u8 sGrassCannonDescription[] = _(
     "On Grassy Terrain, this move\n"

@@ -2349,6 +2349,12 @@ BattleScript_SnapblossomTryFainting::
 	tryfaintmon BS_ATTACKER
 BattleScript_SnapblossomHealBlock::
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	increasebloomingturns BS_ATTACKER, BattleScript_MoveEnd
+	printstring STRINGID_USERINCREASEDBLOOMINGDURATION
+	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectTropKick::
@@ -4353,7 +4359,7 @@ BattleScript_DearlyDepartSuccessSwitch::
 	waitstate
 	printstring STRINGID_PKMNWASDRAGGEDOUT
 	switchineffects BS_TARGET
-	jumpifbyte CMP_EQUAL, sSWITCH_CASE, B_SWITCH_RED_CARD, BattleScript_RoarSuccessSwitch_Ret
+	jumpifbyte CMP_EQUAL, sSWITCH_CASE, B_SWITCH_RED_CARD, BattleScript_DearlyDepartSuccessSwitch_Ret
 	setbyte sSWITCH_CASE, B_SWITCH_NORMAL
 	jumpifsubstituteblocks BattleScript_DearlyDepartStatDownEnd
 	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_DearlyDepartStatDownEnd
@@ -4364,11 +4370,27 @@ BattleScript_DearlyDepartSuccessSwitch::
 BattleScript_DearlyDepartStatDownDoAnim::
 	setgraphicalstatchangevalues
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-BattleScript_DearlyDepartStatDownPrintString::
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_DearlyDepartStatDownEnd::
 	goto BattleScript_MoveEnd
+BattleScript_DearlyDepartSuccessSwitch_Ret:
+	swapattackerwithtarget  @ continuation of RedCardActivates
+	restoretarget
+	setbyte sSWITCH_CASE, B_SWITCH_NORMAL
+	jumpifsubstituteblocks BattleScript_DearlyDepartStatDownRet
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_DearlyDepartStatDownRet
+	jumpifbyte CMP_LESS_THAN, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_DearlyDepartStatDownDoAnim2
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY, BattleScript_DearlyDepartStatDownRet
+	pause B_WAIT_TIME_SHORT
+	goto BattleScript_DearlyDepartStatDownRet
+BattleScript_DearlyDepartStatDownDoAnim2::
+	setgraphicalstatchangevalues
+	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_DearlyDepartStatDownRet::
+	return
 
 BattleScript_AllStatsUp2::
 	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_AllStatsUp2Atk
