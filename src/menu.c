@@ -1602,8 +1602,8 @@ void CreateAbilitiesMenu(const struct WindowTemplate *window, u16 baseTileNum, u
 
     sAbilitiesWindowId = AddWindow(window);
     DrawStdFrameWithCustomTileAndPalette(sAbilitiesWindowId, TRUE, baseTileNum, paletteNum);
-
-    printer.currentChar = gText_Abilities;
+    StringExpandPlaceholders(gStringVar4, gText_Abilities);
+    printer.currentChar = gStringVar4;
     printer.windowId = sAbilitiesWindowId;
     printer.fontId = FONT_NORMAL;
     printer.x = 8;
@@ -1616,7 +1616,7 @@ void CreateAbilitiesMenu(const struct WindowTemplate *window, u16 baseTileNum, u
     printer.unk = GetFontAttribute(FONT_NORMAL, FONTATTR_UNKNOWN);
     printer.letterSpacing = 0;
     printer.lineSpacing = 0;
-
+    
     AddTextPrinter(&printer, TEXT_SKIP_DRAW, NULL);
     InitMenuInUpperLeftCornerNormal(sAbilitiesWindowId, 3, initialCursorPos);
 }

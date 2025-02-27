@@ -529,9 +529,9 @@ static const struct WindowTemplate sPartyMenuYesNoWindowTemplate =
 static const struct WindowTemplate sPartyMenuAbilitiesWindowTemplate =
 {
     .bg = 2,
-    .tilemapLeft = 21,
-    .tilemapTop = 1,
-    .width = 5,
+    .tilemapLeft = 2,
+    .tilemapTop = 11,
+    .width = 9,
     .height = 6,
     .paletteNum = 14,
     .baseBlock = 0x2E9,
