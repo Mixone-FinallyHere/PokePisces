@@ -663,7 +663,8 @@ Route125_Text_ShellRiddle3:
 	.string "we shall meet again$"
 
 Route125_Text_WeHaveYouCornered:
-	.string "gotcha$"
+	.string "We've got the jump on\n"
+	.string "you now, Eggneggma...!$"
 
 Route125_Text_Left_1:
 	.string "(Two men are locked here in a\n"
@@ -691,7 +692,8 @@ Route125_Text_Right_2:
 	.string "A DOO-DOO HEAD!!$"
 
 Route125_Text_GotYouBitch:
-	.string "give us your money$"
+	.string "You're completely surrounded!\n"
+	.string "Time to give up that Egg you filched!$"
 
 Route125_Text_ItsHumming:
 	.string "(This strange plant seems\n"

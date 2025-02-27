@@ -64,7 +64,15 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "CultipexCave_EventScript_CultipexTrigger"
+    }
   ],
   "bg_events": [
 

@@ -26,7 +26,7 @@ PrecipikeInteriors_EventScript_GiveEgg::
 	end
 
 PrecipikeInteriors_EventScript_ReceiveEgg::
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EGG
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EXEGGCUTE
 	giveegg SPECIES_DRAKULARK
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, PrecipikeInteriors_EventScript_ReceiveEggParty
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, PrecipikeInteriors_EventScript_ReceiveEggPC
@@ -271,22 +271,69 @@ PrecipikeInteriors_Text_AlreadyGaveIt:
 	.string "like ya.$"
 
 PrecipikeInteriors_Text_CaughtThatRascal:
-	.string "gottem$"
+	.string "Nice wrangling! I made sure\n"
+	.string "to get that Eggneggma put away\l"
+	.string "in a shelter.\p"
+	.string "It was holding this Egg that it\n"
+	.string "probably stole from somewhere.\l"
+	.string "Consider it yours!$"
 
 PrecipikeInteriors_Text_PlayerReceivedEgg:
 	.string "{PLAYER} received an Egg!$"
 
 PrecipikeInteriors_Text_HelloILikeEggs:
-	.string "hey i like eggs$"
+	.string "Salutations. I am what you\n"
+	.string "may call an Egg Connoisseur.\p"
+	.string "Hatching Pokemon Eggs used to be\n"
+	.string "a lot more common in Hoenn.\l"
+	.string "Though, recently, no one likes\l"
+	.string "to do it anymore.\p"
+	.string "The Pokemon Eggneggma has been\n"
+	.string "taking advantage of\l"
+	.string "peoples' lethargy, and stealing\l"
+	.string "Eggs from breeders whenever\l"
+	.string "they feel they can get away with it.\p"
+	.string "Those blasted thieves!\n"
+	.string "I wish they'd be taught a lesson!$"
 
 PrecipikeInteriors_Text_GoHuntSomeEggThieves:
-	.string "go get the moss and mang eggs$"
+	.string "I'm pretty sure that there are\n"
+	.string "thieving Eggneggma in\l"
+	.string "Mangrotto Tunnel and Mossdeep City.\p"
+	.string "Let me know if they've been...\n"
+	.string "scrambled, so to speak.$"
 
 PrecipikeInteriors_Text_WeShouldCatchThatGuy:
-	.string "lets go get that MF$"
+	.string "Oh? You've been doing your\n"
+	.string "due diligence in chasing down\l"
+	.string "those little psychos?\p"
+	.string "That puts a smile on my face!\n"
+	.string "Just what I like to hear.\p"
+	.string "...What? There's another at\n"
+	.string "large outside my home as we speak?\l"
+	.string "Well, say no more!\l"
+	.string "I'll get my husband and daughter\l"
+	.string "and we'll corner it!$"
 
 PrecipikeInteriors_Text_GoToScuttill:
-	.string "go to scuttill bro$"
+	.string "I've heard from the grapevine\n"
+	.string "that there's been thievery\l"
+	.string "in the Scuttill Way area.\l"
+	.string "Keep your eyes peeled!$"
 
 PrecipikeInteriors_Text_TheEggDemon:
-	.string "dernon ehhg$"
+	.string "You got the Scuttill Way\n"
+	.string "thief as well? Amazing!\l"
+	.string "Those loons can't slip away\l"
+	.string "under your watch!\p"
+	.string "I often wonder what their goal is.\n"
+	.string "It seems like a good amount of\l"
+	.string "the Eggneggma in this region\l"
+	.string "are bringing their stolen Eggs\l"
+	.string "to some central source.\l"
+	.string "Maybe some sort of Queen?\p"
+	.string "Hmm. The only leads I have on\n"
+	.string "the matter is some rumblings\l"
+	.string "of Eggneggma activity in\l"
+	.string "Basalin Coast. But I haven't\l"
+	.string "personally seen any there...$"

@@ -1,6 +1,98 @@
 CanopourWilds_MapScripts::
 	.byte 0
 
+CanopourWilds_EventScript_BushPath1::
+	lock
+	goto_if_set FLAG_TEMP_1A, CanopourWilds_EventScript_AlreadyCut1
+	msgbox CanopourWilds_Text_PathThroughBush, MSGBOX_DEFAULT
+	goto_if_unset FLAG_BADGE03_GET, CanopourWilds_EventScript_CantCut
+	checkpartymove MOVE_CUT
+	goto_if_eq VAR_RESULT, PARTY_SIZE, CanopourWilds_EventScript_CantCut
+	msgbox CanopourWilds_Text_WantToUseCut, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, CanopourWilds_EventScript_CutPath1
+	release
+	end
+
+CanopourWilds_EventScript_CantCut::
+	msgbox CanopourWilds_Text_NoCut, MSGBOX_AUTOCLOSE
+	release
+	end
+
+CanopourWilds_EventScript_AlreadyCut1::
+	setflag FLAG_TEMP_1A
+	setmetatile 116, 10, METATILE_Fortree_SecretBase_ShrubOpen, FALSE
+	special DrawWholeMapView
+	msgbox CanopourWilds_Text_AlreadyCut, MSGBOX_AUTOCLOSE
+	release
+	end
+
+CanopourWilds_EventScript_CutPath1::
+	playse SE_M_CUT
+	waitse
+	setflag FLAG_TEMP_1A
+	setmetatile 116, 10, METATILE_Fortree_SecretBase_ShrubOpen, FALSE
+	special DrawWholeMapView
+	release
+	end
+
+CanopourWilds_EventScript_BushPath2::
+	lock
+	goto_if_set FLAG_TEMP_1B, CanopourWilds_EventScript_AlreadyCut2
+	msgbox CanopourWilds_Text_PathThroughBush, MSGBOX_DEFAULT
+	goto_if_unset FLAG_BADGE03_GET, CanopourWilds_EventScript_CantCut
+	checkpartymove MOVE_CUT
+	goto_if_eq VAR_RESULT, PARTY_SIZE, CanopourWilds_EventScript_CantCut
+	msgbox CanopourWilds_Text_WantToUseCut, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, CanopourWilds_EventScript_CutPath2
+	release
+	end
+
+CanopourWilds_EventScript_AlreadyCut2::
+	setflag FLAG_TEMP_1B
+	setmetatile 63, 17, METATILE_Fortree_SecretBase_ShrubOpen, FALSE
+	special DrawWholeMapView
+	msgbox CanopourWilds_Text_AlreadyCut, MSGBOX_AUTOCLOSE
+	release
+	end
+
+CanopourWilds_EventScript_CutPath2::
+	playse SE_M_CUT
+	waitse
+	setflag FLAG_TEMP_1B
+	setmetatile 63, 17, METATILE_Fortree_SecretBase_ShrubOpen, FALSE
+	special DrawWholeMapView
+	release
+	end
+
+CanopourWilds_EventScript_BushPath3::
+	lock
+	goto_if_set FLAG_TEMP_1C, CanopourWilds_EventScript_AlreadyCut3
+	msgbox CanopourWilds_Text_PathThroughBush, MSGBOX_DEFAULT
+	goto_if_unset FLAG_BADGE03_GET, CanopourWilds_EventScript_CantCut
+	checkpartymove MOVE_CUT
+	goto_if_eq VAR_RESULT, PARTY_SIZE, CanopourWilds_EventScript_CantCut
+	msgbox CanopourWilds_Text_WantToUseCut, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, CanopourWilds_EventScript_CutPath3
+	release
+	end
+
+CanopourWilds_EventScript_AlreadyCut3::
+	setflag FLAG_TEMP_1C
+	setmetatile 34, 23, METATILE_Fortree_SecretBase_ShrubOpen, FALSE
+	special DrawWholeMapView
+	msgbox CanopourWilds_Text_AlreadyCut, MSGBOX_AUTOCLOSE
+	release
+	end
+
+CanopourWilds_EventScript_CutPath3::
+	playse SE_M_CUT
+	waitse
+	setflag FLAG_TEMP_1C
+	setmetatile 34, 23, METATILE_Fortree_SecretBase_ShrubOpen, FALSE
+	special DrawWholeMapView
+	release
+	end
+
 CanopourWilds_EventScript_Justin::
     trainerbattle_single TRAINER_P_JUSTIN, CanopourWilds_Text_JustinIntro, CanopourWilds_Text_JustinDefeated
     msgbox CanopourWilds_Text_JustinPostBattle, MSGBOX_AUTOCLOSE
@@ -355,3 +447,21 @@ CanopourWilds_Text_PickleLouDefeated:
 
 CanopourWilds_Text_PickleLouPostBattle:
 	.string "post$"
+
+CanopourWilds_Text_PathThroughBush:
+	.string "(There appears to be a path into\n"
+	.string "the thicket through this tree,\l"
+	.string "but there are many branches\l"
+	.string "in the way...)$"
+
+CanopourWilds_Text_WantToUseCut:
+	.string "(Would you like to have your\n"
+	.string "Pokemon cut through the branches?)$"
+
+CanopourWilds_Text_NoCut:
+	.string "(...But you have no means of\n"
+	.string "cutting through those branches.)$"
+
+CanopourWilds_Text_AlreadyCut:
+	.string "(The pathway into the thicket\n"
+	.string "has been opened.)$"

@@ -1694,6 +1694,10 @@
 	various \battler, VARIOUS_TRY_ACTIVATE_FELL_STINGER
 	.endm
 
+	.macro tryactivateheartcarve battler:req
+	various \battler, VARIOUS_TRY_ACTIVATE_HEART_CARVE
+	.endm
+
 	.macro tryactivatestarassault battler:req
 	various \battler, VARIOUS_TRY_ACTIVATE_STAR_ASSAULT
 	.endm
@@ -2134,6 +2138,16 @@
 	.4byte \failInstr
 	.endm
 
+	.macro increasebloomingturns battler:req, failInstr:req
+	various \battler, VARIOUS_INCREASE_BLOOMING_TURNS
+	.4byte \failInstr
+	.endm
+
+	.macro applyfrenzycounter battler:req, failInstr:req
+	various \battler, VARIOUS_APPLY_FRENZY_COUNTER
+	.4byte \failInstr
+	.endm
+
 	.macro removealldaybreakcounters battler:req, failInstr:req
 	various \battler, VARIOUS_REMOVE_DAYBREAK_COUNTER
 	.4byte \failInstr
@@ -2305,6 +2319,11 @@
 
 	.macro cutonethirdhpraisestats failInstr:req
 	various BS_ATTACKER, VARIOUS_CUT_1_3_HP_RAISE_STATS
+	.4byte \failInstr
+	.endm
+
+	.macro cuthp failInstr:req
+	various BS_ATTACKER, VARIOUS_CUT_HP
 	.4byte \failInstr
 	.endm
 

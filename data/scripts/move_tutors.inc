@@ -882,7 +882,7 @@ MoveTutor_EventScript_Growth::
 	goto MoveTutor_EventScript_MoveTaught
 	end
 
-FortreeInteriorsEventScript_MoveTutor1::
+FortreeInteriors_EventScript_MoveTutor1::
 	lock
 	faceplayer
 	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
@@ -930,7 +930,7 @@ MoveTutor_EventScript_Charge::
 	goto MoveTutor_EventScript_MoveTaught
 	end
 
-FortreeInteriorsEventScript_MoveTutor2::
+FortreeInteriors_EventScript_MoveTutor2::
 	lock
 	faceplayer
 	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
@@ -978,7 +978,7 @@ MoveTutor_EventScript_GrassCannon::
 	goto MoveTutor_EventScript_MoveTaught
 	end
 
-FortreeInteriorsEventScript_MoveTutor3::
+FortreeInteriors_EventScript_MoveTutor3::
 	lock
 	faceplayer
 	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
@@ -1026,7 +1026,7 @@ MoveTutor_EventScript_AromaticMist::
 	goto MoveTutor_EventScript_MoveTaught
 	end
 
-FortreeInteriorsEventScript_MoveTutor4::
+FortreeInteriors_EventScript_MoveTutor4::
 	lock
 	faceplayer
 	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
@@ -1074,7 +1074,7 @@ MoveTutor_EventScript_Kinesis::
 	goto MoveTutor_EventScript_MoveTaught
 	end
 
-FortreeInteriorsEventScript_MoveTutor5::
+FortreeInteriors_EventScript_MoveTutor5::
 	lock
 	faceplayer
 	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
@@ -1110,7 +1110,7 @@ MoveTutor_EventScript_TerrainSnap::
 	goto MoveTutor_EventScript_MoveTaught
 	end
 
-FortreeInteriorsEventScript_MoveTutor6::
+FortreeInteriors_EventScript_MoveTutor6::
 	lock
 	faceplayer
 	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT
@@ -1158,7 +1158,7 @@ MoveTutor_EventScript_SharpGlide::
 	goto MoveTutor_EventScript_MoveTaught
 	end
 
-FortreeInteriorsEventScript_MoveTutor7::
+FortreeInteriors_EventScript_MoveTutor7::
 	lock
 	faceplayer
 	msgbox MoveTutor_Text_LearnMove, MSGBOX_DEFAULT

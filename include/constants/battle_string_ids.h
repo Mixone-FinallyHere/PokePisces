@@ -840,8 +840,13 @@
 #define STRINGID_CROWNINFESTEDATTACKER                838
 #define STRINGID_USERGAINEDDAYBREAK                   839
 #define STRINGID_USERUSEDUPALLDAYBREAK                840
+#define STRINGID_STARSGRACEENTERS                     841
+#define STRINGID_PHANTOMDOESNTALLOW                   842
+#define STRINGID_USERHASENTEREDAFRENZY                843
+#define STRINGID_PKMNSXINFATUATEDY3                   844
+#define STRINGID_USERINCREASEDBLOOMINGDURATION        845
 
-#define BATTLESTRINGS_COUNT                           841
+#define BATTLESTRINGS_COUNT                           846
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -1111,6 +1116,7 @@
 #define B_MSG_SWITCHIN_WATER_VEIL           17
 #define B_MSG_SWITCHIN_ANTICIPATION_EVADE   18
 #define B_MSG_SWITCHIN_WATCHER              19
+#define B_MSG_SWITCHIN_STARSGRACE           20
 
 // gMentalHerbCureStringIds
 #define B_MSG_MENTALHERBCURE_INFATUATION       0

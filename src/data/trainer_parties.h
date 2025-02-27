@@ -810,6 +810,7 @@ static const struct TrainerMon sParty_PGeiger[] = {
     .iv = TRAINER_PARTY_IVS(31,31,31,31,31,31),
     .ev = TRAINER_PARTY_EVS(20, 15, 20, 15, 20, 15),
     .species = SPECIES_TRANSERA,
+    .moves = {MOVE_SHOCK_WAVE, MOVE_MEGA_DRAIN, MOVE_GLIMMER, MOVE_CHARGE},
     }
 };
 
@@ -996,17 +997,17 @@ static const struct TrainerMon sParty_PLiza[] = {
     .heldItem = ITEM_CURSED_AMULET,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(36, 16, 16, 16, 36, 36),
-    .moves = {MOVE_LIGHT_SCREEN, MOVE_MOONLIGHT, MOVE_HYPNOSIS, MOVE_GEM_BLASTER},
+    .moves = {MOVE_REFLECT, MOVE_DREAM_EATER, MOVE_HYPNOSIS, MOVE_GEM_BLASTER},
     .nature = NATURE_QUIRKY,
     },
     {
     .lvl = 20,
     .species = SPECIES_SOLROCK,
-    .ability = ABILITY_LEVITATE,
-    .heldItem = ITEM_TWISTED_SPOON,
+    .ability = ABILITY_SOLID_ROCK,
+    .heldItem = ITEM_SHELL_BELL,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(36, 36, 36, 16, 16, 16),
-    .moves = {MOVE_REFLECT, MOVE_ROCK_THROW, MOVE_CONFUSION, MOVE_MORNING_SUN},
+    .moves = {MOVE_HUNKER_DOWN, MOVE_CUT, MOVE_ROCK_TOMB, MOVE_ROCK_SMASH},
     .nature = NATURE_QUIRKY,
     }
 };
@@ -13991,20 +13992,52 @@ static const struct TrainerMon sParty_PCourtney2[] = {
 
 static const struct TrainerMon sParty_PShelly2[] = {
     {
-    .lvl = 29,
-    .species = SPECIES_MAGIKARP,
+    .species = SPECIES_TARDRITCH,
+    .ability = ABILITY_EXTREMO,
+    .heldItem = ITEM_POISON_ORB,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .lvl = 74,
+    .moves = {MOVE_DIRE_CLAW, MOVE_KNOCK_OFF, MOVE_NUZZLE, MOVE_RECOVER},
     },
     {
-    .lvl = 20,
-    .species = SPECIES_TENTACOOL,
+    .species = SPECIES_BLABBU,
+    .ability = ABILITY_GOOEY,
+    .heldItem = ITEM_HONDEW_BERRY,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .lvl = 74,
+    .moves = {MOVE_TOXIC, MOVE_RECOVER, MOVE_STOCKPILE, MOVE_SPIT_UP},
     },
     {
-    .lvl = 26,
-    .species = SPECIES_FEEBAS,
+    .species = SPECIES_MYSTICIAN,
+    .ability = ABILITY_DOMINEER,
+    .heldItem = ITEM_CLEANSE_TAG,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .lvl = 74,
+    .moves = {MOVE_PSYSHIELD_BASH, MOVE_SPIRIT_BREAK, MOVE_OBSTRUCT, MOVE_MEDITATE},
     },
     {
-    .lvl = 23,
-    .species = SPECIES_CARVANHA,
+    .species = SPECIES_LUVDISC,
+    .ability = ABILITY_FREE_LOVE,
+    .heldItem = ITEM_MYSTIC_WATER,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .lvl = 74,
+    .moves = {MOVE_LOVE_TAP, MOVE_FLIP_TURN, MOVE_LOVELY_KISS, MOVE_HEART_SWAP},
+    },
+    {
+    .species = SPECIES_ORROWHELM,
+    .ability = ABILITY_REGENERATOR,
+    .heldItem = ITEM_LIFE_ORB,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .lvl = 74,
+    .moves = {MOVE_THUNDER, MOVE_BLIZZARD, MOVE_SERPENT_SURGE, MOVE_FIRE_BLAST},
+    },
+    {
+    .species = SPECIES_SHELLYLOUH,
+    .ability = ABILITY_WITCHCRAFT,
+    .heldItem = ITEM_POWER_HERB,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .lvl = 75,
+    .moves = {MOVE_GEOMANCY, MOVE_ICE_BURN, MOVE_HUNKER_DOWN, MOVE_RAZOR_SHELL},
     }
 };
 
@@ -14015,7 +14048,7 @@ static const struct TrainerMon sParty_PMaxie[] = {
     .heldItem = ITEM_EJECT_PACK,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 77,
-    .moves = {MOVE_BRUTALIZE, MOVE_LEAF_STORM, MOVE_HIT_N_RUN, MOVE_JAW_LOCK},
+    .moves = {MOVE_BRUTALIZE, MOVE_LEAF_STORM, MOVE_HIT_N_RUN, MOVE_NONE},
     },
     {
     .species = SPECIES_GLISCOR,
@@ -14031,7 +14064,7 @@ static const struct TrainerMon sParty_PMaxie[] = {
     .heldItem = ITEM_BATTLE_HELM,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 78,
-    .moves = {MOVE_FIERY_DANCE, MOVE_SPRINGTIDE_STORM, MOVE_OBLIVION_WING, MOVE_BLAZING_SOUL},
+    .moves = {MOVE_RAZING_SUN, MOVE_SPRINGTIDE_STORM, MOVE_OBLIVION_WING, MOVE_BLAZING_SOUL},
     }
 };
 
@@ -14110,7 +14143,7 @@ static const struct TrainerMon sParty_PSteven[] = {
     },
     {
     .species = SPECIES_FERROR,
-    .ability = ABILITY_STRONGHOLD,
+    .ability = ABILITY_FILTER,
     .friendship = 255,
     .heldItem = ITEM_SHELL_BELL,
     .isShiny = TRUE,

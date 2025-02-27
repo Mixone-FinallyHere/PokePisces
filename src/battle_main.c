@@ -4750,7 +4750,7 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
         speed *= 1.25;
     else if (ability == ABILITY_SLOW_START && gDisableStructs[battler].slowStartTimer != 0)
         speed /= 2;
-    else if (ability == ABILITY_STARS_GRACE && gDisableStructs[battler].slowStartTimer >= 4)
+    else if (ability == ABILITY_STARS_GRACE && gDisableStructs[battler].slowStartTimer == 0)
         speed *= 2;
     else if (gStatuses4[battler] & STATUS4_PHANTOM)
         speed *= 2;
@@ -4896,6 +4896,10 @@ s8 GetMovePriority(u32 battler, u16 move)
     {
         priority++;
     }
+    else if (gCurrentMove == MOVE_COMET_PUNCH && gFieldStatuses & STATUS_FIELD_GRAVITY)
+    {
+        priority++;
+    }
     else if (ability == ABILITY_AMBUSHER && IS_MOVE_PHYSICAL(move) && (gDisableStructs[battler].isFirstTurn || IsTwoTurnsMove(move)))
     {
         priority++;
@@ -4920,7 +4924,7 @@ s8 GetMovePriority(u32 battler, u16 move)
     {
         priority++;
     }
-    else if ((gCurrentMove == MOVE_MAGICAL_LEAF || gCurrentMove == MOVE_WORRY_SEED || gCurrentMove == MOVE_COTTON_GUARD) && gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
+    else if ((gCurrentMove == MOVE_MAGICAL_LEAF || gCurrentMove == MOVE_LEAFAGE || gCurrentMove == MOVE_WORRY_SEED || gCurrentMove == MOVE_COTTON_GUARD) && gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
     {
         priority++;
     }
@@ -4931,6 +4935,10 @@ s8 GetMovePriority(u32 battler, u16 move)
     else if ((gCurrentMove == MOVE_CONSTRICT) && gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)
     {
         priority = 4;
+    }
+    else if (gBattleMoves[move].effect == EFFECT_CLEAR_SMOG && (CountBattlerStatIncreases(gBattlerTarget, TRUE) > 0 || CountBattlerStatDecreases(gBattlerTarget, TRUE) > 0))
+    {
+        priority++;
     }
     else if (ability == ABILITY_TRIAGE)
     {
@@ -4950,6 +4958,7 @@ s8 GetMovePriority(u32 battler, u16 move)
         case EFFECT_WISH:
         case EFFECT_SOFTBOILED:
         case EFFECT_ABSORB:
+        case EFFECT_HEART_CARVE:
         case EFFECT_SPIRIT_AWAY:
         case EFFECT_ROOST:
         case EFFECT_JUNGLE_HEALING:
@@ -4963,17 +4972,6 @@ s8 GetMovePriority(u32 battler, u16 move)
 
     if (gProtectStructs[battler].quash)
         priority = -8;
-
-    if (gBattleMoves[move].effect == EFFECT_CLEAR_SMOG)
-    {
-        for (i = 0; i < NUM_BATTLE_STATS; i++)
-        {
-            if (gBattleMons[gBattlerTarget].statStages[i] != DEFAULT_STAT_STAGE)
-            {
-                priority++;
-            }
-        }
-    }
 
     return priority;
 }

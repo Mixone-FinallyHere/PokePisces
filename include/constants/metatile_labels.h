@@ -118,8 +118,12 @@
 #define METATILE_BirchLab_BirchTable3  0x28B
 #define METATILE_BirchLab_BirchTable4  0x28C
 
+// gTileset_BossArenas
+#define METATILE_BossArenas_YolkGrass  0x201
+
 // gTileset_BossCave
 #define METATILE_BossCave_GrottoTile  0x271
+#define METATILE_BossCave_NoPexTile   0x209
 
 // gTileset_BrendansMaysHouse
 #define METATILE_BrendansMaysHouse_BookOnTable       0x293
