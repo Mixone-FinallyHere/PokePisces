@@ -1,0 +1,42 @@
+{
+  "id": "MAP_SHIFTRY_ARENA",
+  "name": "ShiftryArena",
+  "layout": "LAYOUT_SHIFTRY_ARENA",
+  "music": "MUS_ROUTE118",
+  "region_map_section": "MAPSEC_ROUTE_118",
+  "requires_flash": false,
+  "weather": "WEATHER_RAIN",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_CANOPOUR_WILDS",
+      "offset": -88,
+      "direction": "down"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "ShiftryArena_EventScript_ShiftryTrigger"
+    }
+  ],
+  "bg_events": [
+
+  ]
+}
