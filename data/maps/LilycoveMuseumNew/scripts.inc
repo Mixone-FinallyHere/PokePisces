@@ -131,6 +131,189 @@ LilycoveMuseumNew_EventScript_PlacePainting14::
 	special DrawWholeMapView
 	return
 
+LilycoveMuseumNew_EventScript_PaintingDesc1::
+	lock
+	goto_if_lt VAR_BALL_QUEST_STATE, 1, LilycoveMuseumNew_EventScript_PaintingEmpty
+	msgbox LilycoveMuseumNew_Text_PaintingDesc1, MSGBOX_DEFAULT
+	closemessage
+	call_if_set FLAG_WILL_JUDGE_PAINTING, LilycoveMuseumNew_EventScript_PaintingJudged
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PaintingDesc2::
+	lock
+	goto_if_lt VAR_BALL_QUEST_STATE, 2, LilycoveMuseumNew_EventScript_PaintingEmpty
+	msgbox LilycoveMuseumNew_Text_PaintingDesc2, MSGBOX_DEFAULT
+	closemessage
+	call_if_set FLAG_WILL_JUDGE_PAINTING, LilycoveMuseumNew_EventScript_PaintingJudged
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PaintingDesc3::
+	lock
+	goto_if_lt VAR_BALL_QUEST_STATE, 3, LilycoveMuseumNew_EventScript_PaintingEmpty
+	msgbox LilycoveMuseumNew_Text_PaintingDesc3, MSGBOX_DEFAULT
+	closemessage
+	call_if_set FLAG_WILL_JUDGE_PAINTING, LilycoveMuseumNew_EventScript_PaintingJudged
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PaintingDesc4::
+	lock
+	goto_if_lt VAR_BALL_QUEST_STATE, 4, LilycoveMuseumNew_EventScript_PaintingEmpty
+	msgbox LilycoveMuseumNew_Text_PaintingDesc4, MSGBOX_DEFAULT
+	closemessage
+	call_if_set FLAG_WILL_JUDGE_PAINTING, LilycoveMuseumNew_EventScript_PaintingJudged
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PaintingDesc5::
+	lock
+	goto_if_lt VAR_BALL_QUEST_STATE, 5, LilycoveMuseumNew_EventScript_PaintingEmpty
+	msgbox LilycoveMuseumNew_Text_PaintingDesc5, MSGBOX_DEFAULT
+	closemessage
+	call_if_set FLAG_WILL_JUDGE_PAINTING, LilycoveMuseumNew_EventScript_PaintingJudged
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PaintingDesc6::
+	lock
+	goto_if_lt VAR_BALL_QUEST_STATE, 6, LilycoveMuseumNew_EventScript_PaintingEmpty
+	msgbox LilycoveMuseumNew_Text_PaintingDesc6, MSGBOX_DEFAULT
+	closemessage
+	call_if_set FLAG_WILL_JUDGE_PAINTING, LilycoveMuseumNew_EventScript_PaintingJudged
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PaintingDesc7::
+	lock
+	goto_if_lt VAR_BALL_QUEST_STATE, 7, LilycoveMuseumNew_EventScript_PaintingEmpty
+	msgbox LilycoveMuseumNew_Text_PaintingDesc7, MSGBOX_DEFAULT
+	closemessage
+	call_if_set FLAG_WILL_JUDGE_PAINTING, LilycoveMuseumNew_EventScript_PaintingJudged
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PaintingDesc8::
+	lock
+	goto_if_lt VAR_BALL_QUEST_STATE, 8, LilycoveMuseumNew_EventScript_PaintingEmpty
+	msgbox LilycoveMuseumNew_Text_PaintingDesc8, MSGBOX_DEFAULT
+	closemessage
+	call_if_set FLAG_WILL_JUDGE_PAINTING, LilycoveMuseumNew_EventScript_PaintingJudged
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PaintingDesc9::
+	lock
+	goto_if_lt VAR_BALL_QUEST_STATE, 9, LilycoveMuseumNew_EventScript_PaintingEmpty
+	msgbox LilycoveMuseumNew_Text_PaintingDesc9, MSGBOX_DEFAULT
+	closemessage
+	call_if_set FLAG_WILL_JUDGE_PAINTING, LilycoveMuseumNew_EventScript_PaintingJudged
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PaintingDesc10::
+	lock
+	goto_if_lt VAR_BALL_QUEST_STATE, 10, LilycoveMuseumNew_EventScript_PaintingEmpty
+	msgbox LilycoveMuseumNew_Text_PaintingDesc10, MSGBOX_DEFAULT
+	closemessage
+	call_if_set FLAG_WILL_JUDGE_PAINTING, LilycoveMuseumNew_EventScript_PaintingJudged
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PaintingDesc11::
+	lock
+	goto_if_lt VAR_BALL_QUEST_STATE, 11, LilycoveMuseumNew_EventScript_PaintingEmpty
+	msgbox LilycoveMuseumNew_Text_PaintingDesc11, MSGBOX_DEFAULT
+	closemessage
+	call_if_set FLAG_WILL_JUDGE_PAINTING, LilycoveMuseumNew_EventScript_PaintingJudged
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PaintingDesc12::
+	lock
+	goto_if_lt VAR_BALL_QUEST_STATE, 12, LilycoveMuseumNew_EventScript_PaintingEmpty
+	msgbox LilycoveMuseumNew_Text_PaintingDesc12, MSGBOX_DEFAULT
+	closemessage
+	call_if_set FLAG_WILL_JUDGE_PAINTING, LilycoveMuseumNew_EventScript_PaintingJudged
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PaintingDesc13::
+	lock
+	goto_if_lt VAR_BALL_QUEST_STATE, 13, LilycoveMuseumNew_EventScript_PaintingEmpty
+	msgbox LilycoveMuseumNew_Text_PaintingDesc13, MSGBOX_DEFAULT
+	closemessage
+	call_if_set FLAG_WILL_JUDGE_PAINTING, LilycoveMuseumNew_EventScript_PaintingJudged
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PaintingDesc14::
+	lock
+	goto_if_lt VAR_BALL_QUEST_STATE, 14, LilycoveMuseumNew_EventScript_PaintingEmpty
+	msgbox LilycoveMuseumNew_Text_PaintingDesc14, MSGBOX_DEFAULT
+	closemessage
+	call_if_set FLAG_WILL_JUDGE_PAINTING, LilycoveMuseumNew_EventScript_PaintingJudged
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PaintingJudged::
+	setflag FLAG_JUDGED_PAINTING
+	clearflag FLAG_WILL_JUDGE_PAINTING
+	msgbox LilycoveMuseumNew_Text_PaintingJudged, MSGBOX_DEFAULT
+	closemessage
+	return
+
+LilycoveMuseumNew_EventScript_PaintingEmpty::
+	msgbox LilycoveMuseumNew_Text_PaintingEmpty, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveMuseumNew_EventScript_Phillipe::
+	lock
+	faceplayer
+	goto_if_lt VAR_BALL_QUEST_STATE, 1, LilycoveMuseumNew_EventScript_PhillipePreQuest
+	goto_if_lt VAR_BALL_QUEST_STATE, 8, LilycoveMuseumNew_EventScript_PhillipeFirstHalfQuest
+	goto_if_lt VAR_BALL_QUEST_STATE, 14, LilycoveMuseumNew_EventScript_PhillipeSecondHalfQuest
+	goto_if_ge VAR_BALL_QUEST_STATE, 14, LilycoveMuseumNew_EventScript_PhillipeQuestComplete
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PhillipePreQuest::
+	speakername LilycoveMuseumNew_Text_NamePhillipe
+	msgbox LilycoveMuseumNew_Text_PhillipePreQuest, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PhillipeFirstHalfQuest::
+	speakername LilycoveMuseumNew_Text_NamePhillipe
+	msgbox LilycoveMuseumNew_Text_PhillipeFirstHalfQuest, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PhillipeSecondHalfQuest::
+	speakername LilycoveMuseumNew_Text_NamePhillipe
+	msgbox LilycoveMuseumNew_Text_PhillipeSecondHalfQuest, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PhillipeQuestComplete::
+	checkitem ITEM_OBJECT_D_ARC
+	goto_if_eq VAR_RESULT, TRUE, LilycoveMuseumNew_EventScript_PhillipeQuestPost
+	speakername LilycoveMuseumNew_Text_NamePhillipe
+	msgbox LilycoveMuseumNew_Text_MyTravelsInKalos, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_OBJECT_D_ARC
+	closemessage
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PhillipeQuestPost::
+	speakername LilycoveMuseumNew_Text_NamePhillipe
+	msgbox LilycoveMuseumNew_Text_PhillipeQuestPost, MSGBOX_AUTOCLOSE
+	release
+	end
+
 LilycoveMuseumNew_EventScript_JumpIntoPainting::
 	lock
 	goto_if_lt VAR_ORBS_QUEST_STATE, 6, LilycoveMuseumNew_EventScript_PaintingOfMuseum
@@ -173,3 +356,99 @@ LilycoveMuseumNew_Text_JumpIntoPainting:
 
 LilycoveMuseumNew_Text_SillyThought:
 	.string "(A silly thought, yeah.)$"
+
+LilycoveMuseumNew_Text_PaintingDesc1:
+	.string "(It's a landscape depicting\n"
+	.string "a stark white, almost angelic\l"
+	.string "palace built into a cave.)$"
+
+LilycoveMuseumNew_Text_PaintingDesc2:
+	.string "(It's a landscape depicting\n"
+	.string "a sunken pirate ship\l"
+	.string "nestled in a dank cavern.)$"
+
+LilycoveMuseumNew_Text_PaintingDesc3:
+	.string "(It's a landscape depicting\n"
+	.string "the sunset view at a haunted\l"
+	.string "resort's beach.)$"
+
+LilycoveMuseumNew_Text_PaintingDesc4:
+	.string "(It's a landscape depicting\n"
+	.string "the icy mountain ranges extending\l"
+	.string "outwards from atop a castle.)$"
+
+LilycoveMuseumNew_Text_PaintingDesc5:
+	.string "(It's a landscape depicting\n"
+	.string "a dense jungle, hiding danger\l"
+	.string "and secrets just underneath.)$"
+
+LilycoveMuseumNew_Text_PaintingDesc6:
+	.string "(It's a landscape depicting\n"
+	.string "a sleepy town's hilltop overlook,\l"
+	.string "sun setting in the distance.)$"
+
+LilycoveMuseumNew_Text_PaintingDesc7:
+	.string "(It's a landscape depicting\n"
+	.string "an oddball city in the desert\l"
+	.string "where radiation has taken over.)$"
+
+LilycoveMuseumNew_Text_PaintingDesc8:
+	.string "(It's a landscape depicting\n"
+	.string "the front courtyard of a manor.\l"
+	.string "A brown dog is sitting out front.)$"
+
+LilycoveMuseumNew_Text_PaintingDesc9:
+	.string "(It's a landscape depicting\n"
+	.string "the luminous peak of a volcano.\l"
+	.string "A dragon is perched atop it.)$"
+
+LilycoveMuseumNew_Text_PaintingDesc10:
+	.string "(It's a landscape depicting\n"
+	.string "the glowing, moth-attracting\l"
+	.string "lightbulbs of a hidden storeroom.)$"
+
+LilycoveMuseumNew_Text_PaintingDesc11:
+	.string "(It's a landscape depicting\n"
+	.string "an alien planet with lizard\l"
+	.string "and insect nests.)$"
+
+LilycoveMuseumNew_Text_PaintingDesc12:
+	.string "(It's a landscape depicting\n"
+	.string "a wild and wistful autumn wood\l"
+	.string "with bamboo reed structures.)$"
+
+LilycoveMuseumNew_Text_PaintingDesc13:
+	.string "(It's a landscape depicting\n"
+	.string "a spherical planetoid made of\l"
+	.string "water overlooking a starry sky.)$"
+
+LilycoveMuseumNew_Text_PaintingDesc14:
+	.string "(It's a landscape depicting\n"
+	.string "a glittering, golden land.)$"
+
+LilycoveMuseumNew_Text_PaintingJudged:
+	.string "...\p"
+	.string "(You've jotted down a critique\n"
+	.string "to hand to the art teacher.)$"
+
+LilycoveMuseumNew_Text_PaintingEmpty:
+	.string "(This painting frame\n"
+	.string "is currently empty.)$"
+
+LilycoveMuseumNew_Text_NamePhillipe:
+	.string "Phillipe$"
+
+LilycoveMuseumNew_Text_PhillipePreQuest:
+	.string "who are you again$"
+
+LilycoveMuseumNew_Text_PhillipeFirstHalfQuest:
+	.string "go catch what i want$"
+
+LilycoveMuseumNew_Text_PhillipeSecondHalfQuest:
+	.string "getting close w paintings$"
+
+LilycoveMuseumNew_Text_MyTravelsInKalos:
+	.string "in kalos i found this$"
+
+LilycoveMuseumNew_Text_PhillipeQuestPost:
+	.string "un artiste supreme$"
