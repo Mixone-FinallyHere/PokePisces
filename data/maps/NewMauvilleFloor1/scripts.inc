@@ -179,6 +179,128 @@ NewMauvilleFloor1_EventScript_TradeCompleted::
 	release
 	end
 
+NewMauvilleFloor1_EventScript_ShopXItems::
+	lock
+	faceplayer
+	message NewMauvilleFloor1_Text_WelcomeToShopXItems
+	waitmessage
+	pokemart NewMauvilleFloor1_Mart_ShopXItems
+	msgbox NewMauvilleFloor1_Text_HaveAGoodDay, MSGBOX_AUTOCLOSE
+	release
+	end
+
+	.align 2
+NewMauvilleFloor1_Mart_ShopXItems:
+	.2byte ITEM_X_ATTACK
+	.2byte ITEM_X_DEFENSE
+	.2byte ITEM_X_SPEED
+	.2byte ITEM_X_ACCURACY
+	.2byte ITEM_X_SP_ATK
+	.2byte ITEM_X_SP_DEF
+	.2byte ITEM_GUARD_SPEC
+	.2byte ITEM_DIRE_HIT
+	.2byte ITEM_NONE
+	release
+	end	
+
+NewMauvilleFloor1_EventScript_ShopSeeds::
+	lock
+	faceplayer
+	message NewMauvilleFloor1_Text_WelcomeToShopSeeds
+	waitmessage
+	pokemart NewMauvilleFloor1_Mart_ShopSeeds
+	msgbox NewMauvilleFloor1_Text_HaveAGoodDay, MSGBOX_AUTOCLOSE
+	release
+	end
+
+	.align 2
+NewMauvilleFloor1_Mart_ShopSeeds:
+	.2byte ITEM_ELECTRIC_SEED
+	.2byte ITEM_GRASSY_SEED
+	.2byte ITEM_MISTY_SEED
+	.2byte ITEM_PSYCHIC_SEED
+	.2byte ITEM_NONE
+	release
+	end	
+
+NewMauvilleFloor1_EventScript_ShopHerbs::
+	lock
+	faceplayer
+	message NewMauvilleFloor1_Text_WelcomeToShopHerbs
+	waitmessage
+	pokemart NewMauvilleFloor1_Mart_ShopHerbs
+	msgbox NewMauvilleFloor1_Text_HaveAGoodDay, MSGBOX_AUTOCLOSE
+	release
+	end
+
+	.align 2
+NewMauvilleFloor1_Mart_ShopHerbs:
+	.2byte ITEM_WHITE_HERB
+	.2byte ITEM_MENTAL_HERB
+	.2byte ITEM_POWER_HERB
+	.2byte ITEM_MIRROR_HERB
+	.2byte ITEM_NONE
+	release
+	end	
+
+NewMauvilleFloor1_EventScript_ShopDebilitatingItems::
+	lock
+	faceplayer
+	message NewMauvilleFloor1_Text_WelcomeToShopDebilitatingItems
+	waitmessage
+	pokemart NewMauvilleFloor1_Mart_ShopDebilitatingItems
+	msgbox NewMauvilleFloor1_Text_HaveAGoodDay, MSGBOX_AUTOCLOSE
+	release
+	end
+
+	.align 2
+NewMauvilleFloor1_Mart_ShopDebilitatingItems:
+	.2byte ITEM_IRON_BALL
+	.2byte ITEM_LAGGING_TAIL
+	.2byte ITEM_RING_TARGET
+	.2byte ITEM_STICKY_BARB
+	.2byte ITEM_GLUE_TUBE
+	.2byte ITEM_NONE
+	release
+	end	
+
+NewMauvilleFloor1_EventScript_ShopMints::
+	lock
+	faceplayer
+	message NewMauvilleFloor1_Text_WelcomeToShopMints
+	waitmessage
+	pokemart NewMauvilleFloor1_Mart_ShopMints
+	msgbox NewMauvilleFloor1_Text_HaveAGoodDay, MSGBOX_AUTOCLOSE
+	release
+	end
+
+	.align 2
+NewMauvilleFloor1_Mart_ShopMints:
+	.2byte ITEM_LONELY_MINT
+	.2byte ITEM_ADAMANT_MINT
+	.2byte ITEM_NAUGHTY_MINT
+	.2byte ITEM_BRAVE_MINT
+	.2byte ITEM_BOLD_MINT
+	.2byte ITEM_IMPISH_MINT
+	.2byte ITEM_LAX_MINT
+	.2byte ITEM_RELAXED_MINT
+	.2byte ITEM_MODEST_MINT
+	.2byte ITEM_MILD_MINT
+	.2byte ITEM_RASH_MINT
+	.2byte ITEM_QUIET_MINT
+	.2byte ITEM_CALM_MINT
+	.2byte ITEM_GENTLE_MINT
+	.2byte ITEM_CAREFUL_MINT
+	.2byte ITEM_SASSY_MINT
+	.2byte ITEM_TIMID_MINT
+	.2byte ITEM_HASTY_MINT
+	.2byte ITEM_JOLLY_MINT
+	.2byte ITEM_NAIVE_MINT
+	.2byte ITEM_SERIOUS_MINT
+	.2byte ITEM_NONE
+	release
+	end	
+
 NewMauvilleFloor1_Text_IllTradeIfYouWant:
 	.string "I'll trade you my {STR_VAR_2} for\n"
 	.string "a {STR_VAR_1} if you want.$"
@@ -271,3 +393,21 @@ NewMauvilleFloor1_Text_AboutWattsonAndMauville:
 	.string "me in my apartment on the\l"
 	.string "second floor. If not, that's fine.\l"
 	.string "Hope you enjoy your time here!$"
+
+NewMauvilleFloor1_Text_WelcomeToShopXItems:
+	.string "Welcome to the X Item Shop!$"
+
+NewMauvilleFloor1_Text_WelcomeToShopSeeds:
+	.string "Welcome to the Seed Shop!$"
+
+NewMauvilleFloor1_Text_WelcomeToShopHerbs:
+	.string "Welcome to the Herb Shop!$"
+
+NewMauvilleFloor1_Text_WelcomeToShopDebilitatingItems:
+	.string "Welcome to the Debilitating Item Shop!$"
+
+NewMauvilleFloor1_Text_WelcomeToShopMints:
+	.string "Welcome to the Mint Shop!$"
+
+NewMauvilleFloor1_Text_HaveAGoodDay:
+	.string "Have a good day!$"

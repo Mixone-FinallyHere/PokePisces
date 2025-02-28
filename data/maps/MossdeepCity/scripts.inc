@@ -1,10 +1,12 @@
 .set LOCALID_MONK, 9
+.set LOCALID_HINTMONK, 26
 .set LOCALID_EGGNEGGMA1, 10
 .set LOCALID_EGGNEGGMA2, 11
 .set LOCALID_EGGNEGGMA3, 12
 .set LOCALID_EGGNEGGMA4, 13
 .set LOCALID_EGGNEGGMA5, 14
 .set LOCALID_EGGNEGGMA6, 15
+.set LOCALID_YANDEMIC, 18
 
 MossdeepCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_OnTransition
@@ -13,12 +15,19 @@ MossdeepCity_MapScripts::
 MossdeepCity_OnTransition:
 	call MossdeepCity_EventScript_SetEggState
 	call_if_ge VAR_NOTICED_BY_YANDEMIC, 5, MossdeepCity_EventScript_RemoveYandemic
+	call_if_lt VAR_PISCES_STORY_PROGRESS, 2, MossdeepCity_EventScript_RemoveHintMonk
+	call_if_set FLAG_DEFEATED_PANIC_EVENT, MossdeepCity_EventScript_RemoveHintMonk
 	goto_if_lt VAR_SPACE_CENTER_QUEST_STATE, 3, MossdeepCity_EventScript_HideMeteors
 	end
 
 MossdeepCity_EventScript_RemoveYandemic::
 	removeobject LOCALID_YANDEMIC
 	setflag FLAG_TEMP_B
+	return
+
+MossdeepCity_EventScript_RemoveHintMonk::
+	removeobject LOCALID_HINTMONK
+	setflag FLAG_TEMP_7
 	return
 
 MossdeepCity_EventScript_SetEggState::
@@ -590,7 +599,7 @@ MossdeepCity_EventScript_EggEncounter6FinalLeft::
 	end
 
 MossdeepCity_EventScript_ReceiveEgg::
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EGG
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EXEGGCUTE
 	giveegg SPECIES_SQUEESHY
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, MossdeepCity_EventScript_ReceiveEggParty
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, MossdeepCity_EventScript_ReceiveEggPC
@@ -722,6 +731,17 @@ MossdeepCity_EventScript_YandemicNoticed::
 MossdeepCity_EventScript_YandemicAddVar::
 	addvar VAR_NOTICED_BY_YANDEMIC, 1
 	return
+
+MossdeepCity_EventScript_HintMonk::
+	msgbox MossdeepCity_Text_HintMonk, MSGBOX_NPC
+	end
+
+MossdeepCity_Text_HintMonk:
+	.string "Greetings and Good Fortune.\n"
+	.string "{PLAYER}, it seems that Steven\l"
+	.string "would like to speak with you.\l"
+	.string "I would suggest heading\l"
+	.string "to his home, post-haste.$"
 
 MossdeepCity_Text_YouFeelWatched:
 	.string "(You begin to notice that\n"

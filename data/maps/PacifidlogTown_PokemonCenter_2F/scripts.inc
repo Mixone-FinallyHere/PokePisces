@@ -6,7 +6,13 @@ PacifidlogTown_PokemonCenter_2F_MapScripts::
 
 PacifidlogTown_PokemonCenter_2F_OnTransition:
 	setrespawn HEAL_LOCATION_PACIFIDLOG_TOWN
+	call_if_gt VAR_BALL_QUEST_STATE, 0, PacifidlogTown_PokemonCenter_2F_EventScript_RemovePhillipe
 	end
+
+PacifidlogTown_PokemonCenter_2F_EventScript_RemovePhillipe::
+	removeobject LOCALID_PHILLIPE
+	setflag FLAG_TEMP_11
+	return
 
 PacifidlogTown_PokemonCenter_2F_EventScript_Nurse::
 	setvar VAR_0x800B, LOCALID_NURSE

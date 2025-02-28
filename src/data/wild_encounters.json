@@ -12964,9 +12964,9 @@
             "encounter_rate": 30,
             "mons": [
               {
-                "min_level": 20,
-                "max_level": 22,
-                "species": "SPECIES_CHIROBERRA"
+                "min_level": 19,
+                "max_level": 21,
+                "species": "SPECIES_UMBRAT"
               },
               {
                 "min_level": 20,
@@ -12974,9 +12974,9 @@
                 "species": "SPECIES_FUZKY"
               },
               {
-                "min_level": 19,
-                "max_level": 21,
-                "species": "SPECIES_UMBRAT"
+                "min_level": 20,
+                "max_level": 22,
+                "species": "SPECIES_CHIROBERRA"
               },
               {
                 "min_level": 19,
@@ -13427,7 +13427,7 @@
           "map": "MAP_SCUTTILL_HUTS",
           "base_label": "gScuttillHuts0",
           "land_mons": {
-            "encounter_rate": 10,
+            "encounter_rate": 30,
             "mons": [
               {
                 "min_level": 23,

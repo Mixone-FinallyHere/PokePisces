@@ -6,7 +6,14 @@ SootopolisCity_PokemonCenter_2F_MapScripts::
 
 SootopolisCity_PokemonCenter_2F_OnTransition:
 	setrespawn HEAL_LOCATION_NEW_SOOTO
+	call_if_lt VAR_BALL_QUEST_STATE, 1, SootopolisCity_PokemonCenter_2F_EventScript_RemovePhillipe
+	call_if_gt VAR_BALL_QUEST_STATE, 1, SootopolisCity_PokemonCenter_2F_EventScript_RemovePhillipe
 	end
+
+SootopolisCity_PokemonCenter_2F_EventScript_RemovePhillipe::
+	removeobject LOCALID_PHILLIPE
+	setflag FLAG_TEMP_11
+	return
 
 SootopolisCity_PokemonCenter_2F_EventScript_Nurse::
 	setvar VAR_0x800B, LOCALID_NURSE
@@ -20,7 +27,6 @@ SootopolisCity_PokemonCenter_2F_EventScript_BallQuestGuy::
 	lock
 	faceplayer
 	speakername SootopolisCity_PokemonCenter_2F_Text_NamePhillipe
-	goto_if_lt VAR_BALL_QUEST_STATE, 1, SootopolisCity_PokemonCenter_2F_EventScript_GoDoPreviousQuest
 	goto_if_gt VAR_BALL_QUEST_STATE, 1, SootopolisCity_PokemonCenter_2F_EventScript_NoMoreQuest
 	goto_if_set FLAG_BALL_QUEST_DIALOGUE_TRUNCATOR, SootopolisCity_PokemonCenter_2F_EventScript_BallQuestGuyTruncated
 	setflag FLAG_BALL_QUEST_DIALOGUE_TRUNCATOR

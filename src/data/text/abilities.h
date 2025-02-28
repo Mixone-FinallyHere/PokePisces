@@ -1375,7 +1375,7 @@ static const u8 sHeartstringsDescription[] = _(
 static const u8 sLovesickDescription[] = _(
     "Spreads when contact is made\n"
     "either way. Becomes infatuated\n"
-    "with the opposing Pokémon.");
+    "with an opposing Pokémon.");
 
 static const u8 sLumberingDescription[] = _(
     "Prevents the Pokémon from\n"

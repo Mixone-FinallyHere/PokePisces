@@ -24,9 +24,9 @@ static const u8 sDoubleSlapDescription[] = _(
     "and torments on Misty Terrain.");
 
 static const u8 sCometPunchDescription[] = _(
-    "The target is hit with a flurry\n"
-    "of punches that strike 2 to 5\n"
-    "times in a row.");
+    "The foe is hit with a flurry of\n"
+    "punches that hit 2 to 5 times.\n"
+    "Gains priority in Gravity.");
 
 static const u8 sMegaPunchDescription[] = _(
     "The target is slugged by a punch\n"
@@ -1078,7 +1078,7 @@ static const u8 sHealBellDescription[] = _(
 static const u8 sReturnDescription[] = _(
     "Increases in power based on the\n" 
     "user's friendship. Critical hits\n"
-    "land more easily at full health.");
+    "land more easily at full HP.");
 
 static const u8 sPresentDescription[] = _(
     "The foe is given a booby-trapped\n"
@@ -1151,9 +1151,9 @@ static const u8 sSweetScentDescription[] = _(
     "Pokémon's evasiveness.");
 
 static const u8 sIronTailDescription[] = _(
-    "The target is slammed with a\n"
-    "steel-hard tail. This may also\n"
-    "boost the user's Defense stat.");
+    "The foe is slammed with a steel\n"
+    "tail. This may boost the user's\n"
+    "Defense stat. Always goes last.");
 
 static const u8 sMetalClawDescription[] = _(
     "The target is raked with steel\n"
@@ -3084,8 +3084,9 @@ static const u8 sStrengthSapDescription[] = _(
     "blooming, makes the foe go last.");
 
 static const u8 sLeafageDescription[] = _(
-    "The user attacks by pelting the\n"
-    "target with leaves.");
+    "Pelts the foe with leaves. If the\n"
+    "user is blooming, always lands\n"
+    "critical hits and goes first.");
 
 static const u8 sSpotlightDescription[] = _(
     "The user shines a spotlight on\n"
@@ -4107,7 +4108,7 @@ static const u8 sPixiePowDescription[] = _(
 static const u8 sBlazingSoulDescription[] = _(
     "Emits pure passionate aura. This\n"
     "may burn the foe and heal the\n"
-    "user when its health is low.");
+    "user when its HP is low.");
 
 static const u8 sPurgingFlamesDescription[] = _(
     "Spews flames that reset the\n"
@@ -4250,9 +4251,9 @@ static const u8 sChromaBeamDescription[] = _(
     "and is always super effective.");
 
 static const u8 sHeartCarveDescription[] = _(
-    "The user rapidly jabs the foe.\n"
-    "If the user is infatuated,\n"
-    "boosts Atk, Sp. Atk, and Spd.");
+    "If infatuated, gains Frenzy. On\n"
+    "KO at 3 stacks of Frenzy, heals\n"
+    "the user. Ignores infatuation.");
 
 static const u8 sRealTearsDescription[] = _(
     "The user just cries and sobs\n"
@@ -4299,9 +4300,9 @@ static const u8 sGunkFunkDescription[] = _(
     "always if the foe is poisoned.");
 
 static const u8 sStellarFistDescription[] = _(
-    "The user punches the foe with\n"
-    "cosmic fists 2 times. This move\n"
-    "uses Sp. Def to deal damage.");
+    "A cosmic punch that uses Sp. Def,\n"
+    "lands critical hits more easily,\n"
+    "always goes first, and cuts Def.");
 
 static const u8 sWillpowerDescription[] = _(
     "The user attacks by overpowering\n"
@@ -4629,14 +4630,14 @@ static const u8 sSpiritAwayDescription[] = _(
     "Abosrbs 3/4 the damage dealt.");
 
 static const u8 sPhantasmDescription[] = _(
-    "Boosts Spd and crits. Can't use\n"
-    "status moves or be attacked.\n"
-    "Goes away after attacking.");
+    "The user gains the Phantom status\n"
+    "status by sacrificing 1/4 of its\n"
+    "own HP.");
 
 static const u8 sSnapblossomDescription[] = _(
     "A 2-turn move that drains HP and\n"
-    "makes the user bloom. Doesn't\n"
-    "charge if the user is blooming.");
+    "makes the user bloom or increases\n"
+    "the duration of its blooming.");
 
 static const u8 sGrassCannonDescription[] = _(
     "On Grassy Terrain, this move\n"

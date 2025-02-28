@@ -4611,7 +4611,9 @@ void Task_AbilityCapsule(u8 taskId)
     static const u8 askText[] = _("Would you like to change {STR_VAR_1}'s\nability to {STR_VAR_2}?");
     static const u8 doneText[] = _("{STR_VAR_1}'s ability became\n{STR_VAR_2}!{PAUSE_UNTIL_PRESS}");
     s16 *data = gTasks[taskId].data;
-
+    StringCopy(gStringVar1, gAbilityNames[GetAbilityBySpecies(tSpecies, 0)]);
+    StringCopy(gStringVar2, gAbilityNames[GetAbilityBySpecies(tSpecies, 1)]);
+    StringCopy(gStringVar3, gAbilityNames[GetAbilityBySpecies(tSpecies, 2)]);  
     switch (tState)
     {
     case 0:
@@ -4624,13 +4626,9 @@ void Task_AbilityCapsule(u8 taskId)
             ScheduleBgCopyTilemapToVram(2);
             gTasks[taskId].func = Task_ClosePartyMenuAfterText;
             return;
-        }
-        StringCopy(gStringVar1, gAbilityNames[GetAbilityBySpecies(tSpecies, 0)]);
-        StringCopy(gStringVar2, gAbilityNames[GetAbilityBySpecies(tSpecies, 1)]);
-        StringCopy(gStringVar3, gAbilityNames[GetAbilityBySpecies(tSpecies, 2)]);  
+        }        
         StringExpandPlaceholders(gStringVar4, whichText);
         PlaySE(SE_SELECT);
-        DisplayPartyMenuMessage(gStringVar4, 1);
         ScheduleBgCopyTilemapToVram(2);      
         tState++;
         break;

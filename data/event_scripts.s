@@ -676,6 +676,110 @@ Common_EventScript_ReadyPetalburgGymForBattle::
 	setflag FLAG_PETALBURG_MART_EXPANDED_ITEMS
 	return
 
+Common_Lottery_EventScript_LotteryClerk::
+	lock
+	faceplayer
+	dotimebasedevents
+	goto_if_ne VAR_POKELOT_PRIZE_ITEM, ITEM_NONE, Common_Lottery_EventScript_GivePrizeFromEarlier
+	goto_if_set FLAG_DAILY_PICKED_LOTO_TICKET, Common_Lottery_EventScript_ComeBackTomorrow
+	msgbox Common_Lottery_Text_LotteryCornerDrawTicket, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Common_Lottery_EventScript_PleaseVisitAgain
+	setflag FLAG_DAILY_PICKED_LOTO_TICKET
+	message Common_Lottery_Text_PleasePickTicket
+	waitmessage
+	special RetrieveLotteryNumber
+	copyvar VAR_0x8008, VAR_RESULT
+	special BufferLottoTicketNumber
+	msgbox Common_Lottery_Text_TicketNumberIsXPleaseWait, MSGBOX_DEFAULT
+	applymovement LOCALID_LOTTERY_CLERK, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	playse SE_CONTEST_MONS_TURN
+	special PickLotteryCornerTicket
+	delay 220
+	applymovement LOCALID_LOTTERY_CLERK, Common_Movement_FacePlayer
+	waitmovement 0
+	goto_if_eq VAR_0x8004, 0, Common_Lottery_EventScript_NoMatch
+	incrementgamestat GAME_STAT_WON_POKEMON_LOTTERY
+	call_if_eq VAR_0x8006, 0, Common_Lottery_EventScript_TicketMatchPartyMon
+	call_if_eq VAR_0x8006, 1, Common_Lottery_EventScript_TicketMatchPCMon
+	bufferitemname STR_VAR_1, VAR_0x8005
+	call_if_eq VAR_0x8004, 1, Common_Lottery_EventScript_TwoDigitMatch
+	call_if_eq VAR_0x8004, 2, Common_Lottery_EventScript_ThreeDigitMatch
+	call_if_eq VAR_0x8004, 3, Common_Lottery_EventScript_FourDigitMatch
+	call_if_eq VAR_0x8004, 4, Common_Lottery_EventScript_FullMatch
+	giveitem VAR_0x8005
+	goto_if_eq VAR_RESULT, FALSE, Common_Lottery_EventScript_RecordPrizeNoRoom
+	special TryPutLotteryWinnerReportOnAir
+	goto Common_Lottery_EventScript_PleaseVisitAgain2
+	end
+
+Common_Lottery_EventScript_TicketMatchPartyMon::
+	msgbox Common_Lottery_Text_TicketMatchesPartyMon, MSGBOX_DEFAULT
+	return
+
+Common_Lottery_EventScript_TicketMatchPCMon::
+	msgbox Common_Lottery_Text_TicketMatchesPCMon, MSGBOX_DEFAULT
+	return
+
+Common_Lottery_EventScript_ComeBackTomorrow::
+	msgbox Common_Lottery_Text_ComeBackTomorrow, MSGBOX_DEFAULT
+	release
+	end
+
+Common_Lottery_EventScript_PleaseVisitAgain::
+	msgbox Common_Lottery_Text_PleaseVisitAgain, MSGBOX_DEFAULT
+	release
+	end
+
+Common_Lottery_EventScript_NoMatch::
+	msgbox Common_Lottery_Text_NoNumbersMatched, MSGBOX_DEFAULT
+	goto Common_Lottery_EventScript_PleaseVisitAgain2
+	end
+
+Common_Lottery_EventScript_PleaseVisitAgain2::
+	msgbox Common_Lottery_Text_PleaseVisitAgain2, MSGBOX_DEFAULT
+	release
+	end
+
+Common_Lottery_EventScript_TwoDigitMatch::
+	msgbox Common_Lottery_Text_TwoDigitsMatched, MSGBOX_DEFAULT
+	return
+
+Common_Lottery_EventScript_ThreeDigitMatch::
+	msgbox Common_Lottery_Text_ThreeDigitsMatched, MSGBOX_DEFAULT
+	return
+
+Common_Lottery_EventScript_FourDigitMatch::
+	msgbox Common_Lottery_Text_FourDigitsMatched, MSGBOX_DEFAULT
+	return
+
+Common_Lottery_EventScript_FullMatch::
+	msgbox Common_Lottery_Text_AllFiveDigitsMatched, MSGBOX_DEFAULT
+	return
+
+Common_Lottery_EventScript_RecordPrizeNoRoom::
+	copyvar VAR_POKELOT_PRIZE_PLACE, VAR_0x8004
+	copyvar VAR_POKELOT_PRIZE_ITEM, VAR_0x8005
+	goto Common_Lottery_EventScript_NoRoomForPrize
+	end
+
+Common_Lottery_EventScript_NoRoomForPrize::
+	msgbox Common_Lottery_Text_NoRoomForThis, MSGBOX_DEFAULT
+	release
+	end
+
+Common_Lottery_EventScript_GivePrizeFromEarlier::
+	msgbox Common_Lottery_Text_PrizeWeveBeenHolding, MSGBOX_DEFAULT
+	giveitem VAR_POKELOT_PRIZE_ITEM
+	goto_if_eq VAR_RESULT, FALSE, Common_Lottery_EventScript_NoRoomForPrize
+	copyvar VAR_0x8004, VAR_POKELOT_PRIZE_PLACE
+	copyvar VAR_0x8005, VAR_POKELOT_PRIZE_ITEM
+	special TryPutLotteryWinnerReportOnAir
+	setvar VAR_POKELOT_PRIZE_ITEM, ITEM_NONE
+	setvar VAR_POKELOT_PRIZE_PLACE, 0
+	release
+	end
+
 Common_EventScript_TannerShop::
 	lock
 	faceplayer
@@ -742,6 +846,7 @@ Common_Mart_TannerShop2:
 	.2byte ITEM_ETHER
 	.2byte ITEM_SODA_POP
 	.2byte ITEM_POKE_BALL
+	.2byte ITEM_REPEL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_BURN_HEAL
@@ -766,6 +871,7 @@ Common_Mart_TannerShop3:
 	.2byte ITEM_ETHER
 	.2byte ITEM_SODA_POP
 	.2byte ITEM_POKE_BALL
+	.2byte ITEM_REPEL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_BURN_HEAL
@@ -791,6 +897,8 @@ Common_Mart_TannerShop4:
 	.2byte ITEM_ETHER
 	.2byte ITEM_SODA_POP
 	.2byte ITEM_POKE_BALL
+	.2byte ITEM_SUPER_REPEL
+	.2byte ITEM_REPEL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_BURN_HEAL
@@ -819,11 +927,14 @@ Common_Mart_TannerShop5:
 	.2byte ITEM_ETHER
 	.2byte ITEM_SODA_POP
 	.2byte ITEM_POKE_BALL
+	.2byte ITEM_SUPER_REPEL
+	.2byte ITEM_REPEL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_BURN_HEAL
 	.2byte ITEM_ICE_HEAL
 	.2byte ITEM_AWAKENING
+	.2byte ITEM_RELAXANT
 	.2byte ITEM_ENERGY_ROOT
 	.2byte ITEM_NONE
 	release
@@ -848,11 +959,15 @@ Common_Mart_TannerShop6:
 	.2byte ITEM_ETHER
 	.2byte ITEM_SODA_POP
 	.2byte ITEM_POKE_BALL
+	.2byte ITEM_MAX_REPEL
+	.2byte ITEM_SUPER_REPEL
+	.2byte ITEM_REPEL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_BURN_HEAL
 	.2byte ITEM_ICE_HEAL
 	.2byte ITEM_AWAKENING
+	.2byte ITEM_RELAXANT
 	.2byte ITEM_LAVA_COOKIE
 	.2byte ITEM_ENERGY_ROOT
 	.2byte ITEM_NONE
@@ -880,11 +995,15 @@ Common_Mart_TannerShop7:
 	.2byte ITEM_ETHER
 	.2byte ITEM_SODA_POP
 	.2byte ITEM_POKE_BALL
+	.2byte ITEM_MAX_REPEL
+	.2byte ITEM_SUPER_REPEL
+	.2byte ITEM_REPEL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_BURN_HEAL
 	.2byte ITEM_ICE_HEAL
 	.2byte ITEM_AWAKENING
+	.2byte ITEM_RELAXANT
 	.2byte ITEM_LAVA_COOKIE
 	.2byte ITEM_ENERGY_ROOT
 	.2byte ITEM_NONE
@@ -913,11 +1032,15 @@ Common_Mart_TannerShop8:
 	.2byte ITEM_ETHER
 	.2byte ITEM_SODA_POP
 	.2byte ITEM_POKE_BALL
+	.2byte ITEM_MAX_REPEL
+	.2byte ITEM_SUPER_REPEL
+	.2byte ITEM_REPEL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_BURN_HEAL
 	.2byte ITEM_ICE_HEAL
 	.2byte ITEM_AWAKENING
+	.2byte ITEM_RELAXANT
 	.2byte ITEM_LAVA_COOKIE
 	.2byte ITEM_ENERGY_ROOT
 	.2byte ITEM_NONE
@@ -947,11 +1070,15 @@ Common_Mart_TannerShop9:
 	.2byte ITEM_ETHER
 	.2byte ITEM_SODA_POP
 	.2byte ITEM_POKE_BALL
+	.2byte ITEM_MAX_REPEL
+	.2byte ITEM_SUPER_REPEL
+	.2byte ITEM_REPEL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_BURN_HEAL
 	.2byte ITEM_ICE_HEAL
 	.2byte ITEM_AWAKENING
+	.2byte ITEM_RELAXANT
 	.2byte ITEM_LAVA_COOKIE
 	.2byte ITEM_ENERGY_ROOT
 	.2byte ITEM_NONE
@@ -982,11 +1109,15 @@ Common_Mart_TannerShop10:
 	.2byte ITEM_ETHER
 	.2byte ITEM_SODA_POP
 	.2byte ITEM_POKE_BALL
+	.2byte ITEM_MAX_REPEL
+	.2byte ITEM_SUPER_REPEL
+	.2byte ITEM_REPEL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_BURN_HEAL
 	.2byte ITEM_ICE_HEAL
 	.2byte ITEM_AWAKENING
+	.2byte ITEM_RELAXANT
 	.2byte ITEM_LAVA_COOKIE
 	.2byte ITEM_ENERGY_ROOT
 	.2byte ITEM_NONE
@@ -1028,11 +1159,15 @@ Common_Mart_KodoughShop:
 	.2byte ITEM_ETHER
 	.2byte ITEM_SODA_POP
 	.2byte ITEM_POKE_BALL
+	.2byte ITEM_MAX_REPEL
+	.2byte ITEM_SUPER_REPEL
+	.2byte ITEM_REPEL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_BURN_HEAL
 	.2byte ITEM_ICE_HEAL
 	.2byte ITEM_AWAKENING
+	.2byte ITEM_RELAXANT
 	.2byte ITEM_LAVA_COOKIE
 	.2byte ITEM_ENERGY_ROOT
 	.2byte ITEM_NONE
@@ -3867,3 +4002,11 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/MuseumSanctum/scripts.inc"
 
 	.include "data/maps/DetermaniteUnderwater/scripts.inc"
+
+	.include "data/maps/ScuttillInteriors/scripts.inc"
+
+	.include "data/maps/ShiftryArena/scripts.inc"
+
+	.include "data/maps/SecretMeadow/scripts.inc"
+
+	.include "data/maps/BasalinCave/scripts.inc"

@@ -252,4 +252,14 @@ MoveTutor_Text_NoCoralCrowns:
 
 MoveTutor_Text_WillTakeYourCoralCrown:
 	.string "I will take one Coral Crown\n"
-	.string "as a payment.$"
+	.string "as a payment after the\l"
+	.string "move has been taught.$"
+
+MoveTutor_Text_NoGoldTooth:
+	.string "You need at least one Gold Tooth\n"
+	.string "to pay for this tutored move.$"
+
+MoveTutor_Text_WillTakeYourGoldTooth:
+	.string "I will take one Gold Tooth\n"
+	.string "as a payment after the\l"
+	.string "move has been taught.$"

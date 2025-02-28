@@ -171,14 +171,6 @@ BirchMaritimeLab_EventScript_GivePokeBalls::
 	setvar VAR_RESULT, 0
 	return
 
-BirchMaritimeLab_EventScript_PokemonAwait::
-	faceplayer
-	speakername BirchMaritimeLab_Text_NameBirch
-	msgbox BirchMaritimeLab_Text_AfterGettingStarter, MSGBOX_AUTOCLOSE
-	speakername NULL
-	release
-	end
-
 BirchMaritimeLab_EventScript_NoRoomForPokeBalls::
 	msgbox BirchMaritimeLab_Text_OhYourBagsFull, MSGBOX_DEFAULT
 	return
@@ -201,10 +193,92 @@ BirchMaritimeLab_EventScript_BeatenRangers::
 	releaseall
 	end
 
+BirchMaritimeLab_EventScript_BirchIdle::
+	lock
+	faceplayer
+	goto_if_set FLAG_VISITED_SOOTOPOLIS_CITY, BirchMaritimeLab_EventScript_BirchCheckDex
+	goto_if_set FLAG_HIDE_SKY_PILLAR_RANGERS, BirchMaritimeLab_EventScript_BirchPostSkyPillar
+	speakername BirchMaritimeLab_Text_NameBirch
+	msgbox BirchMaritimeLab_Text_AfterGettingStarter, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
 BirchMaritimeLab_EventScript_BirchPostSkyPillar::
 	speakername BirchMaritimeLab_Text_NameBirch
-	msgbox BirchMaritimeLab_Text_BirchPostSkyPillar, MSGBOX_NPC
-	speakername NULL
+	msgbox BirchMaritimeLab_Text_BirchPostSkyPillar, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+BirchMaritimeLab_EventScript_BirchCheckDex::
+	speakername BirchMaritimeLab_Text_NameBirch
+	msgbox BirchMaritimeLab_Text_HowsCatchingPokemon, MSGBOX_DEFAULT
+	setvar VAR_0x8004, 0
+	specialvar VAR_RESULT, ScriptGetPokedexInfo
+	copyvar VAR_0x8008, VAR_0x8005
+	copyvar VAR_0x8009, VAR_0x8006
+	copyvar VAR_0x800A, VAR_RESULT
+	buffernumberstring STR_VAR_1, VAR_0x8008
+	buffernumberstring STR_VAR_2, VAR_0x8009
+	speakername BirchMaritimeLab_Text_NameBirch
+	msgbox BirchMaritimeLab_Text_BirchTellDexCount, MSGBOX_DEFAULT
+	goto_if_gt VAR_0x8009, 99, BirchMaritimeLab_EventScript_Birch100Caught
+	speakername BirchMaritimeLab_Text_NameBirch
+	msgbox BirchMaritimeLab_Text_KeepOnCatching, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+BirchMaritimeLab_EventScript_Birch100Caught::
+	goto_if_set FLAG_GOT_FAVOR_SCARF, BirchMaritimeLab_EventScript_BirchCheck200
+	speakername BirchMaritimeLab_Text_NameBirch
+	msgbox BirchMaritimeLab_Text_Wow100HaveFavorScarf, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_FAVOR_SCARF
+	closemessage
+	setflag FLAG_GOT_FAVOR_SCARF
+	speakername BirchMaritimeLab_Text_NameBirch
+	msgbox BirchMaritimeLab_Text_GoFor200, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+BirchMaritimeLab_EventScript_BirchCheck200::
+	goto_if_gt VAR_0x8009, 199, BirchMaritimeLab_EventScript_Birch200Caught
+	speakername BirchMaritimeLab_Text_NameBirch
+	msgbox BirchMaritimeLab_Text_GoFor200, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+BirchMaritimeLab_EventScript_Birch200Caught::
+	checkitem ITEM_CATCHING_CHARM
+	goto_if_eq VAR_RESULT, TRUE, BirchMaritimeLab_EventScript_BirchCheckAllCaught
+	speakername BirchMaritimeLab_Text_NameBirch
+	msgbox BirchMaritimeLab_Text_Wow200HaveCatchingCharm, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_CATCHING_CHARM
+	closemessage
+	speakername BirchMaritimeLab_Text_NameBirch
+	msgbox BirchMaritimeLab_Text_GoForAllCaught, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+BirchMaritimeLab_EventScript_BirchCheckAllCaught::
+	goto_if_gt VAR_0x8009, 279, BirchMaritimeLab_EventScript_BirchAllCaught
+	speakername BirchMaritimeLab_Text_NameBirch
+	msgbox BirchMaritimeLab_Text_GoForAllCaught, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+BirchMaritimeLab_EventScript_BirchAllCaught::
+	speakername BirchMaritimeLab_Text_NameBirch
+	msgbox BirchMaritimeLab_Text_WowAllCaught, MSGBOX_DEFAULT
+	closemessage
+	release
 	end
 
 BirchMaritimeLab_EventScript_GrangerPostSkyPillar::
@@ -403,3 +477,65 @@ BirchMaritimeLab_Text_StudiousAide:
 	.string "out in this new environment\l"
 	.string "and take on projects I\l"
 	.string "wouldn't back in Littleroot.$"
+
+BirchMaritimeLab_Text_HowsCatchingPokemon:
+	.string "Hey, kiddo! Hope your big 'ol\n"
+	.string "adventure is going great!\p"
+	.string "Have you been catching lots of\n"
+	.string "new friends and filling out\l"
+	.string "your Pokedex? Ahaha, yes, your\l"
+	.string "old man is nosy! Let me see\l"
+	.string "your Pokedex progress!$"
+
+BirchMaritimeLab_Text_BirchTellDexCount:
+	.string "So, you've seen {STR_VAR_1} Pokemon\n"
+	.string "and caught {STR_VAR_2} of them...$"
+
+BirchMaritimeLab_Text_KeepOnCatching:
+	.string "That is a respectable amount so far!\n"
+	.string "Try and aim for registering\l"
+	.string "100 Pokemon in your 'Dex...\l"
+	.string "I'll gift you a special somethin'!$"
+
+BirchMaritimeLab_Text_Wow100HaveFavorScarf:
+	.string "You've caught over 100 Pokemon?\n"
+	.string "That's amazing, kiddo! An\l"
+	.string "accomplishment like that deserves\l"
+	.string "a reward, so here, I want you\l"
+	.string "to take this!\p"
+	.string "I, err, took a few lessons in\n"
+	.string "crocheting to make it...\l"
+	.string "the things a dad does for\l"
+	.string "his little prodigy!$"
+
+BirchMaritimeLab_Text_GoFor200:
+	.string "You gotta aim for the big 200\n"
+	.string "registered in the Pokedex next!\l"
+	.string "I'll make you something\l"
+	.string "even more creative... I promise!$"
+
+BirchMaritimeLab_Text_Wow200HaveCatchingCharm:
+	.string "You've hit the 200 mark, kiddo!\n"
+	.string "You're something else! Really\l"
+	.string "makes me a proud pops, hahaha!\p"
+	.string "As promised, I have honed my\n"
+	.string "arts and crafts skills more...\l"
+	.string "I invested a lot of energy\l"
+	.string "into hand-making this charm\l"
+	.string "for you, kiddo. I hope you\l"
+	.string "wear it around on these last\l"
+	.string "legs of your journey!$"
+
+BirchMaritimeLab_Text_GoForAllCaught:
+	.string "You're getting close to registering\n"
+	.string "all 280 Pokemon in the Hoenn Pokedex...\l"
+	.string "That'll be a herculean task\l"
+	.string "to finish out, but I know you're\l"
+	.string "tenacious enough to see it through!\l"
+	.string "Go get 'em, champ!$"
+
+BirchMaritimeLab_Text_WowAllCaught:
+	.string "You've caught every single Pokemon!\n"
+	.string "What a legendary kid you turned\l"
+	.string "out to be... oh, who am I kidding?\l"
+	.string "I always knew you had it in you!$"

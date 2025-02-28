@@ -1,3 +1,5 @@
+.set LOCALID_YANDEMIC, 4
+
 LilycoveCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_OnTransition
 	.byte 0
@@ -57,6 +59,24 @@ LilycoveCity_EventScript_YandemicAddVar::
 	addvar VAR_NOTICED_BY_YANDEMIC, 1
 	return
 
+LilycoveCity_EventScript_KamenRider::
+	lock
+	faceplayer
+	checkitem ITEM_KAMEN_SCARF
+	goto_if_eq VAR_RESULT, TRUE, LilycoveCity_EventScript_AlreadyGaveKamenScarf
+	msgbox LilycoveCity_Text_ShowMeYourMuscles, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_KAMEN_SCARF
+	closemessage
+	msgbox LilycoveCity_Text_FlexToOthers, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveCity_EventScript_AlreadyGaveKamenScarf::
+	msgbox LilycoveCity_Text_AlreadyGaveKamenScarf, MSGBOX_AUTOCLOSE
+	release
+	end
+
 LilycoveCity_Text_YouFeelWatched:
 	.string "(You begin to notice that\n"
 	.string "you are being intently watched...)$"
@@ -70,10 +90,56 @@ LilycoveCity_Text_ThisIsMyWorkplace:
 	.string "with a southern drawl!$"
 
 LilycoveCity_Text_WantToSee40CaughtMons:
-	.string "i wanna see 40 caught$"
+	.string "Catching Pokemon is fun, yeah?\n"
+	.string "Well, most of the time.\p"
+	.string "Some Pokemon can be a pain to\n"
+	.string "whittle down without\l"
+	.string "having them faint.\p"
+	.string "Now, I DO have a spare TM\n"
+	.string "for a move that may help you there.\l"
+	.string "But you really gotta PROVE to me\l"
+	.string "that you've got capturing chops.\p"
+	.string "If you can produce a 40 caught\n"
+	.string "count in your Pokedex, I'll\l"
+	.string "hand the TM over. Deal?$"
 
 LilycoveCity_Text_LotsOfCaughtMons:
-	.string "wow u caught 40 mons$"
+	.string "You're a pretty experienced\n"
+	.string "catcher, I take it. 40 caught?\l"
+	.string "Not a bad number.\p"
+	.string "Here, take this TM for False Swipe.\n"
+	.string "It should help you get that\l"
+	.string "number even higher.$"
 
 LilycoveCity_Text_GaveFS:
-	.string "gave u FS already$"
+	.string "Combining False Swipe with\n"
+	.string "a status move that causes\l"
+	.string "paralysis or sleep is one of\l"
+	.string "the best ways to weaken Pokemon\l"
+	.string "for a quick capture.$"
+
+LilycoveCity_Text_ShowMeYourMuscles:
+	.string "Man, I tell ya, cycling is\n"
+	.string "one of THE best ways to build\l"
+	.string "a crap-ton of MUSCLE! GRAHH!\p"
+	.string "Hey, little dude! Show me\n"
+	.string "a good flex! Are you RIPPED!?\p"
+	.string "(You half-heartedly tense up\n"
+	.string "the muscles in your chest.)\p"
+	.string "AWESOME! I still got a ways to go.\p"
+	.string "You know the Pokemon Shockore?\n"
+	.string "Man, that thing is just a\l"
+	.string "LIVING SIX PACK. Nothing can\l"
+	.string "penetrate THOSE abs. So if you\l"
+	.string "can't beat 'em, join 'em!$"
+
+LilycoveCity_Text_FlexToOthers:
+	.string "Have your own Shockore wear\n"
+	.string "that scarf, and it'll turn\l"
+	.string "into basically an IMMOVABLE OBJECT.\p"
+	.string "The two of you can be flex partners!$"
+
+LilycoveCity_Text_AlreadyGaveKamenScarf:
+	.string "I need to really beef up\n"
+	.string "my legs to deliver some more\l"
+	.string "potent Raidakikku...$"

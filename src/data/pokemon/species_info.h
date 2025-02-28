@@ -106,6 +106,7 @@
         .abilities = {ABILITY_VERTIGO, ABILITY_TANGLED_FEET, ABILITY_CONTRARY}, \
         .bodyColor = color, \
         .noFlip = TRUE, \
+        .flags = SPECIES_FLAG_COMMON, \
     }
 
 #define CHERRIM_SPECIES_INFO(color)                      \
@@ -597,7 +598,8 @@
         .eggGroups = { EGG_GROUP_MINERAL, EGG_GROUP_MINERAL},                     \
         .abilities = {ABILITY_SHIELDS_DOWN, ABILITY_NONE},  \
         .bodyColor = color,                                 \
-        .noFlip = TRUE
+        .noFlip = TRUE, \
+        .flags = SPECIES_FLAG_UNCOMMON
 
 #define MINIOR_METEOR_SPECIES_INFO          \
     {                                       \
@@ -810,6 +812,7 @@
         .abilities = {ABILITY_WANDERING_SPIRIT, ABILITY_ROUGH_SKIN, ABILITY_PERISH_BODY}, \
         .bodyColor = BODY_COLOR_BLACK,                  \
         .noFlip = FALSE,                                \
+        .flags = SPECIES_FLAG_LEGENDARY, \
     }
 
 #define DUDUNSPARS_SPECIES_INFO                                                     \
@@ -832,6 +835,7 @@
         .abilities = {ABILITY_SERENE_GRACE, ABILITY_MOLD_BREAKER, ABILITY_RATTLED}, \
         .bodyColor = BODY_COLOR_YELLOW,                                             \
         .noFlip = FALSE,                                                            \
+        .flags = SPECIES_FLAG_MYSTICAL, \
     }
 
 #define SHISHIMA_SPECIES_INFO \
@@ -854,6 +858,7 @@
         .abilities = {ABILITY_PUNISHER, ABILITY_PUNISHER, ABILITY_PUNISHER, ABILITY_NONE}, \
         .bodyColor = BODY_COLOR_WHITE, \
         .noFlip = FALSE, \
+        .flags = SPECIES_FLAG_SCARCE, \
     }
 
 #define SHUNYONG_SPECIES_INFO \
@@ -876,7 +881,7 @@
         .abilities = {ABILITY_GOLDEN_MEAN, ABILITY_GOLDEN_MEAN, ABILITY_GOLDEN_MEAN, ABILITY_NONE}, \
         .bodyColor = BODY_COLOR_YELLOW, \
         .noFlip = FALSE, \
-        .flags = SPECIES_FLAG_LEGENDARY,                \
+        .flags = SPECIES_FLAG_LEGENDARY, \
     }
 
 #define POTTRICIA_SPECIES_INFO \
@@ -2209,6 +2214,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_VITAL_SPIRIT, ABILITY_ANGER_POINT, ABILITY_DEFIANT},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_PRIMEAPE] =
@@ -2231,6 +2237,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_VITAL_SPIRIT, ABILITY_ANGER_POINT, ABILITY_DEFIANT},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_GROWLITHE] =
@@ -2253,6 +2260,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_INTIMIDATE, ABILITY_FLASH_FIRE, ABILITY_ROCK_HEAD},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_ARCANINE] =
@@ -2275,6 +2283,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_INTIMIDATE, ABILITY_FLASH_FIRE, ABILITY_ROCK_HEAD},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_POLIWAG] =
@@ -2958,6 +2967,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_STICKY_HOLD, ABILITY_LIQUID_OOZE, ABILITY_POTENCY},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_MUK] =
@@ -2982,6 +2992,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_STICKY_HOLD, ABILITY_LIQUID_OOZE, ABILITY_POTENCY},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_SHELLDER] =
@@ -4722,6 +4733,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SWARM, ABILITY_SUPER_LUCK, ABILITY_VICTORY_STAR, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_LEDIAN] =
@@ -4744,6 +4756,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_STAR_SCREEN, ABILITY_SUPER_LUCK, ABILITY_VICTORY_STAR, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_SPINARAK] =
@@ -5524,6 +5537,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_LEVITATE, ABILITY_DREAD_VEIL, ABILITY_MAGICIAN},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_UNOWN] = UNOWN_SPECIES_INFO(FLIP),
@@ -5636,6 +5650,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SERENE_GRACE, ABILITY_MOLD_BREAKER, ABILITY_RATTLED},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_GLIGAR] =
@@ -5658,6 +5673,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_HYPER_CUTTER, ABILITY_SAND_VEIL, ABILITY_IMMUNITY},
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_STEELIX] =
@@ -6965,6 +6981,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_PICKUP, ABILITY_GLUTTONY, ABILITY_QUICK_FEET, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_LINOONE] =
@@ -6989,6 +7006,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_TECHNICIAN, ABILITY_GLUTTONY, ABILITY_ONE_WAY_TRIP, ABILITY_NONE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_WURMPLE] =
@@ -7199,6 +7217,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_CHLOROPHYLL, ABILITY_EARLY_BIRD, ABILITY_PICKPOCKET},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_NUZLEAF] =
@@ -7222,6 +7241,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_CHLOROPHYLL, ABILITY_EARLY_BIRD, ABILITY_PICKPOCKET},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_SHIFTRY] =
@@ -7246,6 +7266,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_CHLOROPHYLL, ABILITY_WIND_RIDER, ABILITY_GUSTY},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_TAILLOW] =
@@ -7268,6 +7289,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_GUTS, ABILITY_RECKLESS, ABILITY_SCRAPPY},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_SWELLOW] =
@@ -7294,6 +7316,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_GUTS, ABILITY_RECKLESS, ABILITY_SCRAPPY},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_WINGULL] =
@@ -7623,6 +7646,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_COMPOUND_EYES, ABILITY_SAND_VEIL, ABILITY_OVERCOAT},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_NINJASK] =
@@ -7645,6 +7669,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SPEED_BOOST, ABILITY_STEADFAST, ABILITY_TINTED_LENS},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_SHEDINJA] =
@@ -7667,6 +7692,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_WONDER_GUARD, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_WHISMUR] =
@@ -8443,6 +8469,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_THICK_FAT, ABILITY_CUTE_CHARM, ABILITY_GLUTTONY},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_GRUMPIG] =
@@ -8465,6 +8492,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_THICK_FAT, ABILITY_DISTURB, ABILITY_GLUTTONY},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_SPINDA] = SPINDA_SPECIES_INFO(BODY_COLOR_RED),
@@ -8715,6 +8743,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_MAGIC_GUARD, ABILITY_LEVITATE, ABILITY_SHADOW_SHIELD, ABILITY_NONE},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_SOLROCK] =
@@ -8744,6 +8773,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_MAGIC_GUARD, ABILITY_LEVITATE, ABILITY_SOLID_ROCK, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_BARBOACH] =
@@ -9270,6 +9300,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_INNER_FOCUS, ABILITY_ICE_BODY, ABILITY_MOODY},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_GLALIE] =
@@ -9292,6 +9323,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_PERMAFROST, ABILITY_REFRIGERATE, ABILITY_MOODY},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_SPHEAL] =
@@ -9476,6 +9508,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SWIFT_SWIM, ABILITY_FREE_LOVE, ABILITY_SOUL_HEART},
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_BAGON] =
@@ -10014,6 +10047,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_LEVITATE, ABILITY_DREAD_VEIL, ABILITY_MAGICIAN},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_HONCHKROW] =
@@ -10559,6 +10593,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_ANTICIPATION, ABILITY_DRY_SKIN, ABILITY_POISON_TOUCH},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_TOXICROAK] =
@@ -10582,6 +10617,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_ANTICIPATION, ABILITY_DRY_SKIN, ABILITY_POISON_TOUCH},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_CARNIVINE] =
@@ -10993,6 +11029,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_DEFIANT, ABILITY_SAND_VEIL, ABILITY_POISON_HEAL},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_MAMOSWINE] =
@@ -11133,6 +11170,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SNOW_CLOAK, ABILITY_CURSED_BODY, ABILITY_WHITE_OUT},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_ROTOM] =
@@ -13274,6 +13312,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_WANDERING_SPIRIT, ABILITY_BERSERK, ABILITY_PERISH_BODY, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_ZOROARK] =
@@ -14458,6 +14497,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_DEFIANT, ABILITY_INNER_FOCUS, ABILITY_PRESSURE},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_BISHARP] =
@@ -14480,6 +14520,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_DEFIANT, ABILITY_INNER_FOCUS, ABILITY_PRESSURE},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_BOUFFALANT] =
@@ -18308,6 +18349,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_MOXIE, ABILITY_BERSERK, ABILITY_MOTOR_DRIVE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_LEGENDARY,
     },
 
     [SPECIES_MELTAN] =
@@ -20394,6 +20436,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_OVERGROW, ABILITY_CHLOROPHYLL, ABILITY_LEAF_GUARD},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_SLIDLOW] =
@@ -20416,6 +20459,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_OVERGROW, ABILITY_STRONG_JAW, ABILITY_LEAF_GUARD},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_CARDIOVOR] =
@@ -20438,6 +20482,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_OVERGROW, ABILITY_STRONG_JAW, ABILITY_SEED_SOWER},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = TRUE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_FIEFREET] =
@@ -20460,6 +20505,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_BLAZE, ABILITY_SOLAR_POWER, ABILITY_INSOMNIA},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_BALBYRN] =
@@ -20482,6 +20528,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_BLAZE, ABILITY_INTIMIDATE, ABILITY_INSOMNIA},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_BLAZIZAHAK] =
@@ -20504,6 +20551,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_BLAZE, ABILITY_INTIMIDATE, ABILITY_BERSERK},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_PRONGY] =
@@ -20526,6 +20574,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_TORRENT, ABILITY_HYDRATION, ABILITY_KEEN_EYE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_TRIDALIER] =
@@ -20548,6 +20597,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_TORRENT, ABILITY_FILTER, ABILITY_KEEN_EYE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_TRITONAUT] =
@@ -20570,6 +20620,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_TORRENT, ABILITY_FILTER, ABILITY_POWER_SPIKE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_SNELFREND] =
@@ -20592,6 +20643,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_WATER_ABSORB, ABILITY_SHELL_ARMOR, ABILITY_FRIENDLY_AURA, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_SYCOPLOD] =
@@ -20615,6 +20667,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_WATER_ABSORB, ABILITY_SYNCHRONIZE, ABILITY_FRIENDLY_AURA, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_SYCOSTROM] =
@@ -20639,6 +20692,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_WATER_ABSORB, ABILITY_SYNCHRONIZE, ABILITY_SPIRALYSIS, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_GUPSPAR] =
@@ -20661,6 +20715,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SWIFT_SWIM, ABILITY_DAMP, ABILITY_STRONG_JAW, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_VANGAR] =
@@ -20683,6 +20738,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SWIFT_SWIM, ABILITY_DAMP, ABILITY_STRONG_JAW, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_GHAERIAL] =
@@ -20705,6 +20761,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SWIFT_SWIM, ABILITY_AERILATE, ABILITY_STRONG_JAW, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_QUILWARD] =
@@ -20727,6 +20784,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_FLAME_BODY, ABILITY_IRON_BARBS, ABILITY_TOUGH_CLAWS, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_BONFEU] =
@@ -20749,6 +20807,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_FLAME_BODY, ABILITY_IRON_BARBS, ABILITY_TOUGH_CLAWS, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_INFRAREC] =
@@ -20771,6 +20830,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_FIREBRAND, ABILITY_IRON_BARBS, ABILITY_TOUGH_CLAWS, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_BERM] =
@@ -20793,6 +20853,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_GRASS_PELT, ABILITY_OVERGROW, ABILITY_GRASSY_SURGE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_MOODA] =
@@ -20815,6 +20876,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_GRASS_PELT, ABILITY_OVERGROW, ABILITY_GRASSY_SURGE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_BERMUDON] =
@@ -20837,6 +20899,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_GRASS_PELT, ABILITY_OVERGROW, ABILITY_GRASSY_SURGE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_MARINAROC] =
@@ -20859,6 +20922,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_PROPELLER_TAIL, ABILITY_STORM_DRAIN, ABILITY_NATURAL_CURE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_METTATOLL] =
@@ -20881,6 +20945,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_PROPELLER_TAIL, ABILITY_FILTER, ABILITY_SEAFARER, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_ICKSQUEEK] =
@@ -20903,6 +20968,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_FRISK, ABILITY_STAKEOUT, ABILITY_RUN_AWAY, ABILITY_NONE},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_KOMORODE] =
@@ -20925,6 +20991,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_FRISK, ABILITY_STAKEOUT, ABILITY_MERCILESS, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_ANNIHILAPE] =
@@ -20947,6 +21014,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_MOLD_BREAKER, ABILITY_INNER_FOCUS, ABILITY_DEFIANT, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_EBIBI] =
@@ -20969,6 +21037,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SWIFT_SWIM, ABILITY_SHELL_ARMOR, ABILITY_MARVEL_SCALE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_MAKIBI] =
@@ -20991,6 +21060,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SWIFT_SWIM, ABILITY_SHELL_ARMOR, ABILITY_MARVEL_SCALE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_EBIROSASHI] =
@@ -21013,6 +21083,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SWIFT_SWIM, ABILITY_ADAPTABILITY, ABILITY_MARVEL_SCALE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_KITIKITI] =
@@ -21035,6 +21106,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_DRAINAGE, ABILITY_SWARM, ABILITY_SWIFT_SWIM},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_MOSKOPO] =
@@ -21054,9 +21126,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG},
-        .abilities = {ABILITY_DRAINAGE, ABILITY_SWARM, ABILITY_INFILTRATOR},
+        .abilities = {ABILITY_DRAINAGE, ABILITY_ANTICIPATION, ABILITY_LIMBER},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_ABSOLARIA] =
@@ -21079,6 +21152,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_DRAINAGE, ABILITY_SWARM, ABILITY_TRANSFUSION},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = TRUE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_KYUDI] =
@@ -21101,6 +21175,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SAND_VEIL, ABILITY_PIXILATE, ABILITY_TOUGH_CLAWS, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_KOMBAKYU] =
@@ -21123,6 +21198,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SAND_STREAM, ABILITY_PIXILATE, ABILITY_TOUGH_CLAWS, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_FLUFFSIR] =
@@ -21145,6 +21221,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_FLUFFY, ABILITY_CUTE_CHARM, ABILITY_UNNERVE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_FLUFFREAR] =
@@ -21167,6 +21244,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_FLUFFY, ABILITY_CUTE_CHARM, ABILITY_UNNERVE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_SAINTISOW] =
@@ -21189,6 +21267,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_THICK_FAT, ABILITY_MAGIC_GUARD, ABILITY_SERENE_GRACE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_SANCTISOW] =
@@ -21211,6 +21290,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_THICK_FAT, ABILITY_MAGIC_GUARD, ABILITY_SERENE_GRACE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_SOWPHIROTH] =
@@ -21233,6 +21313,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_THICK_FAT, ABILITY_MAGIC_GUARD, ABILITY_SERENE_AURA, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_TOXEXOT] =
@@ -21255,6 +21336,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_STALL, ABILITY_NEUTRALIZING_GAS, ABILITY_BULLETPROOF, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_PSEUDRA] =
@@ -21277,6 +21359,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_STALL, ABILITY_NEUTRALIZING_GAS, ABILITY_BULLETPROOF, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_MANDIMYTE] =
@@ -21299,6 +21382,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_EARTH_EATER, ABILITY_SWARM, ABILITY_AFTERMATH, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_TERMINYTE] =
@@ -21322,6 +21406,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_BLAZE, ABILITY_SWARM, ABILITY_AFTERMATH, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_SNOTLOUD] =
@@ -21344,6 +21429,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_LIQUID_OOZE, ABILITY_PUNK_ROCK, ABILITY_STICKY_HOLD, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = TRUE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_SICKBEAT] =
@@ -21367,6 +21453,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_LIQUID_OOZE, ABILITY_PUNK_ROCK, ABILITY_STICKY_HOLD, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_SPRYTE] =
@@ -21389,6 +21476,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_RUN_AWAY, ABILITY_KLUTZ, ABILITY_WIMP_OUT, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_GUMONA] =
@@ -21411,6 +21499,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_TANGLING_HAIR, ABILITY_POISON_HEAL, ABILITY_OVERCOAT, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_NANGGAL] =
@@ -21433,6 +21522,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_LIMBER, ABILITY_UNBURDEN, ABILITY_CURSED_BODY, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_SHEEDRAKE] =
@@ -21455,6 +21545,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_EFFECT_SPORE, ABILITY_UNAWARE, ABILITY_CACOPHONY, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_TRANSERA] =
@@ -21477,6 +21568,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_STICKY_HOLD, ABILITY_ILLUMINATE, ABILITY_ENTRANCING, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_BIVAGUE] =
@@ -21499,6 +21591,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_POISON_POINT, ABILITY_POISON_HEAL, ABILITY_SHELL_ARMOR, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_LUSCKAW] =
@@ -21522,6 +21615,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_POISON_POINT, ABILITY_TOXIC_BOOST, ABILITY_POTENCY, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_SADSOD] =
@@ -21544,6 +21638,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SADDENED, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_MAERACHOLY] =
@@ -21566,6 +21661,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_MELANCHOLIA, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_LUMELMO] =
@@ -21611,6 +21707,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_ILLUMINATE, ABILITY_DAZZLING, ABILITY_ENTRANCING, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_STOMAWAY] =
@@ -21633,6 +21730,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_TINTED_LENS, ABILITY_LEVITATE, ABILITY_NEUROFORCE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_CRAWLAXY] =
@@ -21655,6 +21753,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_TINTED_LENS, ABILITY_LEVITATE, ABILITY_NEUROFORCE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_MAGNALURE] =
@@ -21677,6 +21776,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_MAGNET_PULL, ABILITY_PLUS, ABILITY_STEELWORKER, ABILITY_NONE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_MAGNANICOR] =
@@ -21699,6 +21799,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_MAGNET_PULL, ABILITY_MINUS, ABILITY_STEELWORKER, ABILITY_NONE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_CRYPLIN] =
@@ -21721,6 +21822,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_TELEPATHY, ABILITY_SYNCHRONIZE, ABILITY_ANALYTIC, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_UHEFOE] =
@@ -21743,6 +21845,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_TELEPATHY, ABILITY_SYNCHRONIZE, ABILITY_LEVITATE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_MYSTOMANIA] =
@@ -21766,6 +21869,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_INFILTRATOR, ABILITY_DREAD_VEIL, ABILITY_LEVITATE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_LYORESA] =
@@ -21788,6 +21892,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_MAGIC_BOUNCE, ABILITY_MAGIC_GUARD, ABILITY_STARS_GRACE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_LYOLICA] =
@@ -21832,6 +21937,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_GOOEY, ABILITY_WATER_ABSORB, ABILITY_FLARE_BOOST, ABILITY_NONE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_SLICKSLICE] =
@@ -21854,6 +21960,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_GOOEY, ABILITY_WATER_ABSORB, ABILITY_FLARE_BOOST, ABILITY_NONE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_LOAFOOF] =
@@ -21876,6 +21983,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_GOOEY, ABILITY_CURSED_BODY, ABILITY_FLARE_BOOST, ABILITY_NONE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_SPIRITOAST] =
@@ -21898,6 +22006,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_WELL_BAKED_BODY, ABILITY_ROUGH_SKIN, ABILITY_WEAK_ARMOR, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_HAPPEA] =
@@ -21920,6 +22029,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_TECHNICIAN, ABILITY_SKILL_LINK, ABILITY_OVERCOAT, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_COFFIDDLE] =
@@ -21942,6 +22052,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_OWN_TEMPO, ABILITY_HYPER_CUTTER, ABILITY_SAND_FORCE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_CRAVERAVE] =
@@ -21964,6 +22075,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_OWN_TEMPO, ABILITY_DEFIANT, ABILITY_SAND_FORCE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_FUZKY] =
@@ -21986,6 +22098,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_VITAL_SPIRIT, ABILITY_VITAL_SPIRIT, ABILITY_VITAL_SPIRIT, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_COOLMUTTE] =
@@ -22008,6 +22121,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_TRUANT, ABILITY_TRUANT, ABILITY_TRUANT, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_CREAM] =
@@ -22030,6 +22144,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_REFRIGERATE, ABILITY_SWEET_VEIL, ABILITY_WHITE_OUT, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_CREMELETTS] =
@@ -22053,6 +22168,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_REFRIGERATE, ABILITY_SWEET_VEIL, ABILITY_WHITE_OUT, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_SNURROWL] =
@@ -22075,6 +22191,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SLUSH_RUSH, ABILITY_SAND_RUSH, ABILITY_RUN_AWAY, ABILITY_NONE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_STOLYCE] =
@@ -22097,6 +22214,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SLUSH_RUSH, ABILITY_SAND_RUSH, ABILITY_MAGIC_BOUNCE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_DUDUNSPARS] = DUDUNSPARS_SPECIES_INFO,
@@ -22123,6 +22241,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_HUDDLE_UP, ABILITY_NONE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_POMELONIAN] =
@@ -22145,6 +22264,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_BALL_FETCH, ABILITY_HIBERNAL, ABILITY_SLUSH_RUSH},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_GOURDOUG] =
@@ -22167,6 +22287,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_GUARD_DOG, ABILITY_HIBERNAL, ABILITY_SLUSH_RUSH},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_FOGGLEHIND] =
@@ -22189,6 +22310,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_EMPTY, ABILITY_WIMP_OUT, ABILITY_CLOUD_NINE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_MATCHLIT] =
@@ -22211,6 +22333,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_FLASH_FIRE, ABILITY_OVERCOAT, ABILITY_FLAME_BODY},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_YAGANGRAN] =
@@ -22233,6 +22356,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_WITCHCRAFT, ABILITY_BAD_DREAMS, ABILITY_SHADOW_TAG},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_PIDIUM] =
@@ -22255,6 +22379,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_FOREWARN, ABILITY_TELEPATHY, ABILITY_MYSTIC_ONE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_MEDGEON] =
@@ -22277,6 +22402,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_FOREWARN, ABILITY_TELEPATHY, ABILITY_MYSTIC_ONE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_MAGGORDE] =
@@ -22299,6 +22425,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_DISTURB, ABILITY_SWARM, ABILITY_UNNERVE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_FLAGUE] =
@@ -22321,6 +22448,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_DISTURB, ABILITY_SWARM, ABILITY_LEVITATE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_FLAGUE_PRINCE] =
@@ -22343,6 +22471,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_DISTURB, ABILITY_SWARM, ABILITY_LEVITATE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_CULTIPEX] =
@@ -22365,6 +22494,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_DISTURB, ABILITY_INTIMIDATE, ABILITY_PRANKSTER},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_EERIKO] =
@@ -22387,6 +22517,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_PRESSURE, ABILITY_DISDAIN, ABILITY_SOUL_LOCKER},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_MANNIKO] =
@@ -22409,6 +22540,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_PRESSURE, ABILITY_DISDAIN, ABILITY_SOUL_LOCKER},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_KOWAKO] =
@@ -22431,6 +22563,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_PRESSURE, ABILITY_DISDAIN, ABILITY_SOUL_LOCKER},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_UMBRAT] =
@@ -22453,6 +22586,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_CLOUD_NINE, ABILITY_OVERCOAT, ABILITY_FRIEND_GUARD},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_CHIROBERRA] =
@@ -22476,6 +22610,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_CLOUD_NINE, ABILITY_OVERCOAT, ABILITY_FRIEND_GUARD},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_WEROBERRA] =
@@ -22498,6 +22633,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_CLOUD_NINE, ABILITY_OVERCOAT, ABILITY_RECKLESS},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_SACKYTWACK] =
@@ -22520,6 +22656,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SAND_RUSH, ABILITY_QUICK_FEET, ABILITY_PERISH_BODY},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_STRAWNGMAN] =
@@ -22542,6 +22679,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_ANGER_POINT, ABILITY_SHEER_FORCE, ABILITY_PERISH_BODY},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_LAWPARD] =
@@ -22565,6 +22703,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SHAMBLES, ABILITY_LIMBER, ABILITY_PSYCHIC_SURGE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_OOHBAABA] =
@@ -22588,6 +22727,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_PURPLE_HAZE, ABILITY_PINK_MIST, ABILITY_WHITE_SMOKE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_GOLDEROCK] =
@@ -22610,6 +22750,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_STALWART, ABILITY_INNER_FOCUS, ABILITY_PURE_POWER},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_MAYNIMO] =
@@ -22632,6 +22773,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SUGAR_COAT, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_BUTTERWEE] =
@@ -22654,6 +22796,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SHIELD_DUST, ABILITY_TINTED_LENS, ABILITY_CUTE_CHARM},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_PETRIPA] =
@@ -22677,6 +22820,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_ROUGH_SKIN, ABILITY_STALL, ABILITY_SHED_SKIN},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_CATTOWYRM] =
@@ -22699,6 +22843,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_APPETITE, ABILITY_THICK_FAT, ABILITY_HUSTLE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_BRAMBOOZLE] =
@@ -22721,6 +22866,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_IRON_BARBS, ABILITY_EFFECT_SPORE, ABILITY_FUDDLE_POINT},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_HOAXPOCUS] =
@@ -22743,6 +22889,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_FLOWER_GIFT, ABILITY_CHLOROPHYLL, ABILITY_MADNESS},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_PITAGON] =
@@ -22765,6 +22912,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_NATURAL_CURE, ABILITY_TRIAGE, ABILITY_RIPEN},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_PUTREGON] =
@@ -22787,6 +22935,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_LIQUID_OOZE, ABILITY_GHOULISH, ABILITY_GLUTTONY},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_GOLTIGATOR] =
@@ -22809,6 +22958,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_VOLT_ABSORB, ABILITY_CLOUD_NINE, ABILITY_DRIZZLE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_KAPRIKOLA] =
@@ -22831,6 +22981,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_LIGHTNING_ROD, ABILITY_AIR_LOCK, ABILITY_TRANSISTOR},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_BLOTTA] =
@@ -22853,6 +23004,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_DARK_AURA, ABILITY_CUTE_CHARM, ABILITY_DISDAIN},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_SCHACHTTA] =
@@ -22875,6 +23027,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_DARK_AURA, ABILITY_INTIMIDATE, ABILITY_DISDAIN},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_SYLVREIGN] =
@@ -22897,6 +23050,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_MULTISCALE, ABILITY_STAMINA, ABILITY_SPEED_BOOST},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_CATTUCLID] =
@@ -22919,6 +23073,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_COMPOUND_EYES, ABILITY_CLEAR_BODY, ABILITY_SHIELD_DUST},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_FRACTOFLY] =
@@ -22942,6 +23097,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_COMPOUND_EYES, ABILITY_MIRROR_ARMOR, ABILITY_ENDLESS},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_GRAVELITO] =
@@ -22964,6 +23120,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_FLARE_BOOST, ABILITY_WATER_ABSORB, ABILITY_STALL},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_MEGALITO] =
@@ -22987,6 +23144,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_FLARE_BOOST, ABILITY_WATER_ABSORB, ABILITY_DROUGHT},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_COMBUN] =
@@ -23009,6 +23167,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_RUN_AWAY, ABILITY_RATTLED, ABILITY_FLUFFY},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_HAIBUN] =
@@ -23031,6 +23190,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_ICE_BODY, ABILITY_WHITE_OUT, ABILITY_SNOW_WARNING},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_BURBUN] =
@@ -23053,6 +23213,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SAND_RUSH, ABILITY_SAND_FORCE, ABILITY_ARENA_TRAP},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_INGBUN] =
@@ -23075,6 +23236,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_BATTLE_ARMOR, ABILITY_IRON_BARBS, ABILITY_FILTER},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_CHAFFAW] =
@@ -23097,6 +23259,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_MOCKING, ABILITY_OBLIVIOUS, ABILITY_DISTURB},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_FERROR] =
@@ -23119,6 +23282,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_FILTER, ABILITY_INTIMIDATE, ABILITY_STRONGHOLD},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_COBBTLE] =
@@ -23141,6 +23305,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SOLID_ROCK, ABILITY_ROUGH_SKIN, ABILITY_SHELL_ARMOR},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_MONTORT] =
@@ -23163,6 +23328,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SOLID_ROCK, ABILITY_ROUGH_SKIN, ABILITY_SHELL_ARMOR},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_BOLTEROCK] =
@@ -23185,6 +23351,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_LUMBERING, ABILITY_SLOW_START, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_VOREON] =
@@ -23208,6 +23375,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_GLUTTONY, ABILITY_CHEEK_POUCH, ABILITY_CUD_CHEW},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_CORISP] =
@@ -23231,6 +23399,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_MAGMA_ARMOR, ABILITY_BERSERK, ABILITY_REGENERATOR},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_KROLPYRE] =
@@ -23255,6 +23424,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_MAGMA_ARMOR, ABILITY_BERSERK, ABILITY_REGENERATOR},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_TOXITIDE] =
@@ -23277,6 +23447,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_AMBUSHER, ABILITY_SAND_VEIL, ABILITY_ELECTRIC_SURGE},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_TOXITURF] =
@@ -23300,6 +23471,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_AMBUSHER, ABILITY_SAND_VEIL, ABILITY_ELECTRIC_SURGE},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_PEBBLER] =
@@ -23322,6 +23494,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_WATER_COMPACTION, ABILITY_ARENA_TRAP, ABILITY_SAND_VEIL},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_DUNEWICH] =
@@ -23344,6 +23517,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_WATER_COMPACTION, ABILITY_ARENA_TRAP, ABILITY_SAND_STREAM},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_MAJADIJUNN] =
@@ -23366,6 +23540,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_WATER_COMPACTION, ABILITY_ARENA_TRAP, ABILITY_SAND_FORCE},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_CAPYBARA] =
@@ -23389,6 +23564,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_GOOEY, ABILITY_POISON_POINT, ABILITY_THICK_FAT},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_ABARBINASH] =
@@ -23412,6 +23588,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_IRON_BARBS, ABILITY_POISON_POINT, ABILITY_STAMINA},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_JARAMERA] =
@@ -23434,6 +23611,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_TOXIC_DEBRIS, ABILITY_TOXIC_CHAIN, ABILITY_MIASMA},
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_BLINGUIN] =
@@ -23457,6 +23635,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_RISKTAKER, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_BIYAKO] =
@@ -23479,6 +23658,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_NATURAL_CURE, ABILITY_QUICK_FEET, ABILITY_GUTS},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_BEHEKO] =
@@ -23501,6 +23681,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_NATURAL_CURE, ABILITY_QUICK_FEET, ABILITY_GUTS},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_HEMOKO] =
@@ -23523,6 +23704,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_REGENERATOR, ABILITY_CLEAR_BODY, ABILITY_POWER_OF_ALCHEMY},
         .bodyColor = BODY_COLOR_WHITE,                                      
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_LEPUCYTE] =
@@ -23545,6 +23727,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_REGENERATOR, ABILITY_CLEAR_BODY, ABILITY_POWER_OF_ALCHEMY},
         .bodyColor = BODY_COLOR_WHITE,                                      
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_LEUKUNEHO] =
@@ -23567,6 +23750,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_REGENERATOR, ABILITY_CLEAR_BODY, ABILITY_POWER_OF_ALCHEMY},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_WELPROOT] =
@@ -23590,6 +23774,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_LIGHTNING_ROD, ABILITY_INNER_FOCUS, ABILITY_CONTRARY},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_DRAEKAROT] =
@@ -23613,6 +23798,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_LIGHTNING_ROD, ABILITY_INNER_FOCUS, ABILITY_CONTRARY},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_KARODORAUG] =
@@ -23636,6 +23822,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_LIGHTNING_ROD, ABILITY_DRACO_FORCE, ABILITY_CONTRARY},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_COFORCHEE] =
@@ -23661,6 +23848,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_RECKLESS, ABILITY_MILKY_WAY, ABILITY_STAMINA},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_MUSTYBANE] =
@@ -23684,6 +23872,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_IGNORANT_BLISS, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_WANNEGG] =
@@ -23706,6 +23895,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SHELL_ARMOR, ABILITY_FILTER, ABILITY_MAGIC_GUARD},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_EGGNEGGMA] =
@@ -23728,6 +23918,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SHELL_ARMOR, ABILITY_HARDBOILED, ABILITY_MAGIC_GUARD},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_YOLKWEEN] =
@@ -23773,6 +23964,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_COMPOUND_EYES, ABILITY_TECHNICIAN, ABILITY_INNER_FOCUS},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_SHOCKORE] =
@@ -23796,6 +23988,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_BATTERY, ABILITY_POWER_SPOT, ABILITY_ELECTRIC_SURGE},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_PLASMANTIS] =
@@ -23818,6 +24011,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_COMPOUND_EYES, ABILITY_TECHNICIAN, ABILITY_STEADFAST},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_HARACE] =
@@ -23840,6 +24034,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_RUN_AWAY, ABILITY_STURDY, ABILITY_PLUS},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_TORSTEVIC] =
@@ -23862,6 +24057,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SPEED_BOOST, ABILITY_STURDY, ABILITY_MINUS},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_CHIKA] =
@@ -23884,6 +24080,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_CUTE_CHARM, ABILITY_IRON_BARBS, ABILITY_RUN_AWAY},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_SWORDUC] =
@@ -23906,6 +24103,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SHARPNESS, ABILITY_BIG_PECKS, ABILITY_INTREPID_SWORD},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_GOSMARK] =
@@ -23928,6 +24126,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SNIPER, ABILITY_QUICK_DRAW, ABILITY_MEGA_LAUNCHER},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_CORDELICT] =
@@ -23952,6 +24151,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_DOWNLOAD, ABILITY_PLUS, ABILITY_MOODY},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = TRUE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_MERALCORE] =
@@ -23974,6 +24174,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_POWER_SPOT, ABILITY_PERMAFROST, ABILITY_PLUS},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_RAITAIC] =
@@ -23996,6 +24197,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_LEVITATE, ABILITY_STORM_BREW, ABILITY_DRIZZLE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_NIMBOZOA] =
@@ -24018,6 +24220,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_LEVITATE, ABILITY_STORM_BREW, ABILITY_DRIZZLE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_MINOTE] =
@@ -24040,6 +24243,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_PUNK_ROCK, ABILITY_LIQUID_VOICE, ABILITY_WATER_VEIL},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_TUNAP] =
@@ -24062,6 +24266,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_PUNK_ROCK, ABILITY_LIQUID_VOICE, ABILITY_WATER_VEIL},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_BASSHARK] =
@@ -24084,6 +24289,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_PUNK_ROCK, ABILITY_LIQUID_VOICE, ABILITY_WATER_VEIL},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_SHARGUY] =
@@ -24106,6 +24312,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_ROUGH_SKIN, ABILITY_INFILTRATOR, ABILITY_DRAINAGE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_SHARPREY] =
@@ -24128,6 +24335,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_ROUGH_SKIN, ABILITY_INFILTRATOR, ABILITY_DRAINAGE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_CHUNGRIM] =
@@ -24150,6 +24358,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_STAMINA, ABILITY_DEFIANT, ABILITY_STRONG_JAW},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_SQUEESHY] =
@@ -24194,6 +24403,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_HYDRATION, ABILITY_WATER_VEIL, ABILITY_EMPTY},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_OCTOHIME] =
@@ -24216,6 +24426,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_HYDRATION, ABILITY_AQUA_HEART, ABILITY_EMPTY},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_COLFIN] =
@@ -24238,6 +24449,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_TELEPATHY, ABILITY_SWIFT_SWIM, ABILITY_PSYCHIC_SURGE},
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_MYSTICIAN] =
@@ -24260,6 +24472,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_TELEPATHY, ABILITY_DOMINEER, ABILITY_PSYCHIC_SURGE},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_WALRUST] =
@@ -24283,6 +24496,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_LIQUID_OOZE, ABILITY_CORROSION, ABILITY_BATTLE_ARMOR},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_SCALLYWARG] =
@@ -24305,6 +24519,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SWIFT_SWIM, ABILITY_VITAL_SPIRIT, ABILITY_SEAFARER}, 
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_WAARGH] =
@@ -24327,6 +24542,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SWIFT_SWIM, ABILITY_VITAL_SPIRIT, ABILITY_SEAFARER}, 
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_SKELLYWARG] =
@@ -24350,6 +24566,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_CURSED_BODY, ABILITY_SOUL_LOCKER, ABILITY_SEAFARER}, 
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_CASOWARY] =
@@ -24372,6 +24589,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_RATTLED, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_PASSAWARY] =
@@ -24395,6 +24613,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_COMATOSE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_BOOZARD] =
@@ -24417,6 +24636,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_INTIMIDATE, ABILITY_KEEN_EYE, ABILITY_IMMUNITY},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_COCKABOO] =
@@ -24440,6 +24660,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_INTIMIDATE, ABILITY_EVIL_EYE, ABILITY_TOXIC_BOOST},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_AXELFIN] =
@@ -24463,6 +24684,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SERENE_GRACE, ABILITY_SPEED_BOOST, ABILITY_SKILL_LINK},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_MORAGAN] =
@@ -24486,6 +24708,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SNOW_WARNING, ABILITY_SNOW_CLOAK, ABILITY_SNIPER},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_SHIVERSNAP] =
@@ -24508,6 +24731,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_FROST_JAW, ABILITY_SHED_SKIN, ABILITY_ICE_SCALES},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = TRUE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_EXCATATOR] =
@@ -24530,6 +24754,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_BULLETPROOF, ABILITY_STRONG_JAW, ABILITY_RECKLESS},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = TRUE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_MARSOYART] =
@@ -24552,6 +24777,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_PRODIGY, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_CINDRILLON] =
@@ -24574,6 +24800,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SPEED_BOOST, ABILITY_SPEED_BOOST, ABILITY_SPEED_BOOST, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_ARMAGATTON] =
@@ -24596,6 +24823,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_IRON_FIST, ABILITY_UNSEEN_FIST, ABILITY_SHEER_FORCE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_FAKYSNAKY] =
@@ -24617,6 +24845,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_DISGUISE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_FAKYSNAKY_BUSTED] =
@@ -24638,6 +24867,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_DISGUISE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_PANTNEY] =
@@ -24660,6 +24890,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SAND_RUSH, ABILITY_SLUSH_RUSH, ABILITY_MISTY_SURGE},
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_NYARLY] =
@@ -24682,6 +24913,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_DARK_AURA, ABILITY_MAGIC_BOUNCE, ABILITY_MADNESS},
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_SUDCUB] =
@@ -24704,6 +24936,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_GOOD_AS_GOLD, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_TARDRITCH] =
@@ -24726,6 +24959,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_EXTREMO, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_BLABBU] =
@@ -24749,6 +24983,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_DAMP, ABILITY_GOOEY, ABILITY_HYDRATION},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_TURRYTURRY] =
@@ -24771,6 +25006,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_RESET, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_FAERED] =
@@ -24793,6 +25029,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_ILLUSION, ABILITY_PRANKSTER, ABILITY_IMPOSTER, ABILITY_NONE,},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_PROMISCBUS] =
@@ -24815,6 +25052,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_CUTE_CHARM, ABILITY_FREE_LOVE, ABILITY_HEARTSTRINGS},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_GUMBORREE] =
@@ -24837,6 +25075,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_GRASSY_SURGE, ABILITY_RIPEN, ABILITY_HARVEST},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_KOREMAI] =
@@ -24861,6 +25100,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SYMBIOSIS, ABILITY_DANCER, ABILITY_HARVEST},
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_KORESATO] =
@@ -24883,6 +25123,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SYMBIOSIS, ABILITY_DANCER, ABILITY_MERCILESS},
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_DRAKULARK] =
@@ -24905,6 +25146,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_CRUELTY, ABILITY_DISTURB, ABILITY_DRAINAGE},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_NOSFERAPTR] =
@@ -24927,6 +25169,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_CRUELTY, ABILITY_DISTURB, ABILITY_DRAINAGE},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_OLFLOOKIE] =
@@ -24949,6 +25192,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_WATCHER, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_JUSTRICHA] =
@@ -24971,6 +25215,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_ARBITER, ABILITY_NONE},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_AJOKUJOKU] =
@@ -24994,6 +25239,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_TIME_TURN, ABILITY_REVERSI, ABILITY_CONTRARY},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_GARJIRA] =
@@ -25016,6 +25262,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_UNNERVE, ABILITY_LIMBER, ABILITY_DRAGONS_MAW},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_GARZILLA] =
@@ -25038,6 +25285,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_UNNERVE, ABILITY_MARVEL_SCALE, ABILITY_DRAGONS_MAW},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_YANDEMIC] =
@@ -25060,6 +25308,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_LOVESICK, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_LUNASTER] =
@@ -25082,6 +25331,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_ILLUMINATE, ABILITY_MADNESS, ABILITY_BERSERK},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_JACKABOX] =
@@ -25104,6 +25354,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_PRANKSTER, ABILITY_TECHNICIAN, ABILITY_IRON_FIST},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_FOOLTAGE] =
@@ -25126,6 +25377,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_MAGICIAN, ABILITY_VOLT_ABSORB, ABILITY_PRANKSTER},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_AETHEREAL] =
@@ -25150,6 +25402,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_EMPTY, ABILITY_LEVITATE, ABILITY_SAND_FORCE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_MOTHRAMITY] =
@@ -25172,6 +25425,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_MARVEL_SCALE, ABILITY_TINTED_LENS, ABILITY_MULTISCALE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_GLAREYALE] =
@@ -25194,6 +25448,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SHED_SKIN, ABILITY_GLARING_STAGGER, ABILITY_SHARPNESS},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = TRUE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_LEVIALAGO] =
@@ -25216,6 +25471,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_TITANIC, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_RETROROACH] =
@@ -25237,6 +25493,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_VOLT_ABSORB, ABILITY_TRANSISTOR, ABILITY_SURGE_SURFER},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_NEOROACH] =
@@ -25259,6 +25516,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_LEVITATE, ABILITY_TRANSISTOR, ABILITY_SURGE_SURFER},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_SPITFAX] =
@@ -25282,6 +25540,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_FAST_TALKER, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_RAPSCALEON] =
@@ -25305,6 +25564,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_PUNK_ROCK, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_AGOMAGO] =
@@ -25328,6 +25588,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_NATURAL_CURE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_MORFTREE] =
@@ -25351,6 +25612,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_NATURAL_CURE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_EPOCHOTL] =
@@ -25374,6 +25636,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_RAPID_FIRE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_VIVISU] =
@@ -25396,6 +25659,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SOLAR_POWER, ABILITY_DROUGHT, ABILITY_LEVITATE},
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_SOLASU] =
@@ -25418,6 +25682,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SOLAR_POWER, ABILITY_DROUGHT, ABILITY_LEVITATE},
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_SUMMERASU] =
@@ -25440,6 +25705,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_SOLAR_POWER, ABILITY_DROUGHT, ABILITY_LEVITATE},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_OROFLOW] =
@@ -25462,6 +25728,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_HYDRATION, ABILITY_DRIZZLE, ABILITY_REGENERATOR},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_ORROCAST] =
@@ -25485,6 +25752,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_HYDRATION, ABILITY_DRIZZLE, ABILITY_REGENERATOR},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_ORROWHELM] =
@@ -25508,6 +25776,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_HYDRATION, ABILITY_DRIZZLE, ABILITY_REGENERATOR, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_SHAYON] =
@@ -25579,6 +25848,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_STELLAR_BODY, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = TRUE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_BISHOUCHA] =
@@ -25602,6 +25872,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_CHEEK_POUCH, ABILITY_UNAWARE, ABILITY_DORMANT, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_PAPYPUS] =
@@ -25625,6 +25896,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_IMMUNITY, ABILITY_DAMP, ABILITY_POISON_HEAL, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_SHISHIMA] = SHISHIMA_SPECIES_INFO,
@@ -25655,6 +25927,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_DEFIANT, ABILITY_SUPREME_OVERLORD, ABILITY_PRESSURE},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_SHELLYLOUH] =
@@ -25677,6 +25950,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_WITCHCRAFT, ABILITY_MAGIC_GUARD, ABILITY_SHELL_ARMOR},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_INFAIRNO] =
@@ -25699,6 +25973,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_OWN_TEMPO, ABILITY_APPETITE, ABILITY_TIME_TURN},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_PURGATIVAL] =
@@ -25721,6 +25996,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_MISTY_SURGE, ABILITY_APPETITE, ABILITY_TIME_TURN},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_DETERIOTL] =
@@ -25744,6 +26020,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_PRESSURE, ABILITY_ALL_GAME, ABILITY_WONDER_SKIN},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_DAKKAPOD] =
@@ -25766,6 +26043,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_MEGA_LAUNCHER, ABILITY_DRAGONS_MAW, ABILITY_BULLETPROOF},
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = TRUE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_UNBERRABLE] =
@@ -25789,6 +26067,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_CHEEK_POUCH, ABILITY_GLUTTONY, ABILITY_HARVEST},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = TRUE,
+        .flags = SPECIES_FLAG_COMMON,
     },
 
     [SPECIES_PEBLRANIUM] =
@@ -25811,6 +26090,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_WATER_COMPACTION, ABILITY_ARENA_TRAP, ABILITY_SAND_SPIT},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_VAIKING] =
@@ -25833,6 +26113,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_ANGER_POINT, ABILITY_LINGERING_AROMA, ABILITY_SERENE_GRACE},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_SCARCE,
     },
 
     [SPECIES_WALLY] =
@@ -29607,6 +29888,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_HUDDLE_UP, ABILITY_HUDDLE_UP, ABILITY_HUDDLE_UP, ABILITY_HUDDLE_UP},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_GAOTERRA_SOLAR] =
@@ -29629,6 +29911,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_STELLAR_BODY, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_GAOTERRA_LUNAR] =
@@ -29651,6 +29934,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_STELLAR_BODY, ABILITY_NONE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_BISHOUCHA_WARMONGER] =
@@ -29674,6 +29958,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_DORMANT, ABILITY_DORMANT, ABILITY_DORMANT, ABILITY_NONE},
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_PAPYPUS_FEMALE] =
@@ -29697,6 +29982,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_IMMUNITY, ABILITY_DAMP, ABILITY_TOXIC_BOOST, ABILITY_NONE},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_UNCOMMON,
     },
 
     [SPECIES_CINDRILLON_PIROUETTE] =
@@ -29719,6 +30005,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_CINDER_WALTZ, ABILITY_CINDER_WALTZ, ABILITY_CINDER_WALTZ, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_CINDRILLON_FEAROUETTE] =
@@ -29741,6 +30028,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_POWER_SPIKE, ABILITY_POWER_SPIKE, ABILITY_POWER_SPIKE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
+        .flags = SPECIES_FLAG_RARE,
     },
 
     [SPECIES_SPINDA_CAVE] = SPINDA_SPECIES_INFO(BODY_COLOR_PURPLE),
