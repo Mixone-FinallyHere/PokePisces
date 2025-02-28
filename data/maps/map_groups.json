@@ -197,6 +197,7 @@
     "FortreeCity_PokemonCenter_2F",
     "FortreeCity_Mart",
     "FallarborTown_PokemonCenter_1F",
+    "SootopolisCity_Mart",
     "LavaridgeTown_PokemonCenter_1F",
     "LavaridgeHouses",
     "Gym5Corridor",
@@ -273,6 +274,7 @@
   ],
   "gMapGroup_PiscesLeg8Minor": [
     "DewfordTown_PokemonCenter_1F",
+    "FallarborTown_PokemonCenter_2F",
     "Gym7Corridor",
     "NavigulfUnderwater",
     "SailorsPauseUnderwater",
@@ -294,7 +296,6 @@
   ],
   "gMapGroup_PiscesLeg9Minor": [
     "DewfordTown_PokemonCenter_2F",
-    "FallarborTown_PokemonCenter_2F",
     "RustboroCity_PokemonCenter_1F",
     "RustboroTransitionBuilding",
     "RustboroInteriors",
@@ -546,7 +547,6 @@
     "MossdeepCity_GameCorner_B1F"
   ],
   "gMapGroup_IndoorSootopolis": [
-    "SootopolisCity_Mart",
     "SootopolisCity_House1",
     "SootopolisCity_House2",
     "SootopolisCity_House3",
