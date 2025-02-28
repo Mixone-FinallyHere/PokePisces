@@ -1,77 +1,103 @@
+.set LOCALID_NURSE, 1
+
 SootopolisCity_Mart_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, SootopolisCity_Mart_OnTransition
 	.byte 0
 
-SootopolisCity_Mart_EventScript_Clerk::
-	lock
-	faceplayer
-	message gText_HowMayIServeYou
+SootopolisCity_Mart_OnTransition:
+	setrespawn HEAL_LOCATION_FALLARBOR_TOWN
+	end
+
+SootopolisCity_Mart_EventScript_Nurse::
+	setvar VAR_0x800B, LOCALID_NURSE
+	call Common_EventScript_PkmnCenterNurse
 	waitmessage
-	pokemart SootopolisCity_Mart_Pokemart
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	waitbuttonpress
 	release
 	end
 
-	.align 2
-SootopolisCity_Mart_Pokemart:
-	.2byte ITEM_ULTRA_BALL
-	.2byte ITEM_HYPER_POTION
-	.2byte ITEM_MAX_POTION
-	.2byte ITEM_FULL_HEAL
-	.2byte ITEM_REVIVE
-	.2byte ITEM_MAX_REPEL
-	.2byte ITEM_X_ATTACK
-	.2byte ITEM_X_DEFENSE
-	.2byte ITEM_SHADOW_MAIL
-	.2byte ITEM_NONE
-	release
-	end
-
-SootopolisCity_Mart_EventScript_FatMan::
+SootopolisCity_Mart_EventScript_BallQuestGuy::
 	lock
 	faceplayer
-	goto_if_ge VAR_SKY_PILLAR_STATE, 2, SootopolisCity_Mart_EventScript_FatManNoLegendaries
-	goto_if_unset FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN, SootopolisCity_Mart_EventScript_FatManNoLegendaries
-	msgbox SootopolisCity_Mart_Text_TooScaryOutside, MSGBOX_DEFAULT
+	speakername SootopolisCity_Mart_Text_NamePhillipe
+	goto_if_lt VAR_BALL_QUEST_STATE, 1, SootopolisCity_Mart_EventScript_GoDoPreviousQuest
+	goto_if_gt VAR_BALL_QUEST_STATE, 1, SootopolisCity_Mart_EventScript_NoMoreQuest
+	goto_if_set FLAG_BALL_QUEST_DIALOGUE_TRUNCATOR, SootopolisCity_Mart_EventScript_BallQuestGuyTruncated
+	setflag FLAG_BALL_QUEST_DIALOGUE_TRUNCATOR
+	msgbox SootopolisCity_Mart_Text_HaveYouCaughtThisMon, MSGBOX_DEFAULT
+	getcaughtmon SPECIES_SNOTLOUD
+	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_Mart_EventScript_Check2
+	msgbox SootopolisCity_Mart_Text_GoCatchIt, MSGBOX_AUTOCLOSE
+	speakername NULL
 	release
 	end
 
-SootopolisCity_Mart_EventScript_FatManNoLegendaries::
-	msgbox SootopolisCity_Mart_Text_PPUpIsGreat, MSGBOX_DEFAULT
+SootopolisCity_Mart_EventScript_BallQuestGuyTruncated::
+	msgbox SootopolisCity_Mart_Text_CaughtMonReminder, MSGBOX_DEFAULT
+	getcaughtmon SPECIES_SNOTLOUD
+	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_Mart_EventScript_Check2
+	msgbox SootopolisCity_Mart_Text_GoCatchIt, MSGBOX_AUTOCLOSE
+	speakername NULL
 	release
 	end
 
-SootopolisCity_Mart_EventScript_Gentleman::
-	lock
-	faceplayer
-	goto_if_ge VAR_SKY_PILLAR_STATE, 2, SootopolisCity_Mart_EventScript_GentlemanNoLegendaries
-	goto_if_unset FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN, SootopolisCity_Mart_EventScript_GentlemanNoLegendaries
-	msgbox SootopolisCity_Mart_Text_DidSomethingAwaken, MSGBOX_DEFAULT
+SootopolisCity_Mart_EventScript_Check2::
+	getcaughtmon SPECIES_SPRYTE
+	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_Mart_EventScript_Check3
+	msgbox SootopolisCity_Mart_Text_GoCatchIt, MSGBOX_AUTOCLOSE
+	speakername NULL
 	release
 	end
 
-SootopolisCity_Mart_EventScript_GentlemanNoLegendaries::
-	msgbox SootopolisCity_Mart_Text_FullRestoreItemOfDreams, MSGBOX_DEFAULT
+SootopolisCity_Mart_EventScript_Check3::
+	getcaughtmon SPECIES_LUMELMO
+	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_Mart_EventScript_GiveNewBall
+	msgbox SootopolisCity_Mart_Text_GoCatchIt, MSGBOX_AUTOCLOSE
+	speakername NULL
 	release
 	end
 
-SootopolisCity_Mart_Text_PPUpIsGreat:
-	.string "PP UP is great!\p"
-	.string "It raises the POWER POINTS, the PP,\n"
-	.string "of a POKéMON move.$"
+SootopolisCity_Mart_EventScript_GiveNewBall::
+	addvar VAR_BALL_QUEST_STATE, 1
+	clearflag FLAG_BALL_QUEST_DIALOGUE_TRUNCATOR
+	msgbox SootopolisCity_Mart_Text_YouveUnlockedNewBall, MSGBOX_AUTOCLOSE
+	speakername NULL
+	release
+	end
 
-SootopolisCity_Mart_Text_TooScaryOutside:
-	.string "What…\n"
-	.string "What is happening?\p"
-	.string "I really want to know, but it's too\n"
-	.string "scary to go outside.$"
+SootopolisCity_Mart_EventScript_GoDoPreviousQuest::
+	msgbox SootopolisCity_Mart_Text_GoDoPreviousQuest, MSGBOX_NPC
+	speakername NULL
+	release
+	end
 
-SootopolisCity_Mart_Text_FullRestoreItemOfDreams:
-	.string "Do you know FULL RESTORE?\p"
-	.string "Full restoration of HP!\n"
-	.string "Eradication of all status problems!\p"
-	.string "It's truly an item of your dreams!$"
+SootopolisCity_Mart_EventScript_NoMoreQuest::
+	msgbox SootopolisCity_Mart_Text_NoMoreQuest, MSGBOX_NPC
+	speakername NULL
+	release
+	end
 
-SootopolisCity_Mart_Text_DidSomethingAwaken:
-	.string "This weather…\n"
-	.string "Did something awaken?$"
+SootopolisCity_Mart_Text_NamePhillipe:
+	.string "Phillipe$"
 
+SootopolisCity_Mart_Text_HaveYouCaughtThisMon:
+	.string "you needa catch uhh\n"
+	.string "spryte lumelmo snotloud$"
+
+SootopolisCity_Mart_Text_CaughtMonReminder:
+	.string "Spryte, Lumelmo, and Snotloud...\n"
+	.string "I very much would like to see them!\p"
+	.string "Do you have them registered\l"
+	.string "in your Pokédex?$"
+
+SootopolisCity_Mart_Text_GoCatchIt:
+	.string "go GET em shithead$"
+
+SootopolisCity_Mart_Text_YouveUnlockedNewBall:
+	.string "you have unlocked moon ball$"
+
+SootopolisCity_Mart_Text_GoDoPreviousQuest:
+	.string "go do the last one(s)$"
+
+SootopolisCity_Mart_Text_NoMoreQuest:
+	.string "no more quest dood$"

@@ -2,11 +2,10 @@
 
 OldaleTown_PokemonCenter_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, OldaleTown_PokemonCenter_2F_OnTransition
-	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
 	.byte 0
 
 OldaleTown_PokemonCenter_2F_OnTransition:
-	setrespawn HEAL_LOCATION_OLDALE_TOWN
+	setrespawn HEAL_LOCATION_LITTLEROOT_NEW
 	end
 
 OldaleTown_PokemonCenter_2F_EventScript_Nurse::
