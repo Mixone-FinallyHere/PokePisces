@@ -45,6 +45,23 @@ SSTidalMidTeriors_EventScript_TradeCompleted::
 	release
 	end
 
+SSTidalMidTeriors_EventScript_ColfinFan::
+	lock
+	faceplayer
+	checkitem ITEM_FRIEND_RIBBON
+	goto_if_eq VAR_RESULT, TRUE, SSTidalMidTeriors_EventScript_AlreadyGaveFriendRibbon
+	msgbox SSTidalMidTeriors_Text_ColfinNeedGoodRoleModel, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_FRIEND_RIBBON
+	closemessage
+	release
+	end
+
+SSTidalMidTeriors_EventScript_AlreadyGaveFriendRibbon::
+	msgbox SSTidalMidTeriors_Text_AlreadyGaveFriendRibbon, MSGBOX_AUTOCLOSE
+	release
+	end
+
 SSTidalMidTeriors_Text_IllTradeIfYouWant:
 	.string "I'll trade you my {STR_VAR_2} for\n"
 	.string "a {STR_VAR_1} if you want.$"
@@ -61,3 +78,24 @@ SSTidalMidTeriors_Text_YouDontWantToThatsOkay:
 
 SSTidalMidTeriors_Text_ThanksForTrading:
 	.string "Thanks for the trade.$"
+
+SSTidalMidTeriors_Text_ColfinNeedGoodRoleModel:
+	.string "My absolute favorite Pokemon\n"
+	.string "is Colfin. What a cutie-patootie!\p"
+	.string "Their brains are like childrens'.\n"
+	.string "Very susceptible to influence.\l"
+	.string "Let one fall in with the\l"
+	.string "wrong crowd... and it may evolve\l"
+	.string "to become a pretty mean Pokemon.\p"
+	.string "I have been starting a movement\n"
+	.string "for trainers to be more caring\l"
+	.string "towards their Colfin! We give\l"
+	.string "out these ribbons to trainers\l"
+	.string "to try and encourage them to\l"
+	.string "really be a good influence!$"
+
+SSTidalMidTeriors_Text_AlreadyGaveFriendRibbon:
+	.string "With a Friend Ribbon, a Colfin\n"
+	.string "can be just as useful in battle\l"
+	.string "as its evolution. So, no need\l"
+	.string "to let its conscience darken!$"

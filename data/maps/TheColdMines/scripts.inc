@@ -2358,11 +2358,61 @@ TheColdMines_EventScript_GaveBulldoze::
 	release
 	end
 
+TheColdMines_EventScript_GemMiner::
+	lock
+	faceplayer
+	checkitem ITEM_GEMSTONE
+	goto_if_eq VAR_RESULT, TRUE, TheColdMines_EventScript_AlreadyGaveGemstone
+	msgbox TheColdMines_Text_GlowingRock, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_GEMSTONE
+	closemessage
+	release
+	end
+
+TheColdMines_EventScript_AlreadyGaveGemstone::
+	msgbox TheColdMines_Text_AlreadyGaveGemstone, MSGBOX_AUTOCLOSE
+	release
+	end
+
+TheColdMines_Text_GlowingRock:
+	.string "Hello. I have been mining\n"
+	.string "here for some valuable gems.\l"
+	.string "Rubies. Sapphires. Emeralds.\l"
+	.string "You know the drill.\l"
+	.string "...Ahaha, get it? Like, a drill.\l"
+	.string "That I use. For mining.\p"
+	.string "...\p"
+	.string "So... I found this oddball gem\n"
+	.string "that an appraiser couldn't identify.\l"
+	.string "She said it was worthless.\l"
+	.string "Shame. It's kind of pretty though.\l"
+	.string "Want it as a souveneir?$"
+
+TheColdMines_Text_AlreadyGaveGemstone:
+	.string "I've been really wanting to run\n"
+	.string "into a fossil of some sort\l"
+	.string "down here. That'd be neat.$"
+
 TheColdMines_Text_Bulldoze:
-	.string "here have bulldoze$"
+	.string "(This man is jackhammering the\n"
+	.string "rock surface extremely loudly.)\p"
+	.string "Greetings.\p"
+	.string "(His voice is...\n"
+	.string "somehow piercing through the\l"
+	.string "noise? Despite being so low?)\p"
+	.string "Dost thou wish to partake in\n"
+	.string "construction, one morrow?\l"
+	.string "'Tis a noble profession.\p"
+	.string "I bestow upon thee... this\n"
+	.string "Technical Machine. May it spark\l"
+	.string "thoust interest in my\l"
+	.string "lifelong profession.\p"
+	.string "(Loud jackhammer noises)\n$"
 
 TheColdMines_Text_GaveBulldoze:
-	.string "alr gave u bulldoze$"
+	.string "(You're going to burst an eardrum\n"
+	.string "if you stay near him any longer.)$"
 
 TheColdMines_Text_UpForAToughBattle:
 	.string "This subzero cavern is the ideal place\n"
