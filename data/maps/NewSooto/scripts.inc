@@ -1,4 +1,5 @@
 .set LOCALID_DRAKE, 2
+.set LOCALID_YANDEMIC, 7
 
 NewSooto_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, NewSooto_OnTransition
@@ -7,11 +8,25 @@ NewSooto_MapScripts::
 NewSooto_OnTransition:
 	setflag FLAG_VISITED_SOOTOPOLIS_CITY
 	call_if_ge VAR_NOTICED_BY_YANDEMIC, 5, NewSooto_EventScript_RemoveYandemic
+	call_if_lt VAR_NEW_COO_STATE, 1, NewSooto_EventScript_RemoveDrake
+	call_if_gt VAR_NEW_COO_STATE, 1, NewSooto_EventScript_RemoveDrakeAndBlocker
 	end
 
 NewSooto_EventScript_RemoveYandemic::
 	removeobject LOCALID_YANDEMIC
 	setflag FLAG_TEMP_11
+	return
+
+NewSooto_EventScript_RemoveDrake::
+	removeobject LOCALID_DRAKE
+	setflag FLAG_TEMP_12
+	return
+
+NewSooto_EventScript_RemoveDrakeAndBlocker::
+	removeobject LOCALID_DRAKE
+	setflag FLAG_TEMP_12
+	removeobject LOCALID_BLOCKER
+	setflag FLAG_TEMP_13
 	return
 
 NewSooto_EventScript_DontGoInCave::

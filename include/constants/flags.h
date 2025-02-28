@@ -1282,7 +1282,7 @@
 #define FLAG_DEFEATED_CAVE_CULTIPEX                                           0x4D0 // Unused Flag
 #define FLAG_DEFEATED_FOREST_SHIFTRY                                          0x4D1 // Unused Flag
 #define FLAG_DEFEATED_YOLKWEEN                                           0x4D2 // Unused Flag
-#define FLAG_UNUSED_0x4D3                                           0x4D3 // Unused Flag
+#define FLAG_GOT_FAVOR_SCARF                                           0x4D3 // Unused Flag
 #define FLAG_UNUSED_0x4D4                                           0x4D4 // Unused Flag
 #define FLAG_UNUSED_0x4D5                                           0x4D5 // Unused Flag
 #define FLAG_UNUSED_0x4D6                                           0x4D6 // Unused Flag
