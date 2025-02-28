@@ -7230,10 +7230,6 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                 if (MonKnowsMove(mon, gEvolutionTable[species][i].param) && ((personality % 1000) > 100))
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
-            case EVO_LEVEL_HEMOKO:
-                if (mode == EVO_MODE_BATTLE_ONLY && gEvolutionTable[species][i].param <= level)
-                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
-                break;
             case EVO_MOVE_THREE_SEGMENT:
                 if (MonKnowsMove(mon, gEvolutionTable[species][i].param) && (0 <= (personality % 1000) <= 100))
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;

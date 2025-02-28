@@ -14292,7 +14292,18 @@ BattleScript_AttackerFormChangeEnd3NoPopup::
 	end3
 
 BattleScript_AttackerFormChangeMoveEffect::
+	waitmessage 1
+	handleformchange BS_ATTACKER, 0
+	handleformchange BS_ATTACKER, 1
+	playanimation BS_ATTACKER, B_ANIM_FORM_CHANGE
+	waitanimation
+	copybyte sBATTLER, gBattlerAttacker
+	printstring STRINGID_PKMNTRANSFORMED
+	waitmessage B_WAIT_TIME_LONG
+	handleformchange BS_ATTACKER, 2
 	rapidspinfree
+	end3
+
 BattleScript_AttackerFormChangeMoveEffectNoRapidSpin::
 	waitmessage 1
 	handleformchange BS_ATTACKER, 0
@@ -16465,6 +16476,26 @@ BattleScript_KingsShieldEffect::
 	orhalfword gMoveResultFlags, MOVE_RESULT_MISSED
 	return
 
+BattleScript_DefendOrderEffect::
+	jumpifabsent BS_ATTACKER, BattleScript_DefendOrderRet
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	printstring STRINGID_PKMNHURTSWITH
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_ATTACKER
+BattleScript_DefendOrderRet::
+	return
+
+BattleScript_AcidArmorEffect::
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	seteffectsecondary
+	setmoveeffect 0
+	copybyte sBATTLER, gBattlerTarget
+	copybyte gBattlerTarget, gBattlerAttacker
+	copybyte gBattlerAttacker, sBATTLER
+	return
+
 BattleScript_DetectEffect::
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	bichalfword gMoveResultFlags, MOVE_RESULT_NO_EFFECT
@@ -16508,10 +16539,10 @@ BattleScript_CuteCharmActivates2::
 BattleScript_LovesickActivates::
 	call BattleScript_AbilityPopUp
 	status2animation BS_ATTACKER, STATUS2_INFATUATION
-	printstring STRINGID_PKMNSXINFATUATEDY3
+	printstring STRINGID_PKMNSXINFATUATEDY2
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryDestinyKnotInfatuateTarget
-	return
+	end3
 
 BattleScript_GooeyActivates::
 	waitstate
@@ -17596,7 +17627,6 @@ BattleScript_PinapBerryEnd::
 	return
 
 BattleScript_RizzBerryActivatesRet::
-	jumpifsafeguard BattleScript_RizzBerryEnd
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
 	status2animation BS_ATTACKER, STATUS2_INFATUATION
 	printstring STRINGID_PKMNSXINFATUATEDYITEMEDITION
@@ -17607,7 +17637,6 @@ BattleScript_RizzBerryEnd::
 	return
 
 BattleScript_RabutaBerryActivatesRet::
-	jumpifsafeguard BattleScript_RabutaBerryEnd
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
 	status2animation BS_ATTACKER, STATUS2_CONFUSION
 	printstring STRINGID_PKMNWASCONFUSED

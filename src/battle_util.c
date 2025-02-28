@@ -5433,14 +5433,14 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 }
                 break;
             case ABILITY_LOVESICK:
-                if (IsBattlerAlive(gBattlerAttacker)
-                && !gBattleMons[gBattlerAttacker].status2 & STATUS2_INFATUATION
-                && !IsAbilityOnSide(gBattlerAttacker, ABILITY_AROMA_VEIL))
+                if (IsBattlerAlive(battler)
+                && (!(gBattleMons[battler].status2 & STATUS2_INFATUATION))
+                && (!(IsAbilityOnSide(battler, ABILITY_AROMA_VEIL))))
                 {
                     gBattlerAttacker = battler;
-                    gBattlerTarget = GetBattlerAtPosition(BATTLE_OPPOSITE(GetBattlerPosition(gBattlerAttacker)));
-                    gBattleMons[gBattlerAttacker].status2 |= STATUS2_INFATUATED_WITH(gBattlerTarget);
-                    BattleScriptExecute(BattleScript_LovesickActivates);
+                    gBattlerTarget = GetBattlerAtPosition(BATTLE_OPPOSITE(GetBattlerPosition(battler)));
+                    gBattleMons[battler].status2 |= STATUS2_INFATUATED_WITH(gBattlerTarget);
+                    BattleScriptPushCursorAndCallback(BattleScript_LovesickActivates);
                     effect++;
                 }
                 break;

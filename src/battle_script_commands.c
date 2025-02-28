@@ -1605,10 +1605,7 @@ static void Cmd_attackcanceler(void)
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
     else if ((gProtectStructs[gBattlerTarget].defendOrder || gProtectStructs[gBattlerTarget].acidArmorCharge)
-    && (gCurrentMove != MOVE_CURSE || IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GHOST))
-    && ((!IsTwoTurnsMove(gCurrentMove) || (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)))
-    && !IS_MOVE_STATUS(gCurrentMove)
-    && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
+    && !IS_MOVE_STATUS(gCurrentMove))
     {
         gProtectStructs[gBattlerAttacker].touchedProtectLike = TRUE;
         gBattlescriptCurrInstr = cmd->nextInstr;
@@ -5459,7 +5456,7 @@ static void Cmd_getexp(void)
                             gLeveledUpInBattle = levelUpBits;
 
                             species = GetEvolutionTargetSpecies(&gPlayerParty[i], EVO_MODE_NORMAL, levelUpBits, NULL);
-                            if (species != SPECIES_NONE && species != SPECIES_LEPUCYTE)
+                            if (species != SPECIES_NONE)
                             {
                                 gBattlescriptCurrInstr = BattleScript_LevelUpWithEvoSugg;
                             }
@@ -6505,7 +6502,7 @@ static void Cmd_moveend(void)
                         gBattleMoveDamage = 1;
                     PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_DEFEND_ORDER);
                     BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_SpikyShieldEffect;
+                    gBattlescriptCurrInstr = BattleScript_DefendOrderEffect;
                     effect = 1;
                 }
                 else if (gProtectStructs[gBattlerTarget].kingsShielded)
@@ -6568,7 +6565,7 @@ static void Cmd_moveend(void)
                     gBattlerTarget = i; // gBattlerTarget and gBattlerAttacker are swapped in order to activate Defiant, if applicable
                     gBattleScripting.moveEffect = MOVE_EFFECT_DEF_MINUS_1;
                     BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_KingsShieldEffect;
+                    gBattlescriptCurrInstr = BattleScript_AcidArmorEffect;
                     effect = 1;
                 }
                 else if (gProtectStructs[gBattlerTarget].silkTrapped)
@@ -7606,9 +7603,9 @@ static void Cmd_moveend(void)
             gBattleStruct->distortedTypeMatchups = 0;
             gBattleStruct->redCardActivates = FALSE;
             gBattleStruct->fickleBeamBoosted = FALSE;
-            if (moveType == TYPE_ELECTRIC && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            if (!IS_MOVE_STATUS(gCurrentMove) && moveType == TYPE_ELECTRIC && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gStatuses3[gBattlerAttacker] &= ~(STATUS3_CHARGED_UP);
-            if (moveType == TYPE_WATER && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            if (!IS_MOVE_STATUS(gCurrentMove) && moveType == TYPE_WATER && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gStatuses4[gBattlerAttacker] &= ~(STATUS4_PUMPED_UP);
             if (IS_MOVE_PHYSICAL(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gDisableStructs[gBattlerAttacker].purpleHazeOffense = FALSE;
@@ -12301,7 +12298,7 @@ static void Cmd_various(void)
         }
         else
         {
-            if (IsBattlerWeatherAffected(battler, B_WEATHER_SUN))
+            if (IsBattlerWeatherAffected(battler, B_WEATHER_SUN) && gDisableStructs[battler].daybreakCounter < 2)
             {
                 gDisableStructs[battler].daybreakCounter++;
                 gDisableStructs[battler].daybreakCounter++;

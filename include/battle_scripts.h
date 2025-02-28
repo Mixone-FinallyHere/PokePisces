@@ -480,6 +480,8 @@ extern const u8 BattleScript_GrassyTerrainHeals[];
 extern const u8 BattleScript_VCreateStatLoss[];
 extern const u8 BattleScript_SpikyShieldEffect[];
 extern const u8 BattleScript_KingsShieldEffect[];
+extern const u8 BattleScript_DefendOrderEffect[];
+extern const u8 BattleScript_AcidArmorEffect[];
 extern const u8 BattleScript_DetectEffect[];
 extern const u8 BattleScript_ShellteredEffect[];
 extern const u8 BattleScript_BanefulBunkerEffect[];

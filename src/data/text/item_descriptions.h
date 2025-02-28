@@ -2374,8 +2374,8 @@ static const u8 sDragonFangDesc[] = _(
     "it is resisted.");
 
 static const u8 sBlackGlassesDesc[] = _(
-    "Some glasses that\n"
-    "boost Dark-type moves.\n"
+    "Glasses that boost\n"
+    "Dark-type moves.\n"
     "More likely to cause\n"
     "secondary effects.");
 
@@ -2468,10 +2468,10 @@ static const u8 sGrassySeedDesc[] = _(
 
 // Type-activated Stat Modifiers
 static const u8 sAbsorbBulbDesc[] = _(
-    "A single-use bulb that\n"
-    "boosts Sp. Atk if the\n"
-    "holder is hit by a\n"
-    "Water-type move.");
+    "A single-use bulb\n"
+    "that ups Sp. Atk if\n"
+    "the holder is hit by\n"
+    "a Water-type move.");
 
 static const u8 sCellBatteryDesc[] = _(
     "A single-use battery\n"
@@ -2801,9 +2801,10 @@ static const u8 sHeavyDutyBootsDesc[] = _(
     "traps on the field.");
 
 static const u8 sBlunderPolicyDesc[] = _(
-    "A document that boosts\n"
-    "the holder's Speed\n"
-    "if it misses any move.");
+    "A document that\n"
+    "boosts the holder's\n"
+    "Speed if it misses any\n"
+    "move.");
 
 static const u8 sRoomServiceDesc[] = _(
     "A tray that lowers the\n"
