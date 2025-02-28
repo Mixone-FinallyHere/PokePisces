@@ -18593,6 +18593,7 @@ BattleScript_DownfallTryPanic:
     jumpifstatus BS_TARGET, STATUS1_PANIC, BattleScript_DownfallTryLowerStats
     setmoveeffect MOVE_EFFECT_PANIC | MOVE_EFFECT_CERTAIN
 	seteffectwithchance
+	call BattleScript_TryStatDropHoldEffects
 BattleScript_DownfallTryLowerStats:
     setmoveeffect MOVE_EFFECT_ALL_STATS_DOWN
     seteffectwithchance
