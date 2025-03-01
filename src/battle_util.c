@@ -214,7 +214,7 @@ void HandleAction_UseMove(void)
         gHitMarker |= HITMARKER_NO_PPDEDUCT;
         *(gBattleStruct->moveTarget + gBattlerAttacker) = GetMoveTarget(MOVE_STRUGGLE, NO_TARGET_OVERRIDE);
     }
-    else if (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS || gBattleMons[gBattlerAttacker].status2 & STATUS2_RECHARGE || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_REDUCE)
+    else if (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS || gBattleMons[gBattlerAttacker].status2 & STATUS2_RECHARGE || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_REDUCE || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_BURN)
     {
         gCurrentMove = gChosenMove = gLockedMoves[gBattlerAttacker];
     }
@@ -1321,6 +1321,9 @@ void BattleScriptPop(void)
 static bool32 IsGravityPreventingMove(u32 move)
 {
     if (!(gFieldStatuses & STATUS_FIELD_GRAVITY))
+        return FALSE;
+
+    if (IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_PSYCHIC))
         return FALSE;
 
     return gBattleMoves[move].gravityBanned;
@@ -2557,7 +2560,7 @@ u8 DoBattlerEndTurnEffects(void)
         case ENDTURN_DAYBREAK: // ingrain
             if (gDisableStructs[battler].daybreakCounter != 0)
             {
-                gBattleMoveDamage = (gBattleMons[battler].maxHP / 10) * gDisableStructs[battler].daybreakCounter;
+                gBattleMoveDamage = (gBattleMons[battler].maxHP * 7 / 100) * gDisableStructs[battler].daybreakCounter;
                 PREPARE_STRING_BUFFER(gBattleTextBuff1, STRINGID_DAYBREAK);
                 BattleScriptExecute(BattleScript_DaybreakTurnDamage);
                 effect++;
@@ -3674,10 +3677,11 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_RECHARGE: // recharge
-            if (gBattleMons[gBattlerAttacker].status2 & STATUS2_RECHARGE || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_REDUCE)
+            if (gBattleMons[gBattlerAttacker].status2 & STATUS2_RECHARGE || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_REDUCE || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_BURN)
             {
                 gBattleMons[gBattlerAttacker].status2 &= ~STATUS2_RECHARGE;
                 gStatuses4[gBattlerAttacker] &= ~STATUS4_RECHARGE_REDUCE;
+                gStatuses4[gBattlerAttacker] &= ~STATUS4_RECHARGE_BURN;
                 gDisableStructs[gBattlerAttacker].rechargeTimer = 0;
                 CancelMultiTurnMoves(gBattlerAttacker);
                 gBattlescriptCurrInstr = BattleScript_MoveUsedMustRecharge;
@@ -12575,7 +12579,7 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
         usesDefStat = FALSE;
     }
 
-    // Self-destruct / Explosion cut defense in half
+    // Self-destruct / Explosion cut defense by 1/4
     if (gCurrentMove == MOVE_EXPLOSION || gCurrentMove == MOVE_SELF_DESTRUCT || gCurrentMove == MOVE_BLOW_UP
         || (gCurrentMove == MOVE_DOUBLE_SHOCK && (gStatuses4[gBattlerAttacker] & STATUS4_SUPERCHARGED) && (gStatuses4[gBattlerAttacker] & STATUS4_GEARED_UP)))
     {
@@ -12618,6 +12622,8 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
     if (defStage > DEFAULT_STAT_STAGE && atkAbility == ABILITY_DRACO_FORCE && moveType == TYPE_DRAGON && gBattleStruct->ateBoost[battlerAtk])
         defStage = DEFAULT_STAT_STAGE;
     // certain moves also ignore stat changes
+    if (gCurrentMove == MOVE_RAZING_SUN && gDisableStructs[battlerAtk].daybreakCounter > 0)
+        defStage = DEFAULT_STAT_STAGE;
     if (gBattleMoves[move].ignoresTargetDefenseEvasionStages)
         defStage = DEFAULT_STAT_STAGE;
     if (gCurrentMove == MOVE_BULLET_SEED && gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
@@ -13039,11 +13045,11 @@ static inline uq4_12_t GetExhaustionAttackerModifier(u32 battlerAtk)
 static inline uq4_12_t GetDaybreakAttackerModifier(u32 battlerAtk)
 {
     if (gDisableStructs[battlerAtk].daybreakCounter > 2)
-        return UQ_4_12(1.75);
+        return UQ_4_12(1.6);
     else if (gDisableStructs[battlerAtk].daybreakCounter > 1)
-        return UQ_4_12(1.5);
+        return UQ_4_12(1.4);
     else if (gDisableStructs[battlerAtk].daybreakCounter > 0)
-        return UQ_4_12(1.25);
+        return UQ_4_12(1.2);
     return UQ_4_12(1.0);
 }
 

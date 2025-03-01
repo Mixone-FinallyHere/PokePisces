@@ -677,6 +677,13 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectRandomStatDropHit       @ EFFECT_PIN_MISSILE
 	.4byte BattleScript_EffectFirebrand               @ EFFECT_FIREBRAND
 	.4byte BattleScript_EffectDefenseDownHit          @ EFFECT_STELLAR_FIST
+	.4byte BattleScript_EffectRechargeBurn            @ EFFECT_RECHARGE_BURN
+
+BattleScript_EffectRechargeBurn::
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	setmoveeffect MOVE_EFFECT_RECHARGE_BURN | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
+	goto BattleScript_HitFromAtkString
 
 BattleScript_EffectFirebrand::
 	setmoveeffect MOVE_EFFECT_FIREBRAND
@@ -1738,6 +1745,7 @@ BattleScript_EffectPoisonPowder::
 	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_PoisonPowderDamage
 	goto BattleScript_EffectPoison
 BattleScript_PoisonPowderDamage::
+	setmoveeffect MOVE_EFFECT_POISON
 	attackcanceler
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
@@ -1745,7 +1753,6 @@ BattleScript_PoisonPowderDamage::
 	typecalc
 	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
 	damagetopercentagetargethp
-	setmoveeffect MOVE_EFFECT_POISON | MOVE_EFFECT_CERTAIN
 	goto BattleScript_HitFromAtkAnimation
 
 BattleScript_EffectSmog::
@@ -3448,36 +3455,17 @@ BattleScript_EffectRazingSun::
 	tryfaintmon BS_TARGET
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	jumpifbattleend BattleScript_MoveEnd
-	checkdaybreakcounter 1, BattleScript_RazingSunWith1Daybreak
 	checkdaybreakcounter 3, BattleScript_RazingSunWith3Daybreak
 BattleScript_RazingSunSkipWeather::
 	applydaybreakcounter BS_ATTACKER, BattleScript_MoveEnd
 	printstring STRINGID_USERGAINEDDAYBREAK
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
-BattleScript_RazingSunWith1Daybreak::
-	jumpifabilitypresent ABILITY_AIR_LOCK, BattleScript_RazingSunSkipWeather
-	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_SUN_PRIMAL, BattleScript_RazingSunSkipWeather
-	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_RAIN_PRIMAL, BattleScript_RazingSunSkipWeather
-	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_STRONG_WINDS, BattleScript_RazingSunSkipWeather
-	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_SUN, BattleScript_RazingSunSkipWeather
-	call BattleScript_CheckPrimalWeather
-	setsunny
-	goto BattleScript_MoveWeatherChange
 BattleScript_RazingSunWith3Daybreak::
-	jumpifabilitypresent ABILITY_AIR_LOCK, BattleScript_RazingSunSkipWeather2
-	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_SUN_PRIMAL, BattleScript_RazingSunSkipWeather2
-	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_RAIN_PRIMAL, BattleScript_RazingSunSkipWeather2
-	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_STRONG_WINDS, BattleScript_RazingSunSkipWeather2
-	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_SUN, BattleScript_RazingSunSkipWeather2
-	call BattleScript_CheckPrimalWeather
-	setsunny
-	goto BattleScript_MoveWeatherChange
-BattleScript_RazingSunSkipWeather2::
 	removealldaybreakcounters BS_ATTACKER, BattleScript_MoveEnd
 	printstring STRINGID_USERUSEDUPALLDAYBREAK
 	waitmessage B_WAIT_TIME_LONG
-	tryhealallhealth BS_ATTACKER, BattleScript_MoveEnd
+	tryhealhalfhealth BattleScript_MoveEnd, BS_ATTACKER
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
@@ -4224,29 +4212,41 @@ BattleScript_SpiderWebTurnDmgEnd:
 	end2
 
 BattleScript_EffectRagePowder::
-	setbyte gBattlerTarget, 0
+	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_EffectRagePowderJustTaunt
 	attackcanceler
 	attackstring
 	ppreduce
+	jumpifnotbattletype BATTLE_TYPE_DOUBLE, BattleScript_ButItFailed
+	setforcedtarget
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_EffectRagePowderJustFollowMe
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_EffectRagePowderJustFollowMe
+	settaunt BattleScript_EffectRagePowderJustFollowMe
 	attackanimation
 	waitanimation
-	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_RagePowderEnd
-BattleScript_RagePowderLoop:
-	copybyte sBATTLER, gBattlerAttacker
-	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_RagePowderLoopIncrement
-	settaunt BattleScript_RagePowderLoopIncrement
-	printstring STRINGID_PKMNFELLFORTAUNT
-	waitmessage B_WAIT_TIME_LONG
-	copybyte sBATTLER, gBattlerTarget
-	call BattleScript_TryDestinyKnotTauntAttacker
-BattleScript_RagePowderLoopIncrement:
-	addbyte gBattlerTarget, 1
-	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_RagePowderLoop
-	copybyte sBATTLER, gBattlerAttacker
-BattleScript_RagePowderEnd:
-	setforcedtarget
 	printstring STRINGID_PKMNCENTERATTENTION
 	waitmessage B_WAIT_TIME_LONG
+	printstring STRINGID_PKMNFELLFORTAUNT
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotTauntAttacker
+	goto BattleScript_MoveEnd
+BattleScript_EffectRagePowderJustFollowMe::
+	attackanimation
+	waitanimation
+	printstring STRINGID_PKMNCENTERATTENTION
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_EffectRagePowderJustTaunt::
+	attackcanceler
+	attackstring
+	ppreduce
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEnd
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
+	settaunt BattleScript_MoveEnd
+	attackanimation
+	waitanimation
+	printstring STRINGID_PKMNFELLFORTAUNT
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotTauntAttacker
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectSignalBeam::
@@ -4309,14 +4309,32 @@ BattleScript_EffectFlipTurn:
 
 BattleScript_EffectSpook::
 	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
-	typecalc
+	jumpifroarfails BattleScript_ButItFailed
+	jumpifability BS_TARGET, ABILITY_GUARD_DOG, BattleScript_ButItFailed
+	jumpifability BS_TARGET, ABILITY_SUCTION_CUPS, BattleScript_AbilityPreventsPhasingOut
+	jumpifability BS_TARGET, ABILITY_STALWART, BattleScript_AbilityPreventsPhasingOut
+	jumpifstatus3 BS_TARGET, STATUS3_ROOTED, BattleScript_PrintMonIsRooted
+	accuracycheck BattleScript_ButItFailed, NO_ACC_CALC_CHECK_LOCK_ON
+	accuracycheck BattleScript_MoveMissedPause, ACC_CURR_MOVE
+	jumpifbattletype BATTLE_TYPE_ARENA, BattleScript_ButItFailed
+	forcerandomswitch BattleScript_ButItFailed
+BattleScript_SpookSuccessSwitch::
+	call BattleScript_RoarSuccessRet
+	getswitchedmondata BS_TARGET
+	switchindataupdate BS_TARGET
+	trytoclearprimalweather
+	printstring STRINGID_EMPTYSTRING3
+	waitmessage 1
+	switchinanim BS_TARGET, FALSE
+	waitstate
+	printstring STRINGID_PKMNWASDRAGGEDOUT
+	switchineffects BS_TARGET
+	jumpifbyte CMP_EQUAL, sSWITCH_CASE, B_SWITCH_RED_CARD, BattleScript_SpookSuccessSwitch_Ret
+	setbyte sSWITCH_CASE, B_SWITCH_NORMAL
 	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
 	damagetopercentagetargethp
-	attackanimation
-	waitanimation
 	effectivenesssound
 	hitanimation BS_TARGET
 	waitstate
@@ -4327,13 +4345,24 @@ BattleScript_EffectSpook::
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
-	moveendall
-	jumpifability BS_TARGET, ABILITY_SUCTION_CUPS, BattleScript_AbilityPreventsPhasingOut 
-	jumpifability BS_TARGET, ABILITY_STALWART, BattleScript_AbilityPreventsPhasingOut 
-	jumpifstatus3 BS_TARGET, STATUS3_ROOTED, BattleScript_PrintMonIsRooted
-	tryhitswitchtarget BattleScript_MoveEnd
-	forcerandomswitch BattleScript_HitSwitchTargetForceRandomSwitchFailed
 	goto BattleScript_MoveEnd
+BattleScript_SpookSuccessSwitch_Ret:
+	swapattackerwithtarget  @ continuation of RedCardActivates
+	restoretarget
+	setbyte sSWITCH_CASE, B_SWITCH_NORMAL
+	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
+	damagetopercentagetargethp
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_TARGET
+	return
 
 BattleScript_EffectDearlyDepart::
 	setstatchanger STAT_SPDEF, 1, TRUE
@@ -9922,6 +9951,7 @@ BattleScript_DoLeechSeed::
 	waitanimation
 	printfromtable gLeechSeedStringIds
 	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
 	goto BattleScript_MoveEnd
 BattleScript_EffectLeechSeedBloomingEffect::
 	setmoveeffect MOVE_EFFECT_WRAP

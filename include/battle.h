@@ -110,7 +110,6 @@ struct DisableStruct
     u8 stickyWebDone:1;
     u8 stealthRockDone:1;
     u8 spiderweb:1;
-    u8 fairyLockTimer;
     u8 shunyongFlinchTimer:2;
     u8 heartGiftTimer:4;
     u8 meanLook:1;

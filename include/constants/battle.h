@@ -215,6 +215,7 @@
 #define STATUS4_SUPERCHARGED            (1 << 19)
 #define STATUS4_PHANTOM                 (1 << 20)
 #define STATUS4_CRAFTY_SHIELD           (1 << 21)
+#define STATUS4_RECHARGE_BURN           (1 << 22)
 
 #define HITMARKER_WAKE_UP_CLEAR         (1 << 4) // Cleared when waking up. Never set or checked.
 #define HITMARKER_SKIP_DMG_TRACK        (1 << 5)
@@ -453,8 +454,9 @@
 #define MOVE_EFFECT_FIREBRAND           116
 #define MOVE_EFFECT_RANDOM_STAT_DROP    117
 #define MOVE_EFFECT_LONG_NOSE           118
+#define MOVE_EFFECT_RECHARGE_BURN       119
 
-#define NUM_MOVE_EFFECTS                119
+#define NUM_MOVE_EFFECTS                120
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000

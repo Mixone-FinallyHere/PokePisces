@@ -4223,7 +4223,8 @@ static void HandleTurnActionSelectionState(void)
                 {
                     if (gBattleMons[battler].status2 & STATUS2_MULTIPLETURNS
                         || gBattleMons[battler].status2 & STATUS2_RECHARGE 
-                        || gStatuses4[battler] & STATUS4_RECHARGE_REDUCE)
+                        || gStatuses4[battler] & STATUS4_RECHARGE_REDUCE
+                        || gStatuses4[battler] & STATUS4_RECHARGE_BURN)
                     {
                         gChosenActionByBattler[battler] = B_ACTION_USE_MOVE;
                         gBattleCommunication[battler] = STATE_WAIT_ACTION_CONFIRMED_STANDBY;
@@ -4371,7 +4372,8 @@ static void HandleTurnActionSelectionState(void)
                     RecordedBattle_ClearBattlerAction(battler, 1);
                     if (gBattleMons[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))].status2 & STATUS2_MULTIPLETURNS
                         || gBattleMons[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))].status2 & STATUS2_RECHARGE
-                        || gStatuses4[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))] & STATUS4_RECHARGE_REDUCE)
+                        || gStatuses4[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))] & STATUS4_RECHARGE_REDUCE
+                        || gStatuses4[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))] & STATUS4_RECHARGE_BURN)
                     {
                         BtlController_EmitEndBounceEffect(battler, BUFFER_A);
                         MarkBattlerForControllerExec(battler);
@@ -5206,6 +5208,7 @@ static void TurnValuesCleanUp(bool8 var0)
                 if (gDisableStructs[i].rechargeTimer == 0)
                     gBattleMons[i].status2 &= ~STATUS2_RECHARGE;
                     gStatuses4[i] &= ~STATUS4_RECHARGE_REDUCE;
+                    gStatuses4[i] &= ~STATUS4_RECHARGE_BURN;
             }
         }
 
