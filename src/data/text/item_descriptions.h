@@ -4638,9 +4638,9 @@ static const u8 sDistillModDesc[] = _(
 
 static const u8 sCorrodeModDesc[] = _(
     "A device for Relic-\n"
-    "types. Physical moves\n" 
-    "drop Def and special\n"
-    "moves drop Sp. Def.");
+    "types. Physical and\n" 
+    "special Relic moves\n"
+    "may drop defenses.");
 
 static const u8 sStilettoDesc[] = _(
     "Some shoes that boost\n"

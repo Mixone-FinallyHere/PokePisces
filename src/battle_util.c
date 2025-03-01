@@ -9602,37 +9602,31 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
         {
             u16 ability = GetBattlerAbility(gBattlerAttacker);
 
-            if (IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_RELIC))
+            if (IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_RELIC) 
+            && gBattleMoves[gCurrentMove].type == TYPE_RELIC
+            && gBattleMoveDamage != 0 // Need to have done damage)
+            && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+            && TARGET_TURN_DAMAGED
+            && gBattleMons[gBattlerTarget].hp
+            && RandomPercentage(RNG_HOLD_EFFECT_RAZOR_FANG, 30))
             {
-                if (IS_MOVE_PHYSICAL(gCurrentMove))
+                if (IS_MOVE_PHYSICAL(gCurrentMove) 
+                && CompareStat(gBattlerTarget, STAT_DEF, MIN_STAT_STAGE, CMP_GREATER_THAN))
                 {
-                    if (gBattleMoveDamage != 0 // Need to have done damage
-                        && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-                        && TARGET_TURN_DAMAGED
-                        && CompareStat(gBattlerTarget, STAT_DEF, MIN_STAT_STAGE, CMP_GREATER_THAN)
-                        && gBattleMons[gBattlerTarget].hp)
-                    {
-                        SET_STATCHANGER(STAT_DEF, 1, TRUE);
-                        gBattleScripting.moveEffect = MOVE_EFFECT_DEF_MINUS_1;
-                        BattleScriptPushCursor();
-                        gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
-                        effect++;
-                    }
+                    SET_STATCHANGER(STAT_DEF, 1, TRUE);
+                    gBattleScripting.moveEffect = MOVE_EFFECT_DEF_MINUS_1;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
+                    effect++;
                 }
-                if (IS_MOVE_SPECIAL(gCurrentMove))
+                if (IS_MOVE_SPECIAL(gCurrentMove)
+                && CompareStat(gBattlerTarget, STAT_SPDEF, MIN_STAT_STAGE, CMP_GREATER_THAN))
                 {
-                    if (gBattleMoveDamage != 0 // Need to have done damage
-                        && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-                        && TARGET_TURN_DAMAGED
-                        && CompareStat(gBattlerTarget, STAT_SPDEF, MIN_STAT_STAGE, CMP_GREATER_THAN)
-                        && gBattleMons[gBattlerTarget].hp)
-                    {
-                        SET_STATCHANGER(STAT_SPDEF, 1, TRUE);
-                        gBattleScripting.moveEffect = MOVE_EFFECT_SP_DEF_MINUS_1;
-                        BattleScriptPushCursor();
-                        gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
-                        effect++;
-                    }
+                    SET_STATCHANGER(STAT_SPDEF, 1, TRUE);
+                    gBattleScripting.moveEffect = MOVE_EFFECT_SP_DEF_MINUS_1;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
+                    effect++;
                 }
             }
         }
