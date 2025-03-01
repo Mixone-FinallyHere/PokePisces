@@ -916,6 +916,7 @@ static const u32 sStatusFlagsForMoveEffects[NUM_MOVE_EFFECTS] =
     [MOVE_EFFECT_NIGHTMARE]      = STATUS2_NIGHTMARE,
     [MOVE_EFFECT_THRASH]         = STATUS2_LOCK_CONFUSE,
     [MOVE_EFFECT_RECHARGE_REDUCE] = STATUS4_RECHARGE_REDUCE,
+    [MOVE_EFFECT_RECHARGE_BURN] = STATUS4_RECHARGE_BURN,
 };
 
 static const u8 *const sMoveEffectBS_Ptrs[] =
@@ -1594,6 +1595,11 @@ static void Cmd_attackcanceler(void)
         gProtectStructs[gBattlerAttacker].touchedProtectLike = TRUE;
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
+    else if (gStatuses4[gBattlerTarget] & STATUS4_RECHARGE_BURN && IsMoveMakingContact(gCurrentMove, gBattlerAttacker))
+    {
+        gProtectStructs[gBattlerAttacker].touchedProtectLike = TRUE;
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
     else if (IsBattlerProtected(gBattlerTarget, gCurrentMove)
      && (gCurrentMove != MOVE_CURSE || IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GHOST))
      && ((!IsTwoTurnsMove(gCurrentMove) || (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)))
@@ -1605,10 +1611,7 @@ static void Cmd_attackcanceler(void)
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
     else if ((gProtectStructs[gBattlerTarget].defendOrder || gProtectStructs[gBattlerTarget].acidArmorCharge)
-    && (gCurrentMove != MOVE_CURSE || IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GHOST))
-    && ((!IsTwoTurnsMove(gCurrentMove) || (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)))
-    && !IS_MOVE_STATUS(gCurrentMove)
-    && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
+    && !IS_MOVE_STATUS(gCurrentMove))
     {
         gProtectStructs[gBattlerAttacker].touchedProtectLike = TRUE;
         gBattlescriptCurrInstr = cmd->nextInstr;
@@ -1835,6 +1838,8 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
     if (atkAbility == ABILITY_UNAWARE || atkAbility == ABILITY_KEEN_EYE || atkAbility == ABILITY_IGNORANT_BLISS)
         evasionStage = DEFAULT_STAT_STAGE;
     if (gBattleMoves[move].ignoresTargetDefenseEvasionStages)
+        evasionStage = DEFAULT_STAT_STAGE;
+    if (gCurrentMove == MOVE_RAZING_SUN && gDisableStructs[battlerAtk].daybreakCounter > 0)
         evasionStage = DEFAULT_STAT_STAGE;
     if (evasionStage > DEFAULT_STAT_STAGE && atkAbility == ABILITY_DRACO_FORCE && gBattleMoves[gCurrentMove].type == TYPE_DRAGON && gBattleStruct->ateBoost[battlerAtk])
         evasionStage = DEFAULT_STAT_STAGE;
@@ -3963,6 +3968,12 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 break;
             case MOVE_EFFECT_RECHARGE_REDUCE:
                 gStatuses4[gEffectBattler] |= STATUS4_RECHARGE_REDUCE;
+                gDisableStructs[gEffectBattler].rechargeTimer = 2;
+                gLockedMoves[gEffectBattler] = gCurrentMove;
+                gBattlescriptCurrInstr++;
+                break;
+            case MOVE_EFFECT_RECHARGE_BURN:
+                gStatuses4[gEffectBattler] |= STATUS4_RECHARGE_BURN;
                 gDisableStructs[gEffectBattler].rechargeTimer = 2;
                 gLockedMoves[gEffectBattler] = gCurrentMove;
                 gBattlescriptCurrInstr++;
@@ -6505,7 +6516,7 @@ static void Cmd_moveend(void)
                         gBattleMoveDamage = 1;
                     PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_DEFEND_ORDER);
                     BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_SpikyShieldEffect;
+                    gBattlescriptCurrInstr = BattleScript_DefendOrderEffect;
                     effect = 1;
                 }
                 else if (gProtectStructs[gBattlerTarget].kingsShielded)
@@ -6568,7 +6579,7 @@ static void Cmd_moveend(void)
                     gBattlerTarget = i; // gBattlerTarget and gBattlerAttacker are swapped in order to activate Defiant, if applicable
                     gBattleScripting.moveEffect = MOVE_EFFECT_DEF_MINUS_1;
                     BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_KingsShieldEffect;
+                    gBattlescriptCurrInstr = BattleScript_AcidArmorEffect;
                     effect = 1;
                 }
                 else if (gProtectStructs[gBattlerTarget].silkTrapped)
@@ -6592,6 +6603,18 @@ static void Cmd_moveend(void)
                 }
                 // Not strictly a protect effect, but works the same way
                 else if (gProtectStructs[gBattlerTarget].beakBlastCharge
+                         && CanBeBurned(gBattlerAttacker)
+                         && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
+                {
+                    gProtectStructs[gBattlerAttacker].touchedProtectLike = FALSE;
+                    gBattleMons[gBattlerAttacker].status1 = STATUS1_BURN;
+                    BtlController_EmitSetMonData(gBattlerAttacker, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerAttacker].status1), &gBattleMons[gBattlerAttacker].status1);
+                    MarkBattlerForControllerExec(gBattlerAttacker);
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_BeakBlastBurn;
+                    effect = 1;
+                }
+                else if (gStatuses4[gBattlerTarget] & STATUS4_RECHARGE_BURN
                          && CanBeBurned(gBattlerAttacker)
                          && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
                 {
@@ -7606,9 +7629,9 @@ static void Cmd_moveend(void)
             gBattleStruct->distortedTypeMatchups = 0;
             gBattleStruct->redCardActivates = FALSE;
             gBattleStruct->fickleBeamBoosted = FALSE;
-            if (moveType == TYPE_ELECTRIC && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            if (!IS_MOVE_STATUS(gCurrentMove) && moveType == TYPE_ELECTRIC && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gStatuses3[gBattlerAttacker] &= ~(STATUS3_CHARGED_UP);
-            if (moveType == TYPE_WATER && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            if (!IS_MOVE_STATUS(gCurrentMove) && moveType == TYPE_WATER && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gStatuses4[gBattlerAttacker] &= ~(STATUS4_PUMPED_UP);
             if (IS_MOVE_PHYSICAL(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gDisableStructs[gBattlerAttacker].purpleHazeOffense = FALSE;
@@ -12301,15 +12324,7 @@ static void Cmd_various(void)
         }
         else
         {
-            if (IsBattlerWeatherAffected(battler, B_WEATHER_SUN))
-            {
-                gDisableStructs[battler].daybreakCounter++;
-                gDisableStructs[battler].daybreakCounter++;
-            }
-            else
-            {
-                gDisableStructs[battler].daybreakCounter++;
-            }
+            gDisableStructs[battler].daybreakCounter++;
             PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, gDisableStructs[battler].daybreakCounter);
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
@@ -15152,6 +15167,10 @@ static void Cmd_forcerandomswitch(void)
             else if (gCurrentMove == MOVE_WHIRLWIND)
             {
                 gBattlescriptCurrInstr = BattleScript_WhirlwindTailwindRemoval;
+            }
+            else if (gCurrentMove == MOVE_SPOOK)
+            {
+                gBattlescriptCurrInstr = BattleScript_SpookSuccessSwitch;
             }
             else
             {

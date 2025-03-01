@@ -1239,7 +1239,11 @@ const u8 gForretressPokedexText[] = _(
     "inside cannot be seen.");
 
 const u8 gDunsparcePokedexText[] = _(
-    "...");
+    "Collectors obsess over Dunsparce because of\n"
+    "their incredible rarity. Dunsparce are tough to\n"
+    "catch, as they often drill away underground the\n"
+    "moment they see danger. Even master hunters have\n"
+    "only ever caught 3 to 5 in their lifetime.");
 
 const u8 gGligarPokedexText[] = _(
     "It produces toxins that can incapacitate\n"
@@ -5684,7 +5688,11 @@ const u8 gHappeaPokedexText[] = _(
     "others, therefore it's best to avoid them.");
 
 const u8 gDudunsparsPokedexText[] = _(
-    "...");
+    "It was only discovered 2 years ago that\n"
+    "Dunsparce evolve. Captured Dunsparce never\n"
+    "evolve due to a lack of burrowing, hampering the\n"
+    "conditions for evolution. It doesn't help that\n"
+    "Dudunspars just look like larger Dunsparce.");
 
 const u8 gLottabatsPokedexText[] = _(
     "Even though Lottabats are quite weak,\n"
@@ -6603,34 +6611,46 @@ const u8 gLuoShanPokedexText[] = _(
     "all things fall to the “God of Valleys.”");
 
 const u8 gCoffiddlePokedexText[] = _(
-    "...");
+    "Coffiddle can frequently be found on beaches in\n"
+    "groups dancing to nothing. Scientists speculate\n"
+    "they commune with the dead with these ritualistic\n"
+    "dances. Disturbing them will lead to aggressive\n"
+    "behavior, like launching mildly painful pinches.");
 
 const u8 gCraveravePokedexText[] = _(
-    "...");
+    "Craverave can not only dance well but also emit\n"
+    "music. They tap their legs in rhythm, often when\n"
+    "a life passes away. Local folktales say their\n"
+    "dance gives peace to the heart of the dead as\n"
+    "they travel towards the Old Moon God's realm.");
 
 const u8 gFuzkyPokedexText[] = _(
-    "Packs of them can be seen foraging and\n"
-    "hunting for food. They can't live without\n"
-    "eating every hour since their metabolism\n"
-    "is so fast.");
+    "Packs of them can be seen foraging and hunting\n"
+    "for food. They can't live without eating every\n"
+    "hour because of their rapid metabolism. They\n"
+    "aren't recommended as pets since, on average, a\n"
+    "single one can leave you destitute.");
 
 const u8 gCoolmuttePokedexText[] = _(
-    "Coolmutte is a massive lazy dog Pokémon\n"
-    "that spends most of its time eating and\n"
-    "lazing around. It can turn snow into fluffy\n"
-    "beds and blankets in a matter of seconds.");
+    "Coolmutte are huge dogs that spend most of their\n"
+    "time lazing around. They create snow blankets to\n"
+    "cozy themselves up and hide any snacks they have\n"
+    "for easy access. Coolmutte are recommended as\n"
+    "pets since they're very low maintenance.");
 
 const u8 gCreamPokedexText[] = _(
-    "Cream's wool is a delicacy in Hoenn. If\n"
-    "you take too much, they lose the ability\n"
-    "to grow their unique wool and become\n"
-    "ordinary sheep.");
+    "Cream wool is a delicacy in Hoenn. It comes in\n"
+    "many flavors, like chocolate, strawberry,\n"
+    "pistachio, and the current bestseller, vanilla.\n"
+    "If you take too much, they lose their ability to\n"
+    "grow their unique wool and become regular sheep.");
 
 const u8 gCremelettsPokedexText[] = _(
-    "Cremeletts are especially scarce as\n"
-    "their remarkable wool typically needs\n"
-    "the care of a professional. The taste of\n"
-    "their wool is said to be unexplainable.");
+    "Cremeletts are 3 Cream that have stacked on top\n"
+    "of each other. They never stack as the same\n"
+    "color, so if there are less than 3 colors, they\n"
+    "never evolve. Well, they don't really evolve, but\n"
+    "they never separate after becoming like this.");
 
 const u8 gSnurrowlPokedexText[] = _(
     "They're very adaptive, and able to live\n"

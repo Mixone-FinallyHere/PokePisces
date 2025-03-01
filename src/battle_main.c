@@ -4223,7 +4223,8 @@ static void HandleTurnActionSelectionState(void)
                 {
                     if (gBattleMons[battler].status2 & STATUS2_MULTIPLETURNS
                         || gBattleMons[battler].status2 & STATUS2_RECHARGE 
-                        || gStatuses4[battler] & STATUS4_RECHARGE_REDUCE)
+                        || gStatuses4[battler] & STATUS4_RECHARGE_REDUCE
+                        || gStatuses4[battler] & STATUS4_RECHARGE_BURN)
                     {
                         gChosenActionByBattler[battler] = B_ACTION_USE_MOVE;
                         gBattleCommunication[battler] = STATE_WAIT_ACTION_CONFIRMED_STANDBY;
@@ -4371,7 +4372,8 @@ static void HandleTurnActionSelectionState(void)
                     RecordedBattle_ClearBattlerAction(battler, 1);
                     if (gBattleMons[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))].status2 & STATUS2_MULTIPLETURNS
                         || gBattleMons[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))].status2 & STATUS2_RECHARGE
-                        || gStatuses4[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))] & STATUS4_RECHARGE_REDUCE)
+                        || gStatuses4[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))] & STATUS4_RECHARGE_REDUCE
+                        || gStatuses4[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))] & STATUS4_RECHARGE_BURN)
                     {
                         BtlController_EmitEndBounceEffect(battler, BUFFER_A);
                         MarkBattlerForControllerExec(battler);
@@ -5206,6 +5208,7 @@ static void TurnValuesCleanUp(bool8 var0)
                 if (gDisableStructs[i].rechargeTimer == 0)
                     gBattleMons[i].status2 &= ~STATUS2_RECHARGE;
                     gStatuses4[i] &= ~STATUS4_RECHARGE_REDUCE;
+                    gStatuses4[i] &= ~STATUS4_RECHARGE_BURN;
             }
         }
 
@@ -5764,7 +5767,6 @@ static void TrySpecialEvolution(void) // Attempts to perform non-level related b
 static void TryEvolvePokemon(void)
 {
     s32 i;
-    u32 currSpecies = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
 
     while (gLeveledUpInBattle != 0)
     {
@@ -5778,31 +5780,18 @@ static void TryEvolvePokemon(void)
                 levelUpBits &= ~(gBitTable[i]);
                 gLeveledUpInBattle = levelUpBits;
 
-                if (currSpecies == SPECIES_HEMOKO && (gLeveledUpInBattle & (1u << i)))
-                {
-                    gLeveledUpInBattle &= ~(1u << i);
-                    species = GetEvolutionTargetSpecies(&gPlayerParty[i], EVO_MODE_BATTLE_ONLY, gLeveledUpInBattle, NULL);
-                }
-                else if (currSpecies != SPECIES_HEMOKO)
-                {
-                    species = GetEvolutionTargetSpecies(&gPlayerParty[i], EVO_MODE_NORMAL, levelUpBits, NULL);
-                }
-
-                if (species == SPECIES_LEPUCYTE)
-                {
-                    EvolveMon(&gPlayerParty[i], currSpecies, species);
-                    return;
-                }
-
+                species = GetEvolutionTargetSpecies(&gPlayerParty[i], EVO_MODE_NORMAL, levelUpBits, NULL);
                 if (species != SPECIES_NONE)
                 {
+                    FreeAllWindowBuffers();
+                    gBattleMainFunc = WaitForEvoSceneToFinish;
+                    EvolutionScene(&gPlayerParty[i], species, TRUE, i);
                     return;
                 }
             }
         }
     }
 
-    gLeveledUpInBattle = 0;
     gBattleMainFunc = ReturnFromBattleToOverworld;
 }
 

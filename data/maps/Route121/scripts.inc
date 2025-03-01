@@ -140,7 +140,7 @@ Route121_Text_CharonDefeated:
 
 Route121_Text_CharonPostBattle:
 	.string "I want to vroom vroom a snow mobile but\n"
-	.string "uncle Vergil is busy looking for uncle \l"
+	.string "uncle Vergil is busy looking for uncle\l"
 	.string "Dante...$"
 
 Route121_Text_GarnetIntro:
@@ -152,7 +152,8 @@ Route121_Text_GarnetDefeated:
 Route121_Text_GarnetPostBattle:
 	.string "Snow is the best!...\n"
 	.string "Unless you're my sister.\p"
-	.string "For some reason she loves going to school!\n"
+	.string "For some reason she loves\l"
+	.string "going to school!\n"
 	.string "I don't get it.$"
 
 Route121_Text_LapizIntro:
