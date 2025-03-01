@@ -1555,6 +1555,10 @@ void PlayTrainerEncounterMusic(void)
     else
         trainerId = gTrainerBattleOpponent_B;
 
+    if(gTrainers[trainerId].trainerClass == TRAINER_CLASS_TOPAZ_ACOLYTE) {
+            PlaySE(SE_PIN); //This sound better than the sound effect I made tbh -Celia
+    }
+    
     if (sTrainerBattleMode != TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC
         && sTrainerBattleMode != TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC
         && gTrainers[trainerId].trainerClass != TRAINER_CLASS_TOPAZ_ACOLYTE)
@@ -1616,6 +1620,7 @@ void PlayTrainerEncounterMusic(void)
             music = MUS_ENCOUNTER_SUSPICIOUS;
         }
         PlayNewMapMusic(music);
+        
     }
 }
 
