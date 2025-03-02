@@ -5418,7 +5418,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         #else
             .power = 55,
         #endif
-        .effect = EFFECT_HIT,
+        .effect = EFFECT_AIR_CUTTER,
         .type = TYPE_FLYING,
         .accuracy = 95,
         .pp = 25,

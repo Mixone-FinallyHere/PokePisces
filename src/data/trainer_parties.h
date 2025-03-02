@@ -1023,22 +1023,23 @@ static const struct TrainerMon sParty_PHitomi[] = {
 
 static const struct TrainerMon sParty_PLiza[] = {
     {
-    .lvl = 21,
+    .lvl = 20,
     .species = SPECIES_LUNATONE,
     .ability = ABILITY_SHADOW_SHIELD,
     .heldItem = ITEM_CURSED_AMULET,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .ev = TRAINER_PARTY_EVS(28, 0, 0, 0, 44, 48),
-    .moves = {MOVE_HEX, MOVE_DREAM_EATER, MOVE_HYPNOSIS, MOVE_GEM_BLASTER},
+    .ev = TRAINER_PARTY_EVS(36, 0, 0, 0, 56, 36),
+    .moves = {MOVE_WATER_PULSE, MOVE_CONFUSION, MOVE_HYPNOSIS, MOVE_GEM_BLASTER},
     .nature = NATURE_MODEST,
     },
     {
-    .lvl = 21,
+    .lvl = 20,
     .species = SPECIES_SOLROCK,
     .ability = ABILITY_SOLID_ROCK,
+    .friendship = 170,
     .heldItem = ITEM_SHELL_BELL,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .ev = TRAINER_PARTY_EVS(28, 44, 48, 0, 0, 0),
+    .ev = TRAINER_PARTY_EVS(36, 56, 36, 0, 0, 0),
     .moves = {MOVE_HUNKER_DOWN, MOVE_PURGING_FLAMES, MOVE_ROCK_TOMB, MOVE_ROCK_SMASH},
     .nature = NATURE_ADAMANT,
     }

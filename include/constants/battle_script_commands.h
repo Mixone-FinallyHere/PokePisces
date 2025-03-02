@@ -270,7 +270,7 @@
 #define VARIOUS_JUMP_IF_ALLY_HAS_NO_LEGS             178
 #define VARIOUS_JUMP_IF_HP_THRESHOLD                 179
 #define VARIOUS_CURE_IF_BLOOMING                     181
-#define VARIOUS_TAILWIND_REMOVAL                     182
+#define VARIOUS_REMOVE_TAILWIND                      182
 #define VARIOUS_SET_PUMP                             183
 #define VARIOUS_POWER_SHIFT                          184
 #define VARIOUS_TRY_DAMPING                          185

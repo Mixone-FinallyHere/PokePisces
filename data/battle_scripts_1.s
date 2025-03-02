@@ -488,7 +488,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectConfuseHit              @ EFFECT_ROCK_CLIMB
 	.4byte BattleScript_EffectHit                     @ EFFECT_SURF
 	.4byte BattleScript_EffectSemiInvulnerable        @ EFFECT_DIVE
-	.4byte BattleScript_EffectSemiInvulnerable        @ EFFECT_FLY
+	.4byte BattleScript_EffectFly                     @ EFFECT_FLY
 	.4byte BattleScript_EffectTrap                    @ EFFECT_WHIRLPOOL
 	.4byte BattleScript_EffectAbsorb                  @ EFFECT_LONE_SHARK
 	.4byte BattleScript_EffectSpectralThief           @ EFFECT_HEART_STEAL
@@ -678,6 +678,68 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectFirebrand               @ EFFECT_FIREBRAND
 	.4byte BattleScript_EffectDefenseDownHit          @ EFFECT_STELLAR_FIST
 	.4byte BattleScript_EffectRechargeBurn            @ EFFECT_RECHARGE_BURN
+	.4byte BattleScript_EffectAirCutter               @ EFFECT_AIR_CUTTER
+
+BattleScript_EffectAirCutter::
+    call BattleScript_EffectHit_Ret
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	removetailwind BS_TARGET, BattleScript_MoveEnd
+	printstring STRINGID_FOETAILWINDENDS
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
+BattleScript_EffectFly::
+	jumpifstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS, BattleScript_SecondTurnFly
+	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING, BattleScript_SecondTurnFly
+	setbyte sTWOTURN_STRINGID, B_MSG_TURN1_FLY
+	call BattleScriptFirstChargingTurn
+	setsemiinvulnerablebit
+	jumpifnoholdeffect BS_ATTACKER, HOLD_EFFECT_POWER_HERB, BattleScript_MoveEnd
+	call BattleScript_PowerHerbActivation
+BattleScript_SecondTurnFly::
+	attackcanceler
+	setmoveeffect MOVE_EFFECT_CHARGING
+	setbyte sB_ANIM_TURN, 1
+	clearstatusfromeffect BS_ATTACKER
+	orword gHitMarker, HITMARKER_NO_PPDEDUCT
+	argumenttomoveeffect
+	accuracycheck BattleScript_FlyMiss, ACC_CURR_MOVE
+	clearsemiinvulnerablebit
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	removetailwind BS_ATTACKER, BattleScript_FlyTryRemoveFoeTailwind
+	printstring STRINGID_TAILWINDENDS
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_FlyTryRemoveFoeTailwind::
+	removetailwind BS_TARGET, BattleScript_MoveEnd
+	printstring STRINGID_FOETAILWINDENDS
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_FlyMiss::
+	clearsemiinvulnerablebit
+	goto BattleScript_PrintMoveMissed
 
 BattleScript_EffectRechargeBurn::
 	attackcanceler
@@ -2451,19 +2513,55 @@ BattleScript_FeatherDanceWasHitEnd:
 BattleScript_EffectAirCannon:
 	jumpifsideaffecting BS_ATTACKER, SIDE_STATUS_TAILWIND, BattleScript_AirCannonOnFirstTurn
 BattleScript_AirCannonDecideTurn:
-	jumpifstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS, BattleScript_TwoTurnMovesSecondTurn
-	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING, BattleScript_TwoTurnMovesSecondTurn
+	jumpifstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS, BattleScript_AirCannonSecondTurn
+	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING, BattleScript_AirCannonSecondTurn
 	setbyte sTWOTURN_STRINGID, B_MSG_TURN1_AIR_CANNON
 	call BattleScriptFirstChargingTurn
 	jumpifnoholdeffect BS_ATTACKER, HOLD_EFFECT_POWER_HERB, BattleScript_MoveEnd
 	call BattleScript_PowerHerbActivation
-	goto BattleScript_TwoTurnMovesSecondTurn
+	goto BattleScript_AirCannonSecondTurn
 BattleScript_AirCannonOnFirstTurn:
 	orword gHitMarker, HITMARKER_CHARGING
 	setmoveeffect MOVE_EFFECT_CHARGING | MOVE_EFFECT_AFFECTS_USER
 	seteffectprimary
 	ppreduce
-	goto BattleScript_TwoTurnMovesSecondTurn
+BattleScript_AirCannonSecondTurn::
+	attackcanceler
+	setmoveeffect MOVE_EFFECT_CHARGING
+	setbyte sB_ANIM_TURN, 1
+	clearstatusfromeffect BS_ATTACKER
+	orword gHitMarker, HITMARKER_NO_PPDEDUCT
+	argumenttomoveeffect
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	removetailwind BS_ATTACKER, BattleScript_AirCannonTryRemoveFoeTailwind
+	printstring STRINGID_TAILWINDENDS
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_AirCannonTryRemoveFoeTailwind::
+	removetailwind BS_TARGET, BattleScript_MoveEnd
+	printstring STRINGID_FOETAILWINDENDS
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectFloralHealing:
 	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_FloralHealingTryRestoreStatDrops
@@ -12976,7 +13074,7 @@ BattleScript_RoarSuccessRet_Ret:
 	waitstate
 	return
 
-BattleScript_WhirlwindTailwindRemoval::
+BattleScript_WhirlwindSuccessSwitch::
 	call BattleScript_RoarSuccessRet
 	getswitchedmondata BS_TARGET
 	switchindataupdate BS_TARGET
@@ -12987,12 +13085,29 @@ BattleScript_WhirlwindTailwindRemoval::
 	waitstate
 	printstring STRINGID_PKMNWASDRAGGEDOUT
 	switchineffects BS_TARGET
-	jumpifbyte CMP_EQUAL, sSWITCH_CASE, B_SWITCH_RED_CARD, BattleScript_RoarSuccessSwitch_Ret
+	jumpifbyte CMP_EQUAL, sSWITCH_CASE, B_SWITCH_RED_CARD, BattleScript_WhirlwindSuccessSwitch_Ret
 	setbyte sSWITCH_CASE, B_SWITCH_NORMAL
-	tailwindremoval BattleScript_MoveEnd
-	printstring STRINGID_TAILWINDENDS
+	removetailwind BS_TARGET, BattleScript_MoveEnd
+	printstring STRINGID_FOETAILWINDENDS
 	waitmessage B_WAIT_TIME_LONG
+	settailwind BattleScript_MoveEnd
+	printstring STRINGID_TAILWINDBLEW
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryTailwindAbilitiesLoop
 	goto BattleScript_MoveEnd
+BattleScript_WhirlwindSuccessSwitch_Ret::
+	swapattackerwithtarget  @ continuation of RedCardActivates
+	restoretarget
+	setbyte sSWITCH_CASE, B_SWITCH_NORMAL
+	removetailwind BS_TARGET, BattleScript_WhirlwindRet
+	printstring STRINGID_FOETAILWINDENDS
+	waitmessage B_WAIT_TIME_LONG
+	settailwind BattleScript_WhirlwindRet
+	printstring STRINGID_TAILWINDBLEW
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryTailwindAbilitiesLoop
+BattleScript_WhirlwindRet::
+	return
 
 BattleScript_WeaknessPolicy::
 	copybyte sBATTLER, gBattlerTarget

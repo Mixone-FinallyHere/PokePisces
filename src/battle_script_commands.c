@@ -2205,6 +2205,7 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
              || (abilityAtk == ABILITY_MERCILESS && gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY)
              || (abilityAtk == ABILITY_DRIZZLE && gBattleMoves[move].effect == EFFECT_SERPENT_SURGE && (gBattleWeather & B_WEATHER_RAIN))
              || (gBattleMoves[move].effect == EFFECT_MANEUVER && gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_TAILWIND)
+             || (gBattleMoves[move].effect == EFFECT_FLY && (gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_TAILWIND || gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_TAILWIND))
              || (abilityAtk == ABILITY_AMBUSHER && IS_MOVE_PHYSICAL(move) && (gDisableStructs[battlerAtk].isFirstTurn || IsTwoTurnsMove(move)))
              || (abilityAtk == ABILITY_PRODIGY && IsMoveMakingContact(move, battlerAtk) )
              || gBattleMons[battlerDef].status1 & STATUS1_SLEEP
@@ -11318,21 +11319,6 @@ static void Cmd_various(void)
         }
         return;
     }
-    case VARIOUS_TAILWIND_REMOVAL:
-    {
-        VARIOUS_ARGS(const u8 *failInstr);
-        if (gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_TAILWIND)
-        {
-            gSideTimers[GetBattlerSide(gBattlerTarget)].tailwindTimer == 0;
-            gSideStatuses[GetBattlerSide(gBattlerTarget)] &= ~SIDE_STATUS_TAILWIND;
-            gBattlescriptCurrInstr = cmd->nextInstr;
-        }
-        else
-        {
-            gBattlescriptCurrInstr = cmd->failInstr;
-        }
-        return;
-    }
     case VARIOUS_SET_SIMPLE_BEAM:
     {
         VARIOUS_ARGS(const u8 *failInstr);
@@ -12540,6 +12526,24 @@ static void Cmd_various(void)
             gBattleCommunication[MSG_DISPLAY] = 1;
         }
         break;
+    }
+    case VARIOUS_REMOVE_TAILWIND:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+
+        u8 side = GetBattlerSide(cmd->battler);
+    
+        if (gSideStatuses[side] & SIDE_STATUS_TAILWIND)
+        {
+            gSideStatuses[side] &= ~SIDE_STATUS_TAILWIND;
+            gSideTimers[side].tailwindTimer = 0;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        else
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        return;
     }
     case VARIOUS_REMOVE_SUPER_GEAR:
     {
@@ -15191,7 +15195,7 @@ static void Cmd_forcerandomswitch(void)
             }
             else if (gCurrentMove == MOVE_WHIRLWIND)
             {
-                gBattlescriptCurrInstr = BattleScript_WhirlwindTailwindRemoval;
+                gBattlescriptCurrInstr = BattleScript_WhirlwindSuccessSwitch;
             }
             else if (gCurrentMove == MOVE_SPOOK)
             {

@@ -2190,6 +2190,10 @@
 	various BS_ATTACKER, VARIOUS_TRY_TO_CLEAR_WEATHER
 	.endm
 
+	.macro removetailwind battler:req, failInstr:req
+	various \battler, VARIOUS_REMOVE_TAILWIND
+	.endm
+
 	.macro removesupergear
 	various BS_ATTACKER, VARIOUS_REMOVE_SUPER_GEAR
 	.endm
@@ -2424,11 +2428,6 @@
 
 	.macro cureifblooming failInstr:req
 	various BS_ATTACKER, VARIOUS_CURE_IF_BLOOMING
-	.4byte \failInstr
-	.endm
-
-	.macro tailwindremoval failInstr:req
-	various BS_TARGET, VARIOUS_TAILWIND_REMOVAL
 	.4byte \failInstr
 	.endm
 
