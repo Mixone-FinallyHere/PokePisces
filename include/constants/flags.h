@@ -1285,8 +1285,8 @@
 #define FLAG_GOT_FAVOR_SCARF                                           0x4D3 // Unused Flag
 #define FLAG_JUDGED_PAINTING                                           0x4D4 // Unused Flag
 #define FLAG_WILL_JUDGE_PAINTING                                           0x4D5 // Unused Flag
-#define FLAG_UNUSED_0x4D6                                           0x4D6 // Unused Flag
-#define FLAG_UNUSED_0x4D7                                           0x4D7 // Unused Flag
+#define FLAG_CAUGHT_ALL_SPINDA                                          0x4D6 // Unused Flag
+#define FLAG_CABLE_CAR_UNLOCKED                                           0x4D7 // Unused Flag
 #define FLAG_UNUSED_0x4D8                                           0x4D8 // Unused Flag
 #define FLAG_UNUSED_0x4D9                                           0x4D9 // Unused Flag
 #define FLAG_UNUSED_0x4DA                                           0x4DA // Unused Flag

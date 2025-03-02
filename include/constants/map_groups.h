@@ -102,6 +102,7 @@
 #define MAP_ZOTPYRE_SECRET_BASEMENT           (3 | (7 << 8))
 #define MAP_GYM3CORRIDOR                      (4 | (7 << 8))
 #define MAP_PETALBURG_CITY_GYM                (5 | (7 << 8))
+#define MAP_ARCTAIGA_SPINDA_DEN               (6 | (7 << 8))
 
 // gMapGroup_PiscesLeg5Major
 #define MAP_ROUTE120         (0 | (8 << 8))
@@ -127,6 +128,7 @@
 #define MAP_PERPLUME_TREEHOUSE                (10 | (9 << 8))
 #define MAP_SCUTTILL_INTERIORS                (11 | (9 << 8))
 #define MAP_SHIFTRY_ARENA                     (12 | (9 << 8))
+#define MAP_SCUTTILL_SPINDA_DEN               (13 | (9 << 8))
 
 // gMapGroup_PiscesLeg6Major
 #define MAP_OZONE_INSTITUTE    (0 | (10 << 8))
@@ -160,6 +162,9 @@
 #define MAP_FALLARBOR_STEEPLE_INTERIOR       (15 | (11 << 8))
 #define MAP_PIRATES_GROTTO                   (16 | (11 << 8))
 #define MAP_MUSEUM_SANCTUM                   (17 | (11 << 8))
+#define MAP_CHIMNEY_SPINDA_AREA              (18 | (11 << 8))
+#define MAP_ASHLANDS_HOUSE                   (19 | (11 << 8))
+#define MAP_CRIMNEY_INTERIORS                (20 | (11 << 8))
 
 // gMapGroup_PiscesLeg7Major
 #define MAP_SWELTORN_DESERT           (0 | (12 << 8))
@@ -207,6 +212,7 @@
 #define MAP_VERDANTURF_GYM                    (24 | (13 << 8))
 #define MAP_MAUVILLE_CITY_GYM                 (25 | (13 << 8))
 #define MAP_SWELTORN_INTERIORS                (26 | (13 << 8))
+#define MAP_SWELTORN_SPINDA_DEN               (27 | (13 << 8))
 
 // gMapGroup_PiscesLeg8Major
 #define MAP_SLATEPORT_SHORE       (0 | (14 << 8))
