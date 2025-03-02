@@ -1494,7 +1494,8 @@ static const u8 sMudSportDescription[] = _(
     "Electric-type moves for 5 turns.");
 
 static const u8 sNeedleArmDescription[] = _(
-    "Deals bonus true damage. If the\n"
+    "An attack using thorns that\n"
+    "deals bonus true damage. If the\n"
     "user is blooming, sets Spikes.");
 
 static const u8 sSlackOffDescription[] = _(
@@ -1518,9 +1519,9 @@ static const u8 sCrushClawDescription[] = _(
     "lower the target's Defense stat.");
 
 static const u8 sBlastBurnDescription[] = _(
-    "The target is razed by a fiery\n"
-    "explosion. The user can't move\n"
-    "on the next turn.");
+    "The foe is hit with a explosion.\n"
+    "The user can't move on the next\n"
+    "turn and burns attackers.");
 
 static const u8 sHydroCannonDescription[] = _(
     "The target is hit with a watery\n"
@@ -2465,7 +2466,7 @@ static const u8 sAfterYouDescription[] = _(
 static const u8 sRoundDescription[] = _(
     "Attacks the foe with a song.\n"
     "Others can join in the Round to\n"
-    "increase the power of the attack.");
+    "increase the power of the move.");
 
 static const u8 sEchoedVoiceDescription[] = _(
     "Attacks the foe with an echoing\n"
@@ -4260,9 +4261,9 @@ static const u8 sRealTearsDescription[] = _(
     "with no effect at all... ");
 
 static const u8 sRazingSunDescription[] = _(
-    "Gains 1 Daybreak Counter, in Sun\n"
-    "gains 2 instead. Gains effects\n"
-    "based on amount of counters.");
+    "The user gains 1 Daybreak\n"
+    "Counter. Gains effects based\n"
+    "on the amount of counters.");
 
 static const u8 sDragonPokerDescription[] = _(
     "Damage category is based on which\n"

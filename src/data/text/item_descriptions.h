@@ -26,9 +26,9 @@ static const u8 sMasterBallDesc[] = _(
     "Pokémon without fail.");
 
 static const u8 sPremierBallDesc[] = _(
-    "An exclusive Poké Ball\n"
-    "that provides a higher\n"
-    "Pokémon catch rate\n"
+    "A unique Poké Ball\n"
+    "that provides a\n"
+    "higher catch rate\n"
     "than a Ultra Ball.");
 
 static const u8 sHealBallDesc[] = _(
@@ -159,8 +159,8 @@ static const u8 sBeastBallDesc[] = _(
 
 static const u8 sCherishBallDesc[] = _(
     "An top-notch Poké Ball\n"
-    "that provides a higher\n"
-    "Pokémon catch rate\n"
+    "that provides a\n"
+    "higher catch rate\n"
     "than a Gold Ball.");
 
 // Medicine
@@ -448,7 +448,7 @@ static const u8 sSwiftFeatherDesc[] = _(
 
 // Ability Modifiers
 static const u8 sAbilityCapsuleDesc[] = _(
-    "A cookie that switches\n"    
+    "A cookie that changes\n"    
     "a Pokémon's current\n"
     "Ability to another\n"
     "Ability it can have.");
@@ -661,19 +661,19 @@ static const u8 sWhiteFluteDesc[] = _(
 // Encounter Modifiers
 static const u8 sRepelDesc[] = _(
     "An item that prevents\n"
-    "low-level wild Pokémon\n"
+    "low-level Pokémon\n"
     "from jumping out at\n"
     "you for 100 steps.");
 
 static const u8 sSuperRepelDesc[] = _(
     "An item that prevents\n"
-    "low-level wild Pokémon\n"
+    "low-level Pokémon\n"
     "from jumping out at\n"
     "you for 200 steps.");
 
 static const u8 sMaxRepelDesc[] = _(
     "An item that prevents\n"
-    "low-level wild Pokémon\n"
+    "low-level Pokémon\n"
     "from jumping out at\n"
     "you for 300 steps.");
 
@@ -2374,8 +2374,8 @@ static const u8 sDragonFangDesc[] = _(
     "it is resisted.");
 
 static const u8 sBlackGlassesDesc[] = _(
-    "Some glasses that\n"
-    "boost Dark-type moves.\n"
+    "Glasses that boost\n"
+    "Dark-type moves.\n"
     "More likely to cause\n"
     "secondary effects.");
 
@@ -2468,10 +2468,10 @@ static const u8 sGrassySeedDesc[] = _(
 
 // Type-activated Stat Modifiers
 static const u8 sAbsorbBulbDesc[] = _(
-    "A single-use bulb that\n"
-    "boosts Sp. Atk if the\n"
-    "holder is hit by a\n"
-    "Water-type move.");
+    "A single-use bulb\n"
+    "that ups Sp. Atk if\n"
+    "the holder is hit by\n"
+    "a Water-type move.");
 
 static const u8 sCellBatteryDesc[] = _(
     "A single-use battery\n"
@@ -2801,9 +2801,10 @@ static const u8 sHeavyDutyBootsDesc[] = _(
     "traps on the field.");
 
 static const u8 sBlunderPolicyDesc[] = _(
-    "A document that boosts\n"
-    "the holder's Speed\n"
-    "if it misses any move.");
+    "A document that\n"
+    "boosts the holder's\n"
+    "Speed if it misses any\n"
+    "move.");
 
 static const u8 sRoomServiceDesc[] = _(
     "A tray that lowers the\n"
@@ -4637,9 +4638,9 @@ static const u8 sDistillModDesc[] = _(
 
 static const u8 sCorrodeModDesc[] = _(
     "A device for Relic-\n"
-    "types. Physical moves\n" 
-    "drop Def and special\n"
-    "moves drop Sp. Def.");
+    "types. Physical and\n" 
+    "special Relic moves\n"
+    "may drop defenses.");
 
 static const u8 sStilettoDesc[] = _(
     "Some shoes that boost\n"
