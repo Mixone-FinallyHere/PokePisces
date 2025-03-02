@@ -1586,7 +1586,7 @@ const u8 gZigzagoonPokedexText[] = _(
     "which lets them catch prey unaware and makes it\n"
     "difficult for predators to corner them. Their\n"
     "bristly hair is hard to clean, so they spend\n"
-    "entire afternoons cleaning themselves rivers.");
+    "entire afternoons cleaning themselves in rivers.");
 
 const u8 gLinoonePokedexText[] = _(
     "Linoone runs straight. Linoone runs straight its\n"
