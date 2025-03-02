@@ -2121,7 +2121,7 @@ static const u8 sZenHeadbuttDescription[] = _(
 static const u8 sMirrorShotDescription[] = _(
     "Lets loose a flash of energy at\n"
     "the foe from the user's polished\n"
-    "body. Lowers the foe's accuracy.");
+    "body. May cut the foe's accuracy.");
 
 static const u8 sFlashCannonDescription[] = _(
     "The user gathers all its light\n"
