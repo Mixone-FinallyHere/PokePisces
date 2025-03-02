@@ -3054,7 +3054,6 @@ bool32 AI_CanSleep(u32 battler, u32 ability)
       || ability == ABILITY_VITAL_SPIRIT
       || ability == ABILITY_COMATOSE
       || (IS_BATTLER_OF_TYPE(battler, TYPE_RELIC))
-      || (gCurrentMove == MOVE_HYPNOSIS && IS_BATTLER_OF_TYPE(battler, TYPE_PSYCHIC))
       || gBattleMons[battler].status1 & STATUS1_ANY
       || gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD
       || (gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN)

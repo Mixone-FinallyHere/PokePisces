@@ -1221,6 +1221,11 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         default:
             break;  // check move damage
         case EFFECT_SLEEP:
+            if (!AI_CanPutToSleep(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, aiData->partnerMove))
+                score -= 10;
+            if (move == MOVE_HYPNOSIS && IS_BATTLER_OF_TYPE(battlerDef, TYPE_PSYCHIC))
+                score -= 10;
+            break;
         case EFFECT_SLEEP_POWDER:
             if (!AI_CanPutToSleep(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, aiData->partnerMove))
                 score -= 10;
