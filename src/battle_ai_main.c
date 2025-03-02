@@ -1401,9 +1401,9 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 6;
             break;
         case EFFECT_HUNKER_DOWN:
-            if (gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE)
+            if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_DEF))
                 score -= 10;
-            else if (gBattleMons[battlerAtk].statStages[STAT_SPDEF] >= MAX_STAT_STAGE)
+            else if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPDEF))
                 score -= 8;
             break;
         case EFFECT_VICTORY_DANCE:
@@ -6347,8 +6347,6 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPDEF, &score);
         break;
     case EFFECT_HUNKER_DOWN:
-        if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_POWER_HERB)
-            score += 3;
         IncreaseStatUpScore(battlerAtk, battlerDef, STAT_DEF, &score);
         IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPDEF, &score);
         break;
