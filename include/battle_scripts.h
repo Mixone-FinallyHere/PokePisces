@@ -688,7 +688,6 @@ extern const u8 BattleScript_SaltCureExtraDamage[];
 extern const u8 BattleScript_SyrupBombEndTurn[];
 extern const u8 BattleScript_SyrupBombActivates[];
 extern const u8 BattleScript_SyrupBombActivatesBlooming[];
-extern const u8 BattleScript_SpecialDefenseUp[];
 extern const u8 BattleScript_RemoveTerrainStuff[];
 extern const u8 BattleScript_HardboiledActivates[];
 extern const u8 BattleScript_HardboiledActivatesExtra[];

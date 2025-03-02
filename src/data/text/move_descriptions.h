@@ -3180,9 +3180,9 @@ static const u8 sTropKickDescription[] = _(
     "blooming, raises its Atk.");
 
 static const u8 sInstructDescription[] = _(
-    "The user instructs the target to\n"
-    "reuse the move last used by the\n"
-    "target.");
+    "The user instructs the ally to\n"
+    "reuse the move last used by\n"
+    "them.");
 
 static const u8 sBeakBlastDescription[] = _(
     "The user first heats up its\n"
@@ -4497,8 +4497,8 @@ static const u8 sDiffuseWaveDescription[] = _(
 
 static const u8 sSkySplitterDescription[] = _(
     "The user splits the heavens,\n"
-    "clearing the weather. It also is\n"
-    "super effective on Flying-types.");
+    "clearing weather and Tailwind.\n"
+    "Super effective on Flying-types.");
 
 static const u8 sVaporizeDescription[] = _(
     "This move is super effective on\n"

@@ -565,7 +565,7 @@ static void Cmd_trymemento(void);
 static void Cmd_setforcedtarget(void);
 static void Cmd_setcharge(void);
 static void Cmd_callterrainattack(void);
-static void Cmd_cureifburnedparalysedorpoisoned(void);
+static void Cmd_curestatuswithmove(void);
 static void Cmd_settorment(void);
 static void Cmd_jumpifnodamage(void);
 static void Cmd_settaunt(void);
@@ -824,7 +824,7 @@ void (* const gBattleScriptingCommandsTable[])(void) =
     Cmd_setforcedtarget,                         //0xCA
     Cmd_setcharge,                               //0xCB
     Cmd_callterrainattack,                       //0xCC
-    Cmd_cureifburnedparalysedorpoisoned,         //0xCD
+    Cmd_curestatuswithmove,                      //0xCD
     Cmd_settorment,                              //0xCE
     Cmd_jumpifnodamage,                          //0xCF
     Cmd_settaunt,                                //0xD0
@@ -3253,22 +3253,6 @@ void SetMoveEffect(bool32 primary, u32 certain)
 
     if (gSideStatuses[GetBattlerSide(gEffectBattler)] & SIDE_STATUS_SAFEGUARD && !(gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
         && !primary && gBattleScripting.moveEffect <= MOVE_EFFECT_CONFUSION)
-        INCREMENT_RESET_RETURN
-
-    if (gSideStatuses[GetBattlerSide(gEffectBattler)] & SIDE_STATUS_SAFEGUARD && !(gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
-        && !primary && gBattleScripting.moveEffect <= MOVE_EFFECT_NIGHTMARE)
-        INCREMENT_RESET_RETURN
-
-    if (gSideStatuses[GetBattlerSide(gEffectBattler)] & SIDE_STATUS_SAFEGUARD && !(gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
-        && !primary && gBattleScripting.moveEffect <= MOVE_EFFECT_PREVENT_ESCAPE)
-        INCREMENT_RESET_RETURN
-
-    if (gSideStatuses[GetBattlerSide(gEffectBattler)] & SIDE_STATUS_SAFEGUARD && !(gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
-        && !primary && gBattleScripting.moveEffect <= MOVE_EFFECT_WRAP)
-        INCREMENT_RESET_RETURN
-
-    if (gSideStatuses[GetBattlerSide(gEffectBattler)] & SIDE_STATUS_SAFEGUARD && !(gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
-        && !primary && gBattleScripting.moveEffect <= MOVE_EFFECT_FLINCH)
         INCREMENT_RESET_RETURN
 
     if (TestSheerForceFlag(gBattlerAttacker, gCurrentMove) && affectsUser != MOVE_EFFECT_AFFECTS_USER)
@@ -7692,7 +7676,7 @@ static void Cmd_sethealblock(void)
 {
     CMD_ARGS(const u8 *failInstr);
 
-    if ((gStatuses3[gBattlerTarget] & STATUS3_HEAL_BLOCK) || (gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_SAFEGUARD))
+    if (gStatuses3[gBattlerTarget] & STATUS3_HEAL_BLOCK)
     {
         gBattlescriptCurrInstr = cmd->failInstr;
     }
@@ -10366,7 +10350,7 @@ static void Cmd_various(void)
     case VARIOUS_TRY_FAIRY_LOCK:
     {
         VARIOUS_ARGS(const u8 *failInstr);
-        if ((gStatuses4[battler] & STATUS4_FAIRY_LOCK) || (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD))
+        if (gStatuses4[battler] & STATUS4_FAIRY_LOCK)
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
@@ -11298,24 +11282,6 @@ static void Cmd_various(void)
         else
         {
             gBattlescriptCurrInstr = cmd->nextInstr;
-        }
-        return;
-    }
-    case VARIOUS_CURE_IF_BLOOMING:
-    {
-        VARIOUS_ARGS(const u8 *failInstr);
-
-        if (gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
-        {
-            gBattleMons[gBattlerAttacker].status1 = 0;
-            gBattlescriptCurrInstr = cmd->nextInstr;
-            BtlController_EmitSetMonData(gBattlerAttacker, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerAttacker].status1), &gBattleMons[gBattlerAttacker].status1);
-            
-            MarkBattlerForControllerExec(gBattlerAttacker);
-        }
-        else
-        {
-            gBattlescriptCurrInstr = cmd->failInstr;
         }
         return;
     }
@@ -13034,6 +13000,8 @@ static void Cmd_various(void)
     case VARIOUS_JUMP_IF_EERIE_MASK_PROTECTED:
     {
         VARIOUS_ARGS(const u8 *jumpInstr);
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+
         if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND))
         {
             gBattlescriptCurrInstr = cmd->jumpInstr;
@@ -13047,6 +13015,8 @@ static void Cmd_various(void)
     case VARIOUS_JUMP_IF_TERU_CHARM_PROTECTED:
     {
         VARIOUS_ARGS(const u8 *jumpInstr);
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+
         if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_TERU_CHARM && gBattleMons[battler].species == SPECIES_CHIROBERRA)
         {
             gBattlescriptCurrInstr = cmd->jumpInstr;
@@ -13060,7 +13030,22 @@ static void Cmd_various(void)
     case VARIOUS_JUMP_IF_GEAR_MAGNET:
     {
         VARIOUS_ARGS(const u8 *jumpInstr);
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
         if (gStatuses3[battler] & STATUS3_MAGNET_RISE && gStatuses4[battler] & STATUS4_GEARED_UP)
+        {
+            gBattlescriptCurrInstr = cmd->jumpInstr;
+        }
+        else
+        {
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
+    case VARIOUS_JUMP_IF_INFATUATED_SPECIFIC:
+    {
+        VARIOUS_ARGS(const u8 *jumpInstr);
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+        if (gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATED_WITH(battler))
         {
             gBattlescriptCurrInstr = cmd->jumpInstr;
         }
@@ -14157,12 +14142,7 @@ static void Cmd_setseeded(void)
 {
     CMD_ARGS();
 
-    if (gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_SAFEGUARD)
-    {
-        gMoveResultFlags |= MOVE_RESULT_MISSED;
-        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LEECH_SEED_FAIL;
-    }
-    else if (gCurrentMove == MOVE_TICK_TACK)
+    if (gCurrentMove == MOVE_TICK_TACK)
     {
         if (gMoveResultFlags & MOVE_RESULT_NO_EFFECT || gStatuses4[gBattlerTarget] & STATUS4_TICKED)
         {
@@ -15626,15 +15606,11 @@ static void Cmd_tryinfatuating(void)
         gLastUsedAbility = ABILITY_IGNORANT_BLISS;
         RecordAbilityBattle(gBattlerTarget, ABILITY_IGNORANT_BLISS);
     }
-    else if (gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_SAFEGUARD)
-    {
-        gBattlescriptCurrInstr = cmd->failInstr;
-    }
     else
     {
-        if ((GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE
-        || !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget))
-        && (!(gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)))
+        if (GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE
+        || !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget)
+        || gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
@@ -16558,11 +16534,7 @@ static void Cmd_cursetarget(void)
 {
     CMD_ARGS(const u8 *failInstr);
 
-    if (gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_SAFEGUARD)
-    {
-        gBattlescriptCurrInstr = cmd->failInstr;
-    }
-    else if (gBattleMons[gBattlerTarget].status2 & STATUS2_CURSED)
+    if (gBattleMons[gBattlerTarget].status2 & STATUS2_CURSED)
     {
         gBattlescriptCurrInstr = cmd->failInstr;
     }
@@ -16708,7 +16680,7 @@ static void Cmd_setembargo(void)
 {
     CMD_ARGS(const u8 *failInstr);
 
-    if ((gStatuses3[gBattlerTarget] & STATUS3_EMBARGO) || (gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_SAFEGUARD))
+    if (gStatuses3[gBattlerTarget] & STATUS3_EMBARGO)
     {
         gBattlescriptCurrInstr = cmd->failInstr;
     }
@@ -17410,17 +17382,25 @@ u16 GetNaturePowerMove(void)
 }
 
 // Refresh
-static void Cmd_cureifburnedparalysedorpoisoned(void)
+static void Cmd_curestatuswithmove(void)
 {
-    CMD_ARGS(const u8 *failInstr);
-    u32 refreshStatuses = STATUS1_ANY_NEGATIVE & ~(STATUS1_SLEEP);
+    CMD_ARGS(u8 battler, const u8 *failInstr);
+    u8 battler = GetBattlerForBattleScript(cmd->battler);
+    u32 shouldHeal;
 
-    if (gBattleMons[gBattlerTarget].status1 & refreshStatuses)
+    if (gBattleMoves[gCurrentMove].effect == EFFECT_AMNESIA)
+        shouldHeal = gBattleMons[battler].status1 & STATUS1_PANIC;
+    else if (gBattleMoves[gCurrentMove].effect == EFFECT_FLEUR_CANNON || gBattleMoves[gCurrentMove].effect == EFFECT_THIRD_TYPE || gBattleMoves[gCurrentMove].effect == EFFECT_WOOD_HAMMER)
+        shouldHeal = gBattleMons[battler].status1 & STATUS1_BLOOMING;
+    else
+        shouldHeal = gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE;
+
+    if (shouldHeal)
     {
-        gBattleMons[gBattlerTarget].status1 = 0;
+        gBattleMons[battler].status1 = 0;
         gBattlescriptCurrInstr = cmd->nextInstr;
-        BtlController_EmitSetMonData(gBattlerTarget, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerTarget].status1), &gBattleMons[gBattlerTarget].status1);
-        MarkBattlerForControllerExec(gBattlerTarget);
+        BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[battler].status1), &gBattleMons[battler].status1);
+        MarkBattlerForControllerExec(battler);
     }
     else
     {
@@ -17432,7 +17412,7 @@ static void Cmd_settorment(void)
 {
     CMD_ARGS(const u8 *failInstr);
 
-    if (gBattleMons[gBattlerTarget].status2 & STATUS2_TORMENT || gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_SAFEGUARD)
+    if (gBattleMons[gBattlerTarget].status2 & STATUS2_TORMENT)
     {
         gBattlescriptCurrInstr = cmd->failInstr;
     }
@@ -17471,10 +17451,6 @@ static void Cmd_settaunt(void)
         gBattlescriptCurrInstr = BattleScript_NotAffectedAbilityPopUp;
         gLastUsedAbility = ABILITY_IGNORANT_BLISS;
         RecordAbilityBattle(gBattlerTarget, ABILITY_IGNORANT_BLISS);
-    }
-    else if (gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_SAFEGUARD)
-    {
-        gBattlescriptCurrInstr = cmd->failInstr;
     }
     else if (gDisableStructs[gBattlerTarget].tauntTimer == 0)
     {
@@ -17712,8 +17688,7 @@ static void Cmd_setgastroacid(void)
 {
     CMD_ARGS(const u8 *failInstr);
 
-    if (IsGastroAcidBannedAbility(gBattleMons[gBattlerTarget].ability)
-    || gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_SAFEGUARD)
+    if (IsGastroAcidBannedAbility(gBattleMons[gBattlerTarget].ability))
     {
         gBattlescriptCurrInstr = cmd->failInstr;
     }
@@ -17732,8 +17707,7 @@ static void Cmd_setyawn(void)
     CMD_ARGS(const u8 *failInstr);
 
     if (gStatuses3[gBattlerTarget] & STATUS3_YAWN
-        || gBattleMons[gBattlerTarget].status1 & STATUS1_ANY
-        || gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_SAFEGUARD)
+        || gBattleMons[gBattlerTarget].status1 & STATUS1_ANY)
     {
         gBattlescriptCurrInstr = cmd->failInstr;
     }

@@ -6193,7 +6193,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && TARGET_TURN_DAMAGED 
             && IsBattlerAlive(gBattlerAttacker) 
             && !IsAbilityOnSide(gBattlerAttacker, ABILITY_AROMA_VEIL)
-            && !gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_SAFEGUARD
             && !GetBattlerAbility(gBattlerAttacker) != ABILITY_TITANIC
             && gBattleMons[gBattlerAttacker].pp[gChosenMovePos] != 0 
             && RandomPercentage(RNG_POISON_POINT, 20))
@@ -6206,7 +6205,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
             && TARGET_TURN_DAMAGED 
             && IsBattlerAlive(gBattlerAttacker) 
-            && !gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_SAFEGUARD
             && !GetBattlerAbility(gBattlerAttacker) != ABILITY_TITANIC
             && gBattleMons[gBattlerAttacker].pp[gChosenMovePos] != 0 
             && RandomPercentage(RNG_POISON_POINT, 20))
@@ -7128,8 +7126,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
             && gBattleMons[gBattlerTarget].hp != 0 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
-            && !((IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_ICE) 
-            || IsBattlerWeatherAffected(gBattlerTarget, B_WEATHER_SUN) 
+            && (!(IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_ICE) 
+            || IsBattlerWeatherAffected(gBattlerTarget, B_WEATHER_SUN)
             || gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_SAFEGUARD 
             || gBattleMons[gBattlerTarget].ability == ABILITY_MAGMA_ARMOR
             || gBattleMons[gBattlerTarget].ability == ABILITY_COMATOSE 
@@ -9169,7 +9167,9 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_GEMSTONE:
-                if (!moveTurn && gBattleMons[battler].species == SPECIES_HARACE)
+                if (!moveTurn 
+                && gBattleMons[battler].species == SPECIES_HARACE 
+                && (!(CompareStat(battler, STAT_EVASION, MIN_STAT_STAGE, CMP_GREATER_THAN))))
                 {
                     BufferStatChange(battler, STAT_EVASION, STRINGID_STATFELL);
                     gEffectBattler = battler;
@@ -9775,7 +9775,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     && TARGET_TURN_DAMAGED
                     && !IS_MOVE_STATUS(gCurrentMove)
                     && !(gBattleMons[gBattlerTarget].status2 & STATUS2_POWDER)
-                    && !(gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_SAFEGUARD)
                     && RandomPercentage(RNG_HOLD_EFFECT_SILVER_POWDER, 50)) 
             {
                 BattleScriptPushCursor();
