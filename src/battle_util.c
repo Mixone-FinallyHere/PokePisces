@@ -9167,7 +9167,9 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_GEMSTONE:
-                if (!moveTurn && gBattleMons[battler].species == SPECIES_HARACE)
+                if (!moveTurn 
+                && gBattleMons[battler].species == SPECIES_HARACE 
+                && (!(CompareStat(gBattlerTarget, STAT_EVASION, MIN_STAT_STAGE, CMP_GREATER_THAN))))
                 {
                     BufferStatChange(battler, STAT_EVASION, STRINGID_STATFELL);
                     gEffectBattler = battler;
