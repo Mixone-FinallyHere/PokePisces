@@ -15632,9 +15632,9 @@ static void Cmd_tryinfatuating(void)
     }
     else
     {
-        if ((GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE
-        || !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget))
-        && (!(gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)))
+        if (GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE
+        || !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget)
+        || gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
