@@ -4247,6 +4247,31 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     gBattlescriptCurrInstr = BattleScript_MoveEffectFlameBurst;
                 }
                 break;
+            case MOVE_EFFECT_DRAGON_RAGE:
+                if (IsBattlerAlive(BATTLE_PARTNER(gBattlerTarget))
+                        && !(gStatuses3[BATTLE_PARTNER(gBattlerTarget)] & STATUS3_SEMI_INVULNERABLE)
+                        && GetBattlerAbility(BATTLE_PARTNER(gBattlerTarget)) != ABILITY_MAGIC_GUARD
+                        && GetBattlerAbility(BATTLE_PARTNER(gBattlerTarget)) != ABILITY_SUGAR_COAT
+                        && !TestTeruCharm(BATTLE_PARTNER(gBattlerTarget)))
+                {
+                    gBattleScripting.savedBattler = BATTLE_PARTNER(gBattlerTarget);
+
+                    if (gBattleMons[gBattlerAttacker].hp <= (gBattleMons[gBattlerAttacker].maxHP / 4))
+                        gBattleMoveDamage = gBattleMons[gBattlerAttacker].level * 1.5;
+                    else if (gBattleMons[gBattlerAttacker].hp <= (gBattleMons[gBattlerAttacker].maxHP / 2))
+                        gBattleMoveDamage = gBattleMons[gBattlerAttacker].level * 1.25;
+                    else
+                        gBattleMoveDamage = gBattleMons[gBattlerAttacker].level;
+
+                    if (gBattleMoveDamage > 1)
+                        gBattleMoveDamage /= 2;
+
+                    if (gBattleMoveDamage == 0)
+                        gBattleMoveDamage = 1;
+
+                    gBattlescriptCurrInstr = BattleScript_MoveEffectFlameBurst;
+                }
+                break;                
             case MOVE_EFFECT_WILD_CHARGE:
                 if (IsBattlerAlive(BATTLE_PARTNER(gBattlerTarget))
                         && !(gStatuses3[BATTLE_PARTNER(gBattlerTarget)] & STATUS3_SEMI_INVULNERABLE)
@@ -15889,29 +15914,36 @@ static void Cmd_dmgtolevel(void)
 {
     CMD_ARGS();
 
-    if ((gCurrentMove == MOVE_SONIC_BOOM) && (gBattleMons[gBattlerAttacker].level >= 50))
+    if (gCurrentMove == MOVE_SONIC_BOOM)
     {
-        gBattleMoveDamage = 120;
-    }
-    else if ((gCurrentMove == MOVE_DRAGON_RAGE) && (gBattleMons[gBattlerAttacker].level >= 50))
-    {
-        gBattleMoveDamage = 140;
-    }
-    else if ((gCurrentMove == MOVE_SEISMIC_TOSS) && (gFieldStatuses & STATUS_FIELD_GRAVITY))
-    {
-        gBattleMoveDamage = gBattleMons[gBattlerAttacker].level * 1.5;
-    }
-    else if (gBattleMoves[gCurrentMove].effect == EFFECT_LEVEL_DAMAGE)
-    {
-        gBattleMoveDamage = gBattleMons[gBattlerAttacker].level;
+        gBattleMoveDamage = gBattleMons[gBattlerAttacker].level * 0.75;
     }
     else if (gCurrentMove == MOVE_DRAGON_RAGE)
     {
-        gBattleMoveDamage = 40;
+        if (gBattleMons[gBattlerAttacker].hp <= (gBattleMons[gBattlerAttacker].maxHP / 4))
+        {
+            gBattleMoveDamage = gBattleMons[gBattlerAttacker].level * 1.5;
+        }
+        else if (gBattleMons[gBattlerAttacker].hp <= (gBattleMons[gBattlerAttacker].maxHP / 2))
+        {
+            gBattleMoveDamage = gBattleMons[gBattlerAttacker].level * 1.25;
+        }
+        else
+        {
+            gBattleMoveDamage = gBattleMons[gBattlerAttacker].level;
+        }
+    }
+    else if (gCurrentMove == MOVE_SEISMIC_TOSS && gFieldStatuses & STATUS_FIELD_GRAVITY)
+    {
+        gBattleMoveDamage = gBattleMons[gBattlerAttacker].level * 1.5;
+    }
+    else if (gCurrentMove == MOVE_NIGHT_SHADE && gBattleMons[gBattlerTarget].status1 & STATUS1_PANIC)
+    {
+        gBattleMoveDamage = gBattleMons[gBattlerAttacker].level * 1.5;
     }
     else
     {
-        gBattleMoveDamage = 20;
+        gBattleMoveDamage = gBattleMons[gBattlerAttacker].level;
     }
     gBattlescriptCurrInstr = cmd->nextInstr;
 }

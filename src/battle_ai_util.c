@@ -933,20 +933,25 @@ s32 AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u8 *typeEffectivenes
             switch (gBattleMoves[move].effect)
             {
             case EFFECT_LEVEL_DAMAGE:
+                if ((move == MOVE_NIGHT_SHADE && gBattleMons[battlerDef].status1 & STATUS1_PANIC)
+                || (move == MOVE_SEISMIC_TOSS && gFieldStatuses & STATUS_FIELD_GRAVITY))
+                    dmg = gBattleMons[battlerAtk].level * 1.5;
+                else
+                    dmg = gBattleMons[battlerAtk].level;
+                break;
             case EFFECT_PSYWAVE:
                 dmg = gBattleMons[battlerAtk].level * (aiData->abilities[battlerAtk] == (ABILITY_PARENTAL_BOND ||ABILITY_RAPID_FIRE) ? 2 : 1);
                 break;
             case EFFECT_DRAGON_RAGE:
-                if (gBattleMons[battlerAtk].level > 49)
-                    dmg = 140 * (aiData->abilities[battlerAtk] == (ABILITY_PARENTAL_BOND ||ABILITY_RAPID_FIRE) ? 2 : 1);
+                if (gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 4))
+                    dmg = gBattleMons[battlerAtk].level * 1.5;
+                else if (gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 2))
+                    dmg = gBattleMons[battlerAtk].level * 1.25;
                 else
-                    dmg = 40 * (aiData->abilities[battlerAtk] == (ABILITY_PARENTAL_BOND ||ABILITY_RAPID_FIRE) ? 2 : 1);
+                    dmg = gBattleMons[battlerAtk].level;
                 break;
-            case EFFECT_SONICBOOM:
-                if (gBattleMons[battlerAtk].level > 49)
-                    dmg = 120 * (aiData->abilities[battlerAtk] == (ABILITY_PARENTAL_BOND ||ABILITY_RAPID_FIRE) ? 2 : 1);
-                else
-                    dmg = 20 * (aiData->abilities[battlerAtk] == (ABILITY_PARENTAL_BOND ||ABILITY_RAPID_FIRE) ? 2 : 1);
+            case EFFECT_SONIC_BOOM:
+                dmg = gBattleMons[battlerAtk].level * 0.75;
                 break;
             case EFFECT_MULTI_HIT:
             case EFFECT_BARB_BARRAGE:

@@ -248,9 +248,9 @@ static const u8 sSupersonicDescription[] = _(
     "the target.");
 
 static const u8 sSonicBoomDescription[] = _(
-    "The foe is hit with a shock wave\n"
-    "that always deals 20 HP damage.\n"
-    "Deals 120 HP damage at level 50.");
+    "Deals damage equal to less than\n"
+    "the user's level. Always goes\n"
+    "first and lowers Sp. Def.");
 
 static const u8 sDisableDescription[] = _(
     "For 4 turns, the target will be\n"
@@ -407,9 +407,9 @@ static const u8 sStringShotDescription[] = _(
     "lowers their Speed stats.");
 
 static const u8 sDragonRageDescription[] = _(
-    "The foe is hit with a shock wave\n"
-    "that always deals 40 HP damage.\n"
-    "Deals 140 HP damage at level 50.");
+    "Deals damage equal to more than\n"
+    "the user's level. Boosted at less\n"
+    "HP. Spreads to foes. Goes last.");
 
 static const u8 sFireSpinDescription[] = _(
     "The user traps the target inside\n"
