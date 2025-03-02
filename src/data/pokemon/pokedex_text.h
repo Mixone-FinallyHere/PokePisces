@@ -6653,10 +6653,11 @@ const u8 gCremelettsPokedexText[] = _(
     "they never separate after becoming like this.");
 
 const u8 gSnurrowlPokedexText[] = _(
-    "They're very adaptive, and able to live\n"
-    "in most conditions. One can often\n"
-    "identify its burrows via the surrounding\n"
-    "snow, which it constantly produces.");
+    "Snurrowl are very adaptive and can live in a vast\n"
+    "array of environments. This is due to the odd\n"
+    "nomadic behavior of their evolution. They create\n"
+    "snow that regulates the temperature in their\n"
+    "home, setting up the ideal habitat anywhere.");
 
 const u8 gStolycePokedexText[] = _(
     "Stolyce are completely nomadic and never\n"

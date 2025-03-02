@@ -510,7 +510,7 @@ static const struct TrainerMon sParty_PJuan[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 24, 0, 12, 16, 12),
     .lvl = 12,
-    .moves = {MOVE_ICE_SHARD, MOVE_DUNE_SLICER, MOVE_SAND_ATTACK, MOVE_LUCKY_CHANT},
+    .moves = {MOVE_ICE_SHARD, MOVE_MUD_SHOT, MOVE_SAND_ATTACK, MOVE_LUCKY_CHANT},
     .nature = NATURE_HASTY,
     },
     {
@@ -541,7 +541,7 @@ static const struct TrainerMon sParty_PSebastian[] = {
     .species = SPECIES_FAERED,
     .ability = ABILITY_PRANKSTER,
     .gender = TRAINER_MON_MALE,
-    .heldItem = ITEM_LAGGING_TAIL,
+    .heldItem = ITEM_FROST_ORB,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(28, 16, 0, 0, 16, 0),
     .lvl = 13,
