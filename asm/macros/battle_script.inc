@@ -1064,8 +1064,9 @@
 	.byte 0xcc
 	.endm
 
-	.macro cureifburnedparalysedorpoisoned failInstr:req
+	.macro curestatuswithmove battler:req, failInstr:req
 	.byte 0xcd
+	.byte \battler
 	.4byte \failInstr
 	.endm
 
@@ -2424,11 +2425,6 @@
 
 	.macro trytrainerslidemegaevolutionmsg battler:req
 	various \battler, VARIOUS_TRY_TRAINER_SLIDE_MSG_MEGA_EVOLUTION
-	.endm
-
-	.macro cureifblooming failInstr:req
-	various BS_ATTACKER, VARIOUS_CURE_IF_BLOOMING
-	.4byte \failInstr
 	.endm
 
 	.macro setovertaketarget

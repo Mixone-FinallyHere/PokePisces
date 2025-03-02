@@ -4497,8 +4497,8 @@ static const u8 sDiffuseWaveDescription[] = _(
 
 static const u8 sSkySplitterDescription[] = _(
     "The user splits the heavens,\n"
-    "clearing the weather. It also is\n"
-    "super effective on Flying-types.");
+    "clearing weather and Tailwind.\n"
+    "Super effective on Flying-types.");
 
 static const u8 sVaporizeDescription[] = _(
     "This move is super effective on\n"

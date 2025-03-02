@@ -2295,7 +2295,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_AMNESIA] =
     {
-        .effect = EFFECT_SPECIAL_DEFENSE_UP_2,
+        .effect = EFFECT_AMNESIA,
         .power = 0,
         .type = TYPE_PSYCHIC,
         .accuracy = 0,

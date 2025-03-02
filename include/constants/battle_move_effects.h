@@ -657,7 +657,8 @@
 #define EFFECT_RECHARGE_BURN                651
 #define EFFECT_AIR_CUTTER                   652
 #define EFFECT_HOLD_HANDS                   653
+#define EFFECT_AMNESIA                      654
 
-#define NUM_BATTLE_MOVE_EFFECTS             654
+#define NUM_BATTLE_MOVE_EFFECTS             655
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H
