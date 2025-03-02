@@ -13034,6 +13034,8 @@ static void Cmd_various(void)
     case VARIOUS_JUMP_IF_EERIE_MASK_PROTECTED:
     {
         VARIOUS_ARGS(const u8 *jumpInstr);
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+
         if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND))
         {
             gBattlescriptCurrInstr = cmd->jumpInstr;
@@ -13047,6 +13049,8 @@ static void Cmd_various(void)
     case VARIOUS_JUMP_IF_TERU_CHARM_PROTECTED:
     {
         VARIOUS_ARGS(const u8 *jumpInstr);
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+
         if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_TERU_CHARM && gBattleMons[battler].species == SPECIES_CHIROBERRA)
         {
             gBattlescriptCurrInstr = cmd->jumpInstr;
@@ -13060,7 +13064,22 @@ static void Cmd_various(void)
     case VARIOUS_JUMP_IF_GEAR_MAGNET:
     {
         VARIOUS_ARGS(const u8 *jumpInstr);
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
         if (gStatuses3[battler] & STATUS3_MAGNET_RISE && gStatuses4[battler] & STATUS4_GEARED_UP)
+        {
+            gBattlescriptCurrInstr = cmd->jumpInstr;
+        }
+        else
+        {
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
+    case VARIOUS_JUMP_IF_INFATUATED_SPECIFIC:
+    {
+        VARIOUS_ARGS(const u8 *jumpInstr);
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+        if (gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATED_WITH(battler))
         {
             gBattlescriptCurrInstr = cmd->jumpInstr;
         }

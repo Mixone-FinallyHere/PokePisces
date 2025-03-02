@@ -2583,6 +2583,11 @@
 	.4byte \jumpInstr
 	.endm
 
+	.macro jumpifinfatuatedspecific battler:req, jumpInstr:req
+	various \battler, VARIOUS_JUMP_IF_INFATUATED_SPECIFIC
+	.4byte \jumpInstr
+	.endm
+
 	.macro invertnegativestatstages battler:req
 	various \battler, VARIOUS_INVERT_NEGATIVE_STAT_STAGES
 	.endm

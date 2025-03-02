@@ -679,6 +679,71 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectDefenseDownHit          @ EFFECT_STELLAR_FIST
 	.4byte BattleScript_EffectRechargeBurn            @ EFFECT_RECHARGE_BURN
 	.4byte BattleScript_EffectAirCutter               @ EFFECT_AIR_CUTTER
+	.4byte BattleScript_EffectHoldHands               @ EFFECT_HOLD_HANDS
+
+BattleScript_EffectHoldHands::
+	attackcanceler
+	attackstring
+	ppreduce
+	jumpifnoally BS_ATTACKER, BattleScript_ButItFailed
+	jumpifinfatuatedspecific BS_ATTACKER, BattleScript_EffectHoldHandsEffect
+	goto BattleScript_ButItFailed
+BattleScript_EffectHoldHandsEffect::
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_HoldHandsDoMoveAnim
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_DEF, MAX_STAT_STAGE, BattleScript_HoldHandsDoMoveAnim
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_HoldHandsDoMoveAnim
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_HoldHandsDoMoveAnim
+	jumpifstat BS_TARGET, CMP_EQUAL, STAT_ACC, MAX_STAT_STAGE, BattleScript_HoldHandsTryHeal
+BattleScript_HoldHandsDoMoveAnim::
+	attackanimation
+	waitanimation
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_ATK | BIT_DEF | BIT_SPATK | BIT_SPDEF | BIT_ACC, 0
+	setstatchanger STAT_ATK, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_HoldHandsTryDef
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_HoldHandsTryDef
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_HoldHandsTryDef::
+	setstatchanger BIT_DEF, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_HoldHandsTrySpAtk
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_HoldHandsTrySpAtk
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_HoldHandsTrySpAtk::
+	setstatchanger BIT_SPATK, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_HoldHandsTrySpDef
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_HoldHandsTrySpDef
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_HoldHandsTrySpDef::
+	setstatchanger BIT_SPDEF, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_HoldHandsTryAccuracy
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_HoldHandsTryAccuracy
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_HoldHandsTryAccuracy::
+	setstatchanger BIT_ACC, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_HoldHandsEnd
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_HoldHandsEnd
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_HoldHandsEnd::
+	tryhealquarterhealth BS_TARGET, BattleScript_MoveEnd
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	printstring STRINGID_PKMNREGAINEDHEALTH
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_HoldHandsTryHeal::
+	tryhealquarterhealth BS_TARGET, BattleScript_ButItFailed
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	printstring STRINGID_PKMNREGAINEDHEALTH
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectAirCutter::
     call BattleScript_EffectHit_Ret
@@ -10062,7 +10127,6 @@ BattleScript_EffectDoNothing::
 	attackcanceler
 	attackstring
 	ppreduce
-	jumpifmove MOVE_HOLD_HANDS, BattleScript_EffectHoldHands
 	attackanimation
 	waitanimation
 	jumpifmove MOVE_CELEBRATE, BattleScript_EffectCelebrate
@@ -10073,12 +10137,6 @@ BattleScript_EffectDoNothing::
 BattleScript_IgnoreIncrementGameStat::
 	printstring STRINGID_BUTNOTHINGHAPPENED
 	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
-BattleScript_EffectHoldHands:
-	jumpifstatus4 BS_TARGET, STATUS4_CRAFTY_SHIELD, BattleScript_ButItFailed
-	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_ButItFailed
-	attackanimation
-	waitanimation
 	goto BattleScript_MoveEnd
 BattleScript_EffectCelebrate:
 	printstring STRINGID_CELEBRATEMESSAGE
