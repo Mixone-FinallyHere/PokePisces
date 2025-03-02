@@ -455,8 +455,9 @@
 #define MOVE_EFFECT_RANDOM_STAT_DROP    117
 #define MOVE_EFFECT_LONG_NOSE           118
 #define MOVE_EFFECT_RECHARGE_BURN       119
+#define MOVE_EFFECT_DRAGON_RAGE         120
 
-#define NUM_MOVE_EFFECTS                120
+#define NUM_MOVE_EFFECTS                121
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000

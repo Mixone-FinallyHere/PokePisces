@@ -149,7 +149,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectBatonPass               @ EFFECT_BATON_PASS
 	.4byte BattleScript_EffectHit                     @ EFFECT_PURSUIT
 	.4byte BattleScript_EffectRapidSpin               @ EFFECT_RAPID_SPIN
-	.4byte BattleScript_EffectSonicboom               @ EFFECT_SONICBOOM
+	.4byte BattleScript_EffectSonicBoom               @ EFFECT_SONIC_BOOM
 	.4byte BattleScript_EffectCaptivate               @ EFFECT_CAPTIVATE
 	.4byte BattleScript_EffectMorningSun              @ EFFECT_MORNING_SUN
 	.4byte BattleScript_EffectSynthesis               @ EFFECT_SYNTHESIS
@@ -9442,13 +9442,14 @@ BattleScript_EffectSuperFang::
 	goto BattleScript_HitFromAtkAnimation
 
 BattleScript_EffectDragonRage::
+	setmoveeffect MOVE_EFFECT_DRAGON_RAGE | MOVE_EFFECT_AFFECTS_USER
 	attackcanceler
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
 	typecalc
 	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
-	setword gBattleMoveDamage, 40
+	dmgtolevel
 	adjustdamage
 	goto BattleScript_HitFromAtkAnimation
 
@@ -10756,7 +10757,8 @@ BattleScript_EffectRapidSpinEnd::
 	goto BattleScript_EffectHit
 .endif
 
-BattleScript_EffectSonicboom::
+BattleScript_EffectSonicBoom::
+	setmoveeffect MOVE_EFFECT_SP_DEF_MINUS_1
 	attackcanceler
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
