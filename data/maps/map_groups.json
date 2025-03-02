@@ -153,7 +153,8 @@
     "ZotpyreInteriors",
     "ZotpyreSecretBasement",
     "Gym3Corridor",
-    "PetalburgCity_Gym"
+    "PetalburgCity_Gym",
+    "ArctaigaSpindaDen"
   ],
   "gMapGroup_PiscesLeg5Major": [
     "Route120",
@@ -178,7 +179,8 @@
     "CanopourBushes",
     "PerplumeTreehouse",
     "ScuttillInteriors",
-    "ShiftryArena"
+    "ShiftryArena",
+    "ScuttillSpindaDen"
   ],
   "gMapGroup_PiscesLeg6Major": [
     "OzoneInstitute",
@@ -211,7 +213,10 @@
     "FallarborSteeple",
     "FallarborSteepleInterior",
     "PiratesGrotto",
-    "MuseumSanctum"
+    "MuseumSanctum",
+    "ChimneySpindaArea",
+    "AshlandsHouse",
+    "CrimneyInteriors"
   ],
   "gMapGroup_PiscesLeg7Major": [
     "SweltornDesert",
@@ -258,7 +263,8 @@
     "Gym6Corridor",
     "VerdanturfGym",
     "MauvilleCity_Gym",
-    "SweltornInteriors"
+    "SweltornInteriors",
+    "SweltornSpindaDen"
   ],
   "gMapGroup_PiscesLeg8Major": [
     "SlateportShore",
