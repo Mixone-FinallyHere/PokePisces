@@ -11562,6 +11562,7 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
             basePower *= 2;
         break;
     case EFFECT_SHARP_GLIDE:
+    case EFFECT_AIR_CUTTER:
         if (gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_TAILWIND)
             basePower *= 2;
         break;

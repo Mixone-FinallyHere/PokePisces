@@ -93,14 +93,14 @@ static const u8 sWingAttackDescription[] = _(
     "inflict damage.");
 
 static const u8 sWhirlwindDescription[] = _(
-    "The foe is blown away and\n"
-    "switched. In the wild, the battle\n"
-    "ends. Removes foe's Tailwind.");
-
+    "Blows away the foe to make them \n"
+    "switch and their Tailwind to the\n"
+    "user's side.");
+    
 static const u8 sFlyDescription[] = _(
-    "Flies up on the first turn, then\n"
-    "strikes the next turn. Increases\n"
-    "in power with friendship.");
+    "A 2-turn move that critical hits\n"
+    "in Tailwind and clears it.\n"
+    "Boosted with friendship.");
 
 static const u8 sBindDescription[] = _(
     "A long body or tentacles are\n"
@@ -1554,9 +1554,9 @@ static const u8 sFakeTearsDescription[] = _(
     "lowers the target's Sp. Def stat.");
 
 static const u8 sAirCutterDescription[] = _(
-    "The user launches razor-like\n"
-    "wind to slash opposing Pokémon.\n"
-    "Critical hits land more easily.");
+    "Lands critical hits more easily.\n"
+    "Boosted if in user's Tailwind\n"
+    "and removes foe's Tailwind.");
 
 static const u8 sOverheatDescription[] = _(
     "The user attacks the foe at full\n"
@@ -4317,8 +4317,8 @@ static const u8 sFinalShriekDescription[] = _(
 
 static const u8 sManeuverDescription[] = _(
     "After gliding towards the foe,\n"
-    "the user switches out. This move\n"
-    "lands critical hits in Tailwind.");
+    "the user switches out. Lands\n"
+    "critical hits in user's Tailwind.");
 
 static const u8 sScorpFangDescription[] = _(
     "Knocks the foe to the ground and\n"
@@ -4723,7 +4723,7 @@ static const u8 sIgnitionDescription[] = _(
 static const u8 sSharpGlideDescription[] = _(
     "The user glides quicky into the\n"
     "target. This move's power\n"
-    "doubles in Tailwind.");
+    "doubles in user's Tailwind.");
 
 static const u8 sCrashLandDescription[] = _(
     "This move is Flying and\n"
@@ -4731,9 +4731,9 @@ static const u8 sCrashLandDescription[] = _(
     "foes and terribly hurts the user.");
 
 static const u8 sAirCannonDescription[] = _(
-    "The user absorbs air on the\n"
-    "first turn, then blasts it the\n"
-    "next. Doesn't charge in Tailwind.");
+    "A 2-turn move that doesn't need\n"
+    "to charge in Tailwind. Removes\n"
+    "Tailwind after attacking.");
 
 static const u8 sBanshriekDescription[] = _(
     "The user lets out a ghostly wail\n"

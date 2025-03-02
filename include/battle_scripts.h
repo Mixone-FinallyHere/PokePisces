@@ -86,7 +86,7 @@ extern const u8 BattleScript_BideAttack[];
 extern const u8 BattleScript_BideNoEnergyToAttack[];
 extern const u8 BattleScript_DearlyDepartSuccessSwitch[];
 extern const u8 BattleScript_SpookSuccessSwitch[];
-extern const u8 BattleScript_WhirlwindTailwindRemoval[];
+extern const u8 BattleScript_WhirlwindSuccessSwitch[];
 extern const u8 BattleScript_RoarSuccessSwitch[];
 extern const u8 BattleScript_RoarSuccessEndBattle[];
 extern const u8 BattleScript_MistProtected[];

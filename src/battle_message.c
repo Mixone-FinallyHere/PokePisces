@@ -619,6 +619,7 @@ static const u8 sText_BufferEnds[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_BUFF1}\nwo
 static const u8 sText_ThroatChopEnds[] = _("{B_ATK_NAME_WITH_PREFIX} can\nuse sound-based moves again!");
 static const u8 sText_TelekinesisEnds[] = _("{B_ATK_NAME_WITH_PREFIX} was freed\nfrom the telekinesis!");
 static const u8 sText_TailwindEnds[] = _("{B_ATK_TEAM1} team's tailwind\npetered out!");
+static const u8 sText_FoeTailwindEnds[] = _("{B_DEF_TEAM1} team's tailwind\npetered out!");
 static const u8 sText_LuckyChantEnds[] = _("{B_ATK_TEAM1} team's Lucky Chant\nwore off!");
 static const u8 sText_TrickRoomEnds[] = _("The twisted dimensions returned to\nnormal!");
 static const u8 sText_WonderRoomEnds[] = _("Wonder Room wore off, and Defense\nand Sp. Def stats returned to normal!");
@@ -1819,6 +1820,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PHANTOMDOESNTALLOW - BATTLESTRINGS_TABLE_START] = sText_PhantomDoesntAllow,
     [STRINGID_USERHASENTEREDAFRENZY - BATTLESTRINGS_TABLE_START] = sText_UserHasEnteredAFrenzy,
     [STRINGID_USERINCREASEDBLOOMINGDURATION - BATTLESTRINGS_TABLE_START] = sText_UserIncreasedBloomingDuration,
+    [STRINGID_FOETAILWINDENDS - BATTLESTRINGS_TABLE_START] = sText_FoeTailwindEnds,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

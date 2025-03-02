@@ -6044,9 +6044,9 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         }
         break;
     case EFFECT_TRICK:
-        if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_LAGGING_TAIL && AI_THINKING_STRUCT->aiFlags & AI_FLAG_SEBASTIANS_TRICK)
+        if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_FROST_ORB && AI_THINKING_STRUCT->aiFlags & AI_FLAG_SEBASTIANS_TRICK)
             score += 100;
-        else if (aiData->holdEffects[battlerAtk] != HOLD_EFFECT_LAGGING_TAIL && AI_THINKING_STRUCT->aiFlags & AI_FLAG_SEBASTIANS_TRICK)
+        else if (aiData->holdEffects[battlerAtk] != HOLD_EFFECT_FROST_ORB && AI_THINKING_STRUCT->aiFlags & AI_FLAG_SEBASTIANS_TRICK)
             score -= 100;
     case EFFECT_BESTOW:
         switch (aiData->holdEffects[battlerAtk])

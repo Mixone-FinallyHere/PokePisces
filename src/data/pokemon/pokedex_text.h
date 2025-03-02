@@ -1586,7 +1586,7 @@ const u8 gZigzagoonPokedexText[] = _(
     "which lets them catch prey unaware and makes it\n"
     "difficult for predators to corner them. Their\n"
     "bristly hair is hard to clean, so they spend\n"
-    "entire afternoons cleaning themselves rivers.");
+    "entire afternoons cleaning themselves in rivers.");
 
 const u8 gLinoonePokedexText[] = _(
     "Linoone runs straight. Linoone runs straight its\n"
@@ -6653,10 +6653,11 @@ const u8 gCremelettsPokedexText[] = _(
     "they never separate after becoming like this.");
 
 const u8 gSnurrowlPokedexText[] = _(
-    "They're very adaptive, and able to live\n"
-    "in most conditions. One can often\n"
-    "identify its burrows via the surrounding\n"
-    "snow, which it constantly produces.");
+    "Snurrowl are very adaptive and can live in a vast\n"
+    "array of environments. This is due to the odd\n"
+    "nomadic behavior of their evolution. They create\n"
+    "snow that regulates the temperature in their\n"
+    "home, setting up the ideal habitat anywhere.");
 
 const u8 gStolycePokedexText[] = _(
     "Stolyce are completely nomadic and never\n"

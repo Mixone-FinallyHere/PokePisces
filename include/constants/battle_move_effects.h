@@ -655,7 +655,8 @@
 #define EFFECT_FIREBRAND                    649
 #define EFFECT_STELLAR_FIST                 650
 #define EFFECT_RECHARGE_BURN                651
+#define EFFECT_AIR_CUTTER                   652
 
-#define NUM_BATTLE_MOVE_EFFECTS             652
+#define NUM_BATTLE_MOVE_EFFECTS             653
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H
