@@ -3180,9 +3180,9 @@ static const u8 sTropKickDescription[] = _(
     "blooming, raises its Atk.");
 
 static const u8 sInstructDescription[] = _(
-    "The user instructs the target to\n"
-    "reuse the move last used by the\n"
-    "target.");
+    "The user instructs the ally to\n"
+    "reuse the move last used by\n"
+    "them.");
 
 static const u8 sBeakBlastDescription[] = _(
     "The user first heats up its\n"
