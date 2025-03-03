@@ -4933,7 +4933,7 @@ static const u8 sSupercellSlamDescription[] = _(
 static const u8 sMindGapDescription[] = _(
     "Goes first and disables the move\n"
     "the foe is about to use. Fails\n"
-    "if the foe isn't being targeted.");
+    "if the foe is already disabled.");
 
 static const u8 sSweetWhispersDescription[] = _(
     "The user promises great things\n"

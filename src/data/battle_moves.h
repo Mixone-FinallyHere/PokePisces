@@ -17137,7 +17137,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_MIND_GAP] =
     {
-        .effect = EFFECT_PLACEHOLDER,
+        .effect = EFFECT_MIND_GAP,
         .power = 50,
         .type = TYPE_PSYCHIC,
         .accuracy = 100,

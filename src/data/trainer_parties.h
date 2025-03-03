@@ -6209,7 +6209,7 @@ static const struct TrainerMon sParty_PKaku[] = {
     .species = SPECIES_MAERACHOLY,
     .heldItem = ITEM_HONDEW_BERRY,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .ev = TRAINER_PARTY_EVS(64, 64, 64, 64, 64, 64),
+    .ev = TRAINER_PARTY_EVS(252, 0, 4, 0, 252, 0),
     .lvl = 60,
     .moves = {MOVE_SNARL, MOVE_AURA_SPHERE, MOVE_HYPNOSIS, MOVE_DREAM_EATER},
     }
@@ -15141,7 +15141,7 @@ static const struct TrainerMon sParty_PMaxie[] = {
     },
     {
     .species = SPECIES_SUMMERASU,
-    .ability = ABILITY_LEVITATE,
+    .ability = ABILITY_DROUGHT,
     .heldItem = ITEM_BATTLE_HELM,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 78,
@@ -15152,8 +15152,7 @@ static const struct TrainerMon sParty_PMaxie[] = {
 static const struct TrainerMon sParty_PArchie[] = {
     {
     .species = SPECIES_NIMBOZOA,
-    .ability = ABILITY_WIND_POWER,
-    .friendship = 255,
+    .ability = ABILITY_LEVITATE,
     .heldItem = ITEM_LIFE_ORB,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 77,
@@ -15169,7 +15168,7 @@ static const struct TrainerMon sParty_PArchie[] = {
     {
     .species = SPECIES_WAARGH,
     .ability = ABILITY_SEAFARER,
-    .heldItem = ITEM_SITRUS_BERRY,
+    .heldItem = ITEM_UTILITY_UMBRELLA,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 78,
     .moves = {MOVE_OBSTRUCT, MOVE_KNOCK_OFF, MOVE_PLUNDER, MOVE_ICE_FANG},
