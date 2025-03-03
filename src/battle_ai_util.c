@@ -3404,7 +3404,7 @@ bool32 ShouldTrap(u32 battlerAtk, u32 battlerDef, u32 move)
 
 bool32 ShouldFakeOut(u32 battlerAtk, u32 battlerDef, u32 move)
 {
-    if (!gDisableStructs[battlerAtk].isFirstTurn
+    if ((!(gDisableStructs[battlerAtk].isFirstTurn))
     || AI_DATA->abilities[battlerAtk] == ABILITY_GORILLA_TACTICS
     || AI_DATA->abilities[battlerAtk] == ABILITY_ONE_WAY_TRIP
     || AI_DATA->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_BAND
@@ -3412,13 +3412,12 @@ bool32 ShouldFakeOut(u32 battlerAtk, u32 battlerDef, u32 move)
     || AI_DATA->holdEffects[battlerAtk] == HOLD_EFFECT_CHOICE_SPECS
     || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK
     || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
-    || (AI_DATA->abilities[battlerAtk] != ABILITY_MOLD_BREAKER
-    && (AI_DATA->abilities[battlerDef]  == ABILITY_PROPELLER_TAIL 
-        || AI_DATA->abilities[battlerDef] == ABILITY_SHIELD_DUST 
+    || (!IsMoldBreakerTypeAbility(battlerAtk, AI_DATA->abilities[battlerAtk])
+    && (AI_DATA->abilities[battlerDef] == ABILITY_SHIELD_DUST 
         || AI_DATA->abilities[battlerDef] == ABILITY_INNER_FOCUS
+        || AI_DATA->abilities[battlerDef] == ABILITY_PROPELLER_TAIL
         || AI_DATA->abilities[battlerDef] == ABILITY_STEADFAST
-        || AI_DATA->abilities[battlerDef] == ABILITY_TITANIC
-        || AI_DATA->abilities[battlerDef] == ABILITY_PROPELLER_TAIL)))
+        || AI_DATA->abilities[battlerDef] == ABILITY_TITANIC)))
         return FALSE;
 
     return TRUE;

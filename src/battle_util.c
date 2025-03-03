@@ -2482,8 +2482,6 @@ enum
     ENDTURN_ELECTRIFY,
     ENDTURN_POWDER,
     ENDTURN_THROAT_CHOP,
-    ENDTURN_SLOW_START,
-    ENDTURN_STARS_GRACE,
     ENDTURN_PLASMA_FISTS,
     ENDTURN_CUD_CHEW,
     ENDTURN_SALT_CURE,
@@ -3116,22 +3114,6 @@ u8 DoBattlerEndTurnEffects(void)
             if (gDisableStructs[battler].throatChopTimer && --gDisableStructs[battler].throatChopTimer == 0)
             {
                 BattleScriptExecute(BattleScript_ThroatChopEndTurn);
-                effect++;
-            }
-            gBattleStruct->turnEffectsTracker++;
-            break;
-        case ENDTURN_SLOW_START:
-            if (gDisableStructs[battler].slowStartTimer && --gDisableStructs[battler].slowStartTimer == 0 && ability == ABILITY_SLOW_START)
-            {
-                BattleScriptExecute(BattleScript_SlowStartEnds);
-                effect++;
-            }
-            gBattleStruct->turnEffectsTracker++;
-            break;
-        case ENDTURN_STARS_GRACE:
-            if (gDisableStructs[battler].slowStartTimer && --gDisableStructs[battler].slowStartTimer == 0 && ability == ABILITY_STARS_GRACE)
-            {
-                BattleScriptExecute(BattleScript_StarsGraceStarts);
                 effect++;
             }
             gBattleStruct->turnEffectsTracker++;
@@ -5569,6 +5551,24 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     effect++;
                 }
                 break;
+            case ABILITY_STARS_GRACE:
+                if (gDisableStructs[battler].slowStartTimer
+                && --gDisableStructs[battler].slowStartTimer == 0)
+                {
+                    gBattlerAttacker = battler;
+                    BattleScriptPushCursorAndCallback(BattleScript_StarsGraceStarts);
+                    effect++;
+                }
+                break;
+            case ABILITY_SLOW_START:
+                if (gDisableStructs[battler].slowStartTimer
+                && --gDisableStructs[battler].slowStartTimer == 0)
+                {
+                    gBattlerAttacker = battler;
+                    BattleScriptPushCursorAndCallback(BattleScript_SlowStartEnds);
+                    effect++;
+                }
+                break;
             case ABILITY_MOODY:
                 if (gDisableStructs[battler].isFirstTurn != 2)
                 {
@@ -6219,28 +6219,28 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         case ABILITY_MUMMY:
         case ABILITY_LOVESICK:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-            && IsBattlerAlive(gBattlerAttacker) && TARGET_TURN_DAMAGED 
+            && IsBattlerAlive(gBattlerAttacker) 
+            && TARGET_TURN_DAMAGED
+            && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_PROTECTIVE_PADS
             && IsMoveMakingContact(move, gBattlerAttacker) 
-            && gBattleStruct->overwrittenAbilities[gBattlerAttacker] != GetBattlerAbility(gBattlerTarget))
+            && gBattleMons[gBattlerAttacker].ability != ABILITY_MUMMY
+            && gBattleMons[gBattlerAttacker].ability != ABILITY_LINGERING_AROMA
+            && gBattleMons[gBattlerAttacker].ability != ABILITY_LOVESICK
+            && gBattleStruct->overwrittenAbilities[gBattlerAttacker] != GetBattlerAbility(gBattlerTarget)
+            && (!(IsGastroAcidBannedAbility(gBattleMons[gBattlerAttacker].ability))))
             {
-                if (IsGastroAcidBannedAbility(gBattleMons[gBattlerAttacker].ability))
+                if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_ABILITY_SHIELD)
                 {
+                    RecordItemEffectBattle(gBattlerAttacker, HOLD_EFFECT_ABILITY_SHIELD);
                     break;
                 }
-                else
-                {
-                    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_ABILITY_SHIELD)
-                    {
-                        RecordItemEffectBattle(gBattlerAttacker, HOLD_EFFECT_ABILITY_SHIELD);
-                        break;
-                    }
 
-                    gLastUsedAbility = gBattleMons[gBattlerAttacker].ability = gBattleStruct->overwrittenAbilities[gBattlerAttacker] = gBattleMons[gBattlerTarget].ability;
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_MummyActivates;
-                    effect++;
-                    break;
-                }
+                gLastUsedAbility = gBattleMons[gBattlerAttacker].ability;
+                gBattleMons[gBattlerAttacker].ability = gBattleStruct->overwrittenAbilities[gBattlerAttacker] = gBattleMons[gBattlerTarget].ability;
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_MummyActivates;
+                effect++;
+                break;
             }
             break;
         case ABILITY_MELANCHOLIA:
@@ -6927,28 +6927,28 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             break;
         case ABILITY_LOVESICK:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-            && IsBattlerAlive(gBattlerTarget) && TARGET_TURN_DAMAGED 
+            && IsBattlerAlive(gBattlerTarget) 
+            && TARGET_TURN_DAMAGED
+            && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_PROTECTIVE_PADS
             && IsMoveMakingContact(move, gBattlerAttacker) 
-            && gBattleStruct->overwrittenAbilities[gBattlerTarget] != GetBattlerAbility(gBattlerAttacker))
+            && gBattleMons[gBattlerTarget].ability != ABILITY_MUMMY
+            && gBattleMons[gBattlerTarget].ability != ABILITY_LINGERING_AROMA
+            && gBattleMons[gBattlerTarget].ability != ABILITY_LOVESICK
+            && gBattleStruct->overwrittenAbilities[gBattlerTarget] != GetBattlerAbility(gBattlerTarget)
+            && (!(IsGastroAcidBannedAbility(gBattleMons[gBattlerTarget].ability))))
             {
-                if (IsGastroAcidBannedAbility(gBattleMons[gBattlerTarget].ability))
+                if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_ABILITY_SHIELD)
                 {
+                    RecordItemEffectBattle(gBattlerTarget, HOLD_EFFECT_ABILITY_SHIELD);
                     break;
                 }
-                else
-                {
-                    if (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_ABILITY_SHIELD)
-                    {
-                        RecordItemEffectBattle(gBattlerTarget, HOLD_EFFECT_ABILITY_SHIELD);
-                        break;
-                    }
 
-                    gLastUsedAbility = gBattleMons[gBattlerTarget].ability = gBattleStruct->overwrittenAbilities[gBattlerTarget] = gBattleMons[gBattlerAttacker].ability;
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_LovesickMummyEffectActivates;
-                    effect++;
-                    break;
-                }
+                gLastUsedAbility = gBattleMons[gBattlerTarget].ability;
+                gBattleMons[gBattlerTarget].ability = gBattleStruct->overwrittenAbilities[gBattlerTarget] = gBattleMons[gBattlerAttacker].ability;
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_LovesickMummyEffectActivates;
+                effect++;
+                break;
             }
             break;
         case ABILITY_ICE_SCALES:
@@ -12346,7 +12346,7 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.5));
         break;
     case ABILITY_STARS_GRACE:
-        if (gDisableStructs[battlerAtk].slowStartTimer == 0 && IS_MOVE_SPECIAL(move))
+        if (gDisableStructs[battlerAtk].slowStartTimer < 1 && IS_MOVE_SPECIAL(move))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         break;
     case ABILITY_WHITE_OUT:

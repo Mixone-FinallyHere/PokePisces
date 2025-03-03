@@ -1264,25 +1264,25 @@ static bool32 TryAegiFormChange(void)
         if (IS_MOVE_STATUS(gCurrentMove))
             return FALSE;
         else if (IS_MOVE_PHYSICAL(gCurrentMove))
-        gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA_SOLAR;
+            gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA_SOLAR;
         else if (IS_MOVE_SPECIAL(gCurrentMove))
-        gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA_LUNAR;
+            gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA_LUNAR;
         break;
     case SPECIES_GAOTERRA_SOLAR: // Shield -> Blade
         if (IS_MOVE_PHYSICAL(gCurrentMove))
             return FALSE;
         else if (IS_MOVE_STATUS(gCurrentMove))
-        gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA;
+            gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA;
         else if (IS_MOVE_SPECIAL(gCurrentMove))
-        gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA_LUNAR;
+            gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA_LUNAR;
         break;
     case SPECIES_GAOTERRA_LUNAR: // Shield -> Blade
         if (IS_MOVE_SPECIAL(gCurrentMove))
             return FALSE;
         else if (IS_MOVE_STATUS(gCurrentMove))
-        gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA;
+            gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA;
         else if (IS_MOVE_PHYSICAL(gCurrentMove))
-        gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA_SOLAR;
+            gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA_SOLAR;
         break;
     }
 
@@ -4405,57 +4405,6 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     MarkBattlerForControllerExec(gEffectBattler);
                     BattleScriptPush(gBattlescriptCurrInstr + 1);
                     gBattlescriptCurrInstr = BattleScript_MoveEffectBugBite;
-                }
-                break;
-            case MOVE_EFFECT_RELIC_SONG:
-                if (GetBattlerAbility(gBattlerAttacker) != ABILITY_SHEER_FORCE && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_TRANSFORMED))
-                {
-                    if (gBattleMons[gBattlerAttacker].species == SPECIES_MELOETTA)
-                    {
-                        gBattleMons[gBattlerAttacker].species = SPECIES_MELOETTA_PIROUETTE;
-                        BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeMoveEffectNoRapidSpin);
-                    }
-                    else if (gBattleMons[gBattlerAttacker].species == SPECIES_MELOETTA_PIROUETTE)
-                    {
-                        gBattleMons[gBattlerAttacker].species = SPECIES_MELOETTA;
-                        BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeMoveEffectNoRapidSpin);
-                    }
-                }
-                break;
-            case MOVE_EFFECT_CINDER_TWIRL:
-                if (GetBattlerAbility(gBattlerAttacker) != ABILITY_SHEER_FORCE && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_TRANSFORMED))
-                {
-                    if (gBattleMons[gBattlerAttacker].species == SPECIES_CINDRILLON)
-                    {
-                        gBattleMons[gBattlerAttacker].species = SPECIES_CINDRILLON_PIROUETTE;
-                        BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeMoveEffect);
-
-                    }
-                    else if (gBattleMons[gBattlerAttacker].species == SPECIES_CINDRILLON_FEAROUETTE)
-                    {
-                        gBattleMons[gBattlerAttacker].species = SPECIES_CINDRILLON_PIROUETTE;
-                        BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeMoveEffect);
-                    }
-                }
-                else
-                {
-                    BattleScriptPush(gBattlescriptCurrInstr + 1);
-                    gBattlescriptCurrInstr = BattleScript_RapidSpinAway;
-                }
-                break;
-            case MOVE_EFFECT_CINDER_DRILL:
-                if (GetBattlerAbility(gBattlerAttacker) != ABILITY_SHEER_FORCE && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_TRANSFORMED))
-                {
-                    if (gBattleMons[gBattlerAttacker].species == SPECIES_CINDRILLON)
-                    {
-                        gBattleMons[gBattlerAttacker].species = SPECIES_CINDRILLON_FEAROUETTE;
-                        BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeMoveEffectNoRapidSpin);
-                    }
-                    else if (gBattleMons[gBattlerAttacker].species == SPECIES_CINDRILLON_PIROUETTE)
-                    {
-                        gBattleMons[gBattlerAttacker].species = SPECIES_CINDRILLON_FEAROUETTE;
-                        BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeMoveEffectNoRapidSpin);
-                    }
                 }
                 break;
             case MOVE_EFFECT_TRAP_BOTH:
@@ -20286,6 +20235,55 @@ void BS_SetGlaiveRush2(void)
     gStatuses4[gBattlerAttacker] |= STATUS4_GLAIVE_RUSH_2;
 
     gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
+void BS_TryCinderDrill(void)
+{
+    NATIVE_ARGS(u8 battler);
+    u8 battler = GetBattlerForBattleScript(cmd->battler);
+
+    if (GetBattlerAbility(battler) != ABILITY_SHEER_FORCE && !(gBattleMons[battler].status2 & STATUS2_TRANSFORMED)
+        && (gBattleMons[battler].species == SPECIES_CINDRILLON || gBattleMons[battler].species == SPECIES_CINDRILLON_PIROUETTE))
+    {
+        if (gBattleMons[battler].species == SPECIES_CINDRILLON)
+            gBattleMons[battler].species = SPECIES_CINDRILLON_FEAROUETTE;
+        else if (gBattleMons[battler].species == SPECIES_CINDRILLON_PIROUETTE)
+            gBattleMons[battler].species = SPECIES_CINDRILLON_FEAROUETTE;
+
+        gBattleScripting.savedBattler = gBattlerAttacker;
+        gBattlerAttacker = battler;
+        BattleScriptPushCursor();
+        gBattlescriptCurrInstr = BattleScript_AttackerFormChangeMoveEffect;
+
+    }
+    else
+    {
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+}
+
+void BS_TryCinderTwirl(void)
+{
+    NATIVE_ARGS(u8 battler);
+    u8 battler = GetBattlerForBattleScript(cmd->battler);
+
+    if (GetBattlerAbility(battler) != ABILITY_SHEER_FORCE && !(gBattleMons[battler].status2 & STATUS2_TRANSFORMED)
+        && (gBattleMons[battler].species == SPECIES_CINDRILLON || gBattleMons[battler].species == SPECIES_CINDRILLON_FEAROUETTE))
+    {
+        if (gBattleMons[battler].species == SPECIES_CINDRILLON)
+            gBattleMons[battler].species = SPECIES_CINDRILLON_PIROUETTE;
+        else if (gBattleMons[battler].species == SPECIES_CINDRILLON_FEAROUETTE)
+            gBattleMons[battler].species = SPECIES_CINDRILLON_PIROUETTE;
+
+        gBattleScripting.savedBattler = gBattlerAttacker;
+        gBattlerAttacker = battler;
+        BattleScriptPushCursor();
+        gBattlescriptCurrInstr = BattleScript_AttackerFormChangeMoveEffect;
+    }
+    else
+    {
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
 }
 
 void BS_SetRemoveTerrain(void)

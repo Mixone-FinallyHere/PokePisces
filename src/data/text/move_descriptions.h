@@ -2529,8 +2529,8 @@ static const u8 sSkyDropDescription[] = _(
 
 static const u8 sShiftGearDescription[] = _(
     "The user rotates its gears,\n"
-    "boosting its Attack stat and\n"
-    "sharply boosting its Speed stat.");
+    "boosting its Attack and Speed\n"
+    "stats.");
 
 static const u8 sCircleThrowDescription[] = _(
     "The target is thrown and\n"
