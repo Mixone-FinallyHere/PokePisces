@@ -1695,47 +1695,35 @@ BattleScript_EffectMagicPowder::
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
+	jumpifability BS_TARGET, ABILITY_MULTITYPE, BattleScript_ButItFailed
+	jumpifability BS_TARGET, ABILITY_RKS_SYSTEM, BattleScript_ButItFailed
+	jumpifsubstituteblocks BattleScript_ButItFailed
+	trysoak BattleScript_ButItFailed
+	jumpifability BS_TARGET, ABILITY_VITAL_SPIRIT, BattleScript_JustDoMagicPowder
+	jumpifability BS_TARGET, ABILITY_INSOMNIA, BattleScript_JustDoMagicPowder
+	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_JustDoMagicPowder
+	jumpifability BS_TARGET, ABILITY_PURIFYING_SALT, BattleScript_JustDoMagicPowder
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_JustDoMagicPowder
+	jumpifflowerveil BattleScript_JustDoMagicPowder
+	jumpifleafguardprotected BS_TARGET, BattleScript_JustDoMagicPowder
+	jumpifeeriemaskprotected BS_TARGET, BattleScript_JustDoMagicPowder
+	jumpifshieldsdown BS_TARGET, BattleScript_JustDoMagicPowder
+	jumpifsubstituteblocks BattleScript_JustDoMagicPowder
+	jumpifgearmagnet BS_TARGET, BattleScript_JustDoMagicPowder
+	jumpifsafeguard BattleScript_JustDoMagicPowder
+	jumpifuproarwakes BattleScript_JustDoMagicPowder
+	setyawn BattleScript_JustDoMagicPowder
 	attackanimation
 	waitanimation
-	jumpifability BS_TARGET, ABILITY_MULTITYPE, BattleScript_MagicPowderSoakFail
-	jumpifability BS_TARGET, ABILITY_RKS_SYSTEM, BattleScript_MagicPowderSoakFail
-	jumpifsubstituteblocks BattleScript_MagicPowderSoakFail
-	trysoak BattleScript_MagicPowderSoakFail
 	printstring STRINGID_TARGETCHANGEDTYPE
 	waitmessage B_WAIT_TIME_LONG
-	jumpifability BS_TARGET, ABILITY_VITAL_SPIRIT, BattleScript_MoveEnd
-	jumpifability BS_TARGET, ABILITY_INSOMNIA, BattleScript_MoveEnd
-	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_MoveEnd
-	jumpifability BS_TARGET, ABILITY_PURIFYING_SALT, BattleScript_MoveEnd
-	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
-	jumpifflowerveil BattleScript_MoveEnd
-	jumpifleafguardprotected BS_TARGET, BattleScript_MoveEnd
-	jumpifeeriemaskprotected BS_TARGET, BattleScript_MoveEnd
-	jumpifshieldsdown BS_TARGET, BattleScript_MoveEnd
-	jumpifsubstituteblocks BattleScript_MoveEnd
-	jumpifgearmagnet BS_TARGET, BattleScript_MoveEnd
-	jumpifsafeguard BattleScript_MoveEnd
-	jumpifuproarwakes BattleScript_MoveEnd
-	setyawn BattleScript_MoveEnd
 	printstring STRINGID_PKMNWASMADEDROWSY
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
-BattleScript_MagicPowderSoakFail::
-	jumpifability BS_TARGET, ABILITY_VITAL_SPIRIT, BattleScript_PrintBattlerAbilityMadeIneffective
-	jumpifability BS_TARGET, ABILITY_INSOMNIA, BattleScript_PrintBattlerAbilityMadeIneffective
-	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_PrintBattlerAbilityMadeIneffective
-	jumpifability BS_TARGET, ABILITY_PURIFYING_SALT, BattleScript_AbilityProtectsDoesntAffect
-	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TitanicProtectsDoesntAffect
-	jumpifflowerveil BattleScript_FlowerVeilProtects
-	jumpifleafguardprotected BS_TARGET, BattleScript_AbilityProtectsDoesntAffect
-	jumpifeeriemaskprotected BS_TARGET, BattleScript_ItemProtectsDoesntAffect
-	jumpifshieldsdown BS_TARGET, BattleScript_AbilityProtectsDoesntAffect
-	jumpifsubstituteblocks BattleScript_ButItFailed
-	jumpifgearmagnet BS_TARGET, BattleScript_ButItFailed
-	jumpifsafeguard BattleScript_SafeguardProtected
-	jumpifuproarwakes BattleScript_ButItFailed
-	setyawn BattleScript_ButItFailed
-	printstring STRINGID_PKMNWASMADEDROWSY
+BattleScript_JustDoMagicPowder::
+	attackanimation
+	waitanimation
+	printstring STRINGID_TARGETCHANGEDTYPE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -11646,10 +11634,27 @@ BattleScript_EffectTorment::
 	attackstring
 	ppreduce
 	accuracycheck BattleScript_ButItFailed, ACC_CURR_MOVE
-	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_AromaVeilProtects
-	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TitanicProtects
-	jumpifsafeguard BattleScript_SafeguardProtected
-	settorment BattleScript_ButItFailed
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_TryTormentSpite
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TryTormentSpite
+	jumpifsafeguard BattleScript_TryTormentSpite
+	settorment BattleScript_TryTormentSpite
+	tryspiteppreduce BattleScript_DoJustTorment
+	attackanimation
+	waitanimation
+	printstring STRINGID_PKMNSUBJECTEDTOTORMENT
+	waitmessage B_WAIT_TIME_LONG
+	printstring STRINGID_PKMNREDUCEDPP
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotTormentAttacker
+	goto BattleScript_MoveEnd
+BattleScript_TryTormentSpite::
+	tryspiteppreduce BattleScript_ButItFailed
+	attackanimation
+	waitanimation
+	printstring STRINGID_PKMNREDUCEDPP
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_DoJustTorment::
 	attackanimation
 	waitanimation
 	printstring STRINGID_PKMNSUBJECTEDTOTORMENT

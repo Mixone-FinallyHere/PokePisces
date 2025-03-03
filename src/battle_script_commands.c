@@ -16331,7 +16331,7 @@ static void Cmd_tryspiteppreduce(void)
             s32 ppToDeduct = 4;
         #endif
         
-            if (gBattleMoves[gCurrentMove].effect == EFFECT_DOWNFALL)
+            if (gBattleMoves[gCurrentMove].effect == EFFECT_DOWNFALL || gBattleMoves[gCurrentMove].effect == EFFECT_TORMENT)
                 ppToDeduct = 2;
 
             if (gBattleMons[gBattlerTarget].pp[i] < ppToDeduct)

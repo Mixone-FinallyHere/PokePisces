@@ -1285,9 +1285,9 @@ static const u8 sHailDescription[] = _(
     "Pokémon except Ice-types.");
 
 static const u8 sTormentDescription[] = _(
-    "The user torments and the foe,\n"
-    "making it incapable of using\n"
-    "the same move twice in a row.");
+    "Makes targets incapable of\n"
+    "repeatedly using moves and cuts\n"
+    "2 PP from the last used move.");
 
 static const u8 sFlatterDescription[] = _(
     "Flattery is used to confuse the\n"
