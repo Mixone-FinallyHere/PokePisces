@@ -845,8 +845,9 @@
 #define STRINGID_USERHASENTEREDAFRENZY                843
 #define STRINGID_USERINCREASEDBLOOMINGDURATION        844
 #define STRINGID_FOETAILWINDENDS                      845
+#define STRINGID_PKMNSFLOWERISOPENING                 846
 
-#define BATTLESTRINGS_COUNT                           846
+#define BATTLESTRINGS_COUNT                           847
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -914,6 +915,7 @@
 #define B_MSG_TURN1_AIR_CANNON     15
 #define B_MSG_TURN1_CHEESE_STEAL   16
 #define B_MSG_TURN1_AXEL_HEEL      17
+#define B_MSG_TURN1_SNAPBLOSSOM    18
 
 // gMoveWeatherChangeStringIds
 #define B_MSG_STARTED_RAIN      0

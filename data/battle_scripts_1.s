@@ -1586,6 +1586,9 @@ BattleScript_EffectMoonBeam:
 	attackstring
 	ppreduce
 	curestatuswithmove BS_ATTACKER, BattleScript_HitFromAtkAnimation
+	critcalc
+	damagecalc
+	adjustdamage
 	attackanimation
 	waitanimation
 	effectivenesssound
@@ -2482,7 +2485,7 @@ BattleScript_EffectSnapblossom::
 BattleScript_SnapblossomDecideTurn::
 	jumpifstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS, BattleScript_SnapblossomSecondTurn
 	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING, BattleScript_SnapblossomSecondTurn
-	setbyte sTWOTURN_STRINGID, B_MSG_TURN1_SOLAR_BEAM
+	setbyte sTWOTURN_STRINGID, B_MSG_TURN1_SNAPBLOSSOM
 	call BattleScriptFirstChargingTurn
 	jumpifnoholdeffect BS_ATTACKER, HOLD_EFFECT_POWER_HERB, BattleScript_MoveEnd
 	call BattleScript_PowerHerbActivation

@@ -463,6 +463,10 @@ void AnimFallingRock_Step(struct Sprite *sprite)
 // Animates the rock particles that are shown on the impact for Rock Blast / Rock Smash
 void AnimRockFragment(struct Sprite *sprite)
 {
+    if (gAnimMoveIndex == MOVE_STALAG_BLAST)
+    {
+        InitSpritePosToAnimBattler(ANIM_ATTACKER, sprite, FALSE);
+    }
     StartSpriteAnim(sprite, gBattleAnimArgs[5]);
     AnimateSprite(sprite);
 
