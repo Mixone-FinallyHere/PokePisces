@@ -1023,25 +1023,25 @@ static const struct TrainerMon sParty_PHitomi[] = {
 
 static const struct TrainerMon sParty_PLiza[] = {
     {
-    .lvl = 20,
+    .lvl = 21,
     .species = SPECIES_LUNATONE,
     .ability = ABILITY_SHADOW_SHIELD,
     .heldItem = ITEM_CURSED_AMULET,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .ev = TRAINER_PARTY_EVS(36, 0, 0, 0, 56, 36),
-    .moves = {MOVE_WATER_PULSE, MOVE_CONFUSION, MOVE_HYPNOSIS, MOVE_GEM_BLASTER},
-    .nature = NATURE_MODEST,
+    .ev = TRAINER_PARTY_EVS(28, 0, 0, 0, 44, 48),
+    .moves = {MOVE_PUNISHMENT, MOVE_DREAM_EATER, MOVE_DARK_VOID, MOVE_CHILLY_AIR},
+    .nature = NATURE_QUIET,
     },
     {
-    .lvl = 20,
+    .lvl = 21,
     .species = SPECIES_SOLROCK,
     .ability = ABILITY_SOLID_ROCK,
-    .friendship = 170,
-    .heldItem = ITEM_SHELL_BELL,
+    .heldItem = ITEM_POWER_HERB,
+    .friendship = 236,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .ev = TRAINER_PARTY_EVS(36, 56, 36, 0, 0, 0),
-    .moves = {MOVE_HUNKER_DOWN, MOVE_PURGING_FLAMES, MOVE_ROCK_TOMB, MOVE_ROCK_SMASH},
-    .nature = NATURE_ADAMANT,
+    .ev = TRAINER_PARTY_EVS(68, 8, 32, 0, 0, 20),
+    .moves = {MOVE_HUNKER_DOWN, MOVE_ROCK_SMASH, MOVE_CUT, MOVE_MIRACLE_EYE},
+    .nature = NATURE_IMPISH,
     }
 };
 
@@ -6209,7 +6209,7 @@ static const struct TrainerMon sParty_PKaku[] = {
     .species = SPECIES_MAERACHOLY,
     .heldItem = ITEM_HONDEW_BERRY,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .ev = TRAINER_PARTY_EVS(64, 64, 64, 64, 64, 64),
+    .ev = TRAINER_PARTY_EVS(252, 0, 4, 0, 252, 0),
     .lvl = 60,
     .moves = {MOVE_SNARL, MOVE_AURA_SPHERE, MOVE_HYPNOSIS, MOVE_DREAM_EATER},
     }
@@ -15141,7 +15141,7 @@ static const struct TrainerMon sParty_PMaxie[] = {
     },
     {
     .species = SPECIES_SUMMERASU,
-    .ability = ABILITY_LEVITATE,
+    .ability = ABILITY_DROUGHT,
     .heldItem = ITEM_BATTLE_HELM,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 78,
@@ -15152,8 +15152,7 @@ static const struct TrainerMon sParty_PMaxie[] = {
 static const struct TrainerMon sParty_PArchie[] = {
     {
     .species = SPECIES_NIMBOZOA,
-    .ability = ABILITY_WIND_POWER,
-    .friendship = 255,
+    .ability = ABILITY_LEVITATE,
     .heldItem = ITEM_LIFE_ORB,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 77,
@@ -15169,7 +15168,7 @@ static const struct TrainerMon sParty_PArchie[] = {
     {
     .species = SPECIES_WAARGH,
     .ability = ABILITY_SEAFARER,
-    .heldItem = ITEM_SITRUS_BERRY,
+    .heldItem = ITEM_UTILITY_UMBRELLA,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .lvl = 78,
     .moves = {MOVE_OBSTRUCT, MOVE_KNOCK_OFF, MOVE_PLUNDER, MOVE_ICE_FANG},

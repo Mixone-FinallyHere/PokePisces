@@ -1236,8 +1236,8 @@ static const u8 sFutureSightDescription[] = _(
     "Ignores half the foe's Sp. Def.");
 
 static const u8 sRockSmashDescription[] = _(
-    "May cut the foe's Def. If the\n"
-    "foe is Rock-type, always sharply\n"
+    "Cuts the foe's Def. If the foe\n"
+    "is Rock-type, always sharply\n"
     "cuts it. Boosted with friendship.");
 
 static const u8 sWhirlpoolDescription[] = _(
@@ -2529,8 +2529,8 @@ static const u8 sSkyDropDescription[] = _(
 
 static const u8 sShiftGearDescription[] = _(
     "The user rotates its gears,\n"
-    "boosting its Attack stat and\n"
-    "sharply boosting its Speed stat.");
+    "boosting its Attack and Speed\n"
+    "stats.");
 
 static const u8 sCircleThrowDescription[] = _(
     "The target is thrown and\n"
@@ -4933,7 +4933,7 @@ static const u8 sSupercellSlamDescription[] = _(
 static const u8 sMindGapDescription[] = _(
     "Goes first and disables the move\n"
     "the foe is about to use. Fails\n"
-    "if the foe isn't being targeted.");
+    "if the foe is already disabled.");
 
 static const u8 sSweetWhispersDescription[] = _(
     "The user promises great things\n"

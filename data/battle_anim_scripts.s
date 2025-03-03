@@ -20235,6 +20235,7 @@ Move_CINDER_TWIRL::
 	createsprite gSlideMonToOriginalPosSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, 9
 	waitforvisualfinish
 	clearmonbg ANIM_ATTACKER
+	waitforvisualfinish
 	end
 
 
