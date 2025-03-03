@@ -4066,12 +4066,12 @@ static void SetMoveTypeIcons(void)
             {
                 SetTypeSpritePosAndPal(TYPE_ICE, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
             }
-            else if (GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum) == 338
+            else if (GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum) == 337
             && gBattleMoves[summary->moves[i]].type == TYPE_NORMAL) //aqua heart
             {
                 SetTypeSpritePosAndPal(TYPE_WATER, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
             }
-            else if (GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum) == 342
+            else if (GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum) == 341
             && gBattleMoves[summary->moves[i]].type == TYPE_NORMAL) //draco force
             {
                 SetTypeSpritePosAndPal(TYPE_DRAGON, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
