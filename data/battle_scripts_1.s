@@ -797,11 +797,28 @@ BattleScript_HoldHandsTryHeal::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectAirCutter::
-    call BattleScript_EffectHit_Ret
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	jumpifmovehadnoeffect BattleScript_HitFromCritCalc
+	removetailwind BS_TARGET, BattleScript_HitFromCritCalc
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
 	jumpifbattleend BattleScript_MoveEnd
-	jumpifmovehadnoeffect BattleScript_MoveEnd
-	removetailwind BS_TARGET, BattleScript_MoveEnd
 	printstring STRINGID_FOETAILWINDENDS
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
@@ -825,6 +842,9 @@ BattleScript_SecondTurnFly::
 	clearsemiinvulnerablebit
 	attackstring
 	ppreduce
+	jumpifmovehadnoeffect BattleScript_HitFromCritCalc
+	removetailwind BS_ATTACKER, BattleScript_FlyTryRemoveFoeTailwind
+	removetailwind BS_TARGET, BattleScript_FlyJustRemoveUserTailwind
 	critcalc
 	damagecalc
 	adjustdamage
@@ -842,18 +862,57 @@ BattleScript_SecondTurnFly::
 	seteffectwithchance
 	tryfaintmon BS_TARGET
 	jumpifbattleend BattleScript_MoveEnd
-	jumpifmovehadnoeffect BattleScript_MoveEnd
-	removetailwind BS_ATTACKER, BattleScript_FlyTryRemoveFoeTailwind
 	printstring STRINGID_TAILWINDENDS
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_FlyTryRemoveFoeTailwind::
-	removetailwind BS_TARGET, BattleScript_MoveEnd
 	printstring STRINGID_FOETAILWINDENDS
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 BattleScript_FlyMiss::
 	clearsemiinvulnerablebit
 	goto BattleScript_PrintMoveMissed
+BattleScript_FlyTryRemoveFoeTailwind::
+	removetailwind BS_TARGET, BattleScript_HitFromCritCalc
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	printstring STRINGID_FOETAILWINDENDS
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_FlyJustRemoveUserTailwind::
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	printstring STRINGID_TAILWINDENDS
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectRechargeBurn::
 	attackcanceler
@@ -1235,10 +1294,27 @@ BattleScript_EffectLeafTornado::
 	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_LeafTornadoRemoveScreenHazards
 	goto BattleScript_EffectAccuracyDownHit
 BattleScript_LeafTornadoRemoveScreenHazards:
-	call BattleScript_EffectHit_Ret
-	rapidspinfree
-	removelightscreenreflect
 	setmoveeffect MOVE_EFFECT_ACC_MINUS_1
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	removelightscreenreflect
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	rapidspinfree
 	seteffectwithchance
 	tryfaintmon BS_TARGET
 	moveendall
@@ -2660,6 +2736,9 @@ BattleScript_AirCannonSecondTurn::
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
+	jumpifmovehadnoeffect BattleScript_HitFromCritCalc
+	removetailwind BS_ATTACKER, BattleScript_AirCannonTryRemoveFoeTailwind
+	removetailwind BS_TARGET, BattleScript_AirCannonJustRemoveUserTailwind
 	critcalc
 	damagecalc
 	adjustdamage
@@ -2677,13 +2756,52 @@ BattleScript_AirCannonSecondTurn::
 	seteffectwithchance
 	tryfaintmon BS_TARGET
 	jumpifbattleend BattleScript_MoveEnd
-	jumpifmovehadnoeffect BattleScript_MoveEnd
-	removetailwind BS_ATTACKER, BattleScript_AirCannonTryRemoveFoeTailwind
 	printstring STRINGID_TAILWINDENDS
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_AirCannonTryRemoveFoeTailwind::
-	removetailwind BS_TARGET, BattleScript_MoveEnd
 	printstring STRINGID_FOETAILWINDENDS
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_AirCannonTryRemoveFoeTailwind::
+	removetailwind BS_TARGET, BattleScript_HitFromCritCalc
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	printstring STRINGID_FOETAILWINDENDS
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_AirCannonJustRemoveUserTailwind::
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	printstring STRINGID_TAILWINDENDS
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -3567,29 +3685,77 @@ BattleScript_AlreadyExposed::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectSkySplitter::
-	jumpifweatheraffected BS_ATTACKER, B_WEATHER_ANY, BattleScript_SkySplitterClearWeather
-    call BattleScript_EffectHit_Ret
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	jumpifmovehadnoeffect BattleScript_HitFromCritCalc
+	removetailwind BS_ATTACKER, BattleScript_SkySplitterTryRemoveFoeTailwind
+	removetailwind BS_TARGET, BattleScript_SkySplitterJustRemoveUserTailwind
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
 	jumpifbattleend BattleScript_MoveEnd
-	jumpifmovehadnoeffect BattleScript_MoveEnd
-	removetailwind BS_ATTACKER, BattleScript_SkySplitterTryRemoveFoeTailwind
 	printstring STRINGID_TAILWINDENDS
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_SkySplitterTryRemoveFoeTailwind::
-	removetailwind BS_TARGET, BattleScript_MoveEnd
 	printstring STRINGID_FOETAILWINDENDS
 	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
-BattleScript_SkySplitterClearWeather::
-	call BattleScript_EffectHit_Ret
+	goto BattleScript_SkySplitterClearWeatherEnd
+BattleScript_SkySplitterTryRemoveFoeTailwind::
+	removetailwind BS_TARGET, BattleScript_HitFromCritCalc
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
 	jumpifbattleend BattleScript_MoveEnd
-	jumpifmovehadnoeffect BattleScript_MoveEnd
+	printstring STRINGID_FOETAILWINDENDS
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_SkySplitterClearWeatherEnd
+BattleScript_SkySplitterJustRemoveUserTailwind::
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	printstring STRINGID_TAILWINDENDS
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_SkySplitterClearWeatherEnd::
 	trytoclearweather
 	printstring STRINGID_EMPTYSTRING3
-	waitmessage B_WAIT_TIME_LONG
-	removetailwind BS_ATTACKER, BattleScript_SkySplitterTryRemoveFoeTailwind
-	printstring STRINGID_TAILWINDENDS
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
