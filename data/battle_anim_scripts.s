@@ -2116,7 +2116,7 @@ Move_AQUA_RING::
 General_AquaRingHeal:
 	loadspritegfx ANIM_TAG_THIN_RING
 	loadspritegfx ANIM_TAG_ICE_CRYSTALS
-	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_THIN_RING, 0, 14, 14, RGB_BLUE
+	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_THIN_RING, 0, 14, 14, RGB(12, 24, 30)
 	call WaterfallBubblesOnAttacker
 	waitforvisualfinish
 	playsewithpan SE_SHINY, SOUND_PAN_ATTACKER
