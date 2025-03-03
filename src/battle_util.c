@@ -11226,10 +11226,8 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         basePower = 16 * (gBattleMons[battlerAtk].friendship) / 51;
         break;
     case EFFECT_CUT:
-        basePower = 13 * (gBattleMons[battlerAtk].friendship) / 51;
-        break;
     case EFFECT_ROCK_SMASH:
-        basePower = 5 * (gBattleMons[battlerAtk].friendship) / 17;
+        basePower = 13 * (gBattleMons[battlerAtk].friendship) / 51;
         break;
     case EFFECT_WATERFALL:
     case EFFECT_ROCK_CLIMB:

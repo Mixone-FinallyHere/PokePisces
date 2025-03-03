@@ -5555,8 +5555,7 @@ const u16 gEggMoves[] = {
         MOVE_LUNAR_BLESSING,
         MOVE_GRAVITY,
         MOVE_DREAM_EATER,
-        MOVE_HEX,
-        MOVE_ICY_WIND,
+        MOVE_PUNISHMENT,
         MOVE_ICE_SHARD,
         MOVE_NASTY_PLOT),
 
@@ -5566,8 +5565,7 @@ const u16 gEggMoves[] = {
         MOVE_METEOR_MASH,
         MOVE_GRAVITY,
         MOVE_HUNKER_DOWN,
-        MOVE_KNOCK_OFF,
-        MOVE_FLAME_CHARGE,
+        MOVE_FIRE_SPIN,
         MOVE_PURGING_FLAMES,
         MOVE_SWORDS_DANCE),
 

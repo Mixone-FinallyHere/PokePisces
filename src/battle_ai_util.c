@@ -1572,6 +1572,7 @@ bool32 IsNonVolatileStatusMoveEffect(u32 moveEffect)
     switch (moveEffect)
     {
     case EFFECT_SLEEP:
+    case EFFECT_DARK_VOID:
     case EFFECT_TOXIC:
     case EFFECT_POISON:
     case EFFECT_PARALYZE:
@@ -2262,7 +2263,7 @@ bool32 HasSleepMoveWithLowAccuracy(u32 battlerAtk, u32 battlerDef)
             break;
         if (!(gBitTable[i] & moveLimitations))
         {
-            if (gBattleMoves[moves[i]].effect == (EFFECT_SLEEP || EFFECT_SLEEP_POWDER)
+            if (gBattleMoves[moves[i]].effect == (EFFECT_SLEEP ||  EFFECT_DARK_VOID || EFFECT_SLEEP_POWDER)
               && AI_GetMoveAccuracy(battlerAtk, battlerDef, moves[i]) < 85)
                 return TRUE;
         }
@@ -3655,6 +3656,7 @@ bool32 PartnerMoveEffectIsStatusSameTarget(u32 battlerAtkPartner, u32 battlerDef
     if (gChosenMoveByBattler[battlerAtkPartner] != MOVE_NONE
      && gBattleStruct->moveTarget[battlerAtkPartner] == battlerDef
      && (gBattleMoves[partnerMove].effect == EFFECT_SLEEP
+       || gBattleMoves[partnerMove].effect == EFFECT_DARK_VOID
        || gBattleMoves[partnerMove].effect == EFFECT_POISON
        || gBattleMoves[partnerMove].effect == EFFECT_TOXIC
        || gBattleMoves[partnerMove].effect == EFFECT_PARALYZE

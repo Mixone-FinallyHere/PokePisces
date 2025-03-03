@@ -1049,7 +1049,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     RETURN_SCORE_MINUS(10);
                 break;
             case ABILITY_SWEET_VEIL:
-                if (moveEffect == EFFECT_SLEEP || moveEffect == EFFECT_YAWN || moveEffect == EFFECT_SLEEP_POWDER || moveEffect == EFFECT_MAGIC_POWDER)
+                if (moveEffect == EFFECT_SLEEP || moveEffect == EFFECT_DARK_VOID || moveEffect == EFFECT_YAWN || moveEffect == EFFECT_SLEEP_POWDER || moveEffect == EFFECT_MAGIC_POWDER)
                     RETURN_SCORE_MINUS(10);
                 break;
             case ABILITY_FLOWER_VEIL:
@@ -1131,7 +1131,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                         RETURN_SCORE_MINUS(20);
                     break;
                 case ABILITY_SWEET_VEIL:
-                    if (moveEffect == EFFECT_SLEEP || moveEffect == EFFECT_YAWN || moveEffect == EFFECT_SLEEP_POWDER || moveEffect == EFFECT_MAGIC_POWDER)
+                    if (moveEffect == EFFECT_SLEEP || moveEffect == EFFECT_DARK_VOID || moveEffect == EFFECT_YAWN || moveEffect == EFFECT_SLEEP_POWDER || moveEffect == EFFECT_MAGIC_POWDER)
                         RETURN_SCORE_MINUS(20);
                     break;
                 case ABILITY_FLOWER_VEIL:
@@ -1161,7 +1161,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         // terrain & effect checks
         if (AI_IsTerrainAffected(battlerDef, STATUS_FIELD_ELECTRIC_TERRAIN))
         {
-            if (moveEffect == EFFECT_SLEEP || moveEffect == EFFECT_YAWN || moveEffect == EFFECT_SLEEP_POWDER || moveEffect == EFFECT_MAGIC_POWDER)
+            if (moveEffect == EFFECT_SLEEP || moveEffect == EFFECT_DARK_VOID || moveEffect == EFFECT_YAWN || moveEffect == EFFECT_SLEEP_POWDER || moveEffect == EFFECT_MAGIC_POWDER)
                 RETURN_SCORE_MINUS(20);
         }
 
@@ -1225,6 +1225,14 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 10;
             if (move == MOVE_HYPNOSIS && IS_BATTLER_OF_TYPE(battlerDef, TYPE_PSYCHIC))
                 score -= 10;
+            break;
+        case EFFECT_DARK_VOID:
+            if (!AI_CanPutToSleep(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, aiData->partnerMove))
+                score -= 10;
+            if (CountBattlerStatDecreases(battlerDef, TRUE) < 1)
+                score -= 10;
+            else
+                score += 10;
             break;
         case EFFECT_SLEEP_POWDER:
             if (!AI_CanPutToSleep(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, aiData->partnerMove))
@@ -4199,6 +4207,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_HIT:
         break;
     case EFFECT_SLEEP:
+    case EFFECT_DARK_VOID:
     case EFFECT_YAWN:
     case EFFECT_SLEEP_POWDER:
         if (AI_RandLessThan(128))
@@ -4960,6 +4969,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         if (gBattleMons[battlerDef].status1 & (STATUS1_BURN | STATUS1_PSN_ANY | STATUS1_FROSTBITE))
             score++;
         if (HasMoveEffect(battlerDef, EFFECT_SLEEP)
+          || HasMoveEffect(battlerDef, EFFECT_DARK_VOID)
           || HasMoveEffect(battlerDef, EFFECT_TOXIC)
           || HasMoveEffect(battlerDef, EFFECT_POISON)
           || HasMoveEffect(battlerDef, EFFECT_PARALYZE)
@@ -4984,6 +4994,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         if (gBattleMons[battlerDef].status1 & (STATUS1_BURN | STATUS1_PSN_ANY | STATUS1_FROSTBITE))
             score++;
         if (HasMoveEffect(battlerDef, EFFECT_SLEEP)
+          || HasMoveEffect(battlerDef, EFFECT_DARK_VOID)
           || HasMoveEffect(battlerDef, EFFECT_TOXIC)
           || HasMoveEffect(battlerDef, EFFECT_POISON)
           || HasMoveEffect(battlerDef, EFFECT_PARALYZE)
@@ -7240,6 +7251,7 @@ static s32 AI_Risky(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     switch (gBattleMoves[move].effect)
     {
     case EFFECT_SLEEP:
+    case EFFECT_DARK_VOID:
     case EFFECT_EXPLOSION:
     case EFFECT_MIRROR_MOVE:
     case EFFECT_OHKO:

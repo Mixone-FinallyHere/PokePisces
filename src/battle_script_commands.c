@@ -4731,21 +4731,15 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 break;
             case MOVE_EFFECT_ROCK_SMASH:
                 {
-                    u8 randomLowerDefenseChance = RandomPercentage(RNG_TRIPLE_ARROWS_DEFENSE_DOWN, CalcSecondaryEffectChance(gBattlerAttacker, 50));
-
                     if (IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_ROCK))
                     {
                         BattleScriptPush(gBattlescriptCurrInstr + 1);
                         gBattlescriptCurrInstr = BattleScript_DefDown2;
                     }
-                    else if (randomLowerDefenseChance)
+                    else
                     {
                         BattleScriptPush(gBattlescriptCurrInstr + 1);
                         gBattlescriptCurrInstr = BattleScript_DefDown;
-                    }
-                    else
-                    {
-                        gBattlescriptCurrInstr++;
                     }
                 }
                 break;
