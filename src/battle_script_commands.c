@@ -1451,17 +1451,8 @@ static void Cmd_attackcanceler(void)
         gBattleCommunication[MULTISTRING_CHOOSER] = 0;
         // Edge case for bouncing a powder move against a grass type pokemon.
         SetAtkCancellerForCalledMove();
-        if (BlocksPrankster(gCurrentMove, gBattlerTarget, gBattlerAttacker, TRUE))
-        {
-            // Opponent used a prankster'd magic coat -> reflected status move should fail against a dark-type attacker
-            gBattlerTarget = gBattlerAttacker;
-            gBattlescriptCurrInstr = BattleScript_MagicCoatBouncePrankster;
-        }
-        else
-        {
-            BattleScriptPushCursor();
-            gBattlescriptCurrInstr = BattleScript_MagicCoatBounce;
-        }
+        BattleScriptPushCursor();
+        gBattlescriptCurrInstr = BattleScript_MagicCoatBounce;
         return;
     }
     else if (GetBattlerAbility(gBattlerTarget) == ABILITY_MAGIC_BOUNCE
@@ -9852,11 +9843,17 @@ static bool32 IsRototillerAffected(u32 battler)
         return FALSE;   // Only grass types affected
     if (gStatuses3[battler] & STATUS3_SEMI_INVULNERABLE)
         return FALSE;   // Rototiller doesn't affected semi-invulnerable battlers
-    if (BlocksPrankster(MOVE_ROTOTILLER, gBattlerAttacker, battler, FALSE))
-        return FALSE;
     return TRUE;
 }
 
+static bool32 IsErodeFieldAffected(u32 battler)
+{
+    if (!IsBattlerAlive(battler))
+        return FALSE;
+    if (gStatuses3[battler] & STATUS3_SEMI_INVULNERABLE)
+        return FALSE;   // Rototiller doesn't affected semi-invulnerable battlers
+    return TRUE;
+}
 
 static bool32 IsAbilityRodAffected(void)
 {
@@ -12543,6 +12540,42 @@ static void Cmd_various(void)
         else
         {
             gBattlescriptCurrInstr = cmd->jumpInstr;   // Unaffected by rototiller - print STRINGID_NOEFFECTONTARGET
+        }
+        return;
+    }
+    case VARIOUS_GET_ERODE_FIELD_TARGETS:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        {
+            u32 count = 0;
+            for (i = 0; i < gBattlersCount; i++)
+            {
+                gSpecialStatuses[i].erodeFieldAffected = FALSE;
+                if (IsErodeFieldAffected(i))
+                {
+                    gSpecialStatuses[i].erodeFieldAffected = TRUE;
+                    count++;
+                }
+            }
+
+            if (count == 0)
+                gBattlescriptCurrInstr = cmd->failInstr;
+            else
+                gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
+    case VARIOUS_JUMP_IF_NOT_ERODE_FIELD_AFFECTED:
+    {
+        VARIOUS_ARGS(const u8 *jumpInstr);
+        if (gSpecialStatuses[battler].erodeFieldAffected)
+        {
+            gSpecialStatuses[battler].erodeFieldAffected = FALSE;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        else
+        {
+            gBattlescriptCurrInstr = cmd->jumpInstr;
         }
         return;
     }
@@ -16611,8 +16644,7 @@ static void Cmd_trysetperishsong(void)
     for (i = 0; i < gBattlersCount; i++)
     {
         if (gStatuses3[i] & STATUS3_PERISH_SONG
-            || GetBattlerAbility(i) == ABILITY_SOUNDPROOF
-            || BlocksPrankster(gCurrentMove, gBattlerAttacker, i, TRUE))
+            || GetBattlerAbility(i) == ABILITY_SOUNDPROOF)
         {
             notAffectedCount++;
         }

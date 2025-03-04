@@ -3715,13 +3715,38 @@ BattleScript_HeavyCellEnd::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectErodeField::
-	setmoveeffect MOVE_EFFECT_DEF_SPDEF_DOWN
 	attackcanceler
 	attackstring
 	ppreduce
+	geterodefieldtargets BattleScript_ButItFailed
+	@ at least one battler is affected
 	attackanimation
 	waitanimation
-	seteffectprimary
+	savetarget
+	setbyte gBattlerTarget, 0
+BattleScript_ErodeFieldLoop:
+	movevaluescleanup
+	jumpifstat BS_TARGET, CMP_MOREs_THAN, STAT_DEF, MIN_STAT_STAGE, BattleScript_ErodeFieldCheckAffected
+	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPDEF, MIN_STAT_STAGE, BattleScript_ErodeFieldCantRaiseMultipleStats
+BattleScript_ErodeFieldCheckAffected:
+	jumpifnoterodefieldaffected BS_TARGET, BattleScript_ErodeFieldNoEffect
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_DEF | BIT_SPDEF, 0
+	setstatchanger STAT_DEF, 1, TRUE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_ErodeFieldTrySpDef
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_ErodeFieldTrySpDef
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_ErodeFieldTrySpDef::
+	setstatchanger STAT_SPDEF, 1, TRUE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_ErodeFieldMoveTargetEnd
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_ErodeFieldMoveTargetEnd
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_ErodeFieldMoveTargetEnd:
+	moveendto MOVEEND_NEXT_TARGET
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_ErodeFieldLoop
 	end
 
 BattleScript_EffectEnervator::
@@ -10961,7 +10986,6 @@ BattleScript_EffectPerishSong::
 BattleScript_PerishSongLoop::
 	jumpifability BS_TARGET, ABILITY_SOUNDPROOF, BattleScript_PerishSongBlocked
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_PerishSongBlocked
-	jumpifpranksterblocked BS_TARGET, BattleScript_PerishSongNotAffected
 BattleScript_PerishSongLoopIncrement::
 	addbyte gBattlerTarget, 1
 	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_PerishSongLoop

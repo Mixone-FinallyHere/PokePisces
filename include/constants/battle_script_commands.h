@@ -319,6 +319,8 @@
 #define VARIOUS_DISABLE_CHOSEN_MOVE                  227
 #define VARIOUS_MIND_GAP_CHECK                       228
 #define VARIOUS_REMOVE_FRENZY_COUNTER                229
+#define VARIOUS_GET_ERODE_FIELD_TARGETS              230
+#define VARIOUS_JUMP_IF_NOT_ERODE_FIELD_AFFECTED     231
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

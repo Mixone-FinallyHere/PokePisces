@@ -2236,6 +2236,16 @@
 	.4byte \jumpInstr
 	.endm
 
+	.macro geterodefieldtargets failInstr:req
+	various BS_ATTACKER, VARIOUS_GET_ERODE_FIELD_TARGETS
+	.4byte \failInstr
+	.endm
+
+	.macro jumpifnoterodefieldaffected battler:req, jumpInstr:req
+	various \battler, VARIOUS_JUMP_IF_NOT_ERODE_FIELD_AFFECTED
+	.4byte \jumpInstr
+	.endm
+
 	.macro tryactivatebattlebond battler:req
 	various \battler, VARIOUS_TRY_ACTIVATE_BATTLE_BOND
 	.endm
