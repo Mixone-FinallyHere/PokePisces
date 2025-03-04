@@ -667,9 +667,9 @@ static const u8 sAmnesiaDescription[] = _(
     "This sharply boosts Sp. Def.");
 
 static const u8 sKinesisDescription[] = _(
-    "Lowers accuracy. On Psychic\n"
-    "Terrain, makes the foe exhausted\n"
-    "instead, reducing their damage.");
+    "Cuts foes' accuracy and evasion.\n"
+    "On Psychic Terrain, makes foes\n"
+    "exhausted, lowering their power.");
 
 static const u8 sSoftBoiledDescription[] = _(
     "The user creates and eats a\n"
