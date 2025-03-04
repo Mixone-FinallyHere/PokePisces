@@ -3726,7 +3726,7 @@ BattleScript_EffectErodeField::
 	setbyte gBattlerTarget, 0
 BattleScript_ErodeFieldLoop:
 	movevaluescleanup
-	jumpifstat BS_TARGET, CMP_MOREs_THAN, STAT_DEF, MIN_STAT_STAGE, BattleScript_ErodeFieldCheckAffected
+	jumpifstat BS_TARGET, CMP_GREATER_THAN, STAT_DEF, MIN_STAT_STAGE, BattleScript_ErodeFieldCheckAffected
 	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPDEF, MIN_STAT_STAGE, BattleScript_ErodeFieldCantRaiseMultipleStats
 BattleScript_ErodeFieldCheckAffected:
 	jumpifnoterodefieldaffected BS_TARGET, BattleScript_ErodeFieldNoEffect
@@ -3748,6 +3748,18 @@ BattleScript_ErodeFieldMoveTargetEnd:
 	addbyte gBattlerTarget, 1
 	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_ErodeFieldLoop
 	end
+
+BattleScript_ErodeFieldCantRaiseMultipleStats:
+	copybyte gBattlerAttacker, gBattlerTarget
+	printstring STRINGID_STATSWONTINCREASE2
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_ErodeFieldMoveTargetEnd
+
+BattleScript_ErodeFieldNoEffect:
+	pause B_WAIT_TIME_SHORT
+	printstring STRINGID_NOEFFECTONTARGET
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_ErodeFieldMoveTargetEnd
 
 BattleScript_EffectEnervator::
 	setmoveeffect MOVE_EFFECT_ATK_SPEED_DOWN
