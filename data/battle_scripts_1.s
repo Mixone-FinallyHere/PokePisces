@@ -3614,6 +3614,9 @@ BattleScript_SpAttackAccUpEnd:
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectRemodel:
+	attackcanceler
+	attackstring
+	ppreduce
 	remodelcheck BS_ATTACKER, BattleScript_RemodelDefenseUp
 	goto BattleScript_RemodelSpDefenseUp
 BattleScript_RemodelDefenseUp:
