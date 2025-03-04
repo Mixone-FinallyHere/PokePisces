@@ -268,13 +268,31 @@ FossilShoreHouses_Text_NameDrake:
 	.string "Drake$"
 
 FossilShoreHouses_Text_DockNeedsMe:
-	.string "dock needs me to show tf up$"
+	.string "Greetings, {PLAYER}.\p"
+	.string "...I see. Dock is in need\n"
+	.string "of my presence. I have to admit,\l"
+	.string "it appears his invitation\l"
+	.string "slipped my mind. Age can dull\l"
+	.string "the brain, you know.\p"
+	.string "I will be headed there shortly.\n"
+	.string "Thank you for reminding me.$"
 
 FossilShoreHouses_Text_DrakePreDock:
-	.string "welcome to my house$"
+	.string "Greetings, {PLAYER}.\n"
+	.string "I see you've found my humble abode.\p"
+	.string "I could not bear to live far from\n"
+	.string "the ocean, so I built my own\l"
+	.string "cottage on the beachside.\l"
+	.string "It has been peaceful.\p"
+	.string "Make yourself at home.$"
 
 FossilShoreHouses_Text_DrakePostDock:
-	.string "never talk 2 me again$"
+	.string "May the tides ebb\n"
+	.string "ever in your favor, {PLAYER}.$"
 
 FossilShoreHouses_Text_DrakeGatherOthers:
-	.string "gather the other doods$"
+	.string "If you are on the hunt for Archie,\n"
+	.string "he should be at the Ozone Institute.\l"
+	.string "I have visited a few scattered times.\l"
+	.string "It is a mite too high-tech\l"
+	.string "for my tastes!$"

@@ -202,13 +202,29 @@ SouthernIsland_Text_BonVoyage:
 	.string "About time to haul anchor, then!$"
 
 SouthernIsland_Text_ISeeEveryoneHasGathered:
-	.string "I see yall here now$"
+	.string "I see everyone has gathered!\n"
+	.string "Excellent. I'm so thankful to\l"
+	.string "have you all with me here\l"
+	.string "on the day of my retirement.\l"
+	.string "I've made many friends in my time\l"
+	.string "at the Shipyard, and you all\l"
+	.string "were the deepest of those connections.\p"
+	.string "I've prepared one last short song,\n"
+	.string "of sorts. You know, kind of calling\l"
+	.string "back to my days as a bard.\l"
+	.string "I'm a bit rusty in the vocal\l"
+	.string "department, but...\l"
+	.string "I have to give it a shot.$"
 
 SouthernIsland_Text_SingYourSongBro:
-	.string "sing that mf song$"
+	.string "That's delightful, Dock!\n"
+	.string "Show us you've still got it!$"
 
 SouthernIsland_Text_ImExcited:
-	.string "im excited$"
+	.string "Oh, Dock. Ever the sentimentalist.\p"
+	.string "I am looking forward to\n"
+	.string "the performance. You're grinning\l"
+	.string "from ear to ear, hahaha...$"
 
 SouthernIsland_Text_Ahem:
 	.string "Ahem.$"
@@ -220,25 +236,50 @@ SouthernIsland_Text_SongLyrics:
 	.string "Never forget...$"
 
 SouthernIsland_Text_ThatWasGreat:
-	.string "epic$"
+	.string "You possess such great range in\n"
+	.string "your voice, Dock. Maybe you could\l"
+	.string "have made it as an opera singer.$"
 
 SouthernIsland_Text_TakesMeBack:
-	.string "takes me back boyo$"
+	.string "You have not lost your\n"
+	.string "touch one iota, chum. That sure\l"
+	.string "took me back to the past.$"
 
 SouthernIsland_Text_ItsTimeToRetire:
-	.string "time 2 retire now$"
+	.string "Ah-ha-ha-ha...\n"
+	.string "I...I'm sorry, lads, I can't\l"
+	.string "help but cry tears of joy.\l"
+	.string "I'm so glad you all are with me.\p"
+	.string "I'll make it official, then.\n"
+	.string "Today is my retirement day!\l"
+	.string "It feels good to finally say it.\p"
+	.string "...Err, Kizuna, right?\n"
+	.string "Giddy, and Rydel...\l"
+	.string "I would like to reunite with them.\l"
+	.string "...You know what to do, hmm?$"
 
 SouthernIsland_Text_AsYouWish:
-	.string "as you wish$"
+	.string "Ah...\p"
+	.string "I had figured that this would be\n"
+	.string "what was waiting for us here.\p"
+	.string "You wish for retirement?\n"
+	.string "Granted.$"
 
 SouthernIsland_Text_DockYouveOutdoneYourself:
-	.string "dock youre so cool$"
+	.string "Dock, my boy! This was quite fun!\n"
+	.string "Maybe we should all get together\l"
+	.string "again next month? If we can get\l"
+	.string "any time away, that is!$"
 
 SouthernIsland_Text_What:
-	.string "what$"
+	.string "W-What...? You're calling me...\n"
+	.string "Dock...?$"
 
 SouthernIsland_Text_DontBeModest:
-	.string "dont be modest$"
+	.string "Oh, I'm sorry. You really should\n"
+	.string "be called The Bard, for that\l"
+	.string "performance, hahaha...$"
 
 SouthernIsland_Text_LetsHitTheSea:
-	.string "lets hit it (hits it)$"
+	.string "Let's sail back home now,\n"
+	.string "gentlemen! Bon voyage!$"

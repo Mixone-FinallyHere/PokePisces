@@ -295,7 +295,7 @@ CyclingRoad_Text_PhillipPostBattle:
 	.string "You know the drill.$"
 
 CyclingRoad_Text_RydelHype1:
-	.string "Folks, we have the quickest wheels\n"
+	.string "Dudes, we have the quickest wheels\n"
 	.string "in Hoenn on the track! {PLAYER}!!!$"
 
 CyclingRoad_Text_RydelHype2:

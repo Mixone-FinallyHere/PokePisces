@@ -152,16 +152,33 @@ VerdanturfTransition_Text_NameMrBonding:
 	.string "Mr. Bonding$"
 
 VerdanturfTransition_Text_ExclusiveAccess:
-	.string "this here is exclusive son$"
+	.string "Verdanturf Town is a gated\n"
+	.string "community. If you do not have your\l"
+	.string "pass designating you as a\l"
+	.string "resident, nor special permission\l"
+	.string "from Wattson or Scott, I must\l"
+	.string "ask you to leave.$"
 
 VerdanturfTransition_Text_WillYouPay:
-	.string "finnina pay up?$"
+	.string "(You explain that you are\n"
+	.string "here to obtain the gym badge.)\p"
+	.string "Ah, so you are looking to pay\n"
+	.string "the fine for instant access\l"
+	.string "to the Metro Badge?\l"
+	.string "You are aware of the steep price\l"
+	.string "for this service, correct?\p"
+	.string "If you are serious about this, then\n"
+	.string "we require a payment of ¥100,000.$"
 
 VerdanturfTransition_Text_SorryToHear:
-	.string "looks like youre poor LOL$"
+	.string "Well, I am sorry to hear that\n"
+	.string "you decline the offer.\l"
+	.string "We must ask you to vacate\l"
+	.string "the premises, then.$"
 
 VerdanturfTransition_Text_Delightful:
-	.string "delightful$"
+	.string "That's all ¥100,000 accounted for.\n"
+	.string "Here is your badge!$"
 
 VerdanturfTransition_Text_ReceivedMetroBadge:
 	.string "{PLAYER} received the\n"
@@ -169,28 +186,54 @@ VerdanturfTransition_Text_ReceivedMetroBadge:
 	.string "through the power of money!$"
 
 VerdanturfTransition_Text_WeWillAlsoThrowIn:
-	.string "will also throw in$"
+	.string "Due to Greater Mauville Holdings'\n"
+	.string "infinite generosity, we will\l"
+	.string "also throw in this prize.$"
 
 VerdanturfTransition_Text_HaveAGoodJourney:
-	.string "have a good one bruv$"
+	.string "And! We will also give you\n"
+	.string "a residency pass to explore\l"
+	.string "Verdanturf Town if you so wish.\p"
+	.string "Please do not be a disturbance.\n"
+	.string "Have a nice evening.$"
 
 VerdanturfTransition_Text_NotEnoughMoney:
-	.string "no money POOR POOR POOR$"
+	.string "Apologies. But that is clearly\n"
+	.string "not enough to pay the fine.\p"
+	.string "We must ask you to leave.$"
 
 VerdanturfTransition_Text_HelloGuard:
-	.string "hello guard$"
+	.string "Ah, salutations, sir.\p"
+	.string "I believe you recognize me, yes?$"
 
 VerdanturfTransition_Text_IsThatAugustus:
-	.string "holy crap lois is that augustus$"
+	.string "M-M-Mr. Augustus!?\n"
+	.string "It is a p-pleasure to meet you,\l"
+	.string "sir! I've heard much about\l"
+	.string "you from the higher-ups...$"
 
 VerdanturfTransition_Text_LetInPlayer:
-	.string "let my pal in$"
+	.string "My reputation proceeds me.\n"
+	.string "Now, you will be letting in my\l"
+	.string "cherished friend {PLAYER}, yes?\p"
+	.string "I want them to be treated as\n"
+	.string "a resident of the town. No fines\l"
+	.string "paid. And I would like you\l"
+	.string "to phone your boss for me...\l"
+	.string "to let him know that {PLAYER}\l"
+	.string "will be meeting with him,\l"
+	.string "on orders from his superior.$"
 
 VerdanturfTransition_Text_SureThing:
-	.string "ok$"
+	.string "Y-Y-Yes, sir! I will do so!\n"
+	.string "You are more than welcome\l"
+	.string "in Verdanturf, {PLAYER}!$"
 
 VerdanturfTransition_Text_YouveGotThis:
-	.string "youve got this$"
+	.string "You can do this, my friend.\n"
+	.string "Go show Wattson a battle\l"
+	.string "he will not soon forget.$"
 
 VerdanturfTransition_Text_WelcomeValuedCitizen:
-	.string "welcome$"
+	.string "Welcome to Verdanturf Town,\n"
+	.string "valued resident!$"
