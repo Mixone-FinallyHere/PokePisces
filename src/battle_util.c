@@ -11212,6 +11212,10 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_RETURN:
         basePower = 10 * (gBattleMons[battlerAtk].friendship) / 25;
         break;
+    case EFFECT_FALSE_SWIPE:
+        basePower = (gBattleMons[battlerAtk].level) * 1.5;
+        basePower = (basePower > 75) ? 75 : basePower;
+        break;
     case EFFECT_STRENGTH:
         basePower = 16 * (gBattleMons[battlerAtk].friendship) / 51;
         break;
@@ -11593,16 +11597,6 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_GRASSY_GLIDE:
         if (gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING)
             basePower = 70;
-        break;
-    case EFFECT_FALSE_SWIPE:
-        if (gBattleMons[battlerAtk].level >= 50)
-            basePower = 90;
-        else if (gBattleMons[battlerAtk].level >= 40)
-            basePower = 80;
-        else if (gBattleMons[battlerAtk].level >= 30)
-            basePower = 70;
-        else
-            basePower = 60;
         break;
     }
 

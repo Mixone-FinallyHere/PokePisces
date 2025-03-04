@@ -1027,8 +1027,8 @@ static const u8 sRolloutDescription[] = _(
 
 static const u8 sFalseSwipeDescription[] = _(
     "Leaves foe with at least 1 HP.\n"
-    "Boosted if user is at certain\n"
-    "levels. Always hits neutrally.");
+    "Power increases with user's\n"
+    "level. Always hits neutrally.");
 
 static const u8 sSwaggerDescription[] = _(
     "The user enrages and confuses\n"
