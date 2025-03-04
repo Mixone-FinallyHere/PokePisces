@@ -33,6 +33,7 @@ def compare_pokemon_data(pokemons, pokemon_data):
         # Retrieve the corresponding species from pokemon_data (case-insensitive comparison)
         species_name = pokemon.name.upper()
         if species_name not in pokemon_data:
+            # We only care about species in sheet
             #mismatches.append(f"{species_name} not found in species data.")
             continue
 
@@ -54,8 +55,10 @@ def compare_pokemon_data(pokemons, pokemon_data):
                 mismatches[species_name].append(f"Mismatch for types: {pokemon.types} (sheet) != {species_info.types} (species_info)")
 
         # Compare other attributes (catch_rate, exp_yield, abilities, etc.)
+        # Catch rate not in sheet
         #compare_attribute("catch_rate", pokemon.uses, species_info.catch_rate, mismatches, species_name)
-        compare_attribute("exp_yield", pokemon.exp_yield, species_info.exp_yield, mismatches, species_name)
+        # The most up to date will be in species_info due to QA testing
+        #compare_attribute("exp_yield", pokemon.exp_yield, species_info.exp_yield, mismatches, species_name)
 
         # Compare abilities (abilities are a list)
         for ability in pokemon.abilities:
@@ -73,12 +76,16 @@ def compare_pokemon_data(pokemons, pokemon_data):
                 mismatches[species_name].append(f"Mismatch for abilities: {ability_clean} or {ability} (sheet) not in {species_info.abilities} (species_info)")
 
         # Compare other possible attributes if needed (gender_ratio, egg_groups, etc.)
+        # Needs some analysis first
         #compare_attribute("gender_ratio", pokemon.gender_ratio, species_info.gender_ratio, mismatches, species_name)
+        # Egg cycles not in sheet
         #compare_attribute("egg_cycles", pokemon.egg_cycles, species_info.egg_cycles, mismatches, species_name)
+        # Growth rate not in sheet
         #compare_attribute("growth_rate", pokemon.growth_rate, species_info.growth_rate, mismatches, species_name)
+        # Egg groups not in sheet
         #compare_attribute("egg_groups", pokemon.location, species_info.egg_groups, mismatches, species_name)
+        # Body colour not really in sheet
         #compare_attribute("body_color", pokemon.body_color, species_info.body_color, mismatches, species_name)
-        #compare_attribute("no_flip", pokemon.rarity, species_info.no_flip, mismatches, species_name)
 
     return mismatches
 
