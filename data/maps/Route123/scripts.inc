@@ -334,6 +334,7 @@ Route123_EventScript_BindingBand::
 
 Route123_EventScript_LureFuzky::
 	lock
+	goto_if_set FLAG_DEFEATED_MANTLE_FUZKY, Route123_EventScript_FuzkyGone
 	msgbox Route123_Text_TheresAnOddFuzky, MSGBOX_DEFAULT
 	checkitem ITEM_WEIRD_STICK
 	goto_if_eq VAR_RESULT, TRUE, Route123_EventScript_WantToThrowStick
@@ -380,10 +381,11 @@ Route123_EventScript_FuzkyDefeat::
 	msgbox Route123_Text_ItTakesOffTheMantle, MSGBOX_DEFAULT
 	giveitem ITEM_LOST_MANTLE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	closemessage
 	applymovement LOCALID_FUZKY, Route123_Movement_FuzkyRunAway
 	waitmovement 0
-	setflag FLAG_TEMP_17
 	removeobject LOCALID_FUZKY
+	setflag FLAG_DEFEATED_MANTLE_FUZKY
 	release
 	end
 
@@ -399,6 +401,11 @@ Route123_Movement_FuzkyRunAway:
 	walk_fast_down
 	walk_fast_down
 	step_end
+
+Route123_EventScript_FuzkyGone::
+	msgbox Route123_Text_FuzkyGone, MSGBOX_AUTOCLOSE
+	release
+	end
 
 Route123_EventScript_SnowNinjaTrigger::
 	lock
@@ -636,3 +643,6 @@ Route123_Text_BreadwinnerRunAway:
 
 Route123_Text_ProtectTM:
 	.string "(He seems to have dropped something.)$"
+
+Route123_Text_FuzkyGone:
+	.string "(That Fuzky has left.)$"

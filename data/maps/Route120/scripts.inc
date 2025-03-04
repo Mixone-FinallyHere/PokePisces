@@ -20,7 +20,7 @@ Route120_EventScript_CantCut::
 
 Route120_EventScript_AlreadyCut1::
 	setflag FLAG_TEMP_1A
-	setmetatile 20, 81, METATILE_General_SecretBase_VineRight, FALSE
+	setmetatile 20, 75, METATILE_General_SecretBase_VineRight, FALSE
 	special DrawWholeMapView
 	msgbox Route120_Text_AlreadyCut, MSGBOX_AUTOCLOSE
 	release
@@ -30,7 +30,7 @@ Route120_EventScript_CutPath1::
 	playse SE_M_CUT
 	waitse
 	setflag FLAG_TEMP_1A
-	setmetatile 20, 81, METATILE_General_SecretBase_VineRight, FALSE
+	setmetatile 20, 75, METATILE_General_SecretBase_VineRight, FALSE
 	special DrawWholeMapView
 	release
 	end
@@ -185,6 +185,10 @@ Route120_EventScript_Amira::
 Route120_EventScript_Leilei::
     trainerbattle_single TRAINER_P_LEILEI, Route120_Text_LeileiIntro, Route120_Text_LeileiDefeated
     msgbox Route120_Text_LeileiPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+Route120_EventScript_CutPathTutorial::
+    msgbox Route120_Text_CutPathTutorial, MSGBOX_NPC
     end
 
 Route120_Text_ColbyIntro:
@@ -351,3 +355,16 @@ Route120_Text_NoCut:
 Route120_Text_AlreadyCut:
 	.string "(The pathway into the thicket\n"
 	.string "has been opened.)$"
+
+Route120_Text_CutPathTutorial:
+	.string "The way forward through Scuttill\n"
+	.string "Way is to cut your own path\l"
+	.string "into the thicket of trees!\p"
+	.string "That conifer tree straight north\n"
+	.string "of me is something you can cut\l"
+	.string "a path through. Just interact with\l"
+	.string "it like you would one of those\l"
+	.string "smaller cut trees like the one you\l"
+	.string "cut down to get here. If you\l"
+	.string "have a Pokemon with cut, it will\l"
+	.string "open up a path into the trees!$"

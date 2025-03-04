@@ -88,6 +88,7 @@ StevenMaze_EventScript_GiveEeriko::
 	msgbox StevenMaze_Text_Eeriko, MSGBOX_DEFAULT
 	speakername NULL
 	removeitem ITEM_POKE_DOLL, 1
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EERIKO
 	givemon SPECIES_EERIKO, 18
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, StevenMaze_EventScript_ReceiveEerikoParty
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, StevenMaze_EventScript_ReceiveEerikoPC

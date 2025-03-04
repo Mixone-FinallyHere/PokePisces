@@ -65,7 +65,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "0",
+      "trainer_sight_or_berry_tree_id": "3",
       "script": "Route120_EventScript_Thatcher",
       "flag": "0"
     },
@@ -341,6 +341,32 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route120_EventScript_ItemPPPUp",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
+      "x": 20,
+      "y": 80,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_CutTree",
+      "flag": "FLAG_TEMP_12"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BUG_CATCHER",
+      "x": 19,
+      "y": 77,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_UP_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route120_EventScript_CutPathTutorial",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -402,7 +428,7 @@
     },
     {
       "x": 20,
-      "y": 81,
+      "y": 75,
       "elevation": 0,
       "dest_map": "MAP_SCUTTILL_HUTS",
       "dest_warp_id": "5"
@@ -464,7 +490,7 @@
     {
       "type": "sign",
       "x": 20,
-      "y": 81,
+      "y": 75,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route120_EventScript_TreePath1"
@@ -496,7 +522,7 @@
     {
       "type": "sign",
       "x": 19,
-      "y": 81,
+      "y": 75,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route120_EventScript_TreePath1"
