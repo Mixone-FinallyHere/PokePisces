@@ -3762,14 +3762,29 @@ BattleScript_ErodeFieldNoEffect:
 	goto BattleScript_ErodeFieldMoveTargetEnd
 
 BattleScript_EffectEnervator::
-	setmoveeffect MOVE_EFFECT_ATK_SPEED_DOWN
 	attackcanceler
 	attackstring
 	ppreduce
+	jumpifstat BS_TARGET, CMP_GREATER_THAN, STAT_ATK, MIN_STAT_STAGE, BattleScript_EnervatorDoMoveAnim
+	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPEED, MIN_STAT_STAGE, BattleScript_CantLowerMultipleStats
+BattleScript_EnervatorDoMoveAnim::
 	attackanimation
 	waitanimation
-	seteffectprimary
-	end
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_ATK | BIT_SPEED, 0
+	setstatchanger STAT_ATK, 1, TRUE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_EnervatorTrySpeed
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_EnervatorTrySpeed
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_EnervatorTrySpeed::
+	setstatchanger STAT_SPEED, 1, TRUE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_EnervatorEnd
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_EnervatorEnd
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_EnervatorEnd::
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectDeepGaze::
 	attackcanceler
