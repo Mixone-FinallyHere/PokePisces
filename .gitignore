@@ -49,3 +49,4 @@ prefabs.json
 /scripts/Moves.csv
 /scripts/TeachableMoveSet.csv
 scripts/__pycache__/
+*.xlsx
