@@ -1592,9 +1592,9 @@ static const u8 sFreeLoveDescription[] = _(
     "gender.");
 
 static const u8 sGhoulishDescription[] = _(
-    "When the Pokémon takes damage\n"
-    "from attacks restores some of\n"
-    "the damage as HP.");
+    "After the Pokémon takes damage\n"
+    "from attacks it restores some of\n"
+    "the damage as HP afterwards.");
 
 static const u8 sGlaringStaggerDescription[] = _(
     "The Pokémon glares at the\n"
