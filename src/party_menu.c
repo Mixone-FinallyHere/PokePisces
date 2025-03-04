@@ -4713,6 +4713,8 @@ void Task_AbilityCapsule(u8 taskId)
         break;
     case 6:
         PlaySE(SE_USE_ITEM);
+        GetMonNickname(&gPlayerParty[tMonId], gStringVar1);
+        StringCopy(gStringVar2, gAbilityNames[GetAbilityBySpecies(tSpecies, tAbilityNum)]);
         StringExpandPlaceholders(gStringVar4, doneText);
         DisplayPartyMenuMessage(gStringVar4, 1);
         ScheduleBgCopyTilemapToVram(2);
