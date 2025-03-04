@@ -9127,28 +9127,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
                 }
                 break;
-            case HOLD_EFFECT_HEART_GIFT:
-                if (GetBattlerAbility(battler) != ABILITY_MAGIC_GUARD 
-                && !moveTurn 
-                && GetBattlerAbility(battler) != ABILITY_SUGAR_COAT)
-                {
-                    if (gDisableStructs[battler].heartGiftTimer == 0)
-                    {
-                        gDisableStructs[battler].heartGiftTimer = 1;
-                    }
-                    else if (gDisableStructs[battler].heartGiftTimer == 1)
-                    {
-                        gDisableStructs[battler].heartGiftTimer = 2;
-                        gBattleMoveDamage = gBattleMons[battler].maxHP / 2;
-                        if (gBattleMoveDamage == 0)
-                            gBattleMoveDamage = 1;
-                        BattleScriptExecute(BattleScript_HeartGift);
-                        effect = ITEM_HP_CHANGE;
-                        RecordItemEffectBattle(battler, battlerHoldEffect);
-                        PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
-                    }
-                }
-                break;
             case HOLD_EFFECT_LEFTOVERS:
             LEFTOVERS:
 #if B_HEAL_BLOCKING >= GEN_5
@@ -9164,6 +9142,26 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     BattleScriptExecute(BattleScript_ItemHealHP_End2);
                     effect = ITEM_HP_CHANGE;
                     RecordItemEffectBattle(battler, battlerHoldEffect);
+                }
+                break;
+            case HOLD_EFFECT_HEART_GIFT:
+                if (!moveTurn && gDisableStructs[battler].surpriseCounter < 3)
+                {
+                    gDisableStructs[battler].surpriseCounter++;
+                    BattleScriptExecute(BattleScript_HeartGiftSurpriseCount);
+                    effect = ITEM_EFFECT_OTHER;
+                    RecordItemEffectBattle(battler, battlerHoldEffect);
+                }
+                if (!moveTurn && gDisableStructs[battler].surpriseCounter >= 3)
+                {
+                    gDisableStructs[battler].surpriseCounter = 0;
+                    gBattleMoveDamage = gBattleMons[battler].maxHP / 2;
+                    if (gBattleMoveDamage == 0)
+                        gBattleMoveDamage = 1;
+                    BattleScriptExecute(BattleScript_HeartGiftSurpriseFulfilled);
+                    effect = ITEM_HP_CHANGE;
+                    RecordItemEffectBattle(battler, battlerHoldEffect);
+                    PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
                 }
                 break;
             case HOLD_EFFECT_GEMSTONE:

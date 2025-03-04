@@ -565,6 +565,8 @@ static const s8 sText_EnduredViaSturdy[] = _("{B_DEF_NAME_WITH_PREFIX} endured\n
 static const s8 sText_PowerHerbActivation[] = _("{B_ATK_NAME_WITH_PREFIX} became fully charged\ndue to its {B_LAST_ITEM}!");
 static const s8 sText_HurtByItem[] = _("{B_ATK_NAME_WITH_PREFIX} was hurt\nby its {B_LAST_ITEM}!");
 static const s8 sText_TargetHurtByItem[] = _("{B_DEF_NAME_WITH_PREFIX} was hurt\nby its {B_LAST_ITEM}!");
+static const s8 sText_StackOfSurprise[] = _("{B_ATK_NAME_WITH_PREFIX} is a bit\nsurprised by its {B_LAST_ITEM}!");
+static const s8 sText_CouldntHandleTheSurprise[] = _("{B_ATK_NAME_WITH_PREFIX} couldn't\nhandle {B_LAST_ITEM}'s surprise!");
 static const s8 sText_BadlyPoisonedByItem[] = _("{B_EFF_NAME_WITH_PREFIX} was badly\npoisoned by the {B_LAST_ITEM}!");
 static const s8 sText_BurnedByItem[] = _("{B_EFF_NAME_WITH_PREFIX} was burned\nby the {B_LAST_ITEM}!");
 static const s8 sText_TargetAbilityActivates[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY} activates!");
@@ -1825,6 +1827,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_FOETAILWINDENDS - BATTLESTRINGS_TABLE_START] = sText_FoeTailwindEnds,
     [STRINGID_PKMNSFLOWERISOPENING - BATTLESTRINGS_TABLE_START] = sText_PkmnsFlowerIsOpening,
     [STRINGID_USERUSEDUPALLFRENZY - BATTLESTRINGS_TABLE_START] = sText_UserUsedUpAllFrenzy,
+    [STRINGID_STACKOFSURPRISE - BATTLESTRINGS_TABLE_START] = sText_StackOfSurprise,
+    [STRINGID_COULDNTHANDLETHESURPRISE - BATTLESTRINGS_TABLE_START] = sText_CouldntHandleTheSurprise,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

@@ -17658,14 +17658,22 @@ BattleScript_StickyBarbTryEvasion:
 BattleScript_StickyBarbEnd2:
 	end2
 
-BattleScript_HeartGift::
+BattleScript_HeartGiftSurpriseCount::
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
+	printstring STRINGID_STACKOFSURPRISE
+	waitmessage B_WAIT_TIME_LONG
+	end2
+
+BattleScript_HeartGiftSurpriseFulfilled::
 	playanimation BS_ATTACKER, B_ANIM_MON_HIT
 	waitanimation
-	setmoveeffect MOVE_EFFECT_WRAP | MOVE_EFFECT_AFFECTS_USER
-	seteffectprimary
-	call BattleScript_ItemHurtRet
-BattleScript_HeartGiftStatDownEnd::
-	removeitem BS_ATTACKER
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE | HITMARKER_IGNORE_DISGUISE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	printstring STRINGID_COULDNTHANDLETHESURPRISE
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_ATTACKER
 	end2
 
 BattleScript_ItemHealHP_Ret::

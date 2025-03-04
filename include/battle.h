@@ -68,6 +68,7 @@ struct DisableStruct
     u8 protectUses;
     u8 stockpileCounter;
     u8 exhaustionCounter;
+    u8 surpriseCounter;
     u8 daybreakCounter;
     u8 frenzyCounter;
     u8 purified;
@@ -111,7 +112,6 @@ struct DisableStruct
     u8 stealthRockDone:1;
     u8 spiderweb:1;
     u8 shunyongFlinchTimer:2;
-    u8 heartGiftTimer:4;
     u8 meanLook:1;
     u8 guardSplit:1;
     u8 guardSwap:1;
