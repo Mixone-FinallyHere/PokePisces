@@ -48,3 +48,4 @@ prefabs.json
 /scripts/moves_path.txt
 /scripts/Moves.csv
 /scripts/TeachableMoveSet.csv
+scripts/__pycache__/
