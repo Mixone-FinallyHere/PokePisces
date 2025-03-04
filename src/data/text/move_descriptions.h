@@ -2383,6 +2383,11 @@ static const u8 sStormThrowDescription[] = _(
     "target with a fierce blow. This\n"
     "move always lands critical hits.");
 
+static const u8 sFrostBreathDescription[] = _(
+    "The user attacks by blowing its\n"
+    "cold breath on the target. This\n"
+    "move always lands critical hits.");
+
 static const u8 sFlameBurstDescription[] = _(
     "The user attacks the foe with a\n"
     "bursting flame, which damages\n"
@@ -5482,7 +5487,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_VOLT_SWITCH - 1] = sVoltSwitchDescription,
     [MOVE_STRUGGLE_BUG - 1] = sStruggleBugDescription,
     [MOVE_BULLDOZE - 1] = sBulldozeDescription,
-    [MOVE_FROST_BREATH - 1] = sStormThrowDescription,
+    [MOVE_FROST_BREATH - 1] = sFrostBreathDescription,
     [MOVE_DRAGON_TAIL - 1] = sDragonTailDescription,
     [MOVE_WORK_UP - 1] = sWorkUpDescription,
     [MOVE_ELECTROWEB - 1] = sElectrowebDescription,
