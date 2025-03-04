@@ -1064,8 +1064,9 @@
 	.byte 0xcc
 	.endm
 
-	.macro cureifburnedparalysedorpoisoned failInstr:req
+	.macro curestatuswithmove battler:req, failInstr:req
 	.byte 0xcd
+	.byte \battler
 	.4byte \failInstr
 	.endm
 
@@ -1409,6 +1410,16 @@
 
 	.macro setglaiverush2
 	callnative BS_SetGlaiveRush2
+	.endm
+
+	.macro trycinderdrill battler:req
+	callnative BS_TryCinderDrill
+	.byte \battler
+	.endm
+
+	.macro trycindertwirl battler:req
+	callnative BS_TryCinderTwirl
+	.byte \battler
 	.endm
 
 	.macro trycopycat failInstr:req
@@ -2190,6 +2201,11 @@
 	various BS_ATTACKER, VARIOUS_TRY_TO_CLEAR_WEATHER
 	.endm
 
+	.macro removetailwind battler:req, failInstr:req
+	various \battler, VARIOUS_REMOVE_TAILWIND
+	.4byte \failInstr
+	.endm
+
 	.macro removesupergear
 	various BS_ATTACKER, VARIOUS_REMOVE_SUPER_GEAR
 	.endm
@@ -2422,16 +2438,6 @@
 	various \battler, VARIOUS_TRY_TRAINER_SLIDE_MSG_MEGA_EVOLUTION
 	.endm
 
-	.macro cureifblooming failInstr:req
-	various BS_ATTACKER, VARIOUS_CURE_IF_BLOOMING
-	.4byte \failInstr
-	.endm
-
-	.macro tailwindremoval failInstr:req
-	various BS_TARGET, VARIOUS_TAILWIND_REMOVAL
-	.4byte \failInstr
-	.endm
-
 	.macro setovertaketarget
 	various BS_TARGET, VARIOUS_SET_OVERTAKE_TARGET
 	.endm
@@ -2582,6 +2588,21 @@
 	.macro jumpifgearmagnet battler:req, jumpInstr:req
 	various \battler, VARIOUS_JUMP_IF_GEAR_MAGNET
 	.4byte \jumpInstr
+	.endm
+
+	.macro jumpifinfatuatedspecific battler:req, jumpInstr:req
+	various \battler, VARIOUS_JUMP_IF_INFATUATED_SPECIFIC
+	.4byte \jumpInstr
+	.endm
+
+	.macro disablechosenmove battler:req, failInstr:req
+	various \battler, VARIOUS_DISABLE_CHOSEN_MOVE
+	.4byte \failInstr
+	.endm
+
+	.macro mindgapcheck battler:req, failInstr:req
+	various \battler, VARIOUS_MIND_GAP_CHECK
+	.4byte \failInstr
 	.endm
 
 	.macro invertnegativestatstages battler:req

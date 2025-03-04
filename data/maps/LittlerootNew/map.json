@@ -48,6 +48,13 @@
       "elevation": 0,
       "dest_map": "MAP_LITTLEROOT_NEW",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 24,
+      "y": 23,
+      "elevation": 0,
+      "dest_map": "MAP_OLDALE_TOWN_POKEMON_CENTER_2F",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

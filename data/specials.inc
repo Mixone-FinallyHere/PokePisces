@@ -323,6 +323,11 @@ gSpecials::
 	def_special CheckAllSadsod
 	def_special CheckPapypusAndMamypus
 	def_special CheckZorua
+	def_special CheckSpindaAsh
+	def_special CheckSpindaMountain
+	def_special CheckSpindaCave
+	def_special CheckSpindaForest
+	def_special CheckSpindaDesert
 	def_special CopyCurSecretBaseOwnerName_StrVar1
 	def_special ScriptCheckFreePokemonStorageSpace
 	def_special DoSealedChamberShakingEffect_Long

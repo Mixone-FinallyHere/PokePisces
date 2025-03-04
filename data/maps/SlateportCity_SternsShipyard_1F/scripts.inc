@@ -117,28 +117,82 @@ SlateportCity_SternsShipyard_1F_Text_NameDock:
 	.string "Dock$"
 
 SlateportCity_SternsShipyard_1F_Text_DockPreRydel:
-	.string "go do giddy and rydel$"
+	.string "(He's working on some sort of\n"
+	.string "boat motor on the table.)\p"
+	.string "...Oh, dag-nabbit. Still no good\n"
+	.string "with these new-fangled parts...$"
 
 SlateportCity_SternsShipyard_1F_Text_IAmTheBard:
-	.string "im the bard dock$"
+	.string "...\p"
+	.string "...Ah, what's that? You are...\p"
+	.string "...{PLAYER}? And, err... Rydel\n"
+	.string "sent you to me? Well, that is\l"
+	.string "a surprise, to be sure.$"
 
 SlateportCity_SternsShipyard_1F_Text_YoureOurNextGuy:
-	.string "you are next mf$"
+	.string "Hello, Mr. Dock. Sorry to take\n"
+	.string "time away from what you're doing.\l"
+	.string "But, we really need to talk.\p"
+	.string "Your old friend Rydel sent us here.\n"
+	.string "To make a long story short, we've\l"
+	.string "had run-ins with him and Giddy,\l"
+	.string "trying to locate The Storyteller.\l"
+	.string "Yes, we know that all of you\l"
+	.string "are in a group together called\l"
+	.string "the Old Guys. ...So, do you\l"
+	.string "have any information to offer?$"
 
 SlateportCity_SternsShipyard_1F_Text_BeforeIRetire:
-	.string "before i retire gather my doods$"
+	.string "I see. Sorry to dissapoint, but\n"
+	.string "I'm an awfully busy man these days.\l"
+	.string "Back when I was known as The Bard,\l"
+	.string "I was a lot more of a free spirit.\l"
+	.string "But that doesn't pay the bills.\p"
+	.string "...Err, well, I suppose that I'm\n"
+	.string "not going to be busy for much longer.\l"
+	.string "My retirement party is today.\l"
+	.string "I've invited a few of my old\l"
+	.string "sea dog colleagues, but their minds\l"
+	.string "must be going, as usual.\l"
+	.string "Only Ol' Briney showed up!\p"
+	.string "Listen, if you can do me a favor here,\n"
+	.string "I might do you one back.\l"
+	.string "All you need to do is fetch my\l"
+	.string "senile colleagues.\l"
+	.string "Stern, Archie, and Drake.\l"
+	.string "Without them, I won't be holding\l"
+	.string "my small party.$"
 
 SlateportCity_SternsShipyard_1F_Text_WeCanDoThat:
-	.string "ok$"
+	.string "R-Retirement, huh...\p"
+	.string "...Ahem, anyways, yes, I think\n"
+	.string "we can do that. {PLAYER},\l"
+	.string "the closest one I know of to\l"
+	.string "here is probably Cpt. Stern.\l"
+	.string "He should be in the Oceanic Museum\l"
+	.string "in the same city we're in right now.\p"
+	.string "Let's get going.$"
 
 SlateportCity_SternsShipyard_1F_Text_KizunaIdle:
-	.string "gotta get da doods$"
+	.string "Alright {PLAYER},\n"
+	.string "the closest one I know of to\l"
+	.string "here is probably Cpt. Stern.\l"
+	.string "He should be in the Oceanic Museum\l"
+	.string "in the same city we're in right now.\p"
+	.string "Let's get going.$"
 
 SlateportCity_SternsShipyard_1F_Text_DockDuringMission:
-	.string "gather my doods$"
+	.string "My colleagues still have yet to\n"
+	.string "all arrive. Stern, Archie, Drake...\l"
+	.string "dimentia's already setting in!$"
 
 SlateportCity_SternsShipyard_1F_Text_TheyreAllReady:
-	.string "doods have been gathered$"
+	.string "Thank you for gathering my\n"
+	.string "colleagues. They've all\l"
+	.string "just arrived. Since you've been\l"
+	.string "so helpful, why don't you\l"
+	.string "come along with us? It will\l"
+	.string "be a fun voyage.$"
 
 SlateportCity_SternsShipyard_1F_Text_DecidedToHelpDock:
 	.string "MR. BRINEY: Ah, {PLAYER}{KUN}!\n"

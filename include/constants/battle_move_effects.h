@@ -128,7 +128,7 @@
 #define EFFECT_BATON_PASS                   124
 #define EFFECT_PURSUIT                      125
 #define EFFECT_RAPID_SPIN                   126
-#define EFFECT_SONICBOOM                    127 //Changed in Pisces, added a new level-based conditional to the fixed damage calc
+#define EFFECT_SONIC_BOOM                    127 //Changed in Pisces, added a new level-based conditional to the fixed damage calc
 #define EFFECT_CAPTIVATE                    128                  //This move appears to have no special AI code although I think it needs some. Will come back to
 #define EFFECT_MORNING_SUN                  129
 #define EFFECT_SYNTHESIS                    130
@@ -654,7 +654,12 @@
 #define EFFECT_PIN_MISSILE                  648
 #define EFFECT_FIREBRAND                    649
 #define EFFECT_STELLAR_FIST                 650
+#define EFFECT_RECHARGE_BURN                651
+#define EFFECT_AIR_CUTTER                   652
+#define EFFECT_HOLD_HANDS                   653
+#define EFFECT_AMNESIA                      654
+#define EFFECT_MIND_GAP                     655
 
-#define NUM_BATTLE_MOVE_EFFECTS             651
+#define NUM_BATTLE_MOVE_EFFECTS             656
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

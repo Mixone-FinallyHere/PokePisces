@@ -22,6 +22,11 @@
       "map": "MAP_CANOPOUR_WILDS",
       "offset": -96,
       "direction": "up"
+    },
+    {
+      "map": "MAP_SCUTTILL_SPINDA_DEN",
+      "offset": 1,
+      "direction": "right"
     }
   ],
   "object_events": [

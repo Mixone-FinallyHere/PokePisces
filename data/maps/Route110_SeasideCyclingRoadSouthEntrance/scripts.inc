@@ -75,6 +75,7 @@ Route110_SeasideCyclingRoadSouthEntrance_EventScript_ClearCyclingRoad::
 	end
 
 Route110_SeasideCyclingRoadSouthEntrance_EventScript_KizunaCongrats::
+	speakername Route110_SeasideCyclingRoadSouthEntrance_Text_NameKizuna
 	msgbox Route110_SeasideCyclingRoadSouthEntrance_Text_KizunaCongrats, MSGBOX_NPC
 	end
 
@@ -140,28 +141,85 @@ Route110_SeasideCyclingRoadSouthEntrance_Text_NameKizuna:
 	.string "Kizuna$"
 
 Route110_SeasideCyclingRoadSouthEntrance_Text_KizunaCongrats:
-	.string "congrats$"
+	.string "Wow, good job on your cycling!\n"
+	.string "E-Even though you ended up\l"
+	.string "stopping a few times, I think\l"
+	.string "the time is enough. Let's hope.$"
 
 Route110_SeasideCyclingRoadSouthEntrance_Text_YouDidIt:
-	.string "you did it$"
+	.string "...\p"
+	.string "That... was...\p"
+	.string "TUBULAR! WAY COOL! MONDO!\n"
+	.string "You were gnarly as hell out there!\l"
+	.string "Who even cares about the time limit?\l"
+	.string "I'd say you rocked my socks!\p"
+	.string "Aight, here's the skinny. You got\n"
+	.string "a lot right, probs. I'm one of\l"
+	.string "the Old Guys, a group'a dudes who've\l"
+	.string "kinda run Mauville from the\l"
+	.string "shadows for decades. There's\l"
+	.string "actually 5 of us. You met\l"
+	.string "my homie Giddy, and 'course you're\l"
+	.string "on the prowl for The Storyteller.\p"
+	.string "Though, my b, but I don't got any\n"
+	.string "deets on where ol' ST got off to.\l"
+	.string "I do know that both of the other\l"
+	.string "remainin' Old Guys are chillin'\l"
+	.string "in Sea Mauville just south of here\l"
+	.string "these days.\p"
+	.string "Y'know what? Check with Dock.\n"
+	.string "He's got a crapload of connections.\l"
+	.string "Prolly your best bet, dig?$"
 
 Route110_SeasideCyclingRoadSouthEntrance_Text_TimeToRetire:
-	.string "time to retire$"
+	.string "...Whelp. That's 'bout it\n"
+	.string "for The Hipster, bros.\l"
+	.string "I'm ready to retire and get\l"
+	.string "to chillin' like a villain.\p"
+	.string "I didn't tell ya this before,\n"
+	.string "dude in red. But I could tell\l"
+	.string "Giddy was inside ya somehow.\l"
+	.string "Pretty nutso.\p"
+	.string "Maybe I can join him?$"
 
 Route110_SeasideCyclingRoadSouthEntrance_Text_ImReadyAreYou:
-	.string "im ready are u$"
+	.string "Sigh...\n"
+	.string "Look, I don't know what's going\l"
+	.string "on with you Old Guys.\p"
+	.string "But yknow what, I could tell\n"
+	.string "that... whatever, happened with\l"
+	.string "Giddy in the Trick House put\l"
+	.string "his soul at ease. My body...\l"
+	.string "it's almost drawn to do what\l"
+	.string "it's about to. Maybe it's destiny.\p"
+	.string "Alright, Rydel. Time to retire.$"
 
 Route110_SeasideCyclingRoadSouthEntrance_Text_ThisIsHard:
-	.string "this shit sucks$"
+	.string "...And...there...he went.\p"
+	.string "Like Giddy before him, I can feel\n"
+	.string "Rydel's memories course through\l"
+	.string "my brain. It's like... I'm\l"
+	.string "three people in one.\p"
+	.string "Truth be told, I have chosen to\n"
+	.string "stop questioning what's happening.\l"
+	.string "Mostly... because my heart is telling\l"
+	.string "me that it's the right thing.\l"
+	.string "I could be wrong. But we have\l"
+	.string "to press on regardless.\p"
+	.string "Dock, huh? He's Captain Stern's\n"
+	.string "right hand man. The guy should be\l"
+	.string "in the shipyard building in\l"
+	.string "Slateport. Err, well, Sea Mauville.\l"
+	.string "Keep forgetting they re-branded.\p"
+	.string "Let's get going, {PLAYER}.$"
 
 Route110_SeasideCyclingRoadSouthEntrance_Text_GoAllOutOnCyclingRoad:
-	.string "On CYCLING ROAD, you can go all out\n"
+	.string "On Cycling Road, you can go all out\n"
 	.string "and cycle as fast as you'd like.\p"
 	.string "It feels great to go that fast, but try\n"
 	.string "not to crash into anyone!$"
 
 Route110_SeasideCyclingRoadSouthEntrance_Text_TooDangerousToWalk:
-	.string "Sorry, you can't walk on CYCLING\n"
-	.string "ROAD. It's too dangerous.\p"
+	.string "Sorry, you can't walk on Cycling\n"
+	.string "Road. It's too dangerous.\p"
 	.string "Please come back with a BIKE.$"
-

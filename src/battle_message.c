@@ -325,7 +325,6 @@ static const u8 sText_PkmnsXWhippedUpSandstorm[] = _("{B_SCR_ACTIVE_NAME_WITH_PR
 static const u8 sText_PkmnsXIntensifiedSun[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nintensified the sun's rays!");
 static const u8 sText_PkmnsXPreventsYLoss[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nprevents {B_BUFF1} loss!");
 static const u8 sText_PkmnsXInfatuatedY[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY}\ninfatuated {B_ATK_NAME_WITH_PREFIX}!");
-static const u8 sText_PkmnsXInfatuatedY3[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_DEF_ABILITY} made it\ninfatuated with {B_DEF_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnsXInfatuatedYItemEdition[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1}\ninfatuated {B_ATK_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnsXMadeYIneffective[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY}\nmade {B_CURRENT_MOVE} ineffective!");
 static const u8 sText_PkmnsXCuredYProblem[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\ncured its {B_BUFF1} problem!");
@@ -620,6 +619,7 @@ static const u8 sText_BufferEnds[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_BUFF1}\nwo
 static const u8 sText_ThroatChopEnds[] = _("{B_ATK_NAME_WITH_PREFIX} can\nuse sound-based moves again!");
 static const u8 sText_TelekinesisEnds[] = _("{B_ATK_NAME_WITH_PREFIX} was freed\nfrom the telekinesis!");
 static const u8 sText_TailwindEnds[] = _("{B_ATK_TEAM1} team's tailwind\npetered out!");
+static const u8 sText_FoeTailwindEnds[] = _("{B_DEF_TEAM1} team's tailwind\npetered out!");
 static const u8 sText_LuckyChantEnds[] = _("{B_ATK_TEAM1} team's Lucky Chant\nwore off!");
 static const u8 sText_TrickRoomEnds[] = _("The twisted dimensions returned to\nnormal!");
 static const u8 sText_WonderRoomEnds[] = _("Wonder Room wore off, and Defense\nand Sp. Def stats returned to normal!");
@@ -957,6 +957,7 @@ static const u8 sText_PkmnBurningUp[] = _("{B_ATK_NAME_WITH_PREFIX} is burning u
 static const u8 sText_WatcherEnters[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is\nwatching intently...");
 static const u8 sText_WatcherSalvation[] = _("All of {B_ATK_NAME_WITH_PREFIX}'s\neyes look at {B_DEF_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnIsSpinning[] = _("{B_ATK_NAME_WITH_PREFIX} is\nspinning rapidly!");
+static const u8 sText_PkmnsFlowerIsOpening[] = _("{B_ATK_NAME_WITH_PREFIX}'s flower\nis opening!");
 static const u8 sText_SloppyToppy[] = _("{B_ATK_NAME_WITH_PREFIX} kissed {B_DEF_NAME_WITH_PREFIX}\nin a show of true compassion!");
 static const u8 sText_NoSex[] = _("With {B_ATK_NAME_WITH_PREFIX}'s ally gone there\nis no more love for it to spread...");
 static const u8 sText_TargetCoveredInStickyCandySyrup[] = _("{B_DEF_NAME_WITH_PREFIX} got covered\nin sticky syrup!");
@@ -1819,8 +1820,9 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_STARSGRACEENTERS - BATTLESTRINGS_TABLE_START] = sText_StarsGraceEnters,
     [STRINGID_PHANTOMDOESNTALLOW - BATTLESTRINGS_TABLE_START] = sText_PhantomDoesntAllow,
     [STRINGID_USERHASENTEREDAFRENZY - BATTLESTRINGS_TABLE_START] = sText_UserHasEnteredAFrenzy,
-    [STRINGID_PKMNSXINFATUATEDY3 - BATTLESTRINGS_TABLE_START] = sText_PkmnsXInfatuatedY3,
     [STRINGID_USERINCREASEDBLOOMINGDURATION - BATTLESTRINGS_TABLE_START] = sText_UserIncreasedBloomingDuration,
+    [STRINGID_FOETAILWINDENDS - BATTLESTRINGS_TABLE_START] = sText_FoeTailwindEnds,
+    [STRINGID_PKMNSFLOWERISOPENING - BATTLESTRINGS_TABLE_START] = sText_PkmnsFlowerIsOpening,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -2088,6 +2090,7 @@ const u16 gFirstTurnOfTwoStringIds[] =
     [B_MSG_TURN1_AIR_CANNON]    = STRINGID_PRESSURIZINGAIR,
     [B_MSG_TURN1_CHEESE_STEAL]  = STRINGID_PKMNFLEDFROMBATTLE,
     [B_MSG_TURN1_AXEL_HEEL]     = STRINGID_PKMNISSPINNING,
+    [B_MSG_TURN1_SNAPBLOSSOM]   = STRINGID_PKMNSFLOWERISOPENING,
 };
 
 // Index copied from move's index in sTrappingMoves

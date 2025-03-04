@@ -131,13 +131,42 @@ SailorsPause_Text_NameRay:
 	.string "Ray$"
 
 SailorsPause_Text_RayIntro:
-	.string "intro$"
+	.string "...By jove. Even at sea,\n"
+	.string "I cannot be rid of you.\p"
+	.string "For your information, Archie\n"
+	.string "(the pompous fool that he is) sent\l"
+	.string "me on a mission to scan the oceans\l"
+	.string "nearby to Pacifidlog and Sootopolis\l"
+	.string "for any illegal garbage dumping\l"
+	.string "boats offloading trash.\p"
+	.string "He gave me the option of using a\n"
+	.string "brand new motorboat (loud and\l"
+	.string "obnoxious) or a simple wooden\l"
+	.string "rowboat (lets you build arm muscle).\l"
+	.string "You can see how easy the choice was.\p"
+	.string "Yet, I have yet to come upon\n"
+	.string "any garbage vessels. Yet.\l"
+	.string "Oh, but I did happen upon you.\l"
+	.string "Technically, counting as\l"
+	.string "a garbage vessel.\p"
+	.string "So, this defeat you will soon\n"
+	.string "suffer (a full wipe, likely)\l"
+	.string "is just me doing my job.\l"
+	.string "Simply business.$"
 
 SailorsPause_Text_RayDefeat:
-	.string "defeat$"
+	.string "You kept... making...\n"
+	.string "urp... my boat... rock...$"
 
 SailorsPause_Text_RayLeaves:
-	.string "byebye$"
+	.string "Shocking development...\n"
+	.string "the great and indominatable Ray...\l"
+	.string "is getting... urp...\l"
+	.string "sea sick...\p"
+	.string "This is an unheard... of...\n"
+	.string "devel-... URP...! ....ment.\l"
+	.string "I must... must get to...\l"
+	.string "terra... firma...!$"
 
 SailorsPause_Text_NeedMiragePokemon:
 	.string "Ahoy, trainer. I have been\n"

@@ -582,13 +582,16 @@ SeaMauville_Text_NameNob:
 	.string "Nob$"
 
 SeaMauville_Text_NueIntro:
-	.string "intro$"
+	.string "W-What? You want to battle?\n"
+	.string "Well, I'm kind of carrying\l"
+	.string "important cargo. Can't it wai-$"
 
 SeaMauville_Text_NueDefeated:
-	.string "defeat$"
+	.string "Agh! Why so aggressive?$"
 
 SeaMauville_Text_NuePostBattle:
-	.string "post$"
+	.string "Look, you want the briefcase?\n"
+	.string "Just... take it and leave me alone!$"
 
 SeaMauville_Text_GaryIntro:
 	.string "It was YOU who stole that\n"
@@ -619,36 +622,72 @@ SeaMauville_Text_BonVoyage:
 	.string "About time to haul anchor, then!$"
 
 SeaMauville_Text_ReadyForSouthernIsland:
-	.string "ready for the south?$"
+	.string "Ahoy there {PLAYER}!\n"
+	.string "Are you ready to disembark\l"
+	.string "for Southern Island?$"
 
 SeaMauville_Text_DrakeIdle:
-	.string "yarr im drake$"
+	.string "I am always one to love the ocean!\n"
+	.string "Especially with a spectacular\l"
+	.string "crew like today.$"
 
 SeaMauville_Text_KizunaIdle:
-	.string "this shit cray man$"
+	.string "We sure do keep getting sucked\n"
+	.string "into odd situations, huh...\p"
+	.string "Whatever. Let's enjoy ourselves\n"
+	.string "on the trip.$"
 
 SeaMauville_Text_ArchieIdle:
-	.string "team gackwag$"
+	.string "Shame Briney won't let me take\n"
+	.string "the helm, fufufu... I would get\l"
+	.string "us there hyper-fast! Briney\l"
+	.string "plays it too safe. Where's\l"
+	.string "the fun in that?$"
 
 SeaMauville_Text_SternIdle:
-	.string "stern goes bwah like angru bird$"
+	.string "I would hope this voyage doesn't\n"
+	.string "take us too terribly long.\l"
+	.string "I wouldn't want to miss anything\l"
+	.string "vital at the Museum.$"
 
 SeaMauville_Text_DockIdle:
-	.string "DOCK TEXT$"
+	.string "Ah, it's like the good ol' days.\n"
+	.string "I can't help but smile!$"
 
 SeaMauville_Text_MustSail:
-	.string "must sail$"
+	.string "(Shouldn't back out of this one.)$"
 
 SeaMauville_Text_AboutDock:
-	.string "so whats dock deal\p"
-	.string "anyways letsgo to market$"
+	.string "This journey just gets stranger\n"
+	.string "and stranger...\p"
+	.string "Seems like people will see me\n"
+	.string "as Dock. Or, well, maybe those\l"
+	.string "men saw me as Dock. And... anyone\l"
+	.string "who was close to Rydel would see\l"
+	.string "me as Rydel. And so on.\p"
+	.string "When I... absorbed, Dock,\n"
+	.string "I got his memories, like the others.\l"
+	.string "He would meet up with the last\l"
+	.string "remaining Old Guy we haven't\l"
+	.string "heard of in name yet.\l"
+	.string "A man named Nob, also known as\l"
+	.string "The Trader. He's actually\l"
+	.string "in town... we might have even talked\l"
+	.string "to him before.\p"
+	.string "He should be in the Sea Mauville\n"
+	.string "Market. I'll meet you there.$"
 
 SeaMauville_Text_TraderGreeting:
 	.string "{JPN}アイ アム ザー トレーダー\n"
 	.string "{JPN}マイ ネーム イズ ノブ$"
 
 SeaMauville_Text_HesSpeakingJapanese:
-	.string "oh hes speaking japanese$"
+	.string "A-Ah, hello there, Nob.\n"
+	.string "Do you... recognize me?\l"
+	.string "As Dock? Or maybe as Giddy?\p"
+	.string "I can somewhat understand\n"
+	.string "Japanese, so I'll try and translate\l"
+	.string "for us, {PLAYER}.$"
 
 SeaMauville_Text_IWantThis:
 	.string "{JPN}イフ ユー ウッド ライク ター トレード\n"
@@ -656,7 +695,15 @@ SeaMauville_Text_IWantThis:
 	.string "{JPN}イン エクスチェーンジ フォー ティー$"
 
 SeaMauville_Text_LetsTryAndFigureItOut:
-	.string "lets figure it out$"
+	.string "So, uh, I believe he wants\n"
+	.string "to trade us some sort of key?\l"
+	.string "But he would like some Tea\l"
+	.string "in return. I... I'm sorry,\l"
+	.string "I don't quite know what kind of\l"
+	.string "tea he wants.\p"
+	.string "Maybe we should ask around the\n"
+	.string "market and see if we can get\l"
+	.string "what The Trader wants.$"
 
 SeaMauville_Text_NobPreDock:
 	.string "{JPN}マイ アポロジズ\n"
@@ -675,7 +722,12 @@ SeaMauville_Text_ThanksForYourTime:
 	.string "{JPN}ザー タイム フォー マイ レクェスト$"
 
 SeaMauville_Text_YouAllSet:
-	.string "you all set bestie$"
+	.string "So, you guys have made the\n"
+	.string "trade, right? That's awesome.\p"
+	.string "...Ah. My body is reacting again...\n"
+	.string "without even hearing your words,\l"
+	.string "Nob, I think I know what you want.\l"
+	.string "Is it your time to go as well?$"
 
 SeaMauville_Text_YesItsMyTimeToGo:
 	.string "{JPN}イェス⋯\n"
@@ -689,28 +741,93 @@ SeaMauville_Text_YesItsMyTimeToGo:
 	.string "{JPN}レッディー キザナー$"
 
 SeaMauville_Text_OneMoreToGo:
-	.string "uno mas brothere$"
+	.string "So that is number four out of five.\n"
+	.string "Hah... I'm becoming a rather\l"
+	.string "complex system of individuals, eh?\p"
+	.string "With Nob's memories, I can tell\n"
+	.string "what that key he traded you is for.\l"
+	.string "It's to open the Maintenance level\l"
+	.string "of New Mauville, underneath\l"
+	.string "the city proper. A lot of engineering\l"
+	.string "projects are greenlit and tested\l"
+	.string "down there, so I hear.\p"
+	.string "It's also where we will find\n"
+	.string "The Storyteller. I'm sure of it...\p"
+	.string "This might be the last leg of\n"
+	.string "the journey, {PLAYER}. Let's\l"
+	.string "go find that door this key\l"
+	.string "goes to in New Mauville.$"
 
 SeaMauville_Text_KizunaIdle2:
-	.string "figure it out ig$"
+	.string "So, uh, I believe he wants\n"
+	.string "to trade us some sort of key?\l"
+	.string "But he would like some Tea\l"
+	.string "in return. I... I'm sorry,\l"
+	.string "I don't quite know what kind of\l"
+	.string "tea he wants.\p"
+	.string "Maybe we should ask around the\n"
+	.string "market and see if we can get\l"
+	.string "what The Trader wants.$"
 
 SeaMauville_Text_ImUpToNoGood:
-	.string "im up to no good$"
+	.string "Nothing suspicious going on here!\n"
+	.string "No sirree! Nuh uh!$"
 
 SeaMauville_Text_GoGetMeASuitcase:
-	.string "go behind the PC and steal$"
+	.string "You look like a person who's\n"
+	.string "in need of somethin' nice.\l"
+	.string "Maybe you can... trade it for\l"
+	.string "somethin' better.\p"
+	.string "Well, I got just the deal for ya.\n"
+	.string "Help me intercept a package, and\l"
+	.string "I'll give ya some of what's in there.\p"
+	.string "Now, a friend'a mine is gonna come\n"
+	.string "strolling down the road behind\l"
+	.string "the Pokemon Center in a bit.\l"
+	.string "You go and loiter back there.\l"
+	.string "When she pops up, you can't miss her.\l"
+	.string "Lady with sheet-white hair.\p"
+	.string "No matter what she says, battle\n"
+	.string "her and then take her briefcase.\l"
+	.string "Don't worry, 's all part\l"
+	.string "of the plan!\p"
+	.string "Then, you come bring dat case\n"
+	.string "back to me. We split the contents.\l"
+	.string "All's done. Capische?$"
 
 SeaMauville_Text_SuitcaseInstructions:
-	.string "gotta intercept nue$"
+	.string "Now, a friend'a mine is gonna come\n"
+	.string "strolling down the road behind\l"
+	.string "the Pokemon Center in a bit.\l"
+	.string "You go and loiter back there.\l"
+	.string "When she pops up, you can't miss her.\l"
+	.string "Lady with sheet-white hair.\p"
+	.string "No matter what she says, battle\n"
+	.string "her and then take her briefcase.\l"
+	.string "Don't worry, 's all part\l"
+	.string "of the plan!\p"
+	.string "Then, you come bring dat case\n"
+	.string "back to me. We split the contents.\l"
+	.string "All's done. Capische?$"
 
 SeaMauville_Text_YouGotTheStuff:
-	.string "you got the stuff$"
+	.string "Nice! You got the stuff!\p"
+	.string "(The man rummages through the\n"
+	.string "suitcase to check what's in it.)\p"
+	.string "Yep, recon didn't lie. Some\n"
+	.string "valuable stuff in here... but\l"
+	.string "I'll have to lay low after...\p"
+	.string "...Ah, yeah. You can, uh...\n"
+	.string "have this. Might come in handy!\l"
+	.string "Or something.$"
 
 SeaMauville_Text_ThanksForSuitcase:
-	.string "thanks for the deal$"
+	.string "Good doin' business with ya.\n"
+	.string "Don't tell nobody about this.$"
 
 SeaMauville_Text_TimeToIntercept:
-	.string "time 2 intercept$"
+	.string "!\p"
+	.string "(You see your target.)$"
 
 SeaMauville_Text_MyCreamHasTroubleWakingUp:
 	.string "Sigh...\n"

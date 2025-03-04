@@ -1759,11 +1759,11 @@ static void MoveSelectionDisplayMoveType(u32 battler)
     {
         type = TYPE_ICE;
     }
-    else if (ability == 338 && gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_NORMAL) //aqua heart
+    else if (ability == 337 && gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_NORMAL) //aqua heart
     {
         type = TYPE_WATER;
     }
-    else if (ability == 342 && gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_NORMAL) //draco force
+    else if (ability == 341 && gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_NORMAL) //draco force
     {
         type = TYPE_DRAGON;
     }

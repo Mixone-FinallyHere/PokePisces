@@ -396,7 +396,6 @@
 #define EVO_PANICKED                      56
 #define EVO_SILENCE_ACTIVATED             57
 #define EVO_MED_FRIENDSHIP                58
-#define EVO_LEVEL_HEMOKO                  59
 
 #define EVOS_PER_MON 10
 

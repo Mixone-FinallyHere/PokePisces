@@ -1376,7 +1376,7 @@ const struct Trainer gTrainers[] = {
         .trainerName = _("Matt"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
+        .aiFlags = AI_FLAG_PREFER_STRONGEST_MOVE,
         .party = TRAINER_PARTY(sParty_PMatt1),
     },
 
@@ -1388,7 +1388,7 @@ const struct Trainer gTrainers[] = {
         .trainerName = _("Tabitha"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
+        .aiFlags = AI_FLAG_PREFER_STATUS_MOVES,
         .party = TRAINER_PARTY(sParty_PTabitha1),
     },
 
@@ -7425,7 +7425,7 @@ const struct Trainer gTrainers[] = {
         .items = {ITEM_HYPER_POTION, ITEM_FULL_HEAL, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
-        .party = TRAINER_PARTY(sParty_PCat),
+        .party = TRAINER_PARTY(sParty_PCatt),
     },
 
     [TRAINER_P_TAII] =

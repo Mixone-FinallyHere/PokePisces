@@ -128,6 +128,7 @@ FallarborNew_Movement_PlayerMeetTab3:
 	step_end
 
 FallarborNew_EventScript_TabithaBattle::
+	setflag FLAG_CABLE_CAR_UNLOCKED
 	speakername FallarborNew_Text_NameTabitha
 	msgbox FallarborNew_Text_JustVisitedCosmo, MSGBOX_DEFAULT
 	speakername FallarborNew_Text_NameTabitha

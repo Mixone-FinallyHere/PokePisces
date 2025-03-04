@@ -351,6 +351,31 @@ Route124_Movement_RunAway:
 	walk_down
 	step_end
 
+Route124_EventScript_VengaGirl::
+	lock
+	faceplayer
+	checkitem ITEM_TERU_CHARM
+	goto_if_eq VAR_RESULT, TRUE, Route124_EventScript_AlreadyGaveTeruCharm
+	msgbox Route124_Text_HeartGoesOutToYou, MSGBOX_DEFAULT
+	getcaughtmon SPECIES_CHIROBERRA
+	goto_if_eq VAR_RESULT, TRUE, Route124_EventScript_GiveTeruCharm
+	closemessage
+	release
+	end
+
+Route124_EventScript_GiveTeruCharm::
+	msgbox Route124_Text_HaveATeruCharm, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_TERU_CHARM
+	closemessage
+	release
+	end
+
+Route124_EventScript_AlreadyGaveTeruCharm::
+	msgbox Route124_Text_AlreadyGaveTeruCharm, MSGBOX_AUTOCLOSE
+	release
+	end
+
 Route124_EventScript_Ariel::
     trainerbattle_single TRAINER_P_ARIEL, Route124_Text_ArielIntro, Route124_Text_ArielDefeated
     msgbox Route124_Text_ArielPostBattle, MSGBOX_AUTOCLOSE
@@ -710,3 +735,20 @@ Route124_Text_MorningDefeated:
 Route124_Text_MorningPostBattle:
 	.string "{PLAYER} received the\n"
 	.string "lended umbrellas!$"
+
+Route124_Text_HeartGoesOutToYou:
+	.string "Our ÄheartsÄ go out to you,\n"
+	.string "tough trainer!$"
+
+Route124_Text_HaveATeruCharm:
+	.string "...\p"
+	.string "Oh!\p"
+	.string "You own your own Chiroberra?\n"
+	.string "Well, that is just lovely!\l"
+	.string "Let it wear this special ÄcharmÄ,\l"
+	.string "and it will keep it safe from ÄharmÄ!$"
+
+Route124_Text_AlreadyGaveTeruCharm:
+	.string "Take good care of your umbrella!\n"
+	.string "AND any umbrella-shaped Pokemon,\l"
+	.string "don't forget!$"

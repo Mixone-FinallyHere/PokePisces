@@ -1401,7 +1401,7 @@ void GiveLeadMonEffortRibbon(void)
 bool8 Special_AreLeadMonEVsMaxedOut(void)
 {
     struct Pokemon *mon = &gPlayerParty[GetLeadMonIndex()];
-    if (GetMonEVCount(mon) >= GetMaxTotalEVs(GetMonData(mon, MON_DATA_LEVEL)))
+    if (GetMonEVCount(mon) >= GetMaxTotalEVs())
         return TRUE;
 
     return FALSE;
@@ -1593,6 +1593,66 @@ bool8 CheckZorua(void)
     for (i = 0; i < partyCount; i++)
     {
         if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_ZORUA)
+            return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 CheckSpindaAsh(void)
+{
+    u8 i;
+    u8 partyCount = CalculatePlayerPartyCount();
+    for (i = 0; i < partyCount; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_SPINDA)
+            return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 CheckSpindaMountain(void)
+{
+    u8 i;
+    u8 partyCount = CalculatePlayerPartyCount();
+    for (i = 0; i < partyCount; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_SPINDA_MOUNTAIN)
+            return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 CheckSpindaCave(void)
+{
+    u8 i;
+    u8 partyCount = CalculatePlayerPartyCount();
+    for (i = 0; i < partyCount; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_SPINDA_CAVE)
+            return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 CheckSpindaForest(void)
+{
+    u8 i;
+    u8 partyCount = CalculatePlayerPartyCount();
+    for (i = 0; i < partyCount; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_SPINDA_FOREST)
+            return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 CheckSpindaDesert(void)
+{
+    u8 i;
+    u8 partyCount = CalculatePlayerPartyCount();
+    for (i = 0; i < partyCount; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_SPINDA_DESERT)
             return TRUE;
     }
     return FALSE;

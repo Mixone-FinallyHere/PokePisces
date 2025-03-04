@@ -902,16 +902,16 @@ PerplumeMaze_EventScript_ItemPChupacabra::
 	finditem ITEM_CHUPACABRA
 	end
 
-CrimneyClimb_EventScript_ItemPKingsRock::
-	finditem ITEM_KINGS_ROCK
-	end
-
 CrimneyClimb_EventScript_ItemPAirBalloon::
 	finditem ITEM_AIR_BALLOON
 	end
 
 CrimneyClimb_EventScript_ItemPRockyHelmet::
 	finditem ITEM_ROCKY_HELMET
+	end
+
+ChimneySpindaArea_EventScript_ItemPTMGeoPulse::
+	finditem ITEM_TM_GEO_PULSE
 	end
 
 JaggroPass_EventScript_ItemPRoomExtender::
@@ -944,6 +944,10 @@ SweltornTransitionCave_EventScript_ItemPSoftSand::
 
 SweltornDesert_EventScript_ItemPDustGoggles::
 	finditem ITEM_SAFETY_GOGGLES
+	end
+
+SweltornPalace_EventScript_ItemPKingsRock::
+	finditem ITEM_KINGS_ROCK
 	end
 
 MauvilleNew_EventScript_ItemPTwistedSpoon::
@@ -1316,6 +1320,14 @@ Route121_EventScript_ItemPRelaxant::
 
 Route121_EventScript_ItemPXSpeed::
 	finditem ITEM_X_SPEED
+	end
+
+ArctaigaSpindaDen_EventScript_ItemPIceStone::
+	finditem ITEM_ICE_STONE
+	end
+
+ArctaigaSpindaDen_EventScript_ItemPMaxRevive::
+	finditem ITEM_MAX_REVIVE
 	end
 
 Route123_EventScript_ItemPRelaxant::

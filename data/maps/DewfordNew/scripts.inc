@@ -69,13 +69,39 @@ DewfordNew_Text_NameBriney:
 	.string "Cpt. Briney$"
 
 DewfordNew_Text_GoFindTheLeaders:
-	.string "go find them mfs$"
+	.string "Dewford Gym is currently closed!\n"
+	.string "Sorry, but both Gym Leaders\l"
+	.string "got called away to investigate\l"
+	.string "suspicious activity at sea.\l"
+	.string "I pray nothing is\l"
+	.string "seriously wrong...\p"
+	.string "They both went eastward to the\n"
+	.string "oceanic routes around the\l"
+	.string "Pacifidlog, Sootopolis, and\l"
+	.string "Mossdeep areas. I sure\l"
+	.string "hope they make it back safely...$"
 
 DewfordNew_Text_GoFindShelly:
-	.string "go find shelly$"
+	.string "Dewford Gym is currently closed!\n"
+	.string "Sorry, but Shelly is still\l"
+	.string "somewhere out at sea.\l"
+	.string "Can't open the gym without\l"
+	.string "one of its leaders!\p"
+	.string "I had heard from Brawly that\n"
+	.string "she went to Sailor's Pause\l"
+	.string "to investigate suspicious\l"
+	.string "activity... hmm.$"
 
 DewfordNew_Text_GoFindBrawly:
-	.string "go find brawly$"
+	.string "Dewford Gym is currently closed!\n"
+	.string "Sorry, but Brawly is still\l"
+	.string "somewhere out at sea.\l"
+	.string "Can't open the gym without\l"
+	.string "one of its leaders!\p"
+	.string "I had heard from Shelly that\n"
+	.string "he went to Precipike Bluff\l"
+	.string "to investigate suspicious\l"
+	.string "activity... hmm.$"
 
 DewfordNew_Text_WantToVoyage:
 	.string "Ahoy there {PLAYER}!\p"

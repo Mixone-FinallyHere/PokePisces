@@ -6390,6 +6390,66 @@
       "secondary_tileset": "gTileset_Sootopolis",
       "border_filepath": "data/layouts/BasalinCave/border.bin",
       "blockdata_filepath": "data/layouts/BasalinCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_ARCTAIGA_SPINDA_DEN",
+      "name": "ArctaigaSpindaDen_Layout",
+      "width": 32,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Snow",
+      "border_filepath": "data/layouts/ArctaigaSpindaDen/border.bin",
+      "blockdata_filepath": "data/layouts/ArctaigaSpindaDen/map.bin"
+    },
+    {
+      "id": "LAYOUT_CHIMNEY_SPINDA_AREA",
+      "name": "ChimneySpindaArea_Layout",
+      "width": 17,
+      "height": 22,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Chimney",
+      "border_filepath": "data/layouts/ChimneySpindaArea/border.bin",
+      "blockdata_filepath": "data/layouts/ChimneySpindaArea/map.bin"
+    },
+    {
+      "id": "LAYOUT_SCUTTILL_SPINDA_DEN",
+      "name": "ScuttillSpindaDen_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lilycove",
+      "border_filepath": "data/layouts/ScuttillSpindaDen/border.bin",
+      "blockdata_filepath": "data/layouts/ScuttillSpindaDen/map.bin"
+    },
+    {
+      "id": "LAYOUT_SWELTORN_SPINDA_DEN",
+      "name": "SweltornSpindaDen_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_desert",
+      "border_filepath": "data/layouts/SweltornSpindaDen/border.bin",
+      "blockdata_filepath": "data/layouts/SweltornSpindaDen/map.bin"
+    },
+    {
+      "id": "LAYOUT_ASHLANDS_HOUSE",
+      "name": "AshlandsHouse_Layout",
+      "width": 7,
+      "height": 7,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/AshlandsHouse/border.bin",
+      "blockdata_filepath": "data/layouts/AshlandsHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_CRIMNEY_INTERIORS",
+      "name": "CrimneyInteriors_Layout",
+      "width": 33,
+      "height": 21,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/CrimneyInteriors/border.bin",
+      "blockdata_filepath": "data/layouts/CrimneyInteriors/map.bin"
     }
   ]
 }

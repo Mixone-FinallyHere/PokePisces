@@ -3,8 +3,8 @@ OceanicMuseumNew_MapScripts::
 
 OceanicMuseumNew_EventScript_Stern::
 	lock
-	faceplayer
 	goto_if_lt VAR_OLD_GUYS_STATE, 8, OceanicMuseumNew_EventScript_SternPreDock
+	faceplayer
 	goto_if_gt VAR_OLD_GUYS_STATE, 8, OceanicMuseumNew_EventScript_SternPostDock
 	goto_if_set FLAG_DOCK_QUEST_FOUND_STERN, OceanicMuseumNew_EventScript_SternGatherOthers
 	setflag FLAG_DOCK_QUEST_FOUND_STERN
@@ -45,19 +45,43 @@ OceanicMuseumNew_Text_NameStern:
 	.string "Cpt. Stern$"
 
 OceanicMuseumNew_Text_SternPreDock:
-	.string "go away maybe?$"
+	.string "(He seems to be doing something\n"
+	.string "important on the computer...\l"
+	.string "you should just leave him be.)$"
 
 OceanicMuseumNew_Text_ImCaptStern:
-	.string "im captain stern$"
+	.string "Yes? If you're looking for Stern,\n"
+	.string "that would be me.$"
 
 OceanicMuseumNew_Text_DockWantsMe:
-	.string "docky boy needs me? k$"
+	.string "...Oh, yes. Dock has been emailing\n"
+	.string "me constantly about his party.\l"
+	.string "Trust me, I am aware.\p"
+	.string "I simply had to finish a few orders.\n"
+	.string "And... yes, I'm just about done.\l"
+	.string "I will be at the Shipyard shortly.\p"
+	.string "You're looking for Archie and Drake\n"
+	.string "as well? Well, Archie should be\l"
+	.string "at the Ozone Institute, as usual.\l"
+	.string "And I believe Drake has a home\l"
+	.string "north of Fallarbor in an area\l"
+	.string "called Fossil Shores. That should\l"
+	.string "account for them both. Good luck.$"
 
 OceanicMuseumNew_Text_SternGatherOthers:
-	.string "gather the other doods$"
+	.string "You're looking for Archie and Drake\n"
+	.string "as well? Well, Archie should be\l"
+	.string "at the Ozone Institute, as usual.\l"
+	.string "And I believe Drake has a home\l"
+	.string "north of Fallarbor in an area\l"
+	.string "called Fossil Shores. That should\l"
+	.string "account for them both. Good luck.$"
 
 OceanicMuseumNew_Text_SternPostDock:
-	.string "man i liked that song$"
+	.string "Dock is a good man. I'm happy\n"
+	.string "to have had him with me for so long.\l"
+	.string "Sincerely, I wish him a\l"
+	.string "happy retirement.$"
 
 OceanicMuseumNew_Text_MoonIntro:
 	.string "intro$"

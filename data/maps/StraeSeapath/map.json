@@ -193,8 +193,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 26,
-      "y": 82,
+      "x": 27,
+      "y": 88,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -258,7 +258,13 @@
     }
   ],
   "warp_events": [
-
+    {
+      "x": 22,
+      "y": 82,
+      "elevation": 0,
+      "dest_map": "MAP_FALLARBOR_TOWN_POKEMON_CENTER_2F",
+      "dest_warp_id": "0"
+    }
   ],
   "coord_events": [
 

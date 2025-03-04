@@ -549,7 +549,7 @@ Route126_Text_RayLeaves:
 	.string "You cheated, I let you win, I'm feeling\n"
 	.string "under the weather, et cetera.\p"
 	.string "In my post-loss-clarity state, I am\n"
-	.string "now realzing that my team HAS left.\p"
+	.string "now realizing that my team HAS left.\p"
 	.string "Mm.\p"
 	.string "Likely your fault.\p"
 	.string "As we established, you are THE dirty\n"

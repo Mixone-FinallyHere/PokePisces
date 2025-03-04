@@ -4,6 +4,10 @@
 .set LOCALID_TABITHA, 18
 .set LOCALID_MATT, 19
 .set LOCALID_GUARD, 21
+.set LOCALID_MAXIE, 22
+.set LOCALID_ARCHIE, 23
+.set LOCALID_TABITHA2, 24
+.set LOCALID_MATT2, 25
 
 OzoneLilycoveHQ_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, OzoneLilycoveHQ_OnLoad
@@ -16,12 +20,21 @@ OzoneLilycoveHQ_OnFrame:
 	.2byte 0
 
 OzoneLilycoveHQ_OnLoad:
+	call OzoneLilycoveHQ_EventScript_RemoveOzoners
 	call_if_lt VAR_OZONE_ADMINS_STATE, 3, OzoneLilycoveHQ_EventScript_RemoveGuard
 	end
 
 OzoneLilycoveHQ_EventScript_RemoveGuard::
 	removeobject LOCALID_GUARD
 	setflag FLAG_TEMP_11
+	return
+
+OzoneLilycoveHQ_EventScript_RemoveOzoners::
+	removeobject LOCALID_MAXIE
+	removeobject LOCALID_ARCHIE
+	removeobject LOCALID_TABITHA2
+	removeobject LOCALID_MATT2
+	setflag FLAG_TEMP_12
 	return
 
 OzoneLilycoveHQ_EventScript_NoBusinessHere::
@@ -163,35 +176,83 @@ OzoneLilycoveHQ_EventScript_BoardroomMeeting::
 	waitmovement 0
 	msgbox OzoneLilycoveHQ_Text_Matt5, MSGBOX_DEFAULT
 	speakername NULL
+	setflag FLAG_TEMP_13
+	clearflag FLAG_TEMP_12
 	trainerbattle_two_trainers TRAINER_P_OZONE_MATT_1, OzoneLilycoveHQ_Text_MattDefeated, TRAINER_P_OZONE_TABITHA_1, OzoneLilycoveHQ_Text_TabithaDefeated, OzoneLilycoveHQ_EventScript_AdminsDefeated, NO_MUSIC
 	goto OzoneLilycoveHQ_EventScript_AdminsDefeated
 	release
 	end
 
 OzoneLilycoveHQ_EventScript_AdminsDefeated::
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_WORKER1
+	removeobject LOCALID_WORKER2
+	removeobject LOCALID_WORKER3
+	removeobject LOCALID_TABITHA
+	removeobject LOCALID_MATT
+	setflag FLAG_TEMP_13
+	clearflag FLAG_TEMP_12
+	addobject LOCALID_MAXIE
+	addobject LOCALID_ARCHIE
 	delay 16
+	fadescreen FADE_FROM_BLACK
+	addobject LOCALID_TABITHA2
+	addobject LOCALID_MATT2
 	speakername OzoneLilycoveHQ_Text_NameTabitha
-	applymovement LOCALID_TABITHA, OzoneLilycoveHQ_Movement_TabithaTalking
+	applymovement LOCALID_TABITHA2, OzoneLilycoveHQ_Movement_TabithaTalking
 	msgbox OzoneLilycoveHQ_Text_Tabitha5, MSGBOX_DEFAULT
 	speakername OzoneLilycoveHQ_Text_NameMatt
-	applymovement LOCALID_MATT, OzoneLilycoveHQ_Movement_MattTalking
+	applymovement LOCALID_MATT2, OzoneLilycoveHQ_Movement_MattTalking
 	msgbox OzoneLilycoveHQ_Text_Matt6, MSGBOX_DEFAULT
 	speakername OzoneLilycoveHQ_Text_NameTabitha
-	applymovement LOCALID_TABITHA, OzoneLilycoveHQ_Movement_TabithaDeclaration
+	applymovement LOCALID_TABITHA2, OzoneLilycoveHQ_Movement_TabithaTalking
 	waitmovement 0
 	msgbox OzoneLilycoveHQ_Text_Tabitha6, MSGBOX_DEFAULT
 	speakername OzoneLilycoveHQ_Text_NameMatt
-	applymovement LOCALID_MATT, OzoneLilycoveHQ_Movement_MattUpset
+	applymovement LOCALID_MATT2, OzoneLilycoveHQ_Movement_MattTalking
 	msgbox OzoneLilycoveHQ_Text_Matt7, MSGBOX_DEFAULT
-	applymovement LOCALID_MATT, OzoneLilycoveHQ_Movement_MattLeaves
+	closemessage
+	applymovement LOCALID_MAXIE, OzoneLilycoveHQ_Movement_MaxieWalkIn
+	applymovement LOCALID_ARCHIE, OzoneLilycoveHQ_Movement_ArchieWalkIn
 	waitmovement 0
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
+	speakername OzoneLilycoveHQ_Text_NameArchie
+	msgbox OzoneLilycoveHQ_Text_WhatsGoingOnHere, MSGBOX_DEFAULT
+	speakername OzoneLilycoveHQ_Text_NameMatt
+	msgbox OzoneLilycoveHQ_Text_BackMeUpHere, MSGBOX_DEFAULT
+	speakername OzoneLilycoveHQ_Text_NameMaxie
+	msgbox OzoneLilycoveHQ_Text_NoSquabbling, MSGBOX_DEFAULT
+	speakername OzoneLilycoveHQ_Text_NameMatt
+	msgbox OzoneLilycoveHQ_Text_FineIllLeave, MSGBOX_DEFAULT
+	applymovement LOCALID_MATT2, OzoneLilycoveHQ_Movement_MattLeaves
+	waitmovement 0
+	applymovement LOCALID_MAXIE, OzoneLilycoveHQ_Movement_MaxieGiveNav
+	waitmovement 0
+	speakername OzoneLilycoveHQ_Text_NameMaxie
+	msgbox OzoneLilycoveHQ_Text_YouAreBirchsKid, MSGBOX_DEFAULT
 	speakername OzoneLilycoveHQ_Text_NameTabitha
-	applymovement LOCALID_TABITHA, OzoneLilycoveHQ_Movement_TabithaTalking
+	msgbox OzoneLilycoveHQ_Text_TheyWantToGetThroughArc, MSGBOX_DEFAULT
+	speakername OzoneLilycoveHQ_Text_NameMaxie
+	msgbox OzoneLilycoveHQ_Text_OhYoureDoingGyms, MSGBOX_DEFAULT
+	speakername NULL
+	playfanfare MUS_OBTAIN_ITEM
+	message OzoneLilycoveHQ_Text_ReceivedPokenav
+	waitfanfare
+	setflag FLAG_SYS_POKENAV_GET
+	setflag FLAG_RECEIVED_POKENAV
+	speakername OzoneLilycoveHQ_Text_NameArchie
+	msgbox OzoneLilycoveHQ_Text_ThatPokenavIsCool, MSGBOX_DEFAULT
+	speakername OzoneLilycoveHQ_Text_NameMaxie
+	msgbox OzoneLilycoveHQ_Text_TabithaWillAssistYou, MSGBOX_DEFAULT
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	speakername OzoneLilycoveHQ_Text_NameTabitha
+	applymovement LOCALID_TABITHA2, OzoneLilycoveHQ_Movement_TabithaTalking
 	msgbox OzoneLilycoveHQ_Text_Tabitha7, MSGBOX_AUTOCLOSE
 	speakername NULL
 	setvar VAR_OZONE_ADMINS_STATE, 3
 	setvar VAR_PISCES_STORY_PROGRESS, 3
 	warp MAP_THE_COLD_MINES, 56, 35
+	waitstate
 	release
 	end
 
@@ -261,9 +322,6 @@ OzoneLilycoveHQ_Movement_MattUpset:
 	step_end
 
 OzoneLilycoveHQ_Movement_MattLeaves:
-	walk_right
-	walk_down
-	walk_down
 	walk_down
 	walk_down
 	walk_down
@@ -280,11 +338,50 @@ OzoneLilycoveHQ_Movement_MattLeaves:
 	walk_left
 	step_end
 
+OzoneLilycoveHQ_Movement_MaxieWalkIn:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	step_end
+
+OzoneLilycoveHQ_Movement_ArchieWalkIn:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	step_end
+
+OzoneLilycoveHQ_Movement_MaxieGiveNav:
+	walk_right
+	face_up
+	step_end
+
 OzoneLilycoveHQ_Text_NameMatt:
 	.string "Matt$"
 
 OzoneLilycoveHQ_Text_NameTabitha:
 	.string "Tabitha$"
+
+OzoneLilycoveHQ_Text_NameArchie:
+	.string "Archie$"
+
+OzoneLilycoveHQ_Text_NameMaxie:
+	.string "Maxie$"
 
 OzoneLilycoveHQ_Text_Boardroom1:
 	.string "(There appears to be some\n"
@@ -413,12 +510,78 @@ OzoneLilycoveHQ_Text_Matt7:
 	.string "You'll be fired in a week\n"
 	.string "tops without my help!$"
 
+OzoneLilycoveHQ_Text_WhatsGoingOnHere:
+	.string "What's with all the voice raising\n"
+	.string "in the meeting room!? I swear,\l"
+	.string "Maxie and I leave you bilgeheads\l"
+	.string "alone for too long and you go rabid!$"
+
+OzoneLilycoveHQ_Text_BackMeUpHere:
+	.string "B-Boss...\n"
+	.string "Sorry, man, but I gotta\l"
+	.string "hold my ground! Back me up!\l"
+	.string "Tabby-boy is drivin' me nuts!$"
+
+OzoneLilycoveHQ_Text_NoSquabbling:
+	.string "That is quite enough, Matthew.\n"
+	.string "Go to a separate room to cool\l"
+	.string "your emotions. I will get Archibald\l"
+	.string "to converse with you two\l"
+	.string "individually later to determine\l"
+	.string "how your roles will change,\l"
+	.string "if at all. Dismissed.$"
+
+OzoneLilycoveHQ_Text_FineIllLeave:
+	.string "Urgh, fine.$"
+
+OzoneLilycoveHQ_Text_YouAreBirchsKid:
+	.string "Terribly sorry you had to\n"
+	.string "listen to our workplace drama.\l"
+	.string "You are the Professor's child,\l"
+	.string "is that correct? I seem to remember\l"
+	.string "you being a steadfast ally\l"
+	.string "to the former champion.$"
+
+OzoneLilycoveHQ_Text_TheyWantToGetThroughArc:
+	.string "Maxie, sir. {PLAYER} came\n"
+	.string "to us hoping we could clear\l"
+	.string "the avalanche blocking up\l"
+	.string "the Cold Mines. Would you allow\l"
+	.string "us to allocate our men there\l"
+	.string "to start excavating?$"
+
+OzoneLilycoveHQ_Text_OhYoureDoingGyms:
+	.string "That should work. Get to that\n"
+	.string "whenever possible, Tabitha.\p"
+	.string "Going through the Cold Mines\n"
+	.string "to get to the gym in\l"
+	.string "Zotpyre Village, I should assume?\l"
+	.string "That is quite the trek.\l"
+	.string "Do you possess a PokeNav?\p"
+	.string "...No? Well, we cannot have that.\n"
+	.string "You may have one of our spares.$"
+
+OzoneLilycoveHQ_Text_ReceivedPokenav:
+	.string "{PLAYER} received a PokéNav.$"
+
+OzoneLilycoveHQ_Text_ThatPokenavIsCool:
+	.string "That 'Nav has assisted me on\n"
+	.string "many a voyage! If you get lost,\l"
+	.string "keep an eye on the map\l"
+	.string "included with it.$"
+
+OzoneLilycoveHQ_Text_TabithaWillAssistYou:
+	.string "Indeed.\n"
+	.string "Now, I must be going back\l"
+	.string "to the main building.\l"
+	.string "Tabitha, you shall see to it\l"
+	.string "that {PLAYER} can make it\l"
+	.string "to their next destination.$"
+
 OzoneLilycoveHQ_Text_Tabitha7:
-	.string "…I will work things out\n"
-	.string "with Maxie later.\p"
-	.string "For now, all… we should get to work on\n"
-	.string "cleaning the cave-in.\p"
-	.string "You should come with, {PLAYER}.$"
+	.string "Yes, sir.\p"
+	.string "Come with me, {PLAYER}.\n"
+	.string "We will get to work post-haste.$"
 
 OzoneLilycoveHQ_Text_BrellaHelp:
 	.string "I've been doing extensive field testing\n"

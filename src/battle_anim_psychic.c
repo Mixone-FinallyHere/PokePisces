@@ -886,6 +886,19 @@ static void AnimTask_Teleport_Step(u8 taskId)
     }
 }
 
+void AnimTask_PsySwap(u8 taskId)
+{
+    struct Task *task = &gTasks[taskId];
+    u8 spriteId = GetAnimBattlerSpriteId(ANIM_TARGET);
+    task->data[0] = spriteId;
+    task->data[1] = 0;
+    task->data[2] = 0;
+    task->data[3] = GetBattlerSide(gBattlerTarget) != B_SIDE_PLAYER ? 4 : 8;
+
+    PrepareAffineAnimInTaskData(task, task->data[0], sAffineAnim_Teleport);
+    task->func = AnimTask_Teleport_Step;
+}
+
 void AnimTask_ImprisonOrbs(u8 taskId)
 {
     u16 var0, var1;

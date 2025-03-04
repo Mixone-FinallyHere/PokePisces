@@ -1,4 +1,5 @@
 .set LOCALID_NURSE, 1
+.set LOCALID_PHILLIPE, 3
 
 LilycoveCity_PokemonCenter_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_PokemonCenter_2F_OnTransition
@@ -6,7 +7,14 @@ LilycoveCity_PokemonCenter_2F_MapScripts::
 
 LilycoveCity_PokemonCenter_2F_OnTransition:
 	setrespawn HEAL_LOCATION_LILYCOVE_CITY
+	call_if_lt VAR_BALL_QUEST_STATE, 3, LilycoveCity_PokemonCenter_2F_EventScript_RemovePhillipe
+	call_if_gt VAR_BALL_QUEST_STATE, 3, LilycoveCity_PokemonCenter_2F_EventScript_RemovePhillipe
 	end
+
+LilycoveCity_PokemonCenter_2F_EventScript_RemovePhillipe::
+	removeobject LOCALID_PHILLIPE
+	setflag FLAG_TEMP_11
+	return
 
 LilycoveCity_PokemonCenter_2F_EventScript_Nurse::
 	setvar VAR_0x800B, LOCALID_NURSE
@@ -20,8 +28,6 @@ LilycoveCity_PokemonCenter_2F_EventScript_BallQuestGuy::
 	lock
 	faceplayer
 	speakername LilycoveCity_PokemonCenter_2F_Text_NamePhillipe
-	goto_if_lt VAR_BALL_QUEST_STATE, 3, LilycoveCity_PokemonCenter_2F_EventScript_GoDoPreviousQuest
-	goto_if_gt VAR_BALL_QUEST_STATE, 3, LilycoveCity_PokemonCenter_2F_EventScript_NoMoreQuest
 	goto_if_set FLAG_BALL_QUEST_DIALOGUE_TRUNCATOR, LilycoveCity_PokemonCenter_2F_EventScript_BallQuestGuyTruncated
 	setflag FLAG_BALL_QUEST_DIALOGUE_TRUNCATOR
 	msgbox LilycoveCity_PokemonCenter_2F_Text_HaveYouCaughtThisMon, MSGBOX_DEFAULT

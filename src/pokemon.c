@@ -387,7 +387,7 @@ static const u16 sSpeciesToHoennPokedexNum[NUM_SPECIES - 1] =
     SPECIES_TO_HOENN(VAIKING),
 
     [SPECIES_DUDUNSPARS_THREE_SEGMENT - 1] = HOENN_DEX_DUDUNSPARS,
-    [SPECIES_LOTTABATS_DISPERSED - 1] = HOENN_DEX_LOTTABATS,
+    [SPECIES_LOTTABATS_HUDDLED - 1] = HOENN_DEX_LOTTABATS,
     [SPECIES_GAOTERRA_SOLAR - 1] = HOENN_DEX_GAOTERRA,
     [SPECIES_GAOTERRA_LUNAR - 1] = HOENN_DEX_GAOTERRA,
     [SPECIES_BISHOUCHA_WARMONGER - 1] = HOENN_DEX_BISHOUCHA,
@@ -408,6 +408,19 @@ static const u16 sSpeciesToHoennPokedexNum[NUM_SPECIES - 1] =
     [SPECIES_LYOLICA - 1] = HOENN_DEX_LYORESA,
     [SPECIES_FAKYSNAKY_BUSTED - 1] = HOENN_DEX_FAKYSNAKY,
     [SPECIES_FLAGUE_PRINCE - 1] = HOENN_DEX_FLAGUE,
+    [SPECIES_MINIOR_METEOR_ORANGE - 1]     = HOENN_DEX_MINIOR,
+    [SPECIES_MINIOR_METEOR_YELLOW - 1]     = HOENN_DEX_MINIOR,
+    [SPECIES_MINIOR_METEOR_GREEN - 1]      = HOENN_DEX_MINIOR,
+    [SPECIES_MINIOR_METEOR_BLUE - 1]       = HOENN_DEX_MINIOR,
+    [SPECIES_MINIOR_METEOR_INDIGO - 1]     = HOENN_DEX_MINIOR,
+    [SPECIES_MINIOR_METEOR_VIOLET - 1]     = HOENN_DEX_MINIOR,
+    [SPECIES_MINIOR_CORE_RED - 1]          = HOENN_DEX_MINIOR,
+    [SPECIES_MINIOR_CORE_ORANGE - 1]       = HOENN_DEX_MINIOR,
+    [SPECIES_MINIOR_CORE_YELLOW - 1]       = HOENN_DEX_MINIOR,
+    [SPECIES_MINIOR_CORE_GREEN - 1]        = HOENN_DEX_MINIOR,
+    [SPECIES_MINIOR_CORE_BLUE - 1]         = HOENN_DEX_MINIOR,
+    [SPECIES_MINIOR_CORE_INDIGO - 1]       = HOENN_DEX_MINIOR,
+    [SPECIES_MINIOR_CORE_VIOLET - 1]       = HOENN_DEX_MINIOR,
 };
 
 // Assigns all species to the National Dex Index (Summary No. for National Dex)
@@ -1637,7 +1650,7 @@ static const u16 sSpeciesToNationalPokedexNum[NUM_SPECIES - 1] =
     [SPECIES_ZIGZAGOON_GALARIAN - 1] = NATIONAL_DEX_ZIGZAGOON,
     [SPECIES_LINOONE_GALARIAN - 1] = NATIONAL_DEX_LINOONE,
     [SPECIES_DUDUNSPARS_THREE_SEGMENT - 1] = NATIONAL_DEX_DUDUNSPARS,
-    [SPECIES_LOTTABATS_DISPERSED - 1] = NATIONAL_DEX_LOTTABATS,
+    [SPECIES_LOTTABATS_HUDDLED - 1] = NATIONAL_DEX_LOTTABATS,
     [SPECIES_GAOTERRA_SOLAR - 1] = NATIONAL_DEX_GAOTERRA,
     [SPECIES_GAOTERRA_LUNAR - 1] = NATIONAL_DEX_GAOTERRA,
     [SPECIES_BISHOUCHA_WARMONGER - 1] = NATIONAL_DEX_BISHOUCHA,
@@ -3450,7 +3463,7 @@ const u8 sMonFrontAnimIdsTable[NUM_SPECIES - 1] =
     [SPECIES_DEOXYS_ATTACK - 1]            = ANIM_GROW_VIBRATE,
     [SPECIES_DEOXYS_DEFENSE - 1]           = ANIM_GROW_VIBRATE,
     [SPECIES_DEOXYS_SPEED - 1]             = ANIM_GROW_VIBRATE,
-    [SPECIES_LOTTABATS_DISPERSED - 1]      = ANIM_V_SQUISH_AND_BOUNCE,
+    [SPECIES_LOTTABATS_HUDDLED - 1]        = ANIM_V_SQUISH_AND_BOUNCE,
     [SPECIES_DUDUNSPARS_THREE_SEGMENT - 1] = ANIM_V_SQUISH_AND_BOUNCE,
     [SPECIES_GAOTERRA_SOLAR - 1]           = ANIM_V_SQUISH_AND_BOUNCE,
     [SPECIES_GAOTERRA_LUNAR - 1]           = ANIM_V_SQUISH_AND_BOUNCE,
@@ -3464,7 +3477,7 @@ const u8 sMonFrontAnimIdsTable[NUM_SPECIES - 1] =
     [SPECIES_SPINDA_DESERT - 1]            = ANIM_V_SQUISH_AND_BOUNCE,
     [SPECIES_SPINDA_FOREST - 1]            = ANIM_V_SQUISH_AND_BOUNCE,
     [SPECIES_SPINDA_MOUNTAIN - 1]          = ANIM_V_SQUISH_AND_BOUNCE,
-    [SPECIES_SPINDA_PLAINS - 1]           = ANIM_V_SQUISH_AND_BOUNCE,
+    [SPECIES_SPINDA_PLAINS - 1]            = ANIM_V_SQUISH_AND_BOUNCE,
     [SPECIES_DUDUNSPARS_EIGHT_SEGMENT - 1] = ANIM_V_SQUISH_AND_BOUNCE,
     [SPECIES_KODOUGH_BLUNT - 1]            = ANIM_V_SQUISH_AND_BOUNCE,
     [SPECIES_CASTFORM_SANDY - 1]           = ANIM_V_SQUISH_AND_BOUNCE,
@@ -4292,7 +4305,7 @@ void CreateMonWithEVSpread(struct Pokemon *mon, u16 species, u8 level, u8 fixedI
         evsBits >>= 1;
     }
 
-    evAmount = GetMaxTotalEVs(level) / statCount;
+    evAmount = GetMaxTotalEVs() / statCount;
 
     evsBits = 1;
 
@@ -4444,7 +4457,7 @@ void CreateApprenticeMon(struct Pokemon *mon, const struct Apprentice *src, u8 m
     for (i = 0; i < MAX_MON_MOVES; i++)
         SetMonMoveSlot(mon, src->party[monId].moves[i], i);
 
-    evAmount = GetMaxTotalEVs(GetMonData(mon, MON_DATA_LEVEL)) / NUM_STATS;
+    evAmount = GetMaxTotalEVs() / NUM_STATS;
     for (i = 0; i < NUM_STATS; i++)
         SetMonData(mon, MON_DATA_HP_EV + i, &evAmount);
 
@@ -4476,7 +4489,7 @@ void CreateMonWithEVSpreadNatureOTID(struct Pokemon *mon, u16 species, u8 level,
         evsBits >>= 1;
     }
 
-    evAmount = GetMaxTotalEVs(level) / statCount;
+    evAmount = GetMaxTotalEVs() / statCount;
     evsBits = 1;
     for (i = 0; i < NUM_STATS; i++)
     {
@@ -6495,7 +6508,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
 
                         if (evChange > 0) // Increasing EV (HP or Atk)
                         {
-                            u32 maxTotalEVs = GetMaxTotalEVs(GetMonData(mon, MON_DATA_LEVEL));
+                            u32 maxTotalEVs = GetMaxTotalEVs();
                             // Has EV increase limit already been reached?
                             if (evCount >= maxTotalEVs)
                                 return TRUE;
@@ -6681,7 +6694,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                         evChange = temp2;
                         if (evChange > 0) // Increasing EV
                         {
-                            u32 maxTotalEVs = GetMaxTotalEVs(GetMonData(mon, MON_DATA_LEVEL));
+                            u32 maxTotalEVs = GetMaxTotalEVs();
                             // Has EV increase limit already been reached?
                             if (evCount >= maxTotalEVs)
                                 return TRUE;
@@ -7230,12 +7243,8 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                 if (MonKnowsMove(mon, gEvolutionTable[species][i].param) && ((personality % 1000) > 100))
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
-            case EVO_LEVEL_HEMOKO:
-                if (mode == EVO_MODE_BATTLE_ONLY && gEvolutionTable[species][i].param <= level)
-                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
-                break;
             case EVO_MOVE_THREE_SEGMENT:
-                if (MonKnowsMove(mon, gEvolutionTable[species][i].param) && (0 <= (personality % 1000) <= 100))
+                if (MonKnowsMove(mon, gEvolutionTable[species][i].param) && (0 < (personality % 1000) <= 100))
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_MOVE_EIGHT_SEGMENT:
@@ -7852,7 +7861,7 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
     int i, multiplier;
     u8 stat;
     u8 bonus;
-    u32 maxEVs = GetMaxTotalEVs(GetMonData(mon, MON_DATA_LEVEL));
+    u32 maxEVs = GetMaxTotalEVs();
 
     heldItem = GetMonData(mon, MON_DATA_HELD_ITEM, 0);
     if (heldItem == ITEM_ENIGMA_BERRY_E_READER)
@@ -9465,23 +9474,22 @@ void UpdateMonPersonality(struct BoxPokemon *boxMon, u32 personality)
     EncryptBoxMon(boxMon);
 }
 
-static const u16 sMaxEvByLevel[][2] = {
-    {10, 85},
-    {20, 170},
-    {30, 255},
-    {40, 340},
-    {50, 425},
-    {60, MAX_TOTAL_EVS},
-};
-
-u32 GetMaxTotalEVs(u32 level)
+u32 GetMaxTotalEVs(void)
 {
-    u32 i = 0;
-    while (level < sMaxEvByLevel[i][0]) {
-        i++;
-    }
-    if (i >= NELEMS(sMaxEvByLevel))
-        return MAX_TOTAL_EVS;
+    if (!FlagGet(FLAG_BADGE01_GET))
+        return 64;
+    else if (!FlagGet(FLAG_BADGE02_GET))
+        return 128;
+    else if (!FlagGet(FLAG_BADGE03_GET))
+        return 192;
+    else if (!FlagGet(FLAG_BADGE04_GET))
+        return 256;
+    else if (!FlagGet(FLAG_BADGE05_GET))
+        return 320;
+    else if (!FlagGet(FLAG_BADGE06_GET)) 
+        return 384;
+    else if (!FlagGet(FLAG_BADGE07_GET)) 
+        return 448;
     else
-        return sMaxEvByLevel[i][1];
+        return MAX_TOTAL_EVS;
 }

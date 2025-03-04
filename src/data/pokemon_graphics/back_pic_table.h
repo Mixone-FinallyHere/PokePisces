@@ -1119,7 +1119,7 @@ const struct CompressedSpriteSheet gMonBackPicTable[NUM_SPECIES + 1] =
     SPECIES_SPRITE(SHAYON, gMonBackPic_ShaYon),
     SPECIES_SPRITE(LUOSHAN, gMonBackPic_LuoShan),
     SPECIES_SPRITE(LOTTABATS, gMonBackPic_Lottabats),
-    SPECIES_SPRITE(LOTTABATS_DISPERSED, gMonBackPic_LottabatsDispersed),
+    SPECIES_SPRITE(LOTTABATS_HUDDLED, gMonBackPic_LottabatsHuddled),
     SPECIES_SPRITE(GAOTERRA, gMonBackPic_Gaoterra),
     SPECIES_SPRITE(GAOTERRA_SOLAR, gMonBackPic_GaoterraSolar),
     SPECIES_SPRITE(GAOTERRA_LUNAR, gMonBackPic_GaoterraLunar),

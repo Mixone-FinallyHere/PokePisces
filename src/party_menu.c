@@ -4540,14 +4540,21 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc task)
     bool8 canHeal, cannotUse;
     u32 oldStatus = GetMonData(mon, MON_DATA_STATUS);
 
-    canHeal = IsHPRecoveryItem(item);
-    if (canHeal == TRUE)
+    if (NotUsingHPEVItemOnShedinja(mon, item) == FALSE)
     {
-        hp = GetMonData(mon, MON_DATA_HP);
-        if (hp == GetMonData(mon, MON_DATA_MAX_HP))
-            canHeal = FALSE;
+        cannotUse = TRUE;
     }
-    cannotUse = ExecuteTableBasedItemEffect(mon, item, gPartyMenu.slotId, 0);
+    else
+    {
+        canHeal = IsHPRecoveryItem(item);
+        if (canHeal == TRUE)
+        {
+            hp = GetMonData(mon, MON_DATA_HP);
+            if (hp == GetMonData(mon, MON_DATA_MAX_HP))
+                canHeal = FALSE;
+        }
+        cannotUse = ExecuteTableBasedItemEffect(mon, item, gPartyMenu.slotId, 0);
+    }
 
     if (cannotUse != FALSE)
     {
@@ -4567,8 +4574,7 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc task)
         if (!IsItemFlute(item))
         {
             PlaySE(SE_USE_ITEM);
-            if (gPartyMenu.action != PARTY_ACTION_REUSABLE_ITEM)
-                RemoveBagItem(item, 1);
+            RemoveBagItem(item, 1);
         }
         else
         {

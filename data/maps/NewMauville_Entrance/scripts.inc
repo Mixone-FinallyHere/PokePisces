@@ -94,11 +94,15 @@ NewMauville_Entrance_Text_DoorIsLocked:
 	.string "The door is locked.$"
 
 NewMauville_Entrance_Text_UseBasementKey:
-	.string "Use the BASEMENT KEY?$"
+	.string "Use the Basement Key?$"
 
 NewMauville_Entrance_Text_UsedBasementKey:
-	.string "{PLAYER} used the BASEMENT KEY.\p"
+	.string "{PLAYER} used the Basement Key.\p"
 	.string "The door opened!$"
 
 NewMauville_Entrance_Text_ThisIsIt:
-	.string "this is finally it.$"
+	.string "This is it, {PLAYER}.\n"
+	.string "I just know The Storyteller\l"
+	.string "is in here somewhere...\l"
+	.string "and when we find him, we can\l"
+	.string "get our answers. You ready?$"

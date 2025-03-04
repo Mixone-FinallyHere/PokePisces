@@ -530,9 +530,9 @@ static const struct WindowTemplate sPartyMenuAbilitiesWindowTemplate =
 {
     .bg = 2,
     // Edit below how many tiles from the left for ability snack menu (less than 1 cuts border)
-    .tilemapLeft = 1,
+    .tilemapLeft = 17,
     // Edit below how many tiles from the top for ability snack menu
-    .tilemapTop = 11,
+    .tilemapTop = 13,
     .width = 12,
     .height = 6,
     .paletteNum = 14,

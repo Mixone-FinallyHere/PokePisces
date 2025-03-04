@@ -148,16 +148,47 @@ OzoneInt_Text_NameTabitha:
 	.string "Tabitha$"
 
 OzoneInt_Text_DockNeedsMe:
-	.string "dock needs me to show tf up$"
+	.string "...You're telling me Dock is\n"
+	.string "expecting me? I hadn't gotten\l"
+	.string "the memo! Someone's going to get\l"
+	.string "reprimanded for losing my mail...!\p"
+	.string "Well, that's none of your business.\n"
+	.string "I'll get on my way to Sea Mauville\l"
+	.string "in a bit.$"
 
 OzoneInt_Text_ArchiePreDock:
-	.string "welcome to my house$"
+	.string "Oh! It's the Professor's kid!\n"
+	.string "How've you been? In good health?\p"
+	.string "The new management style took some\n"
+	.string "time getting used to, but I sure\l"
+	.string "as hell do not mind! Now that I\l"
+	.string "get to actually do some meaningful\l"
+	.string "change, I've been a lot happier.\p"
+	.string "Maybe you can join our ranks\n"
+	.string "someday! But I don't want to distract\l"
+	.string "you from your gym challenge right now.\l"
+	.string "Go dominate!$"
 
 OzoneInt_Text_ArchiePostDock:
-	.string "never talk 2 me again$"
+	.string "Oh! It's {PLAYER}!\n"
+	.string "How've you been? In good health?\p"
+	.string "The new management style took some\n"
+	.string "time getting used to, but I sure\l"
+	.string "as hell do not mind! Now that I\l"
+	.string "get to actually do some meaningful\l"
+	.string "change, I've been a lot happier.\p"
+	.string "Maybe you can join our ranks\n"
+	.string "someday! But I don't want to distract\l"
+	.string "you from your gym challenge right now.\l"
+	.string "Go dominate!$"
 
 OzoneInt_Text_ArchieGatherOthers:
-	.string "gather the other doods$"
+	.string "Lookin' for Ol' Drake? That codger.\n"
+	.string "I believe he built his own house\l"
+	.string "somewhere north of Fallarbor Town.\p"
+	.string "No, of course he doesn't use\n"
+	.string "computers. You'd sooner see\l"
+	.string "a Bolterock fly!$"
 
 OzoneInt_Text_CantLetYouUpstairs:
 	.string "$"

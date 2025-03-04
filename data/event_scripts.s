@@ -4010,3 +4010,15 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/SecretMeadow/scripts.inc"
 
 	.include "data/maps/BasalinCave/scripts.inc"
+
+	.include "data/maps/ArctaigaSpindaDen/scripts.inc"
+
+	.include "data/maps/ChimneySpindaArea/scripts.inc"
+
+	.include "data/maps/ScuttillSpindaDen/scripts.inc"
+
+	.include "data/maps/SweltornSpindaDen/scripts.inc"
+
+	.include "data/maps/AshlandsHouse/scripts.inc"
+
+	.include "data/maps/CrimneyInteriors/scripts.inc"
