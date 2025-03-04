@@ -14076,9 +14076,9 @@ static const struct TrainerMon sParty_PWinona[] = {
     .species = SPECIES_PASSAWARY,
     .heldItem = ITEM_AIR_BALLOON,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .ev = TRAINER_PARTY_EVS(120, 12, 0, 0, 120, 0),
+    .ev = TRAINER_PARTY_EVS(120, 0, 0, 0, 132, 0),
     .lvl = 33,
-    .moves = {MOVE_FEAR_FACTOR, MOVE_WILL_O_WISP, MOVE_DARK_VOID, MOVE_ACROBATICS},
+    .moves = {MOVE_MAGIC_COAT, MOVE_EERIE_IMPULSE, MOVE_DARK_VOID, MOVE_FEAR_FACTOR},
     .nature = NATURE_MILD,
     },
     {

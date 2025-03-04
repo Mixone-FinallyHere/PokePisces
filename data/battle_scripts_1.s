@@ -688,10 +688,7 @@ BattleScript_EffectMindGap::
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
-	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_HitFromCritCalc
-	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_HitFromCritCalc
-	jumpifsafeguard BattleScript_HitFromCritCalc
-	disablelastusedattack BattleScript_ButItFailed
+	mindgapcheck BS_TARGET, BattleScript_ButItFailed
 	critcalc
 	damagecalc
 	adjustdamage
@@ -706,11 +703,14 @@ BattleScript_EffectMindGap::
 	waitmessage B_WAIT_TIME_LONG
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
-	seteffectwithchance
 	tryfaintmon BS_TARGET
 	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEnd
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
+	jumpifsafeguard BattleScript_MoveEnd
+	disablechosenmove BS_TARGET, BattleScript_MoveEnd
 	printstring STRINGID_PKMNMOVEWASDISABLED
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryDestinyKnotDisabledAttacker
@@ -797,11 +797,28 @@ BattleScript_HoldHandsTryHeal::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectAirCutter::
-    call BattleScript_EffectHit_Ret
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	jumpifmovehadnoeffect BattleScript_HitFromCritCalc
+	removetailwind BS_TARGET, BattleScript_HitFromCritCalc
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
 	jumpifbattleend BattleScript_MoveEnd
-	jumpifmovehadnoeffect BattleScript_MoveEnd
-	removetailwind BS_TARGET, BattleScript_MoveEnd
 	printstring STRINGID_FOETAILWINDENDS
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
@@ -825,6 +842,9 @@ BattleScript_SecondTurnFly::
 	clearsemiinvulnerablebit
 	attackstring
 	ppreduce
+	jumpifmovehadnoeffect BattleScript_HitFromCritCalc
+	removetailwind BS_ATTACKER, BattleScript_FlyTryRemoveFoeTailwind
+	removetailwind BS_TARGET, BattleScript_FlyJustRemoveUserTailwind
 	critcalc
 	damagecalc
 	adjustdamage
@@ -842,18 +862,57 @@ BattleScript_SecondTurnFly::
 	seteffectwithchance
 	tryfaintmon BS_TARGET
 	jumpifbattleend BattleScript_MoveEnd
-	jumpifmovehadnoeffect BattleScript_MoveEnd
-	removetailwind BS_ATTACKER, BattleScript_FlyTryRemoveFoeTailwind
 	printstring STRINGID_TAILWINDENDS
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_FlyTryRemoveFoeTailwind::
-	removetailwind BS_TARGET, BattleScript_MoveEnd
 	printstring STRINGID_FOETAILWINDENDS
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 BattleScript_FlyMiss::
 	clearsemiinvulnerablebit
 	goto BattleScript_PrintMoveMissed
+BattleScript_FlyTryRemoveFoeTailwind::
+	removetailwind BS_TARGET, BattleScript_HitFromCritCalc
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	printstring STRINGID_FOETAILWINDENDS
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_FlyJustRemoveUserTailwind::
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	printstring STRINGID_TAILWINDENDS
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectRechargeBurn::
 	attackcanceler
@@ -1235,10 +1294,27 @@ BattleScript_EffectLeafTornado::
 	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_LeafTornadoRemoveScreenHazards
 	goto BattleScript_EffectAccuracyDownHit
 BattleScript_LeafTornadoRemoveScreenHazards:
-	call BattleScript_EffectHit_Ret
-	rapidspinfree
-	removelightscreenreflect
 	setmoveeffect MOVE_EFFECT_ACC_MINUS_1
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	removelightscreenreflect
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	rapidspinfree
 	seteffectwithchance
 	tryfaintmon BS_TARGET
 	moveendall
@@ -1586,6 +1662,9 @@ BattleScript_EffectMoonBeam:
 	attackstring
 	ppreduce
 	curestatuswithmove BS_ATTACKER, BattleScript_HitFromAtkAnimation
+	critcalc
+	damagecalc
+	adjustdamage
 	attackanimation
 	waitanimation
 	effectivenesssound
@@ -1695,47 +1774,35 @@ BattleScript_EffectMagicPowder::
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
+	jumpifability BS_TARGET, ABILITY_MULTITYPE, BattleScript_ButItFailed
+	jumpifability BS_TARGET, ABILITY_RKS_SYSTEM, BattleScript_ButItFailed
+	jumpifsubstituteblocks BattleScript_ButItFailed
+	trysoak BattleScript_ButItFailed
+	jumpifability BS_TARGET, ABILITY_VITAL_SPIRIT, BattleScript_JustDoMagicPowder
+	jumpifability BS_TARGET, ABILITY_INSOMNIA, BattleScript_JustDoMagicPowder
+	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_JustDoMagicPowder
+	jumpifability BS_TARGET, ABILITY_PURIFYING_SALT, BattleScript_JustDoMagicPowder
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_JustDoMagicPowder
+	jumpifflowerveil BattleScript_JustDoMagicPowder
+	jumpifleafguardprotected BS_TARGET, BattleScript_JustDoMagicPowder
+	jumpifeeriemaskprotected BS_TARGET, BattleScript_JustDoMagicPowder
+	jumpifshieldsdown BS_TARGET, BattleScript_JustDoMagicPowder
+	jumpifsubstituteblocks BattleScript_JustDoMagicPowder
+	jumpifgearmagnet BS_TARGET, BattleScript_JustDoMagicPowder
+	jumpifsafeguard BattleScript_JustDoMagicPowder
+	jumpifuproarwakes BattleScript_JustDoMagicPowder
+	setyawn BattleScript_JustDoMagicPowder
 	attackanimation
 	waitanimation
-	jumpifability BS_TARGET, ABILITY_MULTITYPE, BattleScript_MagicPowderSoakFail
-	jumpifability BS_TARGET, ABILITY_RKS_SYSTEM, BattleScript_MagicPowderSoakFail
-	jumpifsubstituteblocks BattleScript_MagicPowderSoakFail
-	trysoak BattleScript_MagicPowderSoakFail
 	printstring STRINGID_TARGETCHANGEDTYPE
 	waitmessage B_WAIT_TIME_LONG
-	jumpifability BS_TARGET, ABILITY_VITAL_SPIRIT, BattleScript_MoveEnd
-	jumpifability BS_TARGET, ABILITY_INSOMNIA, BattleScript_MoveEnd
-	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_MoveEnd
-	jumpifability BS_TARGET, ABILITY_PURIFYING_SALT, BattleScript_MoveEnd
-	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
-	jumpifflowerveil BattleScript_MoveEnd
-	jumpifleafguardprotected BS_TARGET, BattleScript_MoveEnd
-	jumpifeeriemaskprotected BS_TARGET, BattleScript_MoveEnd
-	jumpifshieldsdown BS_TARGET, BattleScript_MoveEnd
-	jumpifsubstituteblocks BattleScript_MoveEnd
-	jumpifgearmagnet BS_TARGET, BattleScript_MoveEnd
-	jumpifsafeguard BattleScript_MoveEnd
-	jumpifuproarwakes BattleScript_MoveEnd
-	setyawn BattleScript_MoveEnd
 	printstring STRINGID_PKMNWASMADEDROWSY
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
-BattleScript_MagicPowderSoakFail::
-	jumpifability BS_TARGET, ABILITY_VITAL_SPIRIT, BattleScript_PrintBattlerAbilityMadeIneffective
-	jumpifability BS_TARGET, ABILITY_INSOMNIA, BattleScript_PrintBattlerAbilityMadeIneffective
-	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_PrintBattlerAbilityMadeIneffective
-	jumpifability BS_TARGET, ABILITY_PURIFYING_SALT, BattleScript_AbilityProtectsDoesntAffect
-	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TitanicProtectsDoesntAffect
-	jumpifflowerveil BattleScript_FlowerVeilProtects
-	jumpifleafguardprotected BS_TARGET, BattleScript_AbilityProtectsDoesntAffect
-	jumpifeeriemaskprotected BS_TARGET, BattleScript_ItemProtectsDoesntAffect
-	jumpifshieldsdown BS_TARGET, BattleScript_AbilityProtectsDoesntAffect
-	jumpifsubstituteblocks BattleScript_ButItFailed
-	jumpifgearmagnet BS_TARGET, BattleScript_ButItFailed
-	jumpifsafeguard BattleScript_SafeguardProtected
-	jumpifuproarwakes BattleScript_ButItFailed
-	setyawn BattleScript_ButItFailed
-	printstring STRINGID_PKMNWASMADEDROWSY
+BattleScript_JustDoMagicPowder::
+	attackanimation
+	waitanimation
+	printstring STRINGID_TARGETCHANGEDTYPE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -2494,7 +2561,7 @@ BattleScript_EffectSnapblossom::
 BattleScript_SnapblossomDecideTurn::
 	jumpifstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS, BattleScript_SnapblossomSecondTurn
 	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING, BattleScript_SnapblossomSecondTurn
-	setbyte sTWOTURN_STRINGID, B_MSG_TURN1_SOLAR_BEAM
+	setbyte sTWOTURN_STRINGID, B_MSG_TURN1_SNAPBLOSSOM
 	call BattleScriptFirstChargingTurn
 	jumpifnoholdeffect BS_ATTACKER, HOLD_EFFECT_POWER_HERB, BattleScript_MoveEnd
 	call BattleScript_PowerHerbActivation
@@ -2669,6 +2736,9 @@ BattleScript_AirCannonSecondTurn::
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
+	jumpifmovehadnoeffect BattleScript_HitFromCritCalc
+	removetailwind BS_ATTACKER, BattleScript_AirCannonTryRemoveFoeTailwind
+	removetailwind BS_TARGET, BattleScript_AirCannonJustRemoveUserTailwind
 	critcalc
 	damagecalc
 	adjustdamage
@@ -2686,13 +2756,52 @@ BattleScript_AirCannonSecondTurn::
 	seteffectwithchance
 	tryfaintmon BS_TARGET
 	jumpifbattleend BattleScript_MoveEnd
-	jumpifmovehadnoeffect BattleScript_MoveEnd
-	removetailwind BS_ATTACKER, BattleScript_AirCannonTryRemoveFoeTailwind
 	printstring STRINGID_TAILWINDENDS
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_AirCannonTryRemoveFoeTailwind::
-	removetailwind BS_TARGET, BattleScript_MoveEnd
 	printstring STRINGID_FOETAILWINDENDS
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_AirCannonTryRemoveFoeTailwind::
+	removetailwind BS_TARGET, BattleScript_HitFromCritCalc
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	printstring STRINGID_FOETAILWINDENDS
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_AirCannonJustRemoveUserTailwind::
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	printstring STRINGID_TAILWINDENDS
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -3576,29 +3685,77 @@ BattleScript_AlreadyExposed::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectSkySplitter::
-	jumpifweatheraffected BS_ATTACKER, B_WEATHER_ANY, BattleScript_SkySplitterClearWeather
-    call BattleScript_EffectHit_Ret
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	jumpifmovehadnoeffect BattleScript_HitFromCritCalc
+	removetailwind BS_ATTACKER, BattleScript_SkySplitterTryRemoveFoeTailwind
+	removetailwind BS_TARGET, BattleScript_SkySplitterJustRemoveUserTailwind
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
 	jumpifbattleend BattleScript_MoveEnd
-	jumpifmovehadnoeffect BattleScript_MoveEnd
-	removetailwind BS_ATTACKER, BattleScript_SkySplitterTryRemoveFoeTailwind
 	printstring STRINGID_TAILWINDENDS
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_SkySplitterTryRemoveFoeTailwind::
-	removetailwind BS_TARGET, BattleScript_MoveEnd
 	printstring STRINGID_FOETAILWINDENDS
 	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
-BattleScript_SkySplitterClearWeather::
-	call BattleScript_EffectHit_Ret
+	goto BattleScript_SkySplitterClearWeatherEnd
+BattleScript_SkySplitterTryRemoveFoeTailwind::
+	removetailwind BS_TARGET, BattleScript_HitFromCritCalc
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
 	jumpifbattleend BattleScript_MoveEnd
-	jumpifmovehadnoeffect BattleScript_MoveEnd
+	printstring STRINGID_FOETAILWINDENDS
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_SkySplitterClearWeatherEnd
+BattleScript_SkySplitterJustRemoveUserTailwind::
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	printstring STRINGID_TAILWINDENDS
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_SkySplitterClearWeatherEnd::
 	trytoclearweather
 	printstring STRINGID_EMPTYSTRING3
-	waitmessage B_WAIT_TIME_LONG
-	removetailwind BS_ATTACKER, BattleScript_SkySplitterTryRemoveFoeTailwind
-	printstring STRINGID_TAILWINDENDS
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -11646,10 +11803,27 @@ BattleScript_EffectTorment::
 	attackstring
 	ppreduce
 	accuracycheck BattleScript_ButItFailed, ACC_CURR_MOVE
-	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_AromaVeilProtects
-	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TitanicProtects
-	jumpifsafeguard BattleScript_SafeguardProtected
-	settorment BattleScript_ButItFailed
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_TryTormentSpite
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TryTormentSpite
+	jumpifsafeguard BattleScript_TryTormentSpite
+	settorment BattleScript_TryTormentSpite
+	tryspiteppreduce BattleScript_DoJustTorment
+	attackanimation
+	waitanimation
+	printstring STRINGID_PKMNSUBJECTEDTOTORMENT
+	waitmessage B_WAIT_TIME_LONG
+	printstring STRINGID_PKMNREDUCEDPP
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotTormentAttacker
+	goto BattleScript_MoveEnd
+BattleScript_TryTormentSpite::
+	tryspiteppreduce BattleScript_ButItFailed
+	attackanimation
+	waitanimation
+	printstring STRINGID_PKMNREDUCEDPP
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_DoJustTorment::
 	attackanimation
 	waitanimation
 	printstring STRINGID_PKMNSUBJECTEDTOTORMENT

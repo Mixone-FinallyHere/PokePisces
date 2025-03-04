@@ -316,6 +316,8 @@
 #define VARIOUS_CUT_HP                               224
 #define VARIOUS_INCREASE_BLOOMING_TURNS              225
 #define VARIOUS_JUMP_IF_INFATUATED_SPECIFIC          226
+#define VARIOUS_DISABLE_CHOSEN_MOVE                  227
+#define VARIOUS_MIND_GAP_CHECK                       228
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

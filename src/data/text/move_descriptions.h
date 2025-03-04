@@ -1285,9 +1285,9 @@ static const u8 sHailDescription[] = _(
     "Pokémon except Ice-types.");
 
 static const u8 sTormentDescription[] = _(
-    "The user torments and the foe,\n"
-    "making it incapable of using\n"
-    "the same move twice in a row.");
+    "Makes targets incapable of\n"
+    "repeatedly using moves and cuts\n"
+    "2 PP from the last used move.");
 
 static const u8 sFlatterDescription[] = _(
     "Flattery is used to confuse the\n"
@@ -2381,6 +2381,11 @@ static const u8 sSmackDownDescription[] = _(
 static const u8 sStormThrowDescription[] = _(
     "The user attacks by striking the\n"
     "target with a fierce blow. This\n"
+    "move always lands critical hits.");
+
+static const u8 sFrostBreathDescription[] = _(
+    "The user attacks by blowing its\n"
+    "cold breath on the target. This\n"
     "move always lands critical hits.");
 
 static const u8 sFlameBurstDescription[] = _(
@@ -5482,7 +5487,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_VOLT_SWITCH - 1] = sVoltSwitchDescription,
     [MOVE_STRUGGLE_BUG - 1] = sStruggleBugDescription,
     [MOVE_BULLDOZE - 1] = sBulldozeDescription,
-    [MOVE_FROST_BREATH - 1] = sStormThrowDescription,
+    [MOVE_FROST_BREATH - 1] = sFrostBreathDescription,
     [MOVE_DRAGON_TAIL - 1] = sDragonTailDescription,
     [MOVE_WORK_UP - 1] = sWorkUpDescription,
     [MOVE_ELECTROWEB - 1] = sElectrowebDescription,
@@ -5975,6 +5980,8 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_PLUNDER - 1] = sPlunderDescription,
     [MOVE_FURIOUS_SEA - 1] = sFuriousSeaDescription,
     [MOVE_RESERVOIR - 1] = sReservoirDescription,
+    [MOVE_DOWNFALL - 1] = sSplashDescription,
+    [MOVE_MT_SPLENDOR - 1] = sSplashDescription,
     [MOVE_NOTHING - 1] = sSplashDescription,
     [MOVE_BRAIN_DAMAGE - 1] = sBrainDamageDescription,
     [MOVE_BLOW_UP - 1] = sSplashDescription,

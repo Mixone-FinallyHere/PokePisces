@@ -2883,6 +2883,8 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_MAGIC_COAT:
             if (!HasMagicCoatAffectedMove(battlerDef))
                 score -= 10;
+            if (gProtectStructs[battlerAtk].bounceMove)
+                score -= 10;
             break;
         case EFFECT_BELCH:
             if (ItemId_GetPocket(GetUsedHeldItem(battlerAtk)) != POCKET_BERRIES)
