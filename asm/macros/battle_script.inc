@@ -2203,6 +2203,7 @@
 
 	.macro removetailwind battler:req, failInstr:req
 	various \battler, VARIOUS_REMOVE_TAILWIND
+	.4byte \failInstr
 	.endm
 
 	.macro removesupergear
@@ -2592,6 +2593,16 @@
 	.macro jumpifinfatuatedspecific battler:req, jumpInstr:req
 	various \battler, VARIOUS_JUMP_IF_INFATUATED_SPECIFIC
 	.4byte \jumpInstr
+	.endm
+
+	.macro disablechosenmove battler:req, failInstr:req
+	various \battler, VARIOUS_DISABLE_CHOSEN_MOVE
+	.4byte \failInstr
+	.endm
+
+	.macro mindgapcheck battler:req, failInstr:req
+	various \battler, VARIOUS_MIND_GAP_CHECK
+	.4byte \failInstr
 	.endm
 
 	.macro invertnegativestatstages battler:req

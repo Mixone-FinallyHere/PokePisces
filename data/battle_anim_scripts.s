@@ -1056,7 +1056,7 @@ gBattleAnims_Moves::
     .4byte Move_CRIMSON_STORM
     .4byte Move_TRUE_LOVES_KISS
     .4byte Move_SABRE_BREAK
-    .4byte MOVE_MIND_GAP
+    .4byte Move_MIND_GAP
     .4byte Move_SUPERCELL_SLAM
     .4byte Move_SWEET_WHISPERS
     .4byte Move_SYRUP_BOMB

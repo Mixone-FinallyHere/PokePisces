@@ -141,22 +141,22 @@ const u8 gItemEffect_RevivalHerb[10] = {
 
 const u8 gItemEffect_Ether[7] = {
     [4] = ITEM4_HEAL_PP_ONE | ITEM4_HEAL_PP,
-    [6] = 10,
+    [6] = 5,
 };
 
 const u8 gItemEffect_MaxEther[7] = {
     [4] = ITEM4_HEAL_PP_ONE | ITEM4_HEAL_PP,
-    [6] = ITEM6_HEAL_PP_FULL,
+    [6] = 10,
 };
 
 const u8 gItemEffect_Elixir[7] = {
     [4] = ITEM4_HEAL_PP,
-    [6] = 10, // Amount of PP to recover
+    [6] = 5, // Amount of PP to recover
 };
 
 const u8 gItemEffect_MaxElixir[7] = {
     [4] = ITEM4_HEAL_PP,
-    [6] = ITEM6_HEAL_PP_FULL,
+    [6] = 10, // Amount of PP to recover
 };
 
 const u8 gItemEffect_BlueFlute[6] = {
