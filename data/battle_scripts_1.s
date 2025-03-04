@@ -3437,7 +3437,7 @@ BattleScript_PowerDrainMustLower:
 	goto BattleScript_PowerDrainLower
 
 BattleScript_EffectHearthwarm:
-	jumpifnotbattletype BATTLE_TYPE_DOUBLE, BattleScript_HearthwarmSingleBattle
+	jumpifnoally BS_ATTACKER, BattleScript_HearthwarmSingleBattle
 	attackcanceler
 	attackstring
 	ppreduce
@@ -12185,12 +12185,19 @@ BattleScript_EffectCloseCombat:
 
 BattleScript_EffectMagicCoat:
 	attackcanceler
-	trysetmagiccoat BattleScript_FailedFromAtkString
+	trysetmagiccoat BS_TARGET, BattleScript_FailedFromAtkString
 	attackstring
 	ppreduce
 	attackanimation
 	waitanimation
 	printstring STRINGID_PKMNSHROUDEDITSELF
+	waitmessage B_WAIT_TIME_LONG
+	jumpifnoally BS_ATTACKER, BattleScript_MoveEnd
+	setallytonexttarget BattleScript_MagicCoatOnAlly
+	goto BattleScript_MoveEnd
+BattleScript_MagicCoatOnAlly::
+	trysetmagiccoat BS_TARGET, BattleScript_MoveEnd
+	printstring STRINGID_PKMNWASSHROUDEDBY
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 

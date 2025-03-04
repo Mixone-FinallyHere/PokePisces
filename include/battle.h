@@ -105,6 +105,7 @@ struct DisableStruct
     u8 noRetreat:1;
     u8 tarShot:1;
     u8 octolock:1;
+    u8 bounceMove:1;
     u8 cudChew:1;
     u8 spikesDone:1;
     u8 toxicSpikesDone:1;
@@ -140,7 +141,6 @@ struct ProtectStruct
     u32 endured:1;
     u32 noValidMoves:1;
     u32 helpingHand:1;
-    u32 bounceMove:1;
     u32 stealMove:1;
     u32 prlzImmobility:1;
     u32 confusionSelfDmg:1;

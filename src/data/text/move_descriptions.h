@@ -1375,9 +1375,9 @@ static const u8 sSuperpowerDescription[] = _(
     "lowers the user's Attack stat.");
 
 static const u8 sMagicCoatDescription[] = _(
-    "A barrier reflects back to the\n"
-    "foe moves like Leech Seed and\n"
-    "that inflict status conditions.");
+    "Barriers for the user and ally\n"
+    "that reflect a status move each.\n"
+    "Fails if the user already has it.");
 
 static const u8 sRecycleDescription[] = _(
     "The user recycles a held item\n"

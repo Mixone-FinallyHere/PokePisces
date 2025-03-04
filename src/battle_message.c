@@ -272,6 +272,7 @@ static const u8 sText_PkmnSealedOpponentMove[] = _("{B_ATK_NAME_WITH_PREFIX} sea
 static const u8 sText_PkmnWantsGrudge[] = _("{B_ATK_NAME_WITH_PREFIX} wants the\nopponent to bear a GRUDGE!");
 static const u8 sText_PkmnLostPPGrudge[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_BUFF1} lost\nall its PP due to the GRUDGE!");
 static const u8 sText_PkmnShroudedItself[] = _("{B_ATK_NAME_WITH_PREFIX} shrouded\nitself in {B_CURRENT_MOVE}!");
+static const u8 sText_PkmnWasShroudedBy[] = _("{B_DEF_NAME_WITH_PREFIX} was shrouded\nby {B_CURRENT_MOVE}!");
 static const u8 sText_PkmnMoveBounced[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_CURRENT_MOVE}\nwas bounced back by MAGIC COAT!");
 static const u8 sText_PkmnWaitsForTarget[] = _("{B_ATK_NAME_WITH_PREFIX} waits for a target\nto make a move!");
 static const u8 sText_PkmnSnatchedMove[] = _("{B_DEF_NAME_WITH_PREFIX} SNATCHED\n{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s move!");
@@ -1829,6 +1830,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_USERUSEDUPALLFRENZY - BATTLESTRINGS_TABLE_START] = sText_UserUsedUpAllFrenzy,
     [STRINGID_STACKOFSURPRISE - BATTLESTRINGS_TABLE_START] = sText_StackOfSurprise,
     [STRINGID_COULDNTHANDLETHESURPRISE - BATTLESTRINGS_TABLE_START] = sText_CouldntHandleTheSurprise,
+    [STRINGID_PKMNWASSHROUDEDBY - BATTLESTRINGS_TABLE_START] = sText_PkmnWasShroudedBy,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

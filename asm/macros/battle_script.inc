@@ -1156,8 +1156,9 @@
 	.4byte \failInstr
 	.endm
 
-	.macro trysetmagiccoat failInstr:req
+	.macro trysetmagiccoat battler:req, failInstr:req
 	.byte 0xdf
+	.byte \battler
 	.4byte \failInstr
 	.endm
 

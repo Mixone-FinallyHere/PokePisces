@@ -1441,10 +1441,11 @@ static void Cmd_attackcanceler(void)
         return;
     }
 
-    if (gProtectStructs[gBattlerTarget].bounceMove
+    if (gDisableStructs[gBattlerTarget].bounceMove
         && gBattleMoves[gCurrentMove].magicCoatAffected
         && !gProtectStructs[gBattlerAttacker].usesBouncedMove)
     {
+        gDisableStructs[gBattlerTarget].bounceMove = FALSE;
         PressurePPLose(gBattlerAttacker, gBattlerTarget, MOVE_MAGIC_COAT);
         gProtectStructs[gBattlerTarget].usesBouncedMove = TRUE;
         gBattleCommunication[MULTISTRING_CHOOSER] = 0;
@@ -17987,17 +17988,17 @@ static void Cmd_assistattackselect(void)
 
 static void Cmd_trysetmagiccoat(void)
 {
-    CMD_ARGS(const u8 *failInstr);
+    CMD_ARGS(u8 battler, const u8 *failInstr);
+    u32 battler = GetBattlerForBattleScript(cmd->battler);
 
-    gBattlerTarget = gBattlerAttacker;
-    gSpecialStatuses[gBattlerAttacker].ppNotAffectedByPressure = TRUE;
-    if (gCurrentTurnActionNumber == gBattlersCount - 1) // moves last turn
+    gSpecialStatuses[battler].ppNotAffectedByPressure = TRUE;
+    if (gDisableStructs[battler].bounceMove)
     {
         gBattlescriptCurrInstr = cmd->failInstr;
     }
     else
     {
-        gProtectStructs[gBattlerAttacker].bounceMove = TRUE;
+        gDisableStructs[battler].bounceMove = TRUE;
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
 }
