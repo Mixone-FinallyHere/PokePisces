@@ -9,15 +9,15 @@ static const u8 sPokeBallDesc[] = _(
     "style.");
 
 static const u8 sGreatBallDesc[] = _(
-    "A high-performance Poké\n"
-    "Ball that provides a\n"
+    "A high-performance\n"
+    "Poké Ball that has a\n"
     "higher Pokémon catch\n"
     "rate than a Poké Ball.");
 
 static const u8 sUltraBallDesc[] = _(
     "An ultra-performance\n"
-    "Poké Ball that provides\n"
-    "a higher Pokémon catch\n"
+    "Poké Ball that has a\n"
+    "higher Pokémon catch\n"
     "rate than a Great Ball.");
 
 static const u8 sMasterBallDesc[] = _(

@@ -409,6 +409,7 @@ extern const struct OamData gOamData_AffineOff_ObjNormal_16x32;
 extern const struct OamData gOamData_AffineDouble_ObjBlend_8x8;
 extern const struct OamData gOamData_AffineDouble_ObjNormal_32x32;
 extern const struct OamData gOamData_AffineNormal_ObjBlend_64x64;
+extern const struct OamData gOamData_AffineNormal_ObjBlend_16x32;
 extern const struct OamData gOamData_AffineNormal_ObjBlend_32x64;
 extern const struct OamData gOamData_AffineDouble_ObjBlend_32x16;
 extern const struct OamData gOamData_AffineDouble_ObjBlend_16x32;

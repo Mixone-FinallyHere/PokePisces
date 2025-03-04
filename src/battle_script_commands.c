@@ -12998,6 +12998,38 @@ static void Cmd_various(void)
         }
         return;
     }
+    case VARIOUS_DISABLE_CHOSEN_MOVE:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        s32 i;
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+
+        if (gDisableStructs[battler].disabledMove == MOVE_NONE
+            && i != MAX_MON_MOVES && gBattleMons[battler].pp[i] != 0)
+        {
+            PREPARE_MOVE_BUFFER(gBattleTextBuff1, gChosenMoveByBattler[battler])
+    
+            gDisableStructs[battler].disabledMove = gChosenMoveByBattler[battler];
+            gDisableStructs[battler].disableTimer = 4;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        else
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        return;
+    }
+    case VARIOUS_MIND_GAP_CHECK:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+
+        if (gDisableStructs[battler].disabledMove == MOVE_NONE)
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        else
+            gBattlescriptCurrInstr = cmd->failInstr;
+        return;
+    }
     case VARIOUS_SET_ATTACKER_STICKY_WEB_USER:
     {
         VARIOUS_ARGS();
@@ -16331,7 +16363,7 @@ static void Cmd_tryspiteppreduce(void)
             s32 ppToDeduct = 4;
         #endif
         
-            if (gBattleMoves[gCurrentMove].effect == EFFECT_DOWNFALL)
+            if (gBattleMoves[gCurrentMove].effect == EFFECT_DOWNFALL || gBattleMoves[gCurrentMove].effect == EFFECT_TORMENT)
                 ppToDeduct = 2;
 
             if (gBattleMons[gBattlerTarget].pp[i] < ppToDeduct)

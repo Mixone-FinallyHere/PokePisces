@@ -957,6 +957,7 @@ static const u8 sText_PkmnBurningUp[] = _("{B_ATK_NAME_WITH_PREFIX} is burning u
 static const u8 sText_WatcherEnters[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is\nwatching intently...");
 static const u8 sText_WatcherSalvation[] = _("All of {B_ATK_NAME_WITH_PREFIX}'s\neyes look at {B_DEF_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnIsSpinning[] = _("{B_ATK_NAME_WITH_PREFIX} is\nspinning rapidly!");
+static const u8 sText_PkmnsFlowerIsOpening[] = _("{B_ATK_NAME_WITH_PREFIX}'s flower\nis opening!");
 static const u8 sText_SloppyToppy[] = _("{B_ATK_NAME_WITH_PREFIX} kissed {B_DEF_NAME_WITH_PREFIX}\nin a show of true compassion!");
 static const u8 sText_NoSex[] = _("With {B_ATK_NAME_WITH_PREFIX}'s ally gone there\nis no more love for it to spread...");
 static const u8 sText_TargetCoveredInStickyCandySyrup[] = _("{B_DEF_NAME_WITH_PREFIX} got covered\nin sticky syrup!");
@@ -1821,6 +1822,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_USERHASENTEREDAFRENZY - BATTLESTRINGS_TABLE_START] = sText_UserHasEnteredAFrenzy,
     [STRINGID_USERINCREASEDBLOOMINGDURATION - BATTLESTRINGS_TABLE_START] = sText_UserIncreasedBloomingDuration,
     [STRINGID_FOETAILWINDENDS - BATTLESTRINGS_TABLE_START] = sText_FoeTailwindEnds,
+    [STRINGID_PKMNSFLOWERISOPENING - BATTLESTRINGS_TABLE_START] = sText_PkmnsFlowerIsOpening,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -2088,6 +2090,7 @@ const u16 gFirstTurnOfTwoStringIds[] =
     [B_MSG_TURN1_AIR_CANNON]    = STRINGID_PRESSURIZINGAIR,
     [B_MSG_TURN1_CHEESE_STEAL]  = STRINGID_PKMNFLEDFROMBATTLE,
     [B_MSG_TURN1_AXEL_HEEL]     = STRINGID_PKMNISSPINNING,
+    [B_MSG_TURN1_SNAPBLOSSOM]   = STRINGID_PKMNSFLOWERISOPENING,
 };
 
 // Index copied from move's index in sTrappingMoves
