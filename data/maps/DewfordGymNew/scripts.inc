@@ -260,15 +260,17 @@ DewfordGymNew_EventScript_LeadersDefeated::
 	setflag FLAG_BADGE07_GET
 	setflag FLAG_DEFEATED_DEWFORD_GYM
 	setvar VAR_PISCES_STORY_PROGRESS, 8
-	giveitem ITEM_TM_BODY_PRESS
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-	giveitem ITEM_TM_SCALD
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	speakername NULL
 	message DewfordGymNew_Text_ReceivedBeachBadge
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
-	speakername DewfordGymNew_Text_NameShelly
+	speakername DewfordGymNew_Text_NameBrawly
+	msgbox DewfordGymNew_Text_AndHeresTheTMs, MSGBOX_DEFAULT
+	giveitem ITEM_TM_BODY_PRESS
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	giveitem ITEM_TM_SCALD
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	speakername DewfordGymNew_Text_NameBrawly
 	msgbox DewfordGymNew_Text_ByeBye, MSGBOX_DEFAULT
 	speakername NULL
 	warp MAP_DEWFORD_NEW, 37, 26
@@ -396,39 +398,78 @@ DewfordGymNew_Text_InTheWater:
 	.string "He's blocking the flow.$"
 
 DewfordGymNew_Text_CaspianIntro:
-	.string "wanna push me? lets fight$"
+	.string "Let me guess. You're thinking,\n"
+	.string "“It's a man. A Pokemon\l"
+	.string "may be able to push him aside.”\l"
+	.string "Is that right?\l"
+	.string "Well, I just think that's\l"
+	.string "VERY rude. How about we\l"
+	.string "battle like equals, instead!?$"
 
 DewfordGymNew_Text_CaspianDefeated:
-	.string "oh no$"
+	.string "You have Strength, alright...!$"
 
 DewfordGymNew_Text_IWillJumpOutOfRespect:
-	.string "ill jump cuz that was cool$"
+	.string "Look. You beat me fair and square.\n"
+	.string "Mad respect. Just for that,\l"
+	.string "I'll hop into the current.\l"
+	.string "COWABUNGA!$"
 
 DewfordGymNew_Text_NameBrawly:
 	.string "Brawly$"
 
 DewfordGymNew_Text_LookWhatWashedUp:
-	.string "wowee cool surfin$"
+	.string "Whoah! Look what the waves\n"
+	.string "dragged in! It's that trainer\l"
+	.string "I met earlier!\p"
+	.string "So you were a gym challenger\n"
+	.string "all along, huh? Is that why you\l"
+	.string "came and found us both?\l"
+	.string "Really itchin' for a badge?\l"
+	.string "Hahaha! You're pretty dang\l"
+	.string "tenacious, man!$"
 
 DewfordGymNew_Text_NameShelly:
 	.string "Shelly$"
 
 DewfordGymNew_Text_TimeToBattle:
-	.string "time 2 battle$"
+	.string "Alrighties... let's get this\n"
+	.string "thing rolling... so I can\l"
+	.string "catch a few more.. z's...$"
 
 DewfordGymNew_Text_BrawlyDefeat:
-	.string "B defeat$"
+	.string "It's like I got sucked\n"
+	.string "into a whirlpool...!$"
 
 DewfordGymNew_Text_ShellyDefeat:
-	.string "S defeat$"
+	.string "...\p"
+	.string "(She fell asleep...)$"
 
 DewfordGymNew_Text_YouDidIt:
-	.string "you DID it$"
+	.string "Hey, man, great job! Could\n"
+	.string "tell this wasn't your first\l"
+	.string "rodeo at all. Take this\l"
+	.string "bodacious badge, and wear it proud!$"
 
 DewfordGymNew_Text_ReceivedBeachBadge:
 	.string "{PLAYER} received the\n"
 	.string "Beach Badge\l"
 	.string "from Brawly and Shelly.$"
 
+DewfordGymNew_Text_AndHeresTheTMs:
+	.string "The Beach Badge allows your\n"
+	.string "Pokemon to dive underwater whenever\l"
+	.string "you see deep, dark patches\l"
+	.string "in the water. It's pretty\l"
+	.string "dang fun, but a bit too slow-\l"
+	.string "paced for my vibe.\p"
+	.string "Usually Shelly ends up givin'\n"
+	.string "out the TMs after the battle.\l"
+	.string "But I'll let her sleep just\l"
+	.string "this once. ...I'll have to\l"
+	.string "throw her hammock out to\l"
+	.string "the sea to make up for it later.$"
+
 DewfordGymNew_Text_ByeBye:
-	.string "bye bye$"
+	.string "Keep on surfin' and turfin', man!\n"
+	.string "Only one badge left to go!$"

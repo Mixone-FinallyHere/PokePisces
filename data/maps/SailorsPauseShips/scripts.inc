@@ -19,10 +19,13 @@ SailorsPauseShips_EventScript_Shelly::
 	setflag FLAG_FOUND_SHELLY
 	delay 32
 	closemessage
+	fadescreen FADE_TO_BLACK
 	playse SE_EXIT
 	setmetatile 39, 1, METATILE_InsideShip_ShellyGoneTop, TRUE
 	setmetatile 39, 2, METATILE_InsideShip_ShellyGoneBottom, TRUE
 	special DrawWholeMapView
+	delay 16
+	fadescreen FADE_FROM_BLACK
 	releaseall
 	end
 
@@ -158,7 +161,24 @@ SailorsPauseShips_Text_RosePostBattle:
 	.string "post$"
 
 SailorsPauseShips_Text_ShellyGreeting:
-	.string "shellgreet$"
+	.string "(This woman is asleep in\n"
+	.string "a hammock. In a derelict\l"
+	.string "ship, of all places.)\p"
+	.string "(You loudly clear your throat\n"
+	.string "to try and wake her up.)\p"
+	.string "....Whuzzat? Oh.\n"
+	.string "Whoopsies... I was supposed\l"
+	.string "to, uhm... head back to the gym...\p"
+	.string "If you were worried about the\n"
+	.string "garbage dumpers that we got a...\l"
+	.string "uhm, tip about...\l"
+	.string "I did a pretty thorough\l"
+	.string "investigation and... turned up\l"
+	.string "nothing suspicious...\p"
+	.string "Looks like it was a, yawn...\n"
+	.string "false flag...\p"
+	.string "Anywaysies... I'll be headed\n"
+	.string "back to Dewford... See ya...$"
 
 SailorsPauseShips_Text_ShellyGone:
-	.string "nothing there (reference)$"
+	.string "(An empty hammock.)$"

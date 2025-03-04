@@ -37,9 +37,13 @@ ShoalCaveNewFloor2_EventScript_Brawly::
 	setflag FLAG_FOUND_BRAWLY
 	delay 32
 	closemessage
+	fadescreen FADE_TO_BLACK
+	delay 8
 	playse SE_EXIT
 	removeobject LOCALID_BRAWLY
 	setflag FLAG_TEMP_11
+	delay 8
+	fadescreen FADE_FROM_BLACK
 	releaseall
 	end
 
@@ -207,7 +211,22 @@ ShoalCaveNewFloor2_Text_AlaskaPostBattle:
 	.string "post$"
 
 ShoalCaveNewFloor2_Text_BrawlyGreeting:
-	.string "brawly greetin$"
+	.string "Hey there, trainer! Man, am I glad\n"
+	.string "that I worked up quite a sweat\l"
+	.string "swimming here, 'cuz it is\l"
+	.string "FREEZING in here!\p"
+	.string "I was tipped off from someone\n"
+	.string "anonymous that there were folks\l"
+	.string "illegally drilling into the cave\l"
+	.string "depths for oil. Seems like\l"
+	.string "it was some kind of prank,\l"
+	.string "'cuz I see no signs of any\l"
+	.string "of that kind of stuff.\p"
+	.string "The things people will do\n"
+	.string "for attention! Anyways, I gotta\l"
+	.string "be getting back to Dewford.\l"
+	.string "Hope to catch you there...\l"
+	.string "you look pretty tough!$"
 
 ShoalCaveNewFloor2_Text_BrawlyGone:
 	.string "hey dunko$"

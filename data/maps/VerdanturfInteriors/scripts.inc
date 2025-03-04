@@ -268,19 +268,38 @@ VerdanturfInteriors_Text_NameWattson:
 	.string "Wattson$"
 
 VerdanturfInteriors_Text_TurnBack:
-	.string "turning back$"
+	.string "(You sense you are somewhere\n"
+	.string "that you are not welcome.)$"
 
 VerdanturfInteriors_Text_WhoAreYou:
-	.string "who are you$"
+	.string "Excuse me, I am going\n"
+	.string "to have to ask you to leave.\l"
+	.string "This building is only for\l"
+	.string "those truste-\p"
+	.string "Oh.\p"
+	.string "You must be... {PLAYER}?\n"
+	.string "Yes, I've just recalled.\l"
+	.string "A personal friend of Augustus?\l"
+	.string "That's a bit unusual...\l"
+	.string "but it's not like we'll refuse\l"
+	.string "a request from him.\p"
+	.string "Wattson and Scott are in our\n"
+	.string "boardroom. Allow me to take you...$"
 
 VerdanturfInteriors_Text_ANewFace:
-	.string "oh a new face$"
+	.string "That's a face I haven't seen\n"
+	.string "before! This rookie looking trainer\l"
+	.string "is a friend of the old boss?$"
 
 VerdanturfInteriors_Text_JustGiveTheBadge:
-	.string "just give the badge$"
+	.string "Harrumph.\n"
+	.string "...Just give the kid the\l"
+	.string "badge, Scott.$"
 
 VerdanturfInteriors_Text_HereYouGo:
-	.string "here y'are$"
+	.string "Yeah, yeah, I will. The rookie\n"
+	.string "looks pretty intriguing, I'll admit.\l"
+	.string "Go on, take the badge!$"
 
 VerdanturfInteriors_Text_ReceivedMetroBadge:
 	.string "{PLAYER} received the\n"
@@ -289,31 +308,62 @@ VerdanturfInteriors_Text_ReceivedMetroBadge:
 	.string "It felt a little hollow.$"
 
 VerdanturfInteriors_Text_YouMayNowLeave:
-	.string "you may now leave$"
+	.string "That is all the time I have\n"
+	.string "allotted for this meaning, kid.\l"
+	.string "You may now leave us be.\l"
+	.string "Go on with your adventure.$"
 
 VerdanturfInteriors_Text_StandYourGround:
-	.string "stand your ground?$"
+	.string "...\p"
+	.string "(Should you really just...\n"
+	.string "leave without battling them?\l"
+	.string "Something doesn't feel right\l"
+	.string "about that.)\p"
+	.string "(Will you stand your ground\n"
+	.string "and demand a gym battle?)$"
 
 VerdanturfInteriors_Text_LeaveAwkwardly:
-	.string "haha loser$"
+	.string "(You feel too intimidated\n"
+	.string "to properly speak your mind...)$"
 
 VerdanturfInteriors_Text_HowArrogant:
-	.string "how arrogant$"
+	.string "...That is amusing.\n"
+	.string "You have the gall to stand there\l"
+	.string "and demand a battle, eh?\l"
+	.string "You sure do have a nerve\l"
+	.string "in you. That could very well\l"
+	.string "be a good thing. Or maybe not!\p"
+	.string "Fine. We will give you your battle.\n"
+	.string "Rest assured, you will be\l"
+	.string "absolutely pulverized...!$"
 
 VerdanturfInteriors_Text_WattsonDefeat:
-	.string "w defeat$"
+	.string "...Harrumph.$"
 
 VerdanturfInteriors_Text_ScottDefeat:
-	.string "s defeat$"
+	.string "You didn't hold anything back!\n"
+	.string "I must say I'm impressed by you!$"
 
 VerdanturfInteriors_Text_DidThatSuffice:
-	.string "did that suffice dickhead$"
+	.string "Did that suffice, kid? Give you\n"
+	.string "the satisfaction you wanted?\l"
+	.string "You may do well to keep that\l"
+	.string "gall of yours in check in the future.\l"
+	.string "Other people may not be\l"
+	.string "so graceful...$"
 
 VerdanturfInteriors_Text_IKindaHadFun:
-	.string "idk i had fun$"
+	.string "Lighten up, old boy! I had some\n"
+	.string "fun with that match. You\l"
+	.string "remind me a lot of that particularly\l"
+	.string "strong trainer from some time ago...$"
 
 VerdanturfInteriors_Text_IMustStressThatYouLeave:
-	.string "die$"
+	.string "Yes, yes. How sunshine and rainbows.\n"
+	.string "Now, we have business to discuss.\l"
+	.string "WITHOUT you, kid.\l"
+	.string "I must stress that you leave\l"
+	.string "this building.$"
 
 VerdanturfInteriors_Text_NameWally:
 	.string "Wally$"

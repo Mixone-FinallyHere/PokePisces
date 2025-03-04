@@ -1,4 +1,5 @@
 .set LOCALID_P_MAN, 4
+.set LOCALID_RYDEL_GUARD, 13
 
 NewMauvilleFloor1_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, NewMauvilleFloor1_OnLoad
@@ -6,12 +7,19 @@ NewMauvilleFloor1_MapScripts::
 
 NewMauvilleFloor1_OnLoad:
 	call_if_gt VAR_OLD_GUYS_STATE, 0, NewMauvilleFloor1_EventScript_RemovePowerlessMan
+	call_if_lt VAR_OLD_GUYS_STATE, 6, NewMauvilleFloor1_EventScript_RemoveRydelGuard
+	call_if_gt VAR_OLD_GUYS_STATE, 6, NewMauvilleFloor1_EventScript_RemoveRydelGuard
 	call_if_lt VAR_OLD_GUYS_STATE, 15, NewMauvilleFloor1_EventScript_CloseElevator
 	end
 
 NewMauvilleFloor1_EventScript_RemovePowerlessMan::
 	removeobject LOCALID_P_MAN
 	setflag FLAG_TEMP_11
+	return
+
+NewMauvilleFloor1_EventScript_RemoveRydelGuard::
+	removeobject LOCALID_RYDEL_GUARD
+	setflag FLAG_TEMP_12
 	return
 
 NewMauvilleFloor1_EventScript_CloseElevator::
@@ -301,6 +309,10 @@ NewMauvilleFloor1_Mart_ShopMints:
 	release
 	end	
 
+NewMauvilleFloor1_EventScript_RydelGuard::
+	msgbox NewMauvilleFloor1_Text_RydelGuard, MSGBOX_NPC
+	end
+
 NewMauvilleFloor1_Text_IllTradeIfYouWant:
 	.string "I'll trade you my {STR_VAR_2} for\n"
 	.string "a {STR_VAR_1} if you want.$"
@@ -411,3 +423,11 @@ NewMauvilleFloor1_Text_WelcomeToShopMints:
 
 NewMauvilleFloor1_Text_HaveAGoodDay:
 	.string "Have a good day!$"
+
+NewMauvilleFloor1_Text_RydelGuard:
+	.string "Hey, uh, just to let you know...\n"
+	.string "Probably shouldn't've left\l"
+	.string "the race when you did, uh...\l"
+	.string "Rydel's a bit peeved, dude.\l"
+	.string "Gotta go in through the\l"
+	.string "outside entrance, he said.$"
