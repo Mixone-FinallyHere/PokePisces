@@ -3,5 +3,5 @@ LavaridgeTown_MapScripts::
 	.byte 0
 
 LavaridgeTown_OnTransition:
-	setflag FLAG_VISITED_LAVARIDGE_TOWN
+	setflag FLAG_TEMP_4
 	end
