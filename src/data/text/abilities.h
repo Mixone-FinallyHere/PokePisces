@@ -1582,9 +1582,9 @@ static const u8 sEntrancingDescription[] = _(
     "Pokémon take aim only at them.");
 
 static const u8 sEvilEyeDescription[] = _(
-    "The Pokémon stares at the\n"
-    "opposing Pokémon upon entering\n"
-    "battle, lowering their Speed.");
+    "The Pokémon eithers lowers foes'\n"
+    "Speed stats or paralyzes them if\n"
+    "they have a lot of stat boosts.");
 
 static const u8 sFreeLoveDescription[] = _(
     "The Pokémon can infatuate\n"
