@@ -6761,12 +6761,12 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             score++;
         break;
     case EFFECT_BURNING_ENVY:
-        if (CountPositiveStatStages(battlerDef) > 0)
-            if (!(gBattleMons[battlerDef].status1 & STATUS1_BURN))
-                score += 2;
-        if (CountPositiveStatStages(battlerDef) > 2)
-            if (!(gBattleMons[battlerDef].status1 & STATUS1_BURN))
-                score += 3;
+        if (CountBattlerStatIncreases(battlerDef, TRUE) > 2 && (!(gBattleMons[battlerDef].status1 & STATUS1_BURN)))
+            score += 8;
+        break;
+    case EFFECT_ALL_STATS_UP_HIT:
+        if (move == MOVE_OMINOUS_WIND && (gBattleMons[battlerDef].status1 & STATUS1_PANIC))
+            score += 4;
         break;
     case EFFECT_FAIRY_LOCK:
         if (!IsBattlerTrapped(battlerDef, TRUE))

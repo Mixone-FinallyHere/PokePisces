@@ -1942,6 +1942,8 @@ bool32 ShouldLowerStat(u32 battler, u32 battlerAbility, u32 stat)
         if (AI_DATA->holdEffects[battler] == HOLD_EFFECT_CLEAR_AMULET
          || battlerAbility == ABILITY_CLEAR_BODY
          || battlerAbility == ABILITY_WHITE_SMOKE
+         || battlerAbility == ABILITY_DEFIANT
+         || battlerAbility == ABILITY_COMPETITIVE
          || gDisableStructs[battler].purified
          || battlerAbility == ABILITY_FULL_METAL_BODY
          || battlerAbility == ABILITY_TITANIC)

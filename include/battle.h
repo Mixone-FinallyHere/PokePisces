@@ -674,7 +674,6 @@ struct BattleStruct
     u8 dragonpokerBasePower;
     u8 fickleBeamBoosted:1;
     u8 redCardActivates:1;
-    u8 usedEjectItem;
     u8 boundaryBasePower;
     u8 rollingBasePower;
     u8 presentBasePower;
@@ -755,6 +754,8 @@ struct BattleStruct
     u8 aiCalcInProgress:1;
     u8 savedDanceTargets;
     u8 DancerCount;
+    u8 usedEjectItem;
+    u16 savedMove; // backup current move for mid-turn switching, e.g. Red Card
 };
 
 // The palaceFlags member of struct BattleStruct contains 1 flag per move to indicate which moves the AI should consider,
