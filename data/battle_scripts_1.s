@@ -440,7 +440,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectGlaciate                @ EFFECT_GLACIATE
 	.4byte BattleScript_EffectChillyAir               @ EFFECT_CHILLY_AIR
 	.4byte BattleScript_EffectHit                     @ EFFECT_LAST_RESPECTS
-	.4byte BattleScript_EffectRageFist                @ EFFECT_RAGE_FIST
+	.4byte BattleScript_EffectHit                     @ EFFECT_RAGE_FIST
 	.4byte BattleScript_EffectFilletAway              @ EFFECT_FILLET_AWAY
 	.4byte BattleScript_EffectChillyReception         @ EFFECT_CHILLY_RECEPTION
 	.4byte BattleScript_EffectShedTail                @ EFFECT_SHED_TAIL
@@ -682,6 +682,42 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectHoldHands               @ EFFECT_HOLD_HANDS
 	.4byte BattleScript_EffectAmnesia                 @ EFFECT_AMNESIA
 	.4byte BattleScript_EffectMindGap                 @ EFFECT_MIND_GAP
+	.4byte BattleScript_EffectJungleRage              @ EFFECT_JUNGLE_HEALING
+
+BattleScript_EffectJungleRage::
+	checkfrenzycounter 3, BattleScript_JungleRageMaxFrenzy
+	goto BattleScript_HeartCarveApplyFrenzy
+BattleScript_JungleRageMaxFrenzy::
+	call BattleScript_EffectHit_Ret
+	seteffectwithchance
+	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_JungleRageMaxFrenzyHealBlock
+	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_JungleRageMaxFrenzyHealBlock
+	setdrainedhp
+	manipulatedamage DMG_BIG_ROOT
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE
+	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_JungleRageMaxFrenzyLiquidOoze
+	setbyte cMULTISTRING_CHOOSER, B_MSG_ABSORB
+	goto BattleScript_JungleRageMaxFrenzyUpdateHp
+BattleScript_JungleRageMaxFrenzyLiquidOoze::
+	call BattleScript_AbilityPopUpTarget
+	manipulatedamage DMG_CHANGE_SIGN
+	setbyte cMULTISTRING_CHOOSER, B_MSG_ABSORB_OOZE
+BattleScript_JungleRageMaxFrenzyUpdateHp::
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	jumpifmovehadnoeffect BattleScript_JungleRageMaxFrenzyTryFainting
+	printfromtable gAbsorbDrainStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_JungleRageMaxFrenzyTryFainting::
+	tryfaintmon BS_ATTACKER
+BattleScript_JungleRageMaxFrenzyHealBlock::
+	tryfaintmon BS_TARGET
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	jumpifbattleend BattleScript_MoveEnd
+	removeallfrenzycounters BS_ATTACKER, BattleScript_MoveEnd
+	printstring STRINGID_USERUSEDUPALLFRENZY
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectMindGap::
 	attackcanceler
@@ -1855,13 +1891,6 @@ BattleScript_AcidArmorStatus::
 	setacidarmor BS_ATTACKER
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
-
-BattleScript_EffectRageFist:
-	jumpifmove MOVE_JUNGLE_RAGE BattleScript_JungleRageCheckBlooming
-	goto BattleScript_EffectHit
-BattleScript_JungleRageCheckBlooming:
-	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_EffectSpecialAttackDownHit
-	goto BattleScript_EffectHit
 
 BattleScript_EffectBurningEnvy:
 	checkstatboosts 3, BattleScript_BurningEnvyTormentandBurn

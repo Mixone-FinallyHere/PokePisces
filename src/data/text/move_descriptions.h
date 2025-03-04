@@ -3640,6 +3640,11 @@ static const u8 sJungleHealingDescription[] = _(
     "condition they are cured of it,\n"
     "otherwise they start to bloom.");
 
+static const u8 sJungleRageDescription[] = _(
+    "Gains Frenzy. At 3 Frenzy, uses\n"
+    "it all to hit both foes and drain\n"
+    "HP. When blooming, maxes Frenzy.");
+
 static const u8 sSurgingStrikesDescription[] = _(
     "Strikes the foe with a flowing\n"
     "motion 3 times in a row. This\n"
@@ -5833,7 +5838,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_CINDER_DRILL - 1] = sCinderDrillDescription,
     [MOVE_SILENCE - 1] = sSilenceDescription,
     [MOVE_VEXING_KI - 1] = sVexingKiDescription,
-    [MOVE_JUNGLE_RAGE - 1] = sRageFistDescription,
+    [MOVE_JUNGLE_RAGE - 1] = sJungleRageDescription,
     [MOVE_DECAY_BEAM - 1] = sDecayBeamDescription,
     [MOVE_CANNONADE - 1] = sCannonadeDescription,
     [MOVE_WARM_WELCOME - 1] = sWarmWelcomeDescription,

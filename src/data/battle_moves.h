@@ -14532,8 +14532,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_JUNGLE_RAGE] =
     {
-        .effect = EFFECT_RAGE_FIST,
-        .power = 50,
+        .effect = EFFECT_JUNGLE_RAGE,
+        .power = 75,
         .type = TYPE_GRASS,
         .accuracy = 100,
         .pp = 10,
@@ -14544,6 +14544,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
         .metronomeBanned = TRUE,
+        .argument = 100,
     },
 
     [MOVE_DECAY_BEAM] =

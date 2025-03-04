@@ -318,6 +318,7 @@
 #define VARIOUS_JUMP_IF_INFATUATED_SPECIFIC          226
 #define VARIOUS_DISABLE_CHOSEN_MOVE                  227
 #define VARIOUS_MIND_GAP_CHECK                       228
+#define VARIOUS_REMOVE_FRENZY_COUNTER                229
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

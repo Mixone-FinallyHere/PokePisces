@@ -969,6 +969,7 @@ static const u8 sText_UserGainedDaybreak[] = _("{B_ATK_NAME_WITH_PREFIX} gained 
 static const u8 sText_UserHasEnteredAFrenzy[] = _("{B_ATK_NAME_WITH_PREFIX} gained a Frenzy\nCounter, putting it at {B_BUFF1}!");
 static const u8 sText_UserIncreasedBloomingDuration[] = _("{B_ATK_NAME_WITH_PREFIX} increased\nthe duration of blooming!");
 static const u8 sText_UserUsedUpAllDaybreak[] = _("{B_ATK_NAME_WITH_PREFIX} used up all\nof its Daybreak Counters!");
+static const u8 sText_UserUsedUpAllFrenzy[] = _("{B_ATK_NAME_WITH_PREFIX} used up all\nof its Frenzy!");
 static const u8 sText_PurpleHaze[] = _("The purple haze enflamed\n{B_ATK_NAME_WITH_PREFIX} with frenzy!");
 static const u8 sText_MagmaArmored[] = _("{B_ATK_NAME_WITH_PREFIX}'s magma armor\nhardened from {B_DEF_NAME_WITH_PREFIX}'s attack!");
 static const u8 sText_TargetNegativeStatChangesGone[] = _("{B_DEF_NAME_WITH_PREFIX}'s negative stat\nchanges were eliminated!");
@@ -1823,6 +1824,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_USERINCREASEDBLOOMINGDURATION - BATTLESTRINGS_TABLE_START] = sText_UserIncreasedBloomingDuration,
     [STRINGID_FOETAILWINDENDS - BATTLESTRINGS_TABLE_START] = sText_FoeTailwindEnds,
     [STRINGID_PKMNSFLOWERISOPENING - BATTLESTRINGS_TABLE_START] = sText_PkmnsFlowerIsOpening,
+    [STRINGID_USERUSEDUPALLFRENZY - BATTLESTRINGS_TABLE_START] = sText_UserUsedUpAllFrenzy,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

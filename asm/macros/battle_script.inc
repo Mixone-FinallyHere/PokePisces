@@ -1454,6 +1454,12 @@
 	.4byte \ptr
 	.endm
 
+	.macro checkfrenzycounter counter:req, ptr:req
+	callnative BS_CheckFrenzyCounter
+	.byte \counter
+	.4byte \ptr
+	.endm
+
 	.macro checkstatboosts counter:req, ptr:req
 	callnative BS_CheckStatBoosts
 	.byte \counter
@@ -2161,6 +2167,11 @@
 
 	.macro removealldaybreakcounters battler:req, failInstr:req
 	various \battler, VARIOUS_REMOVE_DAYBREAK_COUNTER
+	.4byte \failInstr
+	.endm
+
+	.macro removeallfrenzycounters battler:req, failInstr:req
+	various \battler, VARIOUS_REMOVE_FRENZY_COUNTER
 	.4byte \failInstr
 	.endm
 

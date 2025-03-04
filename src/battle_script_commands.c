@@ -12275,6 +12275,26 @@ static void Cmd_various(void)
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
+        else if (gBattleMoves[gCurrentMove].effect == EFFECT_JUNGLE_RAGE && gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
+        {
+            if (gDisableStructs[battler].frenzyCounter > 1)
+            {
+                gDisableStructs[battler].frenzyCounter++;
+            }
+            else if (gDisableStructs[battler].frenzyCounter > 0)
+            {
+                gDisableStructs[battler].frenzyCounter++;
+                gDisableStructs[battler].frenzyCounter++;
+            }
+            else
+            {
+                gDisableStructs[battler].frenzyCounter++;
+                gDisableStructs[battler].frenzyCounter++;
+                gDisableStructs[battler].frenzyCounter++;
+            }
+            PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, gDisableStructs[battler].frenzyCounter);
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
         else
         {
             gDisableStructs[battler].frenzyCounter++;
@@ -12295,6 +12315,22 @@ static void Cmd_various(void)
         else
         {
             gDisableStructs[battler].daybreakCounter = 0;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
+    case VARIOUS_REMOVE_FRENZY_COUNTER:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+    
+        if (gDisableStructs[battler].frenzyCounter < 3)
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        else
+        {
+            gDisableStructs[battler].frenzyCounter = 0;
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
         return;
@@ -19799,6 +19835,15 @@ void BS_CheckDaybreakCounter(void)
 {
     NATIVE_ARGS(u8 counter, const u8 *jumpInstr);
     if (gDisableStructs[gBattlerAttacker].daybreakCounter == cmd->counter)
+        gBattlescriptCurrInstr = cmd->jumpInstr;
+    else
+        gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
+void BS_CheckFrenzyCounter(void)
+{
+    NATIVE_ARGS(u8 counter, const u8 *jumpInstr);
+    if (gDisableStructs[gBattlerAttacker].frenzyCounter == cmd->counter)
         gBattlescriptCurrInstr = cmd->jumpInstr;
     else
         gBattlescriptCurrInstr = cmd->nextInstr;
