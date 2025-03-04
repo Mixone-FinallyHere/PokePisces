@@ -22,6 +22,11 @@
       "map": "MAP_WISHWELL_OCEAN",
       "offset": -15,
       "direction": "up"
+    },
+    {
+      "map": "MAP_DETERMANITE_UNDERWATER",
+      "offset": 0,
+      "direction": "dive"
     }
   ],
   "object_events": [
@@ -33,7 +38,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
       "script": "DetermaniteBeach_EventScript_Mimi",
       "flag": "0"
@@ -46,7 +51,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
       "script": "DetermaniteBeach_EventScript_Seamus",
       "flag": "0"
@@ -59,7 +64,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "4",
       "script": "DetermaniteBeach_EventScript_Etna",
       "flag": "0"
@@ -72,7 +77,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "4",
       "script": "DetermaniteBeach_EventScript_Laharl",
       "flag": "0"
@@ -85,7 +90,7 @@
       "movement_type": "MOVEMENT_TYPE_WANDER_RIGHT_AND_LEFT",
       "movement_range_x": 2,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
       "script": "DetermaniteBeach_EventScript_Flonne",
       "flag": "0"
@@ -98,7 +103,7 @@
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 5,
       "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "DetermaniteBeach_EventScript_Yasuke",
       "flag": "0"
@@ -111,7 +116,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "5",
       "script": "DetermaniteBeach_EventScript_Yue",
       "flag": "0"
@@ -124,7 +129,7 @@
       "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_LEFT_UP_DOWN_RIGHT",
       "movement_range_x": 5,
       "movement_range_y": 2,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
       "script": "DetermaniteBeach_EventScript_Prince",
       "flag": "0"
@@ -137,7 +142,7 @@
       "movement_type": "MOVEMENT_TYPE_WANDER_RIGHT_AND_LEFT",
       "movement_range_x": 8,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
       "script": "DetermaniteBeach_EventScript_King",
       "flag": "0"
@@ -150,7 +155,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
       "script": "DetermaniteBeach_EventScript_SaiAndMisha",
       "flag": "0"
@@ -163,7 +168,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
       "script": "DetermaniteBeach_EventScript_SaiAndMisha",
       "flag": "0"
@@ -176,7 +181,7 @@
       "movement_type": "MOVEMENT_TYPE_WALK_UP_AND_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 6,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "DetermaniteBeach_EventScript_Laura",
       "flag": "0"
@@ -189,7 +194,7 @@
       "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_DOWN_UP_LEFT",
       "movement_range_x": 5,
       "movement_range_y": 5,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "DetermaniteBeach_EventScript_Gatherer",
       "flag": "0"
