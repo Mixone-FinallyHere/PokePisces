@@ -25,7 +25,7 @@ PerplumeTreehouse_EventScript_RemoveKitikiti::
 	removeobject LOCALID_KITIKITI6
 	removeobject LOCALID_KITIKITI7
 	removeobject LOCALID_KITIKITI8
-	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_11
 	return
 
 PerplumeTreehouse_EventScript_RemoveOrb::

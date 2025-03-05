@@ -20,7 +20,7 @@ PerplumeMaze_OnLoad:
 
 PerplumeMaze_EventScript_RemoveBreadwinner::
 	removeobject LOCALID_BREAD
-	setflag FLAG_TEMP_13
+	setflag FLAG_TEMP_19
 	return
 
 PerplumeMaze_EventScript_ResetKitikiti::
@@ -37,14 +37,14 @@ PerplumeMaze_EventScript_RemoveKitikiti::
 	removeobject LOCALID_KITIKITI6
 	removeobject LOCALID_KITIKITI7
 	removeobject LOCALID_KITIKITI8
-	setflag FLAG_TEMP_1
-	setflag FLAG_TEMP_2
-	setflag FLAG_TEMP_3
-	setflag FLAG_TEMP_4
-	setflag FLAG_TEMP_5
-	setflag FLAG_TEMP_6
-	setflag FLAG_TEMP_7
-	setflag FLAG_TEMP_8
+	setflag FLAG_TEMP_11
+	setflag FLAG_TEMP_12
+	setflag FLAG_TEMP_13
+	setflag FLAG_TEMP_14
+	setflag FLAG_TEMP_15
+	setflag FLAG_TEMP_16
+	setflag FLAG_TEMP_17
+	setflag FLAG_TEMP_18
 	return
 
 PerplumeMaze_EventScript_BreadwinnerEncounter::
@@ -100,7 +100,7 @@ PerplumeMaze_EventScript_BreadRun::
 	applymovement LOCALID_BREAD, PerplumeMaze_Movement_BreadEscape
 	waitmovement 0
 	removeobject LOCALID_BREAD
-	setflag FLAG_TEMP_13
+	setflag FLAG_TEMP_19
 	release
 	end
 
