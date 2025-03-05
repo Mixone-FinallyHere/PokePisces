@@ -3026,6 +3026,7 @@ BattleScript_Boundary60::
 	waitmessage B_WAIT_TIME_LONG
 	typecalc
 	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
+	jumpifspeciesmegaboss BS_TARGET, BoundaryAgainstBossShunyong
 	setword gBattleMoveDamage, 60
 	adjustdamage
 	goto BattleScript_HitFromAtkAnimation
@@ -3035,6 +3036,7 @@ BattleScript_Boundary90::
 	waitmessage B_WAIT_TIME_LONG
 	typecalc
 	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
+	jumpifspeciesmegaboss BS_TARGET, BoundaryAgainstBossShunyong
 	setword gBattleMoveDamage, 90
 	adjustdamage
 	goto BattleScript_HitFromAtkAnimation
@@ -3044,7 +3046,12 @@ BattleScript_BigBoundary::
 	waitmessage B_WAIT_TIME_LONG
 	typecalc
 	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
+	jumpifspeciesmegaboss BS_TARGET, BoundaryAgainstBossShunyong
 	setword gBattleMoveDamage, 444
+	adjustdamage
+	goto BattleScript_HitFromAtkAnimation
+BoundaryAgainstBossShunyong::
+	setword gBattleMoveDamage, 50
 	adjustdamage
 	goto BattleScript_HitFromAtkAnimation
 

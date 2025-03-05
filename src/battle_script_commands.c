@@ -6449,6 +6449,8 @@ static void Cmd_moveend(void)
                         gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
+                    if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && gBattleMoveDamage > 50)
+                        gBattleMoveDamage = 50;
                     PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_SPIKY_SHIELD);
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_SpikyShieldEffect;
@@ -6463,6 +6465,8 @@ static void Cmd_moveend(void)
                     gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
+                    if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && gBattleMoveDamage > 50)
+                        gBattleMoveDamage = 50;
                     PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_DEFEND_ORDER);
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_DefendOrderEffect;
@@ -10308,11 +10312,7 @@ static void Cmd_various(void)
         VARIOUS_ARGS();
         u32 boundary = Random() % 4;
 
-        if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses))
-        {
-            gBattleMoveDamage = 0;
-        }
-        else if (boundary < 1)
+        if (boundary < 1)
         {
             gBattleStruct->boundaryBasePower = 1;
             boundary = 1;
@@ -12653,6 +12653,15 @@ static void Cmd_various(void)
             gBattlescriptCurrInstr = cmd->nextInstr;
         return;
     }
+    case VARIOUS_JUMP_IF_SPECIES_MEGA_BOSS:
+    {
+        VARIOUS_ARGS(u16 species, const u8 *jumpInstr);
+        if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses))
+            gBattlescriptCurrInstr = cmd->jumpInstr;
+        else
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        return;
+    }
     case VARIOUS_JUMP_IF_SPECIES_HAS_NO_LEGS:
     {
         VARIOUS_ARGS(const u8 *jumpInstr);
@@ -13769,17 +13778,11 @@ static void Cmd_various(void)
     {    
         VARIOUS_ARGS();
 
-        if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses))
-        {
-            gBattleMoveDamage = 0;
-        }
-        else
-        {
-            gBattleMoveDamage = gBattleMons[gBattlerTarget].hp / 4;  
-        }
-
+        gBattleMoveDamage = gBattleMons[gBattlerTarget].hp / 4;
         if (gBattleMoveDamage == 0)
             gBattleMoveDamage = 1;
+        if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses) && gBattleMoveDamage > 50)
+            gBattleMoveDamage = 50;
 
         gBattlescriptCurrInstr = cmd->nextInstr;
         return;
@@ -13788,11 +13791,7 @@ static void Cmd_various(void)
     {    
         VARIOUS_ARGS();
 
-        if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses))
-        {
-            gBattleMoveDamage = 0;
-        }
-        else if (CountBattlerStatIncreases(gBattlerTarget, TRUE) > 0)
+        if (CountBattlerStatIncreases(gBattlerTarget, TRUE) > 0)
         {
             gBattleMoveDamage = (gBattleMons[gBattlerTarget].maxHP / 5) * (CountBattlerStatIncreases(gBattlerTarget, TRUE) + 1);
         }
@@ -13800,9 +13799,10 @@ static void Cmd_various(void)
         {
             gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 5;
         }
-
         if (gBattleMoveDamage == 0)
             gBattleMoveDamage = 1;
+        if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses) && gBattleMoveDamage > 50)
+            gBattleMoveDamage = 50;
 
         gBattlescriptCurrInstr = cmd->nextInstr;
         return;
@@ -13811,11 +13811,7 @@ static void Cmd_various(void)
     {    
         VARIOUS_ARGS();
 
-        if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses))
-        {
-            gBattleMoveDamage = 0;
-        }
-        else if (gDisableStructs[gBattlerAttacker].daybreakCounter != 0)
+        if (gDisableStructs[gBattlerAttacker].daybreakCounter != 0)
         {
             gBattleMoveDamage = (gBattleMons[gBattlerTarget].maxHP / 20) * (gDisableStructs[gBattlerAttacker].daybreakCounter);
         }
@@ -13823,9 +13819,10 @@ static void Cmd_various(void)
         {
             gBattleMoveDamage = 0;
         }
-
         if (gBattleMoveDamage == 0)
             gBattleMoveDamage = 1;
+        if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses) && gBattleMoveDamage > 50)
+            gBattleMoveDamage = 50;
 
         gBattlescriptCurrInstr = cmd->nextInstr;
         return;
@@ -14270,6 +14267,8 @@ static void Cmd_manipulatedamage(void)
         gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 8;
         if (gBattleMoveDamage == 0)
             gBattleMoveDamage = 1;
+        if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses) && gBattleMoveDamage > 50)
+            gBattleMoveDamage = 50;
         break;
     case DMG_FULL_ATTACKER_HP:
         gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP;
@@ -15519,11 +15518,7 @@ static void Cmd_damagetopercentagetargethp(void)
 {
     CMD_ARGS();
 
-    if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses))
-    {
-        gBattleMoveDamage = 0;
-    }
-    else if (gCurrentMove == MOVE_POISON_POWDER)
+    if (gCurrentMove == MOVE_POISON_POWDER)
     {
         gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 4;  
     }
@@ -15543,6 +15538,9 @@ static void Cmd_damagetopercentagetargethp(void)
     if (gBattleMoveDamage == 0)
         gBattleMoveDamage = 1;
 
+    if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses) && gBattleMoveDamage > 50)
+        gBattleMoveDamage = 50;
+    
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
@@ -15588,12 +15586,11 @@ static void Cmd_weatherdamage(void)
                 && !(gStatuses3[gBattlerAttacker] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
                 && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOGGLES)
             {
-                if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses))
-                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 32;
-                else
-                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
+                gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
+                if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses) && gBattleMoveDamage > 50)
+                    gBattleMoveDamage = 50;
             }
         }
         if (gBattleWeather & B_WEATHER_HAIL)
@@ -15604,10 +15601,7 @@ static void Cmd_weatherdamage(void)
                 && !(gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK))
             {
                 gBattlerAbility = gBattlerAttacker;
-                if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses))
-                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 32;
-                else
-                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
+                gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 gBattleMoveDamage *= -1;
@@ -15622,12 +15616,11 @@ static void Cmd_weatherdamage(void)
                 && !(gStatuses3[gBattlerAttacker] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
                 && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOGGLES)
             {
-                if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses))
-                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 32;
-                else
-                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
+                gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
+                if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses) && gBattleMoveDamage > 50)
+                    gBattleMoveDamage = 50;
             }
         }
         if (gBattleWeather & B_WEATHER_SNOW)
@@ -15987,6 +15980,10 @@ static void Cmd_dmgtolevel(void)
     {
         gBattleMoveDamage = gBattleMons[gBattlerAttacker].level;
     }
+
+    if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses) && gBattleMoveDamage > 50)
+        gBattleMoveDamage = 50;
+
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
@@ -16001,6 +15998,8 @@ static void Cmd_psywavedamageeffect(void)
     randDamage = (Random() % 11) * 10;
 #endif
     gBattleMoveDamage = gBattleMons[gBattlerAttacker].level * (randDamage + 50) / 100;
+    if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses) && gBattleMoveDamage > 50)
+        gBattleMoveDamage = 50;
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
@@ -16016,6 +16015,8 @@ static void Cmd_counterdamagecalculator(void)
         && gBattleMons[gProtectStructs[gBattlerAttacker].physicalBattlerId].hp)
     {
         gBattleMoveDamage = gProtectStructs[gBattlerAttacker].physicalDmg * 2;
+        if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && gBattleMoveDamage > 50)
+            gBattleMoveDamage = 50;
 
         if (IsAffectedByFollowMe(gBattlerAttacker, sideTarget, gCurrentMove)) 
         {
@@ -16046,6 +16047,8 @@ static void Cmd_mirrorcoatdamagecalculator(void)
         && gBattleMons[gProtectStructs[gBattlerAttacker].specialBattlerId].hp)
     {
         gBattleMoveDamage = gProtectStructs[gBattlerAttacker].specialDmg * 2;
+        if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && gBattleMoveDamage > 50)
+            gBattleMoveDamage = 50;
 
         if (IsAffectedByFollowMe(gBattlerAttacker, sideTarget, gCurrentMove)) 
         {
@@ -16155,7 +16158,8 @@ static void Cmd_painsplitdmgcalc(void)
 
         gBattleMoveDamage = gBattleMons[gBattlerAttacker].hp - hpDiff;
         gSpecialStatuses[gBattlerTarget].shellBellDmg = IGNORE_SHELL_BELL;
-
+        if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses) && gBattleMoveDamage > 50)
+            gBattleMoveDamage = 50;
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
     else
@@ -17796,6 +17800,8 @@ static void Cmd_setdamagetohealthdifference(void)
     else
     {
         gBattleMoveDamage = gBattleMons[gBattlerTarget].hp - gBattleMons[gBattlerAttacker].hp;
+        if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses) && gBattleMoveDamage > 50)
+            gBattleMoveDamage = 50;
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
 }
@@ -19637,7 +19643,8 @@ void BS_CalcMetalBurstDmg(void)
         && gBattleMons[gProtectStructs[gBattlerAttacker].physicalBattlerId].hp)
     {
         gBattleMoveDamage = gProtectStructs[gBattlerAttacker].physicalDmg * 150 / 100;
-
+        if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && gBattleMoveDamage > 50)
+            gBattleMoveDamage = 50;
         if (IsAffectedByFollowMe(gBattlerAttacker, sideTarget, gCurrentMove)) 
         {
             gBattlerTarget = gSideTimers[sideTarget].followmeTarget;
@@ -19652,7 +19659,8 @@ void BS_CalcMetalBurstDmg(void)
              && gBattleMons[gProtectStructs[gBattlerAttacker].specialBattlerId].hp)
     {
         gBattleMoveDamage = gProtectStructs[gBattlerAttacker].specialDmg * 150 / 100;
-
+        if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && gBattleMoveDamage > 50)
+            gBattleMoveDamage = 50;
         if (IsAffectedByFollowMe(gBattlerAttacker, sideTarget, gCurrentMove)) 
         {
             gBattlerTarget = gSideTimers[sideTarget].followmeTarget;

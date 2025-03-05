@@ -2274,6 +2274,11 @@
 	.4byte \jumpInstr
 	.endm
 
+	.macro jumpifspeciesmegaboss battler:req, jumpInstr:req
+	various \battler, VARIOUS_JUMP_IF_SPECIES_MEGA_BOSS
+	.4byte \jumpInstr
+	.endm
+
 	.macro jumpifallyhasnolegs battler:req, jumpInstr:req
 	various \battler, VARIOUS_JUMP_IF_ALLY_HAS_NO_LEGS
 	.4byte \jumpInstr
