@@ -2375,6 +2375,24 @@ TheColdMines_EventScript_AlreadyGaveGemstone::
 	release
 	end
 
+TheColdMines_EventScript_OzoneBlocker::
+    msgbox TheColdMines_Text_OzoneBlocker, MSGBOX_NPC
+    end
+
+TheColdMines_Text_OzoneBlocker:
+	.string "This passage is currently\n"
+	.string "under heavy construction, trainer!\p"
+	.string "We would like for easier access\n"
+	.string "to Zotpyre Village and its\l"
+	.string "surrounding areas from the west,\l"
+	.string "so our team has sought to tunnel\l"
+	.string "a passage that leads directly\l"
+	.string "to the Ozone Institute!\p"
+	.string "Digging, sorry, EXCAVATING that\n"
+	.string "space is in progress, but it\l"
+	.string "will take some time. Check\l"
+	.string "back in when we're all done!$"
+
 TheColdMines_Text_GlowingRock:
 	.string "Hello. I have been mining\n"
 	.string "here for some valuable gems.\l"
