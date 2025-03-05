@@ -4532,7 +4532,7 @@ BattleScript_EffectCinderDrill::
 	tryfaintmon BS_TARGET
 	jumpifbattleend BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
-	trycinderdrill BS_ATTACKER
+	trycinderdrill
 	moveendall
 	end
 
@@ -4552,7 +4552,7 @@ BattleScript_EffectCinderTwirlEnd::
 	tryfaintmon BS_TARGET
 	jumpifbattleend BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
-	trycindertwirl BS_ATTACKER
+	trycindertwirl
 	moveendall
 	end
 
@@ -14894,15 +14894,15 @@ BattleScript_AttackerFormChangeEnd3NoPopup::
 	end3
 
 BattleScript_AttackerFormChangeMoveEffect::
-	waitmessage 1
+	pause 5
+	copybyte gBattlerAbility, gBattlerAttacker
 	handleformchange BS_ATTACKER, 0
 	handleformchange BS_ATTACKER, 1
 	playanimation BS_ATTACKER, B_ANIM_FORM_CHANGE
 	waitanimation
-	copybyte sBATTLER, gBattlerAttacker
+	handleformchange BS_ATTACKER, 2
 	printstring STRINGID_PKMNTRANSFORMED
 	waitmessage B_WAIT_TIME_LONG
-	handleformchange BS_ATTACKER, 2
 	return
 
 BattleScript_BallFetch::

@@ -1413,14 +1413,12 @@
 	callnative BS_SetGlaiveRush2
 	.endm
 
-	.macro trycinderdrill battler:req
+	.macro trycinderdrill
 	callnative BS_TryCinderDrill
-	.byte \battler
 	.endm
 
-	.macro trycindertwirl battler:req
+	.macro trycindertwirl
 	callnative BS_TryCinderTwirl
-	.byte \battler
 	.endm
 
 	.macro trycopycat failInstr:req
