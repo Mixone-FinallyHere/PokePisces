@@ -321,6 +321,7 @@
 #define VARIOUS_REMOVE_FRENZY_COUNTER                229
 #define VARIOUS_GET_ERODE_FIELD_TARGETS              230
 #define VARIOUS_JUMP_IF_NOT_ERODE_FIELD_AFFECTED     231
+#define VARIOUS_JUMP_IF_MOON_MIRRORED                232
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

@@ -9627,9 +9627,7 @@ BattleScript_StatDownEnd::
 
 BattleScript_MirrorArmorReflect::
 	pause B_WAIT_TIME_SHORT
-	jumpifholdeffect BS_TARGET, HOLD_EFFECT_MOON_MIRROR, BattleScript_LazyLunatoneCheck2
 	call BattleScript_AbilityPopUp
-BattleScript_MirrorArmorNoAbilityPopup:
 	jumpifsubstituteblocks BattleScript_AbilityNoSpecificStatLoss
 BattleScript_MirrorArmorReflectStatLoss:
 	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_MIRROR_ARMOR | STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_MirrorArmorReflectEnd
@@ -9643,8 +9641,6 @@ BattleScript_MirrorArmorReflectPrintString:
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_MirrorArmorReflectEnd:
 	return
-BattleScript_LazyLunatoneCheck2:
-	jumpifspecies BS_TARGET, SPECIES_LUNATONE, BattleScript_MirrorArmorNoAbilityPopup
 
 BattleScript_MirrorArmorReflectWontFall:
 	copybyte gBattlerTarget, gBattlerAttacker   @ STRINGID_STATSWONTDECREASE uses target
@@ -9653,10 +9649,39 @@ BattleScript_MirrorArmorReflectWontFall:
 @ gBattlerTarget is battler with Mirror Armor
 BattleScript_MirrorArmorReflectStickyWeb:
 	call BattleScript_AbilityPopUp
-BattleScript_MirrorArmorReflectStickyWebNoAbilityPopup:
 	setattackertostickywebuser
 	jumpifbyteequal gBattlerAttacker, gBattlerTarget, BattleScript_StickyWebOnSwitchInEnd   @ Sticky web user not on field -> no stat loss
-	goto BattleScript_MirrorArmorReflectStatLoss
+	call BattleScript_MirrorArmorReflectStatLoss
+	goto BattleScript_StickyWebOnSwitchInEnd
+
+BattleScript_MoonMirrorReflect::
+	pause B_WAIT_TIME_SHORT
+	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT
+	jumpifsubstituteblocks BattleScript_ItemNoSpecificStatLoss
+BattleScript_MoonMirrorReflectStatLoss:
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_MIRROR_ARMOR | STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_MoonMirrorReflectEnd
+	jumpifbyte CMP_LESS_THAN, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_MoonMirrorReflectAnim
+	goto BattleScript_MoonMirrorReflectWontFall
+BattleScript_MoonMirrorReflectAnim:
+	setgraphicalstatchangevalues
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+BattleScript_MoonMirrorReflectPrintString:
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_MoonMirrorReflectEnd:
+	return
+
+BattleScript_MoonMirrorReflectWontFall:
+	copybyte gBattlerTarget, gBattlerAttacker   @ STRINGID_STATSWONTDECREASE uses target
+	goto BattleScript_MoonMirrorReflectPrintString
+
+@ gBattlerTarget is battler with Mirror Armor
+BattleScript_MoonMirrorReflectStickyWeb:
+	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
+	setattackertostickywebuser
+	jumpifbyteequal gBattlerAttacker, gBattlerTarget, BattleScript_StickyWebOnSwitchInEnd   @ Sticky web user not on field -> no stat loss
+	call BattleScript_MoonMirrorReflectStatLoss
+	goto BattleScript_StickyWebOnSwitchInEnd
 
 BattleScript_StatDown::
 	playanimation BS_EFFECT_BATTLER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
@@ -13788,7 +13813,7 @@ BattleScript_StickyWebOnSwitchIn::
 	printstring STRINGID_STICKYWEBSWITCHIN
 	waitmessage B_WAIT_TIME_LONG
 	jumpifability BS_TARGET, ABILITY_MIRROR_ARMOR, BattleScript_MirrorArmorReflectStickyWeb
-	jumpifholdeffect BS_TARGET, HOLD_EFFECT_MOON_MIRROR, BattleScript_LazyLunatoneCheck
+	jumpifmoonmirrored BS_TARGET, BattleScript_MoonMirrorReflectStickyWeb
 StickyWebContinue:
 	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_StickyWebOnSwitchInEnd
 	jumpifbyte CMP_LESS_THAN, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_StickyWebOnSwitchInStatAnim
@@ -13806,9 +13831,6 @@ BattleScript_StickyWebOnSwitchInEnd:
 	restoreattacker
 	setbyte sSTICKY_WEB_STAT_DROP, 0
 	return
-BattleScript_LazyLunatoneCheck:
-	jumpifspecies BS_TARGET, SPECIES_LUNATONE, BattleScript_MirrorArmorReflectStickyWebNoAbilityPopup
-	goto StickyWebContinue
 
 BattleScript_PerishSongTakesLife::
 	printstring STRINGID_PKMNPERISHCOUNTFELL

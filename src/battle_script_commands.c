@@ -7211,7 +7211,7 @@ static void Cmd_moveend(void)
                                 continue;
                             // Since we check if battler was damaged, we don't need to check move result.
                             // In fact, doing so actually prevents multi-target moves from activating eject button properly
-                            if (!IsBattlerTurnDamaged(battler))
+                            if (!BATTLER_DAMAGED(battler))
                                 continue;
                         }
                         else if (ejectPackBattlers & (1u << battler))
@@ -7227,7 +7227,7 @@ static void Cmd_moveend(void)
                         if (IsBattlerAlive(battler)
                             && CountUsablePartyMons(battler) > 0 // Has mon to switch into
                             // Does not activate if attacker used Parting Shot and can switch out
-                            && !((gBattleMoves[gCurrentMove].effect == EFFECT_HIT_SWITCH_TARGET || gBattleMoves[gCurrentMove].effect == EFFECT_SPOOK || gBattleMoves[gCurrentMove].effect == EFFECT_VITAL_THROW) && CanBattlerSwitch(gBattlerAttacker))
+                            && !((gBattleMoves[gCurrentMove].effect == EFFECT_HIT_SWITCH_TARGET || gBattleMoves[gCurrentMove].effect == EFFECT_VITAL_THROW) && CanBattlerSwitch(gBattlerAttacker))
                             )
                         {
                             gBattleScripting.battler = battler;
@@ -7239,25 +7239,27 @@ static void Cmd_moveend(void)
                             || gBattleMoves[gCurrentMove].effect == EFFECT_MANEUVER
                             || gBattleMoves[gCurrentMove].effect == EFFECT_SNOWFADE)
                             gBattlescriptCurrInstr = BattleScript_MoveEnd;  // Prevent user switch-in selection
+                            effect = TRUE;
+                            BattleScriptPushCursor();
+                            gBattleStruct->usedEjectItem |= 1u << battler;
                             if (ejectButtonBattlers & (1u << battler))
                             {
-                                effect = TRUE;
-                                gBattleStruct->usedEjectItem |= 1u << battler;
-                                BattleScriptPushCursor();
                                 gBattlescriptCurrInstr = BattleScript_EjectButtonActivates;
                             }
                             else // Eject Pack
                             {
-                                if (!gBattleResources->flags->flags[gBattlerTarget] & RESOURCE_FLAG_EMERGENCY_EXIT
-                                    && !(gBattleMoves[gCurrentMove].effect == EFFECT_PARTING_SHOT && CanBattlerSwitch(gBattlerAttacker)))
+                                if (gBattleResources->flags->flags[gBattlerTarget] & RESOURCE_FLAG_EMERGENCY_EXIT)
                                 {
-                                    effect = TRUE;
-                                    gBattleStruct->usedEjectItem |= 1u << battler;
-                                    BattleScriptPushCursor();
+                                    gBattlescriptCurrInstr = BattleScript_EjectPackMissesTiming;
+                                    gProtectStructs[battler].statFell = FALSE;
+                                }
+                                else
+                                {
                                     gBattlescriptCurrInstr = BattleScript_EjectPackActivates;
+                                    // Are these 2 lines below needed?
+                                    gProtectStructs[battler].statFell = FALSE;
                                     gSpecialStatuses[gBattlerAttacker].preventLifeOrbDamage = TRUE;
                                 }
-                                gProtectStructs[battler].statFell = FALSE;
                             }
                             break; // Only the fastest Eject item activates
                         }
@@ -11430,10 +11432,9 @@ static void Cmd_various(void)
         // Change species.
         if (cmd->case_ == 0)
         {
-            /* What was the idea here?
             if (!gBattleTextBuff1)
                 PREPARE_SPECIES_BUFFER(gBattleTextBuff1, gBattleMons[battler].species);
-            */
+
             BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_SPECIES_BATTLE, 1u << gBattlerPartyIndexes[battler], sizeof(gBattleMons[battler].species), &gBattleMons[battler].species);
             MarkBattlerForControllerExec(battler);
         }
@@ -13011,6 +13012,21 @@ static void Cmd_various(void)
         u32 battler = GetBattlerForBattleScript(cmd->battler);
 
         if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND))
+        {
+            gBattlescriptCurrInstr = cmd->jumpInstr;
+        }
+        else
+        {
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
+    case VARIOUS_JUMP_IF_MOON_MIRRORED:
+    {
+        VARIOUS_ARGS(const u8 *jumpInstr);
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+
+        if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_MOON_MIRROR && gBattleMons[battler].species == SPECIES_LUNATONE)
         {
             gBattlescriptCurrInstr = cmd->jumpInstr;
         }
@@ -14742,9 +14758,8 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
                 SET_STATCHANGER(statId, GET_STAT_BUFF_VALUE(statValue) | STAT_BUFF_NEGATIVE, TRUE);
                 BattleScriptPush(BS_ptr);
                 gBattleScripting.battler = battler;
-                gBattlerAbility = battler;
-                gBattlescriptCurrInstr = BattleScript_MirrorArmorReflect;
-                RecordAbilityBattle(battler, gBattleMons[battler].ability);
+                gBattlescriptCurrInstr = BattleScript_MoonMirrorReflect;
+                PREPARE_ITEM_BUFFER(gBattleTextBuff2, gBattleMons[battler].item);
             }
             return STAT_CHANGE_DIDNT_WORK;
         }

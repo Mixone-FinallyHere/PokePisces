@@ -5675,7 +5675,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 }
                 break;
             case ABILITY_HUDDLE_UP:
-                if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_HP_PERCENT) && gBattleMons[battler].level >= 25)
+                if (gBattleMons[battler].level < 25)
+                    break;
+                if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_HP_PERCENT))
                 {
                     gBattlerAttacker = battler;
                     BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeEnd3);
@@ -8186,6 +8188,29 @@ static u8 DamagedStatBoostBerryEffect(u32 battler, u8 statId, u8 split)
     return 0;
 }
 
+static u8 TryEjectPack(u32 battler, bool32 execute)
+{
+    if (gProtectStructs[battler].statFell
+     && !gProtectStructs[battler].disableEjectPack
+     && CountUsablePartyMons(battler) > 0
+     && !(gCurrentMove == MOVE_PARTING_SHOT && CanBattlerSwitch(gBattlerAttacker))) // Does not activate if attacker used Parting Shot and can switch out
+    {
+        gProtectStructs[battler].statFell = FALSE;
+        gBattleScripting.battler = battler;
+        if (execute)
+        {
+            BattleScriptExecute(BattleScript_EjectPackActivate_End2);
+        }
+        else
+        {
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_EjectPackActivate_Ret;
+        }
+        return ITEM_STATS_CHANGE;
+    }
+    return 0;
+}
+
 static u8 DamagedCornnBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
 {
     u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
@@ -9013,24 +9038,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_EJECT_PACK:
-                if (gProtectStructs[battler].statFell
-                 && gProtectStructs[battler].disableEjectPack == 0
-                 && CountUsablePartyMons(battler) > 0
-                 && !(gCurrentMove == MOVE_PARTING_SHOT && CanBattlerSwitch(gBattlerAttacker))) // Does not activate if attacker used Parting Shot and can switch out
-                {
-                    gProtectStructs[battler].statFell = FALSE;
-                    gBattleScripting.battler = battler;
-                    effect = ITEM_STATS_CHANGE;
-                    if (moveTurn)
-                    {
-                        BattleScriptPushCursor();
-                        gBattlescriptCurrInstr = BattleScript_EjectPackActivate_Ret;
-                    }
-                    else
-                    {
-                        BattleScriptExecute(BattleScript_EjectPackActivate_End2);
-                    }
-                }
+                effect = TryEjectPack(battler, TRUE);
                 break;
             case HOLD_EFFECT_BERSERK_GENE:
                 BufferStatChange(battler, STAT_ATK, STRINGID_STATROSE);
@@ -10262,16 +10270,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             }
             break;
         case HOLD_EFFECT_EJECT_PACK:
-            if (gProtectStructs[battler].statFell
-             && gProtectStructs[battler].disableEjectPack == 0
-             && CountUsablePartyMons(battler) > 0)
-            {
-                gBattleScripting.battler = battler;
-                gPotentialItemEffectBattler = battler;
-                effect = ITEM_STATS_CHANGE;
-                BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_EjectPackActivates;
-            }
+            effect = TryEjectPack(battler, FALSE);
             break;
         }
         break;
