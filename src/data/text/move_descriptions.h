@@ -4707,8 +4707,8 @@ static const u8 sBeatboxDescription[] = _(
 
 static const u8 sLegDayDescription[] = _(
     "The user and allies train their\n"
-    "legs, boosting their Speed.\n"
-    "Fails if the user has no legs.");
+    "legs, boosting Speed. Fails if\n"
+    "the user or ally have no legs.");
 
 static const u8 sEvaporateDescription[] = _(
     "The user rapidly boils the\n"
