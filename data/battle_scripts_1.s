@@ -8434,12 +8434,25 @@ BattleScript_EffectPowerSplit:
 	averagestats STAT_SPATK
 	attackanimation
 	waitanimation
-	modifybattlerstatstage BS_TARGET, STAT_ATK, INCREASE, 1, BattleScript_PowerSplitTrySpatkTarget, ANIM_ON
-BattleScript_PowerSplitTrySpatkTarget:
-	modifybattlerstatstage BS_TARGET, STAT_SPATK, INCREASE, 1, BattleScript_PowerSplitTriesOver, ANIM_ON
-BattleScript_PowerSplitTriesOver:
 	printstring STRINGID_SHAREDITSPOWER
 	waitmessage B_WAIT_TIME_LONG
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_PowerSplitContinue
+	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPATK, MAX_STAT_STAGE, BattleScript_PowerSplitEnd
+BattleScript_PowerSplitContinue::
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_ATK | BIT_SPATK, 0
+	setstatchanger STAT_ATK, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_PowerSplitTrySpAtk
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_PowerSplitTrySpAtk
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_PowerSplitTrySpAtk::
+	setstatchanger STAT_SPATK, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_PowerSplitEnd
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_PowerSplitEnd
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_PowerSplitEnd::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectGuardSplit:
@@ -8452,12 +8465,25 @@ BattleScript_EffectGuardSplit:
 	averagestats STAT_SPDEF
 	attackanimation
 	waitanimation
-	modifybattlerstatstage BS_TARGET, STAT_DEF, INCREASE, 1, BattleScript_GuardSplitTrySpdefTarget, ANIM_ON
-BattleScript_GuardSplitTrySpdefTarget:
-	modifybattlerstatstage BS_TARGET, STAT_SPDEF, INCREASE, 1, BattleScript_GuardSplitTriesOver, ANIM_ON
-BattleScript_GuardSplitTriesOver:
 	printstring STRINGID_SHAREDITSGUARD
 	waitmessage B_WAIT_TIME_LONG
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_DEF, MAX_STAT_STAGE, BattleScript_GuardSplitContinue
+	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_GuardSplitEnd
+BattleScript_GuardSplitContinue::
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_DEF | BIT_SPDEF, 0
+	setstatchanger STAT_DEF, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_GuardSplitTrySpDef
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_GuardSplitTrySpDef
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_GuardSplitTrySpDef::
+	setstatchanger STAT_SPDEF, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_GuardSplitEnd
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_GuardSplitEnd
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_GuardSplitEnd::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectHeartSwap:
@@ -8488,16 +8514,41 @@ BattleScript_EffectPowerSwap:
 	swapstats STAT_SPATK
 	attackanimation
 	waitanimation
-	modifybattlerstatstage BS_TARGET, STAT_ATK, DECREASE, 1, BattleScript_PowerSwapTrySpatkTarget, ANIM_ON
-BattleScript_PowerSwapTrySpatkTarget:
-	modifybattlerstatstage BS_TARGET, STAT_SPATK, DECREASE, 1, BattleScript_PowerSwapTryAtkSelf, ANIM_ON
-BattleScript_PowerSwapTryAtkSelf:
-	modifybattlerstatstage BS_ATTACKER, STAT_ATK, INCREASE, 1, BattleScript_PowerSwapTrySpatkSelf, ANIM_ON
-BattleScript_PowerSwapTrySpatkSelf:
-	modifybattlerstatstage BS_ATTACKER, STAT_SPATK, INCREASE, 1, BattleScript_PowerSwapTriesDone, ANIM_ON
-BattleScript_PowerSwapTriesDone:
 	printstring STRINGID_ATTACKERSWITCHEDSTATWITHTARGET
 	waitmessage B_WAIT_TIME_LONG
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_PowerSwapContinue
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_PowerSwapContinue
+	jumpifstat BS_ATTACKER, CMP_GREATER_THAN, STAT_ATK, MIN_STAT_STAGE, BattleScript_PowerSwapContinue
+	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPATK, MIN_STAT_STAGE, BattleScript_PowerSwapEnd
+BattleScript_PowerSwapContinue::
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_ATK | BIT_SPATK, STAT_CHANGE_NEGATIVE | STAT_CHANGE_MULTIPLE_STATS
+	setstatchanger STAT_ATK, 1, TRUE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_PowerSwapTryLowerFoeSpAtk
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_PowerSwapTryLowerFoeSpAtk
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_PowerSwapTryLowerFoeSpAtk::
+	setstatchanger STAT_SPATK, 1, TRUE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_PowerSwapTryRaiseUserAtk
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_PowerSwapTryRaiseUserAtk
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_PowerSwapTryRaiseUserAtk::
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_ATTACKER, BIT_ATK | BIT_SPATK, 0
+	setstatchanger STAT_ATK, 1, FALSE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_PowerSwapTryRaiseUserSpAtk
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_PowerSwapTryRaiseUserSpAtk
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_PowerSwapTryRaiseUserSpAtk::
+	setstatchanger STAT_SPATK, 1, FALSE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_PowerSwapEnd
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_PowerSwapEnd
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_PowerSwapEnd::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectGuardSwap:
@@ -8510,16 +8561,41 @@ BattleScript_EffectGuardSwap:
 	swapstats STAT_SPDEF
 	attackanimation
 	waitanimation
-	modifybattlerstatstage BS_TARGET, STAT_DEF, DECREASE, 1, BattleScript_GuardSwapTrySpdefTarget, ANIM_ON
-BattleScript_GuardSwapTrySpdefTarget:
-	modifybattlerstatstage BS_TARGET, STAT_SPDEF, DECREASE, 1, BattleScript_GuardSwapTryDefSelf, ANIM_ON
-BattleScript_GuardSwapTryDefSelf:
-	modifybattlerstatstage BS_ATTACKER, STAT_DEF, INCREASE, 1, BattleScript_GuardSwapTrySpdefSelf, ANIM_ON
-BattleScript_GuardSwapTrySpdefSelf:
-	modifybattlerstatstage BS_ATTACKER, STAT_SPDEF, INCREASE, 1, BattleScript_GuardSwapTriesDone, ANIM_ON
-BattleScript_GuardSwapTriesDone:
 	printstring STRINGID_ATTACKERSWITCHEDSTATWITHTARGET
 	waitmessage B_WAIT_TIME_LONG
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_DEF, MAX_STAT_STAGE, BattleScript_GuardSwapContinue
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_GuardSwapContinue
+	jumpifstat BS_ATTACKER, CMP_GREATER_THAN, STAT_DEF, MIN_STAT_STAGE, BattleScript_GuardSwapContinue
+	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPDEF, MIN_STAT_STAGE, BattleScript_GuardSwapEnd
+BattleScript_GuardSwapContinue::
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_DEF | BIT_SPDEF, STAT_CHANGE_NEGATIVE | STAT_CHANGE_MULTIPLE_STATS
+	setstatchanger STAT_DEF, 1, TRUE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_GuardSwapTryLowerFoeSpDef
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_GuardSwapTryLowerFoeSpDef
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_GuardSwapTryLowerFoeSpDef::
+	setstatchanger STAT_SPDEF, 1, TRUE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_GuardSwapTryRaiseUserDef
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_GuardSwapTryRaiseUserDef
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_GuardSwapTryRaiseUserDef::
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_ATTACKER, BIT_DEF | BIT_SPDEF, 0
+	setstatchanger STAT_DEF, 1, FALSE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_GuardSwapTryRaiseUserSpDef
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_GuardSwapTryRaiseUserSpDef
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_GuardSwapTryRaiseUserSpDef::
+	setstatchanger STAT_SPDEF, 1, FALSE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_GuardSwapEnd
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_GuardSwapEnd
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_GuardSwapEnd::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectSpeedSwap:
@@ -8531,12 +8607,27 @@ BattleScript_EffectSpeedSwap:
 	swapstats STAT_SPEED
 	attackanimation
 	waitanimation
-	modifybattlerstatstage BS_TARGET, STAT_SPEED, DECREASE, 1, BattleScript_SpeedSwapTrySpeedSelf, ANIM_ON
-BattleScript_SpeedSwapTrySpeedSelf:
-	modifybattlerstatstage BS_ATTACKER, STAT_SPEED, INCREASE, 1, BattleScript_SpeedSwapTriesDone, ANIM_ON
-BattleScript_SpeedSwapTriesDone:
 	printstring STRINGID_ATTACKERSWITCHEDSTATWITHTARGET
 	waitmessage B_WAIT_TIME_LONG
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_SPEED, MAX_STAT_STAGE, BattleScript_SpeedSwapContinue
+	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_SPEED, MIN_STAT_STAGE, BattleScript_SpeedSwapEnd
+BattleScript_SpeedSwapContinue::
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_SPEED, STAT_CHANGE_NEGATIVE
+	setstatchanger STAT_SPEED, 1, TRUE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_SpeedSwapTryRaiseUserSpeed
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_SpeedSwapTryRaiseUserSpeed
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_SpeedSwapTryRaiseUserSpeed::
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_ATTACKER, BIT_SPEED, 0
+	setstatchanger STAT_SPEED, 1, FALSE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_SpeedSwapEnd
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_SpeedSwapEnd
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_SpeedSwapEnd::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectTelekinesis:

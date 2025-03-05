@@ -4428,7 +4428,7 @@ static const u8 sBlackBuffetDescription[] = _(
 static const u8 sExecutionDescription[] = _(
     "Power doubles if the foe is at\n"
     "3/4 HP or less. The user becomes\n"
-    "exhausted reducing their damage.");
+    "exhausted, reducing their power.");
 
 static const u8 sSeizeChanceDescription[] = _(
     "Flinches if the foe is readying\n"
