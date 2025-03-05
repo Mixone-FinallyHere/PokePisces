@@ -10901,7 +10901,7 @@ static const struct TrainerMon sParty_PHerChild[] = {
     .species = SPECIES_BLOTTA,
     .ability = ABILITY_DISDAIN,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .ev = TRAINER_PARTY_EVS(84, 84, 84, 84, 84, 84),
+    .ev = TRAINER_PARTY_EVS(0, 0, 0, 252, 252, 0),
     .lvl = 85,
     .moves = {MOVE_FEAR_FACTOR, MOVE_FIRE_BLAST, MOVE_BADDY_BAD, MOVE_BLIZZARD},
     },
@@ -10910,7 +10910,7 @@ static const struct TrainerMon sParty_PHerChild[] = {
     .ability = ABILITY_MAGIC_GUARD,
     .heldItem = ITEM_FLOAT_STONE,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .ev = TRAINER_PARTY_EVS(84, 84, 84, 84, 84, 84),
+    .ev = TRAINER_PARTY_EVS(252, 0, 4, 0, 0, 252),
     .lvl = 65,
     .moves = {MOVE_BESTOW, MOVE_FEATHER_DANCE, MOVE_ROOST, MOVE_FOLLOW_ME},
     }
