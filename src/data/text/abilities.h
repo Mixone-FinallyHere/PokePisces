@@ -1140,7 +1140,7 @@ static const u8 sPerishBodyDescription[] = _(
 static const u8 sWanderingSpiritDescription[] = _(
     "The Pokémon exchanges Abilities\n"
     "with a Pokémon that hits it with\n"
-    "a move that makes direct contact.");
+    "a move that makes contact.");
 
 static const u8 sGorillaTacticsDescription[] = _(
     "Boosts the Pokémon's Attack stat\n"

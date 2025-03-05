@@ -2274,6 +2274,11 @@
 	.4byte \jumpInstr
 	.endm
 
+	.macro jumpifspeciesmegaboss battler:req, jumpInstr:req
+	various \battler, VARIOUS_JUMP_IF_SPECIES_MEGA_BOSS
+	.4byte \jumpInstr
+	.endm
+
 	.macro jumpifallyhasnolegs battler:req, jumpInstr:req
 	various \battler, VARIOUS_JUMP_IF_ALLY_HAS_NO_LEGS
 	.4byte \jumpInstr
@@ -2601,6 +2606,11 @@
 
 	.macro jumpifeeriemaskprotected battler:req, jumpInstr:req
 	various \battler, VARIOUS_JUMP_IF_EERIE_MASK_PROTECTED
+	.4byte \jumpInstr
+	.endm
+
+	.macro jumpifmoonmirrored battler:req, jumpInstr:req
+	various \battler, VARIOUS_JUMP_IF_MOON_MIRRORED
 	.4byte \jumpInstr
 	.endm
 
