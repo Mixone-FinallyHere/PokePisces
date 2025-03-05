@@ -3133,29 +3133,15 @@ BattleScript_GrassCannonCheckTerrain::
 	goto BattleScript_EffectDefenseUpHit
 
 BattleScript_EffectSpiritAway::
-	jumpiftype BS_TARGET, TYPE_GHOST, BattleScript_EffectAbsorb
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	typecalc
-	jumpifmovehadnoeffect BattleScript_HitFromCritCalc
-	critcalc
-	damagecalc
-	adjustdamage
-	trysetthirdtype BS_TARGET, BattleScript_EffectAbsorb
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
+    call BattleScript_EffectHit_Ret
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_SpiritAwaySkipThirdType
+	jumpiffainted BS_TARGET, TRUE, BattleScript_SpiritAwaySkipThirdType
+	jumpifmovehadnoeffect BattleScript_SpiritAwaySkipThirdType
+	trysetthirdtype BS_TARGET, BattleScript_SpiritAwaySkipThirdType
+	printstring STRINGID_THIRDTYPEADDED
 	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
-	seteffectwithchance
+BattleScript_SpiritAwaySkipThirdType::
 	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_SpiritAwayHealBlock
 	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_SpiritAwayHealBlock
 	setdrainedhp

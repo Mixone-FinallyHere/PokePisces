@@ -4638,7 +4638,7 @@ static const u8 sVigorRootDescription[] = _(
 static const u8 sSpiritAwayDescription[] = _(
     "The user grabs the foe and\n"
     "changes it to a Ghost-type.\n"
-    "Abosrbs 3/4 the damage dealt.");
+    "Absorbs 3/4 the damage dealt.");
 
 static const u8 sPhantasmDescription[] = _(
     "The user gains the Phantom status\n"
