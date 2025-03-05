@@ -4683,7 +4683,7 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
 #define CALC_STAT(base, iv, ev, statIndex, field)               \
 {                                                               \
     u8 baseStat = gSpeciesInfo[species].base;                   \
-    s32 n = (((2 * baseStat + iv + ev / 4) * level) / 100) + 5; \
+    s32 n = (((2 * baseStat + 31 + ev / 4) * level) / 100) + 5; \
     u8 nature = GetNature(mon);                                 \
     n = ModifyStatByNature(nature, n, statIndex);               \
     CALC_FRIENDSHIP_BOOST()                                     \
@@ -4723,12 +4723,12 @@ void CalculateMonStats(struct Pokemon *mon)
     }
     else if (species == SPECIES_FLAGUE_PRINCE)
     {
-        s32 n = 2 * gSpeciesInfo[species].baseHP + hpIV;
+        s32 n = 2 * gSpeciesInfo[species].baseHP + 31;
         newMaxHP = (((n + hpEV / 4) * level) / 100) + level + 210;
     }
     else
     {
-        s32 n = 2 * gSpeciesInfo[species].baseHP + hpIV;
+        s32 n = 2 * gSpeciesInfo[species].baseHP + 31;
         newMaxHP = (((n + hpEV / 4) * level) / 100) + level + 10;
     }
 

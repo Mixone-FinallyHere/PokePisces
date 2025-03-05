@@ -318,6 +318,9 @@
 #define VARIOUS_JUMP_IF_INFATUATED_SPECIFIC          226
 #define VARIOUS_DISABLE_CHOSEN_MOVE                  227
 #define VARIOUS_MIND_GAP_CHECK                       228
+#define VARIOUS_REMOVE_FRENZY_COUNTER                229
+#define VARIOUS_GET_ERODE_FIELD_TARGETS              230
+#define VARIOUS_JUMP_IF_NOT_ERODE_FIELD_AFFECTED     231
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0
@@ -391,13 +394,13 @@
 #define MOVEEND_LIFEORB_SHELLBELL                 29    // Includes shell bell, throat spray, etc
 #define MOVEEND_CHANGED_ITEMS                     30
 #define MOVEEND_PICKPOCKET                        31
-#define MOVEEND_DANCER                            32
-#define MOVEEND_SYMBIOSIS                         33
-#define MOVEEND_SAME_MOVE_TURNS                   34
-#define MOVEEND_SLICING_MOVE_TURNS                35
-#define MOVEEND_DANCING_MOVE_TURNS                36
-#define MOVEEND_NEXT_DANCE_TARGET                 37
-#define MOVEEND_CLEAR_BITS                        38
+#define MOVEEND_SYMBIOSIS                         32
+#define MOVEEND_SAME_MOVE_TURNS                   33
+#define MOVEEND_SLICING_MOVE_TURNS                34
+#define MOVEEND_DANCING_MOVE_TURNS                35
+#define MOVEEND_NEXT_DANCE_TARGET                 36
+#define MOVEEND_CLEAR_BITS                        37
+#define MOVEEND_DANCER                            38
 #define MOVEEND_COUNT                             39
 
 // switch cases

@@ -6660,10 +6660,11 @@ const u8 gSnurrowlPokedexText[] = _(
     "home, setting up the ideal habitat anywhere.");
 
 const u8 gStolycePokedexText[] = _(
-    "Stolyce are completely nomadic and never\n"
-    "stay in one place. They tend to only\n"
-    "turn right and make brief stops when\n"
-    "resting and laying eggs.");
+    "Stolyce are completely nomadic and never stay in\n"
+    "one place for long. A group of them were fitted\n"
+    "with tracking chips to study their migration\n"
+    "patterns, but scientists were baffled to observe\n"
+    "that they only ever turn left, no matter what.");
 
 const u8 gGaoterraPokedexText[] = _(
     "Scientists are unsure if these Pokémon\n"

@@ -1582,9 +1582,9 @@ static const u8 sEntrancingDescription[] = _(
     "Pokémon take aim only at them.");
 
 static const u8 sEvilEyeDescription[] = _(
-    "The Pokémon stares at the\n"
-    "opposing Pokémon upon entering\n"
-    "battle, lowering their Speed.");
+    "The Pokémon eithers lowers foes'\n"
+    "Speed stats or paralyzes them if\n"
+    "they have a lot of stat boosts.");
 
 static const u8 sFreeLoveDescription[] = _(
     "The Pokémon can infatuate\n"
@@ -1592,9 +1592,9 @@ static const u8 sFreeLoveDescription[] = _(
     "gender.");
 
 static const u8 sGhoulishDescription[] = _(
-    "When the Pokémon takes damage\n"
-    "from attacks restores some of\n"
-    "the damage as HP.");
+    "After the Pokémon takes damage\n"
+    "from attacks it restores some of\n"
+    "the damage as HP afterwards.");
 
 static const u8 sGlaringStaggerDescription[] = _(
     "The Pokémon glares at the\n"

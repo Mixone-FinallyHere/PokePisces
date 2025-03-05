@@ -1545,6 +1545,14 @@ u32 AI_GetBattlerMoveTargetType(u32 battlerId, u32 move)
 
     if (gBattleMoves[move].effect == EFFECT_EXPANDING_FORCE && AI_IsTerrainAffected(battlerId, STATUS_FIELD_PSYCHIC_TERRAIN))
         return MOVE_TARGET_BOTH;
+    else if (gBattleMoves[move].effect == EFFECT_JUNGLE_RAGE && gDisableStructs[battlerId].frenzyCounter > 2)
+        return MOVE_TARGET_BOTH;
+    else if (gCurrentMove == MOVE_LEAF_STORM && (gBattleMons[battlerId].status1 & STATUS1_BLOOMING))
+        return MOVE_TARGET_BOTH;
+    else if (gCurrentMove == MOVE_DOUBLE_SHOCK && (gStatuses4[battlerId] & STATUS4_SUPERCHARGED) && (gStatuses4[battlerId] & STATUS4_GEARED_UP))
+        return MOVE_TARGET_FOES_AND_ALLY;
+    else if ((gBattleMoves[gCurrentMove].effect == EFFECT_CANNONADE) && (gBattleMons[battlerId].hp <= (gBattleMons[battlerId].maxHP / 4)))
+        return MOVE_TARGET_FOES_AND_ALLY;
     else
         return gBattleMoves[move].target;
 }
@@ -1942,6 +1950,8 @@ bool32 ShouldLowerStat(u32 battler, u32 battlerAbility, u32 stat)
         if (AI_DATA->holdEffects[battler] == HOLD_EFFECT_CLEAR_AMULET
          || battlerAbility == ABILITY_CLEAR_BODY
          || battlerAbility == ABILITY_WHITE_SMOKE
+         || battlerAbility == ABILITY_DEFIANT
+         || battlerAbility == ABILITY_COMPETITIVE
          || gDisableStructs[battler].purified
          || battlerAbility == ABILITY_FULL_METAL_BODY
          || battlerAbility == ABILITY_TITANIC)
