@@ -575,9 +575,9 @@
 #define MUS_EVER_GRANDE_ROAD        637
 #define MUS_EVER_GRANDE_SUMMIT      638
 #define MUS_SURF_2                  639
-#define MUS_VS_OZONE                640
-#define MUS_PISCES_TITLE            641
-#define MUS_VS_WALLY                642
+#define MUS_VS_WALLY                640
+#define MUS_VS_OZONE            641
+#define MUS_PISCES_TITLE                642
 #define MUS_VS_RISING_LEGEND            643
 #define MUS_VS_FALLING_LEGEND            644
 
