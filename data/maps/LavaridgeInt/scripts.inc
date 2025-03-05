@@ -6,6 +6,7 @@ LavaridgeInt_MapScripts::
 	.byte 0
 
 LavaridgeInt_OnLoad:
+	setflag FLAG_VISITED_LAVARIDGE_TOWN
 	call_if_gt VAR_DURIN_RESISTANCE, 0, LavaridgeInt_EventScript_RemoveAngryLady
 	end
 

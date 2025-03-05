@@ -93,6 +93,15 @@ PrecipikeInteriors_EventScript_GoToScuttill::
 	end
 
 PrecipikeInteriors_EventScript_TheEggDemon::
+	goto_if_set FLAG_RECEIVED_LUCKY_EGGS, PrecipikeInteriors_EventScript_TheEggDemon2
+	msgbox PrecipikeInteriors_Text_HaveTheseEggs, MSGBOX_DEFAULT
+	giveitem ITEM_LUCKY_EGG, 3
+	setflag FLAG_RECEIVED_LUCKY_EGGS
+	msgbox PrecipikeInteriors_Text_TheEggDemon, MSGBOX_AUTOCLOSE
+	release
+	end
+
+PrecipikeInteriors_EventScript_TheEggDemon2::
 	msgbox PrecipikeInteriors_Text_TheEggDemon, MSGBOX_AUTOCLOSE
 	release
 	end
@@ -320,6 +329,12 @@ PrecipikeInteriors_Text_GoToScuttill:
 	.string "that there's been thievery\l"
 	.string "in the Scuttill Way area.\l"
 	.string "Keep your eyes peeled!$"
+
+PrecipikeInteriors_Text_HaveTheseEggs:
+	.string "I've heard you've really been\n"
+	.string "hunting down those egg thieves!\l"
+	.string "Here, take these as a token\l"
+	.string "of appreciation from me.$"
 
 PrecipikeInteriors_Text_TheEggDemon:
 	.string "You got the Scuttill Way\n"

@@ -100,6 +100,7 @@ LilycoveCity_PokemonCenter_2F_EventScript_WhereIsMySibling::
 
 LilycoveCity_PokemonCenter_2F_EventScript_WarpToShrine::
 	warp MAP_ROUTE122, 30, 20
+	waitstate
 	release
 	end
 
@@ -107,13 +108,22 @@ LilycoveCity_PokemonCenter_2F_Text_NamePhillipe:
 	.string "Phillipe$"
 
 LilycoveCity_PokemonCenter_2F_Text_WouldYouLikeToWarp:
-	.string "wanna warp$"
+	.string "I am able to warp you to my kin\n"
+	.string "in Zotpyre Village.\p"
+	.string "Is that something you are\n"
+	.string "prepared to do?$"
 
 LilycoveCity_PokemonCenter_2F_Text_MaybeAnotherTime:
-	.string "maybe nexttime$"
+	.string "Maybe another time, then!$"
 
 LilycoveCity_PokemonCenter_2F_Text_CanYouFindMyKin:
-	.string "can u find my kin$"
+	.string "Ohm.... Ohm....\p"
+	.string "...Oh, rats. I seem to have\n"
+	.string "lost my connection to my kin\l"
+	.string "in Zotpyre Village...\p"
+	.string "Perhaps the heavy fog has been\n"
+	.string "interfering too heavily with\l"
+	.string "our etherplane...$"
 
 LilycoveCity_PokemonCenter_2F_Text_HaveYouCaughtThisMon:
 	.string "you needa catch uhh\n"

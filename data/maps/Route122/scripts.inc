@@ -150,6 +150,7 @@ Route122_EventScript_Teleporter::
 
 Route122_EventScript_WarpToCenter::
 	warp MAP_LILYCOVE_CITY_POKEMON_CENTER_2F, 12, 3
+	waitstate
 	release
 	end
 
@@ -170,13 +171,23 @@ Route122_Text_YouFeelWatched:
 	.string "you are being intently watched...)$"
 
 Route122_Text_WouldYouLikeToWarp:
-	.string "wanna warp$"
+	.string "I am able to warp you to my kin\n"
+	.string "in the Brumist Cliffs route center.\p"
+	.string "Is that something you are\n"
+	.string "prepared to do?$"
 
 Route122_Text_MaybeAnotherTime:
-	.string "maybe nexttime$"
+	.string "Maybe another time, then!$"
 
 Route122_Text_IReuniteWithMyKin:
-	.string "psychic connection activate$"
+	.string "Ohm.... Ohm....\p"
+	.string "Aha...! I have found my kin once\n"
+	.string "more among the psychic etherplane.\p"
+	.string "I should be able to harness our\n"
+	.string "combined ESP to teleport objects...\l"
+	.string "and maybe people...?\p"
+	.string "You there. Would you care to be\n"
+	.string "our guinea pig?$"
 
 Route122_Text_GreetingsChild:
 	.string "A pleasant welcome to\n"

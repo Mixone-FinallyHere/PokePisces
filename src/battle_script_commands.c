@@ -20023,13 +20023,43 @@ void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBat
     if (IsTradedMon(&gPlayerParty[expGetterMonId]))
         *expAmount = (*expAmount * 125) / 100;
     if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
-        *expAmount = (*expAmount * 150) / 100;
+        *expAmount = (*expAmount * 200) / 100;
     if (B_UNEVOLVED_EXP_MULTIPLIER >= GEN_6 && IsMonPastEvolutionLevel(&gPlayerParty[expGetterMonId]))
         *expAmount = (*expAmount * 4915) / 4096;
     if (B_AFFECTION_MECHANICS == TRUE && GetBattlerFriendshipScore(expGetterMonId) >= FRIENDSHIP_50_TO_99)
         *expAmount = (*expAmount * 4915) / 4096;
     if (CheckBagHasItem(ITEM_EXP_CHARM, 1)) //is also for other exp boosting Powers if/when implemented
         *expAmount = (*expAmount * 150) / 100;
+    if (FlagGet(FLAG_VISITED_SOOTOPOLIS_CITY))
+        if (!FlagGet(FLAG_BADGE01_GET))
+            *expAmount = (*expAmount * 150) / 100;
+    if (FlagGet(FLAG_VISITED_MOSSDEEP_CITY))
+        if (!FlagGet(FLAG_BADGE02_GET))
+            *expAmount = (*expAmount * 150) / 100;
+    if (FlagGet(FLAG_VISITED_LILYCOVE_CITY))
+        if (!FlagGet(FLAG_DEFEATED_OZONE_BRANCH))
+            *expAmount = (*expAmount * 150) / 100;
+    if (FlagGet(FLAG_VISITED_ZOTPYRE))
+        if (!FlagGet(FLAG_BADGE03_GET))
+            *expAmount = (*expAmount * 150) / 100;
+    if (FlagGet(FLAG_VISITED_FORTREE_CITY))
+        if (!FlagGet(FLAG_BADGE04_GET))
+            *expAmount = (*expAmount * 150) / 100;
+    if (FlagGet(FLAG_VISITED_LAVARIDGE_TOWN))
+        if (!FlagGet(FLAG_BADGE05_GET))
+            *expAmount = (*expAmount * 150) / 100;
+    if (FlagGet(FLAG_VISITED_VERDANTURF_TOWN))
+        if (!FlagGet(FLAG_BADGE06_GET))
+            *expAmount = (*expAmount * 150) / 100;
+    if (FlagGet(FLAG_VISITED_DEWFORD_TOWN))
+        if (!FlagGet(FLAG_BADGE07_GET))
+            *expAmount = (*expAmount * 150) / 100;
+    if (FlagGet(FLAG_VISITED_RUSTBORO_CITY))
+        if (!FlagGet(FLAG_BADGE08_GET))
+            *expAmount = (*expAmount * 150) / 100;
+    if (FlagGet(FLAG_VISITED_LITTLEROOT_TOWN))
+        if (!FlagGet(FLAG_DEFEATED_EVIL_WALLY))
+            *expAmount = (*expAmount * 150) / 100;
 
     if (B_SCALED_EXP >= GEN_5 && B_SCALED_EXP != GEN_6)
     {

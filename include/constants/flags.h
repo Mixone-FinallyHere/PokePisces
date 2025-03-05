@@ -1287,8 +1287,8 @@
 #define FLAG_WILL_JUDGE_PAINTING                                           0x4D5 // Unused Flag
 #define FLAG_CAUGHT_ALL_SPINDA                                          0x4D6 // Unused Flag
 #define FLAG_CABLE_CAR_UNLOCKED                                           0x4D7 // Unused Flag
-#define FLAG_UNUSED_0x4D8                                           0x4D8 // Unused Flag
-#define FLAG_UNUSED_0x4D9                                           0x4D9 // Unused Flag
+#define FLAG_DEFEATED_MANTLE_FUZKY                                           0x4D8 // Unused Flag
+#define FLAG_RECEIVED_LUCKY_EGGS                                           0x4D9 // Unused Flag
 #define FLAG_UNUSED_0x4DA                                           0x4DA // Unused Flag
 #define FLAG_UNUSED_0x4DB                                           0x4DB // Unused Flag
 #define FLAG_UNUSED_0x4DC                                           0x4DC // Unused Flag

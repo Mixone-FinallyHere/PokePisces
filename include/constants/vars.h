@@ -154,7 +154,7 @@
 #define VAR_NOTICED_BY_YANDEMIC                               0x4077 // Unused Var
 #define VAR_ORBS_QUEST_STATE                               0x4078 // Unused Var
 #define VAR_KITIKITI_QUEST_STATE                               0x4079 // Unused Var
-#define VAR_ROUTE127_STATE                               0x407A // Unused Var
+#define VAR_HP_POST_CHALLENGE_TEMP                               0x407A // Unused Var
 #define VAR_ROUTE128_STATE                               0x407B
 #define VAR_ROUTE129_STATE                               0x407C // Unused Var
 #define VAR_ROUTE130_STATE                               0x407D // Unused Var

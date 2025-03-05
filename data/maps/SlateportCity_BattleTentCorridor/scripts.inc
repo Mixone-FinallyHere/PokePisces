@@ -65,11 +65,10 @@ SlateportCity_BattleTentCorridor_EventScript_AskReadyForOpponent::
     addvar VAR_RESULT, 1    @ 1-index it
     buffernumberstring STR_VAR_1, VAR_RESULT
     call SlateportCity_BattleTentCorridor_EventScript_ReadyForNthOppontent
-	multichoice 20, 6, MULTI_GO_ON_REST_RETIRE, TRUE
+	multichoice 20, 6, MULTI_GO_ON_RETIRE, TRUE
 	switch VAR_RESULT
 	case 0, SlateportCity_BattleTentCorridor_EventScript_AskSwapMon
-	case 1, SlateportCity_BattleTentCorridor_EventScript_AskPauseChallenge
-	case 2, SlateportCity_BattleTentCorridor_EventScript_AskRetireChallenge
+	case 1, SlateportCity_BattleTentCorridor_EventScript_AskRetireChallenge
 
 SlateportCity_BattleTentCorridor_EventScript_AskPauseChallenge::
 	msgbox BattleFrontier_BattleFactoryPreBattleRoom_Text_SaveAndQuitGame, MSGBOX_YESNO

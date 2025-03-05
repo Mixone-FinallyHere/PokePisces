@@ -38,6 +38,7 @@ SlateportCity_BattleTentLobby_EventScript_QuitWithoutSaving::
 
 SlateportCity_BattleTentLobby_EventScript_WonChallenge::
 	lockall
+	setvar VAR_HP_POST_CHALLENGE_TEMP, 2
     frontier_get FRONTIER_DATA_BATTLE_NUM
     addvar VAR_RESULT, 1    @ 1-index it
     buffernumberstring STR_VAR_1, VAR_RESULT
@@ -49,15 +50,7 @@ SlateportCity_BattleTentLobby_EventScript_WonChallenge::
 	playse SE_SAVE
 	waitse
 SlateportCity_BattleTentLobby_EventScript_GivePrize::
-	msgbox SlateportCity_BattleTentLobby_Text_AwardYouThisPrize, MSGBOX_DEFAULT
-	slateporttent_giveprize
-	switch VAR_RESULT
-	case FALSE, SlateportCity_BattleTentLobby_EventScript_NoRoomForPrize
 	frontier_set FRONTIER_DATA_CHALLENGE_STATUS, 0
-	message BattleFrontier_BattleTowerLobby_Text_ReceivedPrize  @ Odd that it uses Tower's instead of Factory's or its own
-	waitmessage
-	playfanfare MUS_OBTAIN_ITEM
-	waitfanfare
 	goto SlateportCity_BattleTentLobby_EventScript_EndGivePrize
 
 SlateportCity_BattleTentLobby_EventScript_NoRoomForPrize::
@@ -66,12 +59,19 @@ SlateportCity_BattleTentLobby_EventScript_NoRoomForPrize::
 
 SlateportCity_BattleTentLobby_EventScript_LostChallenge::
 	lockall
+	setvar VAR_HP_POST_CHALLENGE_TEMP, 1
+	frontier_get FRONTIER_DATA_BATTLE_NUM
+    addvar VAR_RESULT, 1    @ 1-index it
+    buffernumberstring STR_VAR_1, VAR_RESULT
+	goto_if_gt VAR_RESULT, 2, SlateportCity_BattleTentLobby_EventScript_CheckHPProgress
+SlateportCity_BattleTentLobby_EventScript_ReturnToLostChallenge::
 	message SlateportCity_BattleTentLobby_Text_ReturnRentalMonsSaveResults
 	waitmessage
 	frontier_set FRONTIER_DATA_LVL_MODE, FRONTIER_LVL_50
 	slateporttent_save 0
 	playse SE_SAVE
 	waitse
+	goto SlateportCity_BattleTentLobby_EventScript_EndGivePrize
 
 SlateportCity_BattleTentLobby_EventScript_EndGivePrize::
 	msgbox SlateportCity_BattleTentLobby_Text_LookForwardToNextVisit, MSGBOX_DEFAULT
@@ -95,8 +95,6 @@ SlateportCity_BattleTentLobby_EventScript_ResumeChallenge::
 SlateportCity_BattleTentLobby_EventScript_Attendant::
 	lock
 	faceplayer
-	slateporttent_getprize
-	goto_if_ne VAR_RESULT, ITEM_NONE, SlateportCity_BattleTentLobby_EventScript_GivePrize
 	special SavePlayerParty
 	msgbox SlateportCity_BattleTentLobby_Text_WelcomeToBattleTent, MSGBOX_DEFAULT
 SlateportCity_BattleTentLobby_EventScript_AskEnterChallenge::
@@ -113,8 +111,7 @@ SlateportCity_BattleTentLobby_EventScript_TryEnterChallenge::
     @ select league (if you can)
     slateporttent_getleagues
     switch VAR_RESULT
-    case 0, SlateportCity_BattleTentLobby_EventScript_SetMinorLeague
-    case 1, SlateportCity_BattleTentLobby_EventScript_MinorOrMajor
+    goto SlateportCity_BattleTentLobby_EventScript_SetMinorLeague
 SlateportCity_BattleTentLobby_EventScript_ChooseAnyLeague:
     multichoice 17, 4, MULTI_SLATEPORT_ANY_LEAGUE, FALSE
     switch VAR_RESULT
@@ -333,14 +330,80 @@ SlateportCity_BattleTentLobby_Mart_TMShop:
 	release
 	end	
 
+SlateportCity_BattleTentLobby_EventScript_CheckHPProgress::
+	goto SlateportCity_BattleTentLobby_EventScript_ReturnToLostChallenge
+
+SlateportCity_BattleTentLobby_EventScript_SetWonStateForLanette::
+	setvar VAR_HP_POST_CHALLENGE_TEMP, 2
+	return
+
+SlateportCity_BattleTentLobby_EventScript_CheckDescriptions::
+	msgbox SlateportCity_BattleTentLobby_Text_CheckDescriptions, MSGBOX_NPC
+	end
+
+SlateportCity_BattleTentLobby_EventScript_GoTillYouDrop::
+	msgbox SlateportCity_BattleTentLobby_Text_GoTillYouDrop, MSGBOX_NPC
+	end
+
+SlateportCity_BattleTentLobby_EventScript_CheckLanette::
+	msgbox SlateportCity_BattleTentLobby_Text_CheckLanette, MSGBOX_NPC
+	end
+
+SlateportCity_BattleTentLobby_Text_CheckDescriptions:
+	.string "You know, it pays to be highly\n"
+	.string "observant, challenger.\p"
+	.string "While you may think you know\n"
+	.string "everything about Pokémon battles,\l"
+	.string "I heavily suggest thoroughly\l"
+	.string "checking the descriptions\l"
+	.string "of every aspect of the Pokémon\l"
+	.string "you have to choose from at\l"
+	.string "the beginning of your challenge.\l"
+	.string "Especially the moves and abilities.\p"
+	.string "You never know when something\n"
+	.string "could be off from what you\l"
+	.string "remember, or if a new move\l"
+	.string "you have never seen before\l"
+	.string "has been put in.\p"
+	.string "Plan carefully, and victory\n"
+	.string "may shine down on you.$"
+
+SlateportCity_BattleTentLobby_Text_GoTillYouDrop:
+	.string "Once you start the gauntlet,\n"
+	.string "there's no stopping till\l"
+	.string "you either retire or get\l"
+	.string "knocked out!\p"
+	.string "Plan for the long haul and\n"
+	.string "try for the biggest, most\l"
+	.string "impressive streak!$"
+
+SlateportCity_BattleTentLobby_Text_CheckLanette:
+	.string "Do you know Lanette? That\n"
+	.string "nerd lady with the glasses.\l"
+	.string "She's, like, a manager here\l"
+	.string "or something, from what I hear.\p"
+	.string "She seems to take interest in\n"
+	.string "people who do good in the\l"
+	.string "Platoon's battles. May do ya\l"
+	.string "good to go say hi to her\l"
+	.string "after you get done\l"
+	.string "your bouts in there.$"
+
 SlateportCity_BattleTentLobby_Text_YouNeedToHaveStreak:
-	.string "u needa git gud$"
+	.string "You need to get a streak of 3\n"
+	.string "or more battles in the Studio\l"
+	.string "to access this TM Shop!\p"
+	.string "Go show your battling chops,\n"
+	.string "and come back when you\l"
+	.string "hit that streak!$"
 
 SlateportCity_BattleTentLobby_Text_WelcomeToTMShop:
-	.string "welcome 2 da tm shop$"
+	.string "Welcome to the Battle Studio's\n"
+	.string "TM Shop! What can I do for you?$"
 
 SlateportCity_BattleTentLobby_Text_HaveAGoodDay:
-	.string "have a good day$"
+	.string "Have a great day, and\n"
+	.string "happy battling!$"
 
 SlateportCity_BattleTentLobby_Text_CouldntFindMonForMe:
 	.string "So, like, I couldn't find myself any\n"
