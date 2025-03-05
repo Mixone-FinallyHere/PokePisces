@@ -4068,8 +4068,8 @@ static const u8 sDragonCheerDescription[] = _(
 
 static const u8 sAlluringVoiceDescription[] = _(
     "The user sings using its angelic\n"
-    "voice. This confuses the foe if\n"
-    "its stats were boosted that turn.");
+    "voice. This confuses the target\n"
+    "if its stats are boosted.");
 
 static const u8 sTemperFlareDescription[] = _(
     "Spurred by desperation, the user\n"

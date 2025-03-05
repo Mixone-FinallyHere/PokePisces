@@ -15464,7 +15464,7 @@ static const struct TrainerMon sParty_PArchie[] = {
     .ev = TRAINER_PARTY_EVS(252, 0, 0, 4, 252, 0),
     .lvl = 77,
     .moves = {MOVE_BLEAKWIND_STORM, MOVE_WILDBOLT_STORM, MOVE_WATER_SPOUT, MOVE_VOLT_SWITCH},
-    .nature - NATURE_MODEST,
+    .nature = NATURE_MODEST,
     },
     {
     .species = SPECIES_LEVIALAGO,
