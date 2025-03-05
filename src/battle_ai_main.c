@@ -2269,13 +2269,8 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 10;
             break;
         case EFFECT_INGRAIN:
-            if (gStatuses3[battlerAtk] & STATUS3_ROOTED)
-            {
-                if ((AI_CanBloom(battlerAtk, battlerDef, move)))
-                    break;
-                else
-                    score -= 10;
-            }
+            if (gStatuses3[battlerAtk] & STATUS3_ROOTED && (!(AI_CanBloom(battlerAtk, battlerDef, move))))
+                score -= 10;
             break;
         case EFFECT_AQUA_RING:
             if (gStatuses3[battlerAtk] & STATUS3_AQUA_RING)
