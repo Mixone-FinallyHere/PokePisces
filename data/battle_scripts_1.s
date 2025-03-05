@@ -684,6 +684,67 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectMindGap                 @ EFFECT_MIND_GAP
 	.4byte BattleScript_EffectJungleRage              @ EFFECT_JUNGLE_RAGE
 	.4byte BattleScript_EffectAlluringVoice           @ EFFECT_ALLURING_VOICE
+	.4byte BattleScript_EffectRockWrecker             @ EFFECT_ROCK_WRECKER
+	.4byte BattleScript_EffectHydroCannon             @ EFFECT_HYDRO_CANNON
+
+BattleScript_EffectRockWrecker::
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	setmoveeffect MOVE_EFFECT_RECHARGE | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	setmoveeffect MOVE_EFFECT_DEF_MINUS_2
+	seteffectsecondary
+	goto BattleScript_MoveEnd
+
+BattleScript_EffectHydroCannon::
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	setmoveeffect MOVE_EFFECT_RECHARGE | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	setuserstatus3 STATUS3_AQUA_RING, BattleScript_MoveEnd
+	printstring STRINGID_PKMNSURROUNDEDWITHVEILOFWATER
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectAlluringVoice::
 	checkstatboosts 1, BattleScript_EffectConfuseHit
