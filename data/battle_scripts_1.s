@@ -14858,22 +14858,6 @@ BattleScript_UltraBurst::
 	switchinabilities BS_ATTACKER
 	end3
 
-BattleScript_AttackerFormChange::
-	pause 5
-	copybyte gBattlerAbility, gBattlerAttacker
-	call BattleScript_AbilityPopUp
-	printstring STRINGID_EMPTYSTRING3
-	waitmessage 1
-BattleScript_AttackerFormChangeNoPopup::
-	handleformchange BS_ATTACKER, 0
-	handleformchange BS_ATTACKER, 1
-	playanimation BS_ATTACKER, B_ANIM_FORM_CHANGE
-	waitanimation
-	handleformchange BS_ATTACKER, 2
-	printstring STRINGID_PKMNTRANSFORMED
-	waitmessage B_WAIT_TIME_LONG
-	return
-
 BattleScript_DefenderFormChange::
 	pause 5
 	copybyte gBattlerAbility, gBattlerTarget
@@ -14886,6 +14870,22 @@ BattleScript_DefenderFormChangeNoPopup::
 	playanimation BS_TARGET, B_ANIM_FORM_CHANGE
 	waitanimation
 	handleformchange BS_TARGET, 2
+	printstring STRINGID_PKMNTRANSFORMED
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_AttackerFormChange::
+	pause 5
+	copybyte gBattlerAbility, gBattlerAttacker
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_EMPTYSTRING3
+	waitmessage 1
+BattleScript_AttackerFormChangeNoPopup::
+	handleformchange BS_ATTACKER, 0
+	handleformchange BS_ATTACKER, 1
+	playanimation BS_ATTACKER, B_ANIM_FORM_CHANGE
+	waitanimation
+	handleformchange BS_ATTACKER, 2
 	printstring STRINGID_PKMNTRANSFORMED
 	waitmessage B_WAIT_TIME_LONG
 	return
