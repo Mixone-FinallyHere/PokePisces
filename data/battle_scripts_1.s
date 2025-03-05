@@ -13699,7 +13699,7 @@ BattleScript_MistProtected::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_PKMNPROTECTEDBYMIST
 	waitmessage B_WAIT_TIME_LONG
-	return
+	end2
 
 BattleScript_RageIsBuilding::
 	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_RageIsBuildingEnd
@@ -16647,32 +16647,32 @@ BattleScript_AbilityNoStatLoss::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNPREVENTSSTATLOSSWITH
 	waitmessage B_WAIT_TIME_LONG
-	return
+	end2
 
 BattleScript_ItemNoStatLoss::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_CLEARAMULETWONTLOWERSTATS
 	waitmessage B_WAIT_TIME_LONG
-	return
+	end2
 
 BattleScript_ItemNoSpecificStatLoss::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_ITEMWONTLOWERCERTAINSTAT
 	waitmessage B_WAIT_TIME_LONG
 	setbyte cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY
-	return
+	end2
 
 BattleScript_SuperMagnetNoStatLoss::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_SUPERMAGNETNOSTATLOSS
 	waitmessage B_WAIT_TIME_LONG
-	return
+	end2
 
 BattleScript_PurifiedNoStatChange::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_PURIFIEDNOSTATCHANGE
 	waitmessage B_WAIT_TIME_LONG
-	return
+	end2
 
 BattleScript_BRNPrevention::
 	pause B_WAIT_TIME_SHORT
@@ -16828,7 +16828,7 @@ BattleScript_AbilityNoSpecificStatLoss::
 	printstring STRINGID_PKMNSXPREVENTSYLOSS
 	waitmessage B_WAIT_TIME_LONG
 	setbyte cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY
-	return
+	end2
 
 BattleScript_StickyHoldActivates::
 	pause B_WAIT_TIME_SHORT
