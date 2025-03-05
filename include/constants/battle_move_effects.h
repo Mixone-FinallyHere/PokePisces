@@ -660,7 +660,8 @@
 #define EFFECT_AMNESIA                      654
 #define EFFECT_MIND_GAP                     655
 #define EFFECT_JUNGLE_RAGE                  656
+#define EFFECT_ALLURING_VOICE               657
 
-#define NUM_BATTLE_MOVE_EFFECTS             657
+#define NUM_BATTLE_MOVE_EFFECTS             658
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H
