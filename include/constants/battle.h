@@ -454,8 +454,9 @@
 #define MOVE_EFFECT_LONG_NOSE           116
 #define MOVE_EFFECT_RECHARGE_BURN       117
 #define MOVE_EFFECT_DRAGON_RAGE         118
+#define MOVE_EFFECT_SUPER_TROP_KICK     119
 
-#define NUM_MOVE_EFFECTS                119
+#define NUM_MOVE_EFFECTS                120
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000

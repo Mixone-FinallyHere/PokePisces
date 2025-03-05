@@ -131,6 +131,7 @@ extern const u8 BattleScript_IngrainTurnHeal[];
 extern const u8 BattleScript_DaybreakTurnDamage[];
 extern const u8 BattleScript_SolarPowerTurnDamage[];
 extern const u8 BattleScript_AtkDefDown[];
+extern const u8 BattleScript_SuperTropKick[];
 extern const u8 BattleScript_DefSpDefDown[];
 extern const u8 BattleScript_DefSpDefDownUser[];
 extern const u8 BattleScript_AtkSpAtkDown[];
