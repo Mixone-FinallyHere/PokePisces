@@ -22,6 +22,11 @@
       "map": "MAP_PERPLUME_MAZE",
       "offset": 0,
       "direction": "left"
+    },
+    {
+      "map": "MAP_SHIFTRY_ARENA",
+      "offset": 88,
+      "direction": "up"
     }
   ],
   "object_events": [

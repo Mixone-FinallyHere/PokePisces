@@ -49,12 +49,12 @@
     F(VENOSHOCK) \
     F(TROP_KICK) \
     F(RETALIATE) \
+    F(AURORA_BEAM) \
     F(SPIRIT_BREAK) \
     F(BRICK_BREAK) \
     F(ROCK_SLIDE) \
     F(ZING_ZAP) \
     F(FLASH_CANNON) \
-    F(AURORA_BEAM) \
     F(DRAGON_CLAW) \
     F(PSYSHOCK) \
     F(DAZZLING_GLEAM) \

@@ -3451,7 +3451,7 @@ static const u8 sTM38Desc[] = _(
     "attack in the sky.");
 
 static const u8 sTM39Desc[] = _(
-    "Gets rid of the foe's"
+    "Gets rid of the foe's\n"
     "Berry and Blooming.\n"
     "Also critical-hits if\n"
     "the foe is Blooming.");
@@ -3530,7 +3530,7 @@ static const u8 sTM51Desc[] = _(
 
 static const u8 sTM52Desc[] = _( 
     "The user crashes into\n"
-    "the foeand may flinch\n"
+    "the foe and may flinch\n"
     "them. Does bonus damage\n"
     "on Electric Terrain.");
 

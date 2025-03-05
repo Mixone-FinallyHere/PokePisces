@@ -68,6 +68,7 @@ struct DisableStruct
     u8 protectUses;
     u8 stockpileCounter;
     u8 exhaustionCounter;
+    u8 surpriseCounter;
     u8 daybreakCounter;
     u8 frenzyCounter;
     u8 purified;
@@ -104,6 +105,7 @@ struct DisableStruct
     u8 noRetreat:1;
     u8 tarShot:1;
     u8 octolock:1;
+    u8 bounceMove:1;
     u8 cudChew:1;
     u8 spikesDone:1;
     u8 toxicSpikesDone:1;
@@ -111,7 +113,6 @@ struct DisableStruct
     u8 stealthRockDone:1;
     u8 spiderweb:1;
     u8 shunyongFlinchTimer:2;
-    u8 heartGiftTimer:4;
     u8 meanLook:1;
     u8 guardSplit:1;
     u8 guardSwap:1;
@@ -140,7 +141,6 @@ struct ProtectStruct
     u32 endured:1;
     u32 noValidMoves:1;
     u32 helpingHand:1;
-    u32 bounceMove:1;
     u32 stealMove:1;
     u32 prlzImmobility:1;
     u32 confusionSelfDmg:1;
@@ -216,6 +216,7 @@ struct SpecialStatus
     // End of byte
     u8 gemBoost:1;
     u8 rototillerAffected:1;  // to be affected by rototiller
+    u8 erodeFieldAffected:1;
     u8 parentalBondState:2;
     u8 multiHitOn:1;
     u8 announceNeutralizingGas:1;   // See Cmd_switchineffects
@@ -673,7 +674,6 @@ struct BattleStruct
     u8 dragonpokerBasePower;
     u8 fickleBeamBoosted:1;
     u8 redCardActivates:1;
-    u8 usedEjectItem;
     u8 boundaryBasePower;
     u8 rollingBasePower;
     u8 presentBasePower;
@@ -754,6 +754,8 @@ struct BattleStruct
     u8 aiCalcInProgress:1;
     u8 savedDanceTargets;
     u8 DancerCount;
+    u8 usedEjectItem;
+    u16 savedMove; // backup current move for mid-turn switching, e.g. Red Card
 };
 
 // The palaceFlags member of struct BattleStruct contains 1 flag per move to indicate which moves the AI should consider,
@@ -1137,6 +1139,12 @@ static inline struct Pokemon *GetSideParty(u32 side)
 static inline struct Pokemon *GetBattlerParty(u32 battler)
 {
     return GetSideParty(GetBattlerSide(battler));
+}
+
+static inline struct Pokemon* GetPartyBattlerData(u32 battler)
+{
+    u32 index = gBattlerPartyIndexes[battler];
+    return (GetBattlerSide(battler) == B_SIDE_OPPONENT) ? &gEnemyParty[index] : &gPlayerParty[index];
 }
 
 #endif // GUARD_BATTLE_H

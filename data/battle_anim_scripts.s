@@ -20163,9 +20163,9 @@ Move_CINDER_TWIRL::
 	loadspritegfx ANIM_TAG_RAPID_SPIN
 	loadspritegfx ANIM_TAG_SMALL_EMBER
 	monbg ANIM_ATTACKER
-	createsprite gRapidSpinSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, 32, -32, 40, -2
-	createvisualtask AnimTask_RapinSpinMonElevation, 2, 0, 2, 0
-	loopsewithpan SE_M_RAZOR_WIND2, SOUND_PAN_ATTACKER, 8, 4
+	createvisualtask AnimTask_DragonDanceWaver, 5
+	playsewithpan SE_M_TELEPORT, SOUND_PAN_ATTACKER
+	delay 8
 	splitbgprio_foes ANIM_TARGET
 	createsprite gFireSpiralOutwardSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, 56, 0
 	playsewithpan SE_M_FLAME_WHEEL, SOUND_PAN_ATTACKER
@@ -20207,13 +20207,6 @@ Move_CINDER_DRILL::
 	loadspritegfx ANIM_TAG_WHIRLWIND_LINES
 	loadspritegfx ANIM_TAG_SMALL_EMBER
 	loadspritegfx ANIM_TAG_RAPID_SPIN
-	monbg ANIM_ATTACKER
-	createsprite gRapidSpinSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, 32, -32, 40, -2
-	createvisualtask AnimTask_RapinSpinMonElevation, 2, 0, 2, 0
-	loopsewithpan SE_M_RAZOR_WIND2, SOUND_PAN_ATTACKER, 8, 4
-	delay 50
-	clearmonbg ANIM_ATTACKER
-	waitforvisualfinish
 	createsprite gFireSpiralOutwardSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, 56, 0
 	playsewithpan SE_M_FLAME_WHEEL, SOUND_PAN_ATTACKER
 	delay 2
@@ -26156,7 +26149,7 @@ Move_WILDER_DANCE::
 	loadspritegfx ANIM_TAG_MUSIC_NOTES
 	loadspritegfx ANIM_TAG_PURPLE_HAND_OUTLINE
 	monbg ANIM_ATTACKER
-	createvisualtask AnimTask_TeeterDanceMovement, 5
+	createvisualtask AnimTask_DragonDanceWaver, 5
 	playsewithpan SE_M_TELEPORT, SOUND_PAN_ATTACKER
 	delay 8
 	createvisualtask AnimTask_MusicNotesRainbowBlend, 2

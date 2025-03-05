@@ -1156,8 +1156,9 @@
 	.4byte \failInstr
 	.endm
 
-	.macro trysetmagiccoat failInstr:req
+	.macro trysetmagiccoat battler:req, failInstr:req
 	.byte 0xdf
+	.byte \battler
 	.4byte \failInstr
 	.endm
 
@@ -1412,14 +1413,12 @@
 	callnative BS_SetGlaiveRush2
 	.endm
 
-	.macro trycinderdrill battler:req
+	.macro trycinderdrill
 	callnative BS_TryCinderDrill
-	.byte \battler
 	.endm
 
-	.macro trycindertwirl battler:req
+	.macro trycindertwirl
 	callnative BS_TryCinderTwirl
-	.byte \battler
 	.endm
 
 	.macro trycopycat failInstr:req
@@ -1450,6 +1449,12 @@
 
 	.macro checkdaybreakcounter counter:req, ptr:req
 	callnative BS_CheckDaybreakCounter
+	.byte \counter
+	.4byte \ptr
+	.endm
+
+	.macro checkfrenzycounter counter:req, ptr:req
+	callnative BS_CheckFrenzyCounter
 	.byte \counter
 	.4byte \ptr
 	.endm
@@ -2164,6 +2169,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro removeallfrenzycounters battler:req, failInstr:req
+	various \battler, VARIOUS_REMOVE_FRENZY_COUNTER
+	.4byte \failInstr
+	.endm
+
 	.macro eeriespellppreduce failInstr:req
 	various BS_TARGET, VARIOUS_EERIE_SPELL_PP_REDUCE
 	.4byte \failInstr
@@ -2221,6 +2231,16 @@
 
 	.macro jumpifnotrototilleraffected battler:req, jumpInstr:req
 	various \battler, VARIOUS_JUMP_IF_NOT_ROTOTILLER_AFFECTED
+	.4byte \jumpInstr
+	.endm
+
+	.macro geterodefieldtargets failInstr:req
+	various BS_ATTACKER, VARIOUS_GET_ERODE_FIELD_TARGETS
+	.4byte \failInstr
+	.endm
+
+	.macro jumpifnoterodefieldaffected battler:req, jumpInstr:req
+	various \battler, VARIOUS_JUMP_IF_NOT_ERODE_FIELD_AFFECTED
 	.4byte \jumpInstr
 	.endm
 
@@ -2440,6 +2460,10 @@
 
 	.macro setovertaketarget
 	various BS_TARGET, VARIOUS_SET_OVERTAKE_TARGET
+	.endm
+
+	.macro restoresavedmove
+	callnative BS_RestoreSavedMove
 	.endm
 
 @ helpful macros

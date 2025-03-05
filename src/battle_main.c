@@ -3399,7 +3399,6 @@ void FaintClearSetData(u32 battler)
     gProtectStructs[battler].endured = FALSE;
     gProtectStructs[battler].noValidMoves = FALSE;
     gProtectStructs[battler].helpingHand = FALSE;
-    gProtectStructs[battler].bounceMove = FALSE;
     gProtectStructs[battler].stealMove = FALSE;
     gProtectStructs[battler].prlzImmobility = FALSE;
     gProtectStructs[battler].confusionSelfDmg = FALSE;

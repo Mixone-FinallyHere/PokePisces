@@ -667,9 +667,9 @@ static const u8 sAmnesiaDescription[] = _(
     "This sharply boosts Sp. Def.");
 
 static const u8 sKinesisDescription[] = _(
-    "Lowers accuracy. On Psychic\n"
-    "Terrain, makes the foe exhausted\n"
-    "instead, reducing their damage.");
+    "Cuts foes' accuracy and evasion.\n"
+    "On Psychic Terrain, makes foes\n"
+    "exhausted, lowering their power.");
 
 static const u8 sSoftBoiledDescription[] = _(
     "The user creates and eats a\n"
@@ -1027,8 +1027,8 @@ static const u8 sRolloutDescription[] = _(
 
 static const u8 sFalseSwipeDescription[] = _(
     "Leaves foe with at least 1 HP.\n"
-    "Boosted if user is at certain\n"
-    "levels. Always hits neutrally.");
+    "Power increases with user's\n"
+    "level. Always hits neutrally.");
 
 static const u8 sSwaggerDescription[] = _(
     "The user enrages and confuses\n"
@@ -1375,9 +1375,9 @@ static const u8 sSuperpowerDescription[] = _(
     "lowers the user's Attack stat.");
 
 static const u8 sMagicCoatDescription[] = _(
-    "A barrier reflects back to the\n"
-    "foe moves like Leech Seed and\n"
-    "that inflict status conditions.");
+    "Barriers for the user and ally\n"
+    "that reflect a status move each.\n"
+    "Fails if the user already has it.");
 
 static const u8 sRecycleDescription[] = _(
     "The user recycles a held item\n"
@@ -3640,6 +3640,11 @@ static const u8 sJungleHealingDescription[] = _(
     "condition they are cured of it,\n"
     "otherwise they start to bloom.");
 
+static const u8 sJungleRageDescription[] = _(
+    "Gains Frenzy. At 3 Frenzy, uses\n"
+    "it all to hit both foes and drain\n"
+    "HP. When blooming, maxes Frenzy.");
+
 static const u8 sSurgingStrikesDescription[] = _(
     "Strikes the foe with a flowing\n"
     "motion 3 times in a row. This\n"
@@ -4063,8 +4068,8 @@ static const u8 sDragonCheerDescription[] = _(
 
 static const u8 sAlluringVoiceDescription[] = _(
     "The user sings using its angelic\n"
-    "voice. This confuses the foe if\n"
-    "its stats were boosted that turn.");
+    "voice. This confuses the target\n"
+    "if its stats are boosted.");
 
 static const u8 sTemperFlareDescription[] = _(
     "Spurred by desperation, the user\n"
@@ -5833,7 +5838,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_CINDER_DRILL - 1] = sCinderDrillDescription,
     [MOVE_SILENCE - 1] = sSilenceDescription,
     [MOVE_VEXING_KI - 1] = sVexingKiDescription,
-    [MOVE_JUNGLE_RAGE - 1] = sRageFistDescription,
+    [MOVE_JUNGLE_RAGE - 1] = sJungleRageDescription,
     [MOVE_DECAY_BEAM - 1] = sDecayBeamDescription,
     [MOVE_CANNONADE - 1] = sCannonadeDescription,
     [MOVE_WARM_WELCOME - 1] = sWarmWelcomeDescription,
