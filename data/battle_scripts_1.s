@@ -682,7 +682,12 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectHoldHands               @ EFFECT_HOLD_HANDS
 	.4byte BattleScript_EffectAmnesia                 @ EFFECT_AMNESIA
 	.4byte BattleScript_EffectMindGap                 @ EFFECT_MIND_GAP
-	.4byte BattleScript_EffectJungleRage              @ EFFECT_JUNGLE_HEALING
+	.4byte BattleScript_EffectJungleRage              @ EFFECT_JUNGLE_RAGE
+	.4byte BattleScript_EffectAlluringVoice           @ EFFECT_ALLURING_VOICE
+
+BattleScript_EffectAlluringVoice::
+	checkstatboosts 1, BattleScript_EffectConfuseHit
+	goto BattleScript_EffectHit
 
 BattleScript_EffectJungleRage::
 	checkfrenzycounter 3, BattleScript_JungleRageMaxFrenzy

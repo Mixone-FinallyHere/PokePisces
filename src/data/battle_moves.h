@@ -14003,7 +14003,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_ALLURING_VOICE] =
     {
-        .effect = EFFECT_CONFUSE_HIT,
+        .effect = EFFECT_ALLURING_VOICE,
         .power = 80,
         .type = TYPE_FAIRY,
         .accuracy = 100,

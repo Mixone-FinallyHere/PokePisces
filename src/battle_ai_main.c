@@ -6819,8 +6819,18 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             score++;
         break;
     case EFFECT_BURNING_ENVY:
-        if (CountBattlerStatIncreases(battlerDef, TRUE) > 2 && (!(gBattleMons[battlerDef].status1 & STATUS1_BURN)))
+        if (CountBattlerStatIncreases(battlerDef, TRUE) > 2)
             score += 8;
+        if (!(AI_CanBeBurned(battlerAtk, aiData->abilities[battlerDef])))
+            score -= 6;
+        if (gBattleMons[battlerDef].status2 & STATUS2_TORMENT || aiData->holdEffects[battlerDef] == HOLD_EFFECT_MENTAL_HERB)
+            score -= 3;
+        if (CountBattlerStatIncreases(battlerDef, TRUE) < 3)
+            score -= 8;
+        break;
+    case EFFECT_ALLURING_VOICE:
+        if (CountBattlerStatIncreases(battlerDef, TRUE) > 1 && AI_CanBeConfused(battlerDef, TRUE))
+            score += 2;
         break;
     case EFFECT_ALL_STATS_UP_HIT:
         if (move == MOVE_OMINOUS_WIND && (gBattleMons[battlerDef].status1 & STATUS1_PANIC))
