@@ -12441,10 +12441,11 @@ BattleScript_EffectImprison::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectRefresh:
+	jumpifnoally BS_ATTACKER, BattleScript_EffectRefreshSingleBattle
 	attackcanceler
 	attackstring
 	ppreduce
-	curestatuswithmove BS_TARGET, BattleScript_RefreshFailed
+	curestatuswithmove BS_TARGET, BattleScript_UserRefreshFailed
 	tryresetnegativestatstages BS_TARGET
 	attackanimation
 	waitanimation
@@ -12453,37 +12454,45 @@ BattleScript_EffectRefresh:
 	updatestatusicon BS_TARGET
 	printstring STRINGID_USERNEGATIVESTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_RefreshLoop
-BattleScript_RefreshFailed:
+	setallytonexttarget BattleScript_EffectRefreshAlly
+	goto BattleScript_MoveEnd
+BattleScript_EffectRefreshAlly:
+	curestatuswithmove BS_TARGET, BattleScript_AllyRefreshFailed
+	tryresetnegativestatstages BS_TARGET
+	printstring STRINGID_PKMNSTATUSNORMAL
+	waitmessage B_WAIT_TIME_LONG
+	updatestatusicon BS_TARGET
+	printstring STRINGID_TARGETNEGATIVESTATCHANGESGONE
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_EffectRefreshSingleBattle::
+	attackcanceler
+	attackstring
+	ppreduce
+	curestatuswithmove BS_TARGET, BattleScript_UserRefreshFailed
 	tryresetnegativestatstages BS_TARGET
 	attackanimation
 	waitanimation
-	printstring STRINGID_USERNEGATIVESTATCHANGESGONE
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_RefreshLoop:
-	jumpifbyte CMP_NOT_EQUAL, gBattleCommunication, 0x0, BattleScript_MoveEnd
-    addbyte gBattleCommunication, 1
-    jumpifnoally BS_TARGET, BattleScript_MoveEnd
-	setallytonexttarget BattleScript_RefreshStatChangeAlly
-BattleScript_RefreshStatChangeAlly:
-	curestatuswithmove BS_TARGET, BattleScript_RefreshFailedAlly
-	tryresetnegativestatstages BS_TARGET
 	printstring STRINGID_PKMNSTATUSNORMAL
 	waitmessage B_WAIT_TIME_LONG
 	updatestatusicon BS_TARGET
 	printstring STRINGID_USERNEGATIVESTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_RefreshLoop
-BattleScript_RefreshFailedAlly:
+	goto BattleScript_MoveEnd
+BattleScript_UserRefreshFailed::
 	tryresetnegativestatstages BS_TARGET
+	attackanimation
+	waitanimation
 	printstring STRINGID_USERNEGATIVESTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
-	jumpifbyte CMP_NOT_EQUAL, gBattleCommunication, 0x0, BattleScript_MoveEnd
-    addbyte gBattleCommunication, 1
-    jumpifnoally BS_TARGET, BattleScript_MoveEnd
-	setallytonexttarget BattleScript_RefreshStatChangeAlly
-	goto BattleScript_RefreshLoop
-
+	jumpifnoally BS_ATTACKER, BattleScript_MoveEnd
+	setallytonexttarget BattleScript_EffectRefreshAlly
+	goto BattleScript_MoveEnd
+BattleScript_AllyRefreshFailed::
+	tryresetnegativestatstages BS_TARGET
+	printstring STRINGID_TARGETNEGATIVESTATCHANGESGONE
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectGrudge:
 	attackcanceler
