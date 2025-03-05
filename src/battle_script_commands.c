@@ -11428,17 +11428,16 @@ static void Cmd_various(void)
     case VARIOUS_HANDLE_FORM_CHANGE:
     {
         VARIOUS_ARGS(u8 case_);
-        if (GetBattlerSide(battler) == B_SIDE_OPPONENT)
-            mon = &gEnemyParty[gBattlerPartyIndexes[battler]];
-        else
-            mon = &gPlayerParty[gBattlerPartyIndexes[battler]];
+        mon = GetPartyBattlerData(battler);
 
         // Change species.
         if (cmd->case_ == 0)
         {
+            /* What was the idea here?
             if (!gBattleTextBuff1)
                 PREPARE_SPECIES_BUFFER(gBattleTextBuff1, gBattleMons[battler].species);
-            BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_SPECIES_BATTLE, gBitTable[gBattlerPartyIndexes[battler]], sizeof(gBattleMons[battler].species), &gBattleMons[battler].species);
+            */
+            BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_SPECIES_BATTLE, 1u << gBattlerPartyIndexes[battler], sizeof(gBattleMons[battler].species), &gBattleMons[battler].species);
             MarkBattlerForControllerExec(battler);
         }
         // Change stats.
