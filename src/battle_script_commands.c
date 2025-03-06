@@ -20263,10 +20263,11 @@ void BS_ItemRestorePP(void)
             if (pp > maxPP)
                 pp = maxPP;
             SetMonData(mon, MON_DATA_PP1 + i, &pp);
-
+            
+            // DebugPrintfLevel(MGBA_LOG_WARN, "battler %d index %d toadd %d new %d", battler, i, effect[6], pp);
+            
             // Update battler PP if needed.
             if (battler != MAX_BATTLERS_COUNT
-                && gBattleStruct->itemPartyIndex[gBattlerAttacker] == gBattlerPartyIndexes[battler]
                 && MOVE_IS_PERMANENT(battler, i))
             {
                 gBattleMons[battler].pp[i] = pp;
