@@ -2791,8 +2791,8 @@ static const u8 sThroatSprayDesc[] = _(
 static const u8 sEjectPackDesc[] = _(
     "A parachute that\n"
     "switches the holder\n"
-    "out when its stats are\n"
-    "lowered.");
+    "out when its stats\n"
+    "are lowered.");
 
 static const u8 sHeavyDutyBootsDesc[] = _(
     "Some boots that\n"
@@ -2807,10 +2807,10 @@ static const u8 sBlunderPolicyDesc[] = _(
     "move.");
 
 static const u8 sRoomServiceDesc[] = _(
-    "A tray that lowers the\n"
-    "holder's Speed stat if\n"
-    "Trick Room takes\n"
-    "effect.");
+    "A tray that lowers\n"
+    "the holder's Speed\n"
+    "stat if Trick Room\n"
+    "takes effect.");
 
 static const u8 sUtilityUmbrellaDesc[] = _(
     "An umbrella that cuts\n"

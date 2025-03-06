@@ -1524,9 +1524,9 @@ static const u8 sBlastBurnDescription[] = _(
     "turn and burns attackers.");
 
 static const u8 sHydroCannonDescription[] = _(
-    "The target is hit with a watery\n"
-    "blast. The user can't move on\n"
-    "the next turn.");
+    "The user can't move on the next\n"
+    "turn. This move envelops the\n"
+    "user in a veil of water.");
 
 static const u8 sMeteorMashDescription[] = _(
     "The foe is hit with a meteor-like\n"
@@ -2169,9 +2169,9 @@ static const u8 sPowerWhipDescription[] = _(
     "user is blooming, never misses.");
 
 static const u8 sRockWreckerDescription[] = _(
-    "The user launches a huge boulder\n"
-    "at the foe to attack. The user\n"
-    "can't move on the next turn.");
+    "The user can't move on the next\n"
+    "turn. This move harshly lowers\n"
+    "the target's Defense stat.");
 
 static const u8 sCrossPoisonDescription[] = _(
     "A poisonous slashing attack that\n"
@@ -3531,9 +3531,9 @@ static const u8 sFalseSurrenderDescription[] = _(
     "hair. This attack never misses.");
 
 static const u8 sMeteorAssaultDescription[] = _(
-    "The user attacks wildly with its\n"
-    "thick leek. The user can't move\n"
-    "on the next turn.");
+    "The user can't move on the next\n"
+    "turn. When the user knocks out a\n"
+    "foe its Attack stat rises.");
 
 static const u8 sEternabeamDescription[] = _(
     "The user shoots a beam of pure\n"
@@ -4428,7 +4428,7 @@ static const u8 sBlackBuffetDescription[] = _(
 static const u8 sExecutionDescription[] = _(
     "Power doubles if the foe is at\n"
     "3/4 HP or less. The user becomes\n"
-    "exhausted reducing their damage.");
+    "exhausted, reducing their power.");
 
 static const u8 sSeizeChanceDescription[] = _(
     "Flinches if the foe is readying\n"
@@ -4638,7 +4638,7 @@ static const u8 sVigorRootDescription[] = _(
 static const u8 sSpiritAwayDescription[] = _(
     "The user grabs the foe and\n"
     "changes it to a Ghost-type.\n"
-    "Abosrbs 3/4 the damage dealt.");
+    "Absorbs 3/4 the damage dealt.");
 
 static const u8 sPhantasmDescription[] = _(
     "The user gains the Phantom status\n"
@@ -4707,8 +4707,8 @@ static const u8 sBeatboxDescription[] = _(
 
 static const u8 sLegDayDescription[] = _(
     "The user and allies train their\n"
-    "legs, boosting their Speed.\n"
-    "Fails if the user has no legs.");
+    "legs, boosting Speed. Fails if\n"
+    "the user or ally have no legs.");
 
 static const u8 sEvaporateDescription[] = _(
     "The user rapidly boils the\n"

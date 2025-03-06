@@ -6131,7 +6131,7 @@ const u16 gMegaBosses[] =
 
 bool32 IsShunyongBattle(void)
 {
-    if (IsSpeciesOneOf(GetMonData(&gEnemyParty[0], MON_DATA_SPECIES), gMegaBosses))
+    if (IsSpeciesOneOf(GetMonData(&gEnemyParty[0], MON_DATA_SPECIES), gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG))
         return TRUE;
     return FALSE;
 }

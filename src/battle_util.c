@@ -2619,12 +2619,11 @@ u8 DoBattlerEndTurnEffects(void)
                 TERU_CHARM_CHECK;
 
                 gBattlerTarget = gStatuses3[battler] & STATUS3_LEECHSEED_BATTLER; // Notice gBattlerTarget is actually the HP receiver.
-                if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses))
-                        gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
-                    else
-                        gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
+                gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
+                if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                    gBattleMoveDamage = 50;
                 gBattleScripting.animArg1 = gBattlerTarget;
                 gBattleScripting.animArg2 = gBattlerAttacker;
                 BattleScriptExecute(BattleScript_LeechSeedTurnDrain);
@@ -2642,10 +2641,7 @@ u8 DoBattlerEndTurnEffects(void)
                 {
                     if (!BATTLER_MAX_HP(battler) && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK) && GetBattlerAbility(battler) != ABILITY_STRONGHOLD)
                     {
-                        if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses))
-                            gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
-                        else
-                            gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
+                        gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
                         if (gBattleMoveDamage == 0)
                             gBattleMoveDamage = 1;
                         gBattleMoveDamage *= -1;
@@ -2655,12 +2651,11 @@ u8 DoBattlerEndTurnEffects(void)
                 }
                 else
                 {
-                    if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses))
-                            gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
-                        else
-                            gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
+                        gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
+                    if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                        gBattleMoveDamage = 50;
                     BattleScriptExecute(BattleScript_PoisonTurnDmg);
                     effect++;
                 }
@@ -2685,14 +2680,6 @@ u8 DoBattlerEndTurnEffects(void)
                         effect++;
                     }
                 }
-                else if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses))
-                {
-                    gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
-                        if (gBattleMoveDamage == 0)
-                            gBattleMoveDamage = 1;
-                        BattleScriptExecute(BattleScript_PoisonTurnDmg);
-                        effect++;
-                }
                 else
                 {
                     gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
@@ -2701,6 +2688,8 @@ u8 DoBattlerEndTurnEffects(void)
                     if ((gBattleMons[battler].status1 & STATUS1_TOXIC_COUNTER) != STATUS1_TOXIC_TURN(15)) // not 16 turns
                         gBattleMons[battler].status1 += STATUS1_TOXIC_TURN(1);
                     gBattleMoveDamage *= (gBattleMons[battler].status1 & STATUS1_TOXIC_COUNTER) >> 8;
+                    if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                        gBattleMoveDamage = 50;
                     BattleScriptExecute(BattleScript_PoisonTurnDmg);
                     effect++;
                 }
@@ -2713,15 +2702,9 @@ u8 DoBattlerEndTurnEffects(void)
                 MAGIC_GUARD_CHECK;
                 TERU_CHARM_CHECK;
             #if B_BURN_DAMAGE >= GEN_7
-                if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses))
-                        gBattleMoveDamage = gBattleMons[battler].maxHP / 32;
-                    else
-                        gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
+                    gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
             #else
-                if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses))
-                        gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
-                    else
-                        gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
+                    gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
             #endif
                 if (ability == ABILITY_HEATPROOF)
                 {
@@ -2731,6 +2714,8 @@ u8 DoBattlerEndTurnEffects(void)
                 }
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
+                if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                    gBattleMoveDamage = 50;
                 BattleScriptExecute(BattleScript_BurnTurnDmg);
                 effect++;
             }
@@ -2742,18 +2727,14 @@ u8 DoBattlerEndTurnEffects(void)
                 MAGIC_GUARD_CHECK;
                 TERU_CHARM_CHECK;
             #if B_BURN_DAMAGE >= GEN_7
-                if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses))
-                        gBattleMoveDamage = gBattleMons[battler].maxHP / 32;
-                    else
-                        gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
+                    gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
             #else
-                if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses))
-                        gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
-                    else
-                        gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
+                    gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
             #endif
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
+                if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                    gBattleMoveDamage = 50;
                 BattleScriptExecute(BattleScript_FrostbiteTurnDmg);
                 effect++;
             }
@@ -2771,6 +2752,8 @@ u8 DoBattlerEndTurnEffects(void)
                     gBattleMoveDamage = gBattleMons[battler].maxHP / 4;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
+                    if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                        gBattleMoveDamage = 50;
                     BattleScriptExecute(BattleScript_NightmareTurnDmg);
                     effect++;
                 }
@@ -2789,6 +2772,8 @@ u8 DoBattlerEndTurnEffects(void)
                 gBattleMoveDamage = gBattleMons[battler].maxHP / 4;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
+                if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                    gBattleMoveDamage = 50;
                 BattleScriptExecute(BattleScript_CurseTurnDmg);
                 effect++;
             }
@@ -2809,36 +2794,26 @@ u8 DoBattlerEndTurnEffects(void)
                     if (GetBattlerHoldEffect(gBattleStruct->wrappedBy[battler], TRUE) == HOLD_EFFECT_BINDING_BAND)
                 #if B_BINDING_DAMAGE >= GEN_6
                         {
-                            if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses))
-                                gBattleMoveDamage = gBattleMons[battler].maxHP / 12;
-                            else
-                                gBattleMoveDamage = gBattleMons[battler].maxHP / 6;
+                            gBattleMoveDamage = gBattleMons[battler].maxHP / 6;
                         }
                     else
                         {
-                            if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses))
-                                gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
-                            else
-                                gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
+                            gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
                         }
                 #else
                         {
-                            if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses))
-                                gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
-                            else
-                                gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
+                            gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
                         }
                     else
                         {
-                            if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses))
-                                gBattleMoveDamage = gBattleMons[battler].maxHP / 32;
-                            else
-                                gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
+                            gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
                         }
                 #endif
 
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
+                    if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                        gBattleMoveDamage = 50;
                 }
                 else // broke free
                 {
@@ -3142,6 +3117,8 @@ u8 DoBattlerEndTurnEffects(void)
                     gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 8;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
+                if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                    gBattleMoveDamage = 50;
                 PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_SALT_CURE);
                 BattleScriptExecute(BattleScript_SaltCureExtraDamage);
                 effect++;
@@ -3173,9 +3150,10 @@ u8 DoBattlerEndTurnEffects(void)
                     gBattleMoveDamage = gBattleMons[battler].maxHP / 4;
                 else
                     gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
-                
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
+                if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                    gBattleMoveDamage = 50;
                 gBattleScripting.animArg1 = gBattlerTarget;
                 gBattleScripting.animArg2 = gBattlerAttacker;
                 BattleScriptExecute(BattleScript_TickedTurnDrain);
@@ -3382,6 +3360,12 @@ bool32 HandleWishPerishSongOnTurnEnd(void)
                 if (gDisableStructs[battler].perishSongTimer == 0)
                 {
                     gStatuses3[battler] &= ~STATUS3_PERISH_SONG;
+                    if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG))
+                        gBattleMoveDamage = gBattleMons[battler].hp / 10;
+                    else if (FlagGet(FLAG_WILD_NO_CATCHING_FLAG))
+                        gBattleMoveDamage = gBattleMons[battler].hp / 10;
+                    else
+                        gBattleMoveDamage = gBattleMons[battler].hp;
                     gBattleMoveDamage = gBattleMons[battler].hp;
                     gBattlescriptCurrInstr = BattleScript_PerishSongTakesLife;
                 }
@@ -3889,6 +3873,8 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                 {
                     gProtectStructs[gBattlerAttacker].powderSelfDmg = TRUE;
                     gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 4;
+                    if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                        gBattleMoveDamage = 50;
                     gBattlescriptCurrInstr = BattleScript_MoveUsedPowder;
                     effect = 1;
                 }
@@ -5470,6 +5456,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
+                    if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                        gBattleMoveDamage = 50;
                     effect++;
                 }
             // Dry Skin works similarly to Rain Dish in Rain
@@ -5675,7 +5663,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 }
                 break;
             case ABILITY_HUDDLE_UP:
-                if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_HP_PERCENT) && gBattleMons[battler].level >= 25)
+                if (gBattleMons[battler].level < 25)
+                    break;
+                if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_HP_PERCENT))
                 {
                     gBattlerAttacker = battler;
                     BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeEnd3);
@@ -6340,12 +6330,11 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         case ABILITY_IRON_BARBS:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerAttacker].hp != 0 && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED && IsMoveMakingContact(move, gBattlerAttacker))
             {
-                if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses))
-                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 32;
-                else
-                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
+                gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
+                if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                    gBattleMoveDamage = 50;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_RoughSkinActivates;
@@ -6357,18 +6346,14 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED && IsMoveMakingContact(move, gBattlerAttacker))
             {
                 #if B_ROUGH_SKIN_DMG >= GEN_4
-                    if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses))
-                        gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
-                    else
-                        gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
+                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
                 #else
-                    if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses))
-                        gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
-                    else
-                        gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
+                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
                 #endif
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
+                if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                    gBattleMoveDamage = 50;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_RoughSkinActivates;
@@ -6386,6 +6371,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 gBattleMoveDamage /= 2; // 50% Overcoat dmaage
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
+                if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                    gBattleMoveDamage = 50;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_RoughSkinActivates;
@@ -6618,12 +6605,14 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             {
                 s32 iceScalesToDeduct;
                 
-                if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses))
+                if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG))
                     gBattleMoveDamage = ((gBattleMons[gBattlerAttacker].maxHP / 40) * gDisableStructs[gBattlerTarget].iceScalesCounter);
                 else
                     gBattleMoveDamage = ((gBattleMons[gBattlerAttacker].maxHP / 20) * gDisableStructs[gBattlerTarget].iceScalesCounter);
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
+                if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                    gBattleMoveDamage = 50;
 
                 if (gMoveResultFlags & MOVE_RESULT_SUPER_EFFECTIVE)
                 {
@@ -6809,6 +6798,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                         gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 4;
                         if (gBattleMoveDamage == 0)
                             gBattleMoveDamage = 1;
+                        if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                            gBattleMoveDamage = 50;
                     }
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_GulpMissileGorging;
@@ -6824,6 +6815,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                         gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 4;
                         if (gBattleMoveDamage == 0)
                             gBattleMoveDamage = 1;
+                        if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                            gBattleMoveDamage = 50;
                     }
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_GulpMissileGulping;
@@ -7154,12 +7147,11 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && (IsMoveMakingContact(move, gBattlerAttacker)
             || gBattleMoves[gCurrentMove].piercingMove))
             {
-                if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses))
-                    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 32;
-                else
-                    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 16;
+                gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 16;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
+                if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                    gBattleMoveDamage = 50;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_IronBarbsActivates;
@@ -7173,12 +7165,11 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && TARGET_TURN_DAMAGED 
             && gBattleMoves[gCurrentMove].oozeMove)
             {
-                if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses))
-                    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 10;
-                else
-                    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 5;
+                gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 5;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
+                if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                    gBattleMoveDamage = 50;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_IronBarbsActivates;
@@ -8186,6 +8177,29 @@ static u8 DamagedStatBoostBerryEffect(u32 battler, u8 statId, u8 split)
     return 0;
 }
 
+static u8 TryEjectPack(u32 battler, bool32 execute)
+{
+    if (gProtectStructs[battler].statFell
+     && !gProtectStructs[battler].disableEjectPack
+     && CountUsablePartyMons(battler) > 0
+     && !(gCurrentMove == MOVE_PARTING_SHOT && CanBattlerSwitch(gBattlerAttacker))) // Does not activate if attacker used Parting Shot and can switch out
+    {
+        gProtectStructs[battler].statFell = FALSE;
+        gBattleScripting.battler = battler;
+        if (execute)
+        {
+            BattleScriptExecute(BattleScript_EjectPackActivate_End2);
+        }
+        else
+        {
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_EjectPackActivate_Ret;
+        }
+        return ITEM_STATS_CHANGE;
+    }
+    return 0;
+}
+
 static u8 DamagedCornnBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
 {
     u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
@@ -8657,6 +8671,8 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
                 gBattleMoveDamage = 1;
             if (GetBattlerAbility(battler) == ABILITY_RIPEN)
                 gBattleMoveDamage *= 2;
+            if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                gBattleMoveDamage = 50;
             gBattleMons[battler].status1 &= ~STATUS1_BLOOMING;
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_BerryCureBloomRet;
@@ -8902,6 +8918,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                         gBattleMoveDamage = 1;
                     if (GetBattlerAbility(battler) == ABILITY_RIPEN)
                         gBattleMoveDamage *= 2;
+                    if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                        gBattleMoveDamage = 50;
                     gBattleMons[battler].status1 &= ~STATUS1_BLOOMING;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_BerryCureBloomRet;
@@ -9013,24 +9031,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_EJECT_PACK:
-                if (gProtectStructs[battler].statFell
-                 && gProtectStructs[battler].disableEjectPack == 0
-                 && CountUsablePartyMons(battler) > 0
-                 && !(gCurrentMove == MOVE_PARTING_SHOT && CanBattlerSwitch(gBattlerAttacker))) // Does not activate if attacker used Parting Shot and can switch out
-                {
-                    gProtectStructs[battler].statFell = FALSE;
-                    gBattleScripting.battler = battler;
-                    effect = ITEM_STATS_CHANGE;
-                    if (moveTurn)
-                    {
-                        BattleScriptPushCursor();
-                        gBattlescriptCurrInstr = BattleScript_EjectPackActivate_Ret;
-                    }
-                    else
-                    {
-                        BattleScriptExecute(BattleScript_EjectPackActivate_End2);
-                    }
-                }
+                effect = TryEjectPack(battler, TRUE);
                 break;
             case HOLD_EFFECT_BERSERK_GENE:
                 BufferStatChange(battler, STAT_ATK, STRINGID_STATROSE);
@@ -9102,6 +9103,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
+                    if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                        gBattleMoveDamage = 50;
                     BattleScriptExecute(BattleScript_ItemHurtEnd2);
                     effect = ITEM_HP_CHANGE;
                     RecordItemEffectBattle(battler, battlerHoldEffect);
@@ -9139,6 +9142,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     gBattleMoveDamage = gBattleMons[battler].maxHP / 2;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
+                    if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                        gBattleMoveDamage = 50;
                     BattleScriptExecute(BattleScript_HeartGiftSurpriseFulfilled);
                     effect = ITEM_HP_CHANGE;
                     RecordItemEffectBattle(battler, battlerHoldEffect);
@@ -9369,6 +9374,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                         gBattleMoveDamage = 1;
                     if (GetBattlerAbility(battler) == ABILITY_RIPEN)
                         gBattleMoveDamage *= 2;
+                    if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                        gBattleMoveDamage = 50;
                     gBattleMons[battler].status1 &= ~STATUS1_BLOOMING;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_BerryCureBloomRet;
@@ -9809,6 +9816,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 10;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
+                if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                    gBattleMoveDamage = 50;
                 effect = ITEM_HP_CHANGE;
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_ItemHurtRet;
@@ -9909,12 +9918,11 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD 
                 && GetBattlerAbility(gBattlerAttacker) != ABILITY_SUGAR_COAT)
                 {
-                    if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses))
-                        gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 12;
-                    else
-                        gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 6;
+                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 6;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
+                    if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                        gBattleMoveDamage = 50;
                     effect = ITEM_HP_CHANGE;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_RockyHelmetActivates;
@@ -10028,6 +10036,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                         gBattleMoveDamage = 1;
                     if (GetBattlerAbility(battler) == ABILITY_RIPEN)
                         gBattleMoveDamage *= 2;
+                    if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                        gBattleMoveDamage = 50;
 
                     effect = ITEM_HP_CHANGE;
                     BattleScriptPushCursor();
@@ -10141,6 +10151,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                         gBattleMoveDamage = 1;
                     if (GetBattlerAbility(battler) == ABILITY_RIPEN)
                         gBattleMoveDamage *= 2;
+                    if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                        gBattleMoveDamage = 50;
 
                     effect = ITEM_HP_CHANGE;
                     BattleScriptPushCursor();
@@ -10162,6 +10174,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                         gBattleMoveDamage = 1;
                     if (GetBattlerAbility(gBattlerTarget) == ABILITY_RIPEN)
                         gBattleMoveDamage *= 2;
+                    if (IsSpeciesOneOf(gBattleMons[gBattlerTarget].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                        gBattleMoveDamage = 50;
 
                     effect = ITEM_HP_CHANGE;
                     BattleScriptPushCursor();
@@ -10235,6 +10249,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
+                if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                    gBattleMoveDamage = 50;
                 BattleScriptExecute(BattleScript_StickyBarb);
                 effect = ITEM_HP_CHANGE;
                 RecordItemEffectBattle(battler, battlerHoldEffect);
@@ -10262,16 +10278,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             }
             break;
         case HOLD_EFFECT_EJECT_PACK:
-            if (gProtectStructs[battler].statFell
-             && gProtectStructs[battler].disableEjectPack == 0
-             && CountUsablePartyMons(battler) > 0)
-            {
-                gBattleScripting.battler = battler;
-                gPotentialItemEffectBattler = battler;
-                effect = ITEM_STATS_CHANGE;
-                BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_EjectPackActivates;
-            }
+            effect = TryEjectPack(battler, FALSE);
             break;
         }
         break;
@@ -13425,6 +13432,7 @@ static inline s32 DoMoveDamageCalcVars(u32 move, u32 battlerAtk, u32 battlerDef,
     u32 targetFinalDefense;
     u32 defCompare = gBattleMons[battlerAtk].attack - gBattleMons[battlerDef].defense;
     u32 atkCompare = gBattleMons[battlerAtk].attack - gBattleMons[battlerDef].attack;
+    u32 uniqueDamage;
 
     if (fixedBasePower)
         gBattleMovePower = fixedBasePower;
@@ -13462,12 +13470,16 @@ static inline s32 DoMoveDamageCalcVars(u32 move, u32 battlerAtk, u32 battlerDef,
         {
             if (defCompare > 80)
                 defCompare = 80;
+            if (IsSpeciesOneOf(gBattleMons[battlerDef].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && defCompare > 50)
+                defCompare = 50;
             dmg = dmg + defCompare;
         }
         else
         {
             if (atkCompare > 80)
                 atkCompare = 80;
+            if (IsSpeciesOneOf(gBattleMons[battlerDef].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && atkCompare > 50)
+                atkCompare = 50;
             dmg = dmg + defCompare;
         }
     }
@@ -13477,7 +13489,10 @@ static inline s32 DoMoveDamageCalcVars(u32 move, u32 battlerAtk, u32 battlerDef,
     && gBattleMoves[move].type == TYPE_POISON)
     || move == MOVE_SPIRIT_DANCE)
     {
-        dmg = dmg + (gBattleMons[battlerDef].maxHP * 15 / 100);
+        uniqueDamage = gBattleMons[battlerDef].maxHP * 15 / 100;
+        if (IsSpeciesOneOf(gBattleMons[battlerDef].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && uniqueDamage > 50)
+            uniqueDamage = 50;
+        dmg = dmg + uniqueDamage;
     }
     else if (move == MOVE_NEEDLE_ARM 
     || (move == MOVE_ASTONISH && gBattleMons[battlerDef].status1 & STATUS1_PANIC)
@@ -13485,7 +13500,10 @@ static inline s32 DoMoveDamageCalcVars(u32 move, u32 battlerAtk, u32 battlerDef,
     || move == MOVE_SOUL_CUTTER
     || (move == MOVE_ZING_ZAP && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN))
     {
-        dmg = dmg + (gBattleMons[battlerDef].maxHP / 5);
+        uniqueDamage = gBattleMons[battlerDef].maxHP / 5;
+        if (IsSpeciesOneOf(gBattleMons[battlerDef].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && uniqueDamage > 50)
+            uniqueDamage = 50;
+        dmg = dmg + uniqueDamage;
     }
 
     if (dmg == 0)

@@ -5314,7 +5314,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_HYDRO_CANNON] =
     {
-        .effect = EFFECT_RECHARGE,
+        .effect = EFFECT_HYDRO_CANNON,
         .power = 150,
         .type = TYPE_WATER,
         .accuracy = 90,
@@ -7492,12 +7492,12 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_ROCK_WRECKER] =
     {
-        .effect = EFFECT_RECHARGE,
+        .effect = EFFECT_ROCK_WRECKER,
         .power = 150,
         .type = TYPE_ROCK,
         .accuracy = 90,
         .pp = 5,
-        .secondaryEffectChance = 0,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_PHYSICAL,

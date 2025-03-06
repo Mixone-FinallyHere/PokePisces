@@ -1229,10 +1229,10 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_DARK_VOID:
             if (!AI_CanPutToSleep(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, aiData->partnerMove))
                 score -= 10;
-            if (CountBattlerStatDecreases(battlerDef, TRUE) < 1)
+            if (CountBattlerStatDecreases(battlerDef, TRUE) < 1 && CountBattlerStatDecreases(battlerAtk, TRUE) < 1)
                 score -= 10;
             else
-                score += 10;
+                score += CountBattlerStatDecreases(battlerDef, TRUE) + CountBattlerStatDecreases(battlerAtk, TRUE);
             break;
         case EFFECT_SLEEP_POWDER:
             if (!AI_CanPutToSleep(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, aiData->partnerMove))
@@ -2255,6 +2255,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_FOLLOW_ME:
         case EFFECT_HELPING_HAND:
+        case EFFECT_INSTRUCT:
             if (!isDoubleBattle
               || !IsBattlerAlive(BATTLE_PARTNER(battlerAtk))
               || PartnerHasSameMoveEffectWithoutTarget(BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove)
@@ -3278,45 +3279,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_DO_NOTHING:
             score -= 10;
             break;
-        case EFFECT_INSTRUCT:
-            {
-                u16 instructedMove;
-                if (AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_SLOWER)
-                    instructedMove = predictedMove;
-                else
-                    instructedMove = gLastMoves[battlerDef];
-
-                if (instructedMove == MOVE_NONE
-                  || gBattleMoves[instructedMove].instructBanned
-                  || MoveRequiresRecharging(instructedMove)
-                  || MoveCallsOtherMove(instructedMove)
-                  || IsZMove(instructedMove)
-                  || (gLockedMoves[battlerDef] != 0 && gLockedMoves[battlerDef] != 0xFFFF)
-                  || gBattleMons[battlerDef].status2 & STATUS2_MULTIPLETURNS
-                  || PartnerMoveIsSameAsAttacker(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
-                {
-                    score -= 10;
-                }
-                else if (isDoubleBattle)
-                {
-                    if (!IS_TARGETING_PARTNER(battlerAtk, battlerDef))
-                        score -= 10;
-                }
-                else
-                {
-                    if (AI_GetBattlerMoveTargetType(battlerDef, instructedMove) & (MOVE_TARGET_SELECTED
-                                                             | MOVE_TARGET_DEPENDS
-                                                             | MOVE_TARGET_RANDOM
-                                                             | MOVE_TARGET_BOTH
-                                                             | MOVE_TARGET_FOES_AND_ALLY
-                                                             | MOVE_TARGET_OPPONENTS_FIELD)
-                      && instructedMove != MOVE_MIND_BLOWN && instructedMove != MOVE_STEEL_BEAM)
-                        score -= 10; //Don't force the enemy to attack you again unless it can kill itself with Mind Blown
-                    else if (instructedMove != MOVE_MIND_BLOWN)
-                        score -= 5; //Do something better
-                }
-            }
-            break;
         case EFFECT_QUASH:
             if (!isDoubleBattle
             || AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_SLOWER
@@ -3585,6 +3547,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         switch (gBattleMoves[aiData->partnerMove].effect)
         {
         case EFFECT_HELPING_HAND:
+        case EFFECT_INSTRUCT:
             if (!IS_MOVE_STATUS(move))
                 score += 5;
             break;
@@ -3619,6 +3582,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     switch (effect)
     {
     case EFFECT_HELPING_HAND:
+    case EFFECT_INSTRUCT:
         if (aiData->partnerMove != 0 && !HasDamagingMove(battlerAtkPartner))
             score -= 5;
         break;
@@ -3933,22 +3897,6 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                  || GetBattlerType(battlerAtkPartner, 2) != TYPE_PSYCHIC))
                 {
                     RETURN_SCORE_PLUS(1);
-                }
-                break;
-            case EFFECT_INSTRUCT:
-                {
-                    u16 instructedMove;
-                    if (AI_WhoStrikesFirst(battlerAtk, battlerAtkPartner, move) == AI_IS_FASTER)
-                        instructedMove = aiData->partnerMove;
-                    else
-                        instructedMove = gLastMoves[battlerAtkPartner];
-
-                    if (instructedMove != MOVE_NONE
-                      && !IS_MOVE_STATUS(instructedMove)
-                      && (AI_GetBattlerMoveTargetType(battlerAtkPartner, instructedMove) & (MOVE_TARGET_BOTH | MOVE_TARGET_FOES_AND_ALLY))) // Use instruct on multi-target moves
-                    {
-                        RETURN_SCORE_PLUS(1);
-                    }
                 }
                 break;
             case EFFECT_AFTER_YOU:
