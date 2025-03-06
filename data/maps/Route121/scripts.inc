@@ -34,7 +34,7 @@ Route121_EventScript_Yosh::
     end
 
 Route121_EventScript_Kaiji::
-    trainerbattle_single TRAINER_P_KAIJI, Route121_Text_KaijiIntro, Route121_Text_KaijiDefeated
+    trainerbattle_single TRAINER_P_MENDEL, Route121_Text_KaijiIntro, Route121_Text_KaijiDefeated
     msgbox Route121_Text_KaijiPostBattle, MSGBOX_AUTOCLOSE
     end
 
