@@ -357,35 +357,46 @@ Route125_Movement_EggUpset:
 Route125_EventScript_Shellylouh::
 	lock
 	faceplayer
-	goto_if_gt VAR_SHELLYLOUH_STATE, 2, Route125_EventScript_ShellRiddle3
-	goto_if_eq VAR_SHELLYLOUH_STATE, 2, Route125_EventScript_ShellRiddle2
-	goto_if_eq VAR_SHELLYLOUH_STATE, 1, Route125_EventScript_ShellRiddle1
-	goto_if_lt VAR_SHELLYLOUH_STATE, 1, Route125_EventScript_SetupShellRiddle1
-	release
-	end
-
-Route125_EventScript_SetupShellRiddle1::
-	setvar VAR_SHELLYLOUH_STATE, 1
-	goto Route125_EventScript_ShellRiddle1
-	release
-	end
-
-Route125_EventScript_ShellRiddle1::
+	goto_if_set FLAG_SHELLYLOUH_RIDDLE_1, Route125_EventScript_SeekOutOtherShelly
+	checkitem ITEM_PEARL_STRING
+	goto_if_eq VAR_RESULT, TRUE, Route125_EventScript_GiveSnailPolish
 	msgbox Route125_Text_ShellRiddle1, MSGBOX_AUTOCLOSE
 	release
 	end
 
-Route125_EventScript_ShellRiddle2::
+Route125_EventScript_GiveSnailPolish::
 	msgbox Route125_Text_HereIsShellPolish, MSGBOX_DEFAULT
-	giveitem ITEM_PEARL
+	removeitem ITEM_PEARL_STRING
+	giveitem ITEM_SHELL_POLISH
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setvar VAR_SHELLYLOUH_STATE, 3
-	msgbox Route125_Text_ShellRiddle3, MSGBOX_AUTOCLOSE
+	setflag FLAG_SHELLYLOUH_RIDDLE_1
+	goto Route125_EventScript_SeekOutOtherShelly
 	release
 	end
 
-Route125_EventScript_ShellRiddle3::
-	msgbox Route125_Text_ShellRiddle3, MSGBOX_AUTOCLOSE
+Route125_EventScript_SeekOutOtherShelly::
+	goto_if_set FLAG_SHELLYLOUH_RIDDLE_2, Route125_EventScript_CheckRiddle3
+	msgbox Route125_Text_SeekOutOtherShelly, MSGBOX_AUTOCLOSE
+	release
+	end
+
+Route125_EventScript_CheckRiddle3::
+	goto_if_set FLAG_SHELLYLOUH_RIDDLE_3, Route125_EventScript_AllRiddles
+	msgbox Route125_Text_SeekOutOtherShelly, MSGBOX_AUTOCLOSE
+	release
+	end
+
+Route125_EventScript_AllRiddles::
+	checkitem ITEM_BIG_PEARL
+	goto_if_eq VAR_RESULT, TRUE, Route125_EventScript_GaveBigPearl
+	msgbox Route125_Text_YouEarnedThisBigPearl, MSGBOX_DEFAULT
+	giveitem ITEM_BIG_PEARL
+	closemessage
+	release
+	end
+
+Route125_EventScript_GaveBigPearl::
+	msgbox Route125_Text_GaveBigPearl, MSGBOX_AUTOCLOSE
 	release
 	end
 
@@ -657,10 +668,27 @@ Route125_Text_ShellRiddle1:
 	.string "and earn your precious sheen$"
 
 Route125_Text_HereIsShellPolish:
-	.string "have this$"
+	.string "(This Pokemon seems pleased\n"
+	.string "with you. She is gesturing towards\l"
+	.string "your Pearl String.)\p"
+	.string "(You hand the String over, and she\n"
+	.string "gifts you something in return.)$"
 
-Route125_Text_ShellRiddle3:
-	.string "we shall meet again$"
+Route125_Text_SeekOutOtherShelly:
+	.string "There may yet be more of my kind\n"
+	.string "At peaceful beaches, shall you find\l"
+	.string "Solve their riddles with haste\l"
+	.string "And your effort won't go to waste$"
+
+Route125_Text_YouEarnedThisBigPearl:
+	.string "All of our coven stand impressed\n"
+	.string "with your pursuing of our quest\l"
+	.string "A pearl that shines above all ores\l"
+	.string "you are able to now call... yours.$"
+
+Route125_Text_GaveBigPearl:
+	.string "We have a fondness for you\n"
+	.string "for always helping Shellylouh!$"
 
 Route125_Text_WeHaveYouCornered:
 	.string "We've got the jump on\n"

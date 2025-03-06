@@ -1289,9 +1289,9 @@
 #define FLAG_CABLE_CAR_UNLOCKED                                           0x4D7 // Unused Flag
 #define FLAG_DEFEATED_MANTLE_FUZKY                                           0x4D8 // Unused Flag
 #define FLAG_RECEIVED_LUCKY_EGGS                                           0x4D9 // Unused Flag
-#define FLAG_UNUSED_0x4DA                                           0x4DA // Unused Flag
-#define FLAG_UNUSED_0x4DB                                           0x4DB // Unused Flag
-#define FLAG_UNUSED_0x4DC                                           0x4DC // Unused Flag
+#define FLAG_SHELLYLOUH_RIDDLE_1                                           0x4DA // Unused Flag
+#define FLAG_SHELLYLOUH_RIDDLE_2                                           0x4DB // Unused Flag
+#define FLAG_SHELLYLOUH_RIDDLE_3                                           0x4DC // Unused Flag
 #define FLAG_UNUSED_0x4DD                                           0x4DD // Unused Flag
 #define FLAG_UNUSED_0x4DE                                           0x4DE // Unused Flag
 #define FLAG_UNUSED_0x4DF                                           0x4DF // Unused Flag
