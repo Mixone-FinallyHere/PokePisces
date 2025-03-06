@@ -147,6 +147,7 @@
 #define MULTI_RUSTGYM_QUESTION_10           135
 #define MULTI_WHODUNNIT                     136
 #define MULTI_BERRY_SHOP_CATEGORY           137
+#define MULTI_CHOICE_ITEM_PICK              138
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

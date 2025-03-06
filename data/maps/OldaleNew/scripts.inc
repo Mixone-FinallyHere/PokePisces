@@ -11,6 +11,75 @@ OldaleNew_EventScript_Natasha::
     msgbox OldaleNew_Text_NatashaPostBattle, MSGBOX_AUTOCLOSE
     end
 
+OldaleNew_EventScript_ChoiceItems::
+	lock
+	faceplayer
+	goto_if_set FLAG_CHOICE_ITEM_3, OldaleNew_EventScript_MadeYourChoice
+	msgbox OldaleNew_Text_PickAChoiceItem, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_CHOICE_ITEM_PICK, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	goto_if_eq VAR_TEMP_1, 0, OldaleNew_EventScript_GiveChoiceBand
+	goto_if_eq VAR_TEMP_1, 1, OldaleNew_EventScript_GiveChoiceSpecs
+	goto_if_eq VAR_TEMP_1, 2, OldaleNew_EventScript_GiveChoiceScarf
+	msgbox OldaleNew_Text_ChoiceParalysis, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+OldaleNew_EventScript_GiveChoiceBand::
+	closemessage
+	giveitem ITEM_CHOICE_BAND
+	closemessage
+	setflag FLAG_CHOICE_ITEM_3
+	msgbox OldaleNew_Text_MadeYourChoice, MSGBOX_AUTOCLOSE
+	release
+	end
+
+OldaleNew_EventScript_GiveChoiceSpecs::
+	closemessage
+	giveitem ITEM_CHOICE_SPECS
+	closemessage
+	setflag FLAG_CHOICE_ITEM_3
+	msgbox OldaleNew_Text_MadeYourChoice, MSGBOX_AUTOCLOSE
+	release
+	end
+
+OldaleNew_EventScript_GiveChoiceScarf::
+	closemessage
+	giveitem ITEM_CHOICE_SCARF
+	closemessage
+	setflag FLAG_CHOICE_ITEM_3
+	msgbox OldaleNew_Text_MadeYourChoice, MSGBOX_AUTOCLOSE
+	release
+	end
+
+OldaleNew_EventScript_MadeYourChoice::
+	msgbox OldaleNew_Text_MadeYourChoice, MSGBOX_AUTOCLOSE
+	release
+	end
+
+OldaleNew_Text_PickAChoiceItem:
+	.string "Sometimes in life, you must make\n"
+	.string "hard choices! You cannot just\l"
+	.string "get everything you would like.\p"
+	.string "I propose a choice to YOU,\n"
+	.string "stranger. I am in possession of\l"
+	.string "3 of the Choice items.\l"
+	.string "The Band, for Attack.\l"
+	.string "The Specs, for Special Attack.\l"
+	.string "The Scarf, for Speed.\p"
+	.string "You may have one...\n"
+	.string "and ONLY one...!\p"
+	.string "It is up to you which you get!\n$"
+
+OldaleNew_Text_ChoiceParalysis:
+	.string "You must have choice paralysis!\n"
+	.string "How very weak!$"
+
+OldaleNew_Text_MadeYourChoice:
+	.string "You have now made your choice!\n"
+	.string "And you must live with that.$"
+
 OldaleNew_Text_NatashaIntro:
 	.string "intro$"
 

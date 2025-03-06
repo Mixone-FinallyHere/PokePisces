@@ -1292,9 +1292,9 @@
 #define FLAG_SHELLYLOUH_RIDDLE_1                                           0x4DA // Unused Flag
 #define FLAG_SHELLYLOUH_RIDDLE_2                                           0x4DB // Unused Flag
 #define FLAG_SHELLYLOUH_RIDDLE_3                                           0x4DC // Unused Flag
-#define FLAG_UNUSED_0x4DD                                           0x4DD // Unused Flag
-#define FLAG_UNUSED_0x4DE                                           0x4DE // Unused Flag
-#define FLAG_UNUSED_0x4DF                                           0x4DF // Unused Flag
+#define FLAG_CHOICE_ITEM_1                                           0x4DD // Unused Flag
+#define FLAG_CHOICE_ITEM_2                                           0x4DE // Unused Flag
+#define FLAG_CHOICE_ITEM_3                                           0x4DF // Unused Flag
 #define FLAG_UNUSED_0x4E0                                           0x4E0 // Unused Flag
 #define FLAG_UNUSED_0x4E1                                           0x4E1 // Unused Flag
 #define FLAG_UNUSED_0x4E2                                           0x4E2 // Unused Flag

@@ -142,6 +142,75 @@ DewfordNew_EventScript_GaveBigPearl::
 	release
 	end
 
+DewfordNew_EventScript_ChoiceItems::
+	lock
+	faceplayer
+	goto_if_set FLAG_CHOICE_ITEM_2, DewfordNew_EventScript_MadeYourChoice
+	msgbox DewfordNew_Text_PickAChoiceItem, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_CHOICE_ITEM_PICK, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	goto_if_eq VAR_TEMP_1, 0, DewfordNew_EventScript_GiveChoiceBand
+	goto_if_eq VAR_TEMP_1, 1, DewfordNew_EventScript_GiveChoiceSpecs
+	goto_if_eq VAR_TEMP_1, 2, DewfordNew_EventScript_GiveChoiceScarf
+	msgbox DewfordNew_Text_ChoiceParalysis, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+DewfordNew_EventScript_GiveChoiceBand::
+	closemessage
+	giveitem ITEM_CHOICE_BAND
+	closemessage
+	setflag FLAG_CHOICE_ITEM_2
+	msgbox DewfordNew_Text_MadeYourChoice, MSGBOX_AUTOCLOSE
+	release
+	end
+
+DewfordNew_EventScript_GiveChoiceSpecs::
+	closemessage
+	giveitem ITEM_CHOICE_SPECS
+	closemessage
+	setflag FLAG_CHOICE_ITEM_2
+	msgbox DewfordNew_Text_MadeYourChoice, MSGBOX_AUTOCLOSE
+	release
+	end
+
+DewfordNew_EventScript_GiveChoiceScarf::
+	closemessage
+	giveitem ITEM_CHOICE_SCARF
+	closemessage
+	setflag FLAG_CHOICE_ITEM_2
+	msgbox DewfordNew_Text_MadeYourChoice, MSGBOX_AUTOCLOSE
+	release
+	end
+
+DewfordNew_EventScript_MadeYourChoice::
+	msgbox DewfordNew_Text_MadeYourChoice, MSGBOX_AUTOCLOSE
+	release
+	end
+
+DewfordNew_Text_PickAChoiceItem:
+	.string "Sometimes in life, you must make\n"
+	.string "hard choices! You cannot just\l"
+	.string "get everything you would like.\p"
+	.string "I propose a choice to YOU,\n"
+	.string "stranger. I am in possession of\l"
+	.string "3 of the Choice items.\l"
+	.string "The Band, for Attack.\l"
+	.string "The Specs, for Special Attack.\l"
+	.string "The Scarf, for Speed.\p"
+	.string "You may have one...\n"
+	.string "and ONLY one...!\p"
+	.string "It is up to you which you get!\n$"
+
+DewfordNew_Text_ChoiceParalysis:
+	.string "You must have choice paralysis!\n"
+	.string "How very weak!$"
+
+DewfordNew_Text_MadeYourChoice:
+	.string "You have now made your choice!\n"
+	.string "And you must live with that.$"
+
 DewfordNew_Text_GaveBigPearl:
 	.string "We have a fondness for you\n"
 	.string "for always helping Shellylouh!$"
