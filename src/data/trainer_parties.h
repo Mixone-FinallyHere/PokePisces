@@ -2905,7 +2905,7 @@ static const struct TrainerMon sParty_PSpenser[] = {
     .ev = TRAINER_PARTY_EVS(108, 88, 0, 0, 0, 0),
     .species = SPECIES_MAGNALURE,
     .ability = ABILITY_MAGNET_PULL,
-    .moves = {MOVE_SPARK, MOVE_PINPOINT, MOVE_EARTH_SHATTER, MOVE_KNOCK_OFF},
+    .moves = {MOVE_SPARK, MOVE_EERIE_IMPULSE, MOVE_EARTH_SHATTER, MOVE_KNOCK_OFF},
     .nature = NATURE_ADAMANT,
     },
     {
