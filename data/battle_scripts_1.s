@@ -2576,7 +2576,7 @@ BattleScript_EffectGreenGuise:
 	setmoveeffect MOVE_EFFECT_BLOOMING | MOVE_EFFECT_AFFECTS_USER
 	seteffectprimary
 BattleScript_GreenGuiseContinue::
-	setfocusenergy
+	setfocusenergy BS_ATTACKER
 	printfromtable gFocusEnergyUsedStringIds
 	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_GreenGuiseStatUpEnd
 	jumpifbyte CMP_NOT_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_GreenGuiseStatUpAttackAnim
@@ -5122,7 +5122,7 @@ BattleScript_EffectDragonCheer:
 	attackstring
 	ppreduce
 	jumpifstatus2 BS_TARGET, STATUS2_FOCUS_ENERGY_ANY, BattleScript_DragonCheerFocusEnergyFailedTryStatRaise
-	setfocusenergy
+	setfocusenergy BS_TARGET
 	attackanimation
 	waitanimation
 	printfromtable gFocusEnergyUsedStringIds
@@ -6218,7 +6218,7 @@ BattleScript_EffectCoaching:
 	ppreduce
 	jumpifnoally BS_ATTACKER, BattleScript_ButItFailed
 	jumpifstatus2 BS_ATTACKER, STATUS2_FOCUS_ENERGY_ANY, BattleScript_EffectCoachingFocusEnergyFailedTryStatRaise
-	setfocusenergy
+	setfocusenergy BS_ATTACKER
 	copybyte gBattlerTarget, gBattlerAttacker
 	setallytonexttarget EffectCoaching_CheckAllyStats
 	goto BattleScript_ButItFailed
@@ -10211,7 +10211,7 @@ BattleScript_EffectFocusEnergy:
 	attackstring
 	ppreduce
 	jumpifstatus2 BS_ATTACKER, STATUS2_FOCUS_ENERGY_ANY, BattleScript_FocusEnergyFailedCheckInnerFocus
-	setfocusenergy
+	setfocusenergy BS_ATTACKER
 	attackanimation
 	waitanimation
 	printfromtable gFocusEnergyUsedStringIds
