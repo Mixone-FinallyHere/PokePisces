@@ -2864,7 +2864,7 @@ static const struct TrainerMon sParty_PPhoebe[] = {
     .species = SPECIES_BOOZARD,
     .ability = ABILITY_INTIMIDATE,
     .heldItem = ITEM_SPELL_TAG,
-    .moves = {MOVE_FEAR_FACTOR, MOVE_CONFUSE_RAY, MOVE_NONE, MOVE_NONE},
+    .moves = {MOVE_FEAR_FACTOR, MOVE_CONFUSE_RAY, MOVE_MEAN_LOOK, MOVE_CLEAR_SMOG},
     .nature = NATURE_NAIVE,
     },
     {
