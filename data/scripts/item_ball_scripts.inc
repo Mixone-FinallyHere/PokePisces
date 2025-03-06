@@ -1610,6 +1610,10 @@ FieryPath_EventScript_ItemPDireHit::
 	finditem ITEM_DIRE_HIT
 	end
 
+FieryPath_EventScript_ItemPFullHeal::
+	finditem ITEM_FULL_HEAL
+	end
+
 LavaridgeInt_EventScript_ItemPMaxEther::
 	finditem ITEM_MAX_ETHER
 	end

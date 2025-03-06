@@ -1,5 +1,20 @@
 MidneorFallsCave_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, MidneorFallsCave_OnTransition
 	.byte 0
+
+MidneorFallsCave_OnTransition:
+	call MidneorFallsCave_EventScript_ResetTrainerFlags
+	end
+
+MidneorFallsCave_EventScript_ResetTrainerFlags::
+	cleartrainerflag TRAINER_P_KRAY
+	cleartrainerflag TRAINER_P_ZII
+	cleartrainerflag TRAINER_P_IVAN
+	cleartrainerflag TRAINER_P_LIBYA
+	cleartrainerflag TRAINER_P_CARVILLE
+	cleartrainerflag TRAINER_P_BOOM
+	cleartrainerflag TRAINER_P_IWAN
+	return
 
 MidneorFallsCave_EventScript_Kray::
     trainerbattle_single TRAINER_P_KRAY, MidneorFallsCave_Text_KrayIntro, MidneorFallsCave_Text_KrayDefeated
