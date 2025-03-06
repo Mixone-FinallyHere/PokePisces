@@ -19990,6 +19990,7 @@ Move_GEO_PULSE::
 	delay 0
 	createsprite gUproarRingSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, 0, 0, 0x1D09, 12
 	createvisualtask AnimTask_ShakeTargetBasedOnMovePowerOrDmg, 5, FALSE, 1, 8, 1, 0
+	createvisualtask AnimTask_ShakeTargetPartnerBasedOnMovePowerOrDmg, 5, FALSE, 1, 8, 1, 0
 	loopsewithpan SE_M_PSYBEAM, SOUND_PAN_TARGET, 20, 3
 	delay 8
 	createsprite gUproarRingSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, 0, 0, 0x1D09, 12

@@ -3149,13 +3149,16 @@ BattleScript_GrassCannonCheckTerrain::
 BattleScript_EffectSpiritAway::
     call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
-	jumpifbattleend BattleScript_SpiritAwaySkipThirdType
-	jumpiffainted BS_TARGET, TRUE, BattleScript_SpiritAwaySkipThirdType
-	jumpifmovehadnoeffect BattleScript_SpiritAwaySkipThirdType
-	trysetthirdtype BS_TARGET, BattleScript_SpiritAwaySkipThirdType
-	printstring STRINGID_THIRDTYPEADDED
+	jumpifbattleend BattleScript_SpiritAwaySkipChangeType
+	jumpiffainted BS_TARGET, TRUE, BattleScript_SpiritAwaySkipChangeType
+	jumpifmovehadnoeffect BattleScript_SpiritAwaySkipChangeType
+	jumpifability BS_TARGET, ABILITY_MULTITYPE, BattleScript_SpiritAwaySkipChangeType
+	jumpifability BS_TARGET, ABILITY_RKS_SYSTEM, BattleScript_SpiritAwaySkipChangeType
+	jumpifsubstituteblocks BattleScript_SpiritAwaySkipChangeType
+	trysoak BattleScript_SpiritAwaySkipChangeType
+	printstring STRINGID_TARGETCHANGEDTYPE
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_SpiritAwaySkipThirdType::
+BattleScript_SpiritAwaySkipChangeType::
 	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_SpiritAwayHealBlock
 	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_SpiritAwayHealBlock
 	setdrainedhp
