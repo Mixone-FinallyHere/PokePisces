@@ -5510,7 +5510,7 @@ void ItemUseCB_ShellyBrew(u8 taskId, TaskFunc task)
     u8 holdEffectParam = ItemId_GetHoldEffectParam(*itemPtr);
 
     sInitialLevel = GetMonData(mon, MON_DATA_LEVEL);
-    if (sInitialLevel >= 50)
+    if (sInitialLevel >= GetPreviousLevelCap())
     {
         cannotUseEffect = TRUE;
     }
@@ -5554,7 +5554,7 @@ void ItemUseCB_ShellyBrew(u8 taskId, TaskFunc task)
     }
     else
     {
-        sFinalLevel = 50;
+        sFinalLevel = GetPreviousLevelCap();
         gPartyMenuUseExitCallback = TRUE;
         UpdateMonDisplayInfoAfterRareCandy(gPartyMenu.slotId, mon);
         RemoveBagItem(gSpecialVar_ItemId, 1);
@@ -5562,18 +5562,8 @@ void ItemUseCB_ShellyBrew(u8 taskId, TaskFunc task)
         if (sFinalLevel > sInitialLevel)
         {
             PlayFanfareByFanfareNum(FANFARE_LEVEL_UP);
-            if (holdEffectParam == 0) // Rare Candy
-            {
-                ConvertIntToDecimalStringN(gStringVar2, sFinalLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
-                StringExpandPlaceholders(gStringVar4, gText_PkmnElevatedToLvVar2);
-            }
-            else // Exp Candies
-            {
-                ConvertIntToDecimalStringN(gStringVar2, sExpCandyExperienceTable[holdEffectParam - 1], STR_CONV_MODE_LEFT_ALIGN, 6);
-                ConvertIntToDecimalStringN(gStringVar3, sFinalLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
-                StringExpandPlaceholders(gStringVar4, gText_PkmnGainedExpAndElevatedToLvVar3);
-            }
-
+            ConvertIntToDecimalStringN(gStringVar2, sFinalLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
+            StringExpandPlaceholders(gStringVar4, gText_PkmnElevatedToLvVar2);
             DisplayPartyMenuMessage(gStringVar4, TRUE);
             ScheduleBgCopyTilemapToVram(2);
             gTasks[taskId].func = Task_DisplayLevelUpStatsPg1;
