@@ -14885,6 +14885,7 @@ BattleScript_SelectingImprisonedMoveInPalace::
 BattleScript_GrudgeTakesPp::
 	printstring STRINGID_PKMNLOSTPPGRUDGE
 	waitmessage B_WAIT_TIME_LONG
+	seteffectsecondary
 	return
 
 BattleScript_MagicCoatBounce::

@@ -1430,9 +1430,9 @@ static const u8 sRefreshDescription[] = _(
     "changes for itself and allies.");
 
 static const u8 sGrudgeDescription[] = _(
-    "If the user faints, its grudge\n"
-    "fully depletes the PP of the\n"
-    "foe's move that knocked it out.");
+    "If the user faints, depletes the\n"
+    "PP of the move that knocked it\n"
+    "out and panics the attacker.");
 
 static const u8 sSnatchDescription[] = _(
     "The user steals the effects of\n"
