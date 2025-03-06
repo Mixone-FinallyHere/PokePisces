@@ -14393,13 +14393,13 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_FEAR_FACTOR] =
     {
-        .effect = EFFECT_MAGNITUDE,
+        .effect = EFFECT_FEAR_FACTOR,
         .power = 1,
         .type = TYPE_GHOST,
         .accuracy = 100,
         .pp = 30,
-        .secondaryEffectChance = 20,
-        .target = MOVE_TARGET_FOES_AND_ALLY,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_BOTH,
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,

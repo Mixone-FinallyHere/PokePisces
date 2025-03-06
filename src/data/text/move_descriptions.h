@@ -4162,9 +4162,9 @@ static const u8 sWaterFlogDescription[] = _(
     "lower the target's Speed stat.");
 
 static const u8 sFearFactorDescription[] = _(
-    "The user attacks everyone\n"
-    "around it with a fear-inducing\n"
-    "glare. Its power varies.");
+    "Attacks with a fear-inducing\n"
+    "glare. Its power and chance to\n"
+    "inflict panic varies.");
 
 static const u8 sGeoPulseDescription[] = _(
     "The user blasts a pulse of light\n"

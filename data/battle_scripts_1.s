@@ -686,6 +686,20 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectAlluringVoice           @ EFFECT_ALLURING_VOICE
 	.4byte BattleScript_EffectRockWrecker             @ EFFECT_ROCK_WRECKER
 	.4byte BattleScript_EffectHydroCannon             @ EFFECT_HYDRO_CANNON
+	.4byte BattleScript_EffectFearFactor              @ EFFECT_FEAR_FACTOR
+
+BattleScript_EffectFearFactor::
+	setmoveeffect MOVE_EFFECT_PANIC
+	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_EffectMagnitudeTarget
+	attackcanceler
+	attackstring
+	ppreduce
+	fearfactordamagecalculation
+	pause B_WAIT_TIME_SHORT
+	printstring STRINGID_MAGNITUDESTRENGTH
+	waitmessage B_WAIT_TIME_LONG
+	accuracycheck BattleScript_MoveMissedPause, ACC_CURR_MOVE
+	goto BattleScript_HitFromCritCalc
 
 BattleScript_EffectRockWrecker::
 	attackcanceler
@@ -11380,9 +11394,6 @@ BattleScript_EffectSafeguard::
 	goto BattleScript_PrintReflectLightScreenSafeguardString
 
 BattleScript_EffectMagnitude::
-	jumpifmove MOVE_MAGNITUDE, BattleScriptContinueMagnitude
-	setmoveeffect MOVE_EFFECT_PANIC
-BattleScriptContinueMagnitude::
 	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_EffectMagnitudeTarget
 	attackcanceler
 	attackstring

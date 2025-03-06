@@ -2055,6 +2055,10 @@
 	various BS_ATTACKER, VARIOUS_BOUNDARY_OF_DEATH
 	.endm
 
+	.macro fearfactordamagecalculation
+	various BS_ATTACKER, VARIOUS_FEAR_FACTOR
+	.endm
+
 	.macro highrollhitdamagecalculation
 	various BS_ATTACKER, VARIOUS_HIGH_ROLL_HIT
 	.endm

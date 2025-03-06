@@ -10319,21 +10319,18 @@ static void Cmd_various(void)
 
         if (boundary < 1)
         {
-            gBattleStruct->boundaryBasePower = 1;
             boundary = 1;
             PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, boundary)
             gBattlescriptCurrInstr = BattleScript_Boundary30;
         }
         else if (boundary < 2)
         {
-            gBattleStruct->boundaryBasePower = 2;
             boundary = 2;
             PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, boundary)
             gBattlescriptCurrInstr = BattleScript_Boundary60;
         }
         else if (boundary < 3)
         {
-            gBattleStruct->boundaryBasePower = 3;
             boundary = 3;
             PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, boundary)
             gBattlescriptCurrInstr = BattleScript_Boundary90;
@@ -10343,7 +10340,63 @@ static void Cmd_various(void)
             gBattleScripting.animTurn = 1;
             gBattlescriptCurrInstr = BattleScript_BigBoundary;
         }
+        return;
+    }
+    case VARIOUS_FEAR_FACTOR:
+    {
+        VARIOUS_ARGS();
+        u32 fearFactor = Random() % 100;
 
+        if (fearFactor < 5)
+        {
+            gBattleStruct->fearFactorBasePower = 10;
+            fearFactor = 3;
+        }
+        else if (fearFactor < 15)
+        {
+            gBattleStruct->fearFactorBasePower = 25;
+            fearFactor = 4;
+        }
+        else if (fearFactor < 30)
+        {
+            gBattleStruct->fearFactorBasePower = 40;
+            fearFactor = 5;
+        }
+        else if (fearFactor < 50)
+        {
+            gBattleStruct->fearFactorBasePower = 55;
+            fearFactor = 6;
+        }
+        else if (fearFactor < 70)
+        {
+            gBattleStruct->fearFactorBasePower = 70;
+            fearFactor = 7;
+        }
+        else if (fearFactor < 85)
+        {
+            gBattleStruct->fearFactorBasePower = 85;
+            fearFactor = 8;
+        }
+        else if (fearFactor < 95)
+        {
+            gBattleStruct->fearFactorBasePower = 100;
+            fearFactor = 9;
+        }
+        else
+        {
+            gBattleStruct->fearFactorBasePower = 120;
+            fearFactor = 10;
+        }
+    
+        PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 2, fearFactor)
+    
+        for (gBattlerTarget = 0; gBattlerTarget < gBattlersCount; gBattlerTarget++)
+        {
+            if (gBattlerTarget == gBattlerAttacker)
+                continue;
+            if (!(gAbsentBattlerFlags & gBitTable[gBattlerTarget])) // A valid target was found.
+                break;
+        }
         return;
     }
     case VARIOUS_HIGH_ROLL_HIT:
