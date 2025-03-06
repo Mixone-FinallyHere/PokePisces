@@ -238,7 +238,7 @@ static const u8 sEnergyPowderDesc[] = _(
 
 static const u8 sEnergyRootDesc[] = _(
     "A very bitter root.\n"
-    "All it does it make\n"
+    "All it does is make\n"
     "your Pokémon less\n"
     "friendly...");
 
@@ -4719,7 +4719,8 @@ static const u8 sRelaxantDesc[] = _(
 static const u8 sShellyBrewDesc[] = _(
     "A mysterious liquid\n"
     "that can increase any\n"
-    "Pokémon to Level 50.");
+    "Pokémon to the\n"
+    "previous level cap.");
 
 static const u8 sBuddyCardDesc[] = _(
     "A futuristic card for\n"
