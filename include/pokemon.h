@@ -525,6 +525,7 @@ struct MonSpritesGfxManager *CreateMonSpritesGfxManager(void);
 void DestroyMonSpritesGfxManager(void);
 u8 *MonSpritesGfxManager_GetSpritePtr(u8 spriteNum);
 u8 GetCurrentLevelCap(void);
+u8 GetPreviousLevelCap(void);
 u32 GetMaxTotalEVs(void);
 u16 GetFormSpeciesId(u16 speciesId, u8 formId);
 u8 GetFormIdFromFormSpeciesId(u16 formSpeciesId);

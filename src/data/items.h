@@ -493,7 +493,7 @@ const struct Item gItems[] =
         .description = sEnergyRootDesc,
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .fieldUseFunc = ItemUseOutOfBattle_ReduceFriendship,
         .flingPower = 30,
     },
 
@@ -10432,8 +10432,8 @@ const struct Item gItems[] =
     [ITEM_SHELLY_BREW] =
     {
         .name = _("Shelly Brew"),
-        .price = 1,
-        .holdEffectParam = 69,
+        .price = 1000,
+        .holdEffectParam = 0,
         .description = sShellyBrewDesc,
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,

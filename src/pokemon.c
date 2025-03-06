@@ -9150,6 +9150,36 @@ u8 GetCurrentLevelCap(void)
         return 100;
 }
 
+u8 GetPreviousLevelCap(void)
+{
+    if (!FlagGet(FLAG_BADGE01_GET))
+        return 10;
+    else if (!FlagGet(FLAG_BADGE02_GET))
+        return 12;
+    else if (!FlagGet(FLAG_DEFEATED_PANIC_EVENT))
+        return 17;
+    else if (!FlagGet(FLAG_DEFEATED_OZONE_BRANCH))
+        return 18;
+    else if (!FlagGet(FLAG_BADGE03_GET))
+        return 22;
+    else if (!FlagGet(FLAG_BADGE04_GET))
+        return 28;
+    else if (!FlagGet(FLAG_BADGE05_GET))
+        return 33;
+    else if (!FlagGet(FLAG_BADGE06_GET)) 
+        return 39;
+    else if (!FlagGet(FLAG_BADGE07_GET))
+        return 48;
+    else if (!FlagGet(FLAG_BADGE08_GET))
+        return 54;
+    else if (!FlagGet(FLAG_DEFEATED_EVIL_WALLY))
+        return 62;
+    else if (!FlagGet(FLAG_IS_CHAMPION))
+        return 72;
+    else
+        return 100;
+}
+
 u16 GetFormSpeciesId(u16 speciesId, u8 formId)
 {
     if (gFormSpeciesIdTables[speciesId] != NULL)
