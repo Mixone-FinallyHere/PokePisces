@@ -438,7 +438,7 @@ void HandleAction_UseMove(void)
     if (gBattleTypeFlags & BATTLE_TYPE_PALACE && gProtectStructs[gBattlerAttacker].palaceUnableToUseMove)
     {
         // Battle Palace, select battle script for failure to use move
-        if (gBattleMons[gBattlerAttacker].hp == 0)
+        if (!IsBattlerAlive(gBattlerAttacker))
         {
             gCurrentActionFuncId = B_ACTION_FINISHED;
             return;
@@ -454,6 +454,12 @@ void HandleAction_UseMove(void)
             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_INCAPABLE_OF_POWER;
             gBattlescriptCurrInstr = BattleScript_MoveUsedLoafingAround;
         }
+    }
+
+    if ((IsAlly(gBattlerAttacker, gBattlerTarget))
+     && (!IsBattlerAlive(gBattlerTarget) || gProtectStructs[BATTLE_PARTNER(gBattlerAttacker)].usedAllySwitch))
+    {
+        gBattlescriptCurrInstr = BattleScript_FailedFromAtkCanceler;
     }
     else
     {

@@ -177,6 +177,7 @@ struct ProtectStruct
     u16 burningBulwarked:1;
     u16 drakenGuarded:1;
     u16 eatMirrorHerb:1;
+    u16 usedAllySwitch:1;
     u32 physicalDmg;
     u32 specialDmg;
     u8 physicalBattlerId;

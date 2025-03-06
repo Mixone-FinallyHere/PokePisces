@@ -8529,6 +8529,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_SPD_UP_2,
         .switchingMove = TRUE,
+        .protectionMove = TRUE,
     },
 
     [MOVE_SCALD] =

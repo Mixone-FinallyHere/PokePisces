@@ -13940,7 +13940,9 @@ static void Cmd_setprotectlike(void)
     if (gCurrentTurnActionNumber == (gBattlersCount - 1))
         notLastTurn = FALSE;
 
-    if (sProtectSuccessRates[gDisableStructs[gBattlerAttacker].protectUses] >= Random() && notLastTurn)
+    if ((sProtectSuccessRates[gDisableStructs[gBattlerAttacker].protectUses] >= Random() && notLastTurn)
+        || (gCurrentMove == MOVE_WIDE_GUARD)
+        || (gCurrentMove == MOVE_QUICK_GUARD))
     {
         if (!gBattleMoves[gCurrentMove].argument) // Protects one mon only.
         {
@@ -19741,6 +19743,38 @@ void BS_JumpIfHoldEffect(void)
         gLastUsedItem = gBattleMons[battler].item;   // For B_LAST_USED_ITEM
         gBattlescriptCurrInstr += 12;
     }
+}
+
+void BS_AllySwitchSwapBattler(void)
+{
+    NATIVE_ARGS();
+
+    gBattleScripting.battler = gBattlerAttacker;
+    gBattlerAttacker ^= BIT_FLANK;
+    gProtectStructs[gBattlerAttacker].usedAllySwitch = TRUE;
+    gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
+void BS_AllySwitchFailChance(void)
+{
+    NATIVE_ARGS(const u8 *failInstr);
+    u32 lastMove = gLastResultingMoves[gBattlerAttacker];
+    
+    if (lastMove == MOVE_UNAVAILABLE || !(gBattleMoves[lastMove].protectionMove))
+        gDisableStructs[gBattlerAttacker].protectUses = 0;
+
+    if (sProtectSuccessRates[gDisableStructs[gBattlerAttacker].protectUses] < Random())
+    {
+        gDisableStructs[gBattlerAttacker].protectUses = 0;
+        gBattlescriptCurrInstr = cmd->failInstr;
+        return;
+    }
+    else
+    {
+        gDisableStructs[gBattlerAttacker].protectUses++;
+    }
+    
+    gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
 void BS_DoStockpileStatChangesWearOff(void)
