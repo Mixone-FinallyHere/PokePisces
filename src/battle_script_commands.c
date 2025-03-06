@@ -20100,6 +20100,8 @@ void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBat
         *expAmount = (*expAmount * 4915) / 4096;
     if (CheckBagHasItem(ITEM_EXP_CHARM, 1)) //is also for other exp boosting Powers if/when implemented
         *expAmount = (*expAmount * 150) / 100;
+    if (gMapHeader.regionMapSectionId == MAPSEC_SCORCHED_SLAB)
+        *expAmount = (*expAmount * 1) / 100;
     if (FlagGet(FLAG_VISITED_SOOTOPOLIS_CITY))
         if (!FlagGet(FLAG_BADGE01_GET))
             *expAmount = (*expAmount * 150) / 100;

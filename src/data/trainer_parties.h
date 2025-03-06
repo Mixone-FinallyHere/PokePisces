@@ -17,15 +17,16 @@ static const struct TrainerMon sParty_Sawyer1[] = {
 static const struct TrainerMon sParty_PMendel[] = {
     {
     .lvl = 50,
-    .species = SPECIES_LEDIAN,
+    .species = SPECIES_FAKYSNAKY,
+    .ability = ABILITY_DISGUISE,
     .heldItem = ITEM_POKE_BALL,
-    .moves = {MOVE_TACKLE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
+    .moves = {MOVE_SHED_TAIL, MOVE_NONE, MOVE_NONE, MOVE_NONE}
     },
     {
     .lvl = 50,
-    .species = SPECIES_MOSKOPO,
+    .species = SPECIES_POMELONIAN,
     .heldItem = ITEM_POKE_BALL,
-    .moves = {MOVE_TACKLE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
+    .moves = {MOVE_LEAFAGE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
     }
 };
 
@@ -456,7 +457,7 @@ static const struct TrainerMon sParty_Archie[] = {
 
 static const struct TrainerMon sParty_PLisa[] = {
     {
-    .lvl = 12,
+    .lvl = 10,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(8, 8, 8, 8, 8, 8),
     .species = SPECIES_KYUDI,
@@ -465,7 +466,7 @@ static const struct TrainerMon sParty_PLisa[] = {
 
 static const struct TrainerMon sParty_PEmily[] = {
     {
-    .lvl = 12,
+    .lvl = 11,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(8, 8, 8, 8, 8, 8),
     .species = SPECIES_CREAM,
@@ -474,13 +475,13 @@ static const struct TrainerMon sParty_PEmily[] = {
 
 static const struct TrainerMon sParty_PHasparoth[] = {
     {
-    .lvl = 11,
+    .lvl = 10,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(8, 8, 8, 8, 8, 8),
     .species = SPECIES_FUZKY,
     },
     {
-    .lvl = 12,
+    .lvl = 11,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(8, 8, 8, 8, 8, 8),
     .species = SPECIES_SNORUNT,
@@ -489,13 +490,13 @@ static const struct TrainerMon sParty_PHasparoth[] = {
 
 static const struct TrainerMon sParty_PMiikaChan[] = {
     {
-    .lvl = 11,
+    .lvl = 10,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(8, 8, 8, 8, 8, 8),
     .species = SPECIES_INFAIRNO,
     },
     {
-    .lvl = 12,
+    .lvl = 11,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(8, 8, 8, 8, 8, 8),
     .species = SPECIES_BUTTERWEE,
