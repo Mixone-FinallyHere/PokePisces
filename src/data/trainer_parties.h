@@ -2286,6 +2286,9 @@ static const struct TrainerMon sParty_PJinxie[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(32, 32, 32, 32, 32, 32),
     .species = SPECIES_MISDREAVUS,
+    .ability = ABILITY_DREAD_VEIL,
+    .heldItem = ITEM_SPELL_TAG,
+
     }
 };
 
@@ -2341,6 +2344,7 @@ static const struct TrainerMon sParty_PMia[] = {
     .species = SPECIES_EERIKO,
     .ability = ABILITY_PRESSURE,
     .moves = {MOVE_HEX, MOVE_SWEET_KISS, MOVE_SPITE, MOVE_ATTRACT},
+    .heldItem = ITEM_SPECTRAL_IDOL,
     },
     {
     .lvl = 24,
@@ -2376,6 +2380,7 @@ static const struct TrainerMon sParty_PMaya[] = {
     .species = SPECIES_FROSLASS,
     .ability = ABILITY_SNOW_CLOAK,
     .moves = {MOVE_HEX, MOVE_ATTRACT, MOVE_MISERY_WAIL, MOVE_CHILLY_AIR},
+    .heldItem = ITEM_SPELL_TAG,
     }
 };
 
@@ -2431,7 +2436,7 @@ static const struct TrainerMon sParty_PPearl[] = {
     .ev = TRAINER_PARTY_EVS(32, 32, 32, 32, 32, 32),
     .species = SPECIES_EERIKO,
     .ability = ABILITY_PRESSURE,
-    .moves = {MOVE_SPITE, MOVE_SPOOK, MOVE_NONE, MOVE_NONE},
+    .moves = {MOVE_SPITE, MOVE_SPOOK, MOVE_TERRORIZE, MOVE_NONE},
     },
     {
     .lvl = 24,
@@ -2440,6 +2445,7 @@ static const struct TrainerMon sParty_PPearl[] = {
     .species = SPECIES_PAWNIARD,
     .ability = ABILITY_PRESSURE,
     .moves = {MOVE_TORMENT, MOVE_PROTECT, MOVE_PARTING_SHOT, MOVE_METAL_CLAW},
+    .heldItem = ITEM_SPECTRAL_IDOL,
     },
     {
     .lvl = 25,
@@ -2561,6 +2567,7 @@ static const struct TrainerMon sParty_PMorgan[] = {
     .species = SPECIES_MANNIKO,
     .ability = ABILITY_PRESSURE,
     .moves = {MOVE_INFERNAL_PARADE, MOVE_FOUL_PLAY, MOVE_SPOOK, MOVE_GRUDGE},
+    .heldItem = ITEM_SPELL_TAG,
     },
     {
     .lvl = 25,
@@ -2569,6 +2576,7 @@ static const struct TrainerMon sParty_PMorgan[] = {
     .species = SPECIES_MISDREAVUS,
     .ability = ABILITY_DREAD_VEIL,
     .moves = {MOVE_HEX, MOVE_PSYBEAM, MOVE_WILL_O_WISP, MOVE_CONFUSE_RAY},
+    .heldItem = ITEM_SPECTRAL_IDOL,
     },
     {
     .lvl = 26,
@@ -2605,6 +2613,7 @@ static const struct TrainerMon sParty_PMisty[] = {
     .species = SPECIES_MISDREAVUS,
     .ability = ABILITY_DREAD_VEIL,
     .moves = {MOVE_HEX, MOVE_CONFUSE_RAY, MOVE_PSYBEAM, MOVE_WILL_O_WISP},
+    .heldItem = ITEM_SPELL_TAG,
     },
     {
     .lvl = 25,
@@ -2613,6 +2622,7 @@ static const struct TrainerMon sParty_PMisty[] = {
     .species = SPECIES_MANNIKO,
     .ability = ABILITY_PRESSURE,
     .moves = {MOVE_SPITE, MOVE_INFERNAL_PARADE, MOVE_TERRORIZE, MOVE_FEAR_FACTOR},
+    .heldItem = ITEM_BLUK_BERRY,
     },
     {
     .lvl = 25,
