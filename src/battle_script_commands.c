@@ -15760,9 +15760,7 @@ static void Cmd_setfocusenergy(void)
         gBattleMons[battler].status2 |= STATUS2_FOCUS_ENERGY;
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_GETTING_PUMPED;
     }
-    
-    DebugPrintfLevel(MGBA_LOG_WARN, "battler %d focus energy", battler);
-    
+
     gBattlescriptCurrInstr = cmd->nextInstr;
 
 }
