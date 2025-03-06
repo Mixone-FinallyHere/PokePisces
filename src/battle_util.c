@@ -976,6 +976,7 @@ void PressurePPLose(u8 target, u8 attacker, u16 move)
             gBattleMons[attacker].pp[moveIndex]--;
         if (GetBattlerHoldEffect(target, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL)
             gBattleMons[attacker].pp[moveIndex]--;
+            gBattleMons[attacker].pp[moveIndex]--;
         if (gBattleMons[attacker].status1 & STATUS1_PANIC)
             gBattleMons[attacker].pp[moveIndex]--;
         if (targetAbility != ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0)
@@ -1018,6 +1019,7 @@ void PressurePPLoseOnUsingImprison(u8 attacker)
                     }
                     if (GetBattlerHoldEffect(i, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL)
                     {
+                        gBattleMons[attacker].pp[j]--;
                         gBattleMons[attacker].pp[j]--;
                     }
                     if (gBattleMons[attacker].status1 & STATUS1_PANIC)
@@ -1067,6 +1069,7 @@ void PressurePPLoseOnUsingPerishSong(u8 attacker)
                     if (GetBattlerAbility(i) == ABILITY_SHUNYONG && i != attacker && gBattleResults.battleTurnCounter % 2 != 0)
                         gBattleMons[attacker].pp[j]--;
                     if (GetBattlerHoldEffect(i, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL && i != attacker)
+                        gBattleMons[attacker].pp[j]--;
                         gBattleMons[attacker].pp[j]--;
                     if (gBattleMons[attacker].status1 & STATUS1_PANIC)
                         gBattleMons[attacker].pp[j]--;

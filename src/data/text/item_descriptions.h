@@ -4443,7 +4443,8 @@ static const u8 sBattleHelmDesc[] = _(
 static const u8 sSpectralIdolDesc[] = _(
     "An unnerving totem\n"
     "that increases the\n"
-    "opponent's PP usage.");
+    "opponent's PP usage\n"
+    "by 2.");
 
 static const u8 sGlueTubeDesc[] = _(
     "Some sticky glue that\n"
