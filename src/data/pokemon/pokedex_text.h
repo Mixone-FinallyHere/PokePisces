@@ -1203,10 +1203,11 @@ const u8 gSlowkingPokedexText[] = _(
     "if the Shellder on its head comes off.");
 
 const u8 gMisdreavusPokedexText[] = _(
-    "At night, it mimics the sound of a lost\n"
-    "child crying. When disturbed, it lets\n"
-    "out a loud, shrill cry said to steal\n"
-    "souls.");
+    "At night, Misdreavus mimic the cries of a child.\n"
+    "If disturbed, they let out a loud cry rumored to\n"
+    "steal souls. Their pearls are a common\n"
+    "ingredient in alchemical brews, popularizing\n"
+    "them as an icon for the occult and Witch Con.");
 
 const u8 gUnownPokedexText[] = _(
     "This Pokémon is shaped like ancient text\n"
@@ -2393,10 +2394,11 @@ const u8 gLopunnyPokedexText[] = _(
     "It runs with sprightly jumps.");
 
 const u8 gMismagiusPokedexText[] = _(
-    "A malicious curse is believed to be cast\n"
-    "by hearing its baneful cries. The curse\n"
-    "ranges from misfortune to horrifying\n"
-    "ailments to outright madness.");
+    "A curse is believed to be cast if one hears\n"
+    "their baneful cries. The curse ranges from\n"
+    "misfortune to ailments to outright madness.\n"
+    "Some of the Witch community wanted Mismagius to\n"
+    "represent Witch Con, but lost the vote, 6 to 4.");
 
 const u8 gHonchkrowPokedexText[] = _(
     "Becoming active at night, it is known\n"
@@ -5560,10 +5562,11 @@ const u8 gSheedrakePokedexText[] = _(
     "deep into their skin, draining their energy.");
 
 const u8 gTranseraPokedexText[] = _(
-    "Groups of them gather in dark caves,\n"
-    "creating shimmering lights similar to the\n"
-    "starry night sky. They then lure bugs to\n"
-    "come near the lights to feed on them.");
+    "Large groups gather in dark caves, creating\n"
+    "shimmering lights similar to the starry night\n"
+    "sky. The luring lights trick small Pokémon and\n"
+    "bugs into approaching carelessly, only to get\n"
+    "stuck in the luminescent pods.");
 
 const u8 gBivaguePokedexText[] = _(
     "Its wings are encrusted in thick keratin,\n"
@@ -5747,10 +5750,11 @@ const u8 gPidiumPokedexText[] = _(
     "opportunistic menaces.");
 
 const u8 gMedgeonPokedexText[] = _(
-    "Medgeon has lost its vision but\n"
-    "constantly sees the surrounding future\n"
-    "with unerring accuracy. When offended, it\n"
-    "shows the offender their imminent demise.");
+    "Medgeon have lost their vision, but see the\n"
+    "surrounding future with unerring accuracy. They\n"
+    "show people their imminent demise for fun. This\n"
+    "will have a profound effect on victims, who are\n"
+    "constantly haunted by images of their end.");
 
 const u8 gMaggordePokedexText[] = _(
     "Maggorde are born in large swarms. The firstborn\n"
@@ -5773,21 +5777,25 @@ const u8 gCultipexPokedexText[] = _(
     "even worship their orders.");
 
 const u8 gEerikoPokedexText[] = _(
-    "A wooden doll said to be possessed by a\n"
-    "doll maker's daughter that wants to be\n"
-    "real again. Eeriko searches for girls to\n"
-    "take care of it.");
+    "A wooden doll said to be possessed by a doll\n"
+    "maker's daughter that longs to be alive again.\n"
+    "Eeriko lay motionless on playgrounds, waiting\n"
+    "for a young girl to pick it up and keep it. Once\n"
+    "picked up, the young girl's fate is sealed.");
 
 const u8 gMannikoPokedexText[] = _(
-    "Slowly, Manniko absorbs the life force\n"
-    "of the unfortunate girl who loves it,\n"
-    "gradually losing its rigid features.");
+    "Slowly, Manniko absorbs the life force of the\n"
+    "unfortunate girl who loves it, gradually losing\n"
+    "its rigid wooden features. The victim eventually\n"
+    "becomes lethargic and anti-social, lashing out at\n"
+    "those who attempt to separate her and the doll.");
 
 const u8 gKowakoPokedexText[] = _(
-    "It has become a twisted reflection of\n"
-    "it's past life, a spirit that is alive yet\n"
-    "rejected by life. It leaves the doll-like\n"
-    "husk of the victim that gave it life.");
+    "The girl is left as a husk, a wooden doll with no\n"
+    "will. Yet, Kowako hasn't gained the humanity it\n"
+    "sought. A spirit that is alive yet spurned by\n"
+    "life, a twisted reflection of the living, filled\n"
+    "only with disdain for the thing it couldn't have.");
 
 const u8 gUmbratPokedexText[] = _(
     "Umbrat are good-natured Pokémon that have a\n"
@@ -5811,10 +5819,11 @@ const u8 gWeroberraPokedexText[] = _(
     "detect when the weather changes ahead of time.");
 
 const u8 gSackytwackPokedexText[] = _(
-    "It lashes opponents with vines covered\n"
-    "in nail-like thorns. Those pricked are\n"
-    "said to be cursed with misfortune for\n"
-    "days.");
+    "They lash opponents with vines covered in\n"
+    "nail-like thorns. Days of misfortune curse those\n"
+    "whom the thorns prick. To break their curse, one\n"
+    "must catch the same Sackytwack that inflicted\n"
+    "the curse and clip all its thorns.");
 
 const u8 gStrawngmanPokedexText[] = _(
     "Sharp wooden barbs extend from its body\n"

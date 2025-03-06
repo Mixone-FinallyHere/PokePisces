@@ -4441,9 +4441,10 @@ static const u8 sBattleHelmDesc[] = _(
     "use of status moves.");
 
 static const u8 sSpectralIdolDesc[] = _(
-    "An unnerving totem\n"
-    "that increases the\n"
-    "opponent's PP usage.");
+    "Increases foes' PP\n"
+    "usage. The holder also\n"
+    "takes less damage from\n"
+    "panicked foes.");
 
 static const u8 sGlueTubeDesc[] = _(
     "Some sticky glue that\n"
@@ -4487,9 +4488,10 @@ static const u8 sVibrantScaleDesc[] = _(
     "Speed stats.");
 
 static const u8 sTriumphStarDesc[] = _(
-    "A star of power that\n"
-    "boosts the Ledyba\n"
-    "line's Attack stat.");
+    "Boosts Ledian's Attack\n"
+    "when screens are up.\n"
+    "Punching moves are\n"
+    "boosted further.");
 
 static const u8 sZigSashDesc[] = _(
     "A nice ribbon that\n"

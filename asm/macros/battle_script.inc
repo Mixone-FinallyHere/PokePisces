@@ -1359,6 +1359,15 @@
 	.4byte \jumpInstr
 	.endm
 
+	.macro allyswitchswapbattlers
+	callnative BS_AllySwitchSwapBattler
+	.endm
+
+	.macro allyswitchfailchance jumpInstr:req
+	callnative BS_AllySwitchFailChance
+	.4byte \jumpInstr
+	.endm
+
 	.macro dostockpilestatchangeswearoff, battler:req, statChangeInstr:req
 	callnative BS_DoStockpileStatChangesWearOff
 	.byte \battler

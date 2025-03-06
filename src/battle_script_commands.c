@@ -2090,7 +2090,7 @@ static void Cmd_ppreduce(void)
         for (i = 0; i < gBattlersCount; i++)
         {
             if (GetBattlerSide(i) != GetBattlerSide(gBattlerAttacker) && IsBattlerAlive(i))
-                ppToDeduct += (GetBattlerAbility(i) == ABILITY_PRESSURE);
+                ppToDeduct += 2 * (GetBattlerAbility(i) == ABILITY_PRESSURE);
                 ppToDeduct += (GetBattlerHoldEffect(i, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL);
                 ppToDeduct += (GetBattlerAbility(i) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
         }
@@ -2098,7 +2098,7 @@ static void Cmd_ppreduce(void)
     else if (moveTarget != MOVE_TARGET_OPPONENTS_FIELD)
     {
         if (gBattlerAttacker != gBattlerTarget)
-            ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_PRESSURE);
+            ppToDeduct += 2 * (GetBattlerAbility(gBattlerTarget) == ABILITY_PRESSURE);
             ppToDeduct += (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL);
             ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
     }
@@ -13940,7 +13940,9 @@ static void Cmd_setprotectlike(void)
     if (gCurrentTurnActionNumber == (gBattlersCount - 1))
         notLastTurn = FALSE;
 
-    if (sProtectSuccessRates[gDisableStructs[gBattlerAttacker].protectUses] >= Random() && notLastTurn)
+    if ((sProtectSuccessRates[gDisableStructs[gBattlerAttacker].protectUses] >= Random() && notLastTurn)
+        || (gCurrentMove == MOVE_WIDE_GUARD)
+        || (gCurrentMove == MOVE_QUICK_GUARD))
     {
         if (!gBattleMoves[gCurrentMove].argument) // Protects one mon only.
         {
@@ -18409,7 +18411,7 @@ bool32 DoesSubstituteBlockMove(u32 battlerAtk, u32 battlerDef, u32 move)
 
 bool32 DoesDisguiseBlockMove(u32 battler, u32 move)
 {
-    if (!(gBattleMons[battler].species == SPECIES_MIMIKYU)
+    if (!(gBattleMons[battler].species == SPECIES_FAKYSNAKY)
         || gBattleMons[battler].status2 & STATUS2_TRANSFORMED
         || (!gProtectStructs[battler].confusionSelfDmg && (IS_MOVE_STATUS(move) || gHitMarker & HITMARKER_PASSIVE_DAMAGE))
         || gHitMarker & HITMARKER_IGNORE_DISGUISE
@@ -19743,6 +19745,38 @@ void BS_JumpIfHoldEffect(void)
         gLastUsedItem = gBattleMons[battler].item;   // For B_LAST_USED_ITEM
         gBattlescriptCurrInstr += 12;
     }
+}
+
+void BS_AllySwitchSwapBattler(void)
+{
+    NATIVE_ARGS();
+
+    gBattleScripting.battler = gBattlerAttacker;
+    gBattlerAttacker ^= BIT_FLANK;
+    gProtectStructs[gBattlerAttacker].usedAllySwitch = TRUE;
+    gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
+void BS_AllySwitchFailChance(void)
+{
+    NATIVE_ARGS(const u8 *failInstr);
+    u32 lastMove = gLastResultingMoves[gBattlerAttacker];
+    
+    if (lastMove == MOVE_UNAVAILABLE || !(gBattleMoves[lastMove].protectionMove))
+        gDisableStructs[gBattlerAttacker].protectUses = 0;
+
+    if (sProtectSuccessRates[gDisableStructs[gBattlerAttacker].protectUses] < Random())
+    {
+        gDisableStructs[gBattlerAttacker].protectUses = 0;
+        gBattlescriptCurrInstr = cmd->failInstr;
+        return;
+    }
+    else
+    {
+        gDisableStructs[gBattlerAttacker].protectUses++;
+    }
+    
+    gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
 void BS_DoStockpileStatChangesWearOff(void)

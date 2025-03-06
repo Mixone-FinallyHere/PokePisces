@@ -217,8 +217,8 @@ static const u8 sSandStreamDescription[] = _(
 
 static const u8 sPressureDescription[] = _(
     "The Pokémon raises the opposing\n"
-    "Pokémon's PP usage. Raises the\n"
-    "level of wild Pokémon.");
+    "Pokémon's PP usage by 2. Raises\n"
+    "the level of wild Pokémon.");
 
 static const u8 sThickFatDescription[] = _(
     "The Pokémon's layer of thick fat\n"
@@ -1494,8 +1494,8 @@ static const u8 sFrostJawDescription[] = _(
     "added effects on biting moves.");
 
 static const u8 sFuddlePointDescription[] = _(
-    "Contact with the Pokémon may\n"
-    "confuse the attacker.");
+    "Contact with the Pokémon\n"
+    "confuses the attacker.");
 
 static const u8 sMadnessDescription[] = _(
     "May confuse a target when the\n"
@@ -1562,9 +1562,9 @@ static const u8 sDrainageDescription[] = _(
     "at half or less.");
 
 static const u8 sDreadVeilDescription[] = _(
-    "When hit may panic the attacker.\n"
-    "May panic a target when the\n"
-    "Pokémon attacks.");
+    "Deals more damage if the foe is\n"
+    "panicking. If the user faints by\n"
+    "an attacker, makes them panic.");
 
 static const u8 sEmptyDescription[] = _(
     "The Pokémon receives full\n"
