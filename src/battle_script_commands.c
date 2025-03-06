@@ -2090,16 +2090,16 @@ static void Cmd_ppreduce(void)
         for (i = 0; i < gBattlersCount; i++)
         {
             if (GetBattlerSide(i) != GetBattlerSide(gBattlerAttacker) && IsBattlerAlive(i))
-                ppToDeduct += (GetBattlerAbility(i) == ABILITY_PRESSURE);
-                ppToDeduct += 2 * (GetBattlerHoldEffect(i, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL);
+                ppToDeduct += 2 * (GetBattlerAbility(i) == ABILITY_PRESSURE);
+                ppToDeduct += (GetBattlerHoldEffect(i, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL);
                 ppToDeduct += (GetBattlerAbility(i) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
         }
     }
     else if (moveTarget != MOVE_TARGET_OPPONENTS_FIELD)
     {
         if (gBattlerAttacker != gBattlerTarget)
-            ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_PRESSURE);
-            ppToDeduct += 2 * (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL);
+            ppToDeduct += 2 * (GetBattlerAbility(gBattlerTarget) == ABILITY_PRESSURE);
+            ppToDeduct += (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL);
             ppToDeduct += (GetBattlerAbility(gBattlerTarget) == ABILITY_SHUNYONG && gBattleResults.battleTurnCounter % 2 != 0);
     }
 

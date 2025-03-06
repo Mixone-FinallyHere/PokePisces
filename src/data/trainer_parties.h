@@ -2864,7 +2864,7 @@ static const struct TrainerMon sParty_PPhoebe[] = {
     .species = SPECIES_BOOZARD,
     .ability = ABILITY_INTIMIDATE,
     .heldItem = ITEM_SPELL_TAG,
-    .moves = {MOVE_GLARE, MOVE_BREAKING_SWIPE, MOVE_CONFUSE_RAY, MOVE_FEAR_FACTOR},
+    .moves = {MOVE_FEAR_FACTOR, MOVE_CONFUSE_RAY, MOVE_NONE, MOVE_NONE},
     .nature = NATURE_NAIVE,
     },
     {
@@ -2873,8 +2873,9 @@ static const struct TrainerMon sParty_PPhoebe[] = {
     .ev = TRAINER_PARTY_EVS(0, 0, 0, 100, 88, 0),
     .species = SPECIES_MISDREAVUS,
     .ability = ABILITY_MAGICIAN,
-    .moves = {MOVE_FOUL_PLAY, MOVE_AURA_SPHERE, MOVE_TERRORIZE, MOVE_PARTING_SHOT},
+    .moves = {MOVE_FOUL_PLAY, MOVE_AURA_SPHERE, MOVE_TORMENT, MOVE_PARTING_SHOT},
     .nature = NATURE_TIMID,
+    .heldItem = ITEM_PANIC_ORB,
     },
     {
     .lvl = 29,
@@ -2883,7 +2884,7 @@ static const struct TrainerMon sParty_PPhoebe[] = {
     .species = SPECIES_KOWAKO,
     .ability = ABILITY_PRESSURE,
     .heldItem = ITEM_SHELL_BELL,
-    .moves = {MOVE_EERIE_SPELL, MOVE_BURNING_JEALOUSY, MOVE_OMINOUS_WIND, MOVE_SPIRIT_AWAY},
+    .moves = {MOVE_EERIE_SPELL, MOVE_OMINOUS_WIND, MOVE_BURNING_JEALOUSY, MOVE_SPIRIT_AWAY},
     .nature = NATURE_CALM,
     }
 };

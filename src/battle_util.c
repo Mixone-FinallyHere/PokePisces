@@ -974,8 +974,8 @@ void PressurePPLose(u8 target, u8 attacker, u16 move)
     {
         if (targetAbility == ABILITY_PRESSURE)
             gBattleMons[attacker].pp[moveIndex]--;
-        if (GetBattlerHoldEffect(target, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL)
             gBattleMons[attacker].pp[moveIndex]--;
+        if (GetBattlerHoldEffect(target, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL)
             gBattleMons[attacker].pp[moveIndex]--;
         if (gBattleMons[attacker].status1 & STATUS1_PANIC)
             gBattleMons[attacker].pp[moveIndex]--;
@@ -1016,10 +1016,10 @@ void PressurePPLoseOnUsingImprison(u8 attacker)
                     if (GetBattlerAbility(i) == ABILITY_PRESSURE)
                     {
                         gBattleMons[attacker].pp[j]--;
+                        gBattleMons[attacker].pp[j]--;
                     }
                     if (GetBattlerHoldEffect(i, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL)
                     {
-                        gBattleMons[attacker].pp[j]--;
                         gBattleMons[attacker].pp[j]--;
                     }
                     if (gBattleMons[attacker].status1 & STATUS1_PANIC)
@@ -1066,10 +1066,10 @@ void PressurePPLoseOnUsingPerishSong(u8 attacker)
                 if (gBattleMons[attacker].pp[j] != 0)
                     if (GetBattlerAbility(i) == ABILITY_PRESSURE && i != attacker)
                         gBattleMons[attacker].pp[j]--;
+                        gBattleMons[attacker].pp[j]--;
                     if (GetBattlerAbility(i) == ABILITY_SHUNYONG && i != attacker && gBattleResults.battleTurnCounter % 2 != 0)
                         gBattleMons[attacker].pp[j]--;
                     if (GetBattlerHoldEffect(i, TRUE) == HOLD_EFFECT_SPECTRAL_IDOL && i != attacker)
-                        gBattleMons[attacker].pp[j]--;
                         gBattleMons[attacker].pp[j]--;
                     if (gBattleMons[attacker].status1 & STATUS1_PANIC)
                         gBattleMons[attacker].pp[j]--;
@@ -6655,10 +6655,10 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_DREAD_VEIL:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerAttacker].hp != 0 
-            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED 
-            && CanGetPanicked(gBattlerAttacker)
-            && RandomPercentage(RNG_POISON_POINT, 15))
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+             && !IsBattlerAlive(gBattlerTarget)
+             && IsBattlerAlive(gBattlerAttacker)
+             && CanGetPanicked(gBattlerAttacker))
             {
                 gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_PANIC;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
@@ -6713,8 +6713,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         case ABILITY_FUDDLE_POINT:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerAttacker].hp != 0 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED 
-            && CanBeConfused(gBattlerTarget) && IsMoveMakingContact(move, gBattlerAttacker) 
-            && RandomPercentage(RNG_POISON_POINT, 30))
+            && CanBeConfused(gBattlerTarget) && IsMoveMakingContact(move, gBattlerAttacker))
             {
                 gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CONFUSION;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
@@ -7045,20 +7044,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_TransfusionAbilityCopy;
-                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
-                effect++;
-            }
-            break;
-        case ABILITY_DREAD_VEIL:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerTarget].hp != 0 
-            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && CanGetPanicked(gBattlerTarget) 
-            && TARGET_TURN_DAMAGED // Need to actually hit the target
-            && RandomPercentage(RNG_POISON_POINT, 15))
-            {
-                gBattleScripting.moveEffect = MOVE_EFFECT_PANIC;
-                PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
-                BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
                 gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
             }
@@ -11953,6 +11938,10 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         if (gDisableStructs[battlerAtk].purpleHazeOffense && IS_MOVE_PHYSICAL(gCurrentMove))
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
+    case ABILITY_DREAD_VEIL:
+        if (gBattleMons[battlerDef].status1 & STATUS1_PANIC)
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
+        break;
     case ABILITY_RISING:
         modifier = uq4_12_multiply(modifier, UQ_4_12(1.25));
         break;
@@ -12737,6 +12726,10 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
         if (!usesDefStat)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
         break;
+    case HOLD_EFFECT_SPECTRAL_IDOL:
+        if (gBattleMons[battlerAtk].status1 & STATUS1_PANIC)
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.15));
+        break;
     case HOLD_EFFECT_BATTLE_HELM:
         if (usesDefStat)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
@@ -12905,7 +12898,7 @@ static inline uq4_12_t GetBurnOrFrostBiteOrPanicModifier(u32 battlerAtk, u32 mov
     if (gBattleMons[battlerAtk].status1 & STATUS1_PANIC
         && abilityAtk != ABILITY_GUTS
         && !FACADE_PREVENTS_BURN_MALUS(move))
-        return UQ_4_12(0.9);
+        return UQ_4_12(0.8);
     if (gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING 
         && (move == MOVE_MEGA_DRAIN))
         return UQ_4_12(2.0);
