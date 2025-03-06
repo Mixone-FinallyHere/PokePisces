@@ -29469,10 +29469,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     {
         .baseHP        = 60,
         .baseAttack    = 150,
-        .baseDefense   = 90,
-        .baseSpeed     = 100,
+        .baseDefense   = 100,
+        .baseSpeed     = 85,
         .baseSpAttack  = 150,
-        .baseSpDefense = 100,
+        .baseSpDefense = 105,
         .types = { TYPE_ICE, TYPE_FLYING },
         .catchRate = 60,
         .expYield = 145,
