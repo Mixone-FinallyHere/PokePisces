@@ -12225,6 +12225,7 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
     uq4_12_t modifier;
     u16 atkBaseSpeciesId;
     u8 formNum;
+    u32 atkSide = GetBattlerSide(battlerAtk);
 
     atkBaseSpeciesId = GET_BASE_SPECIES_ID(gBattleMons[battlerAtk].species);
 
@@ -12417,8 +12418,14 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         break;
     case HOLD_EFFECT_TRIUMPH_STAR:
-        if ((atkBaseSpeciesId == SPECIES_LEDYBA || atkBaseSpeciesId == SPECIES_LEDIAN) && IS_MOVE_PHYSICAL(move))
+        if (atkBaseSpeciesId == SPECIES_LEDIAN
+        && IS_MOVE_PHYSICAL(move)
+        && gSideStatuses[atkSide] & (SIDE_STATUS_REFLECT | SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
+        if (atkBaseSpeciesId == SPECIES_LEDIAN
+        && gBattleMoves[move].punchingMove
+        && gSideStatuses[atkSide] & (SIDE_STATUS_REFLECT | SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL))
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.25));
         break;
     case HOLD_EFFECT_VIBRANT_SCALE:
         if (gBattleMons[battlerAtk].species == SPECIES_BIVAGUE && IS_MOVE_SPECIAL(move))

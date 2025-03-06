@@ -4488,9 +4488,10 @@ static const u8 sVibrantScaleDesc[] = _(
     "Speed stats.");
 
 static const u8 sTriumphStarDesc[] = _(
-    "A star of power that\n"
-    "boosts the Ledyba\n"
-    "line's Attack stat.");
+    "Boosts Ledian's Attack\n"
+    "when screens are up.\n"
+    "Punching moves are\n"
+    "boosted further.");
 
 static const u8 sZigSashDesc[] = _(
     "A nice ribbon that\n"
