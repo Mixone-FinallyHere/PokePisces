@@ -457,8 +457,9 @@
 #define MOVE_EFFECT_RECHARGE_BURN       117
 #define MOVE_EFFECT_DRAGON_RAGE         118
 #define MOVE_EFFECT_SUPER_TROP_KICK     119
+#define MOVE_EFFECT_BANSHRIEK           120
 
-#define NUM_MOVE_EFFECTS                120
+#define NUM_MOVE_EFFECTS                121
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000

@@ -3753,6 +3753,26 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     SetMoveEffect(FALSE, 0);
                 }
                 break;
+            case MOVE_EFFECT_BANSHRIEK:
+                if (gBattleMons[gEffectBattler].status1 && gBattleMons[gEffectBattler].status2 & STATUS2_CONFUSION)
+                {
+                    gBattlescriptCurrInstr++;
+                }
+                else if (gBattleMons[gEffectBattler].status2 & STATUS2_CONFUSION)
+                {
+                    gBattleScripting.moveEffect = MOVE_EFFECT_PANIC;
+                    SetMoveEffect(FALSE, 0);
+                }
+                else if (RandomPercentage(RNG_CONFUSION, CalcSecondaryEffectChance(gBattlerAttacker, 50)))
+                {
+                    gBattleScripting.moveEffect = MOVE_EFFECT_CONFUSION;
+                    SetMoveEffect(FALSE, 0);
+                }
+                else
+                {
+                    gBattlescriptCurrInstr++;
+                }
+                break;
             case MOVE_EFFECT_ATTACK_ORDER:
                 if (gBattleMons[gEffectBattler].status1)
                 {

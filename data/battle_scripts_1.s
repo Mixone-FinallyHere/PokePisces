@@ -2782,12 +2782,8 @@ BattleScript_EffectVineWhip::
 	goto BattleScript_EffectHit
 
 BattleScript_EffectBanshriek::
-	setmoveeffect MOVE_EFFECT_CONFUSION
-	call BattleScript_EffectHit_Ret
-	seteffectwithchance
-	argumentstatuseffect
-	tryfaintmon BS_TARGET
-	goto BattleScript_MoveEnd
+	setmoveeffect MOVE_EFFECT_BANSHRIEK
+	goto BattleScript_EffectHit
 
 BattleScript_EffectFeatherDance:
 	jumpifnodamage BattleScript_EffectAttackDown2

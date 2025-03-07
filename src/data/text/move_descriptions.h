@@ -3681,9 +3681,9 @@ static const u8 sGlacialLanceDescription[] = _(
     "opposing Pokémon.");
 
 static const u8 sAstralBarrageDescription[] = _(
-    "The user sends a frightful\n"
-    "amount of small ghosts at the\n"
-    "foes. This may make them panic.");
+    "Sends a barrage of spirits at\n"
+    "foes. This may panic them. Boosts\n"
+    "chances for each fallen ally.");
 
 static const u8 sEerieSpellDescription[] = _(
     "The user attacks with its great\n"
@@ -4747,8 +4747,8 @@ static const u8 sAirCannonDescription[] = _(
 
 static const u8 sBanshriekDescription[] = _(
     "The user lets out a ghostly wail\n"
-    "to attack foes. This may leave\n"
-    "them panicking or confused.");
+    "to attack foes. This may confuse\n"
+    "foes or panic confused foes.");
 
 static const u8 sGreenGuiseDescription[] = _(
     "The user starts blooming, lands\n"
