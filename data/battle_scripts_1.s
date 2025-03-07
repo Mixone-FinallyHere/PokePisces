@@ -15073,8 +15073,6 @@ BattleScript_DefenderFormChangeNoPopup::
 	playanimation BS_TARGET, B_ANIM_FORM_CHANGE
 	waitanimation
 	handleformchange BS_TARGET, 2
-	printstring STRINGID_PKMNTRANSFORMED
-	waitmessage B_WAIT_TIME_LONG
 	return
 
 BattleScript_AttackerFormChange::
@@ -15089,8 +15087,6 @@ BattleScript_AttackerFormChangeNoPopup::
 	playanimation BS_ATTACKER, B_ANIM_FORM_CHANGE
 	waitanimation
 	handleformchange BS_ATTACKER, 2
-	printstring STRINGID_PKMNTRANSFORMED
-	waitmessage B_WAIT_TIME_LONG
 	return
 
 BattleScript_AttackerFormChangeEnd3::
