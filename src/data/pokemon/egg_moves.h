@@ -4748,7 +4748,8 @@ const u16 gEggMoves[] = {
         MOVE_SEIZE_CHANCE,
         MOVE_NIGHT_DAZE,
         MOVE_TERRORIZE,
-        MOVE_EXTRASENSORY),
+        MOVE_EXTRASENSORY,
+        MOVE_ASTRAL_BARRAGE),
 
     egg_moves(MISMAGIUS,
         MOVE_HYPNOSIS,
