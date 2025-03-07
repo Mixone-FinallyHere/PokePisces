@@ -5054,10 +5054,10 @@
     {
       "id": "LAYOUT_LAB_BASEMENT2",
       "name": "LabBasement2_Layout",
-      "width": 4,
+      "width": 7,
       "height": 6,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_InsideShip",
+      "secondary_tileset": "gTileset_Underwater",
       "border_filepath": "data/layouts/LabBasement2/border.bin",
       "blockdata_filepath": "data/layouts/LabBasement2/map.bin"
     },
