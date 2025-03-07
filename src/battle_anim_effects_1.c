@@ -1474,6 +1474,17 @@ const struct SpriteTemplate gVineWhipSpriteTemplate =
     .callback = AnimWhipHit,
 };
 
+const struct SpriteTemplate gHaywireSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_WHIP_HIT,
+    .paletteTag = ANIM_TAG_GRAY_ORB,
+    .oam = &gOamData_AffineOff_ObjNormal_32x32,
+    .anims = sAnims_Whip,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimWhipHit,
+};
+
 const struct SpriteTemplate gWaterFlogSpriteTemplate =
 {
     .tileTag = ANIM_TAG_WHIP_HIT,

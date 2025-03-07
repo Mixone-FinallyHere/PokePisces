@@ -801,10 +801,10 @@ BattleScript_JungleRageMaxFrenzyHealBlock::
 
 BattleScript_EffectMindGap::
 	attackcanceler
+	jumpifnotfirstturn BattleScript_FailedFromAtkString
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
-	mindgapcheck BS_TARGET, BattleScript_ButItFailed
 	critcalc
 	damagecalc
 	adjustdamage
@@ -1774,10 +1774,10 @@ BattleScript_HunkerDownEnd::
 
 BattleScript_EffectMoonBeam:
 	setmoveeffect MOVE_EFFECT_PANIC
-	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
-	curestatuswithmove BS_ATTACKER, BattleScript_HitFromAtkAnimation
+	curestatuswithmove BS_ATTACKER, BattleScript_HitFromCritCalc
 	critcalc
 	damagecalc
 	adjustdamage
