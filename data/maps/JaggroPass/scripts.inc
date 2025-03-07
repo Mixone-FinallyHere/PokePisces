@@ -235,13 +235,3 @@ JaggroPass_Text_NoSingingMove:
 JaggroPass_Text_ItBecameLively:
 	.string "(The plant became lively!\n"
 	.string "It's a Wild Pokemon!)$"
-
-
-JaggroPass_Text_ItsBellowing:
-	.string "$"
-
-JaggroPass_Text_NoSingingMove:
-	.string "$"
-
-JaggroPass_Text_ItBecameLively:
-	.string "$"
