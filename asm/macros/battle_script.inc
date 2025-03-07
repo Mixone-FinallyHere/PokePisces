@@ -1936,6 +1936,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro setallure failInstr:req
+	various BS_TARGET, VARIOUS_ALLURE
+	.4byte \failInstr
+	.endm
+
 	.macro applycraftyshield battler:req, failInstr:req
 	various \battler, VARIOUS_CRAFTY_SHIELD
 	.4byte \failInstr

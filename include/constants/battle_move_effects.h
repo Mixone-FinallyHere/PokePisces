@@ -665,7 +665,8 @@
 #define EFFECT_HYDRO_CANNON                 659
 #define EFFECT_FEAR_FACTOR                  660
 #define EFFECT_NIGHT_DAZE                   661
+#define EFFECT_SPRING_BREEZE                662
 
-#define NUM_BATTLE_MOVE_EFFECTS             662
+#define NUM_BATTLE_MOVE_EFFECTS             663
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

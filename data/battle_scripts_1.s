@@ -688,6 +688,21 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectHydroCannon             @ EFFECT_HYDRO_CANNON
 	.4byte BattleScript_EffectFearFactor              @ EFFECT_FEAR_FACTOR
 	.4byte BattleScript_EffectNightDaze               @ EFFECT_NIGHT_DAZE
+	.4byte BattleScript_EffectSpringBreeze            @ EFFECT_SPRING_BREEZE
+
+BattleScript_EffectSpringBreeze::
+    call BattleScript_EffectHit_Ret
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEnd
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
+	jumpifsafeguard BattleScript_MoveEnd
+	setallure BattleScript_MoveEnd
+	printstring STRINGID_PKMNSHEARTFLUTTERSSHALALALA
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectNightDaze::
 	jumpifstatus BS_TARGET, STATUS1_PANIC, BattleScript_NightDazeTrueEffect
@@ -4514,7 +4529,6 @@ BattleScript_EffectVexingKi:
 	jumpifbattleend BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
-	jumpifbattleend BattleScript_MoveEnd
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEnd
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
 	jumpifsafeguard BattleScript_MoveEnd

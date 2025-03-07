@@ -10691,6 +10691,21 @@ static void Cmd_various(void)
         }
         return;
     }
+    case VARIOUS_ALLURE:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        if (gStatuses4[gBattlerTarget] & STATUS4_ALLURE
+            || gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        else
+        {
+            gStatuses3[gBattlerTarget] |= STATUS4_ALLURE_TURN(2);
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
     case VARIOUS_CHEESING:
     {
         VARIOUS_ARGS(const u8 *failInstr);

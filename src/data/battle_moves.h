@@ -12747,11 +12747,11 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         #else
             .power = 95,
         #endif
-        .effect = EFFECT_SLEEP_HIT,
+        .effect = EFFECT_SPRING_BREEZE,
         .type = TYPE_FAIRY,
         .accuracy = 80,
         .pp = 5,
-        .secondaryEffectChance = 10,
+        .secondaryEffectChance = 0,
         .target = MOVE_TARGET_BOTH,
         .priority = 0,
         .split = SPLIT_SPECIAL,
