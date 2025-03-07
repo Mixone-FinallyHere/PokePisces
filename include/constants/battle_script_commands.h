@@ -323,6 +323,7 @@
 #define VARIOUS_JUMP_IF_MOON_MIRRORED                231
 #define VARIOUS_JUMP_IF_SPECIES_MEGA_BOSS            232
 #define VARIOUS_FEAR_FACTOR                          233
+#define VARIOUS_RANDOM_STAT_DROP                     234
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

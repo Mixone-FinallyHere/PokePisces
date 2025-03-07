@@ -1931,6 +1931,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro tryrandomstatdrop battler:req, failInstr:req
+	various \battler, VARIOUS_RANDOM_STAT_DROP
+	.4byte \failInstr
+	.endm
+
 	.macro applycraftyshield battler:req, failInstr:req
 	various \battler, VARIOUS_CRAFTY_SHIELD
 	.4byte \failInstr

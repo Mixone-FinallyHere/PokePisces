@@ -10665,6 +10665,32 @@ static void Cmd_various(void)
         }
         return;
     }
+    case VARIOUS_RANDOM_STAT_DROP:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        bits = 0;
+        for (i = STAT_ATK; i < NUM_BATTLE_STATS; i++)
+        {
+            if (CompareStat(battler, i, MIN_STAT_STAGE, CMP_GREATER_THAN))
+                bits |= gBitTable[i];
+        }
+        if (bits)
+        {
+            u32 statId;
+            do
+            {
+                statId = (Random() % (NUM_BATTLE_STATS - 1)) + 1;
+            } while (!(bits & gBitTable[statId]));
+
+            SET_STATCHANGER(statId, 1, TRUE);
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        else
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        return;
+    }
     case VARIOUS_CHEESING:
     {
         VARIOUS_ARGS(const u8 *failInstr);
@@ -16501,8 +16527,11 @@ static void Cmd_tryspiteppreduce(void)
             s32 ppToDeduct = 4;
         #endif
         
-            if (gBattleMoves[gCurrentMove].effect == EFFECT_DOWNFALL || gBattleMoves[gCurrentMove].effect == EFFECT_TORMENT)
+            if (gBattleMoves[gCurrentMove].effect == EFFECT_DOWNFALL)
                 ppToDeduct = 2;
+            
+            if (gBattleMoves[gCurrentMove].effect == EFFECT_TORMENT)
+                ppToDeduct = 1;
 
             if (gBattleMons[gBattlerTarget].pp[i] < ppToDeduct)
                 ppToDeduct = gBattleMons[gBattlerTarget].pp[i];

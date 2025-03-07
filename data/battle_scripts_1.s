@@ -12058,36 +12058,52 @@ BattleScript_EffectHail::
 	goto BattleScript_MoveWeatherChange
 
 BattleScript_EffectTorment::
+	jumpifstatus2 BS_TARGET, STATUS2_TORMENT, BattleScript_TormentSuperEffect
 	attackcanceler
 	attackstring
 	ppreduce
 	accuracycheck BattleScript_ButItFailed, ACC_CURR_MOVE
-	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_TryTormentSpite
-	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TryTormentSpite
-	jumpifsafeguard BattleScript_TryTormentSpite
-	settorment BattleScript_TryTormentSpite
-	tryspiteppreduce BattleScript_DoJustTorment
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_AromaVeilProtects
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TitanicProtectsDoesntAffect
+	jumpifsafeguard BattleScript_SafeguardProtected
+	settorment BattleScript_ButItFailed
 	attackanimation
 	waitanimation
 	printstring STRINGID_PKMNSUBJECTEDTOTORMENT
 	waitmessage B_WAIT_TIME_LONG
-	printstring STRINGID_PKMNREDUCEDPP
-	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryDestinyKnotTormentAttacker
 	goto BattleScript_MoveEnd
-BattleScript_TryTormentSpite::
+BattleScript_TormentSuperEffect::
+	attackcanceler
+	attackstring
+	ppreduce
+	tryrandomstatdrop BS_TARGET, BattleScript_TormentTrySpite
+	tryspiteppreduce BattleScript_TormentJustRandomStatDrop
+	attackanimation
+	waitanimation
+	setgraphicalstatchangevalues
+	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	statbuffchange MOVE_EFFECT_CERTAIN, BattleScript_MoveEnd
+	printstring STRINGID_DEFENDERSSTATFELL
+	waitmessage B_WAIT_TIME_LONG
+	printstring STRINGID_PKMNREDUCEDPP
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_TormentTrySpite::
 	tryspiteppreduce BattleScript_ButItFailed
 	attackanimation
 	waitanimation
 	printstring STRINGID_PKMNREDUCEDPP
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
-BattleScript_DoJustTorment::
+BattleScript_TormentJustRandomStatDrop::
 	attackanimation
 	waitanimation
-	printstring STRINGID_PKMNSUBJECTEDTOTORMENT
+	setgraphicalstatchangevalues
+	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	statbuffchange MOVE_EFFECT_CERTAIN, BattleScript_MoveEnd
+	printstring STRINGID_DEFENDERSSTATFELL
 	waitmessage B_WAIT_TIME_LONG
-	call BattleScript_TryDestinyKnotTormentAttacker
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectFlatter::
