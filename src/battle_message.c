@@ -227,6 +227,7 @@ static const u8 sText_AttackerCantEscapeNow[] = _("{B_ATK_NAME_WITH_PREFIX} can'
 static const u8 sText_PkmnFellIntoNightmare[] = _("{B_DEF_NAME_WITH_PREFIX} fell into\na NIGHTMARE!");
 static const u8 sText_PkmnLockedInNightmare[] = _("{B_ATK_NAME_WITH_PREFIX} is locked\nin a NIGHTMARE!");
 static const u8 sText_PkmnLaidCurse[] = _("{B_ATK_NAME_WITH_PREFIX} cut its own HP and\nlaid a CURSE on {B_DEF_NAME_WITH_PREFIX}!");
+static const u8 sText_PkmnLaidCurseGrippingNail[] = _("{B_ATK_NAME_WITH_PREFIX} laid a\nCURSE on {B_DEF_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnAfflictedByCurse[] = _("{B_ATK_NAME_WITH_PREFIX} is afflicted\nby the CURSE!");
 static const u8 sText_SpikesScattered[] = _("Spikes were scattered all around\n{B_DEF_TEAM2} team!");
 static const u8 sText_SpelonSpikesScattered[] = _("Spelon Berry scattered Spikes all\naround {B_DEF_TEAM2} team!");
@@ -1833,6 +1834,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_COULDNTHANDLETHESURPRISE - BATTLESTRINGS_TABLE_START] = sText_CouldntHandleTheSurprise,
     [STRINGID_PKMNWASSHROUDEDBY - BATTLESTRINGS_TABLE_START] = sText_PkmnWasShroudedBy,
     [STRINGID_PKMNFROSTBITEBY - BATTLESTRINGS_TABLE_START] = sText_PkmnFrostbiteBy,
+    [STRINGID_PKMNLAIDCURSEGRIPPINGNAIL - BATTLESTRINGS_TABLE_START] = sText_PkmnLaidCurseGrippingNail,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

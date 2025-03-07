@@ -14518,7 +14518,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_VEXING_KI] =
     {
-        .effect = EFFECT_TORMENT_HIT,
+        .effect = EFFECT_VEXING_KI,
         .power = 90,
         .type = TYPE_DARK,
         .accuracy = 100,

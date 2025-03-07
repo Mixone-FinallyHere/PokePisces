@@ -5996,7 +5996,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             break;
         }
     case EFFECT_TORMENT:
-    case EFFECT_TORMENT_HIT:
+    case EFFECT_VEXING_KI:
         break;
     case EFFECT_WILL_O_WISP:
         IncreaseBurnScore(battlerAtk, battlerDef, move, &score);
@@ -7211,7 +7211,7 @@ static s32 AI_SetupFirstTurn(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_CINDER_TWIRL:
     case EFFECT_CINDER_DRILL:
     case EFFECT_SILENCE:
-    case EFFECT_TORMENT_HIT:
+    case EFFECT_VEXING_KI:
     case EFFECT_WARM_WELCOME:
     case EFFECT_SCORP_FANG:
     case EFFECT_RECOIL_50_HAZARD:

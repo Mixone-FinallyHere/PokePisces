@@ -4208,8 +4208,8 @@ static const u8 sSilenceDescription[] = _(
 
 static const u8 sVexingKiDescription[] = _(
     "The user releases malicious aura\n"
-    "that makes the foe incapable of\n"
-    "using the same move successively.");
+    "that torments targets or makes\n"
+    "them panic if already tormented.");
 
 static const u8 sDecayBeamDescription[] = _(
     "This move drains 3 PP from the\n"

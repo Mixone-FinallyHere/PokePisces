@@ -447,7 +447,7 @@
 #define EFFECT_CINDER_TWIRL                 441 //AI Flags added, may need to add more scoring in in regards to which form would be best. Currently just added it to SetupFirstTurn
 #define EFFECT_CINDER_DRILL                 442 //AI Flags added, may need to add more scoring in in regards to which form would be best. Currently just added it to SetupFirstTurn
 #define EFFECT_SILENCE                      443 //AI Flags complete
-#define EFFECT_TORMENT_HIT                  444 //AI Flags complete
+#define EFFECT_VEXING_KI                    444 //AI Flags complete
 #define EFFECT_DECAY_BEAM                   445 //According to EFFECT_FREEZE_DRY and EFFECT_EERIE_SPELL, this doesnt need any special AI code
 #define EFFECT_WARM_WELCOME                 446 //AI Flags complete
 #define EFFECT_RADIOACID                    447 //AI Flags complete

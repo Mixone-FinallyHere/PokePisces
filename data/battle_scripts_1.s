@@ -470,7 +470,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectCinderTwirl             @ EFFECT_CINDER_TWIRL
 	.4byte BattleScript_EffectCinderDrill             @ EFFECT_CINDER_DRILL
 	.4byte BattleScript_EffectSilence                 @ EFFECT_SILENCE
-	.4byte BattleScript_EffectTormentHit              @ EFFECT_TORMENT_HIT
+	.4byte BattleScript_EffectVexingKi                @ EFFECT_VEXING_KI
 	.4byte BattleScript_EffectEerieSpell              @ EFFECT_DECAY_BEAM
 	.4byte BattleScript_EffectWarmWelcome             @ EFFECT_WARM_WELCOME
 	.4byte BattleScript_EffectRadioacid               @ EFFECT_RADIOACID
@@ -3340,7 +3340,7 @@ BattleScript_EffectGrippingNailContinue::
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_TryCursePortion::
 	cursetarget BattleScript_MoveEnd
-	printstring STRINGID_PKMNLAIDCURSE
+	printstring STRINGID_PKMNLAIDCURSEGRIPPINGNAIL
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 BattleScript_GrippingNailBloomingEffect::
@@ -3383,7 +3383,7 @@ BattleScript_TryCursePortion2::
 	printstring STRINGID_TARGETCANTESCAPEFORNOW
 	waitmessage B_WAIT_TIME_LONG
 	cursetarget BattleScript_TryLeechSeedPortion
-	printstring STRINGID_PKMNLAIDCURSE
+	printstring STRINGID_PKMNLAIDCURSEGRIPPINGNAIL
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_TryLeechSeedPortion::
 	jumpifsubstituteblocks BattleScript_MoveEnd
@@ -4507,7 +4507,8 @@ BattleScript_EffectWarmWelcomeSunnyDayFailedStuffCheeksSucceeded::
 	removeitem BS_ATTACKER
 	goto BattleScript_MoveEnd
 
-BattleScript_EffectTormentHit:
+BattleScript_EffectVexingKi:
+	jumpifstatus2 BS_TARGET, STATUS2_TORMENT, BattleScript_EffectPanicHit
     call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
 	jumpifbattleend BattleScript_MoveEnd
