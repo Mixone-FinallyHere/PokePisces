@@ -558,3 +558,5 @@ gSpecials::
 	def_special PoisonPlayerParty
 	def_special BurnPlayerParty
 	def_special SetMauvilleOldMan
+	def_special EnterCode
+	def_special GetCodeFeedback
