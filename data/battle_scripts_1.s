@@ -15953,7 +15953,7 @@ BattleScript_IntimidateLoop:
 	jumpiftargetally BattleScript_IntimidateLoopIncrement
 	jumpifabsent BS_TARGET, BattleScript_IntimidateLoopIncrement
 	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_IntimidateLoopIncrement
-	jumpiftype BS_TARGET, TYPE_DRAGON, BattleScript_IntimidatePrevented
+	jumpiftype BS_TARGET, TYPE_DRAGON, BattleScript_IntimidatePreventedByDragon
 	jumpifability BS_TARGET, ABILITY_HYPER_CUTTER, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_INNER_FOCUS, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_SCRAPPY, BattleScript_IntimidatePrevented
@@ -15987,17 +15987,15 @@ BattleScript_IntimidateLoopIncrement:
 	pause B_WAIT_TIME_MED
 	end3
 
+BattleScript_IntimidatePreventedByDragon:
+	copybyte sBATTLER, gBattlerTarget
+	printstring STRINGID_PKMNPREVENTSSTATLOSSDRAGON
+	goto BattleScript_IntimidateEffect_WaitString
+
 BattleScript_IntimidatePrevented:
 	copybyte sBATTLER, gBattlerTarget
-	jumpiftype BS_TARGET, TYPE_DRAGON, BattleScript_IntimidatePreventedNotAbility
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNPREVENTSSTATLOSSWITH
-	goto BattleScript_IntimidateEffect_WaitString
-BattleScript_IntimidatePreventedNotAbility:
-	setbyte gBattleCommunication STAT_ATK
-	stattextbuffer BS_TARGET
-	printstring STRINGID_STATWASNOTLOWERED
-	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_IntimidateEffect_WaitString
 
 BattleScript_IntimidateWontDecrease:
@@ -19067,7 +19065,7 @@ BattleScript_DisturbLoop:
 	jumpiftargetally BattleScript_DisturbLoopIncrement
 	jumpifabsent BS_TARGET, BattleScript_DisturbLoopIncrement
 	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_DisturbLoopIncrement
-	jumpiftype BS_TARGET, TYPE_DRAGON, BattleScript_DisturbPrevented
+	jumpiftype BS_TARGET, TYPE_DRAGON, BattleScript_DisturbPreventedDragon
 	jumpifability BS_TARGET, ABILITY_INNER_FOCUS, BattleScript_DisturbPrevented
 	jumpifability BS_TARGET, ABILITY_SCRAPPY, BattleScript_DisturbPrevented // SCRAPPY
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_DisturbPrevented
@@ -19100,17 +19098,15 @@ BattleScript_DisturbLoopIncrement:
 	pause B_WAIT_TIME_MED
 	end3
 
+BattleScript_DisturbPreventedDragon:
+	copybyte sBATTLER, gBattlerTarget
+	printstring STRINGID_PKMNPREVENTSSTATLOSSDRAGON
+	goto BattleScript_DisturbEffect_WaitString
+
 BattleScript_DisturbPrevented:
 	copybyte sBATTLER, gBattlerTarget
-	jumpiftype BS_TARGET, TYPE_DRAGON, BattleScript_DisturbPreventedNotAbility
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNPREVENTSSTATLOSSWITH
-	goto BattleScript_DisturbEffect_WaitString
-BattleScript_DisturbPreventedNotAbility:
-	setbyte gBattleCommunication STAT_SPATK
-	stattextbuffer BS_TARGET
-	printstring STRINGID_STATWASNOTLOWERED
-	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_DisturbEffect_WaitString
 
 BattleScript_DisturbWontDecrease:

@@ -316,6 +316,7 @@ static const u8 sText_PkmnCutsSpDefenceWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFI
 static const u8 sText_PkmnCutsSpeedWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\ncuts {B_DEF_NAME_WITH_PREFIX}'s speed!");
 static const u8 sText_PkmnIncreasesAccWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nincreased everyone's accuracy!");
 static const u8 sText_PkmnPreventsStatLossWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nprevents stat loss!");
+static const u8 sText_PkmnPreventsStatLossDragon[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s Dragon-typing\nprevents stat loss!");
 static const u8 sText_PkmnHurtsWith[] = _("{B_ATK_NAME_WITH_PREFIX} was hurt by\n{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1}!");
 static const u8 sText_PkmnHurtsWithInAttk[] = _("{B_DEF_NAME_WITH_PREFIX} was hurt by\n{B_ATK_NAME_WITH_PREFIX}'s {B_BUFF1}!");
 static const u8 sText_PkmnTraced[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} TRACED\n{B_BUFF1}'s {B_BUFF2}!");
@@ -1837,6 +1838,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNFROSTBITEBY - BATTLESTRINGS_TABLE_START] = sText_PkmnFrostbiteBy,
     [STRINGID_PKMNLAIDCURSEGRIPPINGNAIL - BATTLESTRINGS_TABLE_START] = sText_PkmnLaidCurseGrippingNail,
     [STRINGID_PKMNSHEARTFLUTTERSSHALALALA - BATTLESTRINGS_TABLE_START] = sText_PkmnsHeartFluttersShalalala,
+    [STRINGID_PKMNPREVENTSSTATLOSSDRAGON - BATTLESTRINGS_TABLE_START] = sText_PkmnPreventsStatLossDragon,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
