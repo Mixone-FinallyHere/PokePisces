@@ -4707,8 +4707,8 @@ static const u8 sCoralCrownDesc[] = _(
 static const u8 sExtrapolatorDesc[] = _(
     "A spray-type medicine\n"
     "that secures one\n"
-    "Pokémon to make it not\n"
-    "feel exposed.");
+    "Pokémon to make it\n"
+    "feel not exposed.");
 
 static const u8 sRelaxantDesc[] = _(
     "A spray-type medicine\n"
