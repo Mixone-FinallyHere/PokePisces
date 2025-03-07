@@ -6680,7 +6680,13 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_ICE_BODY:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerAttacker].hp != 0 && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && (IsMoveMakingContact(move, gBattlerAttacker)) && TARGET_TURN_DAMAGED && CanGetFrostbite(gBattlerAttacker) && RandomWeighted(RNG_FROZEN, 4, 1))
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            && gBattleMons[gBattlerAttacker].hp != 0
+            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
+            && (IsMoveMakingContact(move, gBattlerAttacker))
+            && TARGET_TURN_DAMAGED
+            && CanGetFrostbite(gBattlerAttacker)
+            && RandomWeighted(RNG_FROZEN, 4, 1))
             {
                 gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_FROSTBITE;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
@@ -11239,8 +11245,8 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_MAGNITUDE:
         basePower = gBattleStruct->magnitudeBasePower;
         break;
-    case EFFECT_BOUNDARY:
-        basePower = gBattleStruct->boundaryBasePower;
+    case EFFECT_FEAR_FACTOR:
+        basePower = gBattleStruct->fearFactorBasePower;
         break;
     case EFFECT_HIGH_ROLL_HIT:
         basePower = gBattleStruct->rollingBasePower;
@@ -11569,7 +11575,7 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         basePower = (basePower > 200) ? 200 : basePower;
         break;
     case EFFECT_FIERY_WRATH:
-        basePower = 90 + (10 * gBattleStruct->timesGotHit[GetBattlerSide(battlerAtk)][gBattlerPartyIndexes[battlerAtk]]);
+        basePower = 80 + (20 * gBattleStruct->timesGotHit[GetBattlerSide(battlerAtk)][gBattlerPartyIndexes[battlerAtk]]);
         basePower = (basePower > 200) ? 200 : basePower;
         break;
     case EFFECT_BARI_BARI_BEAM:
@@ -15052,6 +15058,26 @@ bool32 AreBattlersOfSameGender(u32 battler1, u32 battler2)
 
 u32 CalcSecondaryEffectChance(u32 battler, u8 secondaryEffectChance)
 {
+    if (gBattleMoves[gCurrentMove].effect == EFFECT_FEAR_FACTOR)
+    {
+        if (gBattleStruct->fearFactorBasePower == 10)
+            secondaryEffectChance = 15;
+        else if (gBattleStruct->fearFactorBasePower == 25)
+            secondaryEffectChance = 20;
+        else if (gBattleStruct->fearFactorBasePower == 40)
+            secondaryEffectChance = 25;
+        else if (gBattleStruct->fearFactorBasePower == 55)
+            secondaryEffectChance = 30;
+        else if (gBattleStruct->fearFactorBasePower == 70)
+            secondaryEffectChance = 35;
+        else if (gBattleStruct->fearFactorBasePower == 85)
+            secondaryEffectChance = 40;
+        else if (gBattleStruct->fearFactorBasePower == 100)
+            secondaryEffectChance = 45;
+        else
+            secondaryEffectChance = 50;
+    }
+
     if (gCurrentMove == MOVE_METEOR_MASH && gFieldStatuses & STATUS_FIELD_GRAVITY)
         secondaryEffectChance = 100;
     else if ((CanUseLastResort(battler) && gCurrentMove == MOVE_ANCIENT_POWER) || (gBattleMons[gBattlerTarget].status1 & STATUS1_PANIC && gCurrentMove == MOVE_OMINOUS_WIND))

@@ -686,6 +686,20 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectAlluringVoice           @ EFFECT_ALLURING_VOICE
 	.4byte BattleScript_EffectRockWrecker             @ EFFECT_ROCK_WRECKER
 	.4byte BattleScript_EffectHydroCannon             @ EFFECT_HYDRO_CANNON
+	.4byte BattleScript_EffectFearFactor              @ EFFECT_FEAR_FACTOR
+
+BattleScript_EffectFearFactor::
+	setmoveeffect MOVE_EFFECT_PANIC
+	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_EffectMagnitudeTarget
+	attackcanceler
+	attackstring
+	ppreduce
+	fearfactordamagecalculation
+	pause B_WAIT_TIME_SHORT
+	printstring STRINGID_MAGNITUDESTRENGTH
+	waitmessage B_WAIT_TIME_LONG
+	accuracycheck BattleScript_MoveMissedPause, ACC_CURR_MOVE
+	goto BattleScript_HitFromCritCalc
 
 BattleScript_EffectRockWrecker::
 	attackcanceler
@@ -787,10 +801,10 @@ BattleScript_JungleRageMaxFrenzyHealBlock::
 
 BattleScript_EffectMindGap::
 	attackcanceler
+	jumpifnotfirstturn BattleScript_FailedFromAtkString
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
-	mindgapcheck BS_TARGET, BattleScript_ButItFailed
 	critcalc
 	damagecalc
 	adjustdamage
@@ -1760,10 +1774,10 @@ BattleScript_HunkerDownEnd::
 
 BattleScript_EffectMoonBeam:
 	setmoveeffect MOVE_EFFECT_PANIC
-	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
-	curestatuswithmove BS_ATTACKER, BattleScript_HitFromAtkAnimation
+	curestatuswithmove BS_ATTACKER, BattleScript_HitFromCritCalc
 	critcalc
 	damagecalc
 	adjustdamage
@@ -3135,20 +3149,21 @@ BattleScript_GrassCannonCheckTerrain::
 BattleScript_EffectSpiritAway::
     call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
-	jumpifbattleend BattleScript_SpiritAwaySkipThirdType
-	jumpiffainted BS_TARGET, TRUE, BattleScript_SpiritAwaySkipThirdType
-	jumpifmovehadnoeffect BattleScript_SpiritAwaySkipThirdType
-	trysetthirdtype BS_TARGET, BattleScript_SpiritAwaySkipThirdType
-	printstring STRINGID_THIRDTYPEADDED
+	jumpifbattleend BattleScript_SpiritAwaySkipChangeType
+	jumpiffainted BS_TARGET, TRUE, BattleScript_SpiritAwaySkipChangeType
+	jumpifmovehadnoeffect BattleScript_SpiritAwaySkipChangeType
+	jumpifability BS_TARGET, ABILITY_MULTITYPE, BattleScript_SpiritAwaySkipChangeType
+	jumpifability BS_TARGET, ABILITY_RKS_SYSTEM, BattleScript_SpiritAwaySkipChangeType
+	jumpifsubstituteblocks BattleScript_SpiritAwaySkipChangeType
+	trysoak BattleScript_SpiritAwaySkipChangeType
+	printstring STRINGID_TARGETCHANGEDTYPE
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_SpiritAwaySkipThirdType::
+BattleScript_SpiritAwaySkipChangeType::
 	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_SpiritAwayHealBlock
 	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_SpiritAwayHealBlock
 	setdrainedhp
 	manipulatedamage DMG_BIG_ROOT
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE
-	printstring STRINGID_GHOSTTYPEADDED
-	waitmessage B_WAIT_TIME_LONG
 	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_SpiritAwayLiquidOoze
 	setbyte cMULTISTRING_CHOOSER, B_MSG_ABSORB
 	goto BattleScript_SpiritAwayUpdateHp
@@ -3774,7 +3789,7 @@ BattleScript_ErodeFieldLoop:
 BattleScript_ErodeFieldCheckAffected:
 	jumpifnoterodefieldaffected BS_TARGET, BattleScript_ErodeFieldNoEffect
 	setbyte sSTAT_ANIM_PLAYED, FALSE
-	playstatchangeanimation BS_TARGET, BIT_DEF | BIT_SPDEF, 0
+	playstatchangeanimation BS_TARGET, BIT_DEF | BIT_SPDEF, STAT_CHANGE_MULTIPLE_STATS | STAT_CHANGE_NEGATIVE
 	setstatchanger STAT_DEF, 1, TRUE
 	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_ErodeFieldTrySpDef
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_ErodeFieldTrySpDef
@@ -11380,9 +11395,6 @@ BattleScript_EffectSafeguard::
 	goto BattleScript_PrintReflectLightScreenSafeguardString
 
 BattleScript_EffectMagnitude::
-	jumpifmove MOVE_MAGNITUDE, BattleScriptContinueMagnitude
-	setmoveeffect MOVE_EFFECT_PANIC
-BattleScriptContinueMagnitude::
 	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_EffectMagnitudeTarget
 	attackcanceler
 	attackstring
@@ -14874,6 +14886,7 @@ BattleScript_SelectingImprisonedMoveInPalace::
 BattleScript_GrudgeTakesPp::
 	printstring STRINGID_PKMNLOSTPPGRUDGE
 	waitmessage B_WAIT_TIME_LONG
+	seteffectsecondary
 	return
 
 BattleScript_MagicCoatBounce::

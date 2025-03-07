@@ -14232,7 +14232,7 @@ static const struct TrainerMon sParty_PWinona[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(128, 84, 0, 40, 0, 0),
     .lvl = 32,
-    .moves = {MOVE_TAILWIND, MOVE_BLACK_BUFFET, MOVE_VENOM_DRAIN, MOVE_OBLIVION_WING},
+    .moves = {MOVE_HYPNOSIS, MOVE_BLACK_BUFFET, MOVE_VENOM_DRAIN, MOVE_OBLIVION_WING},
     .nature = NATURE_ADAMANT,
     },
     {
@@ -14251,7 +14251,7 @@ static const struct TrainerMon sParty_PWinona[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(84, 0, 0, 36, 136, 0),
     .lvl = 34,
-    .moves = {MOVE_SYNCHRONOISE, MOVE_SPEED_SWAP, MOVE_BLEAKWIND_STORM, MOVE_FEAR_FACTOR},
+    .moves = {MOVE_SYNCHRONOISE, MOVE_SPEED_SWAP, MOVE_BLEAKWIND_STORM, MOVE_ASTRAL_BARRAGE},
     .nature = NATURE_MODEST,
     }
 };
@@ -14260,11 +14260,11 @@ static const struct TrainerMon sParty_PAarune[] = {
     {
     .species = SPECIES_DUNEWICH,
     .ability = ABILITY_SAND_STREAM,
-    .heldItem = ITEM_SMOOTH_ROCK,
+    .heldItem = ITEM_EJECT_BUTTON,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(128, 0, 124, 0, 4, 0),
     .lvl = 32,
-    .moves = {MOVE_NIGHT_DAZE, MOVE_GEO_PULSE, MOVE_LIGHT_SCREEN, MOVE_SPOOK},
+    .moves = {MOVE_NIGHT_DAZE, MOVE_GEO_PULSE, MOVE_MAGIC_COAT, MOVE_SPOOK},
     .nature = NATURE_BOLD,
     },
     {
@@ -14280,6 +14280,7 @@ static const struct TrainerMon sParty_PAarune[] = {
     {
     .species = SPECIES_BOLTEROCK,
     .ability = ABILITY_LUMBERING,
+    .heldItem = ITEM_COVERT_CLOAK,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(124, 8, 0, 0, 0, 124),
     .lvl = 34,

@@ -21,10 +21,10 @@
 #define ITEM3_BURN              0x8
 #define ITEM3_POISON            0x10
 #define ITEM3_SLEEP             0x20
-#define ITEM3_EXPOSED           0x40
+#define ITEM3_LEVEL_UP          0x40
 #define ITEM3_PANIC             0x80
 
-#define ITEM3_STATUS_ALL        (ITEM3_CONFUSION | ITEM3_PARALYSIS | ITEM3_FREEZE | ITEM3_BURN | ITEM3_POISON | ITEM3_SLEEP | ITEM3_PANIC | ITEM3_EXPOSED)
+#define ITEM3_STATUS_ALL        (ITEM3_CONFUSION | ITEM3_PARALYSIS | ITEM3_FREEZE | ITEM3_BURN | ITEM3_POISON | ITEM3_SLEEP | ITEM3_PANIC)
 
 // field 4 masks
 #define ITEM4_EV_HP             0x1
@@ -53,7 +53,7 @@
 #define ITEM10_GUARD_SPEC       0x4 // Works the same way as the move Mist.
 
 // fields 6 and onwards (except field 10) are item-specific arguments
-#define ITEM_EFFECT_ARG_START 11
+#define ITEM_EFFECT_ARG_START 6
 
 // Special HP recovery amounts for ITEM4_HEAL_HP
 #define ITEM6_HEAL_HP_FULL    ((u8) -1)

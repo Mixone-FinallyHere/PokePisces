@@ -7289,6 +7289,7 @@ static s32 AI_Risky(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     case EFFECT_SILVER_WIND:
     case EFFECT_FLASH:
     case EFFECT_MAGNITUDE:
+    case EFFECT_FEAR_FACTOR:
     case EFFECT_DRAGON_POKER:
     case EFFECT_LONE_SHARK:
     case EFFECT_ALL_STATS_DOWN_HIT:

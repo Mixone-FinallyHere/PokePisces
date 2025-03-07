@@ -3325,10 +3325,10 @@ static const u8 sTM17Desc[] = _(
     "for 5 turns.");
 
 static const u8 sTM18Desc[] = _(
-    "The user attacks\n"
-    "everyone with a\n"
-    "fear-inducing glare.\n"
-    "Its power varies.");
+    "Attacks with a fear-\n"
+    "inducing glare. Its\n"
+    "power and chance to\n"
+    "inflict panic varies.");
 
 static const u8 sTM19Desc[] = _(
     "The user spins into\n"
@@ -4707,8 +4707,8 @@ static const u8 sCoralCrownDesc[] = _(
 static const u8 sExtrapolatorDesc[] = _(
     "A spray-type medicine\n"
     "that secures one\n"
-    "Pokémon to make it not\n"
-    "feel exposed.");
+    "Pokémon to make it\n"
+    "feel not exposed.");
 
 static const u8 sRelaxantDesc[] = _(
     "A spray-type medicine\n"
