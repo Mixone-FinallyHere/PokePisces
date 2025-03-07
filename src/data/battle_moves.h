@@ -4820,7 +4820,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .pp = 5,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_USER,
-        .priority = 4,
+        .priority = 1,
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_SPDEF_UP_2,
     },
