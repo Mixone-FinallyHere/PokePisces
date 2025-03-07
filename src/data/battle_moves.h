@@ -16039,7 +16039,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
-        .argument = TYPE_GHOST,
+        .argument = 75,
         .ignoresKingsRock = B_UPDATED_MOVE_FLAGS < GEN_5, // && B_UPDATED_MOVE_FLAGS > GEN_2
     },
 
@@ -16087,7 +16087,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
         .bitingMove = TRUE,
-        .argument = MOVE_EFFECT_BLOOMING | MOVE_EFFECT_AFFECTS_USER,
+        .argument = 30,
     },
 
     [MOVE_GRASS_CANNON] =

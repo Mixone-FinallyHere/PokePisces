@@ -2748,6 +2748,46 @@ BattleScript_EffectDrumBeating::
 	goto BattleScript_EffectHit
 
 BattleScript_EffectSnapblossom::
+	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_SnapBlossomPlantSeeds
+	jumpifstatus BS_TARGET, STATUS1_ANY, BattleScript_SnapBlossomGiveBlooming
+	goto BattleScript_EffectAbsorb
+BattleScript_SnapBlossomPlantSeeds::
+	call BattleScript_EffectHit_Ret
+	seteffectwithchance
+	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_SnapblossomHealBlock
+	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_SnapblossomHealBlock
+	setdrainedhp
+	manipulatedamage DMG_BIG_ROOT
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE
+	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_SnapblossomLiquidOoze
+	setbyte cMULTISTRING_CHOOSER, B_MSG_ABSORB
+	goto BattleScript_SnapblossomUpdateHp
+BattleScript_SnapblossomLiquidOoze::
+	call BattleScript_AbilityPopUpTarget
+	manipulatedamage DMG_CHANGE_SIGN
+	setbyte cMULTISTRING_CHOOSER, B_MSG_ABSORB_OOZE
+BattleScript_SnapblossomUpdateHp::
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	jumpifmovehadnoeffect BattleScript_SnapblossomTryFainting
+	printfromtable gAbsorbDrainStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_SnapblossomTryFainting::
+	tryfaintmon BS_ATTACKER
+BattleScript_SnapblossomHealBlock::
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	jumpifsubstituteblocks BattleScript_MoveEnd
+	jumpifstatus3 BS_TARGET, STATUS3_LEECHSEED, BattleScript_MoveEnd
+	jumpiftype BS_TARGET, TYPE_GHOST, BattleScript_MoveEnd
+	setseeded
+	printfromtable gLeechSeedStringIds
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_SnapBlossomGiveBlooming::
+	setmoveeffect MOVE_EFFECT_BLOOMING | MOVE_EFFECT_AFFECTS_USER
 	goto BattleScript_EffectAbsorb
 
 BattleScript_EffectTropKick::

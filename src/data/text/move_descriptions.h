@@ -2419,9 +2419,9 @@ static const u8 sElectroBallDescription[] = _(
     "the foe, the greater the damage.");
 
 static const u8 sSoakDescription[] = _(
-    "The user shoots a torrent of\n"
-    "water that makes the foe Damp\n"
-    "and turns it into a Water-type.");
+    "Changes foe into a Water-type\n"
+    "and their ability to Damp. Fails\n"
+    "if foe can't change type.");
 
 static const u8 sFlameChargeDescription[] = _(
     "Cloaking itself in flame, the\n"
@@ -2787,9 +2787,9 @@ static const u8 sFellStingerDescription[] = _(
     "Attack stat rises drastically.");
 
 static const u8 sTrickOrTreatDescription[] = _(
-    "Takes the foe trick-or-treating.\n"
-    "This adds Ghost-type to the foe\n"
-    "and swaps held items.");
+    "Adds Ghost-type to the foe\n"
+    "and swaps held items. Fails\n"
+    "if foe can't change type.");
 
 static const u8 sPhantomForceDescription[] = _(
     "The user vanishes and then\n"
@@ -3401,9 +3401,9 @@ static const u8 sTarShotDescription[] = _(
     "becomes weaker to the Fire-type.");
 
 static const u8 sMagicPowderDescription[] = _(
-    "Scatters a cloud of magic powder\n"
-    "that makes the foe drowsy and\n"
-    "turns it into a Psychic-type.");
+    "Changes foe into a Psychic-type\n"
+    "and makes them drowsy. Fails\n"
+    "if foe can't change type.");
 
 static const u8 sDragonDartsDescription[] = _(
     "The user attacks twice. If there\n"
@@ -4646,9 +4646,9 @@ static const u8 sPhantasmDescription[] = _(
     "own HP.");
 
 static const u8 sSnapblossomDescription[] = _(
-    "A 2-turn draining move that\n"
-    "makes the user bloom. No charge\n"
-    "if blooming, and maintains bloom.");
+    "Drains HP. Blooms the user if\n"
+    "the foe is statused. If the user\n"
+    "is blooming, plants seeds.");
 
 static const u8 sGrassCannonDescription[] = _(
     "On Grassy Terrain, this move\n"
@@ -4801,9 +4801,9 @@ static const u8 sGrandSlamDescription[] = _(
     "turn, but takes less damage.");
 
 static const u8 sPurificationDescription[] = _(
-    "Changes the foe into a\n"
-    "Normal-type and resets their\n"
-    "stat changes. Always goes first.");
+    "Changes foe into a Normal-type,\n"
+    "resets stats, and prevents stat\n"
+    "changes. Always goes first.");
 
 static const u8 sSurpriseEggDescription[] = _(
     "The user opens an easter egg and\n"
