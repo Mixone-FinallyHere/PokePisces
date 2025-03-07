@@ -1644,9 +1644,9 @@ static const u8 sBulletSeedDescription[] = _(
     "changes if the user is blooming.");
 
 static const u8 sAerialAceDescription[] = _(
-    "The user confounds the target\n"
-    "with speed, then slashes. This\n"
-    "attack never misses.");
+    "The user does a speedy slash.\n"
+    "Boosted for every accuracy boost\n"
+    "the user has. Never misses.");
 
 static const u8 sIcicleSpearDescription[] = _(
     "The user attacks by launching\n"

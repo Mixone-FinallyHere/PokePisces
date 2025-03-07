@@ -5727,7 +5727,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_AERIAL_ACE] =
     {
-        .effect = EFFECT_HIT,
+        .effect = EFFECT_AERIAL_ACE,
         .power = 60,
         .type = TYPE_FLYING,
         .accuracy = 0,

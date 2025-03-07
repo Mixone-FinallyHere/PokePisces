@@ -666,7 +666,8 @@
 #define EFFECT_FEAR_FACTOR                  660
 #define EFFECT_NIGHT_DAZE                   661
 #define EFFECT_SPRING_BREEZE                662
+#define EFFECT_AERIAL_ACE                   663
 
-#define NUM_BATTLE_MOVE_EFFECTS             663
+#define NUM_BATTLE_MOVE_EFFECTS             664
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

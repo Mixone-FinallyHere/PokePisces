@@ -260,6 +260,7 @@ u32 CountBattlerStatDecreases(u32 battler, bool32 countEvasionAcc);
 u32 CountBattlerSpeedIncreases(u32 battler);
 u32 CountBattlerSpeedDecreases(u32 battler);
 u32 CountBattlerSpDefIncreases(u32 battler);
+u32 CountBattlerAccuracyIncreases(u32 battler);
 bool32 ChangeTypeBasedOnTerrain(u32 battler);
 void RemoveConfusionStatus(u32 battler);
 u8 GetBattlerGender(u32 battler);

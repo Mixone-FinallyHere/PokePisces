@@ -5874,6 +5874,14 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         if (gBattleMons[battlerAtk].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE)
             score+= CountBattlerSpeedIncreases(battlerAtk);
         break;
+    case EFFECT_BOLT_BEAK:
+        if (gBattleMons[battlerAtk].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE)
+            score+= CountBattlerSpeedIncreases(battlerAtk);
+        break;
+    case EFFECT_AERIAL_ACE:
+        if (gBattleMons[battlerAtk].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE)
+            score+= CountBattlerAccuracyIncreases(battlerAtk);
+        break;
     case EFFECT_HAYWIRE:
     case EFFECT_STORED_POWER:
         for (i = STAT_ATK; i < NUM_BATTLE_STATS; i++)

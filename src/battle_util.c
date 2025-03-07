@@ -10902,6 +10902,17 @@ u32 CountBattlerSpeedIncreases(u32 battler)
     return count;
 }
 
+u32 CountBattlerAccuracyIncreases(u32 battler)
+{
+    u32 i;
+    u32 count = 0;
+
+    if (gBattleMons[battler].statStages[STAT_ACC] > DEFAULT_STAT_STAGE) // Stat is increased.
+        count += gBattleMons[battler].statStages[STAT_ACC] - DEFAULT_STAT_STAGE;
+
+    return count;
+}
+
 u32 CountBattlerSpDefIncreases(u32 battler)
 {
     u32 i;
@@ -11429,6 +11440,9 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         break;
     case EFFECT_BOLT_BEAK:
         basePower = 65 + (CountBattlerSpeedIncreases(battlerAtk) * 20);
+        break;
+    case EFFECT_AERIAL_ACE:
+        basePower = 60 + (CountBattlerAccuracyIncreases(battlerAtk) * 15);
         break;
     case EFFECT_POWER_GEM:
         basePower = 80 + (CountBattlerSpDefIncreases(battlerAtk) * 15);

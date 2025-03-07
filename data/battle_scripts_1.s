@@ -689,6 +689,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectFearFactor              @ EFFECT_FEAR_FACTOR
 	.4byte BattleScript_EffectNightDaze               @ EFFECT_NIGHT_DAZE
 	.4byte BattleScript_EffectSpringBreeze            @ EFFECT_SPRING_BREEZE
+	.4byte BattleScript_EffectHit                     @ EFFECT_AERIAL_ACE
 
 BattleScript_EffectSpringBreeze::
     call BattleScript_EffectHit_Ret
