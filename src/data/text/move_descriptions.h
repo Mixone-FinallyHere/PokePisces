@@ -1686,7 +1686,7 @@ static const u8 sBulkUpDescription[] = _(
 static const u8 sBounceDescription[] = _(
     "The user bounces up high, then\n"
     "drops on the foe on the next\n"
-    "turn. This may paralyze the foe.");
+    "turn. This paralyzes the foe.");
 
 static const u8 sMudShotDescription[] = _(
     "The user attacks by hurling\n"
