@@ -4037,9 +4037,9 @@ static const u8 sPsybladeDescription[] = _(
     "boosted on Electric Terrain.");
 
 static const u8 sHydroSteamDescription[] = _(
-    "The user blasts the foe with\n"
-    "boiling water. This move is not\n"
-    "weakened in sunlight but boosted.");
+    "The user blasts boiling water at\n"
+    "the foe. It is not weakened in\n"
+    "sunlight but boosted.");
 
 static const u8 sElectroShotDescription[] = _(
     "Gathers electricity and boosts\n"
