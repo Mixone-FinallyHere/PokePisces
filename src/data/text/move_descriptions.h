@@ -4811,9 +4811,9 @@ static const u8 sSurpriseEggDescription[] = _(
     "using certain moves.");
 
 static const u8 sPoisonDartDescription[] = _(
-    "This move goes first, but fails\n"
-    "if the foe is not attacking.\n"
-    "Boosted if the foe is poisoned.");
+    "Fails if the foe isn't attacking.\n"
+    "Deals bonus true and never misses\n"
+    "if foe is poisoned. Goes first.");
 
 static const u8 sGravitonArmDescription[] = _(
     "Pummels the foe downward and\n"
