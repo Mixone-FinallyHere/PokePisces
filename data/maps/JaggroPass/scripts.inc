@@ -221,13 +221,17 @@ JaggroPass_Text_JellyPostBattle:
 	.string "post$"
 
 JaggroPass_Text_ItsHumming:
-	.string "$"
+	.string "(This strange plant seems\n"
+	.string "to be humming a tune...)$"
 
 JaggroPass_Text_ItsBellowing:
-	.string "$"
+	.string "(Your Pokemon used a singing move\n"
+	.string "to add to the harmony...)$"
 
 JaggroPass_Text_NoSingingMove:
-	.string "$"
+	.string "(...Nothing you can really\n"
+	.string "do with it right now.)$"
 
 JaggroPass_Text_ItBecameLively:
-	.string "$"
+	.string "(The plant became lively!\n"
+	.string "It's a Wild Pokemon!)$"

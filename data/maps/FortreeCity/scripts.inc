@@ -12,7 +12,7 @@ FortreeCity_MapScripts::
 FortreeCity_OnTransition:
 	setflag FLAG_VISITED_FORTREE_CITY
 	call_if_ge VAR_NOTICED_BY_YANDEMIC, 5, FortreeCity_EventScript_RemoveYandemic
-	call_if_gt VAR_PISCES_STORY_PROGRESS, 5, FortreeCity_EventScript_RemoveRoadblock
+	call_if_ge VAR_PISCES_STORY_PROGRESS, 5, FortreeCity_EventScript_RemoveRoadblock
 	end
 
 FortreeCity_EventScript_RemoveYandemic::
