@@ -1002,8 +1002,8 @@ u32 GetItemStatus1Mask(u16 itemId)
             return STATUS1_POISON | STATUS1_TOXIC_POISON;
         case ITEM3_SLEEP:
             return (STATUS1_SLEEP | STATUS1_REST);
-        case ITEM3_EXPOSED:
-            return STATUS1_EXPOSED;
+        //case ITEM3_EXPOSED:
+        //    return STATUS1_EXPOSED;
         case ITEM3_PANIC:
             return STATUS1_PANIC;
         case ITEM3_STATUS_ALL:

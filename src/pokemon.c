@@ -6452,6 +6452,36 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
 
         // Handle ITEM3 effects (Cure status)
         case 3:
+            // Rare Candy / EXP Candy
+            if ((itemEffect[i] & ITEM3_LEVEL_UP)
+             && GetMonData(mon, MON_DATA_LEVEL, NULL) != GetCurrentLevelCap())
+            {
+                u8 param = ItemId_GetHoldEffectParam(item);
+                dataUnsigned = 0;
+
+                if (param == 0) // Rare Candy
+                {
+                    dataUnsigned = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES, NULL)].growthRate][GetMonData(mon, MON_DATA_LEVEL, NULL) + 1];
+                }
+                else if (param == 69) // Shelly Brew
+                {
+                    dataUnsigned = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES, NULL)].growthRate][GetMonData(mon, MON_DATA_LEVEL, NULL) + 1];
+                }
+                else if (param - 1 < ARRAY_COUNT(sExpCandyExperienceTable)) // EXP Candies
+                {
+                    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+                    dataUnsigned = sExpCandyExperienceTable[param - 1] + GetMonData(mon, MON_DATA_EXP, NULL);
+                    if (dataUnsigned > gExperienceTables[gSpeciesInfo[species].growthRate][MAX_LEVEL])
+                        dataUnsigned = gExperienceTables[gSpeciesInfo[species].growthRate][MAX_LEVEL];
+                }
+
+                if (dataUnsigned != 0) // Failsafe
+                {
+                    SetMonData(mon, MON_DATA_EXP, &dataUnsigned);
+                    CalculateMonStats(mon);
+                    retVal = FALSE;
+                }
+            }            
             // Cure status
             if ((itemEffect[i] & ITEM3_SLEEP) && HealStatusConditions(mon, partyIndex, STATUS1_SLEEP_ANY, battlerId) == 0)
                 retVal = FALSE;
@@ -6463,8 +6493,8 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                 retVal = FALSE;
             if ((itemEffect[i] & ITEM3_PARALYSIS) && HealStatusConditions(mon, partyIndex, STATUS1_PARALYSIS, battlerId) == 0)
                 retVal = FALSE;
-            if ((itemEffect[i] & ITEM3_EXPOSED) && HealStatusConditions(mon, partyIndex, STATUS1_EXPOSED, battlerId) == 0)
-                retVal = FALSE;
+            //if ((itemEffect[i] & ITEM3_EXPOSED) && HealStatusConditions(mon, partyIndex, STATUS1_EXPOSED, battlerId) == 0)
+            //    retVal = FALSE;
             if ((itemEffect[i] & ITEM3_PANIC) && HealStatusConditions(mon, partyIndex, STATUS1_PANIC, battlerId) == 0)
                 retVal = FALSE;
             break;

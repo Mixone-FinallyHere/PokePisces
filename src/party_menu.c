@@ -6037,7 +6037,7 @@ u8 GetItemEffectType(u16 item)
         return ITEM_EFFECT_X_ITEM;
     else if (itemEffect[0] & ITEM0_SACRED_ASH)
         return ITEM_EFFECT_SACRED_ASH;
-    else if (itemEffect[10] & ITEM10_LEVEL_UP)
+    else if (itemEffect[10] & ITEM3_LEVEL_UP)
         return ITEM_EFFECT_RAISE_LEVEL;
 
     statusCure = itemEffect[3] & ITEM3_STATUS_ALL;
@@ -6055,8 +6055,8 @@ u8 GetItemEffectType(u16 item)
             return ITEM_EFFECT_CURE_PARALYSIS;
         else if (statusCure == ITEM3_CONFUSION)
             return ITEM_EFFECT_CURE_CONFUSION;
-        else if (statusCure == ITEM3_EXPOSED)
-            return ITEM_EFFECT_CURE_EXPOSED;
+        //else if (statusCure == ITEM3_EXPOSED)
+        //    return ITEM_EFFECT_CURE_EXPOSED;
         else if (statusCure == ITEM3_PANIC)
             return ITEM_EFFECT_CURE_PANIC;
         else if (itemEffect[0] >> 7 && !statusCure)
