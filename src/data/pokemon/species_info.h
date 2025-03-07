@@ -21830,10 +21830,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_LOTTABATS] =
     {
         .baseHP        = 60,
-        .baseAttack    = 15,
+        .baseAttack    = 10,
         .baseDefense   = 5,
-        .baseSpeed     = 100,
-        .baseSpAttack  = 15,
+        .baseSpeed     = 80,
+        .baseSpAttack  = 10,
         .baseSpDefense = 10,
         .types = { TYPE_ICE, TYPE_FLYING },
         .catchRate = 60,
@@ -29469,10 +29469,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     {
         .baseHP        = 60,
         .baseAttack    = 150,
-        .baseDefense   = 100,
-        .baseSpeed     = 85,
+        .baseDefense   = 90,
+        .baseSpeed     = 80,
         .baseSpAttack  = 150,
-        .baseSpDefense = 105,
+        .baseSpDefense = 100,
         .types = { TYPE_ICE, TYPE_FLYING },
         .catchRate = 60,
         .expYield = 145,
