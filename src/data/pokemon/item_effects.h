@@ -20,7 +20,7 @@ const u8 gItemEffect_Awakening[6] = {
 };
 
 const u8 gItemEffect_Extrapolator[6] = {
-    [3] = ITEM3_EXPOSED,
+    [3] = ITEM3_SLEEP,
 };
 
 const u8 gItemEffect_Relaxant[6] = {
@@ -281,17 +281,19 @@ const u8 gItemEffect_SpdefFeather[11] = {
 };
 
 const u8 gItemEffect_RareCandy[11] = {
+    [3] = ITEM3_LEVEL_UP,
     [4] = ITEM4_REVIVE | ITEM4_HEAL_HP,
     [5] = ITEM5_FRIENDSHIP_ALL,
     [6] = ITEM6_HEAL_HP_LVL_UP,
-    [10] = ITEM10_LEVEL_UP,
+    
 };
 
 const u8 gItemEffect_ShellyBrew[11] = {
+    [3] = ITEM3_LEVEL_UP,
     [4] = ITEM4_REVIVE | ITEM4_HEAL_HP,
     [5] = ITEM5_FRIENDSHIP_ALL,
     [6] = ITEM6_HEAL_HP_LVL_UP,
-    [10] = ITEM10_LEVEL_UP,
+    
 };
 
 const u8 gItemEffect_PPUp[9] = {
