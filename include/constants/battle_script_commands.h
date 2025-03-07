@@ -325,6 +325,7 @@
 #define VARIOUS_FEAR_FACTOR                          233
 #define VARIOUS_RANDOM_STAT_DROP                     234
 #define VARIOUS_ALLURE                               235
+#define VARIOUS_TRY_DOUBLE_TEAM                      236
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

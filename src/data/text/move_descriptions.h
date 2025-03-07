@@ -517,10 +517,10 @@ static const u8 sScreechDescription[] = _(
     "stat.");
 
 static const u8 sDoubleTeamDescription[] = _(
-    "By moving rapidly, the user\n"
-    "makes illusory copies of itself\n"
-    "to boost its evasiveness.");
-
+    "Boosts evasion and also the\n"
+    "minimum and maximum amount of\n"
+    "hits of multistrike moves.");
+    
 static const u8 sRecoverDescription[] = _(
     "The user regenerates its cells,\n"
     "restoring its own HP by up to\n"

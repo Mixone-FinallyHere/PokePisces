@@ -690,6 +690,31 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectNightDaze               @ EFFECT_NIGHT_DAZE
 	.4byte BattleScript_EffectSpringBreeze            @ EFFECT_SPRING_BREEZE
 	.4byte BattleScript_EffectHit                     @ EFFECT_AERIAL_ACE
+	.4byte BattleScript_EffectDoubleTeam              @ EFFECT_DOUBLE_TEAM
+
+BattleScript_EffectDoubleTeam::
+	setstatchanger STAT_EVASION, 1, FALSE
+	attackcanceler
+	attackstring
+	ppreduce
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_DoubleTeamMultiHitBoost
+	jumpifbyte CMP_NOT_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_DoubleTeamAttackAnim
+	pause B_WAIT_TIME_SHORT
+	goto BattleScript_DoubleTeamPrintString
+BattleScript_DoubleTeamAttackAnim::
+	attackanimation
+	waitanimation
+	setgraphicalstatchangevalues
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+BattleScript_DoubleTeamPrintString::
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_DoubleTeamMultiHitBoost::
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	trydoubleteam BS_ATTACKER, BattleScript_MoveEnd
+	printstring STRINGID_MULTISTRIKEPOWERUP
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectSpringBreeze::
     call BattleScript_EffectHit_Ret

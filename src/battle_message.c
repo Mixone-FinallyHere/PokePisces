@@ -605,6 +605,7 @@ static const u8 sText_SharedItsGuard[] =_("{B_ATK_NAME_WITH_PREFIX} shared its\n
 static const u8 sText_SharedItsPower[] =_("{B_ATK_NAME_WITH_PREFIX} shared its\npower with the target!");
 static const u8 sText_SwapsDefAndSpDefOfAllPkmn[] =_("It created a bizarre area in which the\nDefense and Sp. Def stats are swapped!");
 static const u8 sText_BecameNimble[] =_("{B_ATK_NAME_WITH_PREFIX} became nimble!");
+static const u8 sText_MultiStrikePowerUp[] =_("{B_ATK_NAME_WITH_PREFIX}'s multistrike moves'\nminimum and maximum hits were raised!");
 static const u8 sText_HurledIntoTheAir[] =_("{B_DEF_NAME_WITH_PREFIX} was hurled\ninto the air!");
 static const u8 sText_HeldItemsLoseEffects[] =_("It created a bizarre area in which\nPokémon's held items lose their effects!");
 static const u8 sText_FellStraightDown[] =_("{B_DEF_NAME_WITH_PREFIX} fell\nstraight down!");
@@ -1839,6 +1840,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNLAIDCURSEGRIPPINGNAIL - BATTLESTRINGS_TABLE_START] = sText_PkmnLaidCurseGrippingNail,
     [STRINGID_PKMNSHEARTFLUTTERSSHALALALA - BATTLESTRINGS_TABLE_START] = sText_PkmnsHeartFluttersShalalala,
     [STRINGID_PKMNPREVENTSSTATLOSSDRAGON - BATTLESTRINGS_TABLE_START] = sText_PkmnPreventsStatLossDragon,
+    [STRINGID_MULTISTRIKEPOWERUP - BATTLESTRINGS_TABLE_START] = sText_MultiStrikePowerUp,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

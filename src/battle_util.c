@@ -14997,17 +14997,25 @@ static void SetRandomMultiHitCounter()
 {
     if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LOADED_DICE)
     {
-        gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 4, 5);
+        if (gStatuses4[gBattlerAttacker] & STATUS4_DOUBLE_TEAM)
+        {
+            gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 5, 6);
+        }
+        else
+        {
+            gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 4, 5);
+        }
     }
     else
     {
-#if B_MULTI_HIT_CHANCE >= GEN_5
-        // 35%: 2 hits, 35%: 3 hits, 15% 4 hits, 15% 5 hits.
-        gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 7, 7, 3, 3);
-#else
-        // 37.5%: 2 hits, 37.5%: 3 hits, 12.5% 4 hits, 12.5% 5 hits.
-        gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 3, 3, 1, 1);
-#endif
+        if (gStatuses4[gBattlerAttacker] & STATUS4_DOUBLE_TEAM)
+        {
+            gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 0, 7, 7, 3, 3);
+        }
+        else
+        {
+            gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 7, 7, 3, 3);
+        }
     }
 }
 
@@ -15015,17 +15023,25 @@ static void SetRandomMultiHitCounter3To5()
 {
     if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LOADED_DICE)
     {
-        gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 4, 5);
+        if (gStatuses4[gBattlerAttacker] & STATUS4_DOUBLE_TEAM)
+        {
+            gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 5, 6);
+        }
+        else
+        {
+            gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 4, 5);
+        }
     }
     else
     {
-#if B_MULTI_HIT_CHANCE >= GEN_5
-        // 70%: 3 hits, 20%: 4 hits, 10%: 5 hits
-        gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 0, 7, 2, 1);
-#else
-        // 70%: 3 hits, 20%: 4 hits, 10%: 5 hits
-        gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 0, 7, 2, 1);
-#endif
+        if (gStatuses4[gBattlerAttacker] & STATUS4_DOUBLE_TEAM)
+        {
+            gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 0, 0, 7, 2, 1);
+        }
+        else
+        {
+            gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 0, 7, 2, 1);
+        }
     }
 }
 

@@ -11658,6 +11658,20 @@ static void Cmd_various(void)
         }
         return;
     }
+    case VARIOUS_TRY_DOUBLE_TEAM:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        if (gStatuses4[battler] & STATUS4_DOUBLE_TEAM)
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        else
+        {
+            gStatuses4[battler] |= STATUS4_DOUBLE_TEAM;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
     case VARIOUS_TRY_INSTRUCT:
     {
         VARIOUS_ARGS(const u8 *failInstr);

@@ -217,7 +217,8 @@
 #define STATUS4_CRAFTY_SHIELD           (1 << 21)
 #define STATUS4_RECHARGE_BURN           (1 << 22)
 #define STATUS4_ALLURE                  (1 << 23 | 1 << 24) // Number of turns to sleep
-#define STATUS4_ALLURE_TURN(num)        (((num) << 22) & STATUS3_YAWN)
+#define STATUS4_ALLURE_TURN(num)        (((num) << 22) & STATUS4_ALLURE)
+#define STATUS4_DOUBLE_TEAM             (1 << 25)
 
 #define HITMARKER_WAKE_UP_CLEAR         (1 << 4) // Cleared when waking up. Never set or checked.
 #define HITMARKER_SKIP_DMG_TRACK        (1 << 5)

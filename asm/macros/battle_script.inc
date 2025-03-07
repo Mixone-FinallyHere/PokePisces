@@ -1850,6 +1850,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro trydoubleteam battler:req, failInstr:req
+	various \battler, VARIOUS_TRY_AUTOTOMIZE
+	.4byte \failInstr
+	.endm
+
 	.macro jumpifcantusesynchronoise jumpInstr:req
 	various BS_ATTACKER, VARIOUS_TRY_SYNCHRONOISE
 	.4byte \jumpInstr
