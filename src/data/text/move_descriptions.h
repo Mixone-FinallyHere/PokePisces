@@ -4396,9 +4396,9 @@ static const u8 sHeatSinkDescription[] = _(
     "super effective on Fire-types.");
 
 static const u8 sFrostNovaDescription[] = _(
-    "Frostbites the foe, always goes\n"
-    "first, and never misses. Boosted\n"
-    "if the foe has frostbite.");
+    "Drops Speed. If foe has a Speed\n"
+    "drop, also frostbites. Boosted if\n"
+    "foe has frostbite. Goes first.");
 
 static const u8 sGemBlasterDescription[] = _(
     "The user shoots magical gems at\n"
@@ -4786,9 +4786,9 @@ static const u8 sAxelHeelDescription[] = _(
     "turn, then attacks on the next.");
 
 static const u8 sSnowfadeDescription[] = _(
-    "This move freezes or frostbites\n"
-    "the foe and switches the user\n"
-    "out. Lands critical hits in hail.");
+    "May frostbite or freeze the foe\n"
+    "and switches the user out. Lands\n"
+    "critical hits in hail.");
 
 static const u8 sBreakLanceDescription[] = _(
     "The user jabs the target with\n"

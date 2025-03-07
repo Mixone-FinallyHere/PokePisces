@@ -11257,10 +11257,6 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_SURF:
         basePower = 6 * (gBattleMons[battlerAtk].friendship) / 17;
         break;
-    case EFFECT_FROST_NOVA:
-        if (gBattleMons[battlerDef].status1 & STATUS1_FROSTBITE)
-            basePower = 80;
-        break;
     case EFFECT_DIVE:
     case EFFECT_FLY:
     case EFFECT_WHIRLPOOL:
@@ -11670,7 +11666,11 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
     switch (gBattleMoves[move].effect)
     {
     case EFFECT_FACADE:
-        if (gBattleMons[battlerAtk].status1 & (STATUS1_BURN | STATUS1_PSN_ANY | STATUS1_PARALYSIS | STATUS1_FROSTBITE))
+        if (gBattleMons[battlerAtk].status1 & (STATUS1_BURN | STATUS1_PSN_ANY | STATUS1_PARALYSIS | STATUS1_FROSTBITE | STATUS1_PANIC | STATUS1_EXPOSED))
+            modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
+        break;
+    case EFFECT_FROST_NOVA:
+        if (gBattleMons[battlerDef].status1 & STATUS1_FROSTBITE)
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
         break;
     case EFFECT_VACUUM_WAVE:

@@ -4755,18 +4755,10 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     {
                         gBattlescriptCurrInstr++;
                     }
-                    else
                     {
-                        if (Random() % 10 == 0)
-                        {
-                            gBattleScripting.moveEffect = MOVE_EFFECT_FREEZE;
-                            SetMoveEffect(FALSE, 0);
-                        }
-                        else
-                        {
-                            gBattleScripting.moveEffect = MOVE_EFFECT_FROSTBITE;
-                            SetMoveEffect(FALSE, 0);
-                        }
+                        static const u8 sTriAttackEffects[] = { MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FREEZE };
+                        gBattleScripting.moveEffect = RandomElement(RNG_TRI_ATTACK, sTriAttackEffects);
+                        SetMoveEffect(FALSE, 0);
                     }
                 }
                 break;
@@ -20051,6 +20043,15 @@ void BS_CheckStatBoosts(void)
 {
     NATIVE_ARGS(u8 counter, const u8 *jumpInstr);
     if (CountBattlerStatIncreases(gBattlerTarget, TRUE) >= cmd->counter)
+        gBattlescriptCurrInstr = cmd->jumpInstr;
+    else
+        gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
+void BS_CheckSpeedDrops(void)
+{
+    NATIVE_ARGS(u8 counter, const u8 *jumpInstr);
+    if (CountBattlerSpeedDecreases(gBattlerTarget) >= cmd->counter)
         gBattlescriptCurrInstr = cmd->jumpInstr;
     else
         gBattlescriptCurrInstr = cmd->nextInstr;

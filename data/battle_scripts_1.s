@@ -607,7 +607,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectUpperHand               @ EFFECT_UPPER_HAND
 	.4byte BattleScript_EffectWhirlwind               @ EFFECT_WHIRLWIND
 	.4byte BattleScript_EffectHitEscape               @ EFFECT_GLACIAL_SHIFT
-	.4byte BattleScript_EffectFrostbiteHit            @ EFFECT_FROST_NOVA
+	.4byte BattleScript_EffectFrostNova               @ EFFECT_FROST_NOVA
 	.4byte BattleScript_EffectSuckerPunch             @ EFFECT_POISON_DART
 	.4byte BattleScript_EffectSmog                    @ EFFECT_SMOG
 	.4byte BattleScript_EffectGunkFunk                @ EFFECT_GUNK_FUNK
@@ -2605,10 +2605,20 @@ BattleScript_CottonSporeTryPara::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectFrostNova:
+	checkspeeddrops 1, BattleScript_EffectFrostNova2
+	setmoveeffect MOVE_EFFECT_SPD_MINUS_1
 	goto BattleScript_EffectHit
-
-BattleScript_EffectFrostShred:
-	goto BattleScript_EffectHit
+BattleScript_EffectFrostNova2:
+    call BattleScript_EffectHit_Ret
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	setmoveeffect MOVE_EFFECT_SPD_MINUS_1
+	seteffectprimary
+	setmoveeffect MOVE_EFFECT_FROSTBITE
+	seteffectsecondary
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectGreenGuise:
 	setstatchanger STAT_EVASION, 1, FALSE

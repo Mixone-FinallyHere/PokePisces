@@ -1475,6 +1475,12 @@
 	.4byte \ptr
 	.endm
 
+	.macro checkspeeddrops counter:req, ptr:req
+	callnative BS_CheckSpeedDrops
+	.byte \counter
+	.4byte \ptr
+	.endm
+
 	.macro jumpifcantloseitem battler:req, ptr:req
 	callnative BS_JumpIfCantLoseItem
 	.byte \battler
