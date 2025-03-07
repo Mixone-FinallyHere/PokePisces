@@ -3711,9 +3711,9 @@ static const u8 sStoneAxeDescription[] = _(
     "behind float around the foe.");
 
 static const u8 sSpringtideStormDescription[] = _(
-    "Attacks foes with fierce winds\n"
-    "brimming with love and hate. May\n"
-    "cause sleep. Never misses in sun.");
+    "Whips up fierce winds filled\n"
+    "with love that infatuates foes\n"
+    "next turn. Never misses in sun.");
 
 static const u8 sMysticalPowerDescription[] = _(
     "The user attacks by emitting a\n"

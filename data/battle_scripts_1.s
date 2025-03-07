@@ -15522,6 +15522,15 @@ BattleScript_YawnMakesAsleep::
 BattleScript_YawnEnd:
 	end2
 
+BattleScript_AllureInfatuates::
+	statusanimation BS_EFFECT_BATTLER
+	printstring STRINGID_PKMNFELLINLOVE
+	waitmessage B_WAIT_TIME_LONG
+	updatestatusicon BS_EFFECT_BATTLER
+	waitstate
+	makevisible BS_EFFECT_BATTLER
+	end2
+
 BattleScript_EmbargoEndTurn::
 	printstring STRINGID_EMBARGOENDS
 	waitmessage B_WAIT_TIME_LONG

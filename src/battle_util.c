@@ -2506,6 +2506,7 @@ enum
     ENDTURN_INFERNAL_REIGN,
     ENDTURN_SYRUP_BOMB,
     ENDTURN_DAYBREAK,
+    ENDTURN_ALLURE,
     ENDTURN_ITEMS3,
     ENDTURN_BATTLER_COUNT
 };
@@ -3020,6 +3021,27 @@ u8 DoBattlerEndTurnEffects(void)
                         MarkBattlerForControllerExec(battler);
                         BattleScriptExecute(BattleScript_YawnMakesAsleep);
                     }
+                    effect++;
+                }
+            }
+            gBattleStruct->turnEffectsTracker++;
+            break;
+        case ENDTURN_ALLURE: // yawn
+            if (gStatuses4[battler] & STATUS4_ALLURE)
+            {
+                u16 battlerAbility = GetBattlerAbility(battler);
+                gStatuses4[battler] -= STATUS4_ALLURE_TURN(1);
+                if (!(gStatuses4[battler] & STATUS4_ALLURE) 
+                && !(gBattleMons[battler].status2 & STATUS2_INFATUATION) 
+                && battlerAbility != ABILITY_OBLIVIOUS
+                && battlerAbility != ABILITY_IGNORANT_BLISS
+                && battlerAbility != ABILITY_TITANIC
+                && !IsAbilityOnSide(battler, ABILITY_AROMA_VEIL)
+                && AreBattlersOfOppositeGender(gDisableStructs[battler].battlerCausingAllure, battler))
+                {
+                    gEffectBattler = battler;
+                    gBattleMons[battler].status2 |= STATUS2_INFATUATED_WITH(gDisableStructs[battler].battlerCausingAllure);
+                    BattleScriptExecute(BattleScript_AllureInfatuates);
                     effect++;
                 }
             }

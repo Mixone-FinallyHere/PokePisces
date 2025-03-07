@@ -86,6 +86,7 @@ struct DisableStruct
     u8 rolloutTimerStartValue:4;
     u8 tauntTimer:4;
     u8 battlerPreventingEscape;
+    u8 battlerCausingAllure;
     u8 battlerWithSureHit;
     u8 isFirstTurn;
     u8 truantCounter:1;

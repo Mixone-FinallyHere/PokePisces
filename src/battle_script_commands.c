@@ -10702,6 +10702,7 @@ static void Cmd_various(void)
         else
         {
             gStatuses3[gBattlerTarget] |= STATUS4_ALLURE_TURN(2);
+            gDisableStructs[gBattlerTarget].battlerCausingAllure = gBattlerAttacker;
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
         return;
