@@ -4608,7 +4608,8 @@ const u16 gEggMoves[] = {
         MOVE_FOCUS_PUNCH,
         MOVE_MEGA_PUNCH,
         MOVE_METEOR_MASH,
-        MOVE_MEDITATE),
+        MOVE_MEDITATE,
+        MOVE_CALM_MIND),
 
     egg_moves(LINOONE,
         MOVE_SWITCHEROO,
@@ -4747,7 +4748,8 @@ const u16 gEggMoves[] = {
         MOVE_SEIZE_CHANCE,
         MOVE_NIGHT_DAZE,
         MOVE_TERRORIZE,
-        MOVE_EXTRASENSORY),
+        MOVE_EXTRASENSORY,
+        MOVE_ASTRAL_BARRAGE),
 
     egg_moves(MISMAGIUS,
         MOVE_HYPNOSIS,
