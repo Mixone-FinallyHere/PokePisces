@@ -50,7 +50,7 @@ DewfordInteriors_EventScript_SpitfaxLiker::
 	faceplayer
 	getcaughtmon SPECIES_SPITFAX
 	goto_if_eq VAR_RESULT, TRUE, DewfordInteriors_EventScript_SpitfaxCaught
-	goto_if_eq setvar VAR_SPITFAX_QUEST_STATE, 2, DewfordInteriors_EventScript_SpitfaxDirections
+	goto_if_eq VAR_SPITFAX_QUEST_STATE, 2, DewfordInteriors_EventScript_SpitfaxDirections
 	goto_if_eq VAR_SPITFAX_QUEST_STATE, 1, DewfordInteriors_EventScript_SpitfaxLikerEnterCode
 	msgbox DewfordInteriors_Text_WereCryptidEnthusiasts, MSGBOX_DEFAULT
 	setvar VAR_SPITFAX_QUEST_STATE, 1
