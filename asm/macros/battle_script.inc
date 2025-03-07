@@ -1851,7 +1851,12 @@
 	.endm
 
 	.macro trydoubleteam battler:req, failInstr:req
-	various \battler, VARIOUS_TRY_AUTOTOMIZE
+	various \battler, VARIOUS_TRY_DOUBLE_TEAM
+	.4byte \failInstr
+	.endm
+
+	.macro setspotlight failInstr:req
+	various BS_ATTACKER, VARIOUS_SET_SPOTLIGHT
 	.4byte \failInstr
 	.endm
 

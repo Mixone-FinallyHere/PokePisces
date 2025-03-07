@@ -10670,17 +10670,20 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_SPOTLIGHT] =
     {
-        .effect = EFFECT_FOLLOW_ME,
+        #if B_UPDATED_MOVE_DATA >= GEN_6
+            .priority = 2,
+        #else
+            .priority = 3,
+        #endif
+        .effect = EFFECT_SPOTLIGHT,
         .power = 0,
         .type = TYPE_NORMAL,
-        .accuracy = 0,
-        .pp = 15,
+        .accuracy = 100,
+        .pp = 20,
         .secondaryEffectChance = 0,
-        .target = MOVE_TARGET_SELECTED,
-        .priority = 3,
+        .target = MOVE_TARGET_USER,
         .split = SPLIT_STATUS,
-        .zMoveEffect = Z_EFFECT_SPDEF_UP_1,
-        .magicCoatAffected = TRUE,
+        .zMoveEffect = Z_EFFECT_RESET_STATS,
         .metronomeBanned = TRUE,
         .copycatBanned = TRUE,
     },

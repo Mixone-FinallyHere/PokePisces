@@ -3096,8 +3096,8 @@ static const u8 sLeafageDescription[] = _(
 
 static const u8 sSpotlightDescription[] = _(
     "The user shines a spotlight on\n"
-    "the foe so that only the foe will\n"
-    "be attacked during the turn.");
+    "itself to make foes aim at it for\n"
+    "3 turns. The user cannot escape.");
 
 static const u8 sToxicThreadDescription[] = _(
     "The user shoots poisonous\n"

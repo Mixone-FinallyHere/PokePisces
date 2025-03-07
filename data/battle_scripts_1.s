@@ -691,6 +691,21 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectSpringBreeze            @ EFFECT_SPRING_BREEZE
 	.4byte BattleScript_EffectHit                     @ EFFECT_AERIAL_ACE
 	.4byte BattleScript_EffectDoubleTeam              @ EFFECT_DOUBLE_TEAM
+	.4byte BattleScript_EffectSpotlight               @ EFFECT_SPOTLIGHT
+
+BattleScript_EffectSpotlight::
+	attackcanceler
+	attackstring
+	ppreduce
+	.if B_UPDATED_MOVE_DATA >= GEN_6
+	jumpifnotbattletype BATTLE_TYPE_DOUBLE, BattleScript_ButItFailed
+	.endif
+	setspotlight BattleScript_ButItFailed
+	attackanimation
+	waitanimation
+	printstring STRINGID_PKMNCENTERATTENTIONSPOTLIGHT
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectDoubleTeam::
 	setstatchanger STAT_EVASION, 1, FALSE

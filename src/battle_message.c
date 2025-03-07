@@ -250,6 +250,7 @@ static const u8 sText_PkmnOvertookAttack[] = _("{B_DEF_NAME_WITH_PREFIX} overtoo
 static const u8 sText_PkmnChoseXAsDestiny[] = _("{B_ATK_NAME_WITH_PREFIX} chose\n{B_CURRENT_MOVE} as its destiny!");
 static const u8 sText_PkmnAttack[] = _("{B_BUFF1}'s attack!");
 static const u8 sText_PkmnCenterAttention[] = _("{B_ATK_NAME_WITH_PREFIX} became the\ncenter of attention!");
+static const u8 sText_PkmnCenterAttentionSpotlight[] = _("{B_ATK_NAME_WITH_PREFIX} became the\ncenter of attention, but cannot escape!");
 static const u8 sText_PkmnChargingPower[] = _("{B_ATK_NAME_WITH_PREFIX} began\ncharging power!");
 static const u8 sText_NaturePowerTurnedInto[] = _("NATURE POWER turned into\n{B_CURRENT_MOVE}!");
 static const u8 sText_PkmnStatusNormal[] = _("{B_ATK_NAME_WITH_PREFIX}'s status\nreturned to normal!");
@@ -1841,6 +1842,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNSHEARTFLUTTERSSHALALALA - BATTLESTRINGS_TABLE_START] = sText_PkmnsHeartFluttersShalalala,
     [STRINGID_PKMNPREVENTSSTATLOSSDRAGON - BATTLESTRINGS_TABLE_START] = sText_PkmnPreventsStatLossDragon,
     [STRINGID_MULTISTRIKEPOWERUP - BATTLESTRINGS_TABLE_START] = sText_MultiStrikePowerUp,
+    [STRINGID_PKMNCENTERATTENTIONSPOTLIGHT - BATTLESTRINGS_TABLE_START] = sText_PkmnCenterAttentionSpotlight,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

@@ -668,7 +668,8 @@
 #define EFFECT_SPRING_BREEZE                662
 #define EFFECT_AERIAL_ACE                   663
 #define EFFECT_DOUBLE_TEAM                  664
+#define EFFECT_SPOTLIGHT                    665
 
-#define NUM_BATTLE_MOVE_EFFECTS             665
+#define NUM_BATTLE_MOVE_EFFECTS             666
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

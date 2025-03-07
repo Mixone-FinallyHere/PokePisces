@@ -11672,6 +11672,21 @@ static void Cmd_various(void)
         }
         return;
     }
+    case VARIOUS_SET_SPOTLIGHT:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        if (gSideTimers[GetBattlerSide(gBattlerAttacker)].spotlightTimer > 1)
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        else
+        {
+            gSideTimers[GetBattlerSide(gBattlerAttacker)].spotlightTimer = 3;
+            gSideTimers[GetBattlerSide(gBattlerAttacker)].spotlightTarget = gBattlerAttacker;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
     case VARIOUS_TRY_INSTRUCT:
     {
         VARIOUS_ARGS(const u8 *failInstr);
@@ -12465,6 +12480,9 @@ static void Cmd_various(void)
         // End any Follow Me/Rage Powder effects caused by the target
         if (gSideTimers[GetBattlerSide(gBattlerTarget)].followmeTimer != 0 && gSideTimers[GetBattlerSide(gBattlerTarget)].followmeTarget == gBattlerTarget)
             gSideTimers[GetBattlerSide(gBattlerTarget)].followmeTimer = 0;
+
+        if (gSideTimers[GetBattlerSide(gBattlerTarget)].spotlightTimer != 0 && gSideTimers[GetBattlerSide(gBattlerTarget)].spotlightTarget == gBattlerTarget)
+            gSideTimers[GetBattlerSide(gBattlerTarget)].spotlightTimer = 0;
 
         break;
     }
@@ -16129,7 +16147,11 @@ static void Cmd_counterdamagecalculator(void)
         if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
             gBattleMoveDamage = 50;
 
-        if (IsAffectedByFollowMe(gBattlerAttacker, sideTarget, gCurrentMove)) 
+        if (IsAffectedBySpotlight(gBattlerAttacker, sideTarget, gCurrentMove)) 
+        {
+            gBattlerTarget = gSideTimers[sideTarget].spotlightTarget;
+        }
+        else if (IsAffectedByFollowMe(gBattlerAttacker, sideTarget, gCurrentMove)) 
         {
             gBattlerTarget = gSideTimers[sideTarget].followmeTarget;
         }
@@ -16161,7 +16183,11 @@ static void Cmd_mirrorcoatdamagecalculator(void)
         if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
             gBattleMoveDamage = 50;
 
-        if (IsAffectedByFollowMe(gBattlerAttacker, sideTarget, gCurrentMove)) 
+        if (IsAffectedBySpotlight(gBattlerAttacker, sideTarget, gCurrentMove)) 
+        {
+            gBattlerTarget = gSideTimers[sideTarget].spotlightTarget;
+        }
+        else if (IsAffectedByFollowMe(gBattlerAttacker, sideTarget, gCurrentMove)) 
         {
             gBattlerTarget = gSideTimers[sideTarget].followmeTarget;
         }

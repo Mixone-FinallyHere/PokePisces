@@ -326,6 +326,7 @@
 #define VARIOUS_RANDOM_STAT_DROP                     234
 #define VARIOUS_ALLURE                               235
 #define VARIOUS_TRY_DOUBLE_TEAM                      236
+#define VARIOUS_SET_SPOTLIGHT                        237
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0
