@@ -314,16 +314,15 @@
 #define VARIOUS_APPLY_FRENZY_COUNTER                 222
 #define VARIOUS_TRY_ACTIVATE_HEART_CARVE             223
 #define VARIOUS_CUT_HP                               224
-#define VARIOUS_INCREASE_BLOOMING_TURNS              225
-#define VARIOUS_JUMP_IF_INFATUATED_SPECIFIC          226
-#define VARIOUS_DISABLE_CHOSEN_MOVE                  227
-#define VARIOUS_MIND_GAP_CHECK                       228
-#define VARIOUS_REMOVE_FRENZY_COUNTER                229
-#define VARIOUS_GET_ERODE_FIELD_TARGETS              230
-#define VARIOUS_JUMP_IF_NOT_ERODE_FIELD_AFFECTED     231
-#define VARIOUS_JUMP_IF_MOON_MIRRORED                232
-#define VARIOUS_JUMP_IF_SPECIES_MEGA_BOSS            233
-#define VARIOUS_FEAR_FACTOR                          234
+#define VARIOUS_JUMP_IF_INFATUATED_SPECIFIC          225
+#define VARIOUS_DISABLE_CHOSEN_MOVE                  226
+#define VARIOUS_MIND_GAP_CHECK                       227
+#define VARIOUS_REMOVE_FRENZY_COUNTER                228
+#define VARIOUS_GET_ERODE_FIELD_TARGETS              229
+#define VARIOUS_JUMP_IF_NOT_ERODE_FIELD_AFFECTED     230
+#define VARIOUS_JUMP_IF_MOON_MIRRORED                231
+#define VARIOUS_JUMP_IF_SPECIES_MEGA_BOSS            232
+#define VARIOUS_FEAR_FACTOR                          233
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

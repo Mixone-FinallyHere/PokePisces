@@ -12308,26 +12308,6 @@ static void Cmd_various(void)
         }
         return;
     }
-    case VARIOUS_INCREASE_BLOOMING_TURNS:
-    {
-        VARIOUS_ARGS(const u8 *failInstr);
-        u32 battler = GetBattlerForBattleScript(cmd->battler);
-    
-        if (!(gBattleMons[battler].status1 & STATUS1_BLOOMING))
-        {
-            gBattlescriptCurrInstr = cmd->failInstr;
-        }
-        else if (gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(3))
-        {
-            gBattlescriptCurrInstr = cmd->failInstr;
-        }
-        else
-        {
-            gBattleMons[battler].status1 += STATUS1_BLOOMING_TURN(1);
-            gBattlescriptCurrInstr = cmd->nextInstr;
-        }
-        return;
-    }
     case VARIOUS_APPLY_FRENZY_COUNTER:
     {
         VARIOUS_ARGS(const u8 *failInstr);

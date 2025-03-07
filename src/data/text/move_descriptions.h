@@ -4646,9 +4646,9 @@ static const u8 sPhantasmDescription[] = _(
     "own HP.");
 
 static const u8 sSnapblossomDescription[] = _(
-    "A 2-turn move that drains HP and\n"
-    "makes the user bloom or increases\n"
-    "the duration of its blooming.");
+    "A 2-turn draining move that\n"
+    "makes the user bloom. No charge\n"
+    "if blooming, and maintains bloom.");
 
 static const u8 sGrassCannonDescription[] = _(
     "On Grassy Terrain, this move\n"
