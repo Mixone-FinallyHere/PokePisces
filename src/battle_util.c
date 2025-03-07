@@ -13545,7 +13545,8 @@ static inline s32 DoMoveDamageCalcVars(u32 move, u32 battlerAtk, u32 battlerDef,
             uniqueDamage = 50;
         dmg = dmg + uniqueDamage;
     }
-    else if (move == MOVE_NEEDLE_ARM 
+    else if (move == MOVE_NEEDLE_ARM
+    || (move == MOVE_SHADOW_CLAW && gIsCriticalHit)
     || (move == MOVE_ASTONISH && gBattleMons[battlerDef].status1 & STATUS1_PANIC)
     || holdEffectAtk == HOLD_EFFECT_CHUPACABRA
     || move == MOVE_SOUL_CUTTER

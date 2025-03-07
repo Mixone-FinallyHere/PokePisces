@@ -2079,9 +2079,9 @@ static const u8 sIceShardDescription[] = _(
     "This move always goes first.");
 
 static const u8 sShadowClawDescription[] = _(
-    "The user slashes with a sharp\n"
-    "claw made from shadows. Critical\n"
-    "hits land more easily.");
+    "Slashes with a shadowy claw.\n"
+    "Crits more often. If it is a\n"
+    "crit, deals bonus true damage.");
 
 static const u8 sThunderFangDescription[] = _(
     "The user bites with electrified\n"
