@@ -9130,13 +9130,13 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_NIGHT_DAZE] =
     {
-        .effect = EFFECT_ACCURACY_DOWN_HIT,
+        .effect = EFFECT_NIGHT_DAZE,
         .power = 85,
         .type = TYPE_DARK,
-        .accuracy = 95,
+        .accuracy = 100,
         .pp = 10,
-        .secondaryEffectChance = 40,
-        .target = MOVE_TARGET_SELECTED,
+        .secondaryEffectChance = 100,
+        .target = MOVE_TARGET_BOTH,
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,

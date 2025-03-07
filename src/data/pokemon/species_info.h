@@ -24412,11 +24412,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_ARMAGATTON] =
     {
         .baseHP        = 83,
-        .baseAttack    = 135,
-        .baseDefense   = 80,
-        .baseSpeed     = 60,
+        .baseAttack    = 115,
+        .baseDefense   = 90,
+        .baseSpeed     = 90,
         .baseSpAttack  = 112,
-        .baseSpDefense = 75,
+        .baseSpDefense = 55,
         .types = { TYPE_RELIC,TYPE_PSYCHIC },
         .catchRate = 45,
         .expYield = 218,

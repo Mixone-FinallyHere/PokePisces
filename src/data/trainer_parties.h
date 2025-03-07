@@ -15458,13 +15458,13 @@ static const struct TrainerMon sParty_PMaxie[] = {
     .nature = NATURE_ADAMANT,
     },
     {
-    .species = SPECIES_SUMMERASU,
-    .ability = ABILITY_DROUGHT,
-    .heldItem = ITEM_BATTLE_HELM,
+    .species = SPECIES_GOSMARK,
+    .ability = ABILITY_SNIPER,
+    .heldItem = ITEM_SHELL_BELL,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(168, 0, 252, 0, 88, 0),
     .lvl = 78,
-    .moves = {MOVE_RAZING_SUN, MOVE_SPRINGTIDE_STORM, MOVE_OBLIVION_WING, MOVE_BLAZING_SOUL},
+    .moves = {MOVE_SEARING_SHOT, MOVE_AURORA_BEAM, MOVE_SHARPSHOOT, MOVE_IGNITION},
     .nature = NATURE_BOLD,
     }
 };

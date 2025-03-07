@@ -687,6 +687,24 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectRockWrecker             @ EFFECT_ROCK_WRECKER
 	.4byte BattleScript_EffectHydroCannon             @ EFFECT_HYDRO_CANNON
 	.4byte BattleScript_EffectFearFactor              @ EFFECT_FEAR_FACTOR
+	.4byte BattleScript_EffectNightDaze               @ EFFECT_NIGHT_DAZE
+
+BattleScript_EffectNightDaze::
+	jumpifstatus BS_TARGET, STATUS1_PANIC, BattleScript_NightDazeTrueEffect
+	jumpifstatus2 BS_TARGET, STATUS2_TORMENT, BattleScript_NightDazeTrueEffect
+	goto BattleScript_EffectHit
+BattleScript_NightDazeTrueEffect::
+	setmoveeffect MOVE_EFFECT_ACC_MINUS_1
+    call BattleScript_EffectHit_Ret
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	eeriespellppreduce BattleScript_MoveEnd
+	printstring STRINGID_PKMNREDUCEDPP
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectFearFactor::
 	setmoveeffect MOVE_EFFECT_PANIC

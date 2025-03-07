@@ -2667,9 +2667,9 @@ static const u8 sCottonGuardDescription[] = _(
     "user is blooming, goes first.");
 
 static const u8 sNightDazeDescription[] = _(
-    "The user lets loose a pitch-black\n"
-    "shock wave at its foe. This may\n"
-    "also lower the foe's accuracy.");
+    "If a foe is panicked or\n"
+    "tormented, lowers accuracy and\n"
+    "cuts 1 PP of the last move used.");
 
 static const u8 sHurricaneDescription[] = _(
     "Wraps the foe in fierce winds\n"

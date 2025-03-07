@@ -664,7 +664,8 @@
 #define EFFECT_ROCK_WRECKER                 658
 #define EFFECT_HYDRO_CANNON                 659
 #define EFFECT_FEAR_FACTOR                  660
+#define EFFECT_NIGHT_DAZE                   661
 
-#define NUM_BATTLE_MOVE_EFFECTS             661
+#define NUM_BATTLE_MOVE_EFFECTS             662
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

@@ -12135,6 +12135,9 @@ static void Cmd_various(void)
             {
                 s32 ppToDeduct = 3;
 
+                if (gBattleMoves[gCurrentMove].effect == EFFECT_NIGHT_DAZE)
+                    ppToDeduct = 1;
+
                 if (gBattleMons[battler].pp[i] < ppToDeduct)
                     ppToDeduct = gBattleMons[battler].pp[i];
 
