@@ -15618,7 +15618,27 @@ BattleScript_MoveEffectPanic::
 	statusanimation BS_EFFECT_BATTLER
 	printfromtable gGotPanickedStringIds
 	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_UpdateEffectStatusIconRet
+	updatestatusicon BS_EFFECT_BATTLER
+	saveattacker
+	savetarget
+	itemstatchangeeffects BS_EFFECT_BATTLER
+	jumpifnoholdeffect BS_EFFECT_BATTLER, HOLD_EFFECT_ADRENALINE_ORB, BattleScript_MoveEffectPanicRet
+	jumpifstat BS_EFFECT_BATTLER, CMP_EQUAL, STAT_SPEED, 12, BattleScript_MoveEffectPanicRet
+	setstatchanger STAT_SPEED, 2, FALSE
+	statbuffchange STAT_CHANGE_NOT_PROTECT_AFFECTED | MOVE_EFFECT_CERTAIN | STAT_CHANGE_ALLOW_PTR, BattleScript_MoveEffectPanicRet
+	playanimation BS_EFFECT_BATTLER, B_ANIM_HELD_ITEM_EFFECT
+	setgraphicalstatchangevalues
+	playanimation BS_EFFECT_BATTLER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	copybyte sBATTLER, BS_EFFECT_BATTLER
+	setlastuseditem BS_EFFECT_BATTLER
+	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	waitmessage B_WAIT_TIME_LONG
+	removeitem BS_EFFECT_BATTLER
+BattleScript_MoveEffectPanicRet::
+	restoreattacker
+	restoretarget
+	waitstate
+	return
 
 BattleScript_MoveEffectBlooming::
 	statusanimation BS_EFFECT_BATTLER
