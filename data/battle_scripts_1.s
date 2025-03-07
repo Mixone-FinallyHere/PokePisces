@@ -3164,8 +3164,6 @@ BattleScript_SpiritAwaySkipChangeType::
 	setdrainedhp
 	manipulatedamage DMG_BIG_ROOT
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE
-	printstring STRINGID_GHOSTTYPEADDED
-	waitmessage B_WAIT_TIME_LONG
 	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_SpiritAwayLiquidOoze
 	setbyte cMULTISTRING_CHOOSER, B_MSG_ABSORB
 	goto BattleScript_SpiritAwayUpdateHp
@@ -3791,7 +3789,7 @@ BattleScript_ErodeFieldLoop:
 BattleScript_ErodeFieldCheckAffected:
 	jumpifnoterodefieldaffected BS_TARGET, BattleScript_ErodeFieldNoEffect
 	setbyte sSTAT_ANIM_PLAYED, FALSE
-	playstatchangeanimation BS_TARGET, BIT_DEF | BIT_SPDEF, 0
+	playstatchangeanimation BS_TARGET, BIT_DEF | BIT_SPDEF, STAT_CHANGE_MULTIPLE_STATS | STAT_CHANGE_NEGATIVE
 	setstatchanger STAT_DEF, 1, TRUE
 	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_ErodeFieldTrySpDef
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_ErodeFieldTrySpDef
