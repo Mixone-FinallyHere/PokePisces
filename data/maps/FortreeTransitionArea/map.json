@@ -34,6 +34,13 @@
       "elevation": 0,
       "dest_map": "MAP_FORTREE_GYM_TRANSITION_BUILDING",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 16,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_FORTREE_TRANSITION_AREA",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
