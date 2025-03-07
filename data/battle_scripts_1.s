@@ -3147,18 +3147,8 @@ BattleScript_GrassCannonCheckTerrain::
 	goto BattleScript_EffectDefenseUpHit
 
 BattleScript_EffectSpiritAway::
-    call BattleScript_EffectHit_Ret
-	tryfaintmon BS_TARGET
-	jumpifbattleend BattleScript_SpiritAwaySkipChangeType
-	jumpiffainted BS_TARGET, TRUE, BattleScript_SpiritAwaySkipChangeType
-	jumpifmovehadnoeffect BattleScript_SpiritAwaySkipChangeType
-	jumpifability BS_TARGET, ABILITY_MULTITYPE, BattleScript_SpiritAwaySkipChangeType
-	jumpifability BS_TARGET, ABILITY_RKS_SYSTEM, BattleScript_SpiritAwaySkipChangeType
-	jumpifsubstituteblocks BattleScript_SpiritAwaySkipChangeType
-	trysoak BattleScript_SpiritAwaySkipChangeType
-	printstring STRINGID_TARGETCHANGEDTYPE
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_SpiritAwaySkipChangeType::
+	call BattleScript_EffectHit_Ret
+	seteffectwithchance
 	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_SpiritAwayHealBlock
 	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_SpiritAwayHealBlock
 	setdrainedhp
@@ -3181,6 +3171,15 @@ BattleScript_SpiritAwayTryFainting::
 	tryfaintmon BS_ATTACKER
 BattleScript_SpiritAwayHealBlock::
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	jumpifability BS_TARGET, ABILITY_MULTITYPE, BattleScript_MoveEnd
+	jumpifability BS_TARGET, ABILITY_RKS_SYSTEM, BattleScript_MoveEnd
+	jumpifsubstituteblocks BattleScript_MoveEnd
+	trysoak BattleScript_MoveEnd
+	printstring STRINGID_TARGETCHANGEDTYPE
+	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectPetalBlizzard:
