@@ -19623,20 +19623,19 @@ BattleScript_BloomingHpGain::
     goto BattleScript_DoStatusTurnDmg
 
 BattleScript_BloomingHpGainEnd::
-	statusanimation BS_ATTACKER
+	playanimation BS_ATTACKER, B_ANIM_BLOOMING
+	waitanimation
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
 	tryfaintmon BS_ATTACKER
 	checkteamslost BattleScript_DoTurnDmgEnd
-	clearstatus BS_ATTACKER
 	waitstate
+	clearstatus BS_ATTACKER
 	updatestatusicon BS_ATTACKER
 	printstring STRINGID_PKMNSISNOLONGERBLOOMING
     waitmessage B_WAIT_TIME_LONG
 	end2
-
-
 
 @ SHUNYONG
 BattleScript_ShunyongAbilityActivates::

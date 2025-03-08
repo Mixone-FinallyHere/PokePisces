@@ -15715,13 +15715,13 @@ static void Cmd_damagetopercentagetargethp(void)
     {
         gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 5;  
     }
-    else if (gCurrentMove == MOVE_SPOOK)
+    else if (gCurrentMove == MOVE_SUPER_FANG)
     {
-        gBattleMoveDamage = (gBattleMons[gBattlerTarget].maxHP * 3 / 10);  
+        gBattleMoveDamage = gBattleMons[gBattlerTarget].hp / 2;
     }
     else
     {
-        gBattleMoveDamage = gBattleMons[gBattlerTarget].hp / 2;  
+        gBattleMoveDamage = (gBattleMons[gBattlerTarget].maxHP * 3 / 10);
     }
 
     if (gBattleMoveDamage == 0)

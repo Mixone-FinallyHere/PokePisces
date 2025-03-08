@@ -1174,6 +1174,7 @@ gBattleAnims_General::
 	.4byte Move_HEARTHWARM                  @ B_ANIM_HEARTHWARM_HEAL
 	.4byte Move_GRAVITY                     @ B_ANIM_GRAVITY
 	.4byte Move_FIRE_SPIN                   @ B_ANIM_INFERNAL_REIGN
+	.4byte Status_Blooming				    @ B_ANIM_BLOOMING
 
 	.align 2
 gBattleAnims_Special::

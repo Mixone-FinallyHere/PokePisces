@@ -611,6 +611,7 @@
 #define B_ANIM_HEARTHWARM_HEAL          50
 #define B_ANIM_GRAVITY                  51
 #define B_ANIM_INFERNAL_REIGN           52
+#define B_ANIM_BLOOMING                 53
 
 // special animations table (gBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0
