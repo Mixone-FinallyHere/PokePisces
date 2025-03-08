@@ -1922,7 +1922,7 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
         calc = (calc * 90) / 100; // 10% evasion increase
         break;
     case ABILITY_ANTICIPATION:
-        if(gDisableStructs[battlerDef].isFirstTurn) 
+        if (gDisableStructs[battlerDef].isFirstTurn)
         {
             calc = min(calc, 50);                 // max accuraccy of move is 50%
         }
@@ -7872,6 +7872,10 @@ bool32 CanBattlerSwitch(u32 battler)
     {
         ret = FALSE;
     }
+    else if (gStatuses4[battler] & STATUS4_IMPRISON)
+    {
+        ret = FALSE;
+    }
     else
     {
         if (GetBattlerSide(battler) == B_SIDE_OPPONENT)
@@ -10327,6 +10331,39 @@ static void Cmd_various(void)
         {
             gStatuses4[battler] |= STATUS4_FAIRY_LOCK;
             gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
+    case VARIOUS_TRY_SET_IMPRISON:
+    {
+        VARIOUS_ARGS(const u8 *failInstr, const u8 *jumpInstr);
+        s32 i;
+
+        if (gStatuses4[battler] & STATUS4_IMPRISON)
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        else
+        {
+            for (i = 0; i < MAX_MON_MOVES; i++)
+            {
+                if (gBattleMons[battler].moves[i] == gLastMoves[battler])
+                    break;
+            }
+            if (gDisableStructs[battler].disabledMove == MOVE_NONE
+                && i != MAX_MON_MOVES && gBattleMons[battler].pp[i] != 0)
+            {
+                PREPARE_MOVE_BUFFER(gBattleTextBuff1, gBattleMons[battler].moves[i])
+        
+                gDisableStructs[battler].disabledMove = gBattleMons[battler].moves[i];
+                gStatuses4[battler] |= STATUS4_IMPRISON;
+                gBattlescriptCurrInstr = cmd->jumpInstr;
+            }
+            else
+            {
+                gStatuses4[battler] |= STATUS4_IMPRISON;
+                gBattlescriptCurrInstr = cmd->nextInstr;
+            }
         }
         return;
     }

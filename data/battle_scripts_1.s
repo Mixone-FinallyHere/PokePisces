@@ -12800,14 +12800,23 @@ BattleScript_EffectSkillSwap:
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectImprison::
-	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TitanicProtectsDoesntAffect
 	attackcanceler
+	jumpifsubstituteblocks BattleScript_FailedFromAtkString
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
-	tryimprison BattleScript_ButItFailed
+	trysetimprison BS_TARGET, BattleScript_ButItFailed, BattleScript_ImprisonBothEffects
 	attackanimation
 	waitanimation
-	printstring STRINGID_PKMNSEALEDOPPONENTMOVE
+	printstring STRINGID_CANTESCAPEBECAUSEOFCURRENTMOVE
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_ImprisonBothEffects::
+	attackanimation
+	waitanimation
+	printstring STRINGID_CANTESCAPEBECAUSEOFCURRENTMOVE
+	waitmessage B_WAIT_TIME_LONG
+	printstring STRINGID_PKMNMOVEWASDISABLED
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 

@@ -2285,10 +2285,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             if (GetUsedHeldItem(battlerAtk) == 0 || gBattleMons[battlerAtk].item != 0)
                 score -= 10;
             break;
-        case EFFECT_IMPRISON:
-            if (gStatuses3[battlerAtk] & STATUS3_IMPRISONED_OTHERS)
-                score -= 10;
-            break;
         case EFFECT_REFRESH:
             if (!(gBattleMons[battlerDef].status1 & (STATUS1_PSN_ANY | STATUS1_BURN | STATUS1_PARALYSIS | STATUS1_FROSTBITE)))
                 score -= 10;
@@ -3275,6 +3271,10 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_FAIRY_LOCK:
             if (gStatuses4[battlerDef] & STATUS4_FAIRY_LOCK || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
+                score -= 10;
+            break;
+        case EFFECT_IMPRISON:
+            if (gStatuses4[battlerDef] & STATUS4_IMPRISON || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
                 score -= 10;
             break;
         case EFFECT_DO_NOTHING:

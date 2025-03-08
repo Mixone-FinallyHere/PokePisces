@@ -771,6 +771,8 @@ bool32 IsBattlerTrapped(u32 battler, bool32 checkSwitch)
         return TRUE;
     else if (gStatuses4[battler] & STATUS4_FAIRY_LOCK)
         return TRUE;
+    else if (gStatuses4[battler] & STATUS4_IMPRISON)
+        return TRUE;
     else if (IsAbilityPreventingEscape(battler))
         return TRUE;
 

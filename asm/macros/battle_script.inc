@@ -2383,6 +2383,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro trysetimprison battler:req, failInstr:req, jumpInstr:req
+	various \battler, VARIOUS_TRY_SET_IMPRISON
+	.4byte \failInstr
+	.endm
+
 	.macro setpurified battler:req, failInstr:req
 	various \battler, VARIOUS_SET_PURIFIED
 	.4byte \failInstr

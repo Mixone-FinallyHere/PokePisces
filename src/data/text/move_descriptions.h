@@ -302,9 +302,9 @@ static const u8 sBlizzardDescription[] = _(
     "leave the foes frozen.");
 
 static const u8 sPsybeamDescription[] = _(
-    "The target is attacked with a\n"
-    "peculiar ray. This may also\n"
-    "confuse the target.");
+    "Shoots a peculiar ray that may\n"
+    "confuse. Boosts chances for\n"
+    "every Sp. Atk and Sp. Def boost.");
 
 static const u8 sBubbleBeamDescription[] = _(
     "A spray of bubbles is forcefully\n"
@@ -1420,9 +1420,9 @@ static const u8 sSkillSwapDescription[] = _(
     "the target.");
 
 static const u8 sImprisonDescription[] = _(
-    "Deals double damage and traps if\n"
-    "used on a foe switching out.\n"
-    "This move always goes first.");
+    "A magical pact that traps the\n"
+    "foe and disables their last used.\n"
+    "move permanently");
 
 static const u8 sRefreshDescription[] = _(
     "The user cures status conditions\n"
