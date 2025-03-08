@@ -7781,6 +7781,8 @@ bool32 CanBattlerEscape(u32 battler) // no ability check
         return FALSE;
     else if (gStatuses4[battler] & STATUS4_FAIRY_LOCK)
         return FALSE;
+    else if (gStatuses4[battler] & STATUS4_IMPRISON)
+        return FALSE;
     else if (gStatuses3[battler] & STATUS3_SKY_DROPPED)
         return FALSE;
     else
@@ -15034,7 +15036,7 @@ u32 GetBattlerMoveTargetType(u32 battler, u32 move)
 
 bool32 CanTargetBattler(u32 battlerAtk, u32 battlerDef, u16 move)
 {
-    if (gBattleMoves[move].effect == EFFECT_HIT_ENEMY_HEAL_ALLY && GetBattlerSide(battlerAtk) == GetBattlerSide(battlerDef) && gStatuses3[battlerAtk] & STATUS3_HEAL_BLOCK && GetBattlerAbility(battlerAtk) != ABILITY_STRONGHOLD)
+    if ((gBattleMoves[move].effect == EFFECT_HIT_ENEMY_HEAL_ALLY || gBattleMoves[move].effect == EFFECT_TRICK_OR_TREAT) && GetBattlerSide(battlerAtk) == GetBattlerSide(battlerDef) && gStatuses3[battlerAtk] & STATUS3_HEAL_BLOCK && GetBattlerAbility(battlerAtk) != ABILITY_STRONGHOLD)
         return FALSE; // Pok?mon affected by Heal Block cannot target allies with Pollen Puff
     return TRUE;
 }
@@ -15184,6 +15186,8 @@ u32 CalcSecondaryEffectChance(u32 battler, u8 secondaryEffectChance)
         secondaryEffectChance *= 3;
     else if (CountBattlerSpeedDecreases(gBattlerTarget) > 0 && gCurrentMove == MOVE_FREEZING_GLARE)
         secondaryEffectChance *= CountBattlerSpeedDecreases(gBattlerTarget) + 1;
+    else if (CountBattlerSpecialAttackIncreases(gBattlerAttacker) > 0 && CountBattlerSpecialDefenseIncreases(gBattlerAttacker) > 0 && gCurrentMove == MOVE_PSYBEAM)
+        secondaryEffectChance *= CountBattlerSpecialAttackIncreases(gBattlerAttacker) + CountBattlerSpecialDefenseIncreases(gBattlerAttacker) + 1;
     else if (GetBattlerAbility(battler) == ABILITY_SERENE_GRACE 
     || GetBattlerAbility(battler) == ABILITY_RISKTAKER
     || IsAbilityOnSide(battler, ABILITY_SERENE_AURA) 

@@ -671,7 +671,8 @@
 #define EFFECT_SPOTLIGHT                    665
 #define EFFECT_COMET_PUNCH                  666
 #define EFFECT_PSYCHIC_FANGS                667
+#define EFFECT_TRICK_OR_TREAT               668
 
-#define NUM_BATTLE_MOVE_EFFECTS             668
+#define NUM_BATTLE_MOVE_EFFECTS             669
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

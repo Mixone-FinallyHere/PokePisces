@@ -302,9 +302,9 @@ static const u8 sBlizzardDescription[] = _(
     "leave the foes frozen.");
 
 static const u8 sPsybeamDescription[] = _(
-    "The target is attacked with a\n"
-    "peculiar ray. This may also\n"
-    "confuse the target.");
+    "Shoots a peculiar ray that may\n"
+    "confuse. Boosts chances for\n"
+    "every Sp. Atk and Sp. Def boost.");
 
 static const u8 sBubbleBeamDescription[] = _(
     "A spray of bubbles is forcefully\n"
@@ -382,9 +382,9 @@ static const u8 sSolarBeamDescription[] = _(
     "Boosted if the user is blooming.");
 
 static const u8 sPoisonPowderDescription[] = _(
-    "Scatters a toxic powder that\n"
-    "poisons the foe. Deals damage if\n"
-    "the user is blooming.");
+    "Scatters a powder that poisons\n"
+    "foes. If user is blooming, makes\n"
+    "foes exhausted, lowering power.");
 
 static const u8 sStunSporeDescription[] = _(
     "Scatters a powder that paralyzes\n"
@@ -1420,9 +1420,9 @@ static const u8 sSkillSwapDescription[] = _(
     "the target.");
 
 static const u8 sImprisonDescription[] = _(
-    "Deals double damage and traps if\n"
-    "used on a foe switching out.\n"
-    "This move always goes first.");
+    "A magical pact that traps the\n"
+    "foe and disables their last used.\n"
+    "move permanently");
 
 static const u8 sRefreshDescription[] = _(
     "The user cures status conditions\n"
@@ -2787,9 +2787,9 @@ static const u8 sFellStingerDescription[] = _(
     "Attack stat rises drastically.");
 
 static const u8 sTrickOrTreatDescription[] = _(
-    "Adds Ghost-type to the foe\n"
-    "and swaps held items. Fails\n"
-    "if foe can't change type.");
+    "Tricks the foe with damage and a\n"
+    "stat drop, but treats the ally\n"
+    "with healing and a stat boost.");
 
 static const u8 sPhantomForceDescription[] = _(
     "The user vanishes and then\n"
@@ -3516,9 +3516,9 @@ static const u8 sStrangeSteamDescription[] = _(
     "confuse the target. ");
 
 static const u8 sLifeDewDescription[] = _(
-    "The user scatters mysterious\n"
-    "water around and restores the HP\n"
-    "of itself and its allies.");
+    "The user heals the HP of itself\n"
+    "and its allies. Goes first if\n"
+    "the ally has less than half HP.");
 
 static const u8 sObstructDescription[] = _(
     "Protects from attacks and\n"
@@ -4286,9 +4286,9 @@ static const u8 sLoneSharkDescription[] = _(
     "Absorbs half the damage dealt.");
 
 static const u8 sHeartStealDescription[] = _(
-    "Steals the foe's stat boosts and\n"
-    "always goes first. Doubles in\n"
-    "power if the foe is infatuated.");
+    "Steals stat boosts. Goes first.\n"
+    "Infatuates the foe next turn.\n"
+    "Boosted if the foe is infatuated.");
 
 static const u8 sIgnaStrikeDescription[] = _(
     "Charges with blazing speed and\n"
@@ -4841,9 +4841,9 @@ static const u8 sHunkerDownDescription[] = _(
     "can't move on the next turn.");
 
 static const u8 sShieldsUpDescription[] = _(
-    "The user restores its own HP,\n"
-    "cures its status conditions, and\n"
-    "eliminates its stat drops.");
+    "The user heals HP, cures status\n"
+    "status conditions, removes stat\n"
+    "drops, and regains its shell.");
 
 static const u8 sHaywireDescription[] = _(
     "Whips the foe twice in a row.\n"
