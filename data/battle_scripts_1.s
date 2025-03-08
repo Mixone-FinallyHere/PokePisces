@@ -491,7 +491,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectFly                     @ EFFECT_FLY
 	.4byte BattleScript_EffectTrap                    @ EFFECT_WHIRLPOOL
 	.4byte BattleScript_EffectAbsorb                  @ EFFECT_LONE_SHARK
-	.4byte BattleScript_EffectSpectralThief           @ EFFECT_HEART_STEAL
+	.4byte BattleScript_EffectHeartSteal              @ EFFECT_HEART_STEAL
 	.4byte BattleScript_EffectHit                     @ EFFECT_IGNA_STRIKE
 	.4byte BattleScript_EffectDefAccDownHit           @ EFFECT_ACCURACY_DEFENSE_DOWN_HIT
 	.4byte BattleScript_EffectVenomDrain              @ EFFECT_VENOM_DRAIN
@@ -694,6 +694,22 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectSpotlight               @ EFFECT_SPOTLIGHT
 	.4byte BattleScript_EffectHit                     @ EFFECT_COMET_PUNCH
 	.4byte BattleScript_EffectBrickBreak              @ EFFECT_PSYCHIC_FANGS
+
+BattleScript_EffectHeartSteal::
+	setmoveeffect MOVE_EFFECT_SPECTRAL_THIEF
+    call BattleScript_EffectHit_Ret
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEnd
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
+	jumpifsafeguard BattleScript_MoveEnd
+	setallure BattleScript_MoveEnd
+	printstring STRINGID_PKMNSHEARTFLUTTERSSHALALALA
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectSpotlight::
 	attackcanceler

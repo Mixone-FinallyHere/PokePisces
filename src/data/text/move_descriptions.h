@@ -4286,9 +4286,9 @@ static const u8 sLoneSharkDescription[] = _(
     "Absorbs half the damage dealt.");
 
 static const u8 sHeartStealDescription[] = _(
-    "Steals the foe's stat boosts and\n"
-    "always goes first. Doubles in\n"
-    "power if the foe is infatuated.");
+    "Steals stat boosts. Goes first.\n"
+    "Infatuates the foe next turn.\n"
+    "Boosted if the foe is infatuated.");
 
 static const u8 sIgnaStrikeDescription[] = _(
     "Charges with blazing speed and\n"
