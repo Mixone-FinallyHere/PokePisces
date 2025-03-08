@@ -1015,8 +1015,10 @@ static void AnimTask_ElectricChargingParticles_Step(u8 taskId)
             task->data[12] = 0;
             if (gAnimMoveIndex == MOVE_FLASH_CANNON || gAnimMoveIndex == MOVE_HEAVY_CELL || gAnimMoveIndex == MOVE_STEEL_BEAM)
                 spriteId = CreateSprite(&gLightOfRuinGrayChargeTemplate, task->data[14], task->data[15], 2);
-            else
+            else if (gAnimMoveIndex == MOVE_SHIELDS_UP)
                 spriteId = CreateSprite(&gRockFragmentChargeSpriteTemplate, task->data[14], task->data[15], 2);
+            else
+                spriteId = CreateSprite(&gElectricChargingParticlesSpriteTemplate, task->data[14], task->data[15], 2);
 
             if (spriteId != MAX_SPRITES)
             {

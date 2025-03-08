@@ -5874,6 +5874,14 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         if (gBattleMons[battlerAtk].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE)
             score+= CountBattlerSpeedIncreases(battlerAtk);
         break;
+    case EFFECT_BOLT_BEAK:
+        if (gBattleMons[battlerAtk].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE)
+            score+= CountBattlerSpeedIncreases(battlerAtk);
+        break;
+    case EFFECT_AERIAL_ACE:
+        if (gBattleMons[battlerAtk].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE)
+            score+= CountBattlerAccuracyIncreases(battlerAtk);
+        break;
     case EFFECT_HAYWIRE:
     case EFFECT_STORED_POWER:
         for (i = STAT_ATK; i < NUM_BATTLE_STATS; i++)
@@ -5996,7 +6004,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             break;
         }
     case EFFECT_TORMENT:
-    case EFFECT_TORMENT_HIT:
+    case EFFECT_VEXING_KI:
         break;
     case EFFECT_WILL_O_WISP:
         IncreaseBurnScore(battlerAtk, battlerDef, move, &score);
@@ -7211,7 +7219,7 @@ static s32 AI_SetupFirstTurn(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_CINDER_TWIRL:
     case EFFECT_CINDER_DRILL:
     case EFFECT_SILENCE:
-    case EFFECT_TORMENT_HIT:
+    case EFFECT_VEXING_KI:
     case EFFECT_WARM_WELCOME:
     case EFFECT_SCORP_FANG:
     case EFFECT_RECOIL_50_HAZARD:

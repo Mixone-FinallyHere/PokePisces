@@ -447,7 +447,7 @@
 #define EFFECT_CINDER_TWIRL                 441 //AI Flags added, may need to add more scoring in in regards to which form would be best. Currently just added it to SetupFirstTurn
 #define EFFECT_CINDER_DRILL                 442 //AI Flags added, may need to add more scoring in in regards to which form would be best. Currently just added it to SetupFirstTurn
 #define EFFECT_SILENCE                      443 //AI Flags complete
-#define EFFECT_TORMENT_HIT                  444 //AI Flags complete
+#define EFFECT_VEXING_KI                    444 //AI Flags complete
 #define EFFECT_DECAY_BEAM                   445 //According to EFFECT_FREEZE_DRY and EFFECT_EERIE_SPELL, this doesnt need any special AI code
 #define EFFECT_WARM_WELCOME                 446 //AI Flags complete
 #define EFFECT_RADIOACID                    447 //AI Flags complete
@@ -664,7 +664,13 @@
 #define EFFECT_ROCK_WRECKER                 658
 #define EFFECT_HYDRO_CANNON                 659
 #define EFFECT_FEAR_FACTOR                  660
+#define EFFECT_NIGHT_DAZE                   661
+#define EFFECT_SPRING_BREEZE                662
+#define EFFECT_AERIAL_ACE                   663
+#define EFFECT_DOUBLE_TEAM                  664
+#define EFFECT_SPOTLIGHT                    665
+#define EFFECT_COMET_PUNCH                  666
 
-#define NUM_BATTLE_MOVE_EFFECTS             661
+#define NUM_BATTLE_MOVE_EFFECTS             667
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

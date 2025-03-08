@@ -765,6 +765,8 @@ bool32 IsBattlerTrapped(u32 battler, bool32 checkSwitch)
         return TRUE;
     else if (holdEffect == HOLD_EFFECT_GLUE_TUBE)
         return TRUE;
+    else if (gSideTimers[GetBattlerSide(battler)].spotlightTimer > 1)
+        return TRUE;
     else if (gStatuses3[battler] & (STATUS3_ROOTED | STATUS3_SKY_DROPPED))
         return TRUE;
     else if (gStatuses4[battler] & STATUS4_FAIRY_LOCK)

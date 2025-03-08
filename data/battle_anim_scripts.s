@@ -24882,19 +24882,6 @@ Move_PENALIZE::
 	end
 
 Move_SNAPBLOSSOM::
-	loadspritegfx ANIM_TAG_ORBS
-	choosetwoturnanim SnapBlossomSetUp SnapBlossomUnleash
-SnapBlossomSetUp::
-	monbg ANIM_ATK_PARTNER
-	setalpha 12, 8
-	loopsewithpan SE_M_TAKE_DOWN, SOUND_PAN_ATTACKER, 9, 2
-	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_ATTACKER, 2, 2, 0, 11, RGB_GREEN
-	createvisualtask AnimTask_ShakeMon2, 2, ANIM_ATTACKER, 1, 0, 32, 1
-	waitforvisualfinish
-	clearmonbg ANIM_ATK_PARTNER
-	blendoff
-	goto SolarBeamEnd
-SnapBlossomUnleash::
 	loadspritegfx ANIM_TAG_SHARP_TEETH
 	loadspritegfx ANIM_TAG_IMPACT
 	loadspritegfx ANIM_TAG_FLOWER

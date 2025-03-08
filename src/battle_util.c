@@ -183,6 +183,15 @@ bool32 IsAffectedByFollowMe(u32 battlerAtk, u32 defSide, u32 move)
     return TRUE;
 }
 
+bool32 IsAffectedBySpotlight(u32 battlerAtk, u32 defSide, u32 move)
+{
+    u32 ability = GetBattlerAbility(battlerAtk);
+
+    if (gSideTimers[defSide].spotlightTimer == 0 || gBattleMons[gSideTimers[defSide].spotlightTarget].hp == 0 || gBattleMoves[move].effect == EFFECT_SNIPE_SHOT || gBattleMoves[move].effect == EFFECT_PSYSTRIKE || gBattleMoves[move].effect == EFFECT_SKY_DROP || ability == ABILITY_PROPELLER_TAIL || ability == ABILITY_STALWART)
+        return FALSE;
+    return TRUE;
+}
+
 // Functions
 void HandleAction_UseMove(void)
 {
@@ -267,7 +276,11 @@ void HandleAction_UseMove(void)
 
     // choose target
     side = BATTLE_OPPOSITE(GetBattlerSide(gBattlerAttacker));
-    if (IsAffectedByFollowMe(gBattlerAttacker, side, gCurrentMove) && moveTarget == MOVE_TARGET_SELECTED && GetBattlerSide(gBattlerAttacker) != GetBattlerSide(gSideTimers[side].followmeTarget))
+    if (IsAffectedBySpotlight(gBattlerAttacker, side, gCurrentMove) && moveTarget == MOVE_TARGET_SELECTED && GetBattlerSide(gBattlerAttacker) != GetBattlerSide(gSideTimers[side].spotlightTarget))
+    {
+        gBattleStruct->moveTarget[gBattlerAttacker] = gBattlerTarget = gSideTimers[side].spotlightTarget; // follow me moxie fix
+    }
+    else if (IsAffectedByFollowMe(gBattlerAttacker, side, gCurrentMove) && moveTarget == MOVE_TARGET_SELECTED && GetBattlerSide(gBattlerAttacker) != GetBattlerSide(gSideTimers[side].followmeTarget))
     {
         gBattleStruct->moveTarget[gBattlerAttacker] = gBattlerTarget = gSideTimers[side].followmeTarget; // follow me moxie fix
     }
@@ -289,7 +302,7 @@ void HandleAction_UseMove(void)
             }
         }
     }
-    else if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && gSideTimers[side].followmeTimer == 0 && (gBattleMoves[gCurrentMove].power != 0 || (moveTarget != MOVE_TARGET_USER && moveTarget != MOVE_TARGET_ALL_BATTLERS)) && ((GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_LIGHTNING_ROD && moveType == TYPE_ELECTRIC) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_STORM_DRAIN && moveType == TYPE_WATER) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_MAGNET_PULL && moveType == TYPE_STEEL) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_WITCHCRAFT && moveType == TYPE_FAIRY) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_SOUL_LOCKER && moveType == TYPE_GHOST)))
+    else if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && gSideTimers[side].followmeTimer == 0 && gSideTimers[side].spotlightTimer == 0 && (gBattleMoves[gCurrentMove].power != 0 || (moveTarget != MOVE_TARGET_USER && moveTarget != MOVE_TARGET_ALL_BATTLERS)) && ((GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_LIGHTNING_ROD && moveType == TYPE_ELECTRIC) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_STORM_DRAIN && moveType == TYPE_WATER) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_MAGNET_PULL && moveType == TYPE_STEEL) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_WITCHCRAFT && moveType == TYPE_FAIRY) || (GetBattlerAbility(*(gBattleStruct->moveTarget + gBattlerAttacker)) != ABILITY_SOUL_LOCKER && moveType == TYPE_GHOST)))
     {
         side = GetBattlerSide(gBattlerAttacker);
         for (battler = 0; battler < gBattlersCount; battler++)
@@ -2506,6 +2519,7 @@ enum
     ENDTURN_INFERNAL_REIGN,
     ENDTURN_SYRUP_BOMB,
     ENDTURN_DAYBREAK,
+    ENDTURN_ALLURE,
     ENDTURN_ITEMS3,
     ENDTURN_BATTLER_COUNT
 };
@@ -3020,6 +3034,27 @@ u8 DoBattlerEndTurnEffects(void)
                         MarkBattlerForControllerExec(battler);
                         BattleScriptExecute(BattleScript_YawnMakesAsleep);
                     }
+                    effect++;
+                }
+            }
+            gBattleStruct->turnEffectsTracker++;
+            break;
+        case ENDTURN_ALLURE: // yawn
+            if (gStatuses4[battler] & STATUS4_ALLURE)
+            {
+                u16 battlerAbility = GetBattlerAbility(battler);
+                gStatuses4[battler] -= STATUS4_ALLURE_TURN(1);
+                if (!(gStatuses4[battler] & STATUS4_ALLURE) 
+                && !(gBattleMons[battler].status2 & STATUS2_INFATUATION) 
+                && battlerAbility != ABILITY_OBLIVIOUS
+                && battlerAbility != ABILITY_IGNORANT_BLISS
+                && battlerAbility != ABILITY_TITANIC
+                && !IsAbilityOnSide(battler, ABILITY_AROMA_VEIL)
+                && AreBattlersOfOppositeGender(gDisableStructs[battler].battlerCausingAllure, battler))
+                {
+                    gEffectBattler = battler;
+                    gBattleMons[battler].status2 |= STATUS2_INFATUATED_WITH(gDisableStructs[battler].battlerCausingAllure);
+                    BattleScriptExecute(BattleScript_AllureInfatuates);
                     effect++;
                 }
             }
@@ -3929,7 +3964,7 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_MULTIHIT_MOVES:
-            if (gBattleMoves[gCurrentMove].effect == EFFECT_MULTI_HIT || gBattleMoves[gCurrentMove].effect == EFFECT_BARB_BARRAGE || gBattleMoves[gCurrentMove].effect == EFFECT_BARRAGE || gBattleMoves[gCurrentMove].effect == EFFECT_PIN_MISSILE)
+            if (gBattleMoves[gCurrentMove].effect == EFFECT_MULTI_HIT || gBattleMoves[gCurrentMove].effect == EFFECT_COMET_PUNCH || gBattleMoves[gCurrentMove].effect == EFFECT_BARB_BARRAGE || gBattleMoves[gCurrentMove].effect == EFFECT_BARRAGE || gBattleMoves[gCurrentMove].effect == EFFECT_PIN_MISSILE)
             {
                 u16 ability = gBattleMons[gBattlerAttacker].ability;
 
@@ -7742,6 +7777,8 @@ bool32 CanBattlerEscape(u32 battler) // no ability check
         return FALSE;
     else if (gStatuses3[battler] & STATUS3_ROOTED)
         return FALSE;
+    else if (gSideTimers[GetBattlerSide(battler)].spotlightTimer > 1)
+        return FALSE;
     else if (gStatuses4[battler] & STATUS4_FAIRY_LOCK)
         return FALSE;
     else if (gStatuses3[battler] & STATUS3_SKY_DROPPED)
@@ -10346,7 +10383,11 @@ u32 GetMoveTarget(u16 move, u8 setTarget)
     {
     case MOVE_TARGET_SELECTED:
         side = BATTLE_OPPOSITE(GetBattlerSide(gBattlerAttacker));
-        if (IsAffectedByFollowMe(gBattlerAttacker, side, move))
+        if (IsAffectedBySpotlight(gBattlerAttacker, side, move))
+        {
+            targetBattler = gSideTimers[side].spotlightTarget;
+        }
+        else if (IsAffectedByFollowMe(gBattlerAttacker, side, move))
         {
             targetBattler = gSideTimers[side].followmeTarget;
         }
@@ -10415,7 +10456,11 @@ u32 GetMoveTarget(u16 move, u8 setTarget)
         break;
     case MOVE_TARGET_RANDOM:
         side = BATTLE_OPPOSITE(GetBattlerSide(gBattlerAttacker));
-        if (IsAffectedByFollowMe(gBattlerAttacker, side, move))
+        if (IsAffectedBySpotlight(gBattlerAttacker, side, move))
+        {
+            targetBattler = gSideTimers[side].spotlightTarget;
+        }
+        else if (IsAffectedByFollowMe(gBattlerAttacker, side, move))
         {
             targetBattler = gSideTimers[side].followmeTarget;
         }
@@ -10880,7 +10925,29 @@ u32 CountBattlerSpeedIncreases(u32 battler)
     return count;
 }
 
-u32 CountBattlerSpDefIncreases(u32 battler)
+u32 CountBattlerAccuracyIncreases(u32 battler)
+{
+    u32 i;
+    u32 count = 0;
+
+    if (gBattleMons[battler].statStages[STAT_ACC] > DEFAULT_STAT_STAGE) // Stat is increased.
+        count += gBattleMons[battler].statStages[STAT_ACC] - DEFAULT_STAT_STAGE;
+
+    return count;
+}
+
+u32 CountBattlerSpecialAttackIncreases(u32 battler)
+{
+    u32 i;
+    u32 count = 0;
+
+    if (gBattleMons[battler].statStages[STAT_SPATK] > DEFAULT_STAT_STAGE) // Stat is increased.
+        count += gBattleMons[battler].statStages[STAT_SPATK] - DEFAULT_STAT_STAGE;
+
+    return count;
+}
+
+u32 CountBattlerSpecialDefenseIncreases(u32 battler)
 {
     u32 i;
     u32 count = 0;
@@ -11224,10 +11291,6 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_SURF:
         basePower = 6 * (gBattleMons[battlerAtk].friendship) / 17;
         break;
-    case EFFECT_FROST_NOVA:
-        if (gBattleMons[battlerDef].status1 & STATUS1_FROSTBITE)
-            basePower = 80;
-        break;
     case EFFECT_DIVE:
     case EFFECT_FLY:
     case EFFECT_WHIRLPOOL:
@@ -11408,8 +11471,14 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_BOLT_BEAK:
         basePower = 65 + (CountBattlerSpeedIncreases(battlerAtk) * 20);
         break;
+    case EFFECT_AERIAL_ACE:
+        basePower = 60 + (CountBattlerAccuracyIncreases(battlerAtk) * 15);
+        break;
+    case EFFECT_COMET_PUNCH:
+        basePower = 25 + ((CountBattlerSpecialAttackIncreases(battlerAtk) + CountBattlerSpecialDefenseIncreases(battlerAtk)) * 3);
+        break;
     case EFFECT_POWER_GEM:
-        basePower = 80 + (CountBattlerSpDefIncreases(battlerAtk) * 15);
+        basePower = 80 + (CountBattlerSpecialDefenseIncreases(battlerAtk) * 15);
         break;
     case EFFECT_REDLINE:
         basePower += (CountBattlerStatDecreases(battlerAtk, TRUE) * 50);
@@ -11634,7 +11703,11 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
     switch (gBattleMoves[move].effect)
     {
     case EFFECT_FACADE:
-        if (gBattleMons[battlerAtk].status1 & (STATUS1_BURN | STATUS1_PSN_ANY | STATUS1_PARALYSIS | STATUS1_FROSTBITE))
+        if (gBattleMons[battlerAtk].status1 & (STATUS1_BURN | STATUS1_PSN_ANY | STATUS1_PARALYSIS | STATUS1_FROSTBITE | STATUS1_PANIC | STATUS1_EXPOSED))
+            modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
+        break;
+    case EFFECT_FROST_NOVA:
+        if (gBattleMons[battlerDef].status1 & STATUS1_FROSTBITE)
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
         break;
     case EFFECT_VACUUM_WAVE:
@@ -11658,7 +11731,6 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
             modifier = uq4_12_multiply(modifier, UQ_4_12(3.0));
         break;
     case EFFECT_BARB_BARRAGE:
-    case EFFECT_POISON_DART:
     case EFFECT_VENOSHOCK:
         if (gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY)
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
@@ -13509,13 +13581,21 @@ static inline s32 DoMoveDamageCalcVars(u32 move, u32 battlerAtk, u32 battlerDef,
             uniqueDamage = 50;
         dmg = dmg + uniqueDamage;
     }
-    else if (move == MOVE_NEEDLE_ARM 
+    else if (move == MOVE_NEEDLE_ARM
+    || (move == MOVE_SHADOW_CLAW && gIsCriticalHit)
     || (move == MOVE_ASTONISH && gBattleMons[battlerDef].status1 & STATUS1_PANIC)
     || holdEffectAtk == HOLD_EFFECT_CHUPACABRA
     || move == MOVE_SOUL_CUTTER
     || (move == MOVE_ZING_ZAP && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN))
     {
         uniqueDamage = gBattleMons[battlerDef].maxHP / 5;
+        if (IsSpeciesOneOf(gBattleMons[battlerDef].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && uniqueDamage > 50)
+            uniqueDamage = 50;
+        dmg = dmg + uniqueDamage;
+    }
+    else if (move == MOVE_POISON_DART && gBattleMons[battlerDef].status1 & STATUS1_POISON)
+    {
+        uniqueDamage = gBattleMons[battlerDef].maxHP / 4;
         if (IsSpeciesOneOf(gBattleMons[battlerDef].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && uniqueDamage > 50)
             uniqueDamage = 50;
         dmg = dmg + uniqueDamage;
@@ -14960,17 +15040,25 @@ static void SetRandomMultiHitCounter()
 {
     if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LOADED_DICE)
     {
-        gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 4, 5);
+        if (gStatuses4[gBattlerAttacker] & STATUS4_DOUBLE_TEAM)
+        {
+            gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 5, 6);
+        }
+        else
+        {
+            gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 4, 5);
+        }
     }
     else
     {
-#if B_MULTI_HIT_CHANCE >= GEN_5
-        // 35%: 2 hits, 35%: 3 hits, 15% 4 hits, 15% 5 hits.
-        gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 7, 7, 3, 3);
-#else
-        // 37.5%: 2 hits, 37.5%: 3 hits, 12.5% 4 hits, 12.5% 5 hits.
-        gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 3, 3, 1, 1);
-#endif
+        if (gStatuses4[gBattlerAttacker] & STATUS4_DOUBLE_TEAM)
+        {
+            gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 0, 7, 7, 3, 3);
+        }
+        else
+        {
+            gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 7, 7, 3, 3);
+        }
     }
 }
 
@@ -14978,17 +15066,25 @@ static void SetRandomMultiHitCounter3To5()
 {
     if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LOADED_DICE)
     {
-        gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 4, 5);
+        if (gStatuses4[gBattlerAttacker] & STATUS4_DOUBLE_TEAM)
+        {
+            gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 5, 6);
+        }
+        else
+        {
+            gMultiHitCounter = RandomUniform(RNG_LOADED_DICE, 4, 5);
+        }
     }
     else
     {
-#if B_MULTI_HIT_CHANCE >= GEN_5
-        // 70%: 3 hits, 20%: 4 hits, 10%: 5 hits
-        gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 0, 7, 2, 1);
-#else
-        // 70%: 3 hits, 20%: 4 hits, 10%: 5 hits
-        gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 0, 7, 2, 1);
-#endif
+        if (gStatuses4[gBattlerAttacker] & STATUS4_DOUBLE_TEAM)
+        {
+            gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 0, 0, 7, 2, 1);
+        }
+        else
+        {
+            gMultiHitCounter = RandomWeighted(RNG_HITS, 0, 0, 0, 7, 2, 1);
+        }
     }
 }
 
@@ -15077,8 +15173,9 @@ u32 CalcSecondaryEffectChance(u32 battler, u8 secondaryEffectChance)
         else
             secondaryEffectChance = 50;
     }
-
-    if (gCurrentMove == MOVE_METEOR_MASH && gFieldStatuses & STATUS_FIELD_GRAVITY)
+    if (gCurrentMove == MOVE_ASTRAL_BARRAGE && gBattleStruct->faintedMonCount[GetBattlerSide(battler)] > 0)
+        secondaryEffectChance = 20 + (10 * gBattleStruct->faintedMonCount[GetBattlerSide(battler)]);
+    else if (gCurrentMove == MOVE_METEOR_MASH && gFieldStatuses & STATUS_FIELD_GRAVITY)
         secondaryEffectChance = 100;
     else if ((CanUseLastResort(battler) && gCurrentMove == MOVE_ANCIENT_POWER) || (gBattleMons[gBattlerTarget].status1 & STATUS1_PANIC && gCurrentMove == MOVE_OMINOUS_WIND))
         secondaryEffectChance *= 3;

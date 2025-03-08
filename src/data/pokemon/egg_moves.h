@@ -5158,7 +5158,8 @@ const u16 gEggMoves[] = {
         MOVE_TAKE_HEART,
         MOVE_SWEET_WHISPERS,
         MOVE_HOLD_HANDS,
-        MOVE_DEARLY_DEPART),
+        MOVE_DEARLY_DEPART,
+        MOVE_SPRINGTIDE_STORM),
 
     egg_moves(FAERED,
         MOVE_COPYCAT,

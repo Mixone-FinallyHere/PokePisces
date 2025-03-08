@@ -101,6 +101,7 @@ extern const struct TypePower gNaturalGiftTable[];
 
 void HandleAction_ThrowBall(void);
 bool32 IsAffectedByFollowMe(u32 battlerAtk, u32 defSide, u32 move);
+bool32 IsAffectedBySpotlight(u32 battlerAtk, u32 defSide, u32 move);
 void HandleAction_UseMove(void);
 void HandleAction_Switch(void);
 void HandleAction_UseItem(void);
@@ -260,6 +261,7 @@ u32 CountBattlerStatDecreases(u32 battler, bool32 countEvasionAcc);
 u32 CountBattlerSpeedIncreases(u32 battler);
 u32 CountBattlerSpeedDecreases(u32 battler);
 u32 CountBattlerSpDefIncreases(u32 battler);
+u32 CountBattlerAccuracyIncreases(u32 battler);
 bool32 ChangeTypeBasedOnTerrain(u32 battler);
 void RemoveConfusionStatus(u32 battler);
 u8 GetBattlerGender(u32 battler);
