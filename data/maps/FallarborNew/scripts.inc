@@ -15,7 +15,7 @@ FallarborNew_OnLoad:
 	call_if_lt VAR_OLD_GUYS_STATE, 5, FallarborNew_EventScript_SetRydelGfx
 	call_if_ge VAR_OLD_GUYS_STATE, 5, FallarborNew_EventScript_RemoveRydel
 	call FallarborNew_EventScript_RemoveTabitha
-	call_if_lt VAR_ORBS_QUEST_STATE, 1, FallarborNew_EventScript_RemoveMerchant
+	call_if_gt VAR_ORBS_QUEST_STATE, 0, FallarborNew_EventScript_RemoveMerchant
 	call_if_lt VAR_ORBS_QUEST_STATE, 4, FallarborNew_EventScript_RemovePigs
 	call_if_ge VAR_ORBS_QUEST_STATE, 4, FallarborNew_EventScript_RemoveGatekeepers
 	end
@@ -238,7 +238,7 @@ FallarborNew_EventScript_RydelPreTab::
 FallarborNew_EventScript_Merchant::
 	lock
 	faceplayer
-	goto_if_gt VAR_ORBS_QUEST_STATE, 1, FallarborNew_EventScript_MerchantPost
+	goto_if_ge VAR_ORBS_QUEST_STATE, 1, FallarborNew_EventScript_MerchantPost
 	msgbox FallarborNew_Text_LookingForSomeonePure, MSGBOX_DEFAULT
 	giveitem ITEM_OLD_SEA_MAP
 	msgbox FallarborNew_Text_FollowThatMapForTreasure, MSGBOX_DEFAULT
