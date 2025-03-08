@@ -1431,6 +1431,10 @@
 	callnative BS_TryCinderTwirl
 	.endm
 
+	.macro tryshieldsup
+	callnative BS_TryShieldsUp
+	.endm
+
 	.macro trycopycat failInstr:req
 	callnative BS_TryCopycat
 	.4byte \failInstr

@@ -12377,6 +12377,10 @@ static void Cmd_various(void)
         {
             gBattleMoveDamage = gBattleMons[battler].maxHP / 3;
         }
+        else if (gCurrentMove == MOVE_SHIELDS_UP)
+        {
+            gBattleMoveDamage = gBattleMons[battler].maxHP * 35 / 10;
+        }
         else
         {
             gBattleMoveDamage = gBattleMons[battler].maxHP / 4;
@@ -20681,6 +20685,43 @@ void BS_TryCinderTwirl(void)
             gBattleMons[gBattlerAttacker].species = SPECIES_CINDRILLON_PIROUETTE;
         else if (gBattleMons[gBattlerAttacker].species == SPECIES_CINDRILLON_FEAROUETTE)
             gBattleMons[gBattlerAttacker].species = SPECIES_CINDRILLON_PIROUETTE;
+
+        BattleScriptPush(cmd->nextInstr);
+        gBattlescriptCurrInstr = BattleScript_AttackerFormChangeMoveEffect;
+    }
+    else
+    {
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+}
+
+void BS_TryShieldsUp(void)
+{
+    NATIVE_ARGS();
+
+    if (GetBattlerAbility(gBattlerAttacker) != ABILITY_SHEER_FORCE && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_TRANSFORMED)
+        && (gBattleMons[gBattlerAttacker].species == SPECIES_MINIOR_CORE_RED
+        || gBattleMons[gBattlerAttacker].species == SPECIES_MINIOR_CORE_ORANGE
+        || gBattleMons[gBattlerAttacker].species == SPECIES_MINIOR_CORE_YELLOW
+        || gBattleMons[gBattlerAttacker].species == SPECIES_MINIOR_CORE_GREEN
+        || gBattleMons[gBattlerAttacker].species == SPECIES_MINIOR_CORE_BLUE
+        || gBattleMons[gBattlerAttacker].species == SPECIES_MINIOR_CORE_INDIGO
+        || gBattleMons[gBattlerAttacker].species == SPECIES_MINIOR_CORE_VIOLET))
+    {
+        if (gBattleMons[gBattlerAttacker].species == SPECIES_MINIOR_CORE_RED)
+            gBattleMons[gBattlerAttacker].species = SPECIES_MINIOR;
+        else if (gBattleMons[gBattlerAttacker].species == SPECIES_MINIOR_CORE_ORANGE)
+            gBattleMons[gBattlerAttacker].species = SPECIES_MINIOR_METEOR_ORANGE;
+        else if (gBattleMons[gBattlerAttacker].species == SPECIES_MINIOR_CORE_YELLOW)
+            gBattleMons[gBattlerAttacker].species = SPECIES_MINIOR_METEOR_YELLOW;
+        else if (gBattleMons[gBattlerAttacker].species == SPECIES_MINIOR_CORE_GREEN)
+            gBattleMons[gBattlerAttacker].species = SPECIES_MINIOR_METEOR_GREEN;
+        else if (gBattleMons[gBattlerAttacker].species == SPECIES_MINIOR_CORE_BLUE)
+            gBattleMons[gBattlerAttacker].species = SPECIES_MINIOR_METEOR_BLUE;
+        else if (gBattleMons[gBattlerAttacker].species == SPECIES_MINIOR_CORE_INDIGO)
+            gBattleMons[gBattlerAttacker].species = SPECIES_MINIOR_METEOR_INDIGO;
+        else if (gBattleMons[gBattlerAttacker].species == SPECIES_MINIOR_CORE_VIOLET)
+            gBattleMons[gBattlerAttacker].species = SPECIES_MINIOR_METEOR_VIOLET;
 
         BattleScriptPush(cmd->nextInstr);
         gBattlescriptCurrInstr = BattleScript_AttackerFormChangeMoveEffect;

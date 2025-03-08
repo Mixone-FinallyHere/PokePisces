@@ -4841,9 +4841,9 @@ static const u8 sHunkerDownDescription[] = _(
     "can't move on the next turn.");
 
 static const u8 sShieldsUpDescription[] = _(
-    "The user restores its own HP,\n"
-    "cures its status conditions, and\n"
-    "eliminates its stat drops.");
+    "The user heals HP, cures status\n"
+    "status conditions, removes stat\n"
+    "drops, and regains its shell.");
 
 static const u8 sHaywireDescription[] = _(
     "Whips the foe twice in a row.\n"

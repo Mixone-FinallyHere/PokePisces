@@ -2019,7 +2019,7 @@ BattleScript_EffectShieldsUp::
 	attackcanceler
 	attackstring
 	ppreduce
-	tryhealhalfhealth BattleScript_TryStatusAndStatRestore, BS_ATTACKER
+	tryhealquarterhealth BS_ATTACKER. BattleScript_TryStatusAndStatRestore
 	curestatuswithmove BS_ATTACKER, BattleScript_HealSuccessStatusCureFailed
 	tryresetnegativestatstages BS_ATTACKER
 	attackanimation
@@ -2034,6 +2034,7 @@ BattleScript_EffectShieldsUp::
 	updatestatusicon BS_TARGET
 	printstring STRINGID_USERNEGATIVESTATCHANGESGONE
     waitmessage B_WAIT_TIME_LONG
+	tryshieldsup
 	goto BattleScript_MoveEnd
 BattleScript_TryStatusAndStatRestore:
 	curestatuswithmove BS_ATTACKER, BattleScript_JustRestoreNegativeStats
@@ -2045,6 +2046,7 @@ BattleScript_TryStatusAndStatRestore:
 	updatestatusicon BS_TARGET
 	printstring STRINGID_USERNEGATIVESTATCHANGESGONE
     waitmessage B_WAIT_TIME_LONG
+	tryshieldsup
 	goto BattleScript_MoveEnd
 BattleScript_JustRestoreNegativeStats:
 	tryresetnegativestatstages BS_TARGET
@@ -2052,6 +2054,7 @@ BattleScript_JustRestoreNegativeStats:
 	waitanimation
 	printstring STRINGID_USERNEGATIVESTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
+	tryshieldsup
 	goto BattleScript_MoveEnd
 BattleScript_HealSuccessStatusCureFailed:
 	tryresetnegativestatstages BS_ATTACKER
@@ -2064,6 +2067,7 @@ BattleScript_HealSuccessStatusCureFailed:
 	waitmessage B_WAIT_TIME_LONG
 	printstring STRINGID_USERNEGATIVESTATCHANGESGONE
     waitmessage B_WAIT_TIME_LONG
+	tryshieldsup
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectMagicPowder::
