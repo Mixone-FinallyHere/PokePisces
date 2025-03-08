@@ -1475,6 +1475,12 @@
 	.4byte \ptr
 	.endm
 
+	.macro checkspeeddrops counter:req, ptr:req
+	callnative BS_CheckSpeedDrops
+	.byte \counter
+	.4byte \ptr
+	.endm
+
 	.macro jumpifcantloseitem battler:req, ptr:req
 	callnative BS_JumpIfCantLoseItem
 	.byte \battler
@@ -1844,6 +1850,16 @@
 	.4byte \failInstr
 	.endm
 
+	.macro trydoubleteam battler:req, failInstr:req
+	various \battler, VARIOUS_TRY_DOUBLE_TEAM
+	.4byte \failInstr
+	.endm
+
+	.macro setspotlight failInstr:req
+	various BS_ATTACKER, VARIOUS_SET_SPOTLIGHT
+	.4byte \failInstr
+	.endm
+
 	.macro jumpifcantusesynchronoise jumpInstr:req
 	various BS_ATTACKER, VARIOUS_TRY_SYNCHRONOISE
 	.4byte \jumpInstr
@@ -1928,6 +1944,16 @@
 
 	.macro tryaccupressure battler:req, failInstr:req
 	various \battler, VARIOUS_ACUPRESSURE
+	.4byte \failInstr
+	.endm
+
+	.macro tryrandomstatdrop battler:req, failInstr:req
+	various \battler, VARIOUS_RANDOM_STAT_DROP
+	.4byte \failInstr
+	.endm
+
+	.macro setallure failInstr:req
+	various BS_TARGET, VARIOUS_ALLURE
 	.4byte \failInstr
 	.endm
 
@@ -2165,11 +2191,6 @@
 
 	.macro applydaybreakcounter battler:req, failInstr:req
 	various \battler, VARIOUS_APPLY_DAYBREAK_COUNTER
-	.4byte \failInstr
-	.endm
-
-	.macro increasebloomingturns battler:req, failInstr:req
-	various \battler, VARIOUS_INCREASE_BLOOMING_TURNS
 	.4byte \failInstr
 	.endm
 

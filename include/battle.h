@@ -86,6 +86,7 @@ struct DisableStruct
     u8 rolloutTimerStartValue:4;
     u8 tauntTimer:4;
     u8 battlerPreventingEscape;
+    u8 battlerCausingAllure;
     u8 battlerWithSureHit;
     u8 isFirstTurn;
     u8 truantCounter:1;
@@ -264,6 +265,8 @@ struct SideTimer
     u8 followmeTimer;
     u8 followmeTarget:3;
     u8 followmePowder:1; // Rage powder, does not affect grass type pokemon.
+    u8 spotlightTimer;
+    u8 spotlightTarget:3;
     u8 retaliateTimer;
     u8 silenceTimer;
     u8 silenceTimerBattlerId;
