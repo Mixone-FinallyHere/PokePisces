@@ -8539,6 +8539,29 @@ static u8 TryConsumeMirrorHerb(u32 battler, bool32 execute)
     return effect;
 }
 
+static u8 TryConsumeFlipCoin(u32 battler, bool32 execute)
+{
+    u8 effect = 0;
+
+    if (gProtectStructs[battler].eatMirrorHerb && IsBattlerAlive(battler))
+    {
+        gLastUsedItem = gBattleMons[battler].item;
+        gBattleScripting.battler = battler;
+        gProtectStructs[battler].eatMirrorHerb = 0;
+        if (execute)
+        {
+            BattleScriptExecute(BattleScript_FlipCoinFlipStatsEnd2);
+        }
+        else
+        {
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_FlipCoinFlipStats;
+        }
+        effect = ITEM_STATS_CHANGE;
+    }
+    return effect;
+}
+
 static u32 RestoreWhiteHerbStats(u32 battler)
 {
     u32 i, effect = 0;
@@ -8790,6 +8813,9 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
     case HOLD_EFFECT_MIRROR_HERB:
         effect = TryConsumeMirrorHerb(battler, FALSE);
         break;
+    case HOLD_EFFECT_FLIP_COIN:
+        effect = TryConsumeFlipCoin(battler, FALSE);
+        break;
     }
 
     return effect;
@@ -9040,18 +9066,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     effect = ITEM_STATS_CHANGE;
                 }
                 break;
-            case HOLD_EFFECT_FLIP_COIN:
-                gEffectBattler = BATTLE_OPPOSITE(battler);
-                gBattlerTarget = gEffectBattler;
-                for (i = 0; i < NUM_BATTLE_STATS; i++)
-                {
-                    if (gBattleMons[BATTLE_OPPOSITE(battler)].statStages[i] != DEFAULT_STAT_STAGE)
-                    {
-                        BattleScriptExecute(BattleScript_InvertStats);
-                        effect = ITEM_STATS_CHANGE;
-                    }
-                }
-                break;
             case HOLD_EFFECT_SEEDS:
                 switch (GetBattlerHoldEffectParam(battler))
                 {
@@ -9089,6 +9103,9 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 break;
             case HOLD_EFFECT_MIRROR_HERB:
                 effect = TryConsumeMirrorHerb(battler, TRUE);
+                break;
+            case HOLD_EFFECT_FLIP_COIN:
+                effect = TryConsumeFlipCoin(battler, TRUE);
                 break;
             }
             if (effect != 0)
@@ -9204,19 +9221,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     BattleScriptPushCursorAndCallback(BattleScript_GemstoneRet);
                     effect = ITEM_STATS_CHANGE;
                     RecordItemEffectBattle(battler, battlerHoldEffect);
-                }
-                break;
-            case HOLD_EFFECT_FLIP_COIN:
-                gEffectBattler = BATTLE_OPPOSITE(battler);
-                gBattlerTarget = gEffectBattler;
-                for (i = 0; i < NUM_BATTLE_STATS; i++)
-                {
-                    if (gBattleMons[BATTLE_OPPOSITE(battler)].statStages[i] != DEFAULT_STAT_STAGE)
-                    {
-                        BattleScriptExecute(BattleScript_InvertStats);
-                        effect = ITEM_STATS_CHANGE;
-                        RecordItemEffectBattle(battler, battlerHoldEffect);
-                    }
                 }
                 break;
             case HOLD_EFFECT_CHEESE:
@@ -9487,6 +9491,9 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 break;
             case HOLD_EFFECT_MIRROR_HERB:
                 effect = TryConsumeMirrorHerb(battler, TRUE);
+                break;
+            case HOLD_EFFECT_FLIP_COIN:
+                effect = TryConsumeFlipCoin(battler, TRUE);
                 break;
             }
 
@@ -9928,18 +9935,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     gBattlescriptCurrInstr = BattleScript_CursedAmuletActivates;
                     PREPARE_ITEM_BUFFER(gBattleTextBuff2, gLastUsedItem);
                     RecordItemEffectBattle(battler, HOLD_EFFECT_CURSED_AMULET);
-                }
-                break;
-            case HOLD_EFFECT_FLIP_COIN:
-                for (i = 0; i < NUM_BATTLE_STATS; i++)
-                {
-                    if (gBattleMons[gBattlerAttacker].statStages[i] != DEFAULT_STAT_STAGE)
-                    {
-                        effect = ITEM_STATS_CHANGE;
-                        BattleScriptPushCursor();
-                        gBattlescriptCurrInstr = BattleScript_InvertStats2;
-                        effect++;
-                    }
                 }
                 break;
             case HOLD_EFFECT_AIR_BALLOON:

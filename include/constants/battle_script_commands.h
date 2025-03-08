@@ -328,6 +328,7 @@
 #define VARIOUS_TRY_DOUBLE_TEAM                      236
 #define VARIOUS_SET_SPOTLIGHT                        237
 #define VARIOUS_TRY_SET_IMPRISON                     238
+#define VARIOUS_INVERT_POSITIVE_STAT_STAGES          239
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

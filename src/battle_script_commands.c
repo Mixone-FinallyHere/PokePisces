@@ -11506,6 +11506,16 @@ static void Cmd_various(void)
         }
         break;
     }
+    case VARIOUS_INVERT_POSITIVE_STAT_STAGES:
+    {
+        VARIOUS_ARGS();
+        for (i = 0; i < NUM_BATTLE_STATS; i++)
+        {
+            if (gBattleMons[battler].statStages[i] > DEFAULT_STAT_STAGE) // Negative becomes positive.
+                gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE + (DEFAULT_STAT_STAGE - gBattleMons[battler].statStages[i]);
+        }
+        break;
+    }
     case VARIOUS_TRY_ME_FIRST:
     {
         VARIOUS_ARGS(const u8 *failInstr);

@@ -4408,8 +4408,8 @@ static const u8 sKeychainDesc[] = _(
 
 static const u8 sFlipCoinDesc[] = _(
     "A mysterious coin that\n"
-    "inverts a foe's stat\n"
-    "changes-but only once.");
+    "inverts foes' stat\n"
+    "boosts-but only once.");
 
 static const u8 sGravityCoreDesc[] = _(
     "An odd cube that\n"

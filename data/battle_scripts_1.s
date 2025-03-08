@@ -18575,6 +18575,32 @@ BattleScript_MirrorHerbStartCopyStats:
 BattleScript_MirrorHerbStartReturn:
 	return
 
+BattleScript_FlipCoinFlipStatsEnd2::
+	call BattleScript_FlipCoinFlipStats
+	end2
+
+BattleScript_FlipCoinFlipStats::
+	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, NULL
+	printstring STRINGID_PKMNFLIPSSTATSWITH
+	waitmessage B_WAIT_TIME_LONG
+	removeitem BS_SCRIPTING
+	playanimation BS_SCRIPTING, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	savetarget
+	setbyte gBattlerTarget, 0
+BattleScript_FlipCoinLoop:
+	jumpifbyteequal gBattlerTarget, BS_SCRIPTING, BattleScript_FlipCoinLoopIncrement
+	jumpiftargetally BattleScript_FlipCoinLoopIncrement
+	jumpifabsent BS_TARGET, BattleScript_FlipCoinLoopIncrement
+	copybyte sBATTLER, BS_SCRIPTING
+	invertpositivestatstages BS_TARGET
+BattleScript_FlipCoinLoopIncrement:
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_FlipCoinLoop
+	copybyte sBATTLER, BS_SCRIPTING
+	restoretarget
+	pause B_WAIT_TIME_MED
+	return
+
 BattleScript_TotemVar::
 	call BattleScript_TotemVar_Ret
 	end2

@@ -863,6 +863,7 @@ static const u8 sText_ItemCuredSpeciesStatus[] = _("{B_BUFF1} had\nits status he
 static const u8 sText_ItemRestoredSpeciesPP[] = _("{B_BUFF1} had its\nPP restored!");
 static const u8 sText_AtkTrappedDef[] = _("{B_ATK_NAME_WITH_PREFIX} trapped\nthe {B_DEF_NAME_WITH_PREFIX}!");
 static const u8 sText_MirrorHerbCopied[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} used its {B_LAST_ITEM}\nto mirror its opponent's stat changes!");
+static const u8 sText_PkmnFlipsStatsWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} flipped opponents'\npositive stat changes with {B_LAST_ITEM}!");
 static const u8 sText_PkmnItemMelted[] = _("{B_ATK_NAME_WITH_PREFIX} corroded\n{B_DEF_NAME_WITH_PREFIX}'s {B_LAST_ITEM}!");
 static const u8 sText_UltraBurstReacting[] = _("Bright light is about to\nburst out of {B_ATK_NAME_WITH_PREFIX}!");
 static const u8 sText_UltraBurstCompleted[] = _("{B_ATK_NAME_WITH_PREFIX} regained its\ntrue power through Ultra Burst!");
@@ -999,6 +1000,7 @@ static const u8 sText_AcidArmorDropsDefense[] = _("{B_DEF_NAME_WITH_PREFIX}'s Ac
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
+    [STRINGID_PKMNFLIPSSTATSWITH - BATTLESTRINGS_TABLE_START] = sText_PkmnFlipsStatsWith,
     [STRINGID_GOLDPLAINS - BATTLESTRINGS_TABLE_START] = sText_GoldPlains,
     [STRINGID_TARGETISHURTBYSALTCURE - BATTLESTRINGS_TABLE_START] = sText_TargetIsHurtBySaltCure,
     [STRINGID_TARGETISBEINGSALTCURED - BATTLESTRINGS_TABLE_START] = sText_TargetIsBeingSaltCured,

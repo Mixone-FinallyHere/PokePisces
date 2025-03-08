@@ -2687,6 +2687,10 @@
 	various \battler, VARIOUS_INVERT_NEGATIVE_STAT_STAGES
 	.endm
 
+	.macro invertpositivestatstages battler:req
+	various \battler, VARIOUS_INVERT_POSITIVE_STAT_STAGES
+	.endm
+
 	.macro jumpifsafeguard jumpInstr:req
 	jumpifability BS_ATTACKER, ABILITY_INFILTRATOR, 1f
 	jumpIfType BS_ATTACKER, TYPE_BUG, 1f

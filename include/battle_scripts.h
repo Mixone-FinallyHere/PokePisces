@@ -10,6 +10,8 @@ extern const u8 BattleScript_UnfrozeTargetWaitMessage[];
 extern const u8 BattleScript_TargetWokeUpWaitMessage[];
 extern const u8 BattleScript_MirrorHerbCopyStatChange[];
 extern const u8 BattleScript_MirrorHerbCopyStatChangeEnd2[];
+extern const u8 BattleScript_FlipCoinFlipStats[];
+extern const u8 BattleScript_FlipCoinFlipStatsEnd2[];
 extern const u8 BattleScript_NotAffected[];
 extern const u8 BattleScript_HitFromCritCalc[];
 extern const u8 BattleScript_MoveEnd[];
