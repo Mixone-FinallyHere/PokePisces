@@ -2787,9 +2787,9 @@ static const u8 sFellStingerDescription[] = _(
     "Attack stat rises drastically.");
 
 static const u8 sTrickOrTreatDescription[] = _(
-    "Adds Ghost-type to the foe\n"
-    "and swaps held items. Fails\n"
-    "if foe can't change type.");
+    "Tricks the foe with damage and a\n"
+    "stat drop, but treats the ally\n"
+    "with healing and a stat boost.");
 
 static const u8 sPhantomForceDescription[] = _(
     "The user vanishes and then\n"

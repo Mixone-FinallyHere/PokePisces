@@ -10676,7 +10676,10 @@ static void Cmd_various(void)
                 statId = (Random() % (NUM_BATTLE_STATS - 1)) + 1;
             } while (!(bits & gBitTable[statId]));
 
-            SET_STATCHANGER(statId, 2, FALSE);
+            if (gCurrentMove == MOVE_ACUPRESSURE)
+                SET_STATCHANGER(statId, 2, FALSE);
+            else
+                SET_STATCHANGER(statId, 1, FALSE);
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
         else
@@ -11419,6 +11422,8 @@ static void Cmd_various(void)
                 gBattleMoveDamage = -(gBattleMons[battler].maxHP * 75 / 100);
             else if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && gCurrentMove == MOVE_FLORAL_HEALING)
                 gBattleMoveDamage = -(gBattleMons[gBattlerTarget].maxHP * 2 / 3);
+            else if (gCurrentMove == MOVE_TRICK_OR_TREAT)
+                gBattleMoveDamage = -(gBattleMons[gBattlerTarget].maxHP / 4);
             else
                 gBattleMoveDamage = -(gBattleMons[battler].maxHP / 2);
 
@@ -15651,7 +15656,7 @@ static void Cmd_damagetopercentagetargethp(void)
 {
     CMD_ARGS();
 
-    if (gCurrentMove == MOVE_POISON_POWDER)
+    if (gCurrentMove == MOVE_TRICK_OR_TREAT)
     {
         gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 4;  
     }
@@ -15661,7 +15666,7 @@ static void Cmd_damagetopercentagetargethp(void)
     }
     else if (gCurrentMove == MOVE_SPOOK)
     {
-        gBattleMoveDamage = (gBattleMons[gBattlerTarget].maxHP / 10) * 3;  
+        gBattleMoveDamage = (gBattleMons[gBattlerTarget].maxHP * 3 / 10);  
     }
     else
     {

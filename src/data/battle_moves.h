@@ -9605,7 +9605,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_TRICK_OR_TREAT] =
     {
-        .effect = EFFECT_THIRD_TYPE,
+        .effect = EFFECT_TRICK_OR_TREAT,
         .power = 0,
         .type = TYPE_GHOST,
         .accuracy = 100,
@@ -9613,7 +9613,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
-        .split = SPLIT_STATUS,
+        .split = SPLIT_SPECIAL,
         .argument = TYPE_GHOST,
         .zMoveEffect = Z_EFFECT_ALL_STATS_UP_1,
     },
