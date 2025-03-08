@@ -1892,7 +1892,7 @@ BattleScript_AttackerUsedFirebrand::
 	tryfaintmon BS_TARGET
 	jumpiffainted BS_TARGET, TRUE, BattleScript_ExtraExtraMoveEnd
 	jumpifmovehadnoeffect BattleScript_ExtraExtraMoveEnd
-	tryhealquarterhealth BS_ATTACKER BattleScript_ExtraExtraMoveEnd
+	tryhealquarterhealth BS_ATTACKER, BattleScript_ExtraExtraMoveEnd
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
@@ -2019,7 +2019,7 @@ BattleScript_EffectShieldsUp::
 	attackcanceler
 	attackstring
 	ppreduce
-	tryhealquarterhealth BS_ATTACKER. BattleScript_TryStatusAndStatRestore
+	tryhealquarterhealth BS_ATTACKER, BattleScript_TryStatusAndStatRestore
 	curestatuswithmove BS_ATTACKER, BattleScript_HealSuccessStatusCureFailed
 	tryresetnegativestatstages BS_ATTACKER
 	attackanimation
