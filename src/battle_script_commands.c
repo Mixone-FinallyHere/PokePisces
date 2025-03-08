@@ -10415,6 +10415,8 @@ static void Cmd_various(void)
             if (!(gAbsentBattlerFlags & gBitTable[gBattlerTarget])) // A valid target was found.
                 break;
         }
+        
+        gBattlescriptCurrInstr = cmd->nextInstr;
         return;
     }
     case VARIOUS_HIGH_ROLL_HIT:
