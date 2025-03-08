@@ -4371,8 +4371,8 @@ static const u8 sKerfuffleDescription[] = _(
     "Boosted if the user is confused.");
 
 static const u8 sSpindaSwingDescription[] = _(
-    "Swings around hitting everyone,\n"
-    "confuses itself. Lands critical\n"
+    "Confuses the user. Cuts a random\n"
+    "stat of foes'. Lands critical\n"
     "hits if the user is confused.");
 
 static const u8 sVerglastromDescription[] = _(

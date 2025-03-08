@@ -1704,7 +1704,7 @@ static const u8 sDomineerDescription[] = _(
 static const u8 sVertigoDescription[] = _(
     "Once per turn, if hit while\n"
     "confused, uses a Normal-type\n"
-    "move that lowers evasion.");
+    "move that lowers a random stat.");
 
 static const u8 sStormBrewDescription[] = _(
     "When using Electric moves, uses\n"

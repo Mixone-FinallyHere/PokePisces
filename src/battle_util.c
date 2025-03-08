@@ -6499,7 +6499,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 u16 extraMove = MOVE_STUMBLE;  //The Extra Move to be used
                 u8 movePower = 70;                  //The Move power, leave at 0 if you want it to be the same as the normal move
                 u8 moveEffectPercentChance  = 100;  //The percent chance of the move effect happening
-                u8 extraMoveSecondaryEffect = MOVE_EFFECT_EVS_MINUS_1;  //Leave at 0 to remove it's secondary effect
+                u8 extraMoveSecondaryEffect = MOVE_EFFECT_RANDOM_STAT_DROP;  //Leave at 0 to remove it's secondary effect
                 gTempMove = gCurrentMove;
                 gCurrentMove = extraMove;
                 gMultiHitCounter = 0;
