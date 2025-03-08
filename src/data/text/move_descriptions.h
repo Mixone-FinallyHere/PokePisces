@@ -382,9 +382,9 @@ static const u8 sSolarBeamDescription[] = _(
     "Boosted if the user is blooming.");
 
 static const u8 sPoisonPowderDescription[] = _(
-    "Scatters a toxic powder that\n"
-    "poisons the foe. Deals damage if\n"
-    "the user is blooming.");
+    "Scatters a powder that poisons\n"
+    "foes. If user is blooming, makes\n"
+    "foes exhausted, lowering power.");
 
 static const u8 sStunSporeDescription[] = _(
     "Scatters a powder that paralyzes\n"

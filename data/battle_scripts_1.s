@@ -2345,18 +2345,46 @@ BattleScript_EffectGravitonArm:
 	goto BattleScript_GravityLoop
 
 BattleScript_EffectPoisonPowder::
-	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_PoisonPowderDamage
+	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_PoisonPowderExhaustion
 	goto BattleScript_EffectPoison
-BattleScript_PoisonPowderDamage::
-	setmoveeffect MOVE_EFFECT_POISON
+BattleScript_PoisonPowderExhaustion::
 	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
-	typecalc
-	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
-	damagetopercentagetargethp
-	goto BattleScript_HitFromAtkAnimation
+	jumpifability BS_TARGET, ABILITY_IMMUNITY, BattleScript_PoisonPowderTryExhaustion
+	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_PoisonPowderTryExhaustion
+	jumpifability BS_TARGET, ABILITY_PURIFYING_SALT, BattleScript_PoisonPowderTryExhaustion
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_PoisonPowderTryExhaustion
+	jumpifability BS_TARGET_SIDE, ABILITY_PASTEL_VEIL, BattleScript_PoisonPowderTryExhaustion
+	jumpifflowerveil BattleScript_PoisonPowderTryExhaustion
+	jumpifleafguardprotected BS_TARGET, BattleScript_PoisonPowderTryExhaustion
+	jumpifeeriemaskprotected BS_TARGET, BattleScript_PoisonPowderTryExhaustion
+	jumpifshieldsdown BS_TARGET, BattleScript_PoisonPowderTryExhaustion
+	jumpifsubstituteblocks BattleScript_PoisonPowderTryExhaustion
+	jumpifgearmagnet BS_TARGET, BattleScript_PoisonPowderTryExhaustion
+	jumpifstatus BS_TARGET, STATUS1_POISON, BattleScript_PoisonPowderTryExhaustion
+	jumpifstatus BS_TARGET, STATUS1_TOXIC_POISON, BattleScript_PoisonPowderTryExhaustion
+	trypoisontype BS_ATTACKER, BS_TARGET, BattleScript_PoisonPowderTryExhaustion
+	jumpifstatus BS_TARGET, STATUS1_ANY, BattleScript_PoisonPowderTryExhaustion
+	accuracycheck BattleScript_ButItFailed, ACC_CURR_MOVE
+	jumpifsafeguard BattleScript_PoisonPowderTryExhaustion
+	attackanimation
+	waitanimation
+	setmoveeffect MOVE_EFFECT_POISON
+	seteffectprimary
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	applyexhaustioncounter BS_TARGET, BattleScript_MoveEnd
+	printstring STRINGID_TARGETISEXHAUSTED
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_PoisonPowderTryExhaustion::
+	applyexhaustioncounter BS_TARGET, BattleScript_ButItFailed
+	attackanimation
+	waitanimation
+	printstring STRINGID_TARGETISEXHAUSTED
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectSmog::
 	setmoveeffect MOVE_EFFECT_SPD_MINUS_1
