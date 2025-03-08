@@ -16858,6 +16858,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .priority = 0,
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
+        .strikeCount = 2,
     },
 
     [MOVE_SHARPSHOOT] =
