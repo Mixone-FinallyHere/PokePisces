@@ -1774,12 +1774,6 @@ static bool32 AccuracyCalcHelper(u16 move)
         return TRUE;
     }
 
-    if (gBattleMoves[move].effect == EFFECT_VITAL_THROW)
-    {
-        JumpIfMoveFailed(7, move);
-        return TRUE;
-    }
-
     if ((gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION) && (move == MOVE_SWEET_KISS || move == MOVE_LOVELY_KISS))
     {
         JumpIfMoveFailed(7, move);
@@ -1807,6 +1801,12 @@ static bool32 AccuracyCalcHelper(u16 move)
     }
 
     if ((move == MOVE_POISON_DART) && (gBattleMons[gBattlerTarget].status1 & STATUS1_POISON))
+    {
+        JumpIfMoveFailed(7, move);
+        return TRUE;
+    }
+
+    if (gCurrentMove == MOVE_ODD_STEP && (gBattleMons[gBattlerTarget].status1 & STATUS1_PANIC || gBattleMons[gBattlerTarget].status2 & STATUS2_CONFUSION))
     {
         JumpIfMoveFailed(7, move);
         return TRUE;
@@ -10415,6 +10415,8 @@ static void Cmd_various(void)
             if (!(gAbsentBattlerFlags & gBitTable[gBattlerTarget])) // A valid target was found.
                 break;
         }
+        
+        gBattlescriptCurrInstr = cmd->nextInstr;
         return;
     }
     case VARIOUS_HIGH_ROLL_HIT:

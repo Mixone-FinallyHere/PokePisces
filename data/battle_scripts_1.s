@@ -693,6 +693,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectDoubleTeam              @ EFFECT_DOUBLE_TEAM
 	.4byte BattleScript_EffectSpotlight               @ EFFECT_SPOTLIGHT
 	.4byte BattleScript_EffectHit                     @ EFFECT_COMET_PUNCH
+	.4byte BattleScript_EffectBrickBreak              @ EFFECT_PSYCHIC_FANGS
 
 BattleScript_EffectSpotlight::
 	attackcanceler
@@ -1625,8 +1626,16 @@ BattleScript_MoveEffectWildCharge::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectSpindaSwing::
-	setmoveeffect MOVE_EFFECT_CONFUSION | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
-	goto BattleScript_EffectHit
+    call BattleScript_EffectHit_Ret
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	setmoveeffect MOVE_EFFECT_CONFUSION | MOVE_EFFECT_AFFECTS_USER
+	seteffectprimary
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	setmoveeffect MOVE_EFFECT_RANDOM_STAT_DROP
+	seteffectsecondary
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectHighRollHit::
 	attackcanceler
@@ -3881,7 +3890,7 @@ BattleScript_EnervatorDoMoveAnim::
 	attackanimation
 	waitanimation
 	setbyte sSTAT_ANIM_PLAYED, FALSE
-	playstatchangeanimation BS_TARGET, BIT_ATK | BIT_SPEED, 0
+	playstatchangeanimation BS_TARGET, BIT_ATK | BIT_SPEED, STAT_CHANGE_NEGATIVE | STAT_CHANGE_MULTIPLE_STATS
 	setstatchanger STAT_ATK, 1, TRUE
 	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_EnervatorTrySpeed
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_EnervatorTrySpeed

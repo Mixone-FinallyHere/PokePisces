@@ -1994,11 +1994,11 @@ static const struct TrainerMon sParty_PGotou[] = {
     {
     .lvl = 30,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .ev = TRAINER_PARTY_EVS(116, 132, 0, 0, 0, 0),
-    .species = SPECIES_PSEUDRA,
-    .ability = ABILITY_STALL,
+    .ev = TRAINER_PARTY_EVS(0, 128, 0, 128, 0, 0),
+    .species = SPECIES_SHIFTRY,
+    .ability = ABILITY_WIND_RIDER,
     .heldItem = ITEM_RABUTA_BERRY,
-    .moves = {MOVE_VENOM_GALE, MOVE_DUAL_CHOP, MOVE_DOUBLE_KICK, MOVE_KNOCK_OFF},
+    .moves = {MOVE_WICKED_BLOW, MOVE_SYNTHESIS, MOVE_ACROBATICS, MOVE_TRAILBLAZE},
     .nature = NATURE_BRAVE,
     },
     {
@@ -2018,7 +2018,7 @@ static const struct TrainerMon sParty_PGotou[] = {
     .species = SPECIES_STRAWNGMAN,
     .ability = ABILITY_ANGER_POINT,
     .heldItem = ITEM_BLUK_BERRY,
-    .moves = {MOVE_NEEDLE_ARM, MOVE_REVENGE, MOVE_PAYBACK, MOVE_COUNTER},
+    .moves = {MOVE_NEEDLE_ARM, MOVE_REVENGE, MOVE_PUNISHMENT, MOVE_COUNTER},
     .nature = NATURE_ADAMANT,
     },
     {

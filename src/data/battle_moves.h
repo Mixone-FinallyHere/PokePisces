@@ -11082,7 +11082,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_PSYCHIC_FANGS] =
     {
-        .effect = EFFECT_BRICK_BREAK,
+        .effect = EFFECT_PSYCHIC_FANGS,
         .power = 85,
         .type = TYPE_PSYCHIC,
         .accuracy = 100,
@@ -15121,12 +15121,12 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_SPINDA_SWING] =
     {
         .effect = EFFECT_SPINDA_SWING,
-        .power = 100,
+        .power = 85,
         .type = TYPE_NORMAL,
         .accuracy = 0,
         .pp = 10,
         .secondaryEffectChance = 100,
-        .target = MOVE_TARGET_SELECTED,
+        .target = MOVE_TARGET_BOTH,
         .priority = 0,
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,

@@ -4796,7 +4796,8 @@ const u16 gEggMoves[] = {
     egg_moves(STRAWNGMAN,
         MOVE_SPIKES,
         MOVE_COMEUPPANCE,
-        MOVE_WOOD_HAMMER),
+        MOVE_WOOD_HAMMER,
+        MOVE_PUNISHMENT),
 
     egg_moves(LAWPARD,
         MOVE_DISCHARGE,

@@ -670,7 +670,8 @@
 #define EFFECT_DOUBLE_TEAM                  664
 #define EFFECT_SPOTLIGHT                    665
 #define EFFECT_COMET_PUNCH                  666
+#define EFFECT_PSYCHIC_FANGS                667
 
-#define NUM_BATTLE_MOVE_EFFECTS             667
+#define NUM_BATTLE_MOVE_EFFECTS             668
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H
