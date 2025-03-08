@@ -24,9 +24,9 @@ static const u8 sDoubleSlapDescription[] = _(
     "and torments on Misty Terrain.");
 
 static const u8 sCometPunchDescription[] = _(
-    "The foe is hit with a flurry of\n"
-    "punches that hit 2 to 5 times.\n"
-    "Gains priority in Gravity.");
+    "The foe is hit with cosmic\n"
+    "punches 2 to 5 times. Boosted for\n"
+    "every Sp. Atk and Sp. Def boost.");
 
 static const u8 sMegaPunchDescription[] = _(
     "The target is slugged by a punch\n"

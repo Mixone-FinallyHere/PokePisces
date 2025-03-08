@@ -3964,7 +3964,7 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_MULTIHIT_MOVES:
-            if (gBattleMoves[gCurrentMove].effect == EFFECT_MULTI_HIT || gBattleMoves[gCurrentMove].effect == EFFECT_BARB_BARRAGE || gBattleMoves[gCurrentMove].effect == EFFECT_BARRAGE || gBattleMoves[gCurrentMove].effect == EFFECT_PIN_MISSILE)
+            if (gBattleMoves[gCurrentMove].effect == EFFECT_MULTI_HIT || gBattleMoves[gCurrentMove].effect == EFFECT_COMET_PUNCH || gBattleMoves[gCurrentMove].effect == EFFECT_BARB_BARRAGE || gBattleMoves[gCurrentMove].effect == EFFECT_BARRAGE || gBattleMoves[gCurrentMove].effect == EFFECT_PIN_MISSILE)
             {
                 u16 ability = gBattleMons[gBattlerAttacker].ability;
 
@@ -10936,7 +10936,18 @@ u32 CountBattlerAccuracyIncreases(u32 battler)
     return count;
 }
 
-u32 CountBattlerSpDefIncreases(u32 battler)
+u32 CountBattlerSpecialAttackIncreases(u32 battler)
+{
+    u32 i;
+    u32 count = 0;
+
+    if (gBattleMons[battler].statStages[STAT_SPATK] > DEFAULT_STAT_STAGE) // Stat is increased.
+        count += gBattleMons[battler].statStages[STAT_SPATK] - DEFAULT_STAT_STAGE;
+
+    return count;
+}
+
+u32 CountBattlerSpecialDefenseIncreases(u32 battler)
 {
     u32 i;
     u32 count = 0;
@@ -11463,8 +11474,11 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_AERIAL_ACE:
         basePower = 60 + (CountBattlerAccuracyIncreases(battlerAtk) * 15);
         break;
+    case EFFECT_COMET_PUNCH:
+        basePower = 25 + ((CountBattlerSpecialAttackIncreases(battlerAtk) + CountBattlerSpecialDefenseIncreases(battlerAtk)) * 3);
+        break;
     case EFFECT_POWER_GEM:
-        basePower = 80 + (CountBattlerSpDefIncreases(battlerAtk) * 15);
+        basePower = 80 + (CountBattlerSpecialDefenseIncreases(battlerAtk) * 15);
         break;
     case EFFECT_REDLINE:
         basePower += (CountBattlerStatDecreases(battlerAtk, TRUE) * 50);
