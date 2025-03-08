@@ -14337,6 +14337,7 @@ static const struct TrainerMon sParty_PFlannery[] = {
     {
     .species = SPECIES_CHAFFAW,
     .ability = ABILITY_MOCKING,
+    .heldItem = ITEM_FOCUS_SASH,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 104, 0, 160, 52, 0),
     .lvl = 38,
@@ -14356,7 +14357,7 @@ static const struct TrainerMon sParty_PFlannery[] = {
     {
     .species = SPECIES_YAGANGRAN,
     .ability = ABILITY_WITCHCRAFT,
-    .heldItem = ITEM_RIZZ_BERRY,
+    .heldItem = ITEM_LOST_MANTLE,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(136, 0, 128, 0, 56, 0),
     .lvl = 40,
