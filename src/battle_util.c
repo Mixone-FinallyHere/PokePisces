@@ -11477,6 +11477,9 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_COMET_PUNCH:
         basePower = 25 + ((CountBattlerSpecialAttackIncreases(battlerAtk) + CountBattlerSpecialDefenseIncreases(battlerAtk)) * 3);
         break;
+    case EFFECT_PSYCHIC_FANGS:
+        basePower = 85 + ((CountBattlerSpecialAttackIncreases(battlerAtk) + CountBattlerSpecialDefenseIncreases(battlerAtk)) * 5);
+        break;
     case EFFECT_POWER_GEM:
         basePower = 80 + (CountBattlerSpecialDefenseIncreases(battlerAtk) * 15);
         break;

@@ -693,6 +693,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectDoubleTeam              @ EFFECT_DOUBLE_TEAM
 	.4byte BattleScript_EffectSpotlight               @ EFFECT_SPOTLIGHT
 	.4byte BattleScript_EffectHit                     @ EFFECT_COMET_PUNCH
+	.4byte BattleScript_EffectBrickBreak              @ EFFECT_PSYCHIC_FANGS
 
 BattleScript_EffectSpotlight::
 	attackcanceler

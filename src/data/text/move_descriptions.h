@@ -2449,9 +2449,9 @@ static const u8 sFoulPlayDescription[] = _(
     "Attack, the greater the damage.");
 
 static const u8 sOddStepDescription[] = _(
-    "The user does an odd dance that\n"
-    "mystifies the foe. The higher the\n"
-    "foe's Atk, the better the damage.");
+    "An odd dance that uses the foe's\n"
+    "Atk. Goes first and never misses\n"
+    "on panicking or confused foes.");
 
 static const u8 sSimpleBeamDescription[] = _(
     "The user emits a mysterious\n"
@@ -3225,9 +3225,9 @@ static const u8 sFleurCannonDescription[] = _(
     "removes stat drops and blooming.");
 
 static const u8 sPsychicFangsDescription[] = _(
-    "The user bites with psycho power.\n"
-    "It can also break barriers, such\n"
-    "as Light Screen and Reflect.");
+    "This move breaks barriers like\n"
+    "Reflect. It is boosted for each\n"
+    "Sp. Atk and Sp. Def boost.");
 
 static const u8 sStompingTantrumDescription[] = _(
     "Driven by anger, the user attacks\n"

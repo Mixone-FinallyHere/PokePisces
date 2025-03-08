@@ -11082,7 +11082,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_PSYCHIC_FANGS] =
     {
-        .effect = EFFECT_BRICK_BREAK,
+        .effect = EFFECT_PSYCHIC_FANGS,
         .power = 85,
         .type = TYPE_PSYCHIC,
         .accuracy = 100,
