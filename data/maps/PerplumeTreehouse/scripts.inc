@@ -39,7 +39,7 @@ PerplumeTreehouse_EventScript_Olimar::
 	goto_if_ge VAR_KITIKITI_QUEST_STATE, 9, PerplumeTreehouse_EventScript_GiveLongNose
 	goto_if_gt VAR_KITIKITI_QUEST_STATE, 0, PerplumeTreehouse_EventScript_GoSearching
 	msgbox PerplumeTreehouse_Text_FindMyKitikiti, MSGBOX_DEFAULT
-	setvar VAR_ORBS_QUEST_STATE, 1
+	setvar VAR_KITIKITI_QUEST_STATE, 1
 	closemessage
 	release
 	end

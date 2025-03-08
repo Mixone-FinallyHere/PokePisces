@@ -250,6 +250,43 @@ TestMap_EventScript_FightLegends::
 	release
 	end
 
+TestMap_EventScript_CodeEntryTest::
+	lockall
+	faceplayer
+	msgbox TestMap_Text_EnterCodeText, MSGBOX_YESNO
+	compare VAR_RESULT, 0
+	goto_if_eq VAR_RESULT, NO, TestMap_EventScript_CodeEntryRelease
+    special EnterCode
+    waitstate
+    special GetCodeFeedback
+    goto_if_eq VAR_RESULT, 2, TestMap_EventScript_CodeEntrySuccess
+	goto TestMap_EventScript_CodeEntryFail
+	releaseall
+	end
+
+TestMap_EventScript_CodeEntrySuccess::
+	msgbox TestMap_Text_CodeEntrySuccess, MSGBOX_AUTOCLOSE
+	releaseall
+	end
+
+TestMap_EventScript_CodeEntryFail::
+	msgbox TestMap_Text_CodeEntryFail, MSGBOX_AUTOCLOSE
+	releaseall
+	end
+
+TestMap_EventScript_CodeEntryRelease::
+	releaseall
+	end
+
+TestMap_Text_EnterCodeText:
+	.string "Enter Code>$"
+
+TestMap_Text_CodeEntrySuccess:
+	.string "You did it$"
+
+TestMap_Text_CodeEntryFail:
+	.string "BAD code$"
+
 TestMap_Text_MendelIntro:
 	.string "intro$"
 

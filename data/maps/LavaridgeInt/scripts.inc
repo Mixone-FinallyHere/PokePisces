@@ -108,10 +108,10 @@ LavaridgeInt_Movement_PositionPlayerNorth:
 
 LavaridgeInt_EventScript_AngryLadyNorth::
 	lock
-	applymovement LOCALID_ANGRYLADY1, LavaridgeInt_Movement_AngryLadyWalkUpNorth
+	applymovement LOCALID_ANGRYLADY2, LavaridgeInt_Movement_AngryLadyWalkUpNorth
 	waitmovement 0
 	msgbox LavaridgeInt_Text_HateThisMFTown, MSGBOX_DEFAULT
-	applymovement LOCALID_ANGRYLADY1, LavaridgeInt_Movement_AngryLadyGoAwayNorth
+	applymovement LOCALID_ANGRYLADY2, LavaridgeInt_Movement_AngryLadyGoAwayNorth
 	waitmovement 0
 	call LavaridgeInt_EventScript_RemoveAngryLady
 	setvar VAR_DURIN_RESISTANCE, 1

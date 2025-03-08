@@ -293,14 +293,14 @@
       "x": 9,
       "y": 39,
       "elevation": 0,
-      "dest_map": "MAP_MIDNEOR_FALLS_CAVE",
+      "dest_map": "MAP_WHISPER_CLIFF",
       "dest_warp_id": "0"
     },
     {
       "x": 42,
       "y": 7,
       "elevation": 0,
-      "dest_map": "MAP_MIDNEOR_FALLS_CAVE",
+      "dest_map": "MAP_WHISPER_CLIFF",
       "dest_warp_id": "0"
     }
   ],
