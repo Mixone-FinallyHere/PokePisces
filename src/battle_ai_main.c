@@ -1225,6 +1225,8 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 10;
             if (move == MOVE_HYPNOSIS && IS_BATTLER_OF_TYPE(battlerDef, TYPE_PSYCHIC))
                 score -= 10;
+            if (move == MOVE_LOVELY_KISS && gBattleMons[battlerDef].status2 & STATUS2_INFATUATION)
+                score += 2;
             break;
         case EFFECT_DARK_VOID:
             if (!AI_CanPutToSleep(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, aiData->partnerMove))
@@ -3913,6 +3915,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_HIT_ENEMY_HEAL_ALLY:
             case EFFECT_TRICK_OR_TREAT:
             case EFFECT_FLORAL_HEALING:
+            case EFFECT_JUNGLE_HEALING:
                 if (AI_WhoStrikesFirst(battlerAtk, FOE(battlerAtk), move) == AI_IS_FASTER
                   && AI_WhoStrikesFirst(battlerAtk, BATTLE_PARTNER(FOE(battlerAtk)), move) == AI_IS_FASTER
                   && gBattleMons[battlerAtkPartner].hp < gBattleMons[battlerAtkPartner].maxHP / 2)
@@ -4168,12 +4171,19 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             IncreaseSleepScore(battlerAtk, battlerDef, move, &score);
         break;
     case EFFECT_ABSORB:
-    case EFFECT_DRAINING_KISS:
     case EFFECT_TICK_TACK:
         if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_BIG_ROOT)
             score++;
         if (effectiveness <= AI_EFFECTIVENESS_x0_5 && AI_RandLessThan(50))
             score -= 3;
+        break;
+    case EFFECT_DRAINING_KISS:
+        if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_BIG_ROOT)
+            score++;
+        if (effectiveness <= AI_EFFECTIVENESS_x0_5 && AI_RandLessThan(50))
+            score -= 3;
+        if (gBattleMons[battlerDef].status2 & STATUS2_INFATUATION)
+            score += 2;
         break;
     case EFFECT_VENOM_DRAIN:
         if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_BIG_ROOT)
@@ -6799,7 +6809,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         break;
     case EFFECT_ALL_STATS_UP_HIT:
         if (move == MOVE_OMINOUS_WIND && (gBattleMons[battlerDef].status1 & STATUS1_PANIC))
-            score += 2;
+            score += 3;
         break;
     case EFFECT_FAIRY_LOCK:
         if (!IsBattlerTrapped(battlerDef, TRUE))
@@ -7243,7 +7253,6 @@ static s32 AI_SetupFirstTurn(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_DEEP_GAZE:
     case EFFECT_ENERVATOR:
     case EFFECT_HEAVY_CELL:
-    case EFFECT_SPIRIT_AWAY:
     case EFFECT_COTTON_SPORE:
     case EFFECT_FLORESCENCE:
     case EFFECT_SPIRIT_AWAY:
@@ -7467,11 +7476,27 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_CRITICAL_REPAIR:
                 score -= 2;
                 break;
+            case EFFECT_SPIRIT_AWAY:
+                score += 1;
+                break;
             case EFFECT_RESERVOIR:
                 score--;
                 break;
             default:
                 break;
+            }
+        }
+        else if (AI_DATA->hpPercents[battlerAtk] > 50)
+        {
+            switch (effect)
+            {
+                case EFFECT_TICK_TACK:
+                case EFFECT_SPIRIT_AWAY:
+                    score += 2;
+                    break;
+
+                default:
+                    break;
             }
         }
         else if (AI_DATA->hpPercents[battlerAtk] > 30)
@@ -7501,10 +7526,6 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_LONE_SHARK:
             case EFFECT_GREEN_GUISE:
                 score -= 1;
-                break;
-            case EFFECT_TICK_TACK:
-            case EFFECT_SPIRIT_AWAY:
-                score += 1;
                 break;
             default:
                 break;
@@ -7561,7 +7582,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 1;
                 break;
             case EFFECT_SPIRIT_AWAY:
-                score += 2;
+                score += 3;
                 break;
             default:
                 break;

@@ -2914,7 +2914,7 @@ static const struct TrainerMon sParty_PSpenser[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(96, 0, 92, 0, 4, 0),
     .species = SPECIES_ARMAGATTON,
-    .ability = ABILITY_UNSEEN_FIST,
+    .ability = ABILITY_IRON_FIST,
     .heldItem = ITEM_BLUK_BERRY,
     .moves = {MOVE_ENERVATOR, MOVE_HEAVY_CELL, MOVE_CRITICAL_REPAIR, MOVE_DIFFUSE_WAVE},
     .nature = NATURE_BOLD,
@@ -14337,7 +14337,7 @@ static const struct TrainerMon sParty_PFlannery[] = {
     {
     .species = SPECIES_CHAFFAW,
     .ability = ABILITY_MOCKING,
-    .heldItem = ITEM_FOCUS_SASH,
+    .heldItem = ITEM_DURIN_BERRY,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 104, 0, 160, 52, 0),
     .lvl = 38,
@@ -14361,7 +14361,7 @@ static const struct TrainerMon sParty_PFlannery[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(136, 0, 128, 0, 56, 0),
     .lvl = 40,
-    .moves = {MOVE_DRAINING_KISS, MOVE_MYSTICAL_FIRE, MOVE_ATTRACT, MOVE_SNARL},
+    .moves = {MOVE_DRAINING_KISS, MOVE_MYSTICAL_FIRE, MOVE_LOVELY_KISS, MOVE_ALLURING_VOICE},
     .nature = NATURE_BOLD,
     }
 };
@@ -14380,11 +14380,11 @@ static const struct TrainerMon sParty_PMrMoore[] = {
     {
     .species = SPECIES_PUTREGON,
     .ability = ABILITY_GHOULISH,
-    .heldItem = ITEM_CLEAR_AMULET,
+    .heldItem = ITEM_HONDEW_BERRY,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(152, 0, 108, 0, 60, 0),
     .lvl = 39,
-    .moves = {MOVE_VENOM_GALE, MOVE_AGILITY, MOVE_WYVERN_WAVE, MOVE_POWER_TRIP},
+    .moves = {MOVE_VENOM_GALE, MOVE_GASTRO_ACID, MOVE_WYVERN_WAVE, MOVE_CORROSIVE_GAS},
     .nature = NATURE_BOLD,
     },
     {

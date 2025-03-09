@@ -3516,9 +3516,9 @@ static const u8 sStrangeSteamDescription[] = _(
     "confuse the target. ");
 
 static const u8 sLifeDewDescription[] = _(
-    "The user heals the HP of itself\n"
-    "and its allies. Goes first if\n"
-    "the ally has less than half HP.");
+    "The user scatters mysterious\n"
+    "water around and restores the HP\n"
+    "of itself and its allies.");
 
 static const u8 sObstructDescription[] = _(
     "Protects from attacks and\n"
