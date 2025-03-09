@@ -249,6 +249,71 @@ EverGrandeRoad_EventScript_Ophelia::
     msgbox EverGrandeRoad_Text_OpheliaPostBattle, MSGBOX_AUTOCLOSE
     end
 
+EverGrandeRoad_EventScript_TrainingMonk::
+	lock
+	goto_if_defeated TRAINER_P_SEIMAN, EverGrandeRoad_EventScript_GaveShinyCharm
+	msgbox EverGrandeRoad_Text_UpForAToughBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, EverGrandeRoad_EventScript_Seiman
+	msgbox EverGrandeRoad_Text_IMayBeTooTough, MSGBOX_AUTOCLOSE
+	release
+	end
+
+EverGrandeRoad_EventScript_Seiman::
+    trainerbattle_single TRAINER_P_SEIMAN, EverGrandeRoad_Text_SeimanIntro, EverGrandeRoad_Text_SeimanDefeated, EverGrandeRoad_EventScript_SeimanBeaten
+    release
+    end
+
+EverGrandeRoad_EventScript_SeimanBeaten::
+	msgbox EverGrandeRoad_Text_AVeryThrillingMatch, MSGBOX_DEFAULT
+	giveitem ITEM_SHINY_CHARM
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	release
+	end
+
+EverGrandeRoad_EventScript_GaveShinyCharm::
+	msgbox EverGrandeRoad_Text_MustContinueTraining, MSGBOX_AUTOCLOSE
+	release
+	end
+
+EverGrandeRoad_Text_UpForAToughBattle:
+	.string "Under this waterfall I sit,\n"
+	.string "young master. For eons, and eons.\l"
+	.string "Awaiting my perfect opponent.\p"
+	.string "Many have challenged me.\n"
+	.string "ALL have fallen. I have had\l"
+	.string "victories numbering in\l"
+	.string "the thousands...\p"
+	.string "Could you be my one true\n"
+	.string "match in skill...?$"
+
+EverGrandeRoad_Text_IMayBeTooTough:
+	.string "So... you were not\n"
+	.string "the one, after all...$"
+
+EverGrandeRoad_Text_AVeryThrillingMatch:
+	.string "I have naught left to offer\n"
+	.string "to a trainer of your excellence.\p"
+	.string "Except... for this special charm.$"
+
+EverGrandeRoad_Text_MustContinueTraining:
+	.string "I must continue my training...\n"
+	.string "only then, can enlightenment\l"
+	.string "be reached...$"
+
+EverGrandeRoad_Text_SeimanIntro:
+	.string "Do not leave anything behind,\n"
+	.string "young master. This is a true\l"
+	.string "fight to the finish...!$"
+
+EverGrandeRoad_Text_SeimanDefeated:
+	.string "It is done.\p"
+	.string "You have beaten what was\n"
+	.string "thought unbeatable.\l"
+	.string "Conquered the unconquerable.$"
+
+EverGrandeRoad_Text_SeimanPostBattle:
+	.string "post$"
+
 EverGrandeRoad_Text_RaoTwunneIntro:
 	.string "intro$"
 
