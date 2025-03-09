@@ -1467,6 +1467,12 @@
 	.4byte \ptr
 	.endm
 
+	.macro checkallurecounter counter:req, ptr:req
+	callnative BS_CheckAllureCounter
+	.byte \counter
+	.4byte \ptr
+	.endm
+
 	.macro checkfrenzycounter counter:req, ptr:req
 	callnative BS_CheckFrenzyCounter
 	.byte \counter

@@ -707,9 +707,9 @@ static const u8 sLeechLifeDescription[] = _(
     "the damage taken by the foe.");
 
 static const u8 sLovelyKissDescription[] = _(
-    "Demands a kiss with a scary face\n"
-    "that induces sleep. Never misses\n"
-    "if the foe is infatuated.");
+    "Demands a kiss that induces\n"
+    "sleep. Never misses if the foe\n"
+    "is infatuated or at 2 allure.");
 
 static const u8 sSkyAttackDescription[] = _(
     "A 2-turn attack that lands\n"
@@ -928,7 +928,7 @@ static const u8 sFeintAttackDescription[] = _(
 static const u8 sSweetKissDescription[] = _(
     "Causes confusion. Never misses\n"
     "and drops the foe's Speed if it\n"
-    "is infatuated.");
+    "is infatuated or at 2 allure.");
 
 static const u8 sBellyDrumDescription[] = _(
     "The user maximizes its Attack\n"
@@ -2642,9 +2642,9 @@ static const u8 sDualChopDescription[] = _(
     "lower the foe's Def or Sp. Def.");
 
 static const u8 sHeartStampDescription[] = _(
-    "May make the foe flinch. If the\n"
-    "foe is infatuated, also harshly\n"
-    "lowers the foe's Defense stat.");
+    "Sets a stack of allure. Hitting\n"
+    "foes at 2 stacks infatuates.\n"
+    "Drops infatuated foes' Defense.");
 
 static const u8 sRazorShellDescription[] = _(
     "This move uses Defense to deal\n"
@@ -2827,9 +2827,9 @@ static const u8 sFreezeDryDescription[] = _(
     "Super effective on Water-types.");
 
 static const u8 sDisarmingVoiceDescription[] = _(
-    "Lets out a cute cry that never\n"
-    "misses. If a foe is infatuated,\n"
-    "sharply drops foes' Atk/Sp. Atk.");
+    "Sets a stack of allure. Hitting\n"
+    "foes at 2 stacks infatuates.\n"
+    "Drops infatuated foes' offenses.");
 
 static const u8 sPartingShotDescription[] = _(
     "With a parting threat, lowers\n"
@@ -3611,9 +3611,9 @@ static const u8 sPoltergeistDescription[] = _(
     "if the foe isn't holding an item.");
 
 static const u8 sCorrosiveGasDescription[] = _(
-    "The user surrounds foes with\n"
-    "highly acidic gas and melts away\n"
-    "items held by them.");
+    "The user releases acidic gas\n"
+    "held items and drops Defense.\n"
+    "This move always goes first.");
 
 static const u8 sCoachingDescription[] = _(
     "The user properly coaches its\n"
@@ -3711,9 +3711,9 @@ static const u8 sStoneAxeDescription[] = _(
     "behind float around the foe.");
 
 static const u8 sSpringtideStormDescription[] = _(
-    "Whips up fierce winds filled\n"
-    "with love that infatuates foes\n"
-    "next turn. Never misses in sun.");
+    "Sets a stack of allure. Hitting\n"
+    "foes at 2 stacks infatuates.\n"
+    "Never misses in harsh sunlight.");
 
 static const u8 sMysticalPowerDescription[] = _(
     "The user attacks by emitting a\n"
@@ -4067,9 +4067,9 @@ static const u8 sDragonCheerDescription[] = _(
     "This rouses Dragon-types more.");
 
 static const u8 sAlluringVoiceDescription[] = _(
-    "The user sings using its angelic\n"
-    "voice. This confuses the target\n"
-    "if its stats are boosted.");
+    "Sets a stack of allure. Hitting\n"
+    "foes at 2 stacks infatuates.\n"
+    "Confuses foes with stat boosts.");
 
 static const u8 sTemperFlareDescription[] = _(
     "Spurred by desperation, the user\n"
@@ -4286,9 +4286,9 @@ static const u8 sLoneSharkDescription[] = _(
     "Absorbs half the damage dealt.");
 
 static const u8 sHeartStealDescription[] = _(
-    "Steals stat boosts. Goes first.\n"
-    "Infatuates the foe next turn.\n"
-    "Boosted if the foe is infatuated.");
+    "Sets 2 stacks of allure. Hitting\n"
+    "foes at 2 stacks infatuates them.\n"
+    "Steals stat boosts. Goes first.");
 
 static const u8 sIgnaStrikeDescription[] = _(
     "Charges with blazing speed and\n"
