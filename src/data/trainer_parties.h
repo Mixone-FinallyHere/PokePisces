@@ -3188,7 +3188,7 @@ static const struct TrainerMon sParty_PVespa[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(40, 40, 40, 40, 40, 40),
     .lvl = 26,
-    .moves = {MOVE_TEETER_DANCE, MOVE_FOUL_PLAY, MOVE_THUNDER_WAVE, MOVE_PROTECT},
+    .moves = {MOVE_NUZZLE, MOVE_FOUL_PLAY, MOVE_SWIFT, MOVE_GIGA_DRAIN},
     },
     {
     .species = SPECIES_MOSKOPO,
@@ -3197,7 +3197,7 @@ static const struct TrainerMon sParty_PVespa[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(40, 40, 40, 40, 40, 40),
     .lvl = 27,
-    .moves = {MOVE_FOUL_PLAY, MOVE_PROTECT, MOVE_POUNCE, MOVE_FELL_STINGER},
+    .moves = {MOVE_FOUL_PLAY, MOVE_RETALIATE, MOVE_POUNCE, MOVE_FELL_STINGER},
     },
     {
     .species = SPECIES_NINJASK,

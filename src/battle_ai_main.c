@@ -3551,7 +3551,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         {
         case EFFECT_HELPING_HAND:
         case EFFECT_INSTRUCT:
-            if (!IS_MOVE_STATUS(move))
+            if (!IS_MOVE_STATUS(predictedMove))
                 score += 5;
             break;
         case EFFECT_PERISH_SONG:
