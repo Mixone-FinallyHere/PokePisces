@@ -4951,8 +4951,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_IMPRISON] =
     {
-        .effect = EFFECT_PURSUIT,
-        .power = 20,
+        .effect = EFFECT_IMPRISON,
+        .power = 0,
         .type = TYPE_PSYCHIC,
         .accuracy = 100,
         .pp = 10,

@@ -1175,6 +1175,8 @@ gBattleAnims_General::
 	.4byte Move_GRAVITY                     @ B_ANIM_GRAVITY
 	.4byte Move_FIRE_SPIN                   @ B_ANIM_INFERNAL_REIGN
 	.4byte Status_Blooming				    @ B_ANIM_BLOOMING
+	.4byte Move_SAFEGUARD                   @ B_ANIM_SAFEGUARD
+	.4byte Move_LUCKY_CHANT                 @ B_ANIM_LUCKY_CHANT
 
 	.align 2
 gBattleAnims_Special::

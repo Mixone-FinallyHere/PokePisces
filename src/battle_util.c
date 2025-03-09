@@ -4976,7 +4976,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_ALL_GAME:
-            if (!(gFieldStatuses & STATUS_FIELD_MUDSPORT) && (gFieldStatuses & STATUS_FIELD_WATERSPORT))
+            if (!(gFieldStatuses & STATUS_FIELD_MUDSPORT) && !(gFieldStatuses & STATUS_FIELD_WATERSPORT))
             {
                 gFieldStatuses |= STATUS_FIELD_MUDSPORT;
                 gFieldTimers.mudSportTimer = 5;
@@ -5282,6 +5282,47 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 BattleScriptPushCursorAndCallback(BattleScript_WhiteSmokeAbilityActivates);
                 effect++;
             }
+            break;
+        case ABILITY_RUIN_WARD:
+            if ((!(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_SAFEGUARD)
+                && (!(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_LUCKY_CHANT))))
+            {
+                u8 side = GetBattlerSide(gBattlerAttacker);
+                gBattlerAttacker = battler;
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                gSideStatuses[side] |= SIDE_STATUS_SAFEGUARD;
+                gSideTimers[side].safeguardBattlerId = battler;
+                gSideTimers[side].safeguardTimer = 6;
+                gSideStatuses[side] |= SIDE_STATUS_LUCKY_CHANT;
+                gSideTimers[side].luckyChantBattlerId = battler;
+                gSideTimers[side].luckyChantTimer = 6;
+                BattleScriptPushCursorAndCallback(BattleScript_RuinWardActivates);
+                effect++;
+            }
+            else if ((!(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_SAFEGUARD))
+                && gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_LUCKY_CHANT)
+            {
+                u8 side = GetBattlerSide(gBattlerAttacker);
+                gBattlerAttacker = battler;
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                gSideStatuses[side] |= SIDE_STATUS_SAFEGUARD;
+                gSideTimers[side].safeguardBattlerId = battler;
+                gSideTimers[side].safeguardTimer = 6;
+                BattleScriptPushCursorAndCallback(BattleScript_RuinWardSafeguardActivates);
+                effect++;
+            }
+            else if (gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_SAFEGUARD
+                && (!(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_LUCKY_CHANT)))
+            {
+                u8 side = GetBattlerSide(gBattlerAttacker);
+                gBattlerAttacker = battler;
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                gSideStatuses[side] |= SIDE_STATUS_LUCKY_CHANT;
+                gSideTimers[side].luckyChantBattlerId = battler;
+                gSideTimers[side].luckyChantTimer = 6;
+                BattleScriptPushCursorAndCallback(BattleScript_RuinWardLuckyChantActivates);
+                effect++;
+            }            
             break;
         case ABILITY_ENTRANCING:
             if (!gSpecialStatuses[battler].switchInAbilityDone)

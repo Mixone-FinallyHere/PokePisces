@@ -16693,6 +16693,30 @@ BattleScript_WhiteSmokeAbilityActivates::
 	waitmessage B_WAIT_TIME_SHORT
 	end3
 
+BattleScript_RuinWardActivates::
+	call BattleScript_AbilityPopUp
+	printfromtable STRINGID_PKMNCOVEREDBYVEIL
+	playanimation BS_ATTACKER, B_ANIM_SAFEGUARD
+	waitmessage B_WAIT_TIME_LONG
+	printstring STRINGID_SHIELDEDFROMCRITICALHITS
+	playanimation BS_ATTACKER, B_ANIM_LUCKY_CHANT
+	waitmessage B_WAIT_TIME_SHORT
+	end3
+
+BattleScript_RuinWardSafeguardActivates::
+	call BattleScript_AbilityPopUp
+	printfromtable STRINGID_PKMNCOVEREDBYVEIL
+	playanimation BS_ATTACKER, B_ANIM_SAFEGUARD
+	waitmessage B_WAIT_TIME_LONG
+	end3
+
+BattleScript_RuinWardLuckyChantActivates::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_SHIELDEDFROMCRITICALHITS
+	playanimation BS_ATTACKER, B_ANIM_LUCKY_CHANT
+	waitmessage B_WAIT_TIME_SHORT
+	end3
+
 BattleScript_EntrancingAbilityActivates::
 	call BattleScript_AbilityPopUp		
 	playanimation BS_ATTACKER, B_ANIM_ENTRANCING	

@@ -1421,8 +1421,8 @@ static const u8 sSkillSwapDescription[] = _(
 
 static const u8 sImprisonDescription[] = _(
     "A magical pact that traps the\n"
-    "foe and disables their last used.\n"
-    "move permanently");
+    "foe and disables their last used\n"
+    "move permanently.");
 
 static const u8 sRefreshDescription[] = _(
     "The user cures status conditions\n"
