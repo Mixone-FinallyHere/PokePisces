@@ -137,7 +137,6 @@ static const u8 sText_PkmnHealedConfusion[] = _("{B_ATK_NAME_WITH_PREFIX} snappe
 static const u8 sText_PkmnWasConfused[] = _("{B_EFF_NAME_WITH_PREFIX} became\nconfused!");
 static const u8 sText_PkmnAlreadyConfused[] = _("{B_DEF_NAME_WITH_PREFIX} is\nalready confused!");
 static const u8 sText_PkmnFellInLove[] = _("{B_DEF_NAME_WITH_PREFIX}\nfell in love!");
-static const u8 sText_PkmnFellInLove2[] = _("{B_ATK_NAME_WITH_PREFIX}\nfell in love!");
 static const u8 sText_PkmnInLove[] = _("{B_ATK_NAME_WITH_PREFIX} is in love\nwith {B_SCR_ACTIVE_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnImmobilizedByLove[] = _("{B_ATK_NAME_WITH_PREFIX} is\nimmobilized by love!");
 static const u8 sText_PkmnBlownAway[] = _("{B_DEF_NAME_WITH_PREFIX} was\nblown away!");
@@ -328,6 +327,7 @@ static const u8 sText_PkmnIsPanicked[] = _("{B_ATK_NAME_WITH_PREFIX} is panickin
 static const u8 sText_PkmnsXBlocksY[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY}\nblocks {B_CURRENT_MOVE}!");
 static const u8 sText_PkmnsXBlocksY2[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nblocks {B_CURRENT_MOVE}!");
 static const u8 sText_PkmnsXRestoredHPALittle2[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY}\nrestored its HP a little!");
+static const u8 sText_PkmnsXDamagedItALittle[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY}\ndamaged it a little!");
 static const u8 sText_PkmnsXWhippedUpSandstorm[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nwhipped up a sandstorm!");
 static const u8 sText_PkmnsXIntensifiedSun[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nintensified the sun's rays!");
 static const u8 sText_PkmnsXPreventsYLoss[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nprevents {B_BUFF1} loss!");
@@ -1846,7 +1846,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNPREVENTSSTATLOSSDRAGON - BATTLESTRINGS_TABLE_START] = sText_PkmnPreventsStatLossDragon,
     [STRINGID_MULTISTRIKEPOWERUP - BATTLESTRINGS_TABLE_START] = sText_MultiStrikePowerUp,
     [STRINGID_PKMNCENTERATTENTIONSPOTLIGHT - BATTLESTRINGS_TABLE_START] = sText_PkmnCenterAttentionSpotlight,
-    [STRINGID_PKMNFELLINLOVE2 - BATTLESTRINGS_TABLE_START] = sText_PkmnFellInLove2,
+    [STRINGID_PKMNSXDAMAGEDITALITTLE - BATTLESTRINGS_TABLE_START] = sText_PkmnsXDamagedItALittle,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

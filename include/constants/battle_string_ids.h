@@ -857,7 +857,7 @@
 #define STRINGID_MULTISTRIKEPOWERUP                   855
 #define STRINGID_PKMNCENTERATTENTIONSPOTLIGHT         856
 #define STRINGID_PKMNFLIPSSTATSWITH                   857
-#define STRINGID_PKMNFELLINLOVE2                      858
+#define STRINGID_PKMNSXDAMAGEDITALITTLE               858
 
 #define BATTLESTRINGS_COUNT                           859
 

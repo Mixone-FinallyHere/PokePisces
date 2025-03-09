@@ -15792,13 +15792,6 @@ BattleScript_YawnMakesAsleep::
 BattleScript_YawnEnd:
 	end2
 
-BattleScript_AllureInfatuates::
-	chosenstatus2animation BS_EFFECT_BATTLER, STATUS2_INFATUATION
-	printstring STRINGID_PKMNFELLINLOVE2
-	waitmessage B_WAIT_TIME_LONG
-	waitstate
-	end2
-
 BattleScript_EmbargoEndTurn::
 	printstring STRINGID_EMBARGOENDS
 	waitmessage B_WAIT_TIME_LONG
@@ -16691,6 +16684,16 @@ BattleScript_WhiteSmokeAbilityActivates::
 	printstring STRINGID_ABILITYSUMMONEDMIST
 	playanimation BS_ATTACKER, B_ANIM_WHITE_SMOKE	
 	waitmessage B_WAIT_TIME_SHORT
+	end3
+
+BattleScript_RuinWardHurtActivates::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNSXDAMAGEDITALITTLE
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	tryfaintmon BS_ATTACKER
 	end3
 
 BattleScript_RuinWardActivates::
