@@ -17026,7 +17026,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_CINDER_WALTZ] =
     {
         .effect = EFFECT_HIT,
-        .power = 70,
+        .power = 75,
         .type = TYPE_RELIC,
         .accuracy = 100,
         .pp = 5,

@@ -15758,12 +15758,10 @@ BattleScript_YawnEnd:
 	end2
 
 BattleScript_AllureInfatuates::
-	statusanimation BS_EFFECT_BATTLER
-	printstring STRINGID_PKMNFELLINLOVE
+	chosenstatus2animation BS_EFFECT_BATTLER, STATUS2_INFATUATION
+	printstring STRINGID_PKMNFELLINLOVE2
 	waitmessage B_WAIT_TIME_LONG
-	updatestatusicon BS_EFFECT_BATTLER
 	waitstate
-	makevisible BS_EFFECT_BATTLER
 	end2
 
 BattleScript_EmbargoEndTurn::

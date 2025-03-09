@@ -3039,7 +3039,7 @@ u8 DoBattlerEndTurnEffects(void)
             }
             gBattleStruct->turnEffectsTracker++;
             break;
-        case ENDTURN_ALLURE: // yawn
+        case ENDTURN_ALLURE:
             if (gStatuses4[battler] & STATUS4_ALLURE)
             {
                 u16 battlerAbility = GetBattlerAbility(battler);
@@ -3050,7 +3050,8 @@ u8 DoBattlerEndTurnEffects(void)
                 && battlerAbility != ABILITY_IGNORANT_BLISS
                 && battlerAbility != ABILITY_TITANIC
                 && !IsAbilityOnSide(battler, ABILITY_AROMA_VEIL)
-                && AreBattlersOfOppositeGender(gDisableStructs[battler].battlerCausingAllure, battler))
+                && (AreBattlersOfOppositeGender(gDisableStructs[battler].battlerCausingAllure, battler) 
+                || GetBattlerAbility(gDisableStructs[battler].battlerCausingAllure) == ABILITY_FREE_LOVE))
                 {
                     gEffectBattler = battler;
                     gBattleMons[battler].status2 |= STATUS2_INFATUATED_WITH(gDisableStructs[battler].battlerCausingAllure);
@@ -6465,7 +6466,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
             {
                 u16 extraMove = MOVE_CINDER_WALTZ;     //The Extra Move to be used
-                u8 movePower = 70;                 //The Move power, leave at 0 if you want it to be the same as the normal move
+                u8 movePower = 75;                 //The Move power, leave at 0 if you want it to be the same as the normal move
                 u8 moveEffectPercentChance  = 100;  //The percent chance of the move effect happening
                 u8 extraMoveSecondaryEffect = MOVE_EFFECT_CINDER_WALTZ;  //Leave at 0 to remove it's secondary effect
                 gTempMove = gCurrentMove;

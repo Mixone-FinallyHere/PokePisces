@@ -2916,7 +2916,7 @@ static const struct TrainerMon sParty_PSpenser[] = {
     .species = SPECIES_ARMAGATTON,
     .ability = ABILITY_IRON_FIST,
     .heldItem = ITEM_BLUK_BERRY,
-    .moves = {MOVE_ENERVATOR, MOVE_HEAVY_CELL, MOVE_CRITICAL_REPAIR, MOVE_DIFFUSE_WAVE},
+    .moves = {MOVE_ENERVATOR, MOVE_HEAVY_CELL, MOVE_MEAN_LOOK, MOVE_DIFFUSE_WAVE},
     .nature = NATURE_BOLD,
     }
 };

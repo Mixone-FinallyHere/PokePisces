@@ -10754,13 +10754,15 @@ static void Cmd_various(void)
     {
         VARIOUS_ARGS(const u8 *failInstr);
         if (gStatuses4[gBattlerTarget] & STATUS4_ALLURE
-            || gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)
+        || gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION
+        || GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE
+        || !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget))
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
         else
         {
-            gStatuses3[gBattlerTarget] |= STATUS4_ALLURE_TURN(2);
+            gStatuses4[gBattlerTarget] |= STATUS4_ALLURE_TURN(2);
             gDisableStructs[gBattlerTarget].battlerCausingAllure = gBattlerAttacker;
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
