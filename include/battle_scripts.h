@@ -422,6 +422,7 @@ extern const u8 BattleScript_CursedBodyActivatesTorment[];
 extern const u8 BattleScript_CursedBodyActivatesCurse[];
 extern const u8 BattleScript_CursedAmuletActivates[];
 extern const u8 BattleScript_MummyActivates[];
+extern const u8 BattleScript_MelancholiaActivates[];
 extern const u8 BattleScript_LovesickMummyEffectActivates[];
 extern const u8 BattleScript_WeakArmorActivates[];
 extern const u8 BattleScript_FellStingerRaisesStat[];
