@@ -10753,17 +10753,39 @@ static void Cmd_various(void)
     case VARIOUS_ALLURE:
     {
         VARIOUS_ARGS(const u8 *failInstr);
-        if (gStatuses4[gBattlerTarget] & STATUS4_ALLURE
-        || gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION
+        if (gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION
         || GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE
-        || !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget))
+        || !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget)
+        || GetBattlerAbility(gBattlerTarget) == ABILITY_OBLIVIOUS
+        || GetBattlerAbility(gBattlerTarget) == ABILITY_IGNORANT_BLISS)
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
+        else if (gDisableStructs[gBattlerTarget].allureCounter > 1)
+        {
+            gDisableStructs[gBattlerTarget].allureCounter = 0;
+            gBattleMons[gBattlerTarget].status2 |= STATUS2_INFATUATED_WITH(gBattlerAttacker);
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_INFATUATION;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        else if (gBattleMoves[gCurrentMove].effect == EFFECT_HEART_STEAL)
+        {
+            if (gDisableStructs[gBattlerTarget].allureCounter < 1)
+            {
+                gDisableStructs[gBattlerTarget].allureCounter++;
+                gDisableStructs[gBattlerTarget].allureCounter++;
+            }
+            else
+            {
+                gDisableStructs[gBattlerTarget].allureCounter++;
+            }
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ALLURE;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
         else
         {
-            gStatuses4[gBattlerTarget] |= STATUS4_ALLURE_TURN(2);
-            gDisableStructs[gBattlerTarget].battlerCausingAllure = gBattlerAttacker;
+            gDisableStructs[gBattlerTarget].allureCounter++;
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ALLURE;
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
         return;

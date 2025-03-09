@@ -788,8 +788,9 @@ BattleScript_EffectHeartSteal::
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
 	jumpifsafeguard BattleScript_MoveEnd
 	setallure BattleScript_MoveEnd
-	printstring STRINGID_PKMNSHEARTFLUTTERSSHALALALA
+	printfromtable gAllureStringIds
 	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotInfatuateAttacker
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectSpotlight::
@@ -840,8 +841,9 @@ BattleScript_EffectSpringBreeze::
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
 	jumpifsafeguard BattleScript_MoveEnd
 	setallure BattleScript_MoveEnd
-	printstring STRINGID_PKMNSHEARTFLUTTERSSHALALALA
+	printfromtable gAllureStringIds
 	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotInfatuateAttacker
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectNightDaze::

@@ -7278,6 +7278,9 @@ static s32 AI_SetupFirstTurn(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_OCTOLOCK:
         score += 2;
         break;
+    case EFFECT_CORROSIVE_GAS:
+        score += 8;
+        break;
     default:
         break;
     }

@@ -270,7 +270,7 @@ static const u8 sText_PkmnPlantedRoots[] = _("{B_ATK_NAME_WITH_PREFIX} planted i
 static const u8 sText_PkmnAbsorbedNutrients[] = _("{B_ATK_NAME_WITH_PREFIX} absorbed\nnutrients with its roots!");
 static const u8 sText_PkmnAnchoredItself[] = _("{B_DEF_NAME_WITH_PREFIX} anchored\nitself with its roots!");
 static const u8 sText_PkmnWasMadeDrowsy[] = _("{B_ATK_NAME_WITH_PREFIX} made\n{B_DEF_NAME_WITH_PREFIX} drowsy!");
-static const u8 sText_PkmnsHeartFluttersShalalala[] = _("{B_DEF_NAME_WITH_PREFIX}'s heart flutters shalalalaÄ");
+static const u8 sText_PkmnsHeartFluttersShalalala[] = _("{B_DEF_NAME_WITH_PREFIX}'s heart\nflutters shalalalaÄ");
 static const u8 sText_PkmnKnockedOff[] = _("{B_ATK_NAME_WITH_PREFIX} knocked off\n{B_DEF_NAME_WITH_PREFIX}'s {B_LAST_ITEM}!");
 static const u8 sText_PkmnSwappedAbilities[] = _("{B_ATK_NAME_WITH_PREFIX} swapped abilities\nwith its opponent!");
 static const u8 sText_PkmnSealedOpponentMove[] = _("{B_ATK_NAME_WITH_PREFIX} sealed the\nopponent's move(s)!");
@@ -2253,6 +2253,12 @@ const u16 gSportsUsedStringIds[] =
 {
     [B_MSG_WEAKEN_ELECTRIC] = STRINGID_ELECTRICITYWEAKENED,
     [B_MSG_WEAKEN_FIRE]     = STRINGID_FIREWEAKENED
+};
+
+const u16 gAllureStringIds[] =
+{
+    [B_MSG_ALLURE]              = STRINGID_PKMNSHEARTFLUTTERSSHALALALA,
+    [B_MSG_INFATUATION]         = STRINGID_PKMNFELLINLOVE,
 };
 
 const u16 gPartyStatusHealStringIds[] =
