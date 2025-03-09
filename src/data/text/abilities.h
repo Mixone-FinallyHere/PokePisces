@@ -894,8 +894,8 @@ static const u8 sWaterCompactionDescription[] = _(
     "Water-type move.");
 
 static const u8 sMercilessDescription[] = _(
-    "The Pokémon's attacks become\n"
-    "critical hits if the target is\n"
+    "Boosts the Pokémon's Speed stat\n"
+    "and moves if the target is\n"
     "poisoned.");
 
 static const u8 sShieldsDownDescription[] = _(
@@ -1320,8 +1320,8 @@ static const u8 sCudChewDescription[] = _(
 
 static const u8 sSharpnessDescription[] = _(
     "Powers up slicing moves, but\n"
-    "becomes weaker for each slicing\n"
-    "move used.");
+    "they become weaker for each\n"
+    "slicing move used.");
 
 static const u8 sSupremeOverlordDescription[] = _(
     "When entering battle, its Atk\n"
@@ -1711,6 +1711,11 @@ static const u8 sStormBrewDescription[] = _(
     "a move that's boosted for every\n"
     "Electric move used that turn.");
 
+static const u8 sRuinWardDescription[] = _(
+    "Summons Safeguard and Lucky\n"
+    "Chant when the Pokémon enters\n"
+    "battle. It loses HP every turn.");
+
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
 {
@@ -2098,6 +2103,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_BAD_OMEN] = _("Bad Omen"),
     [ABILITY_BRAWLER] = _("Brawler"),
     [ABILITY_PROVOKED] = _("Provoked"),
+    [ABILITY_RUIN_WARD] = _("Ruin Ward"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -2486,6 +2492,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_BAD_OMEN] = _("Bad Omen"),
     [ABILITY_BRAWLER] = _("Brawler"),
     [ABILITY_PROVOKED] = _("Provoked"),
+    [ABILITY_RUIN_WARD] = _("Ruin Ward"),
 };
 #endif
 
@@ -2875,4 +2882,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_BAD_OMEN] = sNoneDescription,
     [ABILITY_BRAWLER] = sNoneDescription,
     [ABILITY_PROVOKED] = sNoneDescription,
+    [ABILITY_RUIN_WARD] = sRuinWardDescription,
 };

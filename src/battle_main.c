@@ -4745,6 +4745,8 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
     // own abilities
     if (ability == ABILITY_QUICK_FEET && gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE)
         speed *= 2;
+    if (ability == ABILITY_MERCILESS && gBattleMons[gBattlerTarget].status1 & STATUS1_POISON)
+        speed *= 1.5;
     else if (ability == ABILITY_SURGE_SURFER && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN)
         speed *= 2;
     else if (ability == ABILITY_RISING)
@@ -4894,10 +4896,6 @@ s8 GetMovePriority(u32 battler, u16 move)
         priority++;
     }
     else if (gCurrentMove == MOVE_ASTONISH && gBattleMons[gBattlerTarget].status1 & STATUS1_PANIC)
-    {
-        priority++;
-    }
-    else if (gCurrentMove == MOVE_LIFE_DEW && gBattleMons[BATTLE_PARTNER(battler)].hp <= (gBattleMons[BATTLE_PARTNER(battler)].maxHP / 2))
     {
         priority++;
     }

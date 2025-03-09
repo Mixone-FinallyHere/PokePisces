@@ -1011,62 +1011,23 @@ static const u16 sFinalStrikeOnlyEffects[] =
 
 static const u16 sNaturePowerMoves[BATTLE_TERRAIN_COUNT] =
 {
-#if B_NATURE_POWER_MOVES >= GEN_7
-    [BATTLE_TERRAIN_GRASS]      = MOVE_ENERGY_BALL,
-    [BATTLE_TERRAIN_LONG_GRASS] = MOVE_ENERGY_BALL,
-    [BATTLE_TERRAIN_SAND]       = MOVE_EARTH_POWER,
-    [BATTLE_TERRAIN_WATER]      = MOVE_HYDRO_PUMP,
-    [BATTLE_TERRAIN_POND]       = MOVE_HYDRO_PUMP,
-    [BATTLE_TERRAIN_MOUNTAIN]   = MOVE_EARTH_POWER,
-    [BATTLE_TERRAIN_CAVE]       = MOVE_EARTH_POWER,
-    [BATTLE_TERRAIN_BUILDING]   = MOVE_TRI_ATTACK,
-    [BATTLE_TERRAIN_PLAIN]      = MOVE_TRI_ATTACK,
-    [BATTLE_TERRAIN_SNOW]       = MOVE_ICE_BEAM,
-#elif B_NATURE_POWER_MOVES == GEN_6
-    [BATTLE_TERRAIN_GRASS]      = MOVE_ENERGY_BALL,
-    [BATTLE_TERRAIN_LONG_GRASS] = MOVE_ENERGY_BALL,
-    [BATTLE_TERRAIN_SAND]       = MOVE_EARTH_POWER,
-    [BATTLE_TERRAIN_WATER]      = MOVE_HYDRO_PUMP,
-    [BATTLE_TERRAIN_POND]       = MOVE_HYDRO_PUMP,
-    [BATTLE_TERRAIN_MOUNTAIN]   = MOVE_EARTH_POWER,
-    [BATTLE_TERRAIN_CAVE]       = MOVE_EARTH_POWER,
-    [BATTLE_TERRAIN_BUILDING]   = MOVE_TRI_ATTACK,
-    [BATTLE_TERRAIN_PLAIN]      = MOVE_TRI_ATTACK,
-    [BATTLE_TERRAIN_SNOW]       = MOVE_FROST_BREATH,
-#elif B_NATURE_POWER_MOVES == GEN_5
-    [BATTLE_TERRAIN_GRASS]      = MOVE_SEED_BOMB,
-    [BATTLE_TERRAIN_LONG_GRASS] = MOVE_SEED_BOMB,
-    [BATTLE_TERRAIN_SAND]       = MOVE_EARTHQUAKE,
-    [BATTLE_TERRAIN_WATER]      = MOVE_HYDRO_PUMP,
-    [BATTLE_TERRAIN_POND]       = MOVE_HYDRO_PUMP,
-    [BATTLE_TERRAIN_MOUNTAIN]   = MOVE_EARTHQUAKE,
-    [BATTLE_TERRAIN_CAVE]       = MOVE_EARTHQUAKE,
-    [BATTLE_TERRAIN_BUILDING]   = MOVE_TRI_ATTACK,
-    [BATTLE_TERRAIN_PLAIN]      = MOVE_EARTHQUAKE,
-    [BATTLE_TERRAIN_SNOW]       = MOVE_BLIZZARD,
-#elif B_NATURE_POWER_MOVES == GEN_4
-    [BATTLE_TERRAIN_GRASS]      = MOVE_SEED_BOMB,
-    [BATTLE_TERRAIN_LONG_GRASS] = MOVE_SEED_BOMB,
-    [BATTLE_TERRAIN_SAND]       = MOVE_EARTHQUAKE,
-    [BATTLE_TERRAIN_WATER]      = MOVE_HYDRO_PUMP,
-    [BATTLE_TERRAIN_POND]       = MOVE_HYDRO_PUMP,
-    [BATTLE_TERRAIN_MOUNTAIN]   = MOVE_ROCK_SLIDE,
-    [BATTLE_TERRAIN_CAVE]       = MOVE_ROCK_SLIDE,
-    [BATTLE_TERRAIN_BUILDING]   = MOVE_TRI_ATTACK,
-    [BATTLE_TERRAIN_PLAIN]      = MOVE_EARTHQUAKE,
-    [BATTLE_TERRAIN_SNOW]       = MOVE_BLIZZARD,
-#else // Gen 1-3
-    [BATTLE_TERRAIN_GRASS]      = MOVE_STUN_SPORE,
-    [BATTLE_TERRAIN_LONG_GRASS] = MOVE_RAZOR_LEAF,
-    [BATTLE_TERRAIN_SAND]       = MOVE_EARTHQUAKE,
-    [BATTLE_TERRAIN_WATER]      = MOVE_SURF,
-    [BATTLE_TERRAIN_POND]       = MOVE_BUBBLE_BEAM,
-    [BATTLE_TERRAIN_MOUNTAIN]   = MOVE_ROCK_SLIDE,
-    [BATTLE_TERRAIN_CAVE]       = MOVE_SHADOW_BALL,
-    [BATTLE_TERRAIN_BUILDING]   = MOVE_SWIFT,
-    [BATTLE_TERRAIN_PLAIN]      = MOVE_SWIFT,
-    [BATTLE_TERRAIN_SNOW]       = MOVE_BLIZZARD,
-#endif
+    [BATTLE_TERRAIN_GRASS]            = MOVE_ENERGY_BALL,
+    [BATTLE_TERRAIN_LONG_GRASS]       = MOVE_ENERGY_BALL,
+    [BATTLE_TERRAIN_SAND]             = MOVE_EARTH_POWER,
+    [BATTLE_TERRAIN_WATER]            = MOVE_HYDRO_PUMP,
+    [BATTLE_TERRAIN_POND]             = MOVE_HYDRO_PUMP,
+    [BATTLE_TERRAIN_MOUNTAIN]         = MOVE_EARTH_POWER,
+    [BATTLE_TERRAIN_CAVE]             = MOVE_EARTH_POWER,
+    [BATTLE_TERRAIN_BUILDING]         = MOVE_TRI_ATTACK,
+    [BATTLE_TERRAIN_PLAIN]            = MOVE_TRI_ATTACK,
+    [BATTLE_TERRAIN_SNOW]             = MOVE_ICE_BEAM,
+    [BATTLE_TERRAIN_SNOW_ROUTE]       = MOVE_ICE_BEAM,
+    [BATTLE_TERRAIN_BLOSSOM_ROUTE]    = MOVE_PETAL_DANCE,
+    [BATTLE_TERRAIN_CHIMNEY_ROUTE]    = MOVE_LAVA_PLUME,
+    [BATTLE_TERRAIN_GOLD_ROUTE]       = MOVE_PAY_DAY,
+    [BATTLE_TERRAIN_WOODEN_ROUTE]     = MOVE_WOOD_HAMMER,
+    [BATTLE_TERRAIN_PATH]             = MOVE_DEMOLISHER,
+    [BATTLE_TERRAIN_DARK_AREA]        = MOVE_DARK_PULSE,
     [BATTLE_TERRAIN_UNDERWATER]       = MOVE_HYDRO_PUMP,
     [BATTLE_TERRAIN_SOARING]          = MOVE_AIR_SLASH,
     [BATTLE_TERRAIN_SKY_PILLAR]       = MOVE_AIR_SLASH,
@@ -1774,7 +1735,7 @@ static bool32 AccuracyCalcHelper(u16 move)
         return TRUE;
     }
 
-    if ((gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION) && (move == MOVE_SWEET_KISS || move == MOVE_LOVELY_KISS))
+    if ((gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION || gDisableStructs[gBattlerTarget].allureCounter > 1) && (move == MOVE_SWEET_KISS || move == MOVE_LOVELY_KISS))
     {
         JumpIfMoveFailed(7, move);
         return TRUE;
@@ -2200,7 +2161,6 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
              || (gCurrentMove == MOVE_LEAFAGE && gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING)
              || (gCurrentMove == MOVE_X_SCISSOR && gBattleMons[battlerDef].hp <= (gBattleMons[battlerDef].maxHP / 2))
              || (gCurrentMove == MOVE_BRANCH_POKE && gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING)
-             || (abilityAtk == ABILITY_MERCILESS && gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY)
              || (abilityAtk == ABILITY_DRIZZLE && gBattleMoves[move].effect == EFFECT_SERPENT_SURGE && (gBattleWeather & B_WEATHER_RAIN))
              || (gBattleMoves[move].effect == EFFECT_MANEUVER && gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_TAILWIND)
              || (gBattleMoves[move].effect == EFFECT_FLY && (gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_TAILWIND || gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_TAILWIND))
@@ -10754,15 +10714,39 @@ static void Cmd_various(void)
     case VARIOUS_ALLURE:
     {
         VARIOUS_ARGS(const u8 *failInstr);
-        if (gStatuses4[gBattlerTarget] & STATUS4_ALLURE
-            || gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)
+        if (gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION
+        || GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE
+        || !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget)
+        || GetBattlerAbility(gBattlerTarget) == ABILITY_OBLIVIOUS
+        || GetBattlerAbility(gBattlerTarget) == ABILITY_IGNORANT_BLISS)
         {
             gBattlescriptCurrInstr = cmd->failInstr;
         }
+        else if (gDisableStructs[gBattlerTarget].allureCounter > 1)
+        {
+            gDisableStructs[gBattlerTarget].allureCounter = 0;
+            gBattleMons[gBattlerTarget].status2 |= STATUS2_INFATUATED_WITH(gBattlerAttacker);
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_INFATUATION;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        else if (gBattleMoves[gCurrentMove].effect == EFFECT_HEART_STEAL)
+        {
+            if (gDisableStructs[gBattlerTarget].allureCounter < 1)
+            {
+                gDisableStructs[gBattlerTarget].allureCounter++;
+                gDisableStructs[gBattlerTarget].allureCounter++;
+            }
+            else
+            {
+                gDisableStructs[gBattlerTarget].allureCounter++;
+            }
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ALLURE;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
         else
         {
-            gStatuses3[gBattlerTarget] |= STATUS4_ALLURE_TURN(2);
-            gDisableStructs[gBattlerTarget].battlerCausingAllure = gBattlerAttacker;
+            gDisableStructs[gBattlerTarget].allureCounter++;
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ALLURE;
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
         return;
@@ -11502,6 +11486,16 @@ static void Cmd_various(void)
         for (i = 0; i < NUM_BATTLE_STATS; i++)
         {
             if (gBattleMons[battler].statStages[i] < DEFAULT_STAT_STAGE) // Negative becomes positive.
+                gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE + (DEFAULT_STAT_STAGE - gBattleMons[battler].statStages[i]);
+        }
+        break;
+    }
+    case VARIOUS_INVERT_POSITIVE_STAT_STAGES:
+    {
+        VARIOUS_ARGS();
+        for (i = 0; i < NUM_BATTLE_STATS; i++)
+        {
+            if (gBattleMons[battler].statStages[i] > DEFAULT_STAT_STAGE) // Negative becomes positive.
                 gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE + (DEFAULT_STAT_STAGE - gBattleMons[battler].statStages[i]);
         }
         break;
@@ -15705,13 +15699,13 @@ static void Cmd_damagetopercentagetargethp(void)
     {
         gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 5;  
     }
-    else if (gCurrentMove == MOVE_SPOOK)
+    else if (gCurrentMove == MOVE_SUPER_FANG)
     {
-        gBattleMoveDamage = (gBattleMons[gBattlerTarget].maxHP * 3 / 10);  
+        gBattleMoveDamage = gBattleMons[gBattlerTarget].hp / 2;
     }
     else
     {
-        gBattleMoveDamage = gBattleMons[gBattlerTarget].hp / 2;  
+        gBattleMoveDamage = (gBattleMons[gBattlerTarget].maxHP * 3 / 10);
     }
 
     if (gBattleMoveDamage == 0)
@@ -18406,14 +18400,29 @@ u16 GetSecretPowerMoveEffect(void)
             moveEffect = MOVE_EFFECT_SPD_MINUS_1;
             break;
         case BATTLE_TERRAIN_SNOW:
-        case BATTLE_TERRAIN_ICE:
-        #if B_USE_FROSTBITE == TRUE
+        case BATTLE_TERRAIN_SNOW_ROUTE:
             moveEffect = MOVE_EFFECT_FROSTBITE;
-        #else
+            break;
+        case BATTLE_TERRAIN_ICE:
             moveEffect = MOVE_EFFECT_FREEZE;
-        #endif
+            break;
+        case BATTLE_TERRAIN_BLOSSOM_ROUTE:
+            moveEffect = MOVE_EFFECT_BLOOMING | MOVE_EFFECT_AFFECTS_USER;
+            break;
+        case BATTLE_TERRAIN_GOLD_ROUTE:
+            moveEffect = MOVE_EFFECT_PAYDAY;
+            break;
+        case BATTLE_TERRAIN_WOODEN_ROUTE:
+            moveEffect = MOVE_EFFECT_DEF_MINUS_1;
+            break;
+        case BATTLE_TERRAIN_PATH:
+            moveEffect = MOVE_EFFECT_ATK_MINUS_1;
+            break;
+        case BATTLE_TERRAIN_DARK_AREA:
+            moveEffect = MOVE_EFFECT_PANIC;
             break;
         case BATTLE_TERRAIN_VOLCANO:
+        case BATTLE_TERRAIN_CHIMNEY_ROUTE:
             moveEffect = MOVE_EFFECT_BURN;
             break;
         case BATTLE_TERRAIN_ULTRA_SPACE:
@@ -20115,11 +20124,19 @@ void BS_CheckParentalBondCounter(void)
         gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
-
 void BS_CheckDaybreakCounter(void)
 {
     NATIVE_ARGS(u8 counter, const u8 *jumpInstr);
     if (gDisableStructs[gBattlerAttacker].daybreakCounter == cmd->counter)
+        gBattlescriptCurrInstr = cmd->jumpInstr;
+    else
+        gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
+void BS_CheckAllureCounter(void)
+{
+    NATIVE_ARGS(u8 counter, const u8 *jumpInstr);
+    if (gDisableStructs[gBattlerTarget].daybreakCounter == cmd->counter)
         gBattlescriptCurrInstr = cmd->jumpInstr;
     else
         gBattlescriptCurrInstr = cmd->nextInstr;

@@ -5026,7 +5026,8 @@ const u16 gEggMoves[] = {
         MOVE_DRAKEN_GUARD,
         MOVE_DRAGON_CHEER,
         MOVE_SING,
-        MOVE_CHILLY_RECEPTION),
+        MOVE_CHILLY_RECEPTION,
+        MOVE_ALLURING_VOICE),
 
     egg_moves(TOXITIDE,
         MOVE_DIG),

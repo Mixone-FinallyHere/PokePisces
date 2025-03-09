@@ -70,6 +70,7 @@ struct DisableStruct
     u8 exhaustionCounter;
     u8 surpriseCounter;
     u8 daybreakCounter;
+    u8 allureCounter;
     u8 frenzyCounter;
     u8 purified;
     s8 stockpileDef;
@@ -86,7 +87,6 @@ struct DisableStruct
     u8 rolloutTimerStartValue:4;
     u8 tauntTimer:4;
     u8 battlerPreventingEscape;
-    u8 battlerCausingAllure;
     u8 battlerWithSureHit;
     u8 isFirstTurn;
     u8 truantCounter:1;
