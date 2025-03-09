@@ -4663,9 +4663,9 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_CLEAR_SMOG:
     case EFFECT_PSY_SWAP:
         if (isDoubleBattle)
-            score += min(CountPositiveStatStages(battlerDef) + CountPositiveStatStages(BATTLE_PARTNER(battlerDef)), 7);
+            score += CountBattlerStatIncreases(battlerDef, TRUE) + CountBattlerStatIncreases(BATTLE_PARTNER(battlerDef), TRUE);
         else
-            score += min(CountPositiveStatStages(battlerDef), 4);
+            score += CountBattlerStatIncreases(battlerDef, TRUE);
         break;
     case EFFECT_WHIRLWIND:
         if (gSideTimers[GetBattlerSide(battlerAtk)].tailwindTimer != 0)

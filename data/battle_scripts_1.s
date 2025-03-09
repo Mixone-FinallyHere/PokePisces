@@ -2490,36 +2490,34 @@ BattleScript_CutieCryStatPart:
 	setmoveeffect MOVE_EFFECT_ATK_SPATK_DOWN_2
 	goto BattleScript_EffectSpringBreeze
 
-BattleScript_EffectBlock:
-    setstatchanger STAT_SPEED, 2, TRUE
-    attackcanceler
-	jumpifstatus2 BS_TARGET, STATUS2_ESCAPE_PREVENTION, BattleScript_ButItFailed
+BattleScript_EffectBlock::
+	setstatchanger STAT_SPEED, 2, TRUE
+	attackcanceler
+	attackstring
+	ppreduce
+	accuracycheck BattleScript_ButItFailed, NO_ACC_CALC_CHECK_LOCK_ON
+	jumpifstatus2 BS_TARGET, STATUS2_ESCAPE_PREVENTION, BattleScript_StatDownFromPPReduce
 	jumpifsubstituteblocks BattleScript_ButItFailed
-.if B_GHOSTS_ESCAPE >= GEN_6
-	jumpiftype BS_TARGET, TYPE_GHOST, BattleScript_ButItFailed
-.endif
-    accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	jumpiftype BS_TARGET, TYPE_GHOST, BattleScript_StatDownFromPPReduce
+	attackanimation
+	waitanimation
 	setmoveeffect MOVE_EFFECT_PREVENT_ESCAPE
 	seteffectprimary
-    attackstring
-    ppreduce
-    statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_BlockEnd
-    jumpifbyte CMP_LESS_THAN, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_BlockDoAnim
-    jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY, BattleScript_BlockEnd
-    pause B_WAIT_TIME_SHORT
-    goto BattleScript_BlockPrintString
-BattleScript_BlockDoAnim::
-    attackanimation
-    waitanimation
-    setgraphicalstatchangevalues
-    playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-BattleScript_BlockPrintString::
-    printfromtable gStatDownStringIds
-    waitmessage B_WAIT_TIME_LONG
-BattleScript_BlockEnd::
 	printstring STRINGID_TARGETCANTESCAPENOW
 	waitmessage B_WAIT_TIME_LONG
-    goto BattleScript_MoveEnd
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_BlockSpeedDropEnd
+	jumpifbyte CMP_LESS_THAN, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_BlockSpeedDropDoAnim
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY, BattleScript_BlockSpeedDropEnd
+	pause B_WAIT_TIME_SHORT
+	goto BattleScript_BlockSpeedDropPrintString
+BattleScript_BlockSpeedDropDoAnim::
+	setgraphicalstatchangevalues
+	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+BattleScript_BlockSpeedDropPrintString::
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_BlockSpeedDropEnd::
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectSurpriseEgg::
 	attackcanceler
