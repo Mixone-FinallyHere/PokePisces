@@ -4170,7 +4170,6 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_ABSORB:
     case EFFECT_DRAINING_KISS:
     case EFFECT_TICK_TACK:
-    case EFFECT_SPIRIT_AWAY:
         if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_BIG_ROOT)
             score++;
         if (effectiveness <= AI_EFFECTIVENESS_x0_5 && AI_RandLessThan(50))
@@ -4744,15 +4743,18 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_SYNTHESIS:
     case EFFECT_MOONLIGHT:
     case EFFECT_COLD_MEND:
-    case EFFECT_CRITICAL_REPAIR:
         if (ShouldRecover(battlerAtk, battlerDef, move, 50))
+            score += 3;
+        break;
+    case EFFECT_CRITICAL_REPAIR:
+        if (ShouldRecover(battlerAtk, battlerDef, move, 25))
             score += 3;
         break;
     case EFFECT_RESERVOIR:
         if (HasDamagingMoveOfType(battlerAtk, TYPE_WATER))
             score += 2;
     case EFFECT_SHIELDS_UP:
-        if (ShouldRecover(battlerAtk, battlerDef, move, 50))
+        if (ShouldRecover(battlerAtk, battlerDef, move, 35))
             score += 3;
         if (gBattleMons[battlerAtk].status1 & STATUS1_ANY_NEGATIVE)
             score += 2;
@@ -6745,6 +6747,15 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         if (HasMoveWithType(battlerAtk, TYPE_ELECTRIC) || HasMoveWithType(battlerAtk, TYPE_GRASS) || HasMoveEffect(battlerAtk, EFFECT_FREEZE_DRY))
             score += 2; // Get some super effective moves
         break;
+    case EFFECT_SPIRIT_AWAY:
+        if ((HasMoveWithType(battlerAtk, TYPE_GHOST) || HasMoveWithType(battlerAtk, TYPE_DARK) || HasMoveEffect(battlerAtk, EFFECT_EXORCISM))
+        && (GetBattlerType(battlerDef, 0) != TYPE_GHOST || GetBattlerType(battlerDef, 1) != TYPE_GHOST || GetBattlerType(battlerDef, 2) != TYPE_GHOST))
+            score += 2; // Get some super effective moves
+        if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_BIG_ROOT)
+            score++;
+        if (effectiveness <= AI_EFFECTIVENESS_x0_5 && AI_RandLessThan(50))
+            score -= 3;
+        break;
     case EFFECT_PURIFICATION:
         if (HasMoveWithType(battlerAtk, TYPE_FIGHTING))
             score += 3; // Get some super effective moves
@@ -6788,7 +6799,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         break;
     case EFFECT_ALL_STATS_UP_HIT:
         if (move == MOVE_OMINOUS_WIND && (gBattleMons[battlerDef].status1 & STATUS1_PANIC))
-            score += 4;
+            score += 2;
         break;
     case EFFECT_FAIRY_LOCK:
         if (!IsBattlerTrapped(battlerDef, TRUE))
@@ -7491,6 +7502,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 1;
                 break;
             case EFFECT_TICK_TACK:
+            case EFFECT_SPIRIT_AWAY:
                 score += 1;
                 break;
             default:
@@ -7546,6 +7558,9 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 break;
             case EFFECT_GREEN_GUISE:
                 score -= 1;
+                break;
+            case EFFECT_SPIRIT_AWAY:
+                score += 2;
                 break;
             default:
                 break;

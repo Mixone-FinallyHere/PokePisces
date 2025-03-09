@@ -12003,6 +12003,10 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         if (gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN)
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
         break;
+    case ABILITY_MERCILESS:
+        if (gBattleMons[battlerDef].status1 & STATUS1_POISON)
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
+        break;
     case ABILITY_SHARPNESS:
         if (gBattleMoves[move].slicingMove)
             modifier = uq4_12_multiply(modifier, GetSharpnessModifier(battlerAtk));
