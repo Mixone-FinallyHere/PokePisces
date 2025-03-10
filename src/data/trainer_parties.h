@@ -15296,7 +15296,7 @@ static const struct TrainerMon sParty_PCourtney1[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(192, 0, 0, 0, 192, 0),
     .lvl = 45,
-    .moves = {MOVE_GRASS_CANNON, MOVE_AURA_SPHERE, MOVE_DARK_PULSE, MOVE_PETAL_DANCE},
+    .moves = {MOVE_ENERGY_BALL, MOVE_GEO_PULSE, MOVE_DARK_PULSE, MOVE_PETAL_DANCE},
     .nature = NATURE_MODEST,
     },
     {
