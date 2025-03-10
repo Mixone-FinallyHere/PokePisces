@@ -152,8 +152,8 @@ Route121_Text_GarnetDefeated:
 Route121_Text_GarnetPostBattle:
 	.string "Snow is the best!...\n"
 	.string "Unless you're my sister.\p"
-	.string "For some reason she loves\l"
-	.string "going to school!\n"
+	.string "For some reason she loves\n"
+	.string "going to school!\l"
 	.string "I don't get it.$"
 
 Route121_Text_LapizIntro:

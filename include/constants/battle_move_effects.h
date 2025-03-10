@@ -672,7 +672,8 @@
 #define EFFECT_COMET_PUNCH                  666
 #define EFFECT_PSYCHIC_FANGS                667
 #define EFFECT_TRICK_OR_TREAT               668
+#define EFFECT_WORK_UP                      669
 
-#define NUM_BATTLE_MOVE_EFFECTS             669
+#define NUM_BATTLE_MOVE_EFFECTS             670
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

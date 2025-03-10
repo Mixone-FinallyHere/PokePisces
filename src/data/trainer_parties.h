@@ -9748,12 +9748,12 @@ static const struct TrainerMon sParty_PMaria[] = {
     },
     {
     .species = SPECIES_FLUFFREAR,
-    .ability = ABILITY_CUTE_CHARM,
+    .ability = ABILITY_UNNERVE,
     .heldItem = ITEM_FLIP_COIN,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(84, 84, 84, 84, 84, 84),
     .lvl = 55,
-    .moves = {MOVE_BARI_BARI_BASH, MOVE_SLACK_OFF, MOVE_COTTON_GUARD, MOVE_ENCORE},
+    .moves = {MOVE_BARI_BARI_BEAM, MOVE_SLACK_OFF, MOVE_COTTON_GUARD, MOVE_ENCORE},
     }
 };
 
@@ -12296,7 +12296,7 @@ static const struct TrainerMon sParty_PPenn[] = {
     {
     .species = SPECIES_SHIVERSNAP,
     .ability = ABILITY_FROST_JAW,
-    .heldItem = ITEM_FLIP_COIN,
+    .heldItem = ITEM_ASSAULT_VEST,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(84, 84, 84, 84, 84, 84),
     .lvl = 68,
@@ -15296,7 +15296,7 @@ static const struct TrainerMon sParty_PCourtney1[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(192, 0, 0, 0, 192, 0),
     .lvl = 45,
-    .moves = {MOVE_GRASS_CANNON, MOVE_AURA_SPHERE, MOVE_DARK_PULSE, MOVE_PETAL_DANCE},
+    .moves = {MOVE_ENERGY_BALL, MOVE_GEO_PULSE, MOVE_DARK_PULSE, MOVE_PETAL_DANCE},
     .nature = NATURE_MODEST,
     },
     {

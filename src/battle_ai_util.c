@@ -3496,7 +3496,7 @@ bool32 AnyPartyMemberStatused(u32 battlerId, bool32 checkSoundproof)
         if (checkSoundproof && GetMonAbility(&party[i]) == ABILITY_SOUNDPROOF)
             continue;
 
-        if (GetMonData(&party[i], MON_DATA_STATUS) != STATUS1_NONE)
+        if (GetMonData(&party[i], MON_DATA_STATUS) == STATUS1_ANY_NEGATIVE)
             return TRUE;
     }
 

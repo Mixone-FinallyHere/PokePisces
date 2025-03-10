@@ -1297,7 +1297,7 @@ static void Cmd_attackcanceler(void)
         gCurrentActionFuncId = B_ACTION_FINISHED;
         return;
     }
-    if (gBattleMons[gBattlerAttacker].hp == 0 && !(gHitMarker & HITMARKER_NO_ATTACKSTRING))
+    if (gBattleMons[gBattlerAttacker].hp == 0 && !gProtectStructs[gBattlerAttacker].aftermathBlowUp && !(gHitMarker & HITMARKER_NO_ATTACKSTRING))
     {
         gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
         gBattlescriptCurrInstr = BattleScript_MoveEnd;
@@ -2373,11 +2373,6 @@ static void Cmd_adjustdamage(void)
     {
         RecordItemEffectBattle(gBattlerTarget, holdEffect);
         gSpecialStatuses[gBattlerTarget].focusBanded = TRUE;
-    }
-    else if (GetBattlerAbility(gBattlerTarget) == ABILITY_AFTERMATH && (gBattleMons[gBattlerTarget].hp >= 1))
-    {
-        RecordAbilityBattle(gBattlerTarget, abilityDef);
-        gSpecialStatuses[gBattlerTarget].sturdied = TRUE;
     }
     #endif
     else if (holdEffect == HOLD_EFFECT_FOCUS_SASH && BATTLER_MAX_HP(gBattlerTarget))

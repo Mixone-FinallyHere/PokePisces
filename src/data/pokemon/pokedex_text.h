@@ -5711,7 +5711,7 @@ const u8 gPomelonianPokedexText[] = _(
     "Haughty and snobbish, Pomelonian bark at their\n"
     "foes, thinking their high-pitched squeaks are of\n"
     "any threat. They hate being told to do anything,\n"
-    "often anwering with annoyed growls. Due to this\n"
+    "often answering with annoyed growls. Due to this\n"
     "behavior, they're often called “The Bratty Dog.”");
 
 const u8 gGourdougPokedexText[] = _(

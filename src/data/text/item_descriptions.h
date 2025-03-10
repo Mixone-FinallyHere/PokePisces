@@ -167,25 +167,25 @@ static const u8 sCherishBallDesc[] = _(
 static const u8 sPotionDesc[] = _(
     "A topical medicine for\n"
     "treating wounds. It\n"
-    "can be used to restore\n"
+    "can be used to heal\n"
     "60 HP to a Pokémon.");
 
 static const u8 sSuperPotionDesc[] = _(
     "A topical medicine for\n"
     "treating wounds. It\n"
-    "can be used to restore\n"
+    "can be used to heal\n"
     "100 HP to a Pokémon.");
 
 static const u8 sHyperPotionDesc[] = _(
     "A topical medicine for\n"
     "treating wounds. It\n"
-    "can be used to restore\n"
+    "can be used to heal\n"
     "150 HP to a Pokémon.");
 
 static const u8 sMaxPotionDesc[] = _(
     "A topical medicine for\n"
     "treating wounds. It\n"
-    "can be used to restore\n"
+    "can be used to heal\n"
     "a Pokémon to max HP.");
 
 static const u8 sFullRestoreDesc[] = _(
@@ -209,7 +209,7 @@ static const u8 sMaxReviveDesc[] = _(
 static const u8 sFreshWaterDesc[] = _(
     "Water with high\n"
     "mineral content that\n"
-    "can be used to restore\n"
+    "can be used to heal\n"
     "50 HP to a Pokémon.");
 
 static const u8 sSodaPopDesc[] = _(
@@ -221,19 +221,19 @@ static const u8 sSodaPopDesc[] = _(
 static const u8 sLemonadeDesc[] = _(
     "A very sweet and\n"
     "refreshing drink that\n"
-    "can be used to restore\n"
+    "can be used to heal\n"
     "80 HP to a Pokémon.");
 
 static const u8 sMoomooMilkDesc[] = _(
     "A bottle of highly\n"
     "nutritious milk. It\n"
-    "can be used to restore\n"
+    "can be used to heal\n"
     "100 HP to a Pokémon.");
 
 static const u8 sEnergyPowderDesc[] = _(
     "A very bitter\n"
     "medicinal powder. It\n"
-    "can be used to restore\n"
+    "can be used to heal\n"
     "60 HP to a Pokémon.");
 
 static const u8 sEnergyRootDesc[] = _(
@@ -4608,7 +4608,7 @@ static const u8 sFairyFeatherDesc[] = _(
 
 static const u8 sIcePopDesc[] = _(
     "A cool popsicle that\n"
-    "can be used to restore\n"
+    "can be used to heal\n"
     "1/3 of the Pokémon's\n"
     "HP and raise Sp. Def.");
 

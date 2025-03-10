@@ -8245,9 +8245,6 @@ u8 GetMoveRelearnerMoves(struct Pokemon *mon, u16 *moves)
     // Egg move tutor.
 	if (FlagGet(FLAG_LEVEL_1_TUTOR))
 	{
-		// Species to pull egg moves from.
-		species = GetEggSpecies(species);
-
 		k = GetEggMovesArraySize() - 1;
 
 		// Here, j is being used as the offset into gEggMoves.
@@ -8338,9 +8335,6 @@ u8 GetNumberOfRelearnableMoves(struct Pokemon *mon)
 	// Egg move tutor.
 	if (FlagGet(FLAG_LEVEL_1_TUTOR))
 	{
-		// Species to pull egg moves from.
-		species = GetEggSpecies(species);
-
 		k = GetEggMovesArraySize() - 1;
 
 		// Here, j is being used as the offset into gEggMoves.

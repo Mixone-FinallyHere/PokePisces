@@ -5585,8 +5585,8 @@ Move_ACID_SPRAY::
 	playsewithpan SE_M_BUBBLE3, SOUND_PAN_ATTACKER
 	delay 33
 	createvisualtask AnimTask_ShakeMon2, 5, ANIM_TARGET, 2, 0, 10, 1
-	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_TARGET, 2, 2, 0, 12, RGB(30, 0, 31)
-	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_DEF_PARTNER, 2, 2, 0, 12, RGB(30, 0, 31)
+	createvisualtask AnimTask_ShakeMon2, 5, ANIM_DEF_PARTNER, 2, 0, 10, 1
+	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_DEF_SIDE, 2, 2, 0, 12, RGB(30, 0, 31)
 	playsewithpan SE_M_DIVE, SOUND_PAN_ATTACKER
 	createsprite gAcidPoisonDropletSpriteTemplate, ANIM_TARGET, 2, 0, -20, 10, 15, 55, TRUE
 	createsprite gAcidPoisonDropletSpriteTemplate, ANIM_TARGET, 2, 0, -20, -20, 15, 55, TRUE
@@ -15978,7 +15978,7 @@ Move_JUNGLE_HEALING::
 	splitbgprio_foes ANIM_TARGET
 	setalpha 12, 8
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 0, 12, RGB(13, 31, 12)
-	waitforvisualfinish
+	delay 1
 	createsprite gIngrainRootSpriteTemplate, ANIM_ATTACKER, 2, 0x10, 0x1a, 0xffff, 0x2, 0x96
 	playsewithpan SE_M_SCRATCH, SOUND_PAN_ATTACKER
 	delay 0xa
@@ -16010,6 +16010,7 @@ Move_JUNGLE_HEALING::
 	waitforvisualfinish
 	clearmonbg ANIM_DEF_PARTNER
 	blendoff
+	delay 1
 	end
 
 @ credits to ghoulslash
@@ -32653,6 +32654,7 @@ Move_GIGA_DRAIN:
 	waitforvisualfinish
 	clearmonbg ANIM_DEF_PARTNER
 	blendoff
+	delay 1
 	end
 
 GigaDrainAbsorbEffect:

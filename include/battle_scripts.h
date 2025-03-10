@@ -716,7 +716,6 @@ extern const u8 BattleScript_GemstoneEvasion[];
 extern const u8 BattleScript_GemstoneRet[];
 extern const u8 BattleScript_CrypticPlateEntryEffect[];
 extern const u8 BattleScript_DefenderUsedAnExtraMove[];
-extern const u8 BattleScript_DefenderExplodedUsedAnExtraMove[];
 extern const u8 BattleScript_AttackerUsedAnExtraMove[];
 extern const u8 BattleScript_AttackerUsedFirebrand[];
 extern const u8 BattleScript_IceScalesActivatesGain[];
