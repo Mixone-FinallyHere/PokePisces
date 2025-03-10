@@ -2395,7 +2395,7 @@ static const u8 sChoiceBandDesc[] = _(
 static const u8 sChoiceSpecsDesc[] = _(
     "Some curious glasses\n"
     "that boost Sp. Atk but\n"
-    "only allow the use ofn"
+    "only allow the use of\n"
     "a single move.");
 
 static const u8 sChoiceScarfDesc[] = _(
