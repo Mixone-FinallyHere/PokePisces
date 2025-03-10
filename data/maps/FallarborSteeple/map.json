@@ -27,7 +27,7 @@
       "x": 10,
       "y": 6,
       "elevation": 0,
-      "dest_map": "MAP_FALLARBOR_STEEPLE",
+      "dest_map": "MAP_FALLARBOR_STEEPLE_INTERIOR",
       "dest_warp_id": "0"
     }
   ],

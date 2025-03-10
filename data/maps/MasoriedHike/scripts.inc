@@ -172,6 +172,165 @@ MasonriedHike_EventScript_JayAndEm::
     msgbox MasonriedHike_Text_JayAndEmPostBattle, MSGBOX_AUTOCLOSE
     end
 
+MasonriedHike_EventScript_Biter::
+	lock
+	faceplayer
+	checkitem ITEM_RAZOR_FANG
+	goto_if_eq VAR_RESULT, TRUE, MasonriedHike_EventScript_AlreadyGaveRazorFang
+	msgbox MasonriedHike_Text_ImABiter, MSGBOX_DEFAULT
+	checkpartynonhmmove MOVE_BITE
+	goto_if_eq VAR_RESULT, PARTY_SIZE, MasonriedHike_EventScript_CheckHyperFang
+	goto MasonriedHike_EventScript_GiveRazorFang
+	release
+	end
+
+MasonriedHike_EventScript_CheckHyperFang::
+	checkpartynonhmmove MOVE_HYPER_FANG
+	goto_if_eq VAR_RESULT, PARTY_SIZE, MasonriedHike_EventScript_CheckCrunch
+	goto MasonriedHike_EventScript_GiveRazorFang
+	release
+	end
+
+MasonriedHike_EventScript_CheckCrunch::
+	checkpartynonhmmove MOVE_CRUNCH
+	goto_if_eq VAR_RESULT, PARTY_SIZE, MasonriedHike_EventScript_CheckPoisonFang
+	goto MasonriedHike_EventScript_GiveRazorFang
+	release
+	end
+
+MasonriedHike_EventScript_CheckPoisonFang::
+	checkpartynonhmmove MOVE_POISON_FANG
+	goto_if_eq VAR_RESULT, PARTY_SIZE, MasonriedHike_EventScript_CheckThunderFang
+	goto MasonriedHike_EventScript_GiveRazorFang
+	release
+	end
+
+MasonriedHike_EventScript_CheckThunderFang::
+	checkpartynonhmmove MOVE_THUNDER_FANG
+	goto_if_eq VAR_RESULT, PARTY_SIZE, MasonriedHike_EventScript_CheckIceFang
+	goto MasonriedHike_EventScript_GiveRazorFang
+	release
+	end
+
+MasonriedHike_EventScript_CheckIceFang::
+	checkpartynonhmmove MOVE_ICE_FANG
+	goto_if_eq VAR_RESULT, PARTY_SIZE, MasonriedHike_EventScript_CheckFireFang
+	goto MasonriedHike_EventScript_GiveRazorFang
+	release
+	end
+
+MasonriedHike_EventScript_CheckFireFang::
+	checkpartynonhmmove MOVE_FIRE_FANG
+	goto_if_eq VAR_RESULT, PARTY_SIZE, MasonriedHike_EventScript_CheckBugBite
+	goto MasonriedHike_EventScript_GiveRazorFang
+	release
+	end
+
+MasonriedHike_EventScript_CheckBugBite::
+	checkpartynonhmmove MOVE_BUG_BITE
+	goto_if_eq VAR_RESULT, PARTY_SIZE, MasonriedHike_EventScript_CheckPsychicFangs
+	goto MasonriedHike_EventScript_GiveRazorFang
+	release
+	end
+
+MasonriedHike_EventScript_CheckPsychicFangs::
+	checkpartynonhmmove MOVE_PSYCHIC_FANGS
+	goto_if_eq VAR_RESULT, PARTY_SIZE, MasonriedHike_EventScript_CheckJawLock
+	goto MasonriedHike_EventScript_GiveRazorFang
+	release
+	end
+
+MasonriedHike_EventScript_CheckJawLock::
+	checkpartynonhmmove MOVE_JAW_LOCK
+	goto_if_eq VAR_RESULT, PARTY_SIZE, MasonriedHike_EventScript_CheckFishiousRend
+	goto MasonriedHike_EventScript_GiveRazorFang
+	release
+	end
+
+MasonriedHike_EventScript_CheckFishiousRend::
+	checkpartynonhmmove MOVE_FISHIOUS_REND
+	goto_if_eq VAR_RESULT, PARTY_SIZE, MasonriedHike_EventScript_CheckLoneShark
+	goto MasonriedHike_EventScript_GiveRazorFang
+	release
+	end
+
+MasonriedHike_EventScript_CheckLoneShark::
+	checkpartynonhmmove MOVE_LONE_SHARK
+	goto_if_eq VAR_RESULT, PARTY_SIZE, MasonriedHike_EventScript_CheckVenomDrain
+	goto MasonriedHike_EventScript_GiveRazorFang
+	release
+	end
+
+MasonriedHike_EventScript_CheckVenomDrain::
+	checkpartynonhmmove MOVE_VENOM_DRAIN
+	goto_if_eq VAR_RESULT, PARTY_SIZE, MasonriedHike_EventScript_CheckScorpFang
+	goto MasonriedHike_EventScript_GiveRazorFang
+	release
+	end
+
+MasonriedHike_EventScript_CheckScorpFang::
+	checkpartynonhmmove MOVE_SCORP_FANG
+	goto_if_eq VAR_RESULT, PARTY_SIZE, MasonriedHike_EventScript_CheckSnapblossom
+	goto MasonriedHike_EventScript_GiveRazorFang
+	release
+	end
+
+MasonriedHike_EventScript_CheckSnapblossom::
+	checkpartynonhmmove MOVE_SNAPBLOSSOM
+	goto_if_eq VAR_RESULT, PARTY_SIZE, MasonriedHike_EventScript_CheckSabreBreak
+	goto MasonriedHike_EventScript_GiveRazorFang
+	release
+	end
+
+MasonriedHike_EventScript_CheckSabreBreak::
+	checkpartynonhmmove MOVE_SABRE_BREAK
+	goto_if_eq VAR_RESULT, PARTY_SIZE, MasonriedHike_EventScript_NoBiteMove
+	goto MasonriedHike_EventScript_GiveRazorFang
+	release
+	end
+
+MasonriedHike_EventScript_NoBiteMove::
+	msgbox MasonriedHike_Text_NoBiteMove, MSGBOX_AUTOCLOSE
+	release
+	end
+
+MasonriedHike_EventScript_GiveRazorFang::
+	msgbox MasonriedHike_Text_YouHaveBiteMove, MSGBOX_DEFAULT
+	giveitem ITEM_RAZOR_FANG
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	release
+	end
+
+MasonriedHike_EventScript_AlreadyGaveRazorFang::
+	msgbox MasonriedHike_Text_AlreadyGaveRazorFang, MSGBOX_AUTOCLOSE
+	release
+	end
+
+MasonriedHike_Text_ImABiter:
+	.string "(This man is gnashing his teeth.)\p"
+	.string "I'm a BITER. I like to BITE!\n"
+	.string "Don't look at me like that's weird!\p"
+	.string "I like to have my Pokemon BITE\n"
+	.string "in battle too. Chomp-chomp!$"
+
+MasonriedHike_Text_NoBiteMove:
+	.string "But you aren't a true BITER.\n"
+	.string "Not a single biting move in\l"
+	.string "your arsenal? Are you insane!?\p"
+	.string "Shame. If you did, I could give\n"
+	.string "you one of my nice fangs...$"
+
+MasonriedHike_Text_YouHaveBiteMove:
+	.string "And it looks like you do too!\n"
+	.string "Chomp, chomp, chomp...\l"
+	.string "It's so much FUN!\p"
+	.string "Chew on this, biter!$"
+
+MasonriedHike_Text_AlreadyGaveRazorFang:
+	.string "Gligar can bite the best\n"
+	.string "out of any Pokemon!\l"
+	.string "And that's a Fang Fact!$"
+
 MasonriedHike_Text_MichaelIntro:
 	.string "...Eeyup.$"
 

@@ -6450,6 +6450,16 @@
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/CrimneyInteriors/border.bin",
       "blockdata_filepath": "data/layouts/CrimneyInteriors/map.bin"
+    },
+    {
+      "id": "LAYOUT_OLDALE_INTERIORS",
+      "name": "OldaleInteriors_Layout",
+      "width": 27,
+      "height": 21,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/OldaleInteriors/border.bin",
+      "blockdata_filepath": "data/layouts/OldaleInteriors/map.bin"
     }
   ]
 }

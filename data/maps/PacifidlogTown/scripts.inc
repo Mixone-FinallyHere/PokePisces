@@ -30,16 +30,19 @@ PacifidlogTown_EventScript_TakePlayerToLab::
 	applymovement LOCALID_PACIFBIRCH, PacifidlogTown_Movement_BirchWalk1
 	applymovement OBJ_EVENT_ID_PLAYER, PacifidlogTown_Movement_PlayerWalk1
 	waitmovement 0
+	speakername PacifidlogTown_Text_NameBirch
 	msgbox PacifidlogTown_Text_PacifidlogTownIsNice, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_PACIFBIRCH, PacifidlogTown_Movement_BirchWalk2
 	applymovement OBJ_EVENT_ID_PLAYER, PacifidlogTown_Movement_PlayerWalk2
 	waitmovement 0
+	speakername PacifidlogTown_Text_NameBirch
 	msgbox PacifidlogTown_Text_ResearchingTheLegends, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_PACIFBIRCH, PacifidlogTown_Movement_BirchWalk3
 	applymovement OBJ_EVENT_ID_PLAYER, PacifidlogTown_Movement_PlayerWalk3
 	waitmovement 0
+	speakername PacifidlogTown_Text_NameBirch
 	msgbox PacifidlogTown_Text_CouldUseYourHelp, MSGBOX_DEFAULT
 	speakername NULL
 	clearflag FLAG_PISCES_A

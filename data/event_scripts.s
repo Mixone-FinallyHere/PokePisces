@@ -4022,3 +4022,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/AshlandsHouse/scripts.inc"
 
 	.include "data/maps/CrimneyInteriors/scripts.inc"
+
+	.include "data/maps/OldaleInteriors/scripts.inc"

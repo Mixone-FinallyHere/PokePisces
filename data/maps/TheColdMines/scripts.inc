@@ -2303,8 +2303,7 @@ TheColdMines_EventScript_BigHertz::
 
 TheColdMines_EventScript_TrainingMonk::
 	lock
-	checkitem ITEM_FOCUS_BAND
-	goto_if_eq VAR_RESULT, TRUE, TheColdMines_EventScript_GaveFocusBand
+	goto_if_defeated TRAINER_P_SUPERBOSS_MONK_1, TheColdMines_EventScript_GaveFocusBand
 	msgbox TheColdMines_Text_UpForAToughBattle, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, TheColdMines_EventScript_Gotou
 	msgbox TheColdMines_Text_IMayBeTooTough, MSGBOX_AUTOCLOSE
@@ -2459,7 +2458,9 @@ TheColdMines_Text_AVeryThrillingMatch:
 	.string "take your leave.$"
 
 TheColdMines_Text_MustContinueTraining:
-	.string "i must continue my training$"
+	.string "I must continue my training...\n"
+	.string "only then, can enlightenment\l"
+	.string "be reached...$"
 
 TheColdMines_Text_WouldYouLikeToWarp:
 	.string "wanna warp$"
