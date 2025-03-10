@@ -359,8 +359,8 @@
 #define NUM_WONDER_CARD_FLAGS                (1 + FLAG_WONDER_CARD_UNUSED_17 - FLAG_RECEIVED_AURORA_TICKET)
 
 #define FLAG_MIRAGE_TOWER_VISIBLE            0x14E
-#define FLAG_CHOSE_ROOT_FOSSIL               0x14F
-#define FLAG_CHOSE_CLAW_FOSSIL               0x150
+#define FLAG_CHOSE_SANDBAG               0x14F
+#define FLAG_CHOSE_SANDSTONE               0x150
 #define FLAG_RECEIVED_POWDER_JAR             0x151
 
 #define FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER 0x152
@@ -1289,12 +1289,12 @@
 #define FLAG_CABLE_CAR_UNLOCKED                                           0x4D7 // Unused Flag
 #define FLAG_DEFEATED_MANTLE_FUZKY                                           0x4D8 // Unused Flag
 #define FLAG_RECEIVED_LUCKY_EGGS                                           0x4D9 // Unused Flag
-#define FLAG_UNUSED_0x4DA                                           0x4DA // Unused Flag
-#define FLAG_UNUSED_0x4DB                                           0x4DB // Unused Flag
-#define FLAG_UNUSED_0x4DC                                           0x4DC // Unused Flag
-#define FLAG_UNUSED_0x4DD                                           0x4DD // Unused Flag
-#define FLAG_UNUSED_0x4DE                                           0x4DE // Unused Flag
-#define FLAG_UNUSED_0x4DF                                           0x4DF // Unused Flag
+#define FLAG_SHELLYLOUH_RIDDLE_1                                           0x4DA // Unused Flag
+#define FLAG_SHELLYLOUH_RIDDLE_2                                           0x4DB // Unused Flag
+#define FLAG_SHELLYLOUH_RIDDLE_3                                           0x4DC // Unused Flag
+#define FLAG_CHOICE_ITEM_1                                           0x4DD // Unused Flag
+#define FLAG_CHOICE_ITEM_2                                           0x4DE // Unused Flag
+#define FLAG_CHOICE_ITEM_3                                           0x4DF // Unused Flag
 #define FLAG_UNUSED_0x4E0                                           0x4E0 // Unused Flag
 #define FLAG_UNUSED_0x4E1                                           0x4E1 // Unused Flag
 #define FLAG_UNUSED_0x4E2                                           0x4E2 // Unused Flag

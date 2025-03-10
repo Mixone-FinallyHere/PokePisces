@@ -21,10 +21,10 @@
 #define ITEM3_BURN              0x8
 #define ITEM3_POISON            0x10
 #define ITEM3_SLEEP             0x20
-#define ITEM3_EXPOSED           0x40
+#define ITEM3_LEVEL_UP          0x40
 #define ITEM3_PANIC             0x80
 
-#define ITEM3_STATUS_ALL        (ITEM3_CONFUSION | ITEM3_PARALYSIS | ITEM3_FREEZE | ITEM3_BURN | ITEM3_POISON | ITEM3_SLEEP | ITEM3_PANIC | ITEM3_EXPOSED)
+#define ITEM3_STATUS_ALL        (ITEM3_CONFUSION | ITEM3_PARALYSIS | ITEM3_FREEZE | ITEM3_BURN | ITEM3_POISON | ITEM3_SLEEP | ITEM3_PANIC)
 
 // field 4 masks
 #define ITEM4_EV_HP             0x1

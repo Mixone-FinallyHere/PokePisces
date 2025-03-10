@@ -1163,7 +1163,6 @@ const u16 gEggMoves[] = {
         MOVE_TRICK,
         MOVE_EERIE_SPELL,
         MOVE_DESTINY_BOND,
-        MOVE_SWEET_WHISPERS,
         MOVE_DEARLY_DEPART),
 
     egg_moves(GIRAFARIG,
@@ -2296,7 +2295,6 @@ const u16 gEggMoves[] = {
         MOVE_ALLURING_VOICE,
         MOVE_CHARM,
         MOVE_DESTINY_BOND,
-        MOVE_SWEET_WHISPERS,
         MOVE_MEMENTO,
         MOVE_CAPTIVATE),
 
@@ -4515,8 +4513,7 @@ const u16 gEggMoves[] = {
     egg_moves(CULTIPEX,
         MOVE_PURIFICATION,
         MOVE_CURSE,
-        MOVE_TERRORIZE,
-        MOVE_SWEET_WHISPERS),
+        MOVE_TERRORIZE),
 
     egg_moves(MAERACHOLY,
         MOVE_COSMIC_POWER,
@@ -4608,7 +4605,8 @@ const u16 gEggMoves[] = {
         MOVE_FOCUS_PUNCH,
         MOVE_MEGA_PUNCH,
         MOVE_METEOR_MASH,
-        MOVE_MEDITATE),
+        MOVE_MEDITATE,
+        MOVE_CALM_MIND),
 
     egg_moves(LINOONE,
         MOVE_SWITCHEROO,
@@ -4628,7 +4626,6 @@ const u16 gEggMoves[] = {
         MOVE_CHARM,
         MOVE_NASTY_PLOT,
         MOVE_BELCH,
-        MOVE_SWEET_WHISPERS,
         MOVE_HEX),
 
     egg_moves(KODOUGH,
@@ -4722,7 +4719,6 @@ const u16 gEggMoves[] = {
         MOVE_SPIRIT_DANCE,
         MOVE_PHANTASM,
         MOVE_ALLURING_VOICE,
-        MOVE_SWEET_WHISPERS,
         MOVE_DESTINY_BOND,
         MOVE_DEARLY_DEPART),
 
@@ -4737,7 +4733,6 @@ const u16 gEggMoves[] = {
     egg_moves(YAGANGRAN,
         MOVE_ALLURING_VOICE,
         MOVE_FOLLOW_ME,
-        MOVE_SWEET_WHISPERS,
         MOVE_LOVELY_KISS,
         MOVE_EERIE_SPELL,
         MOVE_HEX,
@@ -4747,7 +4742,8 @@ const u16 gEggMoves[] = {
         MOVE_SEIZE_CHANCE,
         MOVE_NIGHT_DAZE,
         MOVE_TERRORIZE,
-        MOVE_EXTRASENSORY),
+        MOVE_EXTRASENSORY,
+        MOVE_ASTRAL_BARRAGE),
 
     egg_moves(MISMAGIUS,
         MOVE_HYPNOSIS,
@@ -4755,7 +4751,6 @@ const u16 gEggMoves[] = {
         MOVE_TRICK,
         MOVE_EERIE_SPELL,
         MOVE_DESTINY_BOND,
-        MOVE_SWEET_WHISPERS,
         MOVE_DEARLY_DEPART),
 
     egg_moves(TRANSERA,
@@ -4765,7 +4760,6 @@ const u16 gEggMoves[] = {
         MOVE_SPOTLIGHT),
 
     egg_moves(EERIKO,
-        MOVE_SWEET_WHISPERS,
         MOVE_DRAINING_KISS,
         MOVE_TERRORIZE,
         MOVE_LASH_OUT,
@@ -4774,7 +4768,6 @@ const u16 gEggMoves[] = {
         MOVE_DEARLY_DEPART),
 
     egg_moves(MANNIKO,
-        MOVE_SWEET_WHISPERS,
         MOVE_DRAINING_KISS,
         MOVE_TERRORIZE,
         MOVE_LASH_OUT,
@@ -4783,7 +4776,6 @@ const u16 gEggMoves[] = {
         MOVE_DEARLY_DEPART),
 
     egg_moves(KOWAKO,
-        MOVE_SWEET_WHISPERS,
         MOVE_DRAINING_KISS,
         MOVE_TERRORIZE,
         MOVE_LASH_OUT,
@@ -4794,7 +4786,8 @@ const u16 gEggMoves[] = {
     egg_moves(STRAWNGMAN,
         MOVE_SPIKES,
         MOVE_COMEUPPANCE,
-        MOVE_WOOD_HAMMER),
+        MOVE_WOOD_HAMMER,
+        MOVE_PUNISHMENT),
 
     egg_moves(LAWPARD,
         MOVE_DISCHARGE,
@@ -4806,7 +4799,6 @@ const u16 gEggMoves[] = {
         MOVE_HEALING_WISH),
 
     egg_moves(OOHBAABA,
-        MOVE_SWEET_WHISPERS,
         MOVE_HOLD_HANDS,
         MOVE_SACRED_FIRE,
         MOVE_FIERY_DANCE,
@@ -5035,7 +5027,7 @@ const u16 gEggMoves[] = {
         MOVE_DRAGON_CHEER,
         MOVE_SING,
         MOVE_CHILLY_RECEPTION,
-        MOVE_SWEET_WHISPERS),
+        MOVE_ALLURING_VOICE),
 
     egg_moves(TOXITIDE,
         MOVE_DIG),
@@ -5154,9 +5146,9 @@ const u16 gEggMoves[] = {
         MOVE_OBLIVION_WING,
         MOVE_STRENGTH_SAP,
         MOVE_TAKE_HEART,
-        MOVE_SWEET_WHISPERS,
         MOVE_HOLD_HANDS,
-        MOVE_DEARLY_DEPART),
+        MOVE_DEARLY_DEPART,
+        MOVE_SPRINGTIDE_STORM),
 
     egg_moves(FAERED,
         MOVE_COPYCAT,
@@ -5257,7 +5249,6 @@ const u16 gEggMoves[] = {
         MOVE_ALLURING_VOICE,
         MOVE_WATER_SPOUT,
         MOVE_PHANTASM,
-        MOVE_SWEET_WHISPERS,
         MOVE_SPRINGTIDE_STORM,
         MOVE_CAPTIVATE),
 
@@ -5427,7 +5418,6 @@ const u16 gEggMoves[] = {
 
     egg_moves(NYARLY,
         MOVE_ALLURING_VOICE,
-        MOVE_SWEET_WHISPERS,
         MOVE_COSMIC_POWER,
         MOVE_BLOOD_MOON,
         MOVE_TICKLE),
@@ -5491,7 +5481,6 @@ const u16 gEggMoves[] = {
         MOVE_BRANCH_POKE,
         MOVE_NASTY_PLOT,
         MOVE_OBLIVION_WING,
-        MOVE_SWEET_WHISPERS,
         MOVE_FAKE_OUT),
 
     egg_moves(AJOKUJOKU,
@@ -5545,7 +5534,6 @@ const u16 gEggMoves[] = {
         MOVE_PSYCHO_SHIFT,
         MOVE_HEART_SWAP,
         MOVE_BRAIN_DAMAGE,
-        MOVE_SWEET_WHISPERS,
         MOVE_IMPRISON,
         MOVE_MIND_GAP),
 

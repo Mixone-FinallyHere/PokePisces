@@ -133,7 +133,7 @@ FieryPath_Text_CattDefeated:
 
 FieryPath_Text_CattPostBattle:
 	.string "In the end I only served as a\n"
-	.string "springboard for your own\n"
+	.string "springboard for your own\l"
 	.string "ambitions, how humiliating.$"
 
 FieryPath_Text_CeliaIntro:

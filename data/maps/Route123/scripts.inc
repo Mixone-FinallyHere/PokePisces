@@ -410,6 +410,8 @@ Route123_EventScript_FuzkyGone::
 Route123_EventScript_SnowNinjaTrigger::
 	lock
 	setvar VAR_TEMP_5, 1
+	checkitem ITEM_SMOKE_BALL
+	goto_if_eq VAR_RESULT, TRUE, Route123_EventScript_SnowNinjaRelease
 	goto_if_set FLAG_SNOWBALL_BOY, Route123_EventScript_SnowNinja
 	release
 	end
@@ -441,12 +443,18 @@ Route123_EventScript_SmokeBall::
 	msgbox Route123_Text_HeLeftBehindSomething, MSGBOX_DEFAULT
 	giveitem ITEM_SMOKE_BALL
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	closemessage
 	release
 	end
 
 Route123_Movement_BackToTheSnow:
 	jump_left
 	step_end
+
+Route123_EventScript_SnowNinjaRelease::
+	closemessage
+	release
+	end
 
 Route123_Text_BackToTheSnow:
 	.string "Even after plotting my revenge over a\n"

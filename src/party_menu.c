@@ -4335,6 +4335,7 @@ static void CB2_OpenTMCaseOnField(void)
 {
     InitTMCase(0, CB2_BagMenuFromStartMenu, 0);
 }
+
 void CB2_ShowPartyMenuForItemUseTMCase(void)
 {
     MainCallback callback = CB2_OpenTMCaseOnField;
@@ -4553,7 +4554,9 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc task)
             if (hp == GetMonData(mon, MON_DATA_MAX_HP))
                 canHeal = FALSE;
         }
+        // DebugPrintfLevel(MGBA_LOG_WARN, "before friendship %d", GetMonData(mon, MON_DATA_FRIENDSHIP));
         cannotUse = ExecuteTableBasedItemEffect(mon, item, gPartyMenu.slotId, 0);
+        // DebugPrintfLevel(MGBA_LOG_WARN, "after friendship %d", GetMonData(mon, MON_DATA_FRIENDSHIP));
     }
 
     if (cannotUse != FALSE)
@@ -5510,7 +5513,7 @@ void ItemUseCB_ShellyBrew(u8 taskId, TaskFunc task)
     u8 holdEffectParam = ItemId_GetHoldEffectParam(*itemPtr);
 
     sInitialLevel = GetMonData(mon, MON_DATA_LEVEL);
-    if (sInitialLevel >= 50)
+    if (sInitialLevel >= GetPreviousLevelCap())
     {
         cannotUseEffect = TRUE;
     }
@@ -5554,7 +5557,7 @@ void ItemUseCB_ShellyBrew(u8 taskId, TaskFunc task)
     }
     else
     {
-        sFinalLevel = 50;
+        sFinalLevel = GetPreviousLevelCap();
         gPartyMenuUseExitCallback = TRUE;
         UpdateMonDisplayInfoAfterRareCandy(gPartyMenu.slotId, mon);
         RemoveBagItem(gSpecialVar_ItemId, 1);
@@ -5562,18 +5565,8 @@ void ItemUseCB_ShellyBrew(u8 taskId, TaskFunc task)
         if (sFinalLevel > sInitialLevel)
         {
             PlayFanfareByFanfareNum(FANFARE_LEVEL_UP);
-            if (holdEffectParam == 0) // Rare Candy
-            {
-                ConvertIntToDecimalStringN(gStringVar2, sFinalLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
-                StringExpandPlaceholders(gStringVar4, gText_PkmnElevatedToLvVar2);
-            }
-            else // Exp Candies
-            {
-                ConvertIntToDecimalStringN(gStringVar2, sExpCandyExperienceTable[holdEffectParam - 1], STR_CONV_MODE_LEFT_ALIGN, 6);
-                ConvertIntToDecimalStringN(gStringVar3, sFinalLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
-                StringExpandPlaceholders(gStringVar4, gText_PkmnGainedExpAndElevatedToLvVar3);
-            }
-
+            ConvertIntToDecimalStringN(gStringVar2, sFinalLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
+            StringExpandPlaceholders(gStringVar4, gText_PkmnElevatedToLvVar2);
             DisplayPartyMenuMessage(gStringVar4, TRUE);
             ScheduleBgCopyTilemapToVram(2);
             gTasks[taskId].func = Task_DisplayLevelUpStatsPg1;
@@ -6047,7 +6040,7 @@ u8 GetItemEffectType(u16 item)
         return ITEM_EFFECT_X_ITEM;
     else if (itemEffect[0] & ITEM0_SACRED_ASH)
         return ITEM_EFFECT_SACRED_ASH;
-    else if (itemEffect[10] & ITEM10_LEVEL_UP)
+    else if (itemEffect[10] & ITEM3_LEVEL_UP)
         return ITEM_EFFECT_RAISE_LEVEL;
 
     statusCure = itemEffect[3] & ITEM3_STATUS_ALL;
@@ -6065,8 +6058,8 @@ u8 GetItemEffectType(u16 item)
             return ITEM_EFFECT_CURE_PARALYSIS;
         else if (statusCure == ITEM3_CONFUSION)
             return ITEM_EFFECT_CURE_CONFUSION;
-        else if (statusCure == ITEM3_EXPOSED)
-            return ITEM_EFFECT_CURE_EXPOSED;
+        //else if (statusCure == ITEM3_EXPOSED)
+        //    return ITEM_EFFECT_CURE_EXPOSED;
         else if (statusCure == ITEM3_PANIC)
             return ITEM_EFFECT_CURE_PANIC;
         else if (itemEffect[0] >> 7 && !statusCure)

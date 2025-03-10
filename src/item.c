@@ -1002,8 +1002,8 @@ u32 GetItemStatus1Mask(u16 itemId)
             return STATUS1_POISON | STATUS1_TOXIC_POISON;
         case ITEM3_SLEEP:
             return (STATUS1_SLEEP | STATUS1_REST);
-        case ITEM3_EXPOSED:
-            return STATUS1_EXPOSED;
+        //case ITEM3_EXPOSED:
+        //    return STATUS1_EXPOSED;
         case ITEM3_PANIC:
             return STATUS1_PANIC;
         case ITEM3_STATUS_ALL:
@@ -1051,7 +1051,7 @@ static u8 ReformatItemDescription(u16 item, u8 *dest)
 {
     u8 count = 0;
     u8 numLines = 1;
-    u8 maxChars = 32;
+    u8 maxChars = 30;
     u8 *desc = (u8 *)gItems[item].description;
 
     while (*desc != EOS)

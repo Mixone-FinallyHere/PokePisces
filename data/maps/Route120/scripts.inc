@@ -290,7 +290,7 @@ Route120_Text_MaddyAndCrossDefeated:
 Route120_Text_MaddyAndCrossPostBattle:
 	.string "MADDY: You totally screwed me up!\n"
 	.string "CROSS: No way! You're the one who ruined\l"
-	.string " my perfect strategy...$"
+	.string "my perfect strategy...$"
 
 Route120_Text_MaddyAndCrossNeedTwoMons:
 	.string "MADDY: Are you even good enough for\n"

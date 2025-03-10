@@ -187,6 +187,7 @@ LavaridgeGymNew_EventScript_InterrogationPart4::
 	waitmovement 0
 	removeobject LOCALID_GHIDORAH
 	removeobject LOCALID_HEDORAH
+	setflag FLAG_TEMP_E
 	applymovement LOCALID_GAMERA, LavaridgeGymNew_Movement_GameraEnter
 	waitmovement 0
 	msgbox LavaridgeGymNew_Text_IWillBeginSupervising, MSGBOX_DEFAULT

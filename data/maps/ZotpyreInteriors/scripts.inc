@@ -75,6 +75,7 @@ ZotpyreInteriors_EventScript_Tragedy::
 
 ZotpyreInteriors_EventScript_GiveZorua::
 	msgbox ZotpyreInteriors_Text_Zorua, MSGBOX_DEFAULT
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ZORUA
 	givemon SPECIES_ZORUA, 28
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, ZotpyreInteriors_EventScript_ReceiveZoruaParty
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, ZotpyreInteriors_EventScript_ReceiveZoruaPC
@@ -137,9 +138,10 @@ ZotpyreInteriors_Text_AboutMySon:
 	.string "I wanted the best for him, so I\l"
 	.string "gave him my blessing to leave the nest.\p"
 	.string "To say I miss him every hour would be\n"
-	.string "an understatement. He would write me\l"
-	.string "occasionally, even send me some Pokémon\l"
-	.string "that he'd found in his travels.\p"
+	.string "an understatement. He would write\l"
+	.string "me occasionally, even send me\l"
+	.string "some Pokémon that he'd found\l"
+	.string "in his travels.\p"
 	.string "I cherish them very much.\p"
 	.string "One day, last year, I recieve another\n"
 	.string "parchment. He is planning a visit!\p"

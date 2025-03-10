@@ -97,6 +97,76 @@ AshlandsHouse_EventScript_ExplainPlainsSpinda::
 	release
 	end
 
+AshlandsHouse_EventScript_CraftPearlString::
+	lock
+	faceplayer
+	msgbox AshlandsHouse_Text_WantToCraftPearlString, MSGBOX_DEFAULT
+	checkitem ITEM_VIBRANT_SCALE
+	goto_if_eq VAR_RESULT, TRUE, AshlandsHouse_EventScript_AlreadyGavePearlString
+	checkitem ITEM_PEARL_STRING
+	goto_if_eq VAR_RESULT, TRUE, AshlandsHouse_EventScript_AlreadyGavePearlString
+	checkitem ITEM_PEARL, 3
+	goto_if_eq VAR_RESULT, FALSE, AshlandsHouse_EventScript_GetMorePearls
+	msgbox AshlandsHouse_Text_TakePearlString, MSGBOX_DEFAULT
+	removeitem ITEM_PEARL, 3
+	giveitem ITEM_PEARL_STRING
+	msgbox AshlandsHouse_Text_IHearAMonLikesThat, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+AshlandsHouse_EventScript_GetMorePearls::
+	msgbox AshlandsHouse_Text_GetMorePearls, MSGBOX_AUTOCLOSE
+	release
+	end
+
+AshlandsHouse_EventScript_AlreadyGavePearlString::
+	msgbox AshlandsHouse_Text_AlreadyGavePearlString, MSGBOX_AUTOCLOSE
+	release
+	end
+
+AshlandsHouse_Text_WantToCraftPearlString:
+	.string "Oh... hello.\n"
+	.string "I was once a professional\l"
+	.string "glass-blowing artist, like my pops.\l"
+	.string "But I got a little bored of that.\l"
+	.string "Now, I like making jewelry.\p"
+	.string "If you managed to have found\n"
+	.string "3 pearls on your journey, I can\l"
+	.string "make a very nice necklace for you.$"
+
+AshlandsHouse_Text_GetMorePearls:
+	.string "You, uh... don't have\n"
+	.string "enough pearls...\l"
+	.string "Nothing to be ashamed of.\l"
+	.string "They're pretty rare. I hear people\l"
+	.string "really looking to get their\l"
+	.string "hands on some will steal them\l"
+	.string "off of wild Spoink or Bivague.\l"
+	.string "But that's a bit too mean-\l"
+	.string "spirited for me...$"
+
+AshlandsHouse_Text_TakePearlString:
+	.string "One... Two... Three...\n"
+	.string "Yep. That's three pearls.\l"
+	.string "Okay. Let me get to crafting...\p"
+	.string "...\p"
+	.string "And here you go!\n"
+	.string "It's awfully beautiful. I'm\l"
+	.string "a bit jealous I don't get to\l"
+	.string "keep this one!$"
+
+AshlandsHouse_Text_IHearAMonLikesThat:
+	.string "Pearl enthusiasts talk a lot\n"
+	.string "about a specific Pokemon that\l"
+	.string "likes Pearl Strings. Maybe that'd\l"
+	.string "be something you'd want to check out?$"
+
+AshlandsHouse_Text_AlreadyGavePearlString:
+	.string "I'm a bit busy with orders at\n"
+	.string "the moment, sorry.\l"
+	.string "Hope you like that necklace!$"
+
 AshlandsHouse_Text_ILoveSpinda:
 	.string "(This woman's head is\n"
 	.string "spinning as if she's in a daze.)\p"

@@ -294,6 +294,7 @@
 #define MAP_OLDALE_TOWN_POKEMON_CENTER_1F    (1 | (19 << 8))
 #define MAP_OLDALE_TOWN_POKEMON_CENTER_2F    (2 | (19 << 8))
 #define MAP_LITTLEROOT_NORMAN_HOUSE          (3 | (19 << 8))
+#define MAP_OLDALE_INTERIORS                 (4 | (19 << 8))
 
 // gMapGroup_PiscesLeg11Major
 #define MAP_CRIMNEY_CALDERA             (0 | (20 << 8))

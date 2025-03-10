@@ -19,8 +19,10 @@ PacifidlogInteriors_EventScript_BattleSadFisher::
 PacifidlogInteriors_EventScript_GiveOldRod::
 	speakername PacifidlogInteriors_Text_NameSadFisher
 	msgbox PacifidlogInteriors_Text_GiveYouOneOfMyRods, MSGBOX_DEFAULT
+	speakername NULL
 	giveitem ITEM_OLD_ROD
 	setflag FLAG_RECEIVED_OLD_ROD
+	speakername PacifidlogInteriors_Text_NameSadFisher
 	msgbox PacifidlogInteriors_Text_ThrowInFishingAdvice, MSGBOX_DEFAULT
 	speakername NULL
 	release

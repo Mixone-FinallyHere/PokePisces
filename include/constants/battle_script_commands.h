@@ -314,10 +314,21 @@
 #define VARIOUS_APPLY_FRENZY_COUNTER                 222
 #define VARIOUS_TRY_ACTIVATE_HEART_CARVE             223
 #define VARIOUS_CUT_HP                               224
-#define VARIOUS_INCREASE_BLOOMING_TURNS              225
-#define VARIOUS_JUMP_IF_INFATUATED_SPECIFIC          226
-#define VARIOUS_DISABLE_CHOSEN_MOVE                  227
-#define VARIOUS_MIND_GAP_CHECK                       228
+#define VARIOUS_JUMP_IF_INFATUATED_SPECIFIC          225
+#define VARIOUS_DISABLE_CHOSEN_MOVE                  226
+#define VARIOUS_MIND_GAP_CHECK                       227
+#define VARIOUS_REMOVE_FRENZY_COUNTER                228
+#define VARIOUS_GET_ERODE_FIELD_TARGETS              229
+#define VARIOUS_JUMP_IF_NOT_ERODE_FIELD_AFFECTED     230
+#define VARIOUS_JUMP_IF_MOON_MIRRORED                231
+#define VARIOUS_JUMP_IF_SPECIES_MEGA_BOSS            232
+#define VARIOUS_FEAR_FACTOR                          233
+#define VARIOUS_RANDOM_STAT_DROP                     234
+#define VARIOUS_ALLURE                               235
+#define VARIOUS_TRY_DOUBLE_TEAM                      236
+#define VARIOUS_SET_SPOTLIGHT                        237
+#define VARIOUS_TRY_SET_IMPRISON                     238
+#define VARIOUS_INVERT_POSITIVE_STAT_STAGES          239
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0
@@ -391,14 +402,15 @@
 #define MOVEEND_LIFEORB_SHELLBELL                 29    // Includes shell bell, throat spray, etc
 #define MOVEEND_CHANGED_ITEMS                     30
 #define MOVEEND_PICKPOCKET                        31
-#define MOVEEND_DANCER                            32
-#define MOVEEND_SYMBIOSIS                         33
-#define MOVEEND_SAME_MOVE_TURNS                   34
-#define MOVEEND_SLICING_MOVE_TURNS                35
-#define MOVEEND_DANCING_MOVE_TURNS                36
+#define MOVEEND_SYMBIOSIS                         32
+#define MOVEEND_SAME_MOVE_TURNS                   33
+#define MOVEEND_SLICING_MOVE_TURNS                34
+#define MOVEEND_DANCING_MOVE_TURNS                35
+#define MOVEEND_STORM_BREW                        36
 #define MOVEEND_NEXT_DANCE_TARGET                 37
-#define MOVEEND_CLEAR_BITS                        38
-#define MOVEEND_COUNT                             39
+#define MOVEEND_DANCER                            38
+#define MOVEEND_CLEAR_BITS                        39
+#define MOVEEND_COUNT                             40
 
 // switch cases
 #define B_SWITCH_NORMAL     0

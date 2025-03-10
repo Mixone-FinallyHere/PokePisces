@@ -67,6 +67,7 @@
 #include "palette.h"
 #include "battle_util.h"
 #include "pokedex.h"
+#include "naming_screen.h"
 
 #define TAG_ITEM_ICON 5500
 
@@ -5146,6 +5147,25 @@ void SetPlayerGotFirstFans(void)
 u8 Script_TryGainNewFanFromCounter(void)
 {
     return TryGainNewFanFromCounter(gSpecialVar_0x8004);
+}
+
+void EnterCode(void)
+{
+    DoNamingScreen(NAMING_SCREEN_CODE, gStringVar2, 0, 0, 0, CB2_ReturnToFieldContinueScript);
+}
+
+void GetCodeFeedback(void)
+{
+    static const u8 sText_SampleCode[] = _("SampleCode");
+    static const u8 sText_Faylure[] = _("FAYLURE");
+    if (!StringCompare(gStringVar2, sText_SampleCode))
+        gSpecialVar_Result = 1;
+    else if (!StringCompare(gStringVar2, sText_Faylure))
+    {
+        gSpecialVar_Result = 2;
+    }
+    else
+        gSpecialVar_Result = 0;
 }
 
 bool8 GetSeenMon(void)

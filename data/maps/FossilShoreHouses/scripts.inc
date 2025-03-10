@@ -49,7 +49,7 @@ FossilShoreHouses_EventScript_NoOldRod::
 	end
 
 FossilShoreHouses_EventScript_BattleSadFisherNoOldRod::
-	trainerbattle_single TRAINER_P_SADFISHER_2, FossilShoreHouses_Text_SadFisherIntro, FossilShoreHouses_Text_SadFisherDefeat, FossilShoreHouses_EventScript_GiveOldGoodAndSuperRod
+	trainerbattle_single TRAINER_P_SADFISHER_3, FossilShoreHouses_Text_SadFisherIntro, FossilShoreHouses_Text_SadFisherDefeat, FossilShoreHouses_EventScript_GiveOldGoodAndSuperRod
 	release
 	end
 
@@ -75,7 +75,7 @@ FossilShoreHouses_EventScript_NoGoodRod::
 	end
 
 FossilShoreHouses_EventScript_BattleSadFisherNoGoodRod::
-	trainerbattle_single TRAINER_P_SADFISHER_2, FossilShoreHouses_Text_SadFisherIntro, FossilShoreHouses_Text_SadFisherDefeat, FossilShoreHouses_EventScript_GiveGoodAndSuperRod
+	trainerbattle_single TRAINER_P_SADFISHER_3, FossilShoreHouses_Text_SadFisherIntro, FossilShoreHouses_Text_SadFisherDefeat, FossilShoreHouses_EventScript_GiveGoodAndSuperRod
 	release
 	end
 
@@ -91,7 +91,7 @@ FossilShoreHouses_EventScript_GiveGoodAndSuperRod::
 	end
 
 FossilShoreHouses_EventScript_BattleSadFisher::
-	trainerbattle_single TRAINER_P_SADFISHER_2, FossilShoreHouses_Text_SadFisherIntro, FossilShoreHouses_Text_SadFisherDefeat, FossilShoreHouses_EventScript_GiveSuperRod
+	trainerbattle_single TRAINER_P_SADFISHER_3, FossilShoreHouses_Text_SadFisherIntro, FossilShoreHouses_Text_SadFisherDefeat, FossilShoreHouses_EventScript_GiveSuperRod
 	release
 	end
 

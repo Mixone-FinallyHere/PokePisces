@@ -232,6 +232,7 @@ struct DebugMonData
     u16 mon_move_1;
     u16 mon_move_2;
     u16 mon_move_3;
+    u8 mon_friendship;
 };
 
 struct DebugMenuListData
@@ -2710,6 +2711,7 @@ static void ResetMonDataStruct(struct DebugMonData *sDebugMonData)
     sDebugMonData->mon_iv_speed     = 0;
     sDebugMonData->mon_iv_satk      = 0;
     sDebugMonData->mon_iv_sdef      = 0;
+    sDebugMonData->mon_friendship   = 0;
 }
 static void DebugAction_Give_PokemonSimple(u8 taskId)
 {

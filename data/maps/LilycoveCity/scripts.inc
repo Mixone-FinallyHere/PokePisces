@@ -12,6 +12,7 @@ LilycoveCity_OnTransition:
 LilycoveCity_EventScript_RemoveYandemic::
 	removeobject LOCALID_YANDEMIC
 	setflag FLAG_TEMP_11
+	setvar VAR_TEMP_4, 1
 	return
 
 LilycoveCity_EventScript_FalseSwipeGiver::

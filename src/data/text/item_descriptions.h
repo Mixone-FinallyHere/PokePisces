@@ -167,25 +167,25 @@ static const u8 sCherishBallDesc[] = _(
 static const u8 sPotionDesc[] = _(
     "A topical medicine for\n"
     "treating wounds. It\n"
-    "can be used to restore\n"
+    "can be used to heal\n"
     "60 HP to a Pokémon.");
 
 static const u8 sSuperPotionDesc[] = _(
     "A topical medicine for\n"
     "treating wounds. It\n"
-    "can be used to restore\n"
+    "can be used to heal\n"
     "100 HP to a Pokémon.");
 
 static const u8 sHyperPotionDesc[] = _(
     "A topical medicine for\n"
     "treating wounds. It\n"
-    "can be used to restore\n"
+    "can be used to heal\n"
     "150 HP to a Pokémon.");
 
 static const u8 sMaxPotionDesc[] = _(
     "A topical medicine for\n"
     "treating wounds. It\n"
-    "can be used to restore\n"
+    "can be used to heal\n"
     "a Pokémon to max HP.");
 
 static const u8 sFullRestoreDesc[] = _(
@@ -209,7 +209,7 @@ static const u8 sMaxReviveDesc[] = _(
 static const u8 sFreshWaterDesc[] = _(
     "Water with high\n"
     "mineral content that\n"
-    "can be used to restore\n"
+    "can be used to heal\n"
     "50 HP to a Pokémon.");
 
 static const u8 sSodaPopDesc[] = _(
@@ -221,24 +221,24 @@ static const u8 sSodaPopDesc[] = _(
 static const u8 sLemonadeDesc[] = _(
     "A very sweet and\n"
     "refreshing drink that\n"
-    "can be used to restore\n"
+    "can be used to heal\n"
     "80 HP to a Pokémon.");
 
 static const u8 sMoomooMilkDesc[] = _(
     "A bottle of highly\n"
     "nutritious milk. It\n"
-    "can be used to restore\n"
+    "can be used to heal\n"
     "100 HP to a Pokémon.");
 
 static const u8 sEnergyPowderDesc[] = _(
     "A very bitter\n"
     "medicinal powder. It\n"
-    "can be used to restore\n"
+    "can be used to heal\n"
     "60 HP to a Pokémon.");
 
 static const u8 sEnergyRootDesc[] = _(
     "A very bitter root.\n"
-    "All it does it make\n"
+    "All it does is make\n"
     "your Pokémon less\n"
     "friendly...");
 
@@ -2791,8 +2791,8 @@ static const u8 sThroatSprayDesc[] = _(
 static const u8 sEjectPackDesc[] = _(
     "A parachute that\n"
     "switches the holder\n"
-    "out when its stats are\n"
-    "lowered.");
+    "out when its stats\n"
+    "are lowered.");
 
 static const u8 sHeavyDutyBootsDesc[] = _(
     "Some boots that\n"
@@ -2807,10 +2807,10 @@ static const u8 sBlunderPolicyDesc[] = _(
     "move.");
 
 static const u8 sRoomServiceDesc[] = _(
-    "A tray that lowers the\n"
-    "holder's Speed stat if\n"
-    "Trick Room takes\n"
-    "effect.");
+    "A tray that lowers\n"
+    "the holder's Speed\n"
+    "stat if Trick Room\n"
+    "takes effect.");
 
 static const u8 sUtilityUmbrellaDesc[] = _(
     "An umbrella that cuts\n"
@@ -3325,10 +3325,10 @@ static const u8 sTM17Desc[] = _(
     "for 5 turns.");
 
 static const u8 sTM18Desc[] = _(
-    "The user attacks\n"
-    "everyone with a\n"
-    "fear-inducing glare.\n"
-    "Its power varies.");
+    "Attacks with a fear-\n"
+    "inducing glare. Its\n"
+    "power and chance to\n"
+    "inflict panic varies.");
 
 static const u8 sTM19Desc[] = _(
     "The user spins into\n"
@@ -3451,7 +3451,7 @@ static const u8 sTM38Desc[] = _(
     "attack in the sky.");
 
 static const u8 sTM39Desc[] = _(
-    "Gets rid of the foe's"
+    "Gets rid of the foe's\n"
     "Berry and Blooming.\n"
     "Also critical-hits if\n"
     "the foe is Blooming.");
@@ -3530,7 +3530,7 @@ static const u8 sTM51Desc[] = _(
 
 static const u8 sTM52Desc[] = _( 
     "The user crashes into\n"
-    "the foeand may flinch\n"
+    "the foe and may flinch\n"
     "them. Does bonus damage\n"
     "on Electric Terrain.");
 
@@ -4407,9 +4407,10 @@ static const u8 sKeychainDesc[] = _(
     "Only for the factual.");
 
 static const u8 sFlipCoinDesc[] = _(
-    "A mysterious coin that\n"
-    "inverts a foe's stat\n"
-    "changes-but only once.");
+    "A mysterious coin\n"
+    "that inverts foes'\n"
+    "stat boosts-but only\n"
+    "once.");
 
 static const u8 sGravityCoreDesc[] = _(
     "An odd cube that\n"
@@ -4441,9 +4442,10 @@ static const u8 sBattleHelmDesc[] = _(
     "use of status moves.");
 
 static const u8 sSpectralIdolDesc[] = _(
-    "An unnerving totem\n"
-    "that increases the\n"
-    "opponent's PP usage.");
+    "Increases foes' PP\n"
+    "usage. The holder also\n"
+    "takes less damage from\n"
+    "panicked foes.");
 
 static const u8 sGlueTubeDesc[] = _(
     "Some sticky glue that\n"
@@ -4487,9 +4489,10 @@ static const u8 sVibrantScaleDesc[] = _(
     "Speed stats.");
 
 static const u8 sTriumphStarDesc[] = _(
-    "A star of power that\n"
-    "boosts the Ledyba\n"
-    "line's Attack stat.");
+    "Boosts Ledian's Attack\n"
+    "when screens are up.\n"
+    "Punching moves are\n"
+    "boosted further.");
 
 static const u8 sZigSashDesc[] = _(
     "A nice ribbon that\n"
@@ -4605,7 +4608,7 @@ static const u8 sFairyFeatherDesc[] = _(
 
 static const u8 sIcePopDesc[] = _(
     "A cool popsicle that\n"
-    "can be used to restore\n"
+    "can be used to heal\n"
     "1/3 of the Pokémon's\n"
     "HP and raise Sp. Def.");
 
@@ -4663,7 +4666,7 @@ static const u8 sLongNoseDesc[] = _(
 static const u8 sKamenScarfDesc[] = _(
     "A scarf that drops SE\n"
     "damage, ups Sp. Atk,\n"
-    "and charges the holder\n"
+    "and charges holder\n"
     "if hit. For Shockore.");
 
 static const u8 sGemstoneDesc[] = _(
@@ -4705,8 +4708,8 @@ static const u8 sCoralCrownDesc[] = _(
 static const u8 sExtrapolatorDesc[] = _(
     "A spray-type medicine\n"
     "that secures one\n"
-    "Pokémon to make it not\n"
-    "feel exposed.");
+    "Pokémon to make it\n"
+    "feel not exposed.");
 
 static const u8 sRelaxantDesc[] = _(
     "A spray-type medicine\n"
@@ -4717,7 +4720,8 @@ static const u8 sRelaxantDesc[] = _(
 static const u8 sShellyBrewDesc[] = _(
     "A mysterious liquid\n"
     "that can increase any\n"
-    "Pokémon to Level 50.");
+    "Pokémon to the\n"
+    "previous level cap.");
 
 static const u8 sBuddyCardDesc[] = _(
     "A futuristic card for\n"
@@ -4760,10 +4764,10 @@ static const u8 sCrypticPlateDesc[] = _(
     "Boosts Sp. Atk.");
 
 static const u8 sChupacabraDesc[] = _(
-    "A doll drained of life\n"
-    "that makes the holder\n"
-    "do bonus true damage,\n"
-    "but also move last.");
+    "A doll drained of\n"
+    "life. Moves with 70 or\n"
+    "less BP do bonus true\n"
+    "damage.");
 
 static const u8 sHeartGiftDesc[] = _(
     "A surprising gift that\n"

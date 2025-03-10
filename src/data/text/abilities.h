@@ -217,8 +217,8 @@ static const u8 sSandStreamDescription[] = _(
 
 static const u8 sPressureDescription[] = _(
     "The Pokémon raises the opposing\n"
-    "Pokémon's PP usage. Raises the\n"
-    "level of wild Pokémon.");
+    "Pokémon's PP usage by 2. Raises\n"
+    "the level of wild Pokémon.");
 
 static const u8 sThickFatDescription[] = _(
     "The Pokémon's layer of thick fat\n"
@@ -402,7 +402,7 @@ static const u8 sSimpleDescription[] = _(
     "Pokémon's stat changes.");
 
 static const u8 sDrySkinDescription[] = _(
-    "Water moves boost Speed and heal.\n"
+    "Water moves up Speed and heal.\n"
     "Heals in rain. Fire moves drop\n"
     "speed and hurt more. Hurt in sun.");
 
@@ -491,9 +491,9 @@ static const u8 sSuperLuckDescription[] = _(
     "wild Pokémon holding an item.");
 
 static const u8 sAftermathDescription[] = _(
-    "The Pokémon cannot be knocked\n"
-    "out before exploding. At 1 HP,\n"
-    "uses a Fire-type exploding move.");
+    "When the Pokémon is knocked out\n"
+    "by a direct attack, uses a 60 BP\n"
+    "Fire-type exploding move.");
 
 static const u8 sAnticipationDescription[] = _(
     "When the Pokémon enters battle\n"
@@ -894,8 +894,8 @@ static const u8 sWaterCompactionDescription[] = _(
     "Water-type move.");
 
 static const u8 sMercilessDescription[] = _(
-    "The Pokémon's attacks become\n"
-    "critical hits if the target is\n"
+    "Boosts the Pokémon's Speed stat\n"
+    "and moves if the target is\n"
     "poisoned.");
 
 static const u8 sShieldsDownDescription[] = _(
@@ -1140,7 +1140,7 @@ static const u8 sPerishBodyDescription[] = _(
 static const u8 sWanderingSpiritDescription[] = _(
     "The Pokémon exchanges Abilities\n"
     "with a Pokémon that hits it with\n"
-    "a move that makes direct contact.");
+    "a move that makes contact.");
 
 static const u8 sGorillaTacticsDescription[] = _(
     "Boosts the Pokémon's Attack stat\n"
@@ -1232,8 +1232,8 @@ static const u8 sWellBakedBodyDescription[] = _(
     "its Defense is sharply boosted.");
 
 static const u8 sWindRiderDescription[] = _(
-    "Boosts Atk and Sp. Atk if in\n"
-    "Tailwind, or hit by wind moves,\n"
+    "Boosts offenses if in Tailwind,\n"
+    "Sandstorm, or hit by wind moves,\n"
     "and takes no damage from them.");
 
 static const u8 sGuardDogDescription[] = _(
@@ -1246,8 +1246,8 @@ static const u8 sRockyPayloadDescription[] = _(
 
 static const u8 sWindPowerDescription[] = _(
     "Becomes charged if in Tailwind,\n"
-    "or hit by wind moves, and takes\n"
-    "no damage from them.");
+    "Sandstorm, or hit by wind moves,\n"
+    "and takes no damage from them.");
 
 static const u8 sZeroToHeroDescription[] = _(
     "The Pokémon transforms into its\n"
@@ -1320,8 +1320,8 @@ static const u8 sCudChewDescription[] = _(
 
 static const u8 sSharpnessDescription[] = _(
     "Powers up slicing moves, but\n"
-    "becomes weaker for each slicing\n"
-    "move used.");
+    "they become weaker for each\n"
+    "slicing move used.");
 
 static const u8 sSupremeOverlordDescription[] = _(
     "When entering battle, its Atk\n"
@@ -1494,8 +1494,8 @@ static const u8 sFrostJawDescription[] = _(
     "added effects on biting moves.");
 
 static const u8 sFuddlePointDescription[] = _(
-    "Contact with the Pokémon may\n"
-    "confuse the attacker.");
+    "Contact with the Pokémon\n"
+    "confuses the attacker.");
 
 static const u8 sMadnessDescription[] = _(
     "May confuse a target when the\n"
@@ -1562,9 +1562,9 @@ static const u8 sDrainageDescription[] = _(
     "at half or less.");
 
 static const u8 sDreadVeilDescription[] = _(
-    "When hit may panic the attacker.\n"
-    "May panic a target when the\n"
-    "Pokémon attacks.");
+    "Deals more damage if the foe is\n"
+    "panicking. If the user faints by\n"
+    "an attacker, makes them panic.");
 
 static const u8 sEmptyDescription[] = _(
     "The Pokémon receives full\n"
@@ -1582,9 +1582,9 @@ static const u8 sEntrancingDescription[] = _(
     "Pokémon take aim only at them.");
 
 static const u8 sEvilEyeDescription[] = _(
-    "The Pokémon stares at the\n"
-    "opposing Pokémon upon entering\n"
-    "battle, lowering their Speed.");
+    "The Pokémon eithers lowers foes'\n"
+    "Speed stats or paralyzes them if\n"
+    "they have a lot of stat boosts.");
 
 static const u8 sFreeLoveDescription[] = _(
     "The Pokémon can infatuate\n"
@@ -1592,9 +1592,9 @@ static const u8 sFreeLoveDescription[] = _(
     "gender.");
 
 static const u8 sGhoulishDescription[] = _(
-    "When the Pokémon takes damage\n"
-    "from attacks restores some of\n"
-    "the damage as HP.");
+    "After the Pokémon takes damage\n"
+    "from attacks it restores some of\n"
+    "the damage as HP afterwards.");
 
 static const u8 sGlaringStaggerDescription[] = _(
     "The Pokémon glares at the\n"
@@ -1704,12 +1704,17 @@ static const u8 sDomineerDescription[] = _(
 static const u8 sVertigoDescription[] = _(
     "Once per turn, if hit while\n"
     "confused, uses a Normal-type\n"
-    "move that lowers evasion.");
+    "move that lowers a random stat.");
 
 static const u8 sStormBrewDescription[] = _(
     "When using Electric moves, uses\n"
     "a move that's boosted for every\n"
     "Electric move used that turn.");
+
+static const u8 sRuinWardDescription[] = _(
+    "Summons Safeguard and Lucky\n"
+    "Chant when the Pokémon enters\n"
+    "battle. It loses HP every turn.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -2098,6 +2103,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_BAD_OMEN] = _("Bad Omen"),
     [ABILITY_BRAWLER] = _("Brawler"),
     [ABILITY_PROVOKED] = _("Provoked"),
+    [ABILITY_RUIN_WARD] = _("Ruin Ward"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -2486,6 +2492,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_BAD_OMEN] = _("Bad Omen"),
     [ABILITY_BRAWLER] = _("Brawler"),
     [ABILITY_PROVOKED] = _("Provoked"),
+    [ABILITY_RUIN_WARD] = _("Ruin Ward"),
 };
 #endif
 
@@ -2875,4 +2882,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_BAD_OMEN] = sNoneDescription,
     [ABILITY_BRAWLER] = sNoneDescription,
     [ABILITY_PROVOKED] = sNoneDescription,
+    [ABILITY_RUIN_WARD] = sRuinWardDescription,
 };

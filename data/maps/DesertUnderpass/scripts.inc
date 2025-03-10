@@ -11,8 +11,8 @@ DesertUnderpass_OnTransition:
 DesertUnderpass_EventScript_Fossil::
 	lock
 	faceplayer
-	goto_if_set FLAG_CHOSE_ROOT_FOSSIL, DesertUnderpass_EventScript_GiveClawFossil
-	goto_if_set FLAG_CHOSE_CLAW_FOSSIL, DesertUnderpass_EventScript_GiveRootFossil
+	goto_if_set FLAG_CHOSE_SANDBAG, DesertUnderpass_EventScript_GiveClawFossil
+	goto_if_set FLAG_CHOSE_SANDSTONE, DesertUnderpass_EventScript_GiveRootFossil
 	release
 	end
 

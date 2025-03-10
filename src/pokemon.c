@@ -4683,7 +4683,7 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
 #define CALC_STAT(base, iv, ev, statIndex, field)               \
 {                                                               \
     u8 baseStat = gSpeciesInfo[species].base;                   \
-    s32 n = (((2 * baseStat + iv + ev / 4) * level) / 100) + 5; \
+    s32 n = (((2 * baseStat + 31 + ev / 4) * level) / 100) + 5; \
     u8 nature = GetNature(mon);                                 \
     n = ModifyStatByNature(nature, n, statIndex);               \
     CALC_FRIENDSHIP_BOOST()                                     \
@@ -4723,12 +4723,12 @@ void CalculateMonStats(struct Pokemon *mon)
     }
     else if (species == SPECIES_FLAGUE_PRINCE)
     {
-        s32 n = 2 * gSpeciesInfo[species].baseHP + hpIV;
+        s32 n = 2 * gSpeciesInfo[species].baseHP + 31;
         newMaxHP = (((n + hpEV / 4) * level) / 100) + level + 210;
     }
     else
     {
-        s32 n = 2 * gSpeciesInfo[species].baseHP + hpIV;
+        s32 n = 2 * gSpeciesInfo[species].baseHP + 31;
         newMaxHP = (((n + hpEV / 4) * level) / 100) + level + 10;
     }
 
@@ -6349,32 +6349,35 @@ bool8 ExecuteTableBasedItemEffect(struct Pokemon *mon, u16 item, u8 partyIndex, 
     return PokemonUseItemEffects(mon, item, partyIndex, moveIndex, FALSE);
 }
 
-#define UPDATE_FRIENDSHIP_FROM_ITEM()                                                                   \
-{                                                                                                       \
-    if ((retVal == 0 || friendshipOnly) && !ShouldSkipFriendshipChange() && friendshipChange == 0)      \
-    {                                                                                                   \
-        friendshipChange = itemEffect[itemEffectParam];                                                 \
-        friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);                                        \
-        if (friendshipChange > 0)                                                                       \
-        {                                                                                               \
-            if (GetMonData(mon, MON_DATA_POKEBALL, NULL) == ITEM_LUXURY_BALL)                           \
-                friendshipChange++;                                                                     \
-            if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == GetCurrentRegionMapSectionId())         \
-                friendshipChange++;                                                                     \
-            if (holdEffect == HOLD_EFFECT_FRIENDSHIP_UP)                                                \
-                friendshipChange == 150 * friendshipChange / 100;                                       \
-        }                                                                                               \
-        if (holdEffect == HOLD_EFFECT_SALTY_TEAR)                                                       \
-            friendship -= friendshipChange;                                                             \
-        else                                                                                            \
-            friendship += friendshipChange;                                                             \
-        if (friendship < 0)                                                                             \
-            friendship = 0;                                                                             \
-        if (friendship > MAX_FRIENDSHIP)                                                                \
-            friendship = MAX_FRIENDSHIP;                                                                \
-        SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);                                              \
-        retVal = FALSE;                                                                                 \
-    }                                                                                                   \
+static bool32 UpdateFriendshipFromItem(struct Pokemon *mon, const u8 *itemEffect, u8 itemEffectParam, u32 holdEffect, u32 retVal, bool32 friendshipOnly, s8 friendshipChange)
+{
+    if ((retVal == 0 || friendshipOnly) && !ShouldSkipFriendshipChange() && friendshipChange == 0)
+    {
+        s32 friendship;
+
+        friendshipChange = itemEffect[itemEffectParam];
+        friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
+        if (friendshipChange > 0)
+        {
+            if (GetMonData(mon, MON_DATA_POKEBALL, NULL) == ITEM_LUXURY_BALL)
+                friendshipChange++;
+            if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == GetCurrentRegionMapSectionId())
+                friendshipChange++;
+            if (holdEffect == HOLD_EFFECT_FRIENDSHIP_UP)
+                friendshipChange == 150 * friendshipChange / 100;
+        }
+        if (friendshipChange > 0 && holdEffect == HOLD_EFFECT_SALTY_TEAR)
+            friendship -= friendshipChange;
+        else
+            friendship += friendshipChange;
+        if (friendship < 0)
+            friendship = 0;
+        if (friendship > MAX_FRIENDSHIP)
+            friendship = MAX_FRIENDSHIP;
+        SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
+        retVal = FALSE;
+    }
+    return retVal;
 }
 
 #if B_X_ITEMS_BUFF >= GEN_7
@@ -6427,6 +6430,11 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
     // Skip using the item if it won't do anything
     if (gItemEffectTable[item] == NULL && item != ITEM_ENIGMA_BERRY_E_READER)
         return TRUE;
+    
+    if (item == ITEM_ENERGY_ROOT) {
+        friendshipOnly = TRUE;
+        friendshipChange = itemEffect[7];
+    }
 
     // Get item effect
     itemEffect = GetItemEffect(item);
@@ -6452,6 +6460,36 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
 
         // Handle ITEM3 effects (Cure status)
         case 3:
+            // Rare Candy / EXP Candy
+            if ((itemEffect[i] & ITEM3_LEVEL_UP)
+             && GetMonData(mon, MON_DATA_LEVEL, NULL) != GetCurrentLevelCap())
+            {
+                u8 param = ItemId_GetHoldEffectParam(item);
+                dataUnsigned = 0;
+
+                if (param == 0) // Rare Candy
+                {
+                    dataUnsigned = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES, NULL)].growthRate][GetMonData(mon, MON_DATA_LEVEL, NULL) + 1];
+                }
+                else if (param == 69) // Shelly Brew
+                {
+                    dataUnsigned = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES, NULL)].growthRate][GetMonData(mon, MON_DATA_LEVEL, NULL) + 1];
+                }
+                else if (param - 1 < ARRAY_COUNT(sExpCandyExperienceTable)) // EXP Candies
+                {
+                    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+                    dataUnsigned = sExpCandyExperienceTable[param - 1] + GetMonData(mon, MON_DATA_EXP, NULL);
+                    if (dataUnsigned > gExperienceTables[gSpeciesInfo[species].growthRate][MAX_LEVEL])
+                        dataUnsigned = gExperienceTables[gSpeciesInfo[species].growthRate][MAX_LEVEL];
+                }
+
+                if (dataUnsigned != 0) // Failsafe
+                {
+                    SetMonData(mon, MON_DATA_EXP, &dataUnsigned);
+                    CalculateMonStats(mon);
+                    retVal = FALSE;
+                }
+            }            
             // Cure status
             if ((itemEffect[i] & ITEM3_SLEEP) && HealStatusConditions(mon, partyIndex, STATUS1_SLEEP_ANY, battlerId) == 0)
                 retVal = FALSE;
@@ -6463,8 +6501,8 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                 retVal = FALSE;
             if ((itemEffect[i] & ITEM3_PARALYSIS) && HealStatusConditions(mon, partyIndex, STATUS1_PARALYSIS, battlerId) == 0)
                 retVal = FALSE;
-            if ((itemEffect[i] & ITEM3_EXPOSED) && HealStatusConditions(mon, partyIndex, STATUS1_EXPOSED, battlerId) == 0)
-                retVal = FALSE;
+            //if ((itemEffect[i] & ITEM3_EXPOSED) && HealStatusConditions(mon, partyIndex, STATUS1_EXPOSED, battlerId) == 0)
+            //    retVal = FALSE;
             if ((itemEffect[i] & ITEM3_PANIC) && HealStatusConditions(mon, partyIndex, STATUS1_PANIC, battlerId) == 0)
                 retVal = FALSE;
             break;
@@ -6768,19 +6806,19 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                         // In general, Pokémon with lower friendship receive more,
                         // and Pokémon with higher friendship receive less.
                         if (GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) < 100)
-                            UPDATE_FRIENDSHIP_FROM_ITEM();
+                            retVal = UpdateFriendshipFromItem(mon, itemEffect, 7, holdEffect, retVal, friendshipOnly, friendshipChange);
                         itemEffectParam++;
                         break;
 
                     case 6: // ITEM5_FRIENDSHIP_MID
                         if (GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) >= 100 && GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) < 200)
-                            UPDATE_FRIENDSHIP_FROM_ITEM();
+                            retVal = UpdateFriendshipFromItem(mon, itemEffect, 8, holdEffect, retVal, friendshipOnly, friendshipChange);
                         itemEffectParam++;
                         break;
 
                     case 7: // ITEM5_FRIENDSHIP_HIGH
                         if (GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) >= 200)
-                            UPDATE_FRIENDSHIP_FROM_ITEM();
+                            retVal = UpdateFriendshipFromItem(mon, itemEffect, 9, holdEffect, retVal, friendshipOnly, friendshipChange);
                         itemEffectParam++;
                         break;
                     }
@@ -7830,14 +7868,14 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
             if (mod > 0)
             {
                 if (GetMonData(mon, MON_DATA_POKEBALL, NULL) == ITEM_LUXURY_BALL)
-                mod++;
+                    mod++;
                 if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == GetCurrentRegionMapSectionId())
-                mod++;
+                    mod++;
                 if (holdEffect == HOLD_EFFECT_FRIENDSHIP_UP)
-                mod == 150 * mod / 100;
+                    mod == 150 * mod / 100;
             }
 
-            if (holdEffect == HOLD_EFFECT_SALTY_TEAR)
+            if (mod > 0 && holdEffect == HOLD_EFFECT_SALTY_TEAR)
                 friendship -= mod;
             else
                 friendship += mod;
@@ -8207,9 +8245,6 @@ u8 GetMoveRelearnerMoves(struct Pokemon *mon, u16 *moves)
     // Egg move tutor.
 	if (FlagGet(FLAG_LEVEL_1_TUTOR))
 	{
-		// Species to pull egg moves from.
-		species = GetEggSpecies(species);
-
 		k = GetEggMovesArraySize() - 1;
 
 		// Here, j is being used as the offset into gEggMoves.
@@ -8300,9 +8335,6 @@ u8 GetNumberOfRelearnableMoves(struct Pokemon *mon)
 	// Egg move tutor.
 	if (FlagGet(FLAG_LEVEL_1_TUTOR))
 	{
-		// Species to pull egg moves from.
-		species = GetEggSpecies(species);
-
 		k = GetEggMovesArraySize() - 1;
 
 		// Here, j is being used as the offset into gEggMoves.
@@ -8394,8 +8426,6 @@ u16 GetBattleBGM(void)
 
     if (gBattleTypeFlags & BATTLE_TYPE_KYOGRE_GROUDON)
         return MUS_VS_KYOGRE_GROUDON;
-    else if (gBattleTypeFlags & BATTLE_TYPE_REGI)
-        return MUS_VS_REGI;
     else if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK))
         return MUS_VS_PTRAINER;
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
@@ -8415,16 +8445,17 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_DOME_ACE:
         case TRAINER_CLASS_STROLLER:
         case TRAINER_CLASS_PRESENTER:
+        case TRAINER_CLASS_MAGMA_ADMIN:
             return MUS_VS_ZINNIA;
         case TRAINER_CLASS_TOPAZ_ACOLYTE:
         case TRAINER_CLASS_GILDED_MONK:
             return MUS_EVER_GRANDE_ROAD;
         case TRAINER_CLASS_AQUA_LEADER:
+            return MUS_VS_AQUA_MAGMA_LEADER;
         case TRAINER_CLASS_MAGMA_LEADER:
-            return MUS_VS_CHAMPION;
+            return MUS_VS_OZONE;
         case TRAINER_CLASS_AQUA_ADMIN:
-        case TRAINER_CLASS_MAGMA_ADMIN:
-            return MUS_VS_CHAMPION;
+            return MUS_VS_AQUA_MAGMA;
         case TRAINER_CLASS_LEADER:
             return MUS_VS_GYM_LEADER_2;
         case TRAINER_CLASS_CHAMPION:
@@ -8438,6 +8469,7 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_ELITE_FOUR:
             return MUS_VS_ELITE_FOUR;
         case TRAINER_CLASS_SALON_MAIDEN:
+            return MUS_VS_WALLY;
         case TRAINER_CLASS_PALACE_MAVEN:
         case TRAINER_CLASS_ARENA_TYCOON:
         case TRAINER_CLASS_FACTORY_HEAD:
@@ -9148,6 +9180,36 @@ u8 GetCurrentLevelCap(void)
         return 72;
     else if (!FlagGet(FLAG_IS_CHAMPION))
         return 75;
+    else
+        return 100;
+}
+
+u8 GetPreviousLevelCap(void)
+{
+    if (!FlagGet(FLAG_BADGE01_GET))
+        return 10;
+    else if (!FlagGet(FLAG_BADGE02_GET))
+        return 12;
+    else if (!FlagGet(FLAG_DEFEATED_PANIC_EVENT))
+        return 17;
+    else if (!FlagGet(FLAG_DEFEATED_OZONE_BRANCH))
+        return 18;
+    else if (!FlagGet(FLAG_BADGE03_GET))
+        return 22;
+    else if (!FlagGet(FLAG_BADGE04_GET))
+        return 28;
+    else if (!FlagGet(FLAG_BADGE05_GET))
+        return 33;
+    else if (!FlagGet(FLAG_BADGE06_GET)) 
+        return 39;
+    else if (!FlagGet(FLAG_BADGE07_GET))
+        return 48;
+    else if (!FlagGet(FLAG_BADGE08_GET))
+        return 54;
+    else if (!FlagGet(FLAG_DEFEATED_EVIL_WALLY))
+        return 62;
+    else if (!FlagGet(FLAG_IS_CHAMPION))
+        return 72;
     else
         return 100;
 }

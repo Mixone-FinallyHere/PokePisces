@@ -31,7 +31,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "4",
       "script": "FortreeGymNew_EventScript_Everest",
-      "flag": "0"
+      "flag": "FLAG_BADGE04_GET"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_GREEN_HAIR",
@@ -44,7 +44,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "4",
       "script": "FortreeGymNew_EventScript_Lhotse",
-      "flag": "0"
+      "flag": "FLAG_BADGE04_GET"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_GREEN_HAIR",
@@ -57,7 +57,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "FortreeGymNew_EventScript_Denali",
-      "flag": "0"
+      "flag": "FLAG_BADGE04_GET"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_EXPERT_F",
@@ -70,7 +70,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "FortreeGymNew_EventScript_Rainier",
-      "flag": "0"
+      "flag": "FLAG_BADGE04_GET"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BLONDE_LASS",
@@ -83,7 +83,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "FortreeGymNew_EventScript_Fuji",
-      "flag": "0"
+      "flag": "FLAG_BADGE04_GET"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MYSTERY_GIFT_MAN",
@@ -109,7 +109,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "FortreeGymNew_EventScript_JumpToArena",
-      "flag": "0"
+      "flag": "FLAG_BADGE04_GET"
     }
   ],
   "warp_events": [
@@ -133,6 +133,13 @@
       "elevation": 0,
       "dest_map": "MAP_FORTREE_GYM_TRANSITION_BUILDING",
       "dest_warp_id": "4"
+    },
+    {
+      "x": 28,
+      "y": 34,
+      "elevation": 0,
+      "dest_map": "MAP_FORTREE_GYM_NEW",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

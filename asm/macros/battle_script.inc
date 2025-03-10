@@ -832,8 +832,9 @@
 	.byte 0x99
 	.endm
 
-	.macro setfocusenergy
+	.macro setfocusenergy battler:req
 	.byte 0x9a
+    .byte \battler
 	.endm
 
 	.macro transformdataexecution
@@ -1156,8 +1157,9 @@
 	.4byte \failInstr
 	.endm
 
-	.macro trysetmagiccoat failInstr:req
+	.macro trysetmagiccoat battler:req, failInstr:req
 	.byte 0xdf
+	.byte \battler
 	.4byte \failInstr
 	.endm
 
@@ -1357,6 +1359,15 @@
 	.4byte \jumpInstr
 	.endm
 
+	.macro allyswitchswapbattlers
+	callnative BS_AllySwitchSwapBattler
+	.endm
+
+	.macro allyswitchfailchance jumpInstr:req
+	callnative BS_AllySwitchFailChance
+	.4byte \jumpInstr
+	.endm
+
 	.macro dostockpilestatchangeswearoff, battler:req, statChangeInstr:req
 	callnative BS_DoStockpileStatChangesWearOff
 	.byte \battler
@@ -1412,14 +1423,16 @@
 	callnative BS_SetGlaiveRush2
 	.endm
 
-	.macro trycinderdrill battler:req
+	.macro trycinderdrill
 	callnative BS_TryCinderDrill
-	.byte \battler
 	.endm
 
-	.macro trycindertwirl battler:req
+	.macro trycindertwirl
 	callnative BS_TryCinderTwirl
-	.byte \battler
+	.endm
+
+	.macro tryshieldsup
+	callnative BS_TryShieldsUp
 	.endm
 
 	.macro trycopycat failInstr:req
@@ -1454,8 +1467,26 @@
 	.4byte \ptr
 	.endm
 
+	.macro checkallurecounter counter:req, ptr:req
+	callnative BS_CheckAllureCounter
+	.byte \counter
+	.4byte \ptr
+	.endm
+
+	.macro checkfrenzycounter counter:req, ptr:req
+	callnative BS_CheckFrenzyCounter
+	.byte \counter
+	.4byte \ptr
+	.endm
+
 	.macro checkstatboosts counter:req, ptr:req
 	callnative BS_CheckStatBoosts
+	.byte \counter
+	.4byte \ptr
+	.endm
+
+	.macro checkspeeddrops counter:req, ptr:req
+	callnative BS_CheckSpeedDrops
 	.byte \counter
 	.4byte \ptr
 	.endm
@@ -1829,6 +1860,16 @@
 	.4byte \failInstr
 	.endm
 
+	.macro trydoubleteam battler:req, failInstr:req
+	various \battler, VARIOUS_TRY_DOUBLE_TEAM
+	.4byte \failInstr
+	.endm
+
+	.macro setspotlight failInstr:req
+	various BS_ATTACKER, VARIOUS_SET_SPOTLIGHT
+	.4byte \failInstr
+	.endm
+
 	.macro jumpifcantusesynchronoise jumpInstr:req
 	various BS_ATTACKER, VARIOUS_TRY_SYNCHRONOISE
 	.4byte \jumpInstr
@@ -1913,6 +1954,16 @@
 
 	.macro tryaccupressure battler:req, failInstr:req
 	various \battler, VARIOUS_ACUPRESSURE
+	.4byte \failInstr
+	.endm
+
+	.macro tryrandomstatdrop battler:req, failInstr:req
+	various \battler, VARIOUS_RANDOM_STAT_DROP
+	.4byte \failInstr
+	.endm
+
+	.macro setallure failInstr:req
+	various BS_TARGET, VARIOUS_ALLURE
 	.4byte \failInstr
 	.endm
 
@@ -2040,6 +2091,10 @@
 	various BS_ATTACKER, VARIOUS_BOUNDARY_OF_DEATH
 	.endm
 
+	.macro fearfactordamagecalculation
+	various BS_ATTACKER, VARIOUS_FEAR_FACTOR
+	.endm
+
 	.macro highrollhitdamagecalculation
 	various BS_ATTACKER, VARIOUS_HIGH_ROLL_HIT
 	.endm
@@ -2149,11 +2204,6 @@
 	.4byte \failInstr
 	.endm
 
-	.macro increasebloomingturns battler:req, failInstr:req
-	various \battler, VARIOUS_INCREASE_BLOOMING_TURNS
-	.4byte \failInstr
-	.endm
-
 	.macro applyfrenzycounter battler:req, failInstr:req
 	various \battler, VARIOUS_APPLY_FRENZY_COUNTER
 	.4byte \failInstr
@@ -2161,6 +2211,11 @@
 
 	.macro removealldaybreakcounters battler:req, failInstr:req
 	various \battler, VARIOUS_REMOVE_DAYBREAK_COUNTER
+	.4byte \failInstr
+	.endm
+
+	.macro removeallfrenzycounters battler:req, failInstr:req
+	various \battler, VARIOUS_REMOVE_FRENZY_COUNTER
 	.4byte \failInstr
 	.endm
 
@@ -2224,6 +2279,16 @@
 	.4byte \jumpInstr
 	.endm
 
+	.macro geterodefieldtargets failInstr:req
+	various BS_ATTACKER, VARIOUS_GET_ERODE_FIELD_TARGETS
+	.4byte \failInstr
+	.endm
+
+	.macro jumpifnoterodefieldaffected battler:req, jumpInstr:req
+	various \battler, VARIOUS_JUMP_IF_NOT_ERODE_FIELD_AFFECTED
+	.4byte \jumpInstr
+	.endm
+
 	.macro tryactivatebattlebond battler:req
 	various \battler, VARIOUS_TRY_ACTIVATE_BATTLE_BOND
 	.endm
@@ -2251,6 +2316,11 @@
 
 	.macro jumpifspecieshasnolegs battler:req, jumpInstr:req
 	various \battler, VARIOUS_JUMP_IF_SPECIES_HAS_NO_LEGS
+	.4byte \jumpInstr
+	.endm
+
+	.macro jumpifspeciesmegaboss battler:req, jumpInstr:req
+	various \battler, VARIOUS_JUMP_IF_SPECIES_MEGA_BOSS
 	.4byte \jumpInstr
 	.endm
 
@@ -2321,6 +2391,12 @@
 	.macro setoctolock battler:req, failInstr:req
 	various \battler, VARIOUS_SET_OCTOLOCK
 	.4byte \failInstr
+	.endm
+
+	.macro trysetimprison battler:req, failInstr:req, jumpInstr:req
+	various \battler, VARIOUS_TRY_SET_IMPRISON
+	.4byte \failInstr
+	.4byte \jumpInstr
 	.endm
 
 	.macro setpurified battler:req, failInstr:req
@@ -2440,6 +2516,10 @@
 
 	.macro setovertaketarget
 	various BS_TARGET, VARIOUS_SET_OVERTAKE_TARGET
+	.endm
+
+	.macro restoresavedmove
+	callnative BS_RestoreSavedMove
 	.endm
 
 @ helpful macros
@@ -2580,6 +2660,11 @@
 	.4byte \jumpInstr
 	.endm
 
+	.macro jumpifmoonmirrored battler:req, jumpInstr:req
+	various \battler, VARIOUS_JUMP_IF_MOON_MIRRORED
+	.4byte \jumpInstr
+	.endm
+
 	.macro jumpifterucharmprotected battler:req, jumpInstr:req
 	various \battler, VARIOUS_JUMP_IF_TERU_CHARM_PROTECTED
 	.4byte \jumpInstr
@@ -2607,6 +2692,10 @@
 
 	.macro invertnegativestatstages battler:req
 	various \battler, VARIOUS_INVERT_NEGATIVE_STAT_STAGES
+	.endm
+
+	.macro invertpositivestatstages battler:req
+	various \battler, VARIOUS_INVERT_POSITIVE_STAT_STAGES
 	.endm
 
 	.macro jumpifsafeguard jumpInstr:req

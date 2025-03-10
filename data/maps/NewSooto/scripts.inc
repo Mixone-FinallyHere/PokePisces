@@ -15,6 +15,7 @@ NewSooto_OnTransition:
 NewSooto_EventScript_RemoveYandemic::
 	removeobject LOCALID_YANDEMIC
 	setflag FLAG_TEMP_11
+	setvar VAR_TEMP_4, 1
 	return
 
 NewSooto_EventScript_RemoveDrake::

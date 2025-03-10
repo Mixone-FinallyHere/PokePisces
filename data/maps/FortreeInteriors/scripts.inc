@@ -62,6 +62,7 @@ FortreeInteriors_EventScript_YandemicJoinsTheParty::
 	playmoncry SPECIES_YANDEMIC, CRY_MODE_NORMAL
 	waitmoncry
 	msgbox FortreeInteriors_Text_YandemicWantsToBeWithYou, MSGBOX_DEFAULT
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_YANDEMIC
 	givemon SPECIES_YANDEMIC, 31
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, FortreeInteriors_EventScript_ReceiveYandemicParty
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, FortreeInteriors_EventScript_ReceiveYandemicPC
@@ -155,6 +156,75 @@ FortreeInteriors_EventScript_TradeCompleted::
 	msgbox FortreeInteriors_Text_ThanksForTrading, MSGBOX_DEFAULT
 	release
 	end
+
+FortreeInteriors_EventScript_ChoiceItems::
+	lock
+	faceplayer
+	goto_if_set FLAG_CHOICE_ITEM_1, FortreeInteriors_EventScript_MadeYourChoice
+	msgbox FortreeInteriors_Text_PickAChoiceItem, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_CHOICE_ITEM_PICK, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	goto_if_eq VAR_TEMP_1, 0, FortreeInteriors_EventScript_GiveChoiceBand
+	goto_if_eq VAR_TEMP_1, 1, FortreeInteriors_EventScript_GiveChoiceSpecs
+	goto_if_eq VAR_TEMP_1, 2, FortreeInteriors_EventScript_GiveChoiceScarf
+	msgbox FortreeInteriors_Text_ChoiceParalysis, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+FortreeInteriors_EventScript_GiveChoiceBand::
+	closemessage
+	giveitem ITEM_CHOICE_BAND
+	closemessage
+	setflag FLAG_CHOICE_ITEM_1
+	msgbox FortreeInteriors_Text_MadeYourChoice, MSGBOX_AUTOCLOSE
+	release
+	end
+
+FortreeInteriors_EventScript_GiveChoiceSpecs::
+	closemessage
+	giveitem ITEM_CHOICE_SPECS
+	closemessage
+	setflag FLAG_CHOICE_ITEM_1
+	msgbox FortreeInteriors_Text_MadeYourChoice, MSGBOX_AUTOCLOSE
+	release
+	end
+
+FortreeInteriors_EventScript_GiveChoiceScarf::
+	closemessage
+	giveitem ITEM_CHOICE_SCARF
+	closemessage
+	setflag FLAG_CHOICE_ITEM_1
+	msgbox FortreeInteriors_Text_MadeYourChoice, MSGBOX_AUTOCLOSE
+	release
+	end
+
+FortreeInteriors_EventScript_MadeYourChoice::
+	msgbox FortreeInteriors_Text_MadeYourChoice, MSGBOX_AUTOCLOSE
+	release
+	end
+
+FortreeInteriors_Text_PickAChoiceItem:
+	.string "Sometimes in life, you must make\n"
+	.string "hard choices! You cannot just\l"
+	.string "get everything you would like.\p"
+	.string "I propose a choice to YOU,\n"
+	.string "stranger. I am in possession of\l"
+	.string "3 of the Choice items.\l"
+	.string "The Band, for Attack.\l"
+	.string "The Specs, for Special Attack.\l"
+	.string "The Scarf, for Speed.\p"
+	.string "You may have one...\n"
+	.string "and ONLY one...!\p"
+	.string "It is up to you which you get!\n$"
+
+FortreeInteriors_Text_ChoiceParalysis:
+	.string "You must have choice paralysis!\n"
+	.string "How very weak!$"
+
+FortreeInteriors_Text_MadeYourChoice:
+	.string "You have now made your choice!\n"
+	.string "And you must live with that.$"
 
 FortreeInteriors_Text_IllTradeIfYouWant:
 	.string "I'll trade you my {STR_VAR_2} for\n"

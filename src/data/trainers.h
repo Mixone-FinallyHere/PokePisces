@@ -26,10 +26,10 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_MENDEL] =
     {
-        .trainerClass = TRAINER_CLASS_PARASOL_LADY,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
-        .trainerPic = TRAINER_PIC_PARASOL_LADY,
-        .trainerName = _("Mendali"),
+        .trainerClass = TRAINER_CLASS_GAMBLER,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_COOL,
+        .trainerPic = TRAINER_PIC_GAMBLER,
+        .trainerName = _("Kaiji"),
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
@@ -8198,7 +8198,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_WALLY] =
     {
-        .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
+        .trainerClass = TRAINER_CLASS_SALON_MAIDEN,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_INTENSE,
         .trainerPic = TRAINER_PIC_WALLY,
         .trainerName = _("Wally"),
@@ -8270,7 +8270,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_TABITHA_3] =
     {
-        .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
+        .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_MAGMA_ADMIN,
         .trainerName = _("Tabitha"),
@@ -8282,7 +8282,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_MATT_3] =
     {
-        .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
+        .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_AQUA_ADMIN_M,
         .trainerName = _("Matt"),
@@ -8306,7 +8306,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_COURTNEY_2] =
     {
-        .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
+        .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_AQUA_GRUNT_F,
         .trainerName = _("Courtney"),
@@ -8318,7 +8318,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_SHELLY_2] =
     {
-        .trainerClass = TRAINER_CLASS_AQUA_ADMIN,
+        .trainerClass = TRAINER_CLASS_MAGMA_LEADER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR,
         .trainerPic = TRAINER_PIC_AQUA_ADMIN_F,
         .trainerName = _("Shelly"),

@@ -27,6 +27,53 @@ ScuttillInteriors_EventScript_AlreadyGaveBurntBranch::
 	release
 	end
 
+ScuttillInteriors_EventScript_UFOBeliever::
+	lock
+	faceplayer
+	checkitem ITEM_CRYPTIC_PLATE
+	goto_if_eq VAR_RESULT, TRUE, ScuttillInteriors_EventScript_AlreadyGaveCrypticPlate
+	msgbox ScuttillInteriors_Text_CropCircles, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_CRYPTIC_PLATE
+	closemessage
+	msgbox ScuttillInteriors_Text_BewareOfAliens, MSGBOX_AUTOCLOSE
+	release
+	end
+
+ScuttillInteriors_EventScript_AlreadyGaveCrypticPlate::
+	msgbox ScuttillInteriors_Text_AlreadyGaveCrypticPlate, MSGBOX_AUTOCLOSE
+	release
+	end
+
+ScuttillInteriors_Text_CropCircles:
+	.string "H-Howdy...\n"
+	.string "Lissen, you been gettin' real\l"
+	.string "wacko energy from 'round here lately?\p"
+	.string "Dag gummit, my crops got all\n"
+	.string "messed with somehow! 's like\l"
+	.string "there's a big ol' circle carved\l"
+	.string "into my cornstalk field!\p"
+	.string "N' just last week, I reckon I\n"
+	.string "lost one'a my Coforchee.\l"
+	.string "Just poof! Vanished into the night.\l"
+	.string "What happened to the poor thing?\p"
+	.string "Alls I know is, the mornin' after,\n"
+	.string "I done found this here special\l"
+	.string "lookin' rock out in the animal\l"
+	.string "enclosures. It gives me\l"
+	.string "the willies! C-Can ya take it\l"
+	.string "somewheres FAR away from me??$"
+
+ScuttillInteriors_Text_BewareOfAliens:
+	.string "Keep eyes on the back'a\n"
+	.string "your head, I reckon!$"
+
+ScuttillInteriors_Text_AlreadyGaveCrypticPlate:
+	.string "Jeepers creepers, now\n"
+	.string "my dad gumm radio is sendin'\l"
+	.string "out weird sounds'n the like!\l"
+	.string "What in tarnation is happenin'?!$"
+
 ScuttillInteriors_Text_WhenYouBurnJustRight:
 	.string "I like to get a little fancy\n"
 	.string "when charcoal painting. Lots\l"

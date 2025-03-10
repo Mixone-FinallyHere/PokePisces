@@ -431,8 +431,11 @@ static bool8 ShouldSwitchIfGameStatePrompt(u32 battler)
         }
 
         //Infatuation
+        moduloChance = 3;
         if (gBattleMons[battler].status2 & STATUS2_INFATUATION
-            && !AiExpectsToFaintPlayer(battler))
+            && (Random() % (moduloChance*chanceReducer)) == 0
+            && !AiExpectsToFaintPlayer(battler)
+            && monAbility != ABILITY_LOVESICK)
             switchMon = TRUE;
 
         //Todo

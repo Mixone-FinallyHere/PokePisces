@@ -1,14 +1,22 @@
+.set LOCALID_POMATIA1, 1
+.set LOCALID_POMATIA2, 2
+.set LOCALID_POMATIA3, 3
+.set LOCALID_POMATIA4, 4
+
 SecretMossdeepCave_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, SecretMossdeepCave_OnTransition
 	.byte 0
 
 SecretMossdeepCave_OnTransition:
-	call_if_lt VAR_SHELLYLOUH_STATE, 1, SecretMossdeepCave_EventScript_SetTempFlags
+	call_if_set FLAG_SHELLYLOUH_RIDDLE_1, SecretMossdeepCave_EventScript_SetTempFlags
 	end
 
 SecretMossdeepCave_EventScript_SetTempFlags::
+	removeobject LOCALID_POMATIA1
+	removeobject LOCALID_POMATIA2
+	removeobject LOCALID_POMATIA3
+	removeobject LOCALID_POMATIA4
 	setflag FLAG_TEMP_11
-	setflag FLAG_TEMP_12
 	return
 
 SecretMossdeepCave_EventScript_PomAndAtia::
@@ -18,8 +26,7 @@ SecretMossdeepCave_EventScript_PomAndAtia::
 
 SecretMossdeepCave_EventScript_GiveShellPolish::
 	msgbox SecretMossdeepCave_Text_HaveSP, MSGBOX_DEFAULT
-	setvar VAR_SHELLYLOUH_STATE, 2
-	giveitem ITEM_SHELL_POLISH
+	giveitem ITEM_PEARL_STRING
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	release
 	end
@@ -45,5 +52,4 @@ SecretMossdeepCave_Text_HaveSP:
 	.string "Snelfrend are wonderful\n"
 	.string "little Pokémon.\p"
 	.string "Since they had a good time fighting\n"
-	.string "with you, have this item\l"
-	.string "we use to keep 'em stronger.$"
+	.string "with you, have this item!$"

@@ -68,7 +68,10 @@ struct DisableStruct
     u8 protectUses;
     u8 stockpileCounter;
     u8 exhaustionCounter;
+    u8 surpriseCounter;
     u8 daybreakCounter;
+    u8 stormBrewCounter;
+    u8 allureCounter;
     u8 frenzyCounter;
     u8 purified;
     s8 stockpileDef;
@@ -104,6 +107,7 @@ struct DisableStruct
     u8 noRetreat:1;
     u8 tarShot:1;
     u8 octolock:1;
+    u8 bounceMove:1;
     u8 cudChew:1;
     u8 spikesDone:1;
     u8 toxicSpikesDone:1;
@@ -111,7 +115,6 @@ struct DisableStruct
     u8 stealthRockDone:1;
     u8 spiderweb:1;
     u8 shunyongFlinchTimer:2;
-    u8 heartGiftTimer:4;
     u8 meanLook:1;
     u8 guardSplit:1;
     u8 guardSwap:1;
@@ -140,7 +143,6 @@ struct ProtectStruct
     u32 endured:1;
     u32 noValidMoves:1;
     u32 helpingHand:1;
-    u32 bounceMove:1;
     u32 stealMove:1;
     u32 prlzImmobility:1;
     u32 confusionSelfDmg:1;
@@ -177,11 +179,14 @@ struct ProtectStruct
     u16 burningBulwarked:1;
     u16 drakenGuarded:1;
     u16 eatMirrorHerb:1;
+    u16 usedAllySwitch:1;
     u32 physicalDmg;
     u32 specialDmg;
     u8 physicalBattlerId;
     u8 specialBattlerId;
     u32 extraMoveUsed:1;
+    u32 aftermathBlowUp:1;
+    u32 alreadyUsedStormBrew:1;
     u32 hardStoneBoost:1;
     u8 overtakeRedirectActive:1; //active for the battler being hit by MOVE_OVERTAKE
     u8 overtakeRedirectedUser:2; //saves battler linked by MOVE_OVERTAKE
@@ -216,6 +221,7 @@ struct SpecialStatus
     // End of byte
     u8 gemBoost:1;
     u8 rototillerAffected:1;  // to be affected by rototiller
+    u8 erodeFieldAffected:1;
     u8 parentalBondState:2;
     u8 multiHitOn:1;
     u8 announceNeutralizingGas:1;   // See Cmd_switchineffects
@@ -262,6 +268,8 @@ struct SideTimer
     u8 followmeTimer;
     u8 followmeTarget:3;
     u8 followmePowder:1; // Rage powder, does not affect grass type pokemon.
+    u8 spotlightTimer;
+    u8 spotlightTarget:3;
     u8 retaliateTimer;
     u8 silenceTimer;
     u8 silenceTimerBattlerId;
@@ -670,11 +678,10 @@ struct BattleStruct
     u8 alreadyStatusedMoveAttempt; // As bits for battlers; For example when using Thunder Wave on an already paralyzed pokemon.
     u8 debugBattler;
     u8 magnitudeBasePower;
+    u8 fearFactorBasePower;
     u8 dragonpokerBasePower;
     u8 fickleBeamBoosted:1;
     u8 redCardActivates:1;
-    u8 usedEjectItem;
-    u8 boundaryBasePower;
     u8 rollingBasePower;
     u8 presentBasePower;
     u8 roostTypes[MAX_BATTLERS_COUNT][2];
@@ -754,6 +761,8 @@ struct BattleStruct
     u8 aiCalcInProgress:1;
     u8 savedDanceTargets;
     u8 DancerCount;
+    u8 usedEjectItem;
+    u16 savedMove; // backup current move for mid-turn switching, e.g. Red Card
 };
 
 // The palaceFlags member of struct BattleStruct contains 1 flag per move to indicate which moves the AI should consider,
@@ -1137,6 +1146,12 @@ static inline struct Pokemon *GetSideParty(u32 side)
 static inline struct Pokemon *GetBattlerParty(u32 battler)
 {
     return GetSideParty(GetBattlerSide(battler));
+}
+
+static inline struct Pokemon* GetPartyBattlerData(u32 battler)
+{
+    u32 index = gBattlerPartyIndexes[battler];
+    return (GetBattlerSide(battler) == B_SIDE_OPPONENT) ? &gEnemyParty[index] : &gPlayerParty[index];
 }
 
 #endif // GUARD_BATTLE_H

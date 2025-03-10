@@ -303,6 +303,17 @@ const union AnimCmd *const gAnims_ElectricChargingParticles[] =
     sAnim_ElectricChargingParticles_1,
 };
 
+const struct SpriteTemplate gRockFragmentChargeSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_ROCKS,
+    .paletteTag = ANIM_TAG_ROCKS,
+    .oam = &gOamData_AffineOff_ObjNormal_32x32,
+    .anims = gAnims_FlyingRock,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimRockFragment,
+};
+
 const struct SpriteTemplate gElectricChargingParticlesSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ELECTRIC_ORBS,
@@ -1004,6 +1015,8 @@ static void AnimTask_ElectricChargingParticles_Step(u8 taskId)
             task->data[12] = 0;
             if (gAnimMoveIndex == MOVE_FLASH_CANNON || gAnimMoveIndex == MOVE_HEAVY_CELL || gAnimMoveIndex == MOVE_STEEL_BEAM)
                 spriteId = CreateSprite(&gLightOfRuinGrayChargeTemplate, task->data[14], task->data[15], 2);
+            else if (gAnimMoveIndex == MOVE_SHIELDS_UP)
+                spriteId = CreateSprite(&gRockFragmentChargeSpriteTemplate, task->data[14], task->data[15], 2);
             else
                 spriteId = CreateSprite(&gElectricChargingParticlesSpriteTemplate, task->data[14], task->data[15], 2);
 
@@ -1259,7 +1272,7 @@ void AnimTask_VoltTackleBolt(u8 taskId)
 static bool8 CreateVoltTackleBolt(struct Task *task, u8 taskId)
 {
     u32 spriteId;
-    bool32 isFairyLock = (gAnimMoveIndex == MOVE_FAIRY_LOCK);
+    bool32 isFairyLock = (gAnimMoveIndex == MOVE_FAIRY_LOCK || gAnimMoveIndex == MOVE_EMBARGO);
 
     if (isFairyLock)
         spriteId = CreateSprite(&gFairyLockChainsSpriteTemplate, task->data[3], task->data[5] + 10, 35);

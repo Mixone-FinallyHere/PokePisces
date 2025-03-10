@@ -3399,7 +3399,6 @@ void FaintClearSetData(u32 battler)
     gProtectStructs[battler].endured = FALSE;
     gProtectStructs[battler].noValidMoves = FALSE;
     gProtectStructs[battler].helpingHand = FALSE;
-    gProtectStructs[battler].bounceMove = FALSE;
     gProtectStructs[battler].stealMove = FALSE;
     gProtectStructs[battler].prlzImmobility = FALSE;
     gProtectStructs[battler].confusionSelfDmg = FALSE;
@@ -3422,8 +3421,11 @@ void FaintClearSetData(u32 battler)
     gProtectStructs[battler].statFell = FALSE;
     gProtectStructs[battler].pranksterElevated = FALSE;
     gProtectStructs[battler].defendOrder = FALSE;
+    gProtectStructs[battler].alreadyUsedStormBrew = FALSE;
+    gProtectStructs[battler].aftermathBlowUp = FALSE;
 
     gDisableStructs[battler].isFirstTurn = 2;
+    gDisableStructs[battler].stormBrewCounter = 0;
 
     gLastMoves[battler] = MOVE_NONE;
     gLastLandedMoves[battler] = MOVE_NONE;
@@ -4737,15 +4739,17 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
             speed *= 2;
         else if (ability == ABILITY_CHLOROPHYLL && gBattleWeather & B_WEATHER_SUN)
             speed *= 2;
-        else if (ability == ABILITY_SAND_RUSH   && gBattleWeather & B_WEATHER_SANDSTORM)
+        else if (ability == ABILITY_SAND_RUSH && gBattleWeather & B_WEATHER_SANDSTORM)
             speed *= 2;
-        else if (ability == ABILITY_SLUSH_RUSH  && (gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW)))
+        else if (ability == ABILITY_SLUSH_RUSH && (gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW)))
             speed *= 2;
     }
 
     // own abilities
     if (ability == ABILITY_QUICK_FEET && gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE)
         speed *= 2;
+    if (ability == ABILITY_MERCILESS && gBattleMons[gBattlerTarget].status1 & STATUS1_POISON)
+        speed *= 1.5;
     else if (ability == ABILITY_SURGE_SURFER && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN)
         speed *= 2;
     else if (ability == ABILITY_RISING)
@@ -4760,7 +4764,7 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
         speed = (speed * 150) / 100;
     else if (ability == ABILITY_QUARK_DRIVE && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN && highestStat == STAT_SPEED)
         speed = (speed * 150) / 100;
-    if (gDisableStructs[battler].frenzyCounter != 0)
+    else if (gDisableStructs[battler].frenzyCounter != 0)
         speed = (speed * (100 + (30 * gDisableStructs[battler].frenzyCounter))) / 100;
     else if (ability == ABILITY_GOLDEN_MEAN && gBattleMons[battler].species == SPECIES_SHUNYONG_GOLDEN_OFFENSE)
         speed *= 2;
@@ -4837,19 +4841,6 @@ u32 GetBattlerTotalSpeedStat(u32 battler)
     return GetBattlerTotalSpeedStatArgs(battler, ability, holdEffect);
 }
 
-s8 GetChosenMovePriority(u32 battler)
-{
-    u16 move;
-
-    gProtectStructs[battler].pranksterElevated = 0;
-    if (gProtectStructs[battler].noValidMoves)
-        move = MOVE_STRUGGLE;
-    else
-        move = gBattleMons[battler].moves[*(gBattleStruct->chosenMovePositions + battler)];
-
-    return GetMovePriority(battler, move);
-}
-
 static bool8 IsTwoTurnsMove(u16 move)
 {
     if (gBattleMoves[move].effect == EFFECT_SKULL_BASH
@@ -4869,6 +4860,19 @@ static bool8 IsTwoTurnsMove(u16 move)
         return TRUE;
     else
         return FALSE;
+}
+
+s8 GetChosenMovePriority(u32 battler)
+{
+    u16 move;
+
+    gProtectStructs[battler].pranksterElevated = 0;
+    if (gProtectStructs[battler].noValidMoves)
+        move = MOVE_STRUGGLE;
+    else
+        move = gBattleMons[battler].moves[gBattleStruct->chosenMovePositions[battler]];
+
+    return GetMovePriority(battler, move);
 }
 
 s8 GetMovePriority(u32 battler, u16 move)
@@ -4898,7 +4902,7 @@ s8 GetMovePriority(u32 battler, u16 move)
     {
         priority++;
     }
-    else if (gCurrentMove == MOVE_COMET_PUNCH && gFieldStatuses & STATUS_FIELD_GRAVITY)
+    else if (gCurrentMove == MOVE_ODD_STEP && (gBattleMons[gBattlerTarget].status1 & STATUS1_PANIC || gBattleMons[gBattlerTarget].status2 & STATUS2_CONFUSION))
     {
         priority++;
     }
@@ -4926,7 +4930,7 @@ s8 GetMovePriority(u32 battler, u16 move)
     {
         priority++;
     }
-    else if ((gCurrentMove == MOVE_MAGICAL_LEAF || gCurrentMove == MOVE_LEAFAGE || gCurrentMove == MOVE_WORRY_SEED || gCurrentMove == MOVE_COTTON_GUARD) && gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
+    else if ((gCurrentMove == MOVE_MAGICAL_LEAF || gCurrentMove == MOVE_LEAFAGE || gCurrentMove == MOVE_WORRY_SEED || gCurrentMove == MOVE_COTTON_GUARD) && gBattleMons[battler].status1 & STATUS1_BLOOMING)
     {
         priority++;
     }
@@ -4934,7 +4938,7 @@ s8 GetMovePriority(u32 battler, u16 move)
     {
         priority++;
     }
-    else if ((gCurrentMove == MOVE_CONSTRICT) && gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)
+    else if ((gCurrentMove == MOVE_CONSTRICT) && gBattleMons[battler].status2 & STATUS2_MULTIPLETURNS)
     {
         priority = 4;
     }
@@ -4993,33 +4997,33 @@ u32 GetWhichBattlerFasterArgs(u32 battler1, u32 battler2, bool32 ignoreChosenMov
         bool32 battler2HasQuickEffect = gProtectStructs[battler2].quickDraw || gProtectStructs[battler2].usedCustapBerry;
         bool32 battler1HasStallingAbility = ability1 == ABILITY_STALL || (ability1 == ABILITY_MYCELIUM_MIGHT && gBattleMoves[gChosenMoveByBattler[battler1]].powderMove);
         bool32 battler2HasStallingAbility = ability2 == ABILITY_STALL || (ability2 == ABILITY_MYCELIUM_MIGHT && gBattleMoves[gChosenMoveByBattler[battler2]].powderMove);
-        bool32 battler1HasStallingItem = holdEffectBattler1 == HOLD_EFFECT_LAGGING_TAIL || holdEffectBattler1 == HOLD_EFFECT_CHUPACABRA;
-        bool32 battler2HasStallingItem = holdEffectBattler2 == HOLD_EFFECT_LAGGING_TAIL || holdEffectBattler2 == HOLD_EFFECT_CHUPACABRA;
+        bool32 battler1HasStallingItem = holdEffectBattler1 == HOLD_EFFECT_LAGGING_TAIL;
+        bool32 battler2HasStallingItem = holdEffectBattler2 == HOLD_EFFECT_LAGGING_TAIL;
 
         if (battler1HasQuickEffect && !battler2HasQuickEffect)
-            strikesFirst = 0;
+            strikesFirst = -1;
         else if (battler2HasQuickEffect && !battler1HasQuickEffect)
             strikesFirst = 1;
         else if (battler1HasStallingItem && !battler2HasStallingItem)
-            strikesFirst = 1;
+            strikesFirst = -1;
         else if (battler2HasStallingItem && !battler1HasStallingItem)
-            strikesFirst = 0;
+            strikesFirst = -1;
         else if (battler1HasStallingAbility && !battler2HasStallingAbility)
             strikesFirst = 1;
         else if (battler2HasStallingAbility && !battler1HasStallingAbility)
-            strikesFirst = 0;
+            strikesFirst = -1;
         else
         {
             if (speedBattler1 == speedBattler2)
             {
                 // same speeds, same priorities
-                strikesFirst = 1;
+                strikesFirst = 0;
             }
             else if (speedBattler1 < speedBattler2)
             {
                 // battler2 has more speed
                 if (gFieldStatuses & STATUS_FIELD_TRICK_ROOM)
-                    strikesFirst = 0;
+                    strikesFirst = -1;
                 else
                     strikesFirst = 1;
             }
@@ -5029,7 +5033,7 @@ u32 GetWhichBattlerFasterArgs(u32 battler1, u32 battler2, bool32 ignoreChosenMov
                 if (gFieldStatuses & STATUS_FIELD_TRICK_ROOM)
                     strikesFirst = 1;
                 else
-                    strikesFirst = 0;
+                    strikesFirst = -1;
             }
         }
     }
@@ -5039,7 +5043,7 @@ u32 GetWhichBattlerFasterArgs(u32 battler1, u32 battler2, bool32 ignoreChosenMov
     }
     else
     {
-        strikesFirst = 0; // battler1's move has greater priority
+        strikesFirst = -1; // battler1's move has greater priority
     }
     return strikesFirst;
 }
@@ -5193,6 +5197,8 @@ static void TurnValuesCleanUp(bool8 var0)
             gProtectStructs[i].usedCustapBerry = FALSE;
             gProtectStructs[i].quickDraw = FALSE;
             gProtectStructs[i].defendOrder = FALSE;
+            gProtectStructs[i].alreadyUsedStormBrew = FALSE;
+            gProtectStructs[i].aftermathBlowUp = FALSE;
             memset(&gQueuedStatBoosts[i], 0, sizeof(struct QueuedStatBoost));
         }
         else
@@ -5201,6 +5207,9 @@ static void TurnValuesCleanUp(bool8 var0)
 
             if (gDisableStructs[i].isFirstTurn)
                 gDisableStructs[i].isFirstTurn--;
+            
+            if (gDisableStructs[i].stormBrewCounter > 1)
+                gDisableStructs[i].stormBrewCounter = 0;
 
             if (gDisableStructs[i].rechargeTimer)
             {
@@ -6132,7 +6141,7 @@ const u16 gMegaBosses[] =
 
 bool32 IsShunyongBattle(void)
 {
-    if (IsSpeciesOneOf(GetMonData(&gEnemyParty[0], MON_DATA_SPECIES), gMegaBosses))
+    if (IsSpeciesOneOf(GetMonData(&gEnemyParty[0], MON_DATA_SPECIES), gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG))
         return TRUE;
     return FALSE;
 }

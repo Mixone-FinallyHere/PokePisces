@@ -765,9 +765,13 @@ bool32 IsBattlerTrapped(u32 battler, bool32 checkSwitch)
         return TRUE;
     else if (holdEffect == HOLD_EFFECT_GLUE_TUBE)
         return TRUE;
+    else if (gSideTimers[GetBattlerSide(battler)].spotlightTimer > 1)
+        return TRUE;
     else if (gStatuses3[battler] & (STATUS3_ROOTED | STATUS3_SKY_DROPPED))
         return TRUE;
     else if (gStatuses4[battler] & STATUS4_FAIRY_LOCK)
+        return TRUE;
+    else if (gStatuses4[battler] & STATUS4_IMPRISON)
         return TRUE;
     else if (IsAbilityPreventingEscape(battler))
         return TRUE;
@@ -1545,6 +1549,14 @@ u32 AI_GetBattlerMoveTargetType(u32 battlerId, u32 move)
 
     if (gBattleMoves[move].effect == EFFECT_EXPANDING_FORCE && AI_IsTerrainAffected(battlerId, STATUS_FIELD_PSYCHIC_TERRAIN))
         return MOVE_TARGET_BOTH;
+    else if (gBattleMoves[move].effect == EFFECT_JUNGLE_RAGE && gDisableStructs[battlerId].frenzyCounter > 2)
+        return MOVE_TARGET_BOTH;
+    else if (gCurrentMove == MOVE_LEAF_STORM && (gBattleMons[battlerId].status1 & STATUS1_BLOOMING))
+        return MOVE_TARGET_BOTH;
+    else if (gCurrentMove == MOVE_DOUBLE_SHOCK && (gStatuses4[battlerId] & STATUS4_SUPERCHARGED) && (gStatuses4[battlerId] & STATUS4_GEARED_UP))
+        return MOVE_TARGET_FOES_AND_ALLY;
+    else if ((gBattleMoves[gCurrentMove].effect == EFFECT_CANNONADE) && (gBattleMons[battlerId].hp <= (gBattleMons[battlerId].maxHP / 4)))
+        return MOVE_TARGET_FOES_AND_ALLY;
     else
         return gBattleMoves[move].target;
 }
@@ -1942,6 +1954,8 @@ bool32 ShouldLowerStat(u32 battler, u32 battlerAbility, u32 stat)
         if (AI_DATA->holdEffects[battler] == HOLD_EFFECT_CLEAR_AMULET
          || battlerAbility == ABILITY_CLEAR_BODY
          || battlerAbility == ABILITY_WHITE_SMOKE
+         || battlerAbility == ABILITY_DEFIANT
+         || battlerAbility == ABILITY_COMPETITIVE
          || gDisableStructs[battler].purified
          || battlerAbility == ABILITY_FULL_METAL_BODY
          || battlerAbility == ABILITY_TITANIC)
@@ -2320,6 +2334,7 @@ bool32 IsTrappingMoveEffect(u32 effect)
     case EFFECT_MEAN_LOOK:
     case EFFECT_TRAP:
     case EFFECT_SPIDER_WEB:
+    case EFFECT_OCTOLOCK:
     case EFFECT_HIT_PREVENT_ESCAPE:
     case EFFECT_FAIRY_LOCK:
     case EFFECT_WHIRLPOOL:
@@ -2328,7 +2343,6 @@ bool32 IsTrappingMoveEffect(u32 effect)
     case EFFECT_CONSTRICT:
     case EFFECT_BLOCK:
     case EFFECT_HEAL_BLOCK:
-    //case EFFECT_NO_RETREAT:   // TODO
         return TRUE;
     default:
         return FALSE;
@@ -3482,7 +3496,7 @@ bool32 AnyPartyMemberStatused(u32 battlerId, bool32 checkSoundproof)
         if (checkSoundproof && GetMonAbility(&party[i]) == ABILITY_SOUNDPROOF)
             continue;
 
-        if (GetMonData(&party[i], MON_DATA_STATUS) != STATUS1_NONE)
+        if (GetMonData(&party[i], MON_DATA_STATUS) == STATUS1_ANY_NEGATIVE)
             return TRUE;
     }
 

@@ -128,7 +128,7 @@
 #define EFFECT_BATON_PASS                   124
 #define EFFECT_PURSUIT                      125
 #define EFFECT_RAPID_SPIN                   126
-#define EFFECT_SONIC_BOOM                    127 //Changed in Pisces, added a new level-based conditional to the fixed damage calc
+#define EFFECT_SONIC_BOOM                   127 //Changed in Pisces, added a new level-based conditional to the fixed damage calc
 #define EFFECT_CAPTIVATE                    128                  //This move appears to have no special AI code although I think it needs some. Will come back to
 #define EFFECT_MORNING_SUN                  129
 #define EFFECT_SYNTHESIS                    130
@@ -447,7 +447,7 @@
 #define EFFECT_CINDER_TWIRL                 441 //AI Flags added, may need to add more scoring in in regards to which form would be best. Currently just added it to SetupFirstTurn
 #define EFFECT_CINDER_DRILL                 442 //AI Flags added, may need to add more scoring in in regards to which form would be best. Currently just added it to SetupFirstTurn
 #define EFFECT_SILENCE                      443 //AI Flags complete
-#define EFFECT_TORMENT_HIT                  444 //AI Flags complete
+#define EFFECT_VEXING_KI                    444 //AI Flags complete
 #define EFFECT_DECAY_BEAM                   445 //According to EFFECT_FREEZE_DRY and EFFECT_EERIE_SPELL, this doesnt need any special AI code
 #define EFFECT_WARM_WELCOME                 446 //AI Flags complete
 #define EFFECT_RADIOACID                    447 //AI Flags complete
@@ -659,7 +659,21 @@
 #define EFFECT_HOLD_HANDS                   653
 #define EFFECT_AMNESIA                      654
 #define EFFECT_MIND_GAP                     655
+#define EFFECT_JUNGLE_RAGE                  656
+#define EFFECT_ALLURING_VOICE               657
+#define EFFECT_ROCK_WRECKER                 658
+#define EFFECT_HYDRO_CANNON                 659
+#define EFFECT_FEAR_FACTOR                  660
+#define EFFECT_NIGHT_DAZE                   661
+#define EFFECT_SPRING_BREEZE                662
+#define EFFECT_AERIAL_ACE                   663
+#define EFFECT_DOUBLE_TEAM                  664
+#define EFFECT_SPOTLIGHT                    665
+#define EFFECT_COMET_PUNCH                  666
+#define EFFECT_PSYCHIC_FANGS                667
+#define EFFECT_TRICK_OR_TREAT               668
+#define EFFECT_WORK_UP                      669
 
-#define NUM_BATTLE_MOVE_EFFECTS             656
+#define NUM_BATTLE_MOVE_EFFECTS             670
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

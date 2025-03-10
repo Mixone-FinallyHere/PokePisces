@@ -117,11 +117,12 @@ BirchMaritimeLab_EventScript_GiveStarterEvent::
 	setmetatile 9, 3, METATILE_BirchLab_BirchTable3, TRUE
 	setmetatile 10, 3, METATILE_BirchLab_BirchTable4, TRUE
 	special DrawWholeMapView
-	speakername BirchMaritimeLab_Text_NameBirch
+	speakername NULL
 	message BirchMaritimeLab_Text_ReceivedStarter
 	waitmessage
 	playfanfare MUS_SLOTS_JACKPOT
 	waitfanfare
+	speakername BirchMaritimeLab_Text_NameBirch
 	msgbox BirchMaritimeLab_Text_WhyNotGiveNicknameToMon, MSGBOX_YESNO
 	speakername NULL
 	goto_if_eq VAR_RESULT, YES, BirchMaritimeLab_EventScript_NicknameStarter
@@ -154,6 +155,7 @@ BirchMaritimeLab_EventScript_GivePokedex::
 	end
 
 BirchMaritimeLab_EventScript_ReceivePokedex::
+	speakername NULL
 	playfanfare MUS_OBTAIN_ITEM
 	message BirchMaritimeLab_Text_ReceivedPokedex
 	waitfanfare
@@ -182,12 +184,14 @@ BirchMaritimeLab_EventScript_BeatenRangers::
 	applymovement OBJ_EVENT_ID_PLAYER, BirchMaritimeLab_Movement_PlayerReturnFromSkyPillar
 	speakername BirchMaritimeLab_Text_NameBirch
 	msgbox BirchMaritimeLab_Text_HaveEXPShare, MSGBOX_DEFAULT
+	speakername NULL
 	giveitem ITEM_EXP_SHARE
 	setflag FLAG_RECEIVED_TM_POUNCE
 	setflag FLAG_RECEIVED_EXP_SHARE
 	setvar VAR_BALL_QUEST_STATE, 69
 	delay 4
 	setflag FLAG_I_EXP_SHARE
+	speakername BirchMaritimeLab_Text_NameBirch
 	msgbox BirchMaritimeLab_Text_GoToSootopolis, MSGBOX_AUTOCLOSE
 	speakername NULL
 	releaseall

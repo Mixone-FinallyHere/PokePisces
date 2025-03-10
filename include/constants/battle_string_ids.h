@@ -846,8 +846,23 @@
 #define STRINGID_USERINCREASEDBLOOMINGDURATION        844
 #define STRINGID_FOETAILWINDENDS                      845
 #define STRINGID_PKMNSFLOWERISOPENING                 846
+#define STRINGID_USERUSEDUPALLFRENZY                  847
+#define STRINGID_STACKOFSURPRISE                      848
+#define STRINGID_COULDNTHANDLETHESURPRISE             849
+#define STRINGID_PKMNWASSHROUDEDBY                    850
+#define STRINGID_PKMNFROSTBITEBY                      851
+#define STRINGID_PKMNLAIDCURSEGRIPPINGNAIL            852
+#define STRINGID_PKMNSHEARTFLUTTERSSHALALALA          853
+#define STRINGID_PKMNPREVENTSSTATLOSSDRAGON           854
+#define STRINGID_MULTISTRIKEPOWERUP                   855
+#define STRINGID_PKMNCENTERATTENTIONSPOTLIGHT         856
+#define STRINGID_PKMNFLIPSSTATSWITH                   857
+#define STRINGID_PKMNSXDAMAGEDITALITTLE               858
+#define STRINGID_GAINEDASTACKOFSTORMBREW             859
+#define STRINGID_ABILITYCOVEREDVEIL                   860
+#define STRINGID_ABILITYSHIELDEDFROMCRITICALHITS      861
 
-#define BATTLESTRINGS_COUNT                           847
+#define BATTLESTRINGS_COUNT                           862
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -1178,5 +1193,8 @@
 #define B_MSG_STEALTHROCKDMG     1
 #define B_MSG_POINTEDSTONESFLOAT 2
 #define B_MSG_SPIKESSCATTERED    3
+
+#define B_MSG_ALLURE              0
+#define B_MSG_INFATUATION         1
 
 #endif // GUARD_CONSTANTS_BATTLE_STRING_IDS_H

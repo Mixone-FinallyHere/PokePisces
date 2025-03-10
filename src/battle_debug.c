@@ -191,6 +191,7 @@ static const u8 sText_Bide[] = _("Bide");
 static const u8 sText_LockConfuse[] = _("Lock Confuse");
 static const u8 sText_MultipleTurns[] = _("MultipleTurns");
 static const u8 sText_FocusEnergy[] = _("Focus Energy");
+static const u8 sText_DragonCheer[] = _("Dragon Cheer");
 static const u8 sText_Transformed[] = _("Transformed");
 static const u8 sText_Recharge[] = _("Recharge");
 static const u8 sText_Rage[] = _("Rage");
@@ -275,14 +276,11 @@ static const struct BitfieldInfo sStatus2Bitfield[] =
     {/*Confusion*/ 3, 0},
     {/*Flinch*/ 1, 3},
     {/*Uproar*/ 3, 4},
-    // Bit 7 is unused.
+    {/*Torment*/1, 7},
     {/*Bide*/ 2, 8},
     {/*Lock Confuse*/ 2, 10},
     {/*Multiple Turns*/ 1, 12},
-    // Wrap bits are omitted. Done in various.
-    // In Love bits are omitted. Done in various.
-    {/*(Focus Energy*/ 1, 20},
-    {/*Transformed*/ 1, 21},
+    {/*Defense Curl*/ 1, 20}, 
     {/*Recharge*/ 1, 22},
     {/*Rage*/ 1, 23},
     {/*Substitute*/ 1, 24},
@@ -291,13 +289,13 @@ static const struct BitfieldInfo sStatus2Bitfield[] =
     {/*Nightmares*/ 1, 27},
     {/*Cursed*/ 1, 28},
     {/*Foresighted*/ 1, 29},
-    {/*Defense Curled*/ 1, 30},
-    {/*Tormented*/ 1, 31},
+    {/*Dragon Cheer*/ 1, 30},
+    {/*Focus Energy*/ 1, 31},
 };
 
 static const struct BitfieldInfo sStatus3Bitfield[] =
 {
-    {/*Always hits*/ 2, 4},
+    {/*Always hits*/ 2, 3},
     //*Perish Song*/ 1, 5},
     // On Air 1, 6,
     // Underground 1, 7,
@@ -422,20 +420,21 @@ static const struct ListMenuItem sStatus2ListItems[] =
     {gText_Confusion, 0},
     {sText_Flinch, 1},
     {sText_Uproar, 2},
-    {sText_Bide, 3},
-    {sText_LockConfuse, 4},
-    {sText_MultipleTurns, 5},
-    {sText_FocusEnergy, 6},
-    {sText_Recharge, 7},
-    {sText_Rage, 8},
-    {sText_Substitute, 9},
-    {sText_DestinyBond, 10},
-    {sText_CantEscape, 11},
-    {sText_Nightmare, 12},
-    {sText_Cursed, 13},
-    {sText_Foresight, 14},
-    {sText_DefenseCurl, 15},
-    {sText_Tormented, 16},
+    {sText_Tormented, 3},
+    {sText_Bide, 4},
+    {sText_LockConfuse, 5},
+    {sText_MultipleTurns, 6},
+    {sText_DefenseCurl, 7},
+    {sText_Recharge, 8},
+    {sText_Rage, 9},
+    {sText_Substitute, 10},
+    {sText_DestinyBond, 11},
+    {sText_CantEscape, 12},
+    {sText_Nightmare, 13},
+    {sText_Cursed, 14},
+    {sText_Foresight, 15},
+    {sText_DragonCheer, 16},
+    {sText_FocusEnergy, 17},
 };
 
 static const struct ListMenuItem sStatus3ListItems[] =

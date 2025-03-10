@@ -200,7 +200,8 @@ FortreeGymNew_Text_RainierDefeated:
 FortreeGymNew_Text_RainierPostBattle:
 	.string "Birds come from the land too, just as\n"
 	.string "much as you and I do.\p"
-	.string "Maybe some day humans will have wings, too?$"
+	.string "Maybe some day humans will\n"
+	.string "have wings, too?$"
 
 FortreeGymNew_Text_FujiIntro:
 	.string "Every bird loves a high perch!$"
