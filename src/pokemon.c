@@ -8443,16 +8443,17 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_DOME_ACE:
         case TRAINER_CLASS_STROLLER:
         case TRAINER_CLASS_PRESENTER:
+        case TRAINER_CLASS_MAGMA_ADMIN:
             return MUS_VS_ZINNIA;
         case TRAINER_CLASS_TOPAZ_ACOLYTE:
         case TRAINER_CLASS_GILDED_MONK:
             return MUS_EVER_GRANDE_ROAD;
         case TRAINER_CLASS_AQUA_LEADER:
+            return MUS_VS_AQUA_MAGMA_LEADER;
         case TRAINER_CLASS_MAGMA_LEADER:
-            return MUS_VS_CHAMPION;
+            return MUS_VS_OZONE;
         case TRAINER_CLASS_AQUA_ADMIN:
-        case TRAINER_CLASS_MAGMA_ADMIN:
-            return MUS_VS_CHAMPION;
+            return MUS_VS_AQUA_MAGMA;
         case TRAINER_CLASS_LEADER:
             return MUS_VS_GYM_LEADER_2;
         case TRAINER_CLASS_CHAMPION:
@@ -8466,6 +8467,7 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_ELITE_FOUR:
             return MUS_VS_ELITE_FOUR;
         case TRAINER_CLASS_SALON_MAIDEN:
+            return MUS_VS_WALLY;
         case TRAINER_CLASS_PALACE_MAVEN:
         case TRAINER_CLASS_ARENA_TYCOON:
         case TRAINER_CLASS_FACTORY_HEAD:
