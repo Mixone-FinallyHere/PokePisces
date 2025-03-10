@@ -4554,7 +4554,9 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc task)
             if (hp == GetMonData(mon, MON_DATA_MAX_HP))
                 canHeal = FALSE;
         }
+        // DebugPrintfLevel(MGBA_LOG_WARN, "before friendship %d", GetMonData(mon, MON_DATA_FRIENDSHIP));
         cannotUse = ExecuteTableBasedItemEffect(mon, item, gPartyMenu.slotId, 0);
+        // DebugPrintfLevel(MGBA_LOG_WARN, "after friendship %d", GetMonData(mon, MON_DATA_FRIENDSHIP));
     }
 
     if (cannotUse != FALSE)

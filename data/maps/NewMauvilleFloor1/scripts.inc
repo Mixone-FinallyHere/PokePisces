@@ -272,42 +272,108 @@ NewMauvilleFloor1_Mart_ShopDebilitatingItems:
 	release
 	end	
 
-NewMauvilleFloor1_EventScript_ShopMints::
-	lock
+NewMauvilleFloor1_EventScript_CookieSeller::
+    lock
 	faceplayer
-	message NewMauvilleFloor1_Text_WelcomeToShopMints
-	waitmessage
-	pokemart NewMauvilleFloor1_Mart_ShopMints
-	msgbox NewMauvilleFloor1_Text_HaveAGoodDay, MSGBOX_AUTOCLOSE
+	showmoneybox 0, 0
+	msgbox NewMauvilleFloor1_Text_WantCookie, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, NewMauvilleFloor1_EventScript_CheckMoneyForCookie
+	closemessage
+	hidemoneybox
 	release
 	end
 
-	.align 2
-NewMauvilleFloor1_Mart_ShopMints:
-	.2byte ITEM_LONELY_MINT
-	.2byte ITEM_ADAMANT_MINT
-	.2byte ITEM_NAUGHTY_MINT
-	.2byte ITEM_BRAVE_MINT
-	.2byte ITEM_BOLD_MINT
-	.2byte ITEM_IMPISH_MINT
-	.2byte ITEM_LAX_MINT
-	.2byte ITEM_RELAXED_MINT
-	.2byte ITEM_MODEST_MINT
-	.2byte ITEM_MILD_MINT
-	.2byte ITEM_RASH_MINT
-	.2byte ITEM_QUIET_MINT
-	.2byte ITEM_CALM_MINT
-	.2byte ITEM_GENTLE_MINT
-	.2byte ITEM_CAREFUL_MINT
-	.2byte ITEM_SASSY_MINT
-	.2byte ITEM_TIMID_MINT
-	.2byte ITEM_HASTY_MINT
-	.2byte ITEM_JOLLY_MINT
-	.2byte ITEM_NAIVE_MINT
-	.2byte ITEM_SERIOUS_MINT
-	.2byte ITEM_NONE
+NewMauvilleFloor1_EventScript_CheckMoneyForCookie::
+	checkmoney 5000
+	goto_if_eq VAR_RESULT, FALSE, NewMauvilleFloor1_EventScript_NotEnoughMoney
+	playse SE_SHOP
+	removemoney 5000
+	updatemoneybox
+	delay 40
+	hidemoneybox
+	giveitem ITEM_ABILITY_CAPSULE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	release
-	end	
+	end
+
+NewMauvilleFloor1_EventScript_BlackSaladSeller::
+    lock
+	faceplayer
+	showmoneybox 0, 0
+	msgbox NewMauvilleFloor1_Text_WantBlackSalad, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, NewMauvilleFloor1_EventScript_CheckMoneyForBlackSalad
+	closemessage
+	hidemoneybox
+	release
+	end
+
+NewMauvilleFloor1_EventScript_CheckMoneyForBlackSalad::
+	checkmoney 8000
+	goto_if_eq VAR_RESULT, FALSE, NewMauvilleFloor1_EventScript_NotEnoughMoney
+	playse SE_SHOP
+	removemoney 8000
+	updatemoneybox
+	delay 40
+	hidemoneybox
+	giveitem ITEM_BLACK_SALAD
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	release
+	end
+
+NewMauvilleFloor1_EventScript_LavaCookieSeller::
+    lock
+	faceplayer
+	showmoneybox 0, 0
+	msgbox NewMauvilleFloor1_Text_WantLavaCookie, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, NewMauvilleFloor1_EventScript_CheckMoneyForLavaCookie
+	closemessage
+	hidemoneybox
+	release
+	end
+
+NewMauvilleFloor1_EventScript_CheckMoneyForLavaCookie::
+	checkmoney 600
+	goto_if_eq VAR_RESULT, FALSE, NewMauvilleFloor1_EventScript_NotEnoughMoney
+	playse SE_SHOP
+	removemoney 600
+	updatemoneybox
+	delay 40
+	hidemoneybox
+	giveitem ITEM_LAVA_COOKIE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	release
+	end
+
+NewMauvilleFloor1_EventScript_IcePopSeller::
+    lock
+	faceplayer
+	showmoneybox 0, 0
+	msgbox NewMauvilleFloor1_Text_WantIcePop, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, NewMauvilleFloor1_EventScript_CheckMoneyForIcePop
+	closemessage
+	hidemoneybox
+	release
+	end
+
+NewMauvilleFloor1_EventScript_CheckMoneyForIcePop::
+	checkmoney 600
+	goto_if_eq VAR_RESULT, FALSE, NewMauvilleFloor1_EventScript_NotEnoughMoney
+	playse SE_SHOP
+	removemoney 600
+	updatemoneybox
+	delay 40
+	hidemoneybox
+	giveitem ITEM_ICE_POP
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	release
+	end
+
+NewMauvilleFloor1_EventScript_NotEnoughMoney::
+	msgbox NewMauvilleFloor1_Text_NotEnoughMoney, MSGBOX_DEFAULT
+	closemessage
+	hidemoneybox
+	release
+	end
 
 NewMauvilleFloor1_EventScript_RydelGuard::
 	msgbox NewMauvilleFloor1_Text_RydelGuard, MSGBOX_NPC
@@ -431,3 +497,37 @@ NewMauvilleFloor1_Text_RydelGuard:
 	.string "Rydel's a bit peeved, dude.\l"
 	.string "Gotta go in through the\l"
 	.string "outside entrance, he said.$"
+
+NewMauvilleFloor1_Text_WantCookie:
+	.string "I bake tasty Ability Cookies!\n"
+	.string "Pokemon love them. If you give\l"
+	.string "one to a Pokemon, it can change\l"
+	.string "its ability to another!\p"
+	.string "Would you like to buy one?\n"
+	.string "They cost ¥5000 each.$"
+
+NewMauvilleFloor1_Text_WantBlackSalad:
+	.string "Unlike that absolute CURR by\n"
+	.string "my side, I only sell the\l"
+	.string "cleanest, healthiest of foods.\p"
+	.string "The black salad.\n"
+	.string "The purest a salad can be.\p"
+	.string "One may be yours\n"
+	.string "for a measly ¥8000...$"
+
+NewMauvilleFloor1_Text_WantLavaCookie:
+	.string "I'm from Lavaridge Town, bringing\n"
+	.string "one of our cultural delicacies\l"
+	.string "to a wider market!\p"
+	.string "Durin Berries didn't go over well.\n"
+	.string "But people seem to like these\l"
+	.string "Lava Cookies! Want one?\l"
+	.string "That'd be ¥600 a pop.$"
+
+NewMauvilleFloor1_Text_WantIcePop:
+	.string "Ice Pops! Ice Pops!\n"
+	.string "Get yer Ice Pops here!\l"
+	.string "Nice n' cold! Only ¥600!$"
+
+NewMauvilleFloor1_Text_NotEnoughMoney:
+	.string "You don't have enough money!$"
