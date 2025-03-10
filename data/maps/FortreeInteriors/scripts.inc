@@ -62,6 +62,7 @@ FortreeInteriors_EventScript_YandemicJoinsTheParty::
 	playmoncry SPECIES_YANDEMIC, CRY_MODE_NORMAL
 	waitmoncry
 	msgbox FortreeInteriors_Text_YandemicWantsToBeWithYou, MSGBOX_DEFAULT
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_YANDEMIC
 	givemon SPECIES_YANDEMIC, 31
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, FortreeInteriors_EventScript_ReceiveYandemicParty
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, FortreeInteriors_EventScript_ReceiveYandemicPC

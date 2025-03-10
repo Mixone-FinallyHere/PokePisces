@@ -137,8 +137,8 @@
       "x": 34,
       "y": 22,
       "elevation": 0,
-      "dest_map": "MAP_SWELTORN_PALACE_OUTSIDE",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_SWELTORN_PALACE",
+      "dest_warp_id": "2"
     },
     {
       "x": 38,

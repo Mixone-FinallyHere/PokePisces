@@ -12,6 +12,7 @@ Route122_OnTransition:
 Route122_EventScript_RemoveYandemic::
 	removeobject LOCALID_YANDEMIC
 	setflag FLAG_TEMP_12
+	setvar VAR_TEMP_4, 1
 	return
 
 Route122_EventScript_SetTempFlags::

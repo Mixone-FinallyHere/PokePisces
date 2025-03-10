@@ -33,14 +33,14 @@
       "x": 3,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_FALLARBOR_STEEPLE_INTERIOR",
+      "dest_map": "MAP_FALLARBOR_STEEPLE",
       "dest_warp_id": "0"
     },
     {
       "x": 4,
       "y": 5,
       "elevation": 0,
-      "dest_map": "MAP_FALLARBOR_STEEPLE_INTERIOR",
+      "dest_map": "MAP_FALLARBOR_STEEPLE",
       "dest_warp_id": "0"
     }
   ],

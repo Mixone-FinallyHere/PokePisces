@@ -350,7 +350,7 @@ PrettyPetalsScuttill_EventScript_RitaPreBloom::
 	end
 
 PrettyPetalsScuttill_EventScript_GoCollectSticks::
-	checkitem ITEM_WEIRD_STICK, 100
+	checkitem ITEM_WEIRD_STICK, 99
 	goto_if_eq VAR_RESULT, TRUE, PrettyPetalsScuttill_EventScript_GotTheSticks
 	msgbox PrettyPetalsScuttill_Text_Need100Sticks, MSGBOX_AUTOCLOSE
 	speakername NULL
@@ -359,7 +359,8 @@ PrettyPetalsScuttill_EventScript_GoCollectSticks::
 
 PrettyPetalsScuttill_EventScript_GotTheSticks::
 	msgbox PrettyPetalsScuttill_Text_Wow100Sticks, MSGBOX_DEFAULT
-	giveitem ITEM_MAX_POTION
+	removeitem ITEM_WEIRD_STICK, 99
+	giveitem ITEM_MAX_EGGPLANT
 	msgbox PrettyPetalsScuttill_Text_StickMaster, MSGBOX_AUTOCLOSE
 	speakername NULL
 	release
@@ -377,7 +378,6 @@ PrettyPetalsScuttill_EventScript_BerryShop::
 
 	.align 2
 PrettyPetalsScuttill_Mart_BerryShop:
-	.2byte ITEM_SITRUS_BERRY
 	.2byte ITEM_PECHA_BERRY
 	.2byte ITEM_CHERI_BERRY
 	.2byte ITEM_CHESTO_BERRY
@@ -509,12 +509,12 @@ PrettyPetalsScuttill_Text_AboutSticks:
 
 PrettyPetalsScuttill_Text_Need100Sticks:
 	.string "If you can collect and bring to me\n"
-	.string "one hundred sticks...\l"
+	.string "ninety-nine sticks...\l"
 	.string "Well, I couldn't not be impressed!$"
 
 PrettyPetalsScuttill_Text_Wow100Sticks:
 	.string "You have brought to me...\n"
-	.string "one hundred sticks!?\p"
+	.string "ninety-nine sticks!?\p"
 	.string "That is incredible! You are awfully\n"
 	.string "dedicated, {PLAYER}.\p"
 	.string "Please take this as a show\n"
