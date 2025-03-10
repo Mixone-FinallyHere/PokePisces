@@ -2997,7 +2997,7 @@ BattleScript_SnapblossomHealBlock::
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	jumpifsubstituteblocks BattleScript_MoveEnd
 	jumpifstatus3 BS_TARGET, STATUS3_LEECHSEED, BattleScript_MoveEnd
-	jumpiftype BS_TARGET, TYPE_GHOST, BattleScript_MoveEnd
+	jumpiftype BS_TARGET, TYPE_GRASS, BattleScript_MoveEnd
 	setseeded
 	printfromtable gLeechSeedStringIds
 	waitmessage B_WAIT_TIME_LONG
