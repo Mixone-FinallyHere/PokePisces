@@ -137,7 +137,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Flotshore_EventScript_ItemRepel",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_FLOTSHORE_REPEL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -150,7 +150,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Flotshore_EventScript_ItemPokeBall",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_FLOTSHORE_POKE_BALL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -163,7 +163,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Flotshore_EventScript_ItemOranBerry",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_FLOTSHORE_ORAN_BERRY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -176,7 +176,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Flotshore_EventScript_ItemSodaPop",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_FLOTSHORE_SODA_POP"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_DARKSKIN_BOY",
@@ -202,7 +202,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Flotshore_EventScript_ItemAntidote",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_FLOTSHORE_ANTIDODE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -215,7 +215,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Flotshore_EventScript_ItemPPPMax",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_FLOTSHORE_PP_MAX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_DARKSKIN_MAN",

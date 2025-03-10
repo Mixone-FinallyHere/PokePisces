@@ -168,7 +168,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MangrottoTunnel_EventScript_ItemPokeball",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MANGROTTO_TUNNEL_POKE_BALL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -181,7 +181,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MangrottoTunnel_EventScript_ItemAwakening",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MANGROTTO_TUNNEL_AWAKENING"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -194,7 +194,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MangrottoTunnel_EventScript_ItemRepeatball",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MANGROTTO_TUNNEL_REPEAT_BALL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -207,7 +207,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MangrottoTunnel_EventScript_ItemPotion",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MANGROTTO_TUNNEL_POTION"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -220,7 +220,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MangrottoTunnel_EventScript_ItemRepel",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MANGROTTO_TUNNEL_REPEL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -233,7 +233,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MangrottoTunnel_EventScript_ItemSilverPowder",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MANGROTTO_TUNNEL_SILVER_POWDER"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREADWINNER",
