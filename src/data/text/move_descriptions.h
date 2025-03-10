@@ -2617,9 +2617,9 @@ static const u8 sDragonTailDescription[] = _(
     "against a single Pokémon ends.");
 
 static const u8 sWorkUpDescription[] = _(
-    "The user is roused, and its\n"
-    "Attack and Special Attack stats\n"
-    "are boosted.");
+    "Boosts the Attack and Special\n"
+    "Attack stats. Speed is also\n"
+    "boosted if it isn't already.");
 
 static const u8 sElectrowebDescription[] = _(
     "The user captures foes in an\n"
