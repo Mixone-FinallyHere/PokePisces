@@ -163,7 +163,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BasalinCoast_EventScript_ItemPokeBall",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_BASALIN_COAST_POKE_BALL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -176,7 +176,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BasalinCoast_EventScript_ItemSodaPop",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_BASALIN_COAST_SODA_POP"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -189,7 +189,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BasalinCoast_EventScript_ItemPotion",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_BASALIN_COAST_POTION"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -202,7 +202,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BasalinCoast_EventScript_ItemAntidote",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_BASALIN_COAST_ANTIDODE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -215,7 +215,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BasalinCoast_EventScript_ItemIceHeal",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_BASALIN_COAST_ICE_HEAL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -228,7 +228,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BasalinCoast_EventScript_ItemRepel",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_BASALIN_COAST_REPEL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_DARKSKIN_BOY",

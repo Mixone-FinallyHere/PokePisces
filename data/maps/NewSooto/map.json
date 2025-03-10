@@ -127,7 +127,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewSooto_EventScript_ItemSodaPop",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SOOTOPOLIS_NEW_SODA_POP"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -140,7 +140,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewSooto_EventScript_ItemRevive",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SOOTOPOLIS_NEW_REVIVE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -153,7 +153,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewSooto_EventScript_ItemIceHeal",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SOOTOPOLIS_NEW_ICE_HEAL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -166,7 +166,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewSooto_EventScript_ItemTinyMushroom",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SOOTOPOLIS_NEW_TINY_MUSHROOM"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_1",

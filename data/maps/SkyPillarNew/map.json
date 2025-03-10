@@ -122,7 +122,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SkyPillarNew_EventScript_ItemTinyMushroom",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SKY_PILLAR_TINY_MUSHROOM"
     }
   ],
   "warp_events": [

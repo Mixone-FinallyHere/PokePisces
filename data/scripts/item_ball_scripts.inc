@@ -672,50 +672,62 @@ Route123_EventScript_ItemTMAuroraBeam::
 
 SkyPillarNew_EventScript_ItemSodaPop::
 	finditem ITEM_SODA_POP
+	setflag FLAG_P_ITEM_SKY_PILLAR_SODA_POP
 	end
 
 SkyPillarNew_EventScript_ItemTinyMushroom::
 	finditem ITEM_TINY_MUSHROOM
+	setflag FLAG_P_ITEM_SKY_PILLAR_TINY_MUSHROOM
 	end
 
 SkyPillarInteriors_EventScript_ItemSodaPop::
 	finditem ITEM_SODA_POP
+	setflag FLAG_P_ITEM_SKY_PILLAR_INTERIOR_SODA_POP
 	end
 
 SkyPillarInteriors_EventScript_ItemRepel::
 	finditem ITEM_REPEL
+	setflag FLAG_P_ITEM_SKY_PILLAR_INTERIOR_REPEL
 	end
 
 SkyPillarInteriors_EventScript_ItemAntidote::
 	finditem ITEM_ANTIDOTE
+	setflag FLAG_P_ITEM_SKY_PILLAR_INTERIOR_ANTIDODE
 	end
 
 SkyPillarInteriors_EventScript_ItemSodaPop2::
 	finditem ITEM_SODA_POP
+	setflag FLAG_P_ITEM_SKY_PILLAR_INTERIOR_SODA_POP_2
 	end
 
 SkyPillarInteriors_EventScript_ItemRepel2::
 	finditem ITEM_REPEL
+	setflag FLAG_P_ITEM_SKY_PILLAR_INTERIOR_REPEL_2
 	end
 
 Flotshore_EventScript_ItemAntidote::
 	finditem ITEM_ANTIDOTE
+	setflag FLAG_P_ITEM_FLOTSHORE_ANTIDODE
 	end
 
 Flotshore_EventScript_ItemSodaPop::
 	finditem ITEM_SODA_POP
+	setflag FLAG_P_ITEM_FLOTSHORE_SODA_POP
 	end
 
 Flotshore_EventScript_ItemRepel::
 	finditem ITEM_REPEL
+	setflag FLAG_P_ITEM_FLOTSHORE_REPEL
 	end
 
 Flotshore_EventScript_ItemPokeBall::
 	finditem ITEM_POKE_BALL
+	setflag FLAG_P_ITEM_FLOTSHORE_POKE_BALL
 	end
 
 Flotshore_EventScript_ItemOranBerry::
 	finditem ITEM_ORAN_BERRY
+	setflag FLAG_P_ITEM_FLOTSHORE_ORAN_BERRY
 	end
 
 PiratesGrotto_EventScript_ItemCursedAmulet::
@@ -732,66 +744,82 @@ PiratesGrotto_EventScript_ItemBigNugget2::
 
 BasalinCoast_EventScript_ItemPokeBall::
 	finditem ITEM_POKE_BALL
+	setflag FLAG_P_ITEM_BASALIN_COAST_POKE_BALL
 	end
 
 BasalinCoast_EventScript_ItemSodaPop::
 	finditem ITEM_SODA_POP
+	setflag FLAG_P_ITEM_BASALIN_COAST_SODA_POP
 	end
 
 BasalinCoast_EventScript_ItemPotion::
 	finditem ITEM_POTION
+	setflag FLAG_P_ITEM_BASALIN_COAST_POTION
 	end
 
 BasalinCoast_EventScript_ItemAntidote::
 	finditem ITEM_ANTIDOTE
+	setflag FLAG_P_ITEM_BASALIN_COAST_ANTIDODE
 	end
 
 BasalinCoast_EventScript_ItemIceHeal::
 	finditem ITEM_ICE_HEAL
+	setflag FLAG_P_ITEM_BASALIN_COAST_ICE_HEAL
 	end
 
 BasalinCoast_EventScript_ItemRepel::
 	finditem ITEM_REPEL
+	setflag FLAG_P_ITEM_BASALIN_COAST_REPEL
 	end
 
 NewSooto_EventScript_ItemRevive::
 	finditem ITEM_REVIVE
+	setflag FLAG_P_ITEM_SOOTOPOLIS_NEW_REVIVE
 	end
 
 NewSooto_EventScript_ItemIceHeal::
 	finditem ITEM_ICE_HEAL
+	setflag FLAG_P_ITEM_SOOTOPOLIS_NEW_ICE_HEAL
 	end
 
 NewSooto_EventScript_ItemSodaPop::
 	finditem ITEM_SODA_POP
+	setflag FLAG_P_ITEM_SOOTOPOLIS_NEW_SODA_POP
 	end
 
 NewSooto_EventScript_ItemTinyMushroom::
 	finditem ITEM_TINY_MUSHROOM
+	setflag FLAG_P_ITEM_SOOTOPOLIS_NEW_TINY_MUSHROOM
 	end
 
 MangrottoTunnel_EventScript_ItemPokeball::
 	finditem ITEM_POKE_BALL
+	setflag FLAG_P_ITEM_MANGROTTO_TUNNEL_POKE_BALL
 	end
 
 MangrottoTunnel_EventScript_ItemAwakening::
 	finditem ITEM_AWAKENING
+	setflag FLAG_P_ITEM_MANGROTTO_TUNNEL_AWAKENING
 	end
 
 MangrottoTunnel_EventScript_ItemPotion::
 	finditem ITEM_POTION
+	setflag FLAG_P_ITEM_MANGROTTO_TUNNEL_POTION
 	end
 
 MangrottoTunnel_EventScript_ItemRepel::
 	finditem ITEM_REPEL
+	setflag FLAG_P_ITEM_MANGROTTO_TUNNEL_REPEL
 	end
 
 MangrottoTunnel_EventScript_ItemRepeatball::
 	finditem ITEM_REPEAT_BALL
+	setflag FLAG_P_ITEM_MANGROTTO_TUNNEL_REPEAT_BALL
 	end
 
 MangrottoTunnel_EventScript_ItemSilverPowder::
 	finditem ITEM_SILVER_POWDER
+	setflag FLAG_P_ITEM_MANGROTTO_TUNNEL_SILVER_POWDER
 	end
 
 Route126_EventScript_ItemPotion::
@@ -816,34 +844,42 @@ Route126_EventScript_ItemLureBall::
 
 CosmossSpaceCenter_EventScript_ItemStardust::
 	finditem ITEM_STARDUST
+	setflag FLAG_P_ITEM_COSMOSS_SPACE_CENTER_STARDUST
 	end
 
 MossdeepCity_EventScript_ItemPPersimBerry::
 	finditem ITEM_PERSIM_BERRY
+	setflag FLAG_P_ITEM_MOSDEEP_PERSIM_BERRY
 	end
 
 MossdeepCity_EventScript_ItemPRevive::
 	finditem ITEM_REVIVE
+	setflag FLAG_P_ITEM_MOSDEEP_REVIVE
 	end
 
 MossdeepCity_EventScript_ItemPEther::
 	finditem ITEM_ETHER
+	setflag FLAG_P_ITEM_MOSDEEP_ETHER
 	end
 
 MossdeepCity_EventScript_ItemPPotion::
 	finditem ITEM_POTION
+	setflag FLAG_P_ITEM_MOSDEEP_POTION
 	end
 
 MossdeepCity_EventScript_ItemPFullHeal::
 	finditem ITEM_FULL_HEAL
+	setflag FLAG_P_ITEM_MOSDEEP_FULL_HEAL
 	end
 
 MossdeepCity_EventScript_ItemPRevive2::
 	finditem ITEM_REVIVE
+	setflag FLAG_P_ITEM_MOSDEEP_REVIVE_2
 	end
 
 MossdeepCity_EventScript_ItemPStardust::
 	finditem ITEM_STARDUST
+	setflag FLAG_P_ITEM_MOSDEEP_STARDUST
 	end
 
 Route125_EventScript_ItemPSharpBeak::
@@ -1860,6 +1896,7 @@ StraeSeapath_EventScript_ItemPNugget::
 
 Flotshore_EventScript_ItemPPPMax::
 	finditem ITEM_PP_MAX
+	setflag FLAG_P_ITEM_FLOTSHORE_PP_MAX
 	end
 
 SailorsPauseShips_EventScript_ItemPAbilityCookie::
