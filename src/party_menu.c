@@ -4335,6 +4335,7 @@ static void CB2_OpenTMCaseOnField(void)
 {
     InitTMCase(0, CB2_BagMenuFromStartMenu, 0);
 }
+
 void CB2_ShowPartyMenuForItemUseTMCase(void)
 {
     MainCallback callback = CB2_OpenTMCaseOnField;
