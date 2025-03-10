@@ -4994,8 +4994,8 @@ u32 GetWhichBattlerFasterArgs(u32 battler1, u32 battler2, bool32 ignoreChosenMov
         bool32 battler2HasQuickEffect = gProtectStructs[battler2].quickDraw || gProtectStructs[battler2].usedCustapBerry;
         bool32 battler1HasStallingAbility = ability1 == ABILITY_STALL || (ability1 == ABILITY_MYCELIUM_MIGHT && gBattleMoves[gChosenMoveByBattler[battler1]].powderMove);
         bool32 battler2HasStallingAbility = ability2 == ABILITY_STALL || (ability2 == ABILITY_MYCELIUM_MIGHT && gBattleMoves[gChosenMoveByBattler[battler2]].powderMove);
-        bool32 battler1HasStallingItem = holdEffectBattler1 == HOLD_EFFECT_LAGGING_TAIL || holdEffectBattler1 == HOLD_EFFECT_CHUPACABRA;
-        bool32 battler2HasStallingItem = holdEffectBattler2 == HOLD_EFFECT_LAGGING_TAIL || holdEffectBattler2 == HOLD_EFFECT_CHUPACABRA;
+        bool32 battler1HasStallingItem = holdEffectBattler1 == HOLD_EFFECT_LAGGING_TAIL;
+        bool32 battler2HasStallingItem = holdEffectBattler2 == HOLD_EFFECT_LAGGING_TAIL;
 
         if (battler1HasQuickEffect && !battler2HasQuickEffect)
             strikesFirst = 0;
