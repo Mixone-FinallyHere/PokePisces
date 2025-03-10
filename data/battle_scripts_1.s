@@ -1845,59 +1845,6 @@ BattleScript_DefenderExtraMoveEnd::
 	moveendall
 	end
 
-BattleScript_DefenderExplodedUsedAnExtraMove::
-	savetarget
-	copybyte sSAVED_BATTLER, gBattlerAttacker
-	copybyte gBattlerAttacker, gBattlerTarget
-	copybyte gBattlerTarget, sSAVED_BATTLER
-	call BattleScript_AbilityPopUp
-	printstring STRINGID_ABILITYLETITUSEMOVE
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_DefenderExplodedEffectExtraHit::
-BattleScript_DefenderExplodedExtraHitFromAtkCanceler::
-	attackcanceler
-BattleScript_DefenderExplodedExtraHitFromAtkString::
-	attackstring
-	jumpifability BS_TARGET, ABILITY_DAMP, BattleScript_DefenderExplodedExtraHitDamp
-BattleScript_DefenderExplodedExtraHitFromCritCalc::
-	critcalc
-	damagecalc
-	adjustdamage
-BattleScript_DefenderExplodedExtraHitFromAtkAnimation::
-	playmoveanimation BS_ATTACKER, MOVE_NONE
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
-	seteffectwithchance
-	instanthpdrop BS_ATTACKER
-	setatkhptozero
-	tryfaintmon BS_TARGET
-	tryfaintmon BS_ATTACKER
-BattleScript_DefenderExplodedExtraRestoreBattlers::
-	copybyte gBattlerAttacker, sSAVED_BATTLER
-	restoretarget
-BattleScript_DefenderExplodedExtraMoveEnd::
-	moveendall
-	end
-BattleScript_DefenderExplodedExtraHitDamp::
-	pause B_WAIT_TIME_SHORT
-	call BattleScript_AbilityPopUpTarget
-	printstring STRINGID_PKMNPREVENTSUSAGE
-	pause B_WAIT_TIME_LONG
-	moveendto MOVEEND_NEXT_TARGET
-	moveendcase MOVEEND_CLEAR_BITS
-	instanthpdrop BS_ATTACKER
-	setatkhptozero
-	tryfaintmon BS_ATTACKER
-	goto BattleScript_DefenderExplodedExtraRestoreBattlers
-
 BattleScript_AttackerUsedAnExtraMove::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_ABILITYLETITUSEMOVE

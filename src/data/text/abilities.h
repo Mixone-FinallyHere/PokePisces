@@ -402,7 +402,7 @@ static const u8 sSimpleDescription[] = _(
     "Pokémon's stat changes.");
 
 static const u8 sDrySkinDescription[] = _(
-    "Water moves boost Speed and heal.\n"
+    "Water moves up Speed and heal.\n"
     "Heals in rain. Fire moves drop\n"
     "speed and hurt more. Hurt in sun.");
 
@@ -491,9 +491,9 @@ static const u8 sSuperLuckDescription[] = _(
     "wild Pokémon holding an item.");
 
 static const u8 sAftermathDescription[] = _(
-    "The Pokémon cannot be knocked\n"
-    "out before exploding. At 1 HP,\n"
-    "uses a Fire-type exploding move.");
+    "When the Pokémon is knocked out\n"
+    "by a direct attack, uses a 60 BP\n"
+    "Fire-type exploding move.");
 
 static const u8 sAnticipationDescription[] = _(
     "When the Pokémon enters battle\n"

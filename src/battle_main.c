@@ -3422,6 +3422,7 @@ void FaintClearSetData(u32 battler)
     gProtectStructs[battler].pranksterElevated = FALSE;
     gProtectStructs[battler].defendOrder = FALSE;
     gProtectStructs[battler].alreadyUsedStormBrew = FALSE;
+    gProtectStructs[battler].aftermathBlowUp = FALSE;
 
     gDisableStructs[battler].isFirstTurn = 2;
     gDisableStructs[battler].stormBrewCounter = 0;
@@ -5197,6 +5198,7 @@ static void TurnValuesCleanUp(bool8 var0)
             gProtectStructs[i].quickDraw = FALSE;
             gProtectStructs[i].defendOrder = FALSE;
             gProtectStructs[i].alreadyUsedStormBrew = FALSE;
+            gProtectStructs[i].aftermathBlowUp = FALSE;
             memset(&gQueuedStatBoosts[i], 0, sizeof(struct QueuedStatBoost));
         }
         else

@@ -185,6 +185,7 @@ struct ProtectStruct
     u8 physicalBattlerId;
     u8 specialBattlerId;
     u32 extraMoveUsed:1;
+    u32 aftermathBlowUp:1;
     u32 alreadyUsedStormBrew:1;
     u32 hardStoneBoost:1;
     u8 overtakeRedirectActive:1; //active for the battler being hit by MOVE_OVERTAKE

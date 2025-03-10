@@ -6534,11 +6534,11 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 effect++;
             }
             break;
-        case ABILITY_AFTERMATH:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-            && gBattleMons[gBattlerTarget].hp == 1 
-            && IsBattlerAlive(gBattlerAttacker) 
-            && TARGET_TURN_DAMAGED
+        case ABILITY_AFTERMATH:    
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            && !IsBattlerAlive(gBattlerTarget)
+            && IsBattlerAlive(gBattlerAttacker)
+            && !IsAbilityOnField(ABILITY_DAMP)
             && gBattlerAttacker != gBattlerTarget
             && !gProtectStructs[gBattlerTarget].confusionSelfDmg
             && !gProtectStructs[gBattlerTarget].extraMoveUsed
@@ -6554,13 +6554,14 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 gCurrentMove = extraMove;
                 gMultiHitCounter = 0;
                 gProtectStructs[battler].extraMoveUsed = TRUE;
+                gProtectStructs[battler].aftermathBlowUp = TRUE;
 
                 //Move Effect
                 VarSet(VAR_EXTRA_MOVE_DAMAGE,      movePower);
                 VarSet(VAR_TEMP_MOVEEFFECT_CHANCE, moveEffectPercentChance);
                 VarSet(VAR_TEMP_MOVEEFFECT,        extraMoveSecondaryEffect);
 
-                gBattlescriptCurrInstr = BattleScript_DefenderExplodedUsedAnExtraMove;
+                gBattlescriptCurrInstr = BattleScript_DefenderUsedAnExtraMove;
                 effect++;
             }
             break;
