@@ -2886,7 +2886,7 @@ BattleScript_AromatherapyAndSafeguard:
 	waitmessage B_WAIT_TIME_LONG
 	updatestatusicon BS_ATTACKER_WITH_PARTNER
 	waitstate
-	printfromtable gReflectLightScreenSafeguardStringIds
+	printstring STRINGID_PKMNCOVEREDBYVEIL
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
