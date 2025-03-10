@@ -14039,6 +14039,15 @@ BattleScript_AttackerItemStatRaise::
 BattleScript_AttackerItemStatRaiseRet:
 	return
 
+BattleScript_FlipCoinFlipStats::
+	copybyte sBATTLER, gBattlerAttacker
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	invertpositivestatstages BS_TARGET
+	printstring STRINGID_FLIPCOINMESSAGE
+	waitmessage B_WAIT_TIME_LONG
+	removeitem BS_ATTACKER
+	return
+
 BattleScript_MistProtected::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_PKMNPROTECTEDBYMIST

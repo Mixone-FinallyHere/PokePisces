@@ -9958,6 +9958,19 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 gBattlescriptCurrInstr = BattleScript_AttackerItemStatRaise;
             }
             break;
+        case HOLD_EFFECT_FLIP_COIN:                                                                                                                                                                                                                         // Does NOT need to be a damaging move
+            if (gProtectStructs[gBattlerAttacker].targetAffected 
+                && gBattleMons[gBattlerAttacker].hp != 0 
+                && CountBattlerStatIncreases(gBattlerTarget, TRUE) > 0
+                && !NoAliveMonsForEitherParty()) // Don't activate if battle will end
+            {
+                gLastUsedItem = atkItem;
+                gBattleScripting.battler = gBattlerAttacker;
+                effect = ITEM_EFFECT_OTHER;
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_FlipCoinFlipStats;
+            }
+            break;
         case HOLD_EFFECT_HARD_STONE:    // if use rock type move, next attack on us does 20% less dmg (this turn only)
             if (IsBattlerAlive(gBattlerAttacker)
                     && gBattleMoves[gCurrentMove].type == TYPE_ROCK

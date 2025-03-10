@@ -571,6 +571,7 @@ extern const u8 BattleScript_BattlerGotOverItsInfatuation[];
 extern const u8 BattleScript_Pickpocket[];
 extern const u8 BattleScript_StickyBarbTransfer[];
 extern const u8 BattleScript_AttackerItemStatRaise[];
+extern const u8 BattleScript_FlipCoinFlipStats[];
 extern const u8 BattleScript_RedCardActivates[];
 extern const u8 BattleScript_EjectButtonActivates[];
 extern const u8 BattleScript_EjectPackActivate_Ret[];
