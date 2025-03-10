@@ -9993,14 +9993,15 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_KAMEN_SCARF:
-                if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-                && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
-                && TARGET_TURN_DAMAGED 
-                && !gStatuses3[gBattlerTarget] & STATUS3_CHARGED_UP
+                if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+                && TARGET_TURN_DAMAGED
+                && !(gStatuses3[gBattlerTarget] & STATUS3_CHARGED_UP)
                 && IsBattlerAlive(gBattlerTarget)
                 && gBattleMons[gBattlerTarget].species == SPECIES_SHOCKORE)
                 {
                     effect = ITEM_EFFECT_OTHER;
+                    gStatuses3[gBattlerTarget] |= STATUS3_CHARGED_UP;
+                    gDisableStructs[gBattlerTarget].chargeTimer = 0;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_KamenScarfActivates;
                     PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
@@ -10009,9 +10010,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 break;
             case HOLD_EFFECT_SILVER_CROWN:
                 if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-                && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
                 && TARGET_TURN_DAMAGED 
-                && !gBattleMons[gBattlerAttacker].status2 & STATUS2_WRAPPED
+                && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_WRAPPED)
                 && IsBattlerAlive(gBattlerAttacker)
                 && gBattleMons[gBattlerTarget].species == SPECIES_FLAGUE)
                 {
@@ -10151,7 +10151,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 break;
             case HOLD_EFFECT_RIZZ_BERRY:
                 if (IsBattlerAlive(gBattlerAttacker)
-                && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
                 && IsBattlerAlive(gBattlerTarget)
                 && TARGET_TURN_DAMAGED
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)

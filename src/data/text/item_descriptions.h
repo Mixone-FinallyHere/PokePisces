@@ -4665,7 +4665,7 @@ static const u8 sLongNoseDesc[] = _(
 static const u8 sKamenScarfDesc[] = _(
     "A scarf that drops SE\n"
     "damage, ups Sp. Atk,\n"
-    "and charges the holder\n"
+    "and charges holder\n"
     "if hit. For Shockore.");
 
 static const u8 sGemstoneDesc[] = _(

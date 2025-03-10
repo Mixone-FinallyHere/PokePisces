@@ -14357,7 +14357,6 @@ BattleScript_WindPowerActivates_Ret:
 BattleScript_KamenScarfActivates::
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
 	waitanimation
-	setcharge BS_TARGET
 	printstring STRINGID_SCARFWASCHARGEDBYBEINGHIT
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_KamenScarfActivates_Ret:
