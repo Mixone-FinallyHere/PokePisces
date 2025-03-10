@@ -3421,8 +3421,10 @@ void FaintClearSetData(u32 battler)
     gProtectStructs[battler].statFell = FALSE;
     gProtectStructs[battler].pranksterElevated = FALSE;
     gProtectStructs[battler].defendOrder = FALSE;
+    gProtectStructs[battler].alreadyUsedStormBrew = FALSE;
 
     gDisableStructs[battler].isFirstTurn = 2;
+    gDisableStructs[battler].stormBrewCounter = 0;
 
     gLastMoves[battler] = MOVE_NONE;
     gLastLandedMoves[battler] = MOVE_NONE;
@@ -4994,8 +4996,8 @@ u32 GetWhichBattlerFasterArgs(u32 battler1, u32 battler2, bool32 ignoreChosenMov
         bool32 battler2HasQuickEffect = gProtectStructs[battler2].quickDraw || gProtectStructs[battler2].usedCustapBerry;
         bool32 battler1HasStallingAbility = ability1 == ABILITY_STALL || (ability1 == ABILITY_MYCELIUM_MIGHT && gBattleMoves[gChosenMoveByBattler[battler1]].powderMove);
         bool32 battler2HasStallingAbility = ability2 == ABILITY_STALL || (ability2 == ABILITY_MYCELIUM_MIGHT && gBattleMoves[gChosenMoveByBattler[battler2]].powderMove);
-        bool32 battler1HasStallingItem = holdEffectBattler1 == HOLD_EFFECT_LAGGING_TAIL || holdEffectBattler1 == HOLD_EFFECT_CHUPACABRA;
-        bool32 battler2HasStallingItem = holdEffectBattler2 == HOLD_EFFECT_LAGGING_TAIL || holdEffectBattler2 == HOLD_EFFECT_CHUPACABRA;
+        bool32 battler1HasStallingItem = holdEffectBattler1 == HOLD_EFFECT_LAGGING_TAIL;
+        bool32 battler2HasStallingItem = holdEffectBattler2 == HOLD_EFFECT_LAGGING_TAIL;
 
         if (battler1HasQuickEffect && !battler2HasQuickEffect)
             strikesFirst = 0;
@@ -5194,6 +5196,7 @@ static void TurnValuesCleanUp(bool8 var0)
             gProtectStructs[i].usedCustapBerry = FALSE;
             gProtectStructs[i].quickDraw = FALSE;
             gProtectStructs[i].defendOrder = FALSE;
+            gProtectStructs[i].alreadyUsedStormBrew = FALSE;
             memset(&gQueuedStatBoosts[i], 0, sizeof(struct QueuedStatBoost));
         }
         else
@@ -5202,6 +5205,9 @@ static void TurnValuesCleanUp(bool8 var0)
 
             if (gDisableStructs[i].isFirstTurn)
                 gDisableStructs[i].isFirstTurn--;
+            
+            if (gDisableStructs[i].stormBrewCounter > 1)
+                gDisableStructs[i].stormBrewCounter = 0;
 
             if (gDisableStructs[i].rechargeTimer)
             {

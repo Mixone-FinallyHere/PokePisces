@@ -1232,8 +1232,8 @@ static const u8 sWellBakedBodyDescription[] = _(
     "its Defense is sharply boosted.");
 
 static const u8 sWindRiderDescription[] = _(
-    "Boosts Atk and Sp. Atk if in\n"
-    "Tailwind, or hit by wind moves,\n"
+    "Boosts offenses if in Tailwind,\n"
+    "Sandstorm, or hit by wind moves,\n"
     "and takes no damage from them.");
 
 static const u8 sGuardDogDescription[] = _(
@@ -1246,8 +1246,8 @@ static const u8 sRockyPayloadDescription[] = _(
 
 static const u8 sWindPowerDescription[] = _(
     "Becomes charged if in Tailwind,\n"
-    "or hit by wind moves, and takes\n"
-    "no damage from them.");
+    "Sandstorm, or hit by wind moves,\n"
+    "and takes no damage from them.");
 
 static const u8 sZeroToHeroDescription[] = _(
     "The Pokémon transforms into its\n"

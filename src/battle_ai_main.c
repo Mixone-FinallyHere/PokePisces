@@ -1342,6 +1342,33 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             else if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPEED))
                 score -= 8;
             break;
+        case EFFECT_NO_RETREAT:
+            if (gBattleMons[battlerAtk].status2 & STATUS2_ESCAPE_PREVENTION)
+                score -= 2;
+            if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ATK))
+                score -= 10;
+            else if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPATK))
+                score -= 10;
+            else if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_DEF))
+                score -= 8;
+            else if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPDEF))
+                score -= 8;
+            else if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPEED))
+                score -= 8;
+            break;
+        case EFFECT_CLANGOROUS_SOUL:
+            if (gBattleMons[battlerAtk].hp <= gBattleMons[battlerAtk].maxHP / 3)
+                score -= 10;
+            if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ATK) || !HasMoveWithSplit(battlerAtk, SPLIT_PHYSICAL))
+                score -= 10;
+            else if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPATK) || !HasMoveWithSplit(battlerAtk, SPLIT_SPECIAL))
+                score -= 10;
+            else if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_DEF))
+                score -= 8;
+            else if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPDEF))
+                score -= 8;
+            else if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPEED))
+                score -= 8;
         case EFFECT_COIL:
             if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ACC))
                 score -= 10;
@@ -1934,6 +1961,9 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     score -= 2;
             }
             break;
+        case EFFECT_MIND_GAP:
+            if (!gDisableStructs[battlerAtk].isFirstTurn)
+                score -= 10;
         case EFFECT_DISABLE:
         case EFFECT_VOID:
             if (gDisableStructs[battlerDef].disableTimer == 0
@@ -3419,18 +3449,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             ||  GetBattlerWeight(battlerDef) >= 2000) //200.0 kg
                 score -= 10;
             break;
-        /*case EFFECT_NO_RETREAT:
-            if (TrappedByNoRetreat(battlerAtk))
-                score -= 10;
-            break;
-        case EFFECT_EXTREME_EVOBOOST:
-            if (MainStatsMaxed(battlerAtk))
-                score -= 10;
-            break;
-        case EFFECT_CLANGOROUS_SOUL:
-            if (gBattleMons[battlerAtk].hp <= gBattleMons[battlerAtk].maxHP / 3)
-                score -= 10;
-            break;*/
         case EFFECT_REVIVAL_BLESSING:
             if (GetFirstFaintedPartyIndex(battlerAtk) == PARTY_SIZE)
                 score -= 10;
@@ -4014,6 +4032,9 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     u32 i;
     // We only check for moves that have a 20% chance or more for their secondary effect to happen because moves with a smaller chance are rather worthless. We don't want the AI to use those.
     bool32 sereneGraceBoost = ((aiData->abilities[battlerAtk] == ABILITY_SERENE_GRACE || aiData->abilities[battlerAtk] == ABILITY_RISKTAKER || aiData->abilities[battlerAtk] == ABILITY_SERENE_AURA) && (gBattleMoves[move].secondaryEffectChance >= 20 && gBattleMoves[move].secondaryEffectChance < 100));
+
+    if (gBattleMoves[move].soundMove && aiData->holdEffects[battlerAtk] == HOLD_EFFECT_THROAT_SPRAY)
+        score += 8;
 
     // Targeting partner, check benefits of doing that instead
     if (IS_TARGETING_PARTNER(battlerAtk, battlerDef))
@@ -5230,6 +5251,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             score += 5;
         break;
     case EFFECT_DISABLE:
+    case EFFECT_MIND_GAP:
         if (gDisableStructs[battlerDef].disableTimer == 0
         #if B_MENTAL_HERB >= GEN_5
             && aiData->holdEffects[battlerDef] != HOLD_EFFECT_MENTAL_HERB    // mental herb
@@ -6412,13 +6434,15 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         IncreaseStatUpScore(battlerAtk, battlerDef, STAT_ATK, &score);
         break;
     case EFFECT_VIGOR_ROOT:
+        if (ShouldRecover(battlerAtk, battlerDef, move, 100))
+            score += 3;
+    case EFFECT_CLANGOROUS_SOUL:
+    case EFFECT_NO_RETREAT:
         IncreaseStatUpScore(battlerAtk, battlerDef, STAT_ATK, &score);
         IncreaseStatUpScore(battlerAtk, battlerDef, STAT_DEF, &score);
         IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPATK, &score);
         IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPDEF, &score);
         IncreaseStatUpScore(battlerAtk, battlerDef, STAT_SPEED, &score);
-        if (ShouldRecover(battlerAtk, battlerDef, move, 100))
-            score += 3;
         break;
     case EFFECT_TRAILBLAZE:
         if (gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING)
@@ -7028,10 +7052,6 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         break;
     //case EFFECT_EXTREME_EVOBOOST: // TODO
         //break;
-    //case EFFECT_CLANGOROUS_SOUL:  // TODO
-        //break;
-    //case EFFECT_NO_RETREAT:       // TODO
-        //break;
     //case EFFECT_SKY_DROP
         //break;
     case EFFECT_JUNGLE_HEALING:
@@ -7221,6 +7241,8 @@ static s32 AI_SetupFirstTurn(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_MAGIC_ROOM:
     case EFFECT_TAILWIND:
     case EFFECT_DRAGON_DANCE:
+    case EFFECT_NO_RETREAT:
+    case EFFECT_CLANGOROUS_SOUL:
     case EFFECT_TIDY_UP:
     case EFFECT_STICKY_WEB:
     case EFFECT_RAIN_DANCE:
@@ -7661,6 +7683,8 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_BULK_UP:
             case EFFECT_CALM_MIND:
             case EFFECT_DRAGON_DANCE:
+            case EFFECT_NO_RETREAT:
+            case EFFECT_CLANGOROUS_SOUL:        
             case EFFECT_TIDY_UP:
             case EFFECT_DEFENSE_UP_3:
             case EFFECT_SPECIAL_ATTACK_UP_3:

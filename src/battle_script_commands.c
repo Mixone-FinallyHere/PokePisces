@@ -7345,8 +7345,7 @@ static void Cmd_moveend(void)
               && !(gWishFutureKnock.knockedOffMons[GetBattlerSide(gBattlerAttacker)] & gBitTable[gBattlerPartyIndexes[gBattlerAttacker]])   // But not knocked off
               && !(TestSheerForceFlag(gBattlerAttacker, gCurrentMove))  // Pickpocket doesn't activate for sheer force
               && IsMoveMakingContact(gCurrentMove, gBattlerAttacker)    // Pickpocket requires contact
-              && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)            // Obviously attack needs to have worked
-              && !IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_FAIRY))
+              && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
             {
                 u8 battlers[4] = {0, 1, 2, 3};
                 SortBattlersBySpeed(battlers, FALSE); // Pickpocket activates for fastest mon without item
@@ -7364,7 +7363,7 @@ static void Cmd_moveend(void)
                     {
                         gBattlerTarget = gBattlerAbility = battler;
                         // Battle scripting is super brittle so we shall do the item exchange now (if possible)
-                        if (GetBattlerAbility(gBattlerAttacker) != ABILITY_STICKY_HOLD)
+                        if (GetBattlerAbility(gBattlerAttacker) != ABILITY_STICKY_HOLD || !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_FAIRY))
                             StealTargetItem(gBattlerTarget, gBattlerAttacker);  // Target takes attacker's item
 
                         gEffectBattler = gBattlerAttacker;
@@ -7427,6 +7426,27 @@ static void Cmd_moveend(void)
                 gBattleStruct->dancingMoveTurns[gBattlerAttacker]++;
             gBattleScripting.moveendState++;
             break;
+        case MOVEEND_STORM_BREW:
+            if (moveType == TYPE_ELECTRIC 
+                && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+                && !(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
+                && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
+            {
+                u32 battler;
+                for (battler = 0; battler < gBattlersCount; battler++)
+                {
+                    if (GetBattlerAbility(battler) == ABILITY_STORM_BREW && IsBattlerAlive(battler) && !gProtectStructs[battler].alreadyUsedStormBrew)
+                    {
+                        gBattlerAttacker = gBattlerAbility = battler;
+                        gDisableStructs[battler].stormBrewCounter++;
+                        BattleScriptPushCursor();
+                        gBattlescriptCurrInstr = BattleScript_StormBrewActivates;
+                        effect = TRUE;
+                    }
+                }
+            }
+            gBattleScripting.moveendState++;
+            break;
         case MOVEEND_NEXT_DANCE_TARGET: // To iterate between all Dance Mania targets
         {
             if (originallyUsedMove == MOVE_DANCE_MANIA)
@@ -7485,6 +7505,47 @@ static void Cmd_moveend(void)
             gBattleScripting.moveendState++;
             break;
         }
+        case MOVEEND_DANCER: // Special case because it's so annoying
+        if (gBattleMoves[gCurrentMove].danceMove && gCurrentMove != MOVE_DANCE_MANIA)
+        {
+            u32 battler, nextDancer = 0;
+            bool32 hasDancerTriggered = FALSE;
+
+            for (battler = 0; battler < gBattlersCount; battler++)
+            {
+                if (gSpecialStatuses[battler].dancerUsedMove || gProtectStructs[battler].stealMove)
+                {
+                    // in case a battler fails to act on a Dancer-called move
+                    hasDancerTriggered = TRUE;
+                    break;
+                }
+            }
+
+            if (!(gBattleStruct->lastMoveFailed & gBitTable[gBattlerAttacker]
+                || (!gSpecialStatuses[gBattlerAttacker].dancerUsedMove
+                    && gProtectStructs[gBattlerAttacker].usesBouncedMove)))
+            {   // Dance move succeeds
+                // Set target for other Dancer mons; set bit so that mon cannot activate Dancer off of its own move
+                if (!gSpecialStatuses[gBattlerAttacker].dancerUsedMove)
+                {
+                    gBattleScripting.savedBattler = gBattlerTarget | 0x4;
+                    gBattleScripting.savedBattler |= (gBattlerAttacker << 4);
+                    gSpecialStatuses[gBattlerAttacker].dancerUsedMove = TRUE;
+                }
+                for (battler = 0; battler < gBattlersCount; battler++)
+                {
+                    if (GetBattlerAbility(battler) == ABILITY_DANCER && !gSpecialStatuses[battler].dancerUsedMove)
+                    {
+                        if (!nextDancer || (gBattleMons[battler].speed < gBattleMons[nextDancer & 0x3].speed))
+                            nextDancer = battler | 0x4;
+                    }
+                }
+                if (nextDancer && AbilityBattleEffects(ABILITYEFFECT_MOVE_END_OTHER, nextDancer & 0x3, 0, 0, 0))
+                    effect = TRUE;
+            }
+        }
+        gBattleScripting.moveendState++;
+        break;
         case MOVEEND_CLEAR_BITS: // Clear/Set bits for things like using a move for all targets and all hits.
             if (gSpecialStatuses[gBattlerAttacker].instructedChosenTarget)
                 *(gBattleStruct->moveTarget + gBattlerAttacker) = gSpecialStatuses[gBattlerAttacker].instructedChosenTarget & 0x3;
@@ -7534,47 +7595,6 @@ static void Cmd_moveend(void)
             if (!IS_MOVE_STATUS(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
                 gStatuses4[gBattlerTarget] &= ~(STATUS4_CRAFTY_SHIELD);
             memset(gQueuedStatBoosts, 0, sizeof(gQueuedStatBoosts));
-            gBattleScripting.moveendState++;
-            break;
-        case MOVEEND_DANCER: // Special case because it's so annoying
-            if (gBattleMoves[gCurrentMove].danceMove && gCurrentMove != MOVE_DANCE_MANIA)
-            {
-                u32 battler, nextDancer = 0;
-                bool32 hasDancerTriggered = FALSE;
-
-                for (battler = 0; battler < gBattlersCount; battler++)
-                {
-                    if (gSpecialStatuses[battler].dancerUsedMove || gProtectStructs[battler].stealMove)
-                    {
-                        // in case a battler fails to act on a Dancer-called move
-                        hasDancerTriggered = TRUE;
-                        break;
-                    }
-                }
-
-                if (!(gBattleStruct->lastMoveFailed & gBitTable[gBattlerAttacker]
-                    || (!gSpecialStatuses[gBattlerAttacker].dancerUsedMove
-                        && gProtectStructs[gBattlerAttacker].usesBouncedMove)))
-                {   // Dance move succeeds
-                    // Set target for other Dancer mons; set bit so that mon cannot activate Dancer off of its own move
-                    if (!gSpecialStatuses[gBattlerAttacker].dancerUsedMove)
-                    {
-                        gBattleScripting.savedBattler = gBattlerTarget | 0x4;
-                        gBattleScripting.savedBattler |= (gBattlerAttacker << 4);
-                        gSpecialStatuses[gBattlerAttacker].dancerUsedMove = TRUE;
-                    }
-                    for (battler = 0; battler < gBattlersCount; battler++)
-                    {
-                        if (GetBattlerAbility(battler) == ABILITY_DANCER && !gSpecialStatuses[battler].dancerUsedMove)
-                        {
-                            if (!nextDancer || (gBattleMons[battler].speed < gBattleMons[nextDancer & 0x3].speed))
-                                nextDancer = battler | 0x4;
-                        }
-                    }
-                    if (nextDancer && AbilityBattleEffects(ABILITYEFFECT_MOVE_END_OTHER, nextDancer & 0x3, 0, 0, 0))
-                        effect = TRUE;
-                }
-            }
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_COUNT:
@@ -10715,8 +10735,8 @@ static void Cmd_various(void)
     {
         VARIOUS_ARGS(const u8 *failInstr);
         if (gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION
-        || GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE
-        || !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget)
+        || (GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE
+        && !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget))
         || GetBattlerAbility(gBattlerTarget) == ABILITY_OBLIVIOUS
         || GetBattlerAbility(gBattlerTarget) == ABILITY_IGNORANT_BLISS)
         {
@@ -11495,8 +11515,8 @@ static void Cmd_various(void)
         VARIOUS_ARGS();
         for (i = 0; i < NUM_BATTLE_STATS; i++)
         {
-            if (gBattleMons[battler].statStages[i] > DEFAULT_STAT_STAGE) // Negative becomes positive.
-                gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE + (DEFAULT_STAT_STAGE - gBattleMons[battler].statStages[i]);
+            if (gBattleMons[battler].statStages[i] > DEFAULT_STAT_STAGE) // Positive becomes negative.
+                gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE - (gBattleMons[battler].statStages[i] - DEFAULT_STAT_STAGE);
         }
         break;
     }
@@ -15838,8 +15858,8 @@ static void Cmd_tryinfatuating(void)
     }
     else
     {
-        if (GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE
-        || !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget)
+        if ((GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE
+        && !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget))
         || gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)
         {
             gBattlescriptCurrInstr = cmd->failInstr;

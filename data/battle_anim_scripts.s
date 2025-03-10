@@ -1062,6 +1062,7 @@ gBattleAnims_Moves::
     .4byte Move_SYRUP_BOMB
     .4byte Move_DEARLY_DEPART
     .4byte Move_FIREBRAND
+	.4byte Move_LIGHTNING
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
 	.4byte Move_ALL_OUT_PUMMELING
@@ -27912,6 +27913,7 @@ Move_THUNDER_SHOCK:
 	waitforvisualfinish
 	end
 
+Move_LIGHTNING:
 Move_THUNDERBOLT:
 	loadspritegfx ANIM_TAG_SPARK
 	loadspritegfx ANIM_TAG_SHOCK_3
