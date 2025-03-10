@@ -874,7 +874,7 @@ MossdeepCity_EventScript_ItemPFullHeal::
 
 MossdeepCity_EventScript_ItemPRevive2::
 	finditem ITEM_REVIVE
-	ssetflag FLAG_P_ITEM_MOSDEEP_REVIVE_2
+	setflag FLAG_P_ITEM_MOSDEEP_REVIVE_2
 	end
 
 MossdeepCity_EventScript_ItemPStardust::
