@@ -4840,19 +4840,6 @@ u32 GetBattlerTotalSpeedStat(u32 battler)
     return GetBattlerTotalSpeedStatArgs(battler, ability, holdEffect);
 }
 
-s8 GetChosenMovePriority(u32 battler)
-{
-    u16 move;
-
-    gProtectStructs[battler].pranksterElevated = 0;
-    if (gProtectStructs[battler].noValidMoves)
-        move = MOVE_STRUGGLE;
-    else
-        move = gBattleMons[battler].moves[*(gBattleStruct->chosenMovePositions + battler)];
-
-    return GetMovePriority(battler, move);
-}
-
 static bool8 IsTwoTurnsMove(u16 move)
 {
     if (gBattleMoves[move].effect == EFFECT_SKULL_BASH
@@ -4872,6 +4859,19 @@ static bool8 IsTwoTurnsMove(u16 move)
         return TRUE;
     else
         return FALSE;
+}
+
+s8 GetChosenMovePriority(u32 battler)
+{
+    u16 move;
+
+    gProtectStructs[battler].pranksterElevated = 0;
+    if (gProtectStructs[battler].noValidMoves)
+        move = MOVE_STRUGGLE;
+    else
+        move = gBattleMons[battler].moves[gBattleStruct->chosenMovePositions[battler]];
+
+    return GetMovePriority(battler, move);
 }
 
 s8 GetMovePriority(u32 battler, u16 move)
@@ -4929,7 +4929,7 @@ s8 GetMovePriority(u32 battler, u16 move)
     {
         priority++;
     }
-    else if ((gCurrentMove == MOVE_MAGICAL_LEAF || gCurrentMove == MOVE_LEAFAGE || gCurrentMove == MOVE_WORRY_SEED || gCurrentMove == MOVE_COTTON_GUARD) && gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
+    else if ((gCurrentMove == MOVE_MAGICAL_LEAF || gCurrentMove == MOVE_LEAFAGE || gCurrentMove == MOVE_WORRY_SEED || gCurrentMove == MOVE_COTTON_GUARD) && gBattleMons[battler].status1 & STATUS1_BLOOMING)
     {
         priority++;
     }
@@ -4937,7 +4937,7 @@ s8 GetMovePriority(u32 battler, u16 move)
     {
         priority++;
     }
-    else if ((gCurrentMove == MOVE_CONSTRICT) && gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)
+    else if ((gCurrentMove == MOVE_CONSTRICT) && gBattleMons[battler].status2 & STATUS2_MULTIPLETURNS)
     {
         priority = 4;
     }
@@ -5000,29 +5000,29 @@ u32 GetWhichBattlerFasterArgs(u32 battler1, u32 battler2, bool32 ignoreChosenMov
         bool32 battler2HasStallingItem = holdEffectBattler2 == HOLD_EFFECT_LAGGING_TAIL;
 
         if (battler1HasQuickEffect && !battler2HasQuickEffect)
-            strikesFirst = 0;
+            strikesFirst = -1;
         else if (battler2HasQuickEffect && !battler1HasQuickEffect)
             strikesFirst = 1;
         else if (battler1HasStallingItem && !battler2HasStallingItem)
-            strikesFirst = 1;
+            strikesFirst = -1;
         else if (battler2HasStallingItem && !battler1HasStallingItem)
-            strikesFirst = 0;
+            strikesFirst = -1;
         else if (battler1HasStallingAbility && !battler2HasStallingAbility)
             strikesFirst = 1;
         else if (battler2HasStallingAbility && !battler1HasStallingAbility)
-            strikesFirst = 0;
+            strikesFirst = -1;
         else
         {
             if (speedBattler1 == speedBattler2)
             {
                 // same speeds, same priorities
-                strikesFirst = 1;
+                strikesFirst = 0;
             }
             else if (speedBattler1 < speedBattler2)
             {
                 // battler2 has more speed
                 if (gFieldStatuses & STATUS_FIELD_TRICK_ROOM)
-                    strikesFirst = 0;
+                    strikesFirst = -1;
                 else
                     strikesFirst = 1;
             }
@@ -5032,7 +5032,7 @@ u32 GetWhichBattlerFasterArgs(u32 battler1, u32 battler2, bool32 ignoreChosenMov
                 if (gFieldStatuses & STATUS_FIELD_TRICK_ROOM)
                     strikesFirst = 1;
                 else
-                    strikesFirst = 0;
+                    strikesFirst = -1;
             }
         }
     }
@@ -5042,7 +5042,7 @@ u32 GetWhichBattlerFasterArgs(u32 battler1, u32 battler2, bool32 ignoreChosenMov
     }
     else
     {
-        strikesFirst = 0; // battler1's move has greater priority
+        strikesFirst = -1; // battler1's move has greater priority
     }
     return strikesFirst;
 }
