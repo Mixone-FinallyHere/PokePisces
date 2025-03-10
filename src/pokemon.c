@@ -6349,32 +6349,35 @@ bool8 ExecuteTableBasedItemEffect(struct Pokemon *mon, u16 item, u8 partyIndex, 
     return PokemonUseItemEffects(mon, item, partyIndex, moveIndex, FALSE);
 }
 
-#define UPDATE_FRIENDSHIP_FROM_ITEM()                                                                   \
-{                                                                                                       \
-    if ((retVal == 0 || friendshipOnly) && !ShouldSkipFriendshipChange() && friendshipChange == 0)      \
-    {                                                                                                   \
-        friendshipChange = itemEffect[itemEffectParam];                                                 \
-        friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);                                        \
-        if (friendshipChange > 0)                                                                       \
-        {                                                                                               \
-            if (GetMonData(mon, MON_DATA_POKEBALL, NULL) == ITEM_LUXURY_BALL)                           \
-                friendshipChange++;                                                                     \
-            if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == GetCurrentRegionMapSectionId())         \
-                friendshipChange++;                                                                     \
-            if (holdEffect == HOLD_EFFECT_FRIENDSHIP_UP)                                                \
-                friendshipChange == 150 * friendshipChange / 100;                                       \
-        }                                                                                               \
-        if (friendshipChange > 0 && holdEffect == HOLD_EFFECT_SALTY_TEAR)                               \
-            friendship -= friendshipChange;                                                             \
-        else                                                                                            \
-            friendship += friendshipChange;                                                             \
-        if (friendship < 0)                                                                             \
-            friendship = 0;                                                                             \
-        if (friendship > MAX_FRIENDSHIP)                                                                \
-            friendship = MAX_FRIENDSHIP;                                                                \
-        SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);                                              \
-        retVal = FALSE;                                                                                 \
-    }                                                                                                   \
+static bool32 UpdateFriendshipFromItem(struct Pokemon *mon, const u8 *itemEffect, u8 itemEffectParam, u32 holdEffect, u32 retVal, bool32 friendshipOnly, s8 friendshipChange)
+{
+    if ((retVal == 0 || friendshipOnly) && !ShouldSkipFriendshipChange() && friendshipChange == 0)
+    {
+        s32 friendship;
+
+        friendshipChange = itemEffect[itemEffectParam];
+        friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
+        if (friendshipChange > 0)
+        {
+            if (GetMonData(mon, MON_DATA_POKEBALL, NULL) == ITEM_LUXURY_BALL)
+                friendshipChange++;
+            if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == GetCurrentRegionMapSectionId())
+                friendshipChange++;
+            if (holdEffect == HOLD_EFFECT_FRIENDSHIP_UP)
+                friendshipChange == 150 * friendshipChange / 100;
+        }
+        if (friendshipChange > 0 && holdEffect == HOLD_EFFECT_SALTY_TEAR)
+            friendship -= friendshipChange;
+        else
+            friendship += friendshipChange;
+        if (friendship < 0)
+            friendship = 0;
+        if (friendship > MAX_FRIENDSHIP)
+            friendship = MAX_FRIENDSHIP;
+        SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
+        retVal = FALSE;
+    }
+    return retVal;
 }
 
 #if B_X_ITEMS_BUFF >= GEN_7
@@ -6427,6 +6430,11 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
     // Skip using the item if it won't do anything
     if (gItemEffectTable[item] == NULL && item != ITEM_ENIGMA_BERRY_E_READER)
         return TRUE;
+    
+    if (item == ITEM_ENERGY_ROOT) {
+        friendshipOnly = TRUE;
+        friendshipChange = itemEffect[7];
+    }
 
     // Get item effect
     itemEffect = GetItemEffect(item);
@@ -6798,19 +6806,19 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                         // In general, Pokémon with lower friendship receive more,
                         // and Pokémon with higher friendship receive less.
                         if (GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) < 100)
-                            UPDATE_FRIENDSHIP_FROM_ITEM();
+                            retVal = UpdateFriendshipFromItem(mon, itemEffect, 7, holdEffect, retVal, friendshipOnly, friendshipChange);
                         itemEffectParam++;
                         break;
 
                     case 6: // ITEM5_FRIENDSHIP_MID
                         if (GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) >= 100 && GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) < 200)
-                            UPDATE_FRIENDSHIP_FROM_ITEM();
+                            retVal = UpdateFriendshipFromItem(mon, itemEffect, 8, holdEffect, retVal, friendshipOnly, friendshipChange);
                         itemEffectParam++;
                         break;
 
                     case 7: // ITEM5_FRIENDSHIP_HIGH
                         if (GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) >= 200)
-                            UPDATE_FRIENDSHIP_FROM_ITEM();
+                            retVal = UpdateFriendshipFromItem(mon, itemEffect, 9, holdEffect, retVal, friendshipOnly, friendshipChange);
                         itemEffectParam++;
                         break;
                     }
