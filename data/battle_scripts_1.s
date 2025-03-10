@@ -17058,6 +17058,33 @@ BattleScript_MoveStatDrain2End:
 	tryfaintmon BS_ATTACKER
 	goto BattleScript_MoveEnd
 
+BattleScript_DrySkinHealStatUp_PPLoss::
+	ppreduce
+BattleScript_DrySkinHealStatUp::
+	attackstring
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	printstring STRINGID_PKMNRESTOREDHPUSING
+	waitmessage B_WAIT_TIME_LONG
+	setgraphicalstatchangevalues
+	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	waitanimation
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_DrySkinHealStatUp_Cont
+.if B_ABSORBING_ABILITY_STRING >= GEN_5
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+.else
+	printstring STRINGID_TARGETABILITYSTATRAISE
+	waitmessage B_WAIT_TIME_LONG
+.endif
+BattleScript_DrySkinHealStatUp_Cont:
+	clearsemiinvulnerablebit
+	tryfaintmon BS_ATTACKER
+	goto BattleScript_MoveEnd
+
 BattleScript_MoveStatNegativeDrain_PPLoss::
 	ppreduce
 BattleScript_MoveStatNegativeDrain::
@@ -17067,16 +17094,28 @@ BattleScript_MoveStatNegativeDrain::
 	setgraphicalstatchangevalues
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
 	waitanimation
-	setstatchanger STAT_SPEED, 1, TRUE
 	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_MoveStatNegativeDrain_Cont
 .if B_ABSORBING_ABILITY_STRING >= GEN_5
-	printfromtable gStatUpStringIds
+	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 .else
-	printstring STRINGID_TARGETABILITYSTATRAISE
+	printstring STRINGID_TARGETABILITYSTATLOWER
 	waitmessage B_WAIT_TIME_LONG
 .endif
 BattleScript_MoveStatNegativeDrain_Cont:
+	clearsemiinvulnerablebit
+	tryfaintmon BS_ATTACKER
+	goto BattleScript_MoveEnd
+
+BattleScript_WindPowerCharge_PPLoss::
+	ppreduce
+BattleScript_WindPowerCharge::
+	attackstring
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	setcharge BS_TARGET
+	printstring STRINGID_BEINGHITCHARGEDPKMNWITHPOWER
+	waitmessage B_WAIT_TIME_LONG
 	clearsemiinvulnerablebit
 	tryfaintmon BS_ATTACKER
 	goto BattleScript_MoveEnd
@@ -17455,6 +17494,45 @@ BattleScript_BattlerAbilityStatRaiseOnSwitchIn::
 	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
 	waitanimation
 	printstring STRINGID_BATTLERABILITYRAISEDSTAT
+	waitmessage B_WAIT_TIME_LONG
+	end3
+
+BattleScript_WindRiderStatRaiseOnSwitchIn::
+	call BattleScript_AbilityPopUp
+	setstatchanger STAT_ATK, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_WindRiderActivatesSpAtk
+	jumpifbyte CMP_LESS_THAN, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_WindRiderDefAnim
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY, BattleScript_WindRiderActivatesSpAtk
+	pause B_WAIT_TIME_SHORTEST
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_WindRiderActivatesSpAtk
+BattleScript_WindRiderDefAnim:
+	setgraphicalstatchangevalues
+	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printstring STRINGID_BATTLERABILITYRAISEDSTAT
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_WindRiderActivatesSpAtk:
+	setstatchanger STAT_SPATK, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_WindRiderActivatesEnd
+	jumpifbyte CMP_LESS_THAN, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_WindRiderSpAtkAnim
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_ROSE_EMPTY, BattleScript_WindRiderActivatesEnd
+	pause B_WAIT_TIME_SHORTEST
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_WindRiderActivatesEnd
+BattleScript_WindRiderSpAtkAnim:
+	setgraphicalstatchangevalues
+	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printstring STRINGID_BATTLERABILITYRAISEDSTAT
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_WindRiderActivatesEnd:
+	end3
+
+BattleScript_WindPowerChargeOnSwitchIn::
+	call BattleScript_AbilityPopUp
+	setcharge BS_ATTACKER
+	printstring STRINGID_PKMNCHARGINGPOWER
 	waitmessage B_WAIT_TIME_LONG
 	end3
 
@@ -19220,6 +19298,18 @@ BattleScript_TargetAbilityStatRaiseRet::
 	setgraphicalstatchangevalues
 	call BattleScript_StatUp
 BattleScript_TargetAbilityStatRaiseRet_End:
+	copybyte gBattlerAttacker, sSAVED_BATTLER
+	return
+
+BattleScript_TargetAbilityStatDropRet::
+	copybyte sSAVED_BATTLER, gBattlerAttacker
+	copybyte gBattlerAbility, gEffectBattler
+	copybyte gBattlerAttacker, gBattlerTarget
+	call BattleScript_AbilityPopUp
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN, BattleScript_TargetAbilityStatDropRet_End
+	setgraphicalstatchangevalues
+	call BattleScript_StatDown
+BattleScript_TargetAbilityStatDropRet_End:
 	copybyte gBattlerAttacker, sSAVED_BATTLER
 	return
 
