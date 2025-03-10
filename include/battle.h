@@ -70,6 +70,8 @@ struct DisableStruct
     u8 exhaustionCounter;
     u8 surpriseCounter;
     u8 daybreakCounter;
+    u8 stormBrewCounter;
+    u8 allureCounter;
     u8 frenzyCounter;
     u8 purified;
     s8 stockpileDef;
@@ -86,7 +88,6 @@ struct DisableStruct
     u8 rolloutTimerStartValue:4;
     u8 tauntTimer:4;
     u8 battlerPreventingEscape;
-    u8 battlerCausingAllure;
     u8 battlerWithSureHit;
     u8 isFirstTurn;
     u8 truantCounter:1;
@@ -184,6 +185,7 @@ struct ProtectStruct
     u8 physicalBattlerId;
     u8 specialBattlerId;
     u32 extraMoveUsed:1;
+    u32 alreadyUsedStormBrew:1;
     u32 hardStoneBoost:1;
     u8 overtakeRedirectActive:1; //active for the battler being hit by MOVE_OVERTAKE
     u8 overtakeRedirectedUser:2; //saves battler linked by MOVE_OVERTAKE

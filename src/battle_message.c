@@ -216,7 +216,7 @@ static const u8 sText_PkmnSketchedMove[] = _("{B_ATK_NAME_WITH_PREFIX} SKETCHED\
 static const u8 sText_PkmnTryingToTakeFoe[] = _("{B_ATK_NAME_WITH_PREFIX} is trying\nto take its foe with it!");
 static const u8 sText_PkmnTookFoe[] = _("{B_DEF_NAME_WITH_PREFIX} took\n{B_ATK_NAME_WITH_PREFIX} with it!");
 static const u8 sText_PkmnReducedPP[] = _("Reduced {B_DEF_NAME_WITH_PREFIX}'s\n{B_BUFF1} by {B_BUFF2}!");
-static const u8 sText_AtkPkmnReducedPP[] = _("Reduced {B_ATK_NAME_WITH_PREFIX}'s\n{B_BUFF1} by {B_BUFF2}!");
+static const u8 sText_AtkPkmnReducedPP[] = _("{B_LAST_ITEM} reduced {B_ATK_NAME_WITH_PREFIX}'s\n{B_BUFF1} by {B_BUFF2}!");
 static const u8 sText_ClearAmuletWontLowerStats[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1} prevents\nits stats from being lowered!");
 static const u8 sText_PurifiedNoStatChange[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is too pure\nfor stat changes!");
 static const u8 sText_TargetWasPurifiedAndCantChangeStats[] = _("{B_DEF_NAME_WITH_PREFIX} has been purified\nand cannot change their stats!");
@@ -269,7 +269,7 @@ static const u8 sText_PkmnPlantedRoots[] = _("{B_ATK_NAME_WITH_PREFIX} planted i
 static const u8 sText_PkmnAbsorbedNutrients[] = _("{B_ATK_NAME_WITH_PREFIX} absorbed\nnutrients with its roots!");
 static const u8 sText_PkmnAnchoredItself[] = _("{B_DEF_NAME_WITH_PREFIX} anchored\nitself with its roots!");
 static const u8 sText_PkmnWasMadeDrowsy[] = _("{B_ATK_NAME_WITH_PREFIX} made\n{B_DEF_NAME_WITH_PREFIX} drowsy!");
-static const u8 sText_PkmnsHeartFluttersShalalala[] = _("{B_DEF_NAME_WITH_PREFIX}'s heart flutters shalalalaÄ");
+static const u8 sText_PkmnsHeartFluttersShalalala[] = _("{B_DEF_NAME_WITH_PREFIX}'s heart\nflutters shalalalaÄ");
 static const u8 sText_PkmnKnockedOff[] = _("{B_ATK_NAME_WITH_PREFIX} knocked off\n{B_DEF_NAME_WITH_PREFIX}'s {B_LAST_ITEM}!");
 static const u8 sText_PkmnSwappedAbilities[] = _("{B_ATK_NAME_WITH_PREFIX} swapped abilities\nwith its opponent!");
 static const u8 sText_PkmnSealedOpponentMove[] = _("{B_ATK_NAME_WITH_PREFIX} sealed the\nopponent's move(s)!");
@@ -327,6 +327,8 @@ static const u8 sText_PkmnIsPanicked[] = _("{B_ATK_NAME_WITH_PREFIX} is panickin
 static const u8 sText_PkmnsXBlocksY[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY}\nblocks {B_CURRENT_MOVE}!");
 static const u8 sText_PkmnsXBlocksY2[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nblocks {B_CURRENT_MOVE}!");
 static const u8 sText_PkmnsXRestoredHPALittle2[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY}\nrestored its HP a little!");
+static const u8 sText_PkmnsXDamagedItALittle[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY}\ndamaged it a little!");
+static const u8 sText_GainedAStackOfStormBrew[] = _("{B_ATK_NAME_WITH_PREFIX}'s gained a\nstack of Storm Brew!");
 static const u8 sText_PkmnsXWhippedUpSandstorm[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nwhipped up a sandstorm!");
 static const u8 sText_PkmnsXIntensifiedSun[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nintensified the sun's rays!");
 static const u8 sText_PkmnsXPreventsYLoss[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nprevents {B_BUFF1} loss!");
@@ -587,6 +589,8 @@ static const u8 sText_PkmnFlung[] = _("{B_ATK_NAME_WITH_PREFIX} flung its\n{B_LA
 static const u8 sText_PkmnPreventedFromHealing[] = _("{B_DEF_NAME_WITH_PREFIX} was prevented\nfrom healing!");
 static const u8 sText_PkmnSwitchedAtkAndDef[] = _("{B_ATK_NAME_WITH_PREFIX} switched its\nAttack and Defense!");
 static const u8 sText_PkmnsAbilitySuppressed[] = _("{B_DEF_NAME_WITH_PREFIX}'s ability\nwas suppressed!");
+static const u8 sText_AbilityCoveredVeil[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY} covered\n{B_ATK_TEAM2} with a veil!");
+static const u8 sText_AbilityShieldedFromCriticalHits[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY} shielded\n{B_ATK_TEAM2} team from critical hits\land super effective moves!");
 static const u8 sText_ShieldedFromCriticalHits[] = _("{B_CURRENT_MOVE} shielded\n{B_ATK_TEAM2} team from critical hits\land super effective moves!");
 static const u8 sText_SwitchedAtkAndSpAtk[] = _("{B_ATK_NAME_WITH_PREFIX} switched all its\nchanges to its Attack and\pSp. Atk with the target!");
 static const u8 sText_SwitchedDefAndSpDef[] = _("{B_ATK_NAME_WITH_PREFIX} switched all its\nchanges to its Defense and\pSp. Def with the target!");
@@ -863,6 +867,7 @@ static const u8 sText_ItemCuredSpeciesStatus[] = _("{B_BUFF1} had\nits status he
 static const u8 sText_ItemRestoredSpeciesPP[] = _("{B_BUFF1} had its\nPP restored!");
 static const u8 sText_AtkTrappedDef[] = _("{B_ATK_NAME_WITH_PREFIX} trapped\nthe {B_DEF_NAME_WITH_PREFIX}!");
 static const u8 sText_MirrorHerbCopied[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} used its {B_LAST_ITEM}\nto mirror its opponent's stat changes!");
+static const u8 sText_PkmnFlipsStatsWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} flipped opponents'\npositive stat changes with {B_LAST_ITEM}!");
 static const u8 sText_PkmnItemMelted[] = _("{B_ATK_NAME_WITH_PREFIX} corroded\n{B_DEF_NAME_WITH_PREFIX}'s {B_LAST_ITEM}!");
 static const u8 sText_UltraBurstReacting[] = _("Bright light is about to\nburst out of {B_ATK_NAME_WITH_PREFIX}!");
 static const u8 sText_UltraBurstCompleted[] = _("{B_ATK_NAME_WITH_PREFIX} regained its\ntrue power through Ultra Burst!");
@@ -999,6 +1004,7 @@ static const u8 sText_AcidArmorDropsDefense[] = _("{B_DEF_NAME_WITH_PREFIX}'s Ac
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
+    [STRINGID_PKMNFLIPSSTATSWITH - BATTLESTRINGS_TABLE_START] = sText_PkmnFlipsStatsWith,
     [STRINGID_GOLDPLAINS - BATTLESTRINGS_TABLE_START] = sText_GoldPlains,
     [STRINGID_TARGETISHURTBYSALTCURE - BATTLESTRINGS_TABLE_START] = sText_TargetIsHurtBySaltCure,
     [STRINGID_TARGETISBEINGSALTCURED - BATTLESTRINGS_TABLE_START] = sText_TargetIsBeingSaltCured,
@@ -1843,6 +1849,10 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNPREVENTSSTATLOSSDRAGON - BATTLESTRINGS_TABLE_START] = sText_PkmnPreventsStatLossDragon,
     [STRINGID_MULTISTRIKEPOWERUP - BATTLESTRINGS_TABLE_START] = sText_MultiStrikePowerUp,
     [STRINGID_PKMNCENTERATTENTIONSPOTLIGHT - BATTLESTRINGS_TABLE_START] = sText_PkmnCenterAttentionSpotlight,
+    [STRINGID_PKMNSXDAMAGEDITALITTLE - BATTLESTRINGS_TABLE_START] = sText_PkmnsXDamagedItALittle,
+    [STRINGID_GAINEDASTACKOFSTORMBREW - BATTLESTRINGS_TABLE_START] = sText_GainedAStackOfStormBrew,
+    [STRINGID_ABILITYCOVEREDVEIL - BATTLESTRINGS_TABLE_START] = sText_AbilityCoveredVeil,
+    [STRINGID_ABILITYSHIELDEDFROMCRITICALHITS - BATTLESTRINGS_TABLE_START] = sText_AbilityShieldedFromCriticalHits,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -2249,6 +2259,12 @@ const u16 gSportsUsedStringIds[] =
 {
     [B_MSG_WEAKEN_ELECTRIC] = STRINGID_ELECTRICITYWEAKENED,
     [B_MSG_WEAKEN_FIRE]     = STRINGID_FIREWEAKENED
+};
+
+const u16 gAllureStringIds[] =
+{
+    [B_MSG_ALLURE]              = STRINGID_PKMNSHEARTFLUTTERSSHALALALA,
+    [B_MSG_INFATUATION]         = STRINGID_PKMNFELLINLOVE,
 };
 
 const u16 gPartyStatusHealStringIds[] =

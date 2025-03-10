@@ -1467,6 +1467,12 @@
 	.4byte \ptr
 	.endm
 
+	.macro checkallurecounter counter:req, ptr:req
+	callnative BS_CheckAllureCounter
+	.byte \counter
+	.4byte \ptr
+	.endm
+
 	.macro checkfrenzycounter counter:req, ptr:req
 	callnative BS_CheckFrenzyCounter
 	.byte \counter
@@ -2390,6 +2396,7 @@
 	.macro trysetimprison battler:req, failInstr:req, jumpInstr:req
 	various \battler, VARIOUS_TRY_SET_IMPRISON
 	.4byte \failInstr
+	.4byte \jumpInstr
 	.endm
 
 	.macro setpurified battler:req, failInstr:req
@@ -2685,6 +2692,10 @@
 
 	.macro invertnegativestatstages battler:req
 	various \battler, VARIOUS_INVERT_NEGATIVE_STAT_STAGES
+	.endm
+
+	.macro invertpositivestatstages battler:req
+	various \battler, VARIOUS_INVERT_POSITIVE_STAT_STAGES
 	.endm
 
 	.macro jumpifsafeguard jumpInstr:req

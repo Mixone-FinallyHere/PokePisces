@@ -1062,6 +1062,7 @@ gBattleAnims_Moves::
     .4byte Move_SYRUP_BOMB
     .4byte Move_DEARLY_DEPART
     .4byte Move_FIREBRAND
+	.4byte Move_LIGHTNING
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
 	.4byte Move_ALL_OUT_PUMMELING
@@ -1174,6 +1175,9 @@ gBattleAnims_General::
 	.4byte Move_HEARTHWARM                  @ B_ANIM_HEARTHWARM_HEAL
 	.4byte Move_GRAVITY                     @ B_ANIM_GRAVITY
 	.4byte Move_FIRE_SPIN                   @ B_ANIM_INFERNAL_REIGN
+	.4byte Status_Blooming				    @ B_ANIM_BLOOMING
+	.4byte Move_SAFEGUARD                   @ B_ANIM_SAFEGUARD
+	.4byte Move_LUCKY_CHANT                 @ B_ANIM_LUCKY_CHANT
 
 	.align 2
 gBattleAnims_Special::
@@ -27909,6 +27913,7 @@ Move_THUNDER_SHOCK:
 	waitforvisualfinish
 	end
 
+Move_LIGHTNING:
 Move_THUNDERBOLT:
 	loadspritegfx ANIM_TAG_SPARK
 	loadspritegfx ANIM_TAG_SHOCK_3
