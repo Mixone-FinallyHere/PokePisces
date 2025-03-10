@@ -12778,7 +12778,7 @@ static const struct TrainerMon sParty_PAnthreeny[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 240, 0, 0, 0, 0),
     .lvl = 75,
-    .moves = {MOVE_FOCUS_ENERGY, MOVE_SILVER_EDGE, MOVE_DRAIN_PUNCH, MOVE_SUCKER_PUNCH},
+    .moves = {MOVE_FOCUS_ENERGY, MOVE_SILVER_EDGE, MOVE_SACRED_SWORD, MOVE_SUCKER_PUNCH},
     },
     {
     .species = SPECIES_FROSLASS,
@@ -12831,11 +12831,11 @@ static const struct TrainerMon sParty_PSchuli[] = {
     {
     .species = SPECIES_OOHBAABA,
     .ability = ABILITY_WHITE_SMOKE,
-    .heldItem = ITEM_FLIP_COIN,
+    .heldItem = ITEM_COVERT_CLOAK,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 0, 120, 0, 0, 120),
     .lvl = 75,
-    .moves = {MOVE_SAFEGUARD, MOVE_WILL_O_WISP, MOVE_VENOM_GALE, MOVE_STRANGE_STEAM},
+    .moves = {MOVE_LUCKY_CHANT, MOVE_WILL_O_WISP, MOVE_VENOM_GALE, MOVE_STRANGE_STEAM},
     },
     {
     .species = SPECIES_HAIBUN,
@@ -12847,13 +12847,13 @@ static const struct TrainerMon sParty_PSchuli[] = {
     .moves = {MOVE_AURORA_VEIL, MOVE_BLIZZARD, MOVE_NONE, MOVE_NONE},
     },
     {
-    .species = SPECIES_CARDIOVOR,
-    .ability = ABILITY_SEED_SOWER,
-    .heldItem = ITEM_BLOOM_ORB,
+    .species = SPECIES_ARMAGATTON,
+    .ability = ABILITY_RUIN_WARD,
+    .heldItem = ITEM_FLIP_COIN,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .ev = TRAINER_PARTY_EVS(240, 240, 0, 0, 0, 0),
+    .ev = TRAINER_PARTY_EVS(240, 0, 0, 0, 240, 0),
     .lvl = 76,
-    .moves = {MOVE_POWER_WHIP, MOVE_BREAKING_SWIPE, MOVE_STUN_SPORE, MOVE_METEOR_BEAM},
+    .moves = {MOVE_DECIMATION, MOVE_PURGE_RAY, MOVE_NONE, MOVE_NONE},
     },
     {
     .species = SPECIES_LYORESA,
