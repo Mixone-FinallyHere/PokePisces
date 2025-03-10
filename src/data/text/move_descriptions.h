@@ -6003,4 +6003,5 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_SYRUP_BOMB - 1] = sSyrupBombDescription,
     [MOVE_DEARLY_DEPART - 1] = sDearlyDepartDescription,
     [MOVE_FIREBRAND - 1] = sTackleDescription,
+    [MOVE_LIGHTNING - 1] = sTackleDescription,
 };

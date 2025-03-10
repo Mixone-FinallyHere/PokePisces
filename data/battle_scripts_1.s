@@ -4915,33 +4915,27 @@ BattleScript_EffectAttackDown3:
 
 BattleScript_EffectFlash:
 	attackcanceler
+	jumpifsubstituteblocks BattleScript_FailedFromAtkString
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
-	jumpiftype BS_TARGET, TYPE_PSYCHIC, BattleScript_EffectAccuracyDown
-	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_EffectAccuracyDown
-	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_EffectAccuracyDown
-	jumpifsubstituteblocks BattleScript_EffectAccuracyDown
-	jumpifstatus2 BS_TARGET, STATUS2_CONFUSION, BattleScript_EffectAccuracyDown
-	accuracycheck BattleScript_ButItFailed, ACC_CURR_MOVE
-	jumpifsafeguard BattleScript_EffectAccuracyDown
 	ppreduce
+	jumpiftype BS_TARGET, TYPE_PSYCHIC, BattleScript_StatDownFromPPReduce
+	jumpifability BS_TARGET, ABILITY_OWN_TEMPO, BattleScript_StatDownFromPPReduce
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_StatDownFromPPReduce
+	jumpifstatus2 BS_TARGET, STATUS2_CONFUSION, BattleScript_StatDownFromPPReduce
+	jumpifsafeguard BattleScript_StatDownFromPPReduce
 	attackanimation
 	waitanimation
 	setmoveeffect MOVE_EFFECT_CONFUSION
 	seteffectprimary
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_EffectFlashAccuracyDown
-BattleScript_EffectFlashAccuracyDown:
 	setstatchanger STAT_ACC, 1, TRUE
-	goto BattleScript_FlashStatDown
-BattleScript_FlashStatDown:
-	jumpifsubstituteblocks BattleScript_FailedFromAtkString
-BattleScript_FlashStatDownFromAttackString:
 	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_FlashStatDownEnd
 	jumpifbyte CMP_LESS_THAN, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_FlashStatDownDoAnim
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY, BattleScript_FlashStatDownEnd
 	pause B_WAIT_TIME_SHORT
-	goto BattleScript_StatDownPrintString
+	goto BattleScript_FlashStatDownPrintString
 BattleScript_FlashStatDownDoAnim::
 	setgraphicalstatchangevalues
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
@@ -8471,24 +8465,6 @@ BattleScript_EffectTopsyTurvyWorks:
 	printstring STRINGID_TOPSYTURVYSWITCHEDSTATS
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
-
-BattleScript_InvertStats::
-	pause B_WAIT_TIME_SHORT
-	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
-	invertstatstages BS_TARGET
-	printstring STRINGID_TOPSYTURVYSWITCHEDSTATS
-	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_ATTACKER
-	end2
-
-BattleScript_InvertStats2::
-	pause B_WAIT_TIME_SHORT
-	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
-	invertstatstages BS_ATTACKER
-	printstring STRINGID_FLIPCOINCHANGEDATTACKERSSTATS
-	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_TARGET
-	return
 
 BattleScript_ClearSpeed::
 	normalisespeed
@@ -13579,15 +13555,8 @@ BattleScript_HandlePursuit::
 	swapattackerwithtarget
 	trysetdestinybondtohappen
 	call BattleScript_PursuitDmgOnSwitchOut
-	jumpifmove MOVE_IMPRISON BattleScript_CancelSwitch
 	swapattackerwithtarget
 	call BattleScript_DoSwitchOut
-
-BattleScript_CancelSwitch::
-	swapattackerwithtarget
-	printfromtable STRINGID_TARGETCANTESCAPENOW
-	waitmessage B_WAIT_TIME_LONG
-	end2
 
 BattleScript_PursuitDmgOnSwitchOut::
 	pause B_WAIT_TIME_SHORT
@@ -16697,25 +16666,30 @@ BattleScript_RuinWardHurtActivates::
 
 BattleScript_RuinWardActivates::
 	call BattleScript_AbilityPopUp
-	printfromtable STRINGID_PKMNCOVEREDBYVEIL
 	playanimation BS_ATTACKER, B_ANIM_SAFEGUARD
+	waitanimation
+	printstring STRINGID_ABILITYCOVEREDVEIL
 	waitmessage B_WAIT_TIME_LONG
-	printstring STRINGID_SHIELDEDFROMCRITICALHITS
 	playanimation BS_ATTACKER, B_ANIM_LUCKY_CHANT
-	waitmessage B_WAIT_TIME_SHORT
+	waitanimation
+	printstring STRINGID_ABILITYSHIELDEDFROMCRITICALHITS
+	waitmessage B_WAIT_TIME_LONG
 	end3
 
 BattleScript_RuinWardSafeguardActivates::
 	call BattleScript_AbilityPopUp
-	printfromtable STRINGID_PKMNCOVEREDBYVEIL
+	playanimation BS_ATTACKER, B_ANIM_LUCKY_CHANT
+	waitanimation
+	printstring STRINGID_ABILITYCOVEREDVEIL
 	playanimation BS_ATTACKER, B_ANIM_SAFEGUARD
 	waitmessage B_WAIT_TIME_LONG
 	end3
 
 BattleScript_RuinWardLuckyChantActivates::
 	call BattleScript_AbilityPopUp
-	printstring STRINGID_SHIELDEDFROMCRITICALHITS
 	playanimation BS_ATTACKER, B_ANIM_LUCKY_CHANT
+	waitanimation
+	printstring STRINGID_ABILITYSHIELDEDFROMCRITICALHITS
 	waitmessage B_WAIT_TIME_SHORT
 	end3
 
@@ -17892,6 +17866,13 @@ BattleScript_DancerActivates::
 	orword gHitMarker, HITMARKER_ALLOW_NO_PP
 	jumptocalledmove TRUE
 
+BattleScript_StormBrewActivates::
+	call BattleScript_AbilityPopUp
+	waitmessage B_WAIT_TIME_SHORT
+	printstring STRINGID_GAINEDASTACKOFSTORMBREW
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_SynchronizeActivates::
 	waitstate
 	copybyte gBattlerTarget, gBattlerAttacker
@@ -18728,32 +18709,6 @@ BattleScript_MirrorHerbStartCopyStats:
 	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_MirrorHerbStartReturn
 	goto BattleScript_MirrorHerbStartCopyStats
 BattleScript_MirrorHerbStartReturn:
-	return
-
-BattleScript_FlipCoinFlipStatsEnd2::
-	call BattleScript_FlipCoinFlipStats
-	end2
-
-BattleScript_FlipCoinFlipStats::
-	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, NULL
-	printstring STRINGID_PKMNFLIPSSTATSWITH
-	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_SCRIPTING
-	playanimation BS_SCRIPTING, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-	savetarget
-	setbyte gBattlerTarget, 0
-BattleScript_FlipCoinLoop:
-	jumpifbyteequal gBattlerTarget, BS_SCRIPTING, BattleScript_FlipCoinLoopIncrement
-	jumpiftargetally BattleScript_FlipCoinLoopIncrement
-	jumpifabsent BS_TARGET, BattleScript_FlipCoinLoopIncrement
-	copybyte sBATTLER, BS_SCRIPTING
-	invertpositivestatstages BS_TARGET
-BattleScript_FlipCoinLoopIncrement:
-	addbyte gBattlerTarget, 1
-	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_FlipCoinLoop
-	copybyte sBATTLER, BS_SCRIPTING
-	restoretarget
-	pause B_WAIT_TIME_MED
 	return
 
 BattleScript_TotemVar::

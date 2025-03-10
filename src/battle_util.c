@@ -5314,7 +5314,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             if ((!(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_SAFEGUARD)
                 && (!(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_LUCKY_CHANT))))
             {
-                u8 side = GetBattlerSide(gBattlerAttacker);
+                u8 side = GetBattlerSide(battler);
                 gBattlerAttacker = battler;
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 gSideStatuses[side] |= SIDE_STATUS_SAFEGUARD;
@@ -7121,14 +7121,15 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !(gBattleMons[gBattlerAttacker].status1 & STATUS1_FREEZE)
             && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
             {
-                u16 extraMove = MOVE_THUNDER_SHOCK;  //The Extra Move to be used
-                u8 movePower = 0;                  //The Move power, leave at 0 if you want it to be the same as the normal move
-                u8 moveEffectPercentChance  = 10;  //The percent chance of the move effect happening
-                u8 extraMoveSecondaryEffect = MOVE_EFFECT_PARALYSIS;  //Leave at 0 to remove it's secondary effect
+                u16 extraMove = MOVE_LIGHTNING;  //The Extra Move to be used
+                u8 movePower = 40 * (1 + gDisableStructs[gBattlerAttacker].stormBrewCounter); //The Move power, leave at 0 if you want it to be the same as the normal move
+                u8 moveEffectPercentChance  = 0;  //The percent chance of the move effect happening
+                u8 extraMoveSecondaryEffect = 0;  //Leave at 0 to remove it's secondary effect
                 gTempMove = gCurrentMove;
                 gCurrentMove = extraMove;
                 gMultiHitCounter = 0;
                 gProtectStructs[battler].extraMoveUsed = TRUE;
+                gProtectStructs[battler].alreadyUsedStormBrew = TRUE;
 
                 //Move Effect
                 VarSet(VAR_EXTRA_MOVE_DAMAGE,      movePower);
@@ -8646,29 +8647,6 @@ static u8 TryConsumeMirrorHerb(u32 battler, bool32 execute)
     return effect;
 }
 
-static u8 TryConsumeFlipCoin(u32 battler, bool32 execute)
-{
-    u8 effect = 0;
-
-    if (gProtectStructs[battler].eatMirrorHerb && IsBattlerAlive(battler))
-    {
-        gLastUsedItem = gBattleMons[battler].item;
-        gBattleScripting.battler = battler;
-        gProtectStructs[battler].eatMirrorHerb = 0;
-        if (execute)
-        {
-            BattleScriptExecute(BattleScript_FlipCoinFlipStatsEnd2);
-        }
-        else
-        {
-            BattleScriptPushCursor();
-            gBattlescriptCurrInstr = BattleScript_FlipCoinFlipStats;
-        }
-        effect = ITEM_STATS_CHANGE;
-    }
-    return effect;
-}
-
 static u32 RestoreWhiteHerbStats(u32 battler)
 {
     u32 i, effect = 0;
@@ -8919,9 +8897,6 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
         break;
     case HOLD_EFFECT_MIRROR_HERB:
         effect = TryConsumeMirrorHerb(battler, FALSE);
-        break;
-    case HOLD_EFFECT_FLIP_COIN:
-        effect = TryConsumeFlipCoin(battler, FALSE);
         break;
     }
 
@@ -9210,9 +9185,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 break;
             case HOLD_EFFECT_MIRROR_HERB:
                 effect = TryConsumeMirrorHerb(battler, TRUE);
-                break;
-            case HOLD_EFFECT_FLIP_COIN:
-                effect = TryConsumeFlipCoin(battler, TRUE);
                 break;
             }
             if (effect != 0)
@@ -9598,9 +9570,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 break;
             case HOLD_EFFECT_MIRROR_HERB:
                 effect = TryConsumeMirrorHerb(battler, TRUE);
-                break;
-            case HOLD_EFFECT_FLIP_COIN:
-                effect = TryConsumeFlipCoin(battler, TRUE);
                 break;
             }
 

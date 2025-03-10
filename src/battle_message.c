@@ -328,6 +328,7 @@ static const u8 sText_PkmnsXBlocksY[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABI
 static const u8 sText_PkmnsXBlocksY2[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nblocks {B_CURRENT_MOVE}!");
 static const u8 sText_PkmnsXRestoredHPALittle2[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY}\nrestored its HP a little!");
 static const u8 sText_PkmnsXDamagedItALittle[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY}\ndamaged it a little!");
+static const u8 sText_GainedAStackOfStormBrew[] = _("{B_ATK_NAME_WITH_PREFIX}'s gained a\nstack of Storm Brew!");
 static const u8 sText_PkmnsXWhippedUpSandstorm[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nwhipped up a sandstorm!");
 static const u8 sText_PkmnsXIntensifiedSun[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nintensified the sun's rays!");
 static const u8 sText_PkmnsXPreventsYLoss[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nprevents {B_BUFF1} loss!");
@@ -588,6 +589,8 @@ static const u8 sText_PkmnFlung[] = _("{B_ATK_NAME_WITH_PREFIX} flung its\n{B_LA
 static const u8 sText_PkmnPreventedFromHealing[] = _("{B_DEF_NAME_WITH_PREFIX} was prevented\nfrom healing!");
 static const u8 sText_PkmnSwitchedAtkAndDef[] = _("{B_ATK_NAME_WITH_PREFIX} switched its\nAttack and Defense!");
 static const u8 sText_PkmnsAbilitySuppressed[] = _("{B_DEF_NAME_WITH_PREFIX}'s ability\nwas suppressed!");
+static const u8 sText_AbilityCoveredVeil[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY} covered\n{B_ATK_TEAM2} with a veil!");
+static const u8 sText_AbilityShieldedFromCriticalHits[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY} shielded\n{B_ATK_TEAM2} team from critical hits\land super effective moves!");
 static const u8 sText_ShieldedFromCriticalHits[] = _("{B_CURRENT_MOVE} shielded\n{B_ATK_TEAM2} team from critical hits\land super effective moves!");
 static const u8 sText_SwitchedAtkAndSpAtk[] = _("{B_ATK_NAME_WITH_PREFIX} switched all its\nchanges to its Attack and\pSp. Atk with the target!");
 static const u8 sText_SwitchedDefAndSpDef[] = _("{B_ATK_NAME_WITH_PREFIX} switched all its\nchanges to its Defense and\pSp. Def with the target!");
@@ -1847,6 +1850,9 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_MULTISTRIKEPOWERUP - BATTLESTRINGS_TABLE_START] = sText_MultiStrikePowerUp,
     [STRINGID_PKMNCENTERATTENTIONSPOTLIGHT - BATTLESTRINGS_TABLE_START] = sText_PkmnCenterAttentionSpotlight,
     [STRINGID_PKMNSXDAMAGEDITALITTLE - BATTLESTRINGS_TABLE_START] = sText_PkmnsXDamagedItALittle,
+    [STRINGID_GAINEDASTACKOFSTORMBREW - BATTLESTRINGS_TABLE_START] = sText_GainedAStackOfStormBrew,
+    [STRINGID_ABILITYCOVEREDVEIL - BATTLESTRINGS_TABLE_START] = sText_AbilityCoveredVeil,
+    [STRINGID_ABILITYSHIELDEDFROMCRITICALHITS - BATTLESTRINGS_TABLE_START] = sText_AbilityShieldedFromCriticalHits,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

@@ -2343,7 +2343,6 @@ bool32 IsTrappingMoveEffect(u32 effect)
     case EFFECT_CONSTRICT:
     case EFFECT_BLOCK:
     case EFFECT_HEAL_BLOCK:
-    //case EFFECT_NO_RETREAT:   // TODO
         return TRUE;
     default:
         return FALSE;

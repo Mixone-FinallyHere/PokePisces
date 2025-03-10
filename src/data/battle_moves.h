@@ -1477,6 +1477,21 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .sheerForceBoost = TRUE,
     },
 
+    [MOVE_LIGHTNING] =
+    {
+        .effect = EFFECT_PARALYZE_HIT,
+        .power = 40,
+        .type = TYPE_ELECTRIC,
+        .accuracy = 100,
+        .pp = 30,
+        .secondaryEffectChance = 10,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_SPECIAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .sheerForceBoost = TRUE,
+    },
+
     [MOVE_THUNDERBOLT] =
     {
         #if B_UPDATED_MOVE_DATA >= GEN_6
