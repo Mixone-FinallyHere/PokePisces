@@ -4024,3 +4024,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/CrimneyInteriors/scripts.inc"
 
 	.include "data/maps/OldaleInteriors/scripts.inc"
+
+	.include "data/maps/SlateportSodaShop/scripts.inc"

@@ -235,6 +235,7 @@
 #define MAP_STRAE_SEAPATH_UNDERWATER         (5 | (15 << 8))
 #define MAP_DEWFORD_INTERIORS                (6 | (15 << 8))
 #define MAP_MIRAGE_ISLAND                    (7 | (15 << 8))
+#define MAP_SLATEPORT_SODA_SHOP              (8 | (15 << 8))
 
 // gMapGroup_PiscesLeg9Major
 #define MAP_DETERMANITE_BEACH    (0 | (16 << 8))

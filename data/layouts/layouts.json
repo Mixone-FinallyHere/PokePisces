@@ -6460,6 +6460,16 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/OldaleInteriors/border.bin",
       "blockdata_filepath": "data/layouts/OldaleInteriors/map.bin"
+    },
+    {
+      "id": "LAYOUT_SLATEPORT_SODA_SHOP",
+      "name": "SlateportSodaShop_Layout",
+      "width": 15,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_SeashoreHouse",
+      "border_filepath": "data/layouts/SlateportSodaShop/border.bin",
+      "blockdata_filepath": "data/layouts/SlateportSodaShop/map.bin"
     }
   ]
 }
