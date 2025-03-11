@@ -34,7 +34,7 @@ HatchloamField_EventScript_Courtney::
 
 HatchloamField_EventScript_CourtneyWantToBattle::
 	speakername HatchloamField_Text_NameCourtney
-	msgbox HatchloamField_Text_NiceToSeeYou, MSGBOX_DEFAULT
+	msgbox HatchloamField_Text_NiceToSeeYou, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, HatchloamField_EventScript_CourtneyBattle
 	speakername HatchloamField_Text_NameCourtney
 	msgbox HatchloamField_Text_ThatsTooBad, MSGBOX_AUTOCLOSE

@@ -165,6 +165,8 @@ static const u16 sRegionMap_SpecialPlaceLocations[][2] =
     {MAPSEC_RUSTURF_TUNNEL,             MAPSEC_RUSTBORO_CITY},
     {MAPSEC_MT_CHIMNEY,                 MAPSEC_ROUTE_117},
     {MAPSEC_SEAFLOOR_CAVERN,            MAPSEC_METEOR_FALLS},
+    {MAPSEC_ROUTE_133,                  MAPSEC_ROUTE_120},
+    {MAPSEC_ROUTE_134,                  MAPSEC_JAGGED_PASS},
     {MAPSEC_NONE,                       MAPSEC_NONE}
 };
 

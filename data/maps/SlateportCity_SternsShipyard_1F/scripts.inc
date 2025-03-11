@@ -14,7 +14,7 @@ SlateportCity_SternsShipyard_1F_OnLoad:
 SlateportCity_SternsShipyard_1F_EventScript_SetBardGfx::
 	setvar VAR_BARD_COLOR, MAUVILLE_MAN_BARD
 	special SetMauvilleOldManObjEventGfx
-	end
+	return
 
 SlateportCity_SternsShipyard_1F_EventScript_RemoveKizuna::
 	removeobject LOCALID_P_MAN

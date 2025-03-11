@@ -31,6 +31,7 @@ Route110_SeasideCyclingRoadNorthEntrance_EventScript_BikeCheck::
 	lockall
 	specialvar VAR_RESULT, GetPlayerAvatarBike
 	goto_if_eq VAR_RESULT, 0, Route110_SeasideCyclingRoadNorthEntrance_EventScript_NoBike
+	goto_if_eq VAR_RESULT, 1, Route110_SeasideCyclingRoadNorthEntrance_EventScript_NoMachBike
 	setflag FLAG_SYS_CYCLING_ROAD
 	setvar VAR_TEMP_1, 1
 	releaseall
@@ -38,6 +39,14 @@ Route110_SeasideCyclingRoadNorthEntrance_EventScript_BikeCheck::
 
 Route110_SeasideCyclingRoadNorthEntrance_EventScript_NoBike::
 	msgbox Route110_SeasideCyclingRoadNorthEntrance_Text_TooDangerousToWalk, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Route110_SeasideCyclingRoadNorthEntrance_Movement_PushPlayerBackFromCounter
+	waitmovement 0
+	releaseall
+	end
+
+Route110_SeasideCyclingRoadNorthEntrance_EventScript_NoMachBike::
+	msgbox Route110_SeasideCyclingRoadNorthEntrance_Text_NoMachBike, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Route110_SeasideCyclingRoadNorthEntrance_Movement_PushPlayerBackFromCounter
 	waitmovement 0
@@ -71,4 +80,9 @@ Route110_SeasideCyclingRoadNorthEntrance_Text_GoAllOutOnCyclingRoad:
 Route110_SeasideCyclingRoadNorthEntrance_Text_TooDangerousToWalk:
 	.string "Sorry, you can't walk on Cycling\n"
 	.string "Road. It's too dangerous.\p"
-	.string "Please come back with a BIKE.$"
+	.string "Please come back with a Bike.$"
+
+Route110_SeasideCyclingRoadNorthEntrance_Text_NoMachBike:
+	.string "Your Acro Bike is not quite fast\n"
+	.string "enough to be allowed on Cycling Road.\p"
+	.string "Please come back with a Mach Bike.$"

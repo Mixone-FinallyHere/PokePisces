@@ -29,6 +29,7 @@ VerdanturfTransition_EventScript_Roadblock::
 	showmoneybox 0, 0
 	msgbox VerdanturfTransition_Text_WillYouPay, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, VerdanturfTransition_EventScript_CheckMoney
+	hidemoneybox
 	msgbox VerdanturfTransition_Text_SorryToHear, MSGBOX_DEFAULT
 	applymovement OBJ_EVENT_ID_PLAYER, VerdanturfTransition_Movement_MoveRight
 	waitmovement 0

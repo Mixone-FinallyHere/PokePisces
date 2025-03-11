@@ -8,9 +8,9 @@ NewMauvilleCenter2_EventScript_MoveRelearner::
 	setflag FLAG_LEVEL_1_TUTOR
 	applymovement LOCALID_MOVE_RELEARNER, Common_Movement_FacePlayer
 	waitmovement 0
-	goto_if_set FLAG_TEMP_1, NewMauvilleCenter2_EventScript_AskTeachMove
+	goto_if_set FLAG_TEMP_3, NewMauvilleCenter2_EventScript_AskTeachMove
 	msgbox NewMauvilleCenter2_Text_ImTheMoveTutor, MSGBOX_DEFAULT
-	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_3
 	goto NewMauvilleCenter2_EventScript_AskTeachMove
 	clearflag FLAG_LEVEL_1_TUTOR
 	end

@@ -9,7 +9,7 @@ NewMauvilleFloor1_OnLoad:
 	call_if_gt VAR_OLD_GUYS_STATE, 0, NewMauvilleFloor1_EventScript_RemovePowerlessMan
 	call_if_lt VAR_OLD_GUYS_STATE, 6, NewMauvilleFloor1_EventScript_RemoveRydelGuard
 	call_if_gt VAR_OLD_GUYS_STATE, 6, NewMauvilleFloor1_EventScript_RemoveRydelGuard
-	call_if_lt VAR_OLD_GUYS_STATE, 15, NewMauvilleFloor1_EventScript_CloseElevator
+	call_if_lt VAR_OLD_GUYS_STATE, 17, NewMauvilleFloor1_EventScript_CloseElevator
 	end
 
 NewMauvilleFloor1_EventScript_RemovePowerlessMan::
