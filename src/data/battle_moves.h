@@ -4029,7 +4029,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_IRON_TAIL] =
     {
-        .effect = EFFECT_DEFENSE_UP_HIT,
+        .effect = EFFECT_IRON_TAIL,
         .power = 120,
         .type = TYPE_STEEL,
         .accuracy = 90,
@@ -4045,7 +4045,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_METAL_CLAW] =
     {
-        .effect = EFFECT_ATTACK_UP_HIT,
+        .effect = EFFECT_METAL_CLAW,
         .power = 50,
         .type = TYPE_STEEL,
         .accuracy = 95,
@@ -12196,7 +12196,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .type = TYPE_STEEL,
         .accuracy = 95,
         .pp = 5,
-        .secondaryEffectChance = 0,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_SPECIAL,
@@ -12839,7 +12839,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         #else
             .power = 120,
         #endif
-        .effect = EFFECT_STEEL_BEAM,
+        .effect = EFFECT_CHLOROBLAST,
         .type = TYPE_GRASS,
         .accuracy = 95,
         .pp = 5,

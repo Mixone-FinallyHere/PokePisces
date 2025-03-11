@@ -11063,6 +11063,17 @@ u32 CountBattlerSpecialDefenseIncreases(u32 battler)
     return count;
 }
 
+u32 CountBattlerDefenseIncreases(u32 battler)
+{
+    u32 i;
+    u32 count = 0;
+
+    if (gBattleMons[battler].statStages[STAT_DEF] > DEFAULT_STAT_STAGE) // Stat is increased.
+        count += gBattleMons[battler].statStages[STAT_DEF] - DEFAULT_STAT_STAGE;
+
+    return count;
+}
+
 u32 CountBattlerStatDecreases(u32 battler, bool32 countEvasionAcc)
 {
     u32 i;
@@ -11575,6 +11586,12 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         break;
     case EFFECT_BOLT_BEAK:
         basePower = 65 + (CountBattlerSpeedIncreases(battlerAtk) * 20);
+        break;
+    case EFFECT_IRON_TAIL:
+        basePower = 120 + (CountBattlerDefenseIncreases(battlerAtk) * 20);
+        break;
+    case EFFECT_METAL_CLAW:
+        basePower = 60 + (CountBattlerDefenseIncreases(battlerAtk) * 10);
         break;
     case EFFECT_AERIAL_ACE:
         basePower = 60 + (CountBattlerAccuracyIncreases(battlerAtk) * 15);
@@ -15294,6 +15311,8 @@ u32 CalcSecondaryEffectChance(u32 battler, u8 secondaryEffectChance)
         secondaryEffectChance *= 3;
     else if (CountBattlerSpeedDecreases(gBattlerTarget) > 0 && gCurrentMove == MOVE_FREEZING_GLARE)
         secondaryEffectChance *= CountBattlerSpeedDecreases(gBattlerTarget) + 1;
+    else if (CountBattlerDefenseIncreases(gBattlerAttacker) > 0 && gCurrentMove == MOVE_METAL_CLAW)
+        secondaryEffectChance *= CountBattlerDefenseIncreases(gBattlerAttacker) + 1;
     else if (CountBattlerSpecialAttackIncreases(gBattlerAttacker) > 0 && CountBattlerSpecialDefenseIncreases(gBattlerAttacker) > 0 && gCurrentMove == MOVE_PSYBEAM)
         secondaryEffectChance *= CountBattlerSpecialAttackIncreases(gBattlerAttacker) + CountBattlerSpecialDefenseIncreases(gBattlerAttacker) + 1;
     else if (GetBattlerAbility(battler) == ABILITY_SERENE_GRACE 

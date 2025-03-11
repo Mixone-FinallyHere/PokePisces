@@ -1151,14 +1151,14 @@ static const u8 sSweetScentDescription[] = _(
     "Pokémon's evasiveness.");
 
 static const u8 sIronTailDescription[] = _(
-    "The foe is slammed with a steel\n"
-    "tail. This may boost the user's\n"
-    "Defense stat. Always goes last.");
+    "This may boost the user's\n"
+    "Defense. Boosted for every\n"
+    "Defense boost. Always goes last.");
 
 static const u8 sMetalClawDescription[] = _(
-    "The target is raked with steel\n"
-    "claws. This may also boost the\n"
-    "user's Attack stat.");
+    "May boost the user's Attack\n"
+    "stat. Boosts chances and power\n"
+    "for every Defense stat boost.");
 
 static const u8 sVitalThrowDescription[] = _(
     "Moves last, but it never misses,\n"
@@ -3541,9 +3541,9 @@ static const u8 sEternabeamDescription[] = _(
     "user can't move on the next turn.");
 
 static const u8 sSteelBeamDescription[] = _(
-    "The user fires a beam of steel\n"
-    "that it collected from its entire\n"
-    "body. This also damages the user.");
+    "The user fires a beam of steel.\n"
+    "This damages the user and sharply\n"
+    "boosts its Defense stat.");
 
 static const u8 sExpandingForceDescription[] = _(
     "This move's power goes up and\n"
@@ -4361,8 +4361,8 @@ static const u8 sSoulCutterDescription[] = _(
     "Def. Deals bonus true damage.");
 
 static const u8 sVoidDescription[] = _(
-    "The user sends foes to the void.\n"
-    "Disables their last move, goes\n"
+    "Sends foes to the void. Disables\n"
+    "moves, torments them, goes\n"
     "first, and ignores protection.");
 
 static const u8 sKerfuffleDescription[] = _(

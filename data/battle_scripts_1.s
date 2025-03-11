@@ -406,7 +406,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectHit                     @ EFFECT_RISING_VOLTAGE
 	.4byte BattleScript_EffectHit                     @ EFFECT_BEAK_BLAST
 	.4byte BattleScript_EffectCourtChange             @ EFFECT_COURT_CHANGE
-	.4byte BattleScript_EffectSteelBeam               @ EFFECT_STEEL_BEAM
+	.4byte BattleScript_EffectChloroblast               @ EFFECT_CHLOROBLAST
 	.4byte BattleScript_EffectExtremeEvoboost         @ EFFECT_EXTREME_EVOBOOST
 	.4byte BattleScript_EffectHitSetRemoveTerrain     @ EFFECT_HIT_SET_REMOVE_TERRAIN
 	.4byte BattleScript_EffectDarkVoid                @ EFFECT_DARK_VOID
@@ -696,6 +696,57 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectBrickBreak              @ EFFECT_PSYCHIC_FANGS
 	.4byte BattleScript_EffectTrickorTreat            @ EFFECT_TRICK_OR_TREAT
 	.4byte BattleScript_EffectWorkUp                  @ EFFECT_WORK_UP
+	.4byte BattleScript_EffectAttackUpHit             @ EFFECT_METAL_CLAW
+	.4byte BattleScript_EffectDefenseUpHit            @ EFFECT_IRON_TAIL
+	.4byte BattleScript_EffectSteelBeam               @ EFFECT_STEEL_BEAM
+
+BattleScript_EffectSteelBeam::
+	setmoveeffect MOVE_EFFECT_DEF_PLUS_2 | MOVE_EFFECT_AFFECTS_USER
+	attackcanceler
+	attackstring
+	ppreduce
+	accuracycheck BattleScript_SteelBeamMiss, ACC_CURR_MOVE
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	jumpifability BS_ATTACKER, ABILITY_MAGIC_GUARD, BattleScript_SteelBeamAfterSelfDamage
+	jumpifability BS_ATTACKER, ABILITY_SUGAR_COAT, BattleScript_SteelBeamAfterSelfDamage
+	jumpifterucharmprotected BS_ATTACKER, BattleScript_SteelBeamAfterSelfDamage
+	call BattleScript_SteelBeamSelfDamage
+BattleScript_SteelBeamAfterSelfDamage::
+	waitstate
+	tryfaintmon BS_ATTACKER
+	tryfaintmon BS_TARGET
+	goto BattleScript_MoveEnd
+BattleScript_SteelBeamMiss::
+	pause B_WAIT_TIME_SHORT
+	effectivenesssound
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	jumpifability BS_ATTACKER, ABILITY_MAGIC_GUARD, BattleScript_MoveEnd
+	jumpifability BS_ATTACKER, ABILITY_SUGAR_COAT, BattleScript_MoveEnd
+	jumpifterucharmprotected BS_ATTACKER, BattleScript_MoveEnd
+	bichalfword gMoveResultFlags, MOVE_RESULT_MISSED
+	call BattleScript_SteelBeamSelfDamage
+	orhalfword gMoveResultFlags, MOVE_RESULT_MISSED
+	goto BattleScript_SteelBeamAfterSelfDamage
+BattleScript_SteelBeamSelfDamage::
+	dmg_1_2_attackerhp
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	return
 
 BattleScript_EffectWorkUp::
 	attackcanceler
@@ -1262,7 +1313,6 @@ BattleScript_EffectBlazingSoul::
 	seteffectwithchance
 	tryfaintmon BS_TARGET
 	jumpifbattleend BattleScript_MoveEnd
-	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	tryblazingsoul BS_ATTACKER, BattleScript_MoveEnd
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
@@ -4332,10 +4382,15 @@ BattleScript_EffectVoid::
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEnd
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
 	jumpifsafeguard BattleScript_MoveEnd
-	disablelastusedattack BattleScript_MoveEnd
+	disablelastusedattack BattleScript_TryVoidTorment
 	printstring STRINGID_PKMNMOVEWASDISABLED
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryDestinyKnotDisabledAttacker
+BattleScript_TryVoidTorment::
+	settorment BattleScript_MoveEnd
+	printstring STRINGID_PKMNSUBJECTEDTOTORMENT
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotTormentAttacker	
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectSandTomb::
@@ -5880,11 +5935,11 @@ BattleScript_EffectShellTrap::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
-BattleScript_EffectSteelBeam::
+BattleScript_EffectChloroblast::
 	attackcanceler
 	attackstring
 	ppreduce
-	accuracycheck BattleScript_SteelBeamMiss, ACC_CURR_MOVE
+	accuracycheck BattleScript_ChloroblastMiss, ACC_CURR_MOVE
 	critcalc
 	damagecalc
 	adjustdamage
@@ -5900,16 +5955,16 @@ BattleScript_EffectSteelBeam::
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
 	seteffectwithchance
-	jumpifability BS_ATTACKER, ABILITY_MAGIC_GUARD, BattleScript_SteelBeamAfterSelfDamage
-	jumpifability BS_ATTACKER, ABILITY_SUGAR_COAT, BattleScript_SteelBeamAfterSelfDamage
-	jumpifterucharmprotected BS_ATTACKER, BattleScript_SteelBeamAfterSelfDamage
-	call BattleScript_SteelBeamSelfDamage
-BattleScript_SteelBeamAfterSelfDamage::
+	jumpifability BS_ATTACKER, ABILITY_MAGIC_GUARD, BattleScript_ChloroblastAfterSelfDamage
+	jumpifability BS_ATTACKER, ABILITY_SUGAR_COAT, BattleScript_ChloroblastAfterSelfDamage
+	jumpifterucharmprotected BS_ATTACKER, BattleScript_ChloroblastAfterSelfDamage
+	call BattleScript_ChloroblastSelfDamage
+BattleScript_ChloroblastAfterSelfDamage::
 	waitstate
 	tryfaintmon BS_ATTACKER
 	tryfaintmon BS_TARGET
 	goto BattleScript_MoveEnd
-BattleScript_SteelBeamMiss::
+BattleScript_ChloroblastMiss::
 	pause B_WAIT_TIME_SHORT
 	effectivenesssound
 	resultmessage
@@ -5918,10 +5973,10 @@ BattleScript_SteelBeamMiss::
 	jumpifability BS_ATTACKER, ABILITY_SUGAR_COAT, BattleScript_MoveEnd
 	jumpifterucharmprotected BS_ATTACKER, BattleScript_MoveEnd
 	bichalfword gMoveResultFlags, MOVE_RESULT_MISSED
-	call BattleScript_SteelBeamSelfDamage
+	call BattleScript_ChloroblastSelfDamage
 	orhalfword gMoveResultFlags, MOVE_RESULT_MISSED
-	goto BattleScript_SteelBeamAfterSelfDamage
-BattleScript_SteelBeamSelfDamage::
+	goto BattleScript_ChloroblastAfterSelfDamage
+BattleScript_ChloroblastSelfDamage::
 	dmg_1_2_attackerhp
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
