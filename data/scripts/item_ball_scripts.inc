@@ -793,6 +793,16 @@ NewSooto_EventScript_ItemTinyMushroom::
 	setflag FLAG_P_ITEM_SOOTOPOLIS_NEW_TINY_MUSHROOM
 	end
 
+SootopolisCity_Gym_1F_EventScript_ItemRevive1::
+	finditem ITEM_REVIVE
+	setflag FLAG_P_ITEM_SOOTOPOLIS_GYM_REVIVE_1
+	end
+
+SootopolisCity_Gym_1F_EventScript_ItemRevive2::
+	finditem ITEM_REVIVE
+	setflag FLAG_P_ITEM_SOOTOPOLIS_GYM_REVIVE_2
+	end
+
 MangrottoTunnel_EventScript_ItemPokeball::
 	finditem ITEM_POKE_BALL
 	setflag FLAG_P_ITEM_MANGROTTO_TUNNEL_POKE_BALL

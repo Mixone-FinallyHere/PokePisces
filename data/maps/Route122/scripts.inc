@@ -69,9 +69,16 @@ Route122_EventScript_RayBattleStart::
 	end
 
 Route122_EventScript_RayLeaves::
+	setmetatile 25, 19, METATILE_Snow_PunchedMan1, TRUE
+	setmetatile 26, 19, METATILE_Snow_PunchedMan2, TRUE
+	setmetatile 26, 20, METATILE_Snow_PunchedMan3, FALSE
+	special DrawWholeMapView
+	delay 4
 	speakername Route122_Text_NameRay
 	msgbox Route122_Text_RayLeaves, MSGBOX_DEFAULT
 	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Route122_Movement_PlayerOutOfWay
+	waitmovement 0
 	applymovement LOCALID_RAY, Route122_Movement_RayLeaves
 	waitmovement 0
 	removeobject LOCALID_RAY
@@ -82,11 +89,16 @@ Route122_EventScript_RayLeaves::
 	release
 	end
 
+Route122_Movement_PlayerOutOfWay:
+	walk_right
+	face_left
+	step_end
+
 Route122_Movement_RayLeaves:
-	walk_left
 	walk_down
 	walk_down
 	walk_down
+	walk_fast_left
 	walk_fast_left
 	walk_fast_left
 	walk_fast_left

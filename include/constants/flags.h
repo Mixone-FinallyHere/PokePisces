@@ -1033,8 +1033,8 @@
 #define FLAG_HIDE_ROUTE_120_KECLEON_3                               0x3DA
 #define FLAG_HIDE_ROUTE_120_KECLEON_4                               0x3DB
 #define FLAG_HIDE_ROUTE_120_KECLEON_5                               0x3DC
-#define FLAG_HIDE_ROUTE_119_KECLEON_1                               0x3DD
-#define FLAG_HIDE_ROUTE_119_KECLEON_2                               0x3DE
+#define FLAG_P_ITEM_SOOTOPOLIS_GYM_REVIVE_1                               0x3DD
+#define FLAG_P_ITEM_SOOTOPOLIS_GYM_REVIVE_2                               0x3DE
 #define FLAG_HIDE_ROUTE_101_BOY                                     0x3DF
 #define FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M                 0x3E0
 #define FLAG_HIDE_LILYCOVE_POKEMON_CENTER_CONTEST_LADY_MON          0x3E1

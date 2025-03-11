@@ -874,6 +874,9 @@
 #define METATILE_Snow_MeralBuriedRight1    0x3C7
 #define METATILE_Snow_MeralBuriedTop1      0x3BE
 #define METATILE_Snow_MeralSnow            0x3AD
+#define METATILE_Snow_PunchedMan1          0x3F5
+#define METATILE_Snow_PunchedMan2          0x3FD
+#define METATILE_Snow_PunchedMan3          0x3FE
 #define METATILE_Snow_SnowPileBottomLeft   0x376
 #define METATILE_Snow_SnowPileBottomRight  0x377
 #define METATILE_Snow_SnowPileTopLeft      0x36E
