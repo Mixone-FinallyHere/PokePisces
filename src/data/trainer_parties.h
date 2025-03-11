@@ -14474,13 +14474,13 @@ static const struct TrainerMon sParty_PMrBonding[] = {
     },
     {
     .species = SPECIES_LEUKUNEHO,
-    .ability = ABILITY_REGENERATOR,
+    .ability = ABILITY_TRIAGE,
     .heldItem = ITEM_FLIP_COIN,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(192, 0, 0, 0, 128, 64),
     .lvl = 46,
-    .moves = {MOVE_ACID_SPRAY, MOVE_GIGA_DRAIN, MOVE_U_TURN, MOVE_SCALD},
-    .nature = NATURE_MODEST,
+    .moves = {MOVE_RECOVER, MOVE_SWIFT, MOVE_VENOM_DRAIN, MOVE_DRAINING_KISS},
+    .nature = NATURE_QUIET,
     },
     {
     .species = SPECIES_PAPYPUS,
