@@ -14241,7 +14241,7 @@ static const struct TrainerMon sParty_PWinona[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(120, 0, 0, 0, 132, 0),
     .lvl = 33,
-    .moves = {MOVE_MAGIC_COAT, MOVE_EERIE_IMPULSE, MOVE_DARK_VOID, MOVE_FEAR_FACTOR},
+    .moves = {MOVE_SNORE, MOVE_FIRE_BLAST, MOVE_DARK_VOID, MOVE_FEAR_FACTOR},
     .nature = NATURE_MILD,
     },
     {
@@ -14264,7 +14264,7 @@ static const struct TrainerMon sParty_PAarune[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(128, 0, 124, 0, 4, 0),
     .lvl = 32,
-    .moves = {MOVE_NIGHT_DAZE, MOVE_GEO_PULSE, MOVE_MAGIC_COAT, MOVE_SPOOK},
+    .moves = {MOVE_NIGHT_DAZE, MOVE_GEO_PULSE, MOVE_ROADBLOCK, MOVE_SPOOK},
     .nature = NATURE_BOLD,
     },
     {
@@ -14274,7 +14274,7 @@ static const struct TrainerMon sParty_PAarune[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(4, 124, 4, 124, 0, 0),
     .lvl = 33,
-    .moves = {MOVE_EARTHQUAKE, MOVE_MIRACLE_EYE, MOVE_KNOCK_OFF, MOVE_PLAY_ROUGH},
+    .moves = {MOVE_EARTHQUAKE, MOVE_MIRACLE_EYE, MOVE_ROCK_SLIDE, MOVE_PLAY_ROUGH},
     .nature = NATURE_JOLLY,
     },
     {
@@ -14284,7 +14284,7 @@ static const struct TrainerMon sParty_PAarune[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(124, 8, 0, 0, 0, 124),
     .lvl = 34,
-    .moves = {MOVE_EARTHQUAKE, MOVE_PROTECT, MOVE_ROADBLOCK, MOVE_IRON_HEAD},
+    .moves = {MOVE_EARTHQUAKE, MOVE_GRAND_SLAM, MOVE_REST, MOVE_SLEEP_TALK},
     .nature = NATURE_CAREFUL,
     }
 };
