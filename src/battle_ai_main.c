@@ -2340,13 +2340,17 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_MUD_SPORT:
             if (gFieldStatuses & STATUS_FIELD_MUDSPORT
               || gStatuses4[battlerAtk] & STATUS4_MUD_SPORT
-              || PartnerHasSameMoveEffectWithoutTarget(BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove))
-                score -= 10;
+              || PartnerHasSameMoveEffectWithoutTarget(BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove)
+              || !isDoubleBattle
+              || IS_BATTLER_OF_TYPE(battlerAtk, TYPE_GROUND))
+                  score -= 10;
             break;
         case EFFECT_WATER_SPORT:
             if (gFieldStatuses & STATUS_FIELD_WATERSPORT
               || gStatuses4[battlerAtk] & STATUS4_WATER_SPORT
-              || PartnerHasSameMoveEffectWithoutTarget(BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove))
+              || PartnerHasSameMoveEffectWithoutTarget(BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove)
+              || !isDoubleBattle 
+              || IS_BATTLER_OF_TYPE(battlerAtk, TYPE_WATER))
                 score -= 10;
             break;
         case EFFECT_ABSORB:
