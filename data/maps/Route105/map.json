@@ -141,7 +141,7 @@
       "y": 68,
       "elevation": 3,
       "item": "ITEM_HEART_SCALE",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_105_HEART_SCALE"
+      "flag": "0"
     },
     {
       "type": "hidden_item",
@@ -149,7 +149,7 @@
       "y": 56,
       "elevation": 3,
       "item": "ITEM_BIG_PEARL",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL"
+      "flag": "0"
     }
   ]
 }

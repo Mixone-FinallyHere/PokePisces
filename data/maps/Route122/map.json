@@ -83,7 +83,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route122_EventScript_ItemPRevive",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_ROUTE_122_REVIVE"
     }
   ],
   "warp_events": [

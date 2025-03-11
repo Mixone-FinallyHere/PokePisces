@@ -192,7 +192,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PerplumeMaze_EventScript_ItemPAdamantMint",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_PERPLUME_MAZE_ADAMANT_MINT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -205,7 +205,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PerplumeMaze_EventScript_ItemPCarrotHorn",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_PERPLUME_MAZE_CARROT_HORN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
@@ -218,7 +218,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMThunderWave",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_PERPLUME_MAZE_TM_THUNDER_WAVE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -231,7 +231,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PerplumeMaze_EventScript_ItemPMaxRepel",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_PERPLUME_MAZE_MAX_REPEL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -244,7 +244,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PerplumeMaze_EventScript_ItemPChupacabra",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_PERPLUME_MAZE_CHUPACABRA"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -257,7 +257,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PerplumeMaze_EventScript_ItemPDireHit",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_PERPLUME_MAZE_DIRE_HIT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -270,7 +270,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PerplumeMaze_EventScript_ItemPXAttack",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_PERPLUME_MAZE_X_ATTACK"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",

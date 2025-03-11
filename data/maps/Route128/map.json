@@ -174,7 +174,7 @@
       "y": 9,
       "elevation": 3,
       "item": "ITEM_HEART_SCALE",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_128_HEART_SCALE_1"
+      "flag": "0"
     },
     {
       "type": "hidden_item",
@@ -182,7 +182,7 @@
       "y": 21,
       "elevation": 3,
       "item": "ITEM_HEART_SCALE",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_128_HEART_SCALE_2"
+      "flag": "0"
     },
     {
       "type": "hidden_item",
@@ -190,7 +190,7 @@
       "y": 33,
       "elevation": 3,
       "item": "ITEM_HEART_SCALE",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_128_HEART_SCALE_3"
+      "flag": "0"
     }
   ]
 }
