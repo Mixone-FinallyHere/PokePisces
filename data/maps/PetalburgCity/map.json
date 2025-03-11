@@ -298,7 +298,7 @@
       "y": 29,
       "elevation": 3,
       "item": "ITEM_RARE_CANDY",
-      "flag": "FLAG_HIDDEN_ITEM_PETALBURG_CITY_RARE_CANDY"
+      "flag": "0"
     }
   ]
 }

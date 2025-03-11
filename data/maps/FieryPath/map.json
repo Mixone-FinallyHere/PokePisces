@@ -272,7 +272,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "FieryPath_EventScript_ItemPPPUp",
-      "flag": "0"
+      "flag": "FLAG_P_FIERY_PATH_PP_UP"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -285,7 +285,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "FieryPath_EventScript_ItemPCoralCrown1",
-      "flag": "0"
+      "flag": "FLAG_P_FIERY_PATH_CORAL_CROWN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -298,7 +298,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "FieryPath_EventScript_ItemPCoralCrown3",
-      "flag": "0"
+      "flag": "FLAG_P_FIERY_PATH_CORAL_CROWN_3"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -311,7 +311,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "FieryPath_EventScript_ItemPAssaultVest",
-      "flag": "0"
+      "flag": "FLAG_P_FIERY_PATH_ASSAULT_VEST"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -324,7 +324,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "FieryPath_EventScript_ItemPRareBone",
-      "flag": "0"
+      "flag": "FLAG_P_FIERY_PATH_RARE_BONE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -337,7 +337,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "FieryPath_EventScript_ItemPEscapeRope",
-      "flag": "0"
+      "flag": "FLAG_P_FIERY_PATH_ESCAPE_ROPE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
@@ -350,7 +350,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMBrickBreak",
-      "flag": "0"
+      "flag": "FLAG_P_FIERY_PATH_TM_BRICK_BREAK"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -363,7 +363,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "FieryPath_EventScript_ItemPDireHit",
-      "flag": "0"
+      "flag": "FLAG_P_FIERY_PATH_DIRE_HIT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -376,7 +376,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "FieryPath_EventScript_ItemPFullHeal",
-      "flag": "0"
+      "flag": "FLAG_P_FIERY_PATH_FULL_HEAL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -389,7 +389,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "FieryPath_EventScript_ItemPCoralCrown2",
-      "flag": "0"
+      "flag": "FLAG_P_FIERY_PATH_CORAL_CROWN_2"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",

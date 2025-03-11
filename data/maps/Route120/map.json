@@ -249,7 +249,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route120_EventScript_ItemPEscapeRope",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_ROUTE_120_ESCAPE_ROPE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -262,7 +262,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route120_EventScript_ItemPProtectPads",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_ROUTE_120_PROTECT_PADS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -275,7 +275,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route120_EventScript_ItemPCarrotHorn",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_ROUTE_120_CARROT_HORN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -288,7 +288,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route120_EventScript_ItemPXDefense",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_ROUTE_120_X_DEFENSE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -301,7 +301,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route120_EventScript_ItemPSeriousMint",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_ROUTE_120_SERIOUS_MINT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -314,7 +314,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route120_EventScript_ItemPCharcoal",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_ROUTE_120_CHARCOAL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
@@ -327,7 +327,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMRetaliate",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_ROUTE_120_TM_RETALIATE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -340,7 +340,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route120_EventScript_ItemPPPUp",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_ROUTE_120_PP_UP"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",

@@ -233,7 +233,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMDarkPulse",
-      "flag": "0"
+      "flag": "FLAG_P_MIDNEOR_FALLS_CAVE_TM_DARK_PULSE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -246,7 +246,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MidneorFallsCave_EventScript_ItemPDuskBall",
-      "flag": "0"
+      "flag": "FLAG_P_MIDNEOR_FALLS_CAVE_TM_DUSK_BALL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -259,7 +259,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MidneorFallsCave_EventScript_ItemPMoonStone",
-      "flag": "0"
+      "flag": "FLAG_P_MIDNEOR_FALLS_CAVE_MOON_STONE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -272,7 +272,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MidneorFallsCave_EventScript_ItemPOrbitBall",
-      "flag": "0"
+      "flag": "FLAG_P_MIDNEOR_FALLS_CAVE_ORBIT_BALL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -285,7 +285,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MidneorFallsCave_EventScript_ItemPStarPiece",
-      "flag": "0"
+      "flag": "FLAG_P_MIDNEOR_FALLS_CAVE_STAR_PIECE"
     }
   ],
   "warp_events": [
