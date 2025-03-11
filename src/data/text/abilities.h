@@ -263,8 +263,8 @@ static const u8 sHustleDescription[] = _(
 
 static const u8 sCuteCharmDescription[] = _(
     "When contact is made either way,\n"
-    "the foe may be infatuated with\n"
-    "the user.");
+    "sets allure on the foe. After 2\n"
+    "stacks, infatuates instead.");
 
 static const u8 sPlusDescription[] = _(
     "Boosts power if user or ally are\n"

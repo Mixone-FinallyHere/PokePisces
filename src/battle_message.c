@@ -270,6 +270,7 @@ static const u8 sText_PkmnAbsorbedNutrients[] = _("{B_ATK_NAME_WITH_PREFIX} abso
 static const u8 sText_PkmnAnchoredItself[] = _("{B_DEF_NAME_WITH_PREFIX} anchored\nitself with its roots!");
 static const u8 sText_PkmnWasMadeDrowsy[] = _("{B_ATK_NAME_WITH_PREFIX} made\n{B_DEF_NAME_WITH_PREFIX} drowsy!");
 static const u8 sText_PkmnsHeartFluttersShalalala[] = _("{B_DEF_NAME_WITH_PREFIX}'s heart\nflutters shalalalaÄ");
+static const u8 sText_PkmnsHeartFluttersShalalala2[] = _("{B_ATK_NAME_WITH_PREFIX}'s heart\nflutters shalalalaÄ");
 static const u8 sText_PkmnKnockedOff[] = _("{B_ATK_NAME_WITH_PREFIX} knocked off\n{B_DEF_NAME_WITH_PREFIX}'s {B_LAST_ITEM}!");
 static const u8 sText_PkmnSwappedAbilities[] = _("{B_ATK_NAME_WITH_PREFIX} swapped abilities\nwith its opponent!");
 static const u8 sText_PkmnSealedOpponentMove[] = _("{B_ATK_NAME_WITH_PREFIX} sealed the\nopponent's move(s)!");
@@ -1853,6 +1854,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ABILITYCOVEREDVEIL - BATTLESTRINGS_TABLE_START] = sText_AbilityCoveredVeil,
     [STRINGID_ABILITYSHIELDEDFROMCRITICALHITS - BATTLESTRINGS_TABLE_START] = sText_AbilityShieldedFromCriticalHits,
     [STRINGID_FLIPCOINMESSAGE - BATTLESTRINGS_TABLE_START] = sText_FlipCoinMessage,
+    [STRINGID_PKMNSHEARTFLUTTERSSHALALALA2 - BATTLESTRINGS_TABLE_START] = sText_PkmnsHeartFluttersShalalala2,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

@@ -6848,8 +6848,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && gBattleMons[gBattlerAttacker].hp != 0
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
             && TARGET_TURN_DAMAGED
-            && gBattleMons[gBattlerTarget].hp != 0
-            && RandomPercentage(RNG_POISON_POINT, 25)
             && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_INFATUATION)
             && AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget)
             && GetBattlerAbility(gBattlerAttacker) != ABILITY_OBLIVIOUS
@@ -6857,10 +6855,21 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && IsMoveMakingContact(move, gBattlerAttacker)
             && !IsAbilityOnSide(gBattlerAttacker, ABILITY_AROMA_VEIL))
             {
-                gBattleMons[gBattlerAttacker].status2 |= STATUS2_INFATUATED_WITH(gBattlerTarget);
-                BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_CuteCharmActivates;
-                effect++;
+                if (gDisableStructs[gBattlerAttacker].allureCounter > 1)
+                {
+                    gDisableStructs[gBattlerAttacker].allureCounter = 0;
+                    gBattleMons[gBattlerAttacker].status2 |= STATUS2_INFATUATED_WITH(gBattlerTarget);
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_CuteCharmInfatuationActivates;
+                    effect++;
+                }
+                else
+                {
+                    gDisableStructs[gBattlerAttacker].allureCounter++;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_CuteCharmAllureActivates;
+                    effect++;
+                }
             }
             break;
         case ABILITY_FUDDLE_POINT:
@@ -7265,7 +7274,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             break;
         case ABILITY_CUTE_CHARM:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
-            && gBattleMons[gBattlerAttacker].hp != 0
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
             && TARGET_TURN_DAMAGED
             && gBattleMons[gBattlerTarget].hp != 0
@@ -7277,10 +7285,21 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && IsMoveMakingContact(move, gBattlerAttacker)
             && !IsAbilityOnSide(gBattlerTarget, ABILITY_AROMA_VEIL))
             {
-                gBattleMons[gBattlerTarget].status2 |= STATUS2_INFATUATED_WITH(gBattlerAttacker);
-                BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_CuteCharmActivates2;
-                effect++;
+                if (gDisableStructs[gBattlerTarget].allureCounter > 1)
+                {
+                    gDisableStructs[gBattlerTarget].allureCounter = 0;
+                    gBattleMons[gBattlerTarget].status2 |= STATUS2_INFATUATED_WITH(gBattlerAttacker);
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_CuteCharmInfatuationActivates2;
+                    effect++;
+                }
+                else
+                {
+                    gDisableStructs[gBattlerTarget].allureCounter++;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_CuteCharmAllureActivates2;
+                    effect++;
+                }
             }
             break;
         case ABILITY_IRON_BARBS:
