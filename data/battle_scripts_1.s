@@ -699,6 +699,96 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectAttackUpHit             @ EFFECT_METAL_CLAW
 	.4byte BattleScript_EffectDefenseUpHit            @ EFFECT_IRON_TAIL
 	.4byte BattleScript_EffectSteelBeam               @ EFFECT_STEEL_BEAM
+	.4byte BattleScript_EffectFocusBlast              @ EFFECT_FOCUS_BLAST
+	.4byte BattleScript_EffectSpikeCannon             @ EFFECT_SPIKE_CANNON
+
+BattleScript_EffectSpikeCannon::
+	attackcanceler
+	accuracycheck BattleScript_EffectSpikeCannonMiss, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	moveendall
+	end
+BattleScript_EffectSpikeCannonMiss::
+	pause B_WAIT_TIME_SHORT
+	effectivenesssound
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	bichalfword gMoveResultFlags, MOVE_RESULT_MISSED
+	trysetspikes BS_TARGET, BattleScript_SpikeCannonSkipEffect
+	printstring STRINGID_SPIKESSCATTERED
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_SpikeCannonSkipEffect::
+	orhalfword gMoveResultFlags, MOVE_RESULT_MISSED
+	goto BattleScript_MoveEnd
+
+BattleScript_EffectFocusBlast::
+	attackcanceler
+	accuracycheck BattleScript_EffectFocusBlastMiss, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	moveendall
+	end
+BattleScript_EffectFocusBlastMiss::
+	pause B_WAIT_TIME_SHORT
+	effectivenesssound
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	bichalfword gMoveResultFlags, MOVE_RESULT_MISSED
+	call BattleScript_FocusBlastStatUp
+	orhalfword gMoveResultFlags, MOVE_RESULT_MISSED
+	goto BattleScript_MoveEnd
+BattleScript_FocusBlastStatUp::
+	setstatchanger STAT_ATK, 3, FALSE
+	attackcanceler
+	attackstring
+	ppreduce
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_FocusBlastStatUpRet
+	jumpifbyte CMP_NOT_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_FocusBlastStatUpAttackAnim
+	pause B_WAIT_TIME_SHORT
+	goto BattleScript_FocusBlastStatUpPrintString
+BattleScript_FocusBlastStatUpAttackAnim::
+	attackanimation
+	waitanimation
+	setgraphicalstatchangevalues
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+BattleScript_FocusBlastStatUpPrintString::
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_FocusBlastStatUpRet::
+	return
 
 BattleScript_EffectSteelBeam::
 	setmoveeffect MOVE_EFFECT_DEF_PLUS_2 | MOVE_EFFECT_AFFECTS_USER

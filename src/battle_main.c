@@ -4902,6 +4902,10 @@ s8 GetMovePriority(u32 battler, u16 move)
     {
         priority++;
     }
+    else if (gCurrentMove == MOVE_BONE_RUSH && gBattleMons[gBattlerTarget].status1 & STATUS1_ANY_NEGATIVE)
+    {
+        priority++;
+    }
     else if (gCurrentMove == MOVE_ODD_STEP && (gBattleMons[gBattlerTarget].status1 & STATUS1_PANIC || gBattleMons[gBattlerTarget].status2 & STATUS2_CONFUSION))
     {
         priority++;

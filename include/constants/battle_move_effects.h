@@ -676,7 +676,9 @@
 #define EFFECT_METAL_CLAW                   670
 #define EFFECT_IRON_TAIL                    671
 #define EFFECT_STEEL_BEAM                   672
+#define EFFECT_FOCUS_BLAST                  673
+#define EFFECT_SPIKE_CANNON                 674
 
-#define NUM_BATTLE_MOVE_EFFECTS             673
+#define NUM_BATTLE_MOVE_EFFECTS             675
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

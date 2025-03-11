@@ -3942,7 +3942,12 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_MULTIHIT_MOVES:
-            if (gBattleMoves[gCurrentMove].effect == EFFECT_MULTI_HIT || gBattleMoves[gCurrentMove].effect == EFFECT_COMET_PUNCH || gBattleMoves[gCurrentMove].effect == EFFECT_BARB_BARRAGE || gBattleMoves[gCurrentMove].effect == EFFECT_BARRAGE || gBattleMoves[gCurrentMove].effect == EFFECT_PIN_MISSILE)
+            if (gBattleMoves[gCurrentMove].effect == EFFECT_MULTI_HIT 
+                || gBattleMoves[gCurrentMove].effect == EFFECT_COMET_PUNCH
+                || gBattleMoves[gCurrentMove].effect == EFFECT_BARB_BARRAGE
+                || gBattleMoves[gCurrentMove].effect == EFFECT_BARRAGE
+                || gBattleMoves[gCurrentMove].effect == EFFECT_SPIKE_CANNON
+                || gBattleMoves[gCurrentMove].effect == EFFECT_PIN_MISSILE)
             {
                 u16 ability = gBattleMons[gBattlerAttacker].ability;
 

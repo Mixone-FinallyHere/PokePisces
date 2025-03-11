@@ -652,9 +652,9 @@ static const u8 sSkullBashDescription[] = _(
     "Based on the user's Defense.");
 
 static const u8 sSpikeCannonDescription[] = _(
-    "Sharp spikes are shot at the\n"
-    "target in rapid succession. They\n"
-    "hit 2 to 5 times in a row.");
+    "Sharp spikes are shot at the foe\n"
+    "2 to 5 times. Lays 2 layers of\n"
+    "spikes if the move misses.");
 
 static const u8 sConstrictDescription[] = _(
     "Rampages for 2 to 5 turns,\n"
@@ -986,9 +986,9 @@ static const u8 sDetectDescription[] = _(
     "attacker uses a contact move.");
 
 static const u8 sBoneRushDescription[] = _(
-    "The user strikes the target with\n"
-    "a hard bone that contains a\n"
-    "spirit 2 to 5 times in a row.");
+    "Strikes the foe 2 to 5 times\n"
+    "with a spiritual bone. Gains\n"
+    "priority against statused foes.");
 
 static const u8 sLockOnDescription[] = _(
     "Ensures the next attack hits.\n"
@@ -2034,9 +2034,9 @@ static const u8 sVacuumWaveDescription[] = _(
     "the foe has no stat changes.");
 
 static const u8 sFocusBlastDescription[] = _(
-    "An energy blast that may cut the\n"
-    "foe's Sp. Def. Its accuracy is\n"
-    "boosted after using Focus Energy.");
+    "Accuracy is boosted after using\n"
+    "Focus Energy. Drastically boosts\n"
+    "the user's Attack if it misses.");
 
 static const u8 sEnergyBallDescription[] = _(
     "Draws natural power and fires\n"
@@ -3601,9 +3601,9 @@ static const u8 sBurningJealousyDescription[] = _(
     "of using moves in succession.");
 
 static const u8 sLashOutDescription[] = _(
-    "The user lashes out to vent its\n"
-    "envy towards the foe. Doubles in\n"
-    "power if the user has stat drops.");
+    "Boosted if the user has a stat\n"
+    "drop. Lands critical hits if\n"
+    "the user's last move failed.");
 
 static const u8 sPoltergeistDescription[] = _(
     "The user attacks by controlling\n"
