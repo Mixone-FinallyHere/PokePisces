@@ -19919,7 +19919,7 @@ BattleScript_MoveEffectPowder::
 	return
 
 BattleScript_MoveEffectPPReduce::
-    eeriespellppreduce BattleScript_MoveEffectPPReduce_End
+    spelltagppreduce BattleScript_MoveEffectPPReduce_End
 	printstring STRINGID_PKMNREDUCEDPP
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_MoveEffectPPReduce_End:
