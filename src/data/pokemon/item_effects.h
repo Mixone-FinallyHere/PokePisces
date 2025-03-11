@@ -596,6 +596,10 @@ const u8 *const gItemEffectTable[ITEMS_COUNT] =
     [ITEM_BLACK_AUGURITE]     = gItemEffect_EvoItem,
     [ITEM_LINKING_CORD]       = gItemEffect_EvoItem,
     [ITEM_PEAT_BLOCK]         = gItemEffect_EvoItem,
+    [ITEM_SANDBAG]            = gItemEffect_EvoItem,
+    [ITEM_SANDSTONE]          = gItemEffect_EvoItem,
+    [ITEM_BERRY_MIC]          = gItemEffect_EvoItem,
+    [ITEM_NEO_BATTERY]        = gItemEffect_EvoItem,
     [ITEM_PEBBLERITE]         = gItemEffect_EvoItem,
 
     // Berries

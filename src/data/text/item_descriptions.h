@@ -2395,7 +2395,7 @@ static const u8 sChoiceBandDesc[] = _(
 static const u8 sChoiceSpecsDesc[] = _(
     "Some curious glasses\n"
     "that boost Sp. Atk but\n"
-    "only allow the use ofn"
+    "only allow the use of\n"
     "a single move.");
 
 static const u8 sChoiceScarfDesc[] = _(
@@ -4407,10 +4407,10 @@ static const u8 sKeychainDesc[] = _(
     "Only for the factual.");
 
 static const u8 sFlipCoinDesc[] = _(
-    "A mysterious coin\n"
-    "that inverts foes'\n"
-    "stat boosts-but only\n"
-    "once.");
+    "A gambler's coin that\n"
+    "flips the foe's stat\n"
+    "buffs after the holder\n"
+    "attacks-but only once.");
 
 static const u8 sGravityCoreDesc[] = _(
     "An odd cube that\n"

@@ -14039,6 +14039,15 @@ BattleScript_AttackerItemStatRaise::
 BattleScript_AttackerItemStatRaiseRet:
 	return
 
+BattleScript_FlipCoinFlipStats::
+	copybyte sBATTLER, gBattlerAttacker
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	invertpositivestatstages BS_TARGET
+	printstring STRINGID_FLIPCOINMESSAGE
+	waitmessage B_WAIT_TIME_LONG
+	removeitem BS_ATTACKER
+	return
+
 BattleScript_MistProtected::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_PKMNPROTECTEDBYMIST
@@ -17728,7 +17737,7 @@ BattleScript_BanefulBunkerEffect::
 	orhalfword gMoveResultFlags, MOVE_RESULT_MISSED
 	return
 
-BattleScript_CuteCharmActivates::
+BattleScript_CuteCharmInfatuationActivates::
 	call BattleScript_AbilityPopUp
 	status2animation BS_ATTACKER, STATUS2_INFATUATION
 	printstring STRINGID_PKMNSXINFATUATEDY
@@ -17736,10 +17745,26 @@ BattleScript_CuteCharmActivates::
 	call BattleScript_TryDestinyKnotInfatuateTarget
 	return
 
-BattleScript_CuteCharmActivates2::
+BattleScript_CuteCharmInfatuationActivates2::
 	call BattleScript_AbilityPopUp
 	status2animation BS_TARGET, STATUS2_INFATUATION
 	printstring STRINGID_PKMNSXINFATUATEDY2
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotInfatuateAttacker
+	return
+
+BattleScript_CuteCharmAllureActivates::
+	call BattleScript_AbilityPopUp
+	status2animation BS_ATTACKER, STATUS2_INFATUATION
+	printstring STRINGID_PKMNSHEARTFLUTTERSSHALALALA2
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotInfatuateTarget
+	return
+
+BattleScript_CuteCharmAllureActivates2::
+	call BattleScript_AbilityPopUp
+	status2animation BS_TARGET, STATUS2_INFATUATION
+	printstring STRINGID_PKMNSHEARTFLUTTERSSHALALALA
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryDestinyKnotInfatuateAttacker
 	return
