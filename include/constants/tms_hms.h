@@ -20,6 +20,7 @@
     F(ROTOTILLER) \
     F(REFLECT) \
     F(FEAR_FACTOR) \
+    F(FALSE_SWIPE) \
     F(GYRO_BALL) \
     F(NUZZLE) \
     F(ROLLOUT) \
@@ -31,9 +32,8 @@
     F(MUD_SHOT) \
     F(ROCK_TOMB) \
     F(BREAKING_SWIPE) \
-    F(FALSE_SWIPE) \
-    F(DRAGON_TAIL) \
     F(COVET) \
+    F(DRAGON_TAIL) \
     F(MAGICAL_LEAF) \
     F(BULLDOZE) \
     F(THIEF) \

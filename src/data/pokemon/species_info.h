@@ -22315,11 +22315,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_OOHBAABA] =
     {
         .baseHP        = 78,
-        .baseAttack    = 41,
+        .baseAttack    = 61,
         .baseDefense   = 81,
         .baseSpeed     = 85,
         .baseSpAttack  = 124,
-        .baseSpDefense = 128,
+        .baseSpDefense = 108,
         .types = { TYPE_FIRE,TYPE_POISON },
         .catchRate = 45,
         .expYield = 134,

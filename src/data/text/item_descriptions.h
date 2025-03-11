@@ -197,8 +197,8 @@ static const u8 sFullRestoreDesc[] = _(
 static const u8 sReviveDesc[] = _(
     "A medicine that\n"
     "revives a fainted\n"
-    "Pokémon, healing HP by\n"
-    "half the max amount.");
+    "Pokémon, healing by\n"
+    "half the max HP.");
 
 static const u8 sMaxReviveDesc[] = _(
     "A medicine that\n"
@@ -697,40 +697,40 @@ static const u8 sMaxLureDesc[] = _(
 
 static const u8 sEscapeRopeDesc[] = _(
     "A long and durable\n"
-    "rope. Use it to escape\n"
+    "rope. Use it to flee\n"
     "instantly from places\n"
-    "like caves or dungeons.");
+    "like caves/dungeons.");
 
 // Battle items
 static const u8 sXAttackDesc[] = _(
     "An item that sharply\n"
-    "boosts the Atk of a\n"
-    "Pokémon. It wears off\n"
-    "if the Pokémon leaves.");
+    "boosts Attack. It\n"
+    "wears off if the\n"
+    "Pokémon leaves.");
 
 static const u8 sXDefenseDesc[] = _(
     "An item that sharply\n"
-    "boosts the Def of a\n"
-    "Pokémon. It wears off\n"
-    "if the Pokémon leaves.");
+    "boosts Defense. It\n"
+    "wears off if the\n"
+    "Pokémon leaves.");
 
 static const u8 sXSpAtkDesc[] = _(
     "An item that sharply\n"
-    "boosts the Sp. Atk of a\n"
-    "Pokémon. It wears off\n"
-    "if the Pokémon leaves.");
+    "boosts Sp. Atk. It\n"
+    "wears off if the\n"
+    "Pokémon leaves.");
 
 static const u8 sXSpDefDesc[] = _(
     "An item that sharply\n"
-    "boosts the Sp. Def of a\n"
-    "Pokémon. It wears off\n"
-    "if the Pokémon leaves.");
+    "boosts Sp. Def. It\n"
+    "wears off if the\n"
+    "Pokémon leaves.");
 
 static const u8 sXSpeedDesc[] = _(
     "An item that sharply\n"
-    "boosts the Speed of a\n"
-    "Pokémon. It wears off\n"
-    "if the Pokémon leaves.");
+    "boosts Speed. It wears\n"
+    "off if the Pokémon\n"
+    "leaves.");
 
 static const u8 sXAccuracyDesc[] = _(
     "An item that sharply\n"
@@ -4431,7 +4431,7 @@ static const u8 sWideArmorDesc[] = _(
 
 static const u8 sLostMantleDesc[] = _(
     "An unusual garment\n"
-    "that may lower a foe's\n"
+    "that may lower foes'\n"
     "defenses when the\n"
     "holder is attacked.");
 

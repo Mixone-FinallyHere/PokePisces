@@ -35280,6 +35280,7 @@ Move_ROLE_PLAY:
 Move_REFRESH:
 	loadspritegfx ANIM_TAG_THIN_RING
 	loadspritegfx ANIM_TAG_SPARKLE_2
+	delay 1
 	playsewithpan SE_M_STAT_INCREASE, SOUND_PAN_ATTACKER
 	createvisualtask AnimTask_StatusClearedEffect, 2, 0
 	waitforvisualfinish
