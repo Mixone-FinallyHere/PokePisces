@@ -4800,9 +4800,7 @@ const u16 gEggMoves[] = {
 
     egg_moves(OOHBAABA,
         MOVE_HOLD_HANDS,
-        MOVE_SACRED_FIRE,
-        MOVE_FIERY_DANCE,
-        MOVE_WAKE_UP_SLAP),
+        MOVE_FIERY_DANCE),
 
     egg_moves(GOLDEROCK,
         MOVE_UPPER_HAND,
