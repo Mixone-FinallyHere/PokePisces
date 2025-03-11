@@ -697,9 +697,9 @@ static const u8 sMaxLureDesc[] = _(
 
 static const u8 sEscapeRopeDesc[] = _(
     "A long and durable\n"
-    "rope. Use it to escape\n"
+    "rope. Use it to flee\n"
     "instantly from places\n"
-    "like caves or dungeons.");
+    "like caves/dungeons.");
 
 // Battle items
 static const u8 sXAttackDesc[] = _(

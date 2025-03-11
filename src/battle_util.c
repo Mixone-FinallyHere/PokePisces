@@ -11852,7 +11852,7 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
         break;
     case EFFECT_EXECUTION:
-        if (gBattleMons[battlerDef].hp <= ((gBattleMons[battlerDef].maxHP / 4) * 3))
+        if (gBattleMons[battlerDef].hp <= (gBattleMons[battlerDef].maxHP * 3 / 4))
             modifier = uq4_12_multiply(modifier, UQ_4_12(3.0));
         break;
     case EFFECT_BARB_BARRAGE:
