@@ -3942,7 +3942,12 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_MULTIHIT_MOVES:
-            if (gBattleMoves[gCurrentMove].effect == EFFECT_MULTI_HIT || gBattleMoves[gCurrentMove].effect == EFFECT_COMET_PUNCH || gBattleMoves[gCurrentMove].effect == EFFECT_BARB_BARRAGE || gBattleMoves[gCurrentMove].effect == EFFECT_BARRAGE || gBattleMoves[gCurrentMove].effect == EFFECT_PIN_MISSILE)
+            if (gBattleMoves[gCurrentMove].effect == EFFECT_MULTI_HIT 
+                || gBattleMoves[gCurrentMove].effect == EFFECT_COMET_PUNCH
+                || gBattleMoves[gCurrentMove].effect == EFFECT_BARB_BARRAGE
+                || gBattleMoves[gCurrentMove].effect == EFFECT_BARRAGE
+                || gBattleMoves[gCurrentMove].effect == EFFECT_SPIKE_CANNON
+                || gBattleMoves[gCurrentMove].effect == EFFECT_PIN_MISSILE)
             {
                 u16 ability = gBattleMons[gBattlerAttacker].ability;
 
@@ -6375,7 +6380,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && IsBattlerAlive(gBattlerAttacker) 
             && TARGET_TURN_DAMAGED 
             && (!(IS_MOVE_STATUS(gCurrentMove)))
-            && gBattleStruct->overwrittenAbilities[gBattlerAttacker] != GetBattlerAbility(gBattlerTarget))
+            && gBattleStruct->overwrittenAbilities[gBattlerAttacker] != ABILITY_SADDENED)
             {
                 if (IsGastroAcidBannedAbility(gBattleMons[gBattlerAttacker].ability))
                 {
@@ -11063,6 +11068,17 @@ u32 CountBattlerSpecialDefenseIncreases(u32 battler)
     return count;
 }
 
+u32 CountBattlerDefenseIncreases(u32 battler)
+{
+    u32 i;
+    u32 count = 0;
+
+    if (gBattleMons[battler].statStages[STAT_DEF] > DEFAULT_STAT_STAGE) // Stat is increased.
+        count += gBattleMons[battler].statStages[STAT_DEF] - DEFAULT_STAT_STAGE;
+
+    return count;
+}
+
 u32 CountBattlerStatDecreases(u32 battler, bool32 countEvasionAcc)
 {
     u32 i;
@@ -11576,6 +11592,12 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_BOLT_BEAK:
         basePower = 65 + (CountBattlerSpeedIncreases(battlerAtk) * 20);
         break;
+    case EFFECT_IRON_TAIL:
+        basePower = 120 + (CountBattlerDefenseIncreases(battlerAtk) * 20);
+        break;
+    case EFFECT_METAL_CLAW:
+        basePower = 60 + (CountBattlerDefenseIncreases(battlerAtk) * 10);
+        break;
     case EFFECT_AERIAL_ACE:
         basePower = 60 + (CountBattlerAccuracyIncreases(battlerAtk) * 15);
         break;
@@ -11835,7 +11857,7 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
         break;
     case EFFECT_EXECUTION:
-        if (gBattleMons[battlerDef].hp <= ((gBattleMons[battlerDef].maxHP / 4) * 3))
+        if (gBattleMons[battlerDef].hp <= (gBattleMons[battlerDef].maxHP * 3 / 4))
             modifier = uq4_12_multiply(modifier, UQ_4_12(3.0));
         break;
     case EFFECT_BARB_BARRAGE:
@@ -12126,7 +12148,7 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         break;
     case ABILITY_PURPLE_HAZE:
         if (gDisableStructs[battlerAtk].purpleHazeOffense && IS_MOVE_PHYSICAL(gCurrentMove))
-            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
+            modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
         break;
     case ABILITY_DREAD_VEIL:
         if (gBattleMons[battlerDef].status1 & STATUS1_PANIC)
@@ -15294,6 +15316,8 @@ u32 CalcSecondaryEffectChance(u32 battler, u8 secondaryEffectChance)
         secondaryEffectChance *= 3;
     else if (CountBattlerSpeedDecreases(gBattlerTarget) > 0 && gCurrentMove == MOVE_FREEZING_GLARE)
         secondaryEffectChance *= CountBattlerSpeedDecreases(gBattlerTarget) + 1;
+    else if (CountBattlerDefenseIncreases(gBattlerAttacker) > 0 && gCurrentMove == MOVE_METAL_CLAW)
+        secondaryEffectChance *= CountBattlerDefenseIncreases(gBattlerAttacker) + 1;
     else if (CountBattlerSpecialAttackIncreases(gBattlerAttacker) > 0 && CountBattlerSpecialDefenseIncreases(gBattlerAttacker) > 0 && gCurrentMove == MOVE_PSYBEAM)
         secondaryEffectChance *= CountBattlerSpecialAttackIncreases(gBattlerAttacker) + CountBattlerSpecialDefenseIncreases(gBattlerAttacker) + 1;
     else if (GetBattlerAbility(battler) == ABILITY_SERENE_GRACE 

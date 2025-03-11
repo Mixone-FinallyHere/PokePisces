@@ -5744,10 +5744,10 @@ const u8 gYagangranPokedexText[] = _(
 
 const u8 gPidiumPokedexText[] = _(
     "Pidium can receive glimpses of the future of\n"
-    "everything around them. They malevolently employ\n"
-    "what they perceive to their advantage. From\n"
-    "stealing food to cheating in combat, Pidium are\n"
-    "opportunistic menaces.");
+    "everything around them. They malevolently\n"
+    "employ what they perceive to their advantage.\n"
+    "From stealing food to cheating in combat, Pidium\n"
+    "are opportunistic menaces.");
 
 const u8 gMedgeonPokedexText[] = _(
     "Medgeon have lost their vision, but see the\n"

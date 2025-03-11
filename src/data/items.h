@@ -7428,7 +7428,7 @@ const struct Item gItems[] =
 
     [ITEM_TM_GYRO_BALL] =
     {
-        .name = _("TM19"),
+        .name = _("TM20"),
         .price = 3000,
         .description = sTM19Desc,
         .importance = I_REUSABLE_TMS,
@@ -7440,7 +7440,7 @@ const struct Item gItems[] =
 
     [ITEM_TM_NUZZLE] =
     {
-        .name = _("TM20"),
+        .name = _("TM21"),
         .price = 3000,
         .description = sTM20Desc,
         .importance = I_REUSABLE_TMS,
@@ -7452,7 +7452,7 @@ const struct Item gItems[] =
 
     [ITEM_TM_ROLLOUT] =
     {
-        .name = _("TM21"),
+        .name = _("TM22"),
         .price = 1000,
         .description = sTM21Desc,
         .importance = I_REUSABLE_TMS,
@@ -7464,7 +7464,7 @@ const struct Item gItems[] =
 
     [ITEM_TM_VACUUM_WAVE] =
     {
-        .name = _("TM22"),
+        .name = _("TM23"),
         .price = 3000,
         .description = sTM22Desc,
         .importance = I_REUSABLE_TMS,
@@ -7476,7 +7476,7 @@ const struct Item gItems[] =
 
     [ITEM_TM_POUNCE] =
     {
-        .name = _("TM23"),
+        .name = _("TM24"),
         .price = 3000,
         .description = sTM23Desc,
         .importance = I_REUSABLE_TMS,
@@ -7488,7 +7488,7 @@ const struct Item gItems[] =
 
     [ITEM_TM_CHARGE_BEAM] =
     {
-        .name = _("TM24"),
+        .name = _("TM25"),
         .price = 3000,
         .description = sTM24Desc,
         .importance = I_REUSABLE_TMS,
@@ -7500,7 +7500,7 @@ const struct Item gItems[] =
 
     [ITEM_TM_SNARL] =
     {
-        .name = _("TM25"),
+        .name = _("TM26"),
         .price = 5500,
         .description = sTM25Desc,
         .importance = I_REUSABLE_TMS,
@@ -7512,7 +7512,7 @@ const struct Item gItems[] =
 
     [ITEM_TM_ACROBATICS] =
     {
-        .name = _("TM26"),
+        .name = _("TM27"),
         .price = 5500,
         .description = sTM26Desc,
         .importance = I_REUSABLE_TMS,
@@ -7524,7 +7524,7 @@ const struct Item gItems[] =
 
     [ITEM_TM_MUD_SHOT] =
     {
-        .name = _("TM27"),
+        .name = _("TM28"),
         .price = 3000,
         .description = sTM27Desc,
         .importance = I_REUSABLE_TMS,
@@ -7536,7 +7536,7 @@ const struct Item gItems[] =
 
     [ITEM_TM_ROCK_TOMB] =
     {
-        .name = _("TM28"),
+        .name = _("TM29"),
         .price = 1000,
         .description = sTM28Desc,
         .importance = I_REUSABLE_TMS,
@@ -7548,7 +7548,7 @@ const struct Item gItems[] =
 
     [ITEM_TM_BREAKING_SWIPE] =
     {
-        .name = _("TM29"),
+        .name = _("TM30"),
         .price = 2000,
         .description = sTM29Desc,
         .importance = I_REUSABLE_TMS,
@@ -7560,7 +7560,7 @@ const struct Item gItems[] =
 
     [ITEM_TM_FALSE_SWIPE] =
     {
-        .name = _("TM30"),
+        .name = _("TM19"),
         .price = 2000,
         .description = sTM30Desc,
         .importance = I_REUSABLE_TMS,
@@ -7572,7 +7572,7 @@ const struct Item gItems[] =
 
     [ITEM_TM_DRAGON_TAIL] =
     {
-        .name = _("TM31"),
+        .name = _("TM32"),
         .price = 3000,
         .description = sTM31Desc,
         .importance = I_REUSABLE_TMS,
@@ -7584,7 +7584,7 @@ const struct Item gItems[] =
 
     [ITEM_TM_COVET] =
     {
-        .name = _("TM32"),
+        .name = _("TM31"),
         .price = 3000,
         .description = sTM32Desc,
         .importance = I_REUSABLE_TMS,

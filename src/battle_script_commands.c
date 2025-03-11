@@ -2139,15 +2139,9 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
              || gBattleMoves[move].effect == EFFECT_DUNE_SLICER
              || gBattleMoves[move].effect == EFFECT_SEIZE_CHANCE
              || gBattleMoves[move].effect == EFFECT_VITAL_THROW
+             || (gBattleMoves[move].effect == EFFECT_LASH_OUT && gBattleStruct->lastMoveFailed & gBitTable[battlerAtk])
              || gCurrentMove == MOVE_SHARPSHOOT
-             || (gCurrentMove == MOVE_FRUSTRATION
-             && (gBattleMons[battlerAtk].statStages[STAT_ATK] < DEFAULT_STAT_STAGE
-             || gBattleMons[battlerAtk].statStages[STAT_DEF] < DEFAULT_STAT_STAGE
-             || gBattleMons[battlerAtk].statStages[STAT_SPATK] < DEFAULT_STAT_STAGE
-             || gBattleMons[battlerAtk].statStages[STAT_SPDEF] < DEFAULT_STAT_STAGE
-             || gBattleMons[battlerAtk].statStages[STAT_SPEED] < DEFAULT_STAT_STAGE
-             || gBattleMons[battlerAtk].statStages[STAT_ACC] < DEFAULT_STAT_STAGE
-             || gBattleMons[battlerAtk].statStages[STAT_EVASION] < DEFAULT_STAT_STAGE))
+             || (gCurrentMove == MOVE_FRUSTRATION && CountBattlerStatDecreases(battlerAtk, TRUE) > 0)
              || (gBattleMoves[move].effect == EFFECT_SNOWFADE && gBattleWeather & B_WEATHER_HAIL)
              || (gBattleMoves[move].effect == EFFECT_LOW_KICK && gFieldStatuses & STATUS_FIELD_GRAVITY)
              || (gBattleMoves[move].effect == EFFECT_SMACK_DOWN && gFieldStatuses & STATUS_FIELD_GRAVITY)
@@ -7125,6 +7119,12 @@ static void Cmd_moveend(void)
                     {
                         BattleScriptPush(gBattlescriptCurrInstr + 1);
                         gBattlescriptCurrInstr = BattleScript_TormentAfter;
+                    }
+
+                    if (gCurrentMove == MOVE_TAIL_SLAP && !NoAliveMonsForEitherParty())
+                    {
+                        BattleScriptPush(gBattlescriptCurrInstr + 1);
+                        gBattlescriptCurrInstr = BattleScript_TailSlapEffect;
                     }
 
                     BattleScriptPushCursor();
@@ -16842,6 +16842,13 @@ static void Cmd_trysetspikes(void)
         gSpecialStatuses[BATTLE_OPPOSITE(battler)].ppNotAffectedByPressure = TRUE;
         gBattlescriptCurrInstr = cmd->failInstr;
     }
+    else if (gBattleMoves[gCurrentMove].effect == EFFECT_SPIKE_CANNON && gSideTimers[targetSide].spikesAmount < 2)
+    {
+        gSideStatuses[targetSide] |= SIDE_STATUS_SPIKES;
+        gSideTimers[targetSide].spikesAmount++;
+        gSideTimers[targetSide].spikesAmount++;
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
     else
     {
         gSideStatuses[targetSide] |= SIDE_STATUS_SPIKES;
@@ -20055,6 +20062,7 @@ static const u16 sParentalBondBannedEffects[] =
     EFFECT_METEOR_BEAM,
     EFFECT_AXEL_HEEL,
     EFFECT_MULTI_HIT,
+    EFFECT_SPIKE_CANNON,
     EFFECT_COMET_PUNCH,
     EFFECT_BARB_BARRAGE,
     EFFECT_BARRAGE,

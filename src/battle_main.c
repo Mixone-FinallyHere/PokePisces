@@ -4963,6 +4963,10 @@ s8 GetMovePriority(u32 battler, u16 move)
     {
         priority++;
     }
+    else if (gCurrentMove == MOVE_BONE_RUSH && gBattleMons[gBattlerTarget].status1 & STATUS1_ANY_NEGATIVE)
+    {
+        priority++;
+    }
     else if (gCurrentMove == MOVE_ODD_STEP && (gBattleMons[gBattlerTarget].status1 & STATUS1_PANIC || gBattleMons[gBattlerTarget].status2 & STATUS2_CONFUSION))
     {
         priority++;
@@ -5003,7 +5007,11 @@ s8 GetMovePriority(u32 battler, u16 move)
     {
         priority = 4;
     }
-    else if (gBattleMoves[move].effect == EFFECT_CLEAR_SMOG && (CountBattlerStatIncreases(gBattlerTarget, TRUE) > 0 || CountBattlerStatDecreases(gBattlerTarget, TRUE) > 0))
+    else if (gBattleMoves[move].effect == EFFECT_CLEAR_SMOG && CountBattlerStatIncreases(gBattlerTarget, TRUE) > 0) 
+    {
+        priority++;
+    }
+    else if (gBattleMoves[move].effect == EFFECT_CLEAR_SMOG && CountBattlerStatDecreases(gBattlerTarget, TRUE) > 0) 
     {
         priority++;
     }
