@@ -2344,9 +2344,9 @@ static const u8 sPsystrikeDescription[] = _(
     "redirection, and breaks screens.");
 
 static const u8 sTailSlapDescription[] = _(
-    "The user attacks by striking the\n"
-    "foe with its hard tail. This\n"
-    "move hits 2 to 5 times in a row.");
+    "Hits the foe with a hard tail 2\n"
+    "to 5 times. Removes the user's\n"
+    "hazards and foe's stat changes.");
 
 static const u8 sVenoshockDescription[] = _(
     "Drenches the foe in a special\n"

@@ -15115,6 +15115,13 @@ BattleScript_DefDownSpeedUpTrySpeed:
 BattleScript_DefDownSpeedUpRet::
 	return
 
+BattleScript_TailSlapEffect::
+	setmoveeffect MOVE_EFFECT_RAPIDSPIN | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
+	seteffectprimary
+	setmoveeffect MOVE_EFFECT_CLEAR_SMOG
+	seteffectsecondary
+	return
+
 BattleScript_TormentAfter::
 	jumpiffainted BS_TARGET, TRUE, BattleScript_TormentAfterRet
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_TormentAfterRet

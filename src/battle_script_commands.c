@@ -7127,6 +7127,12 @@ static void Cmd_moveend(void)
                         gBattlescriptCurrInstr = BattleScript_TormentAfter;
                     }
 
+                    if (gCurrentMove == MOVE_TAIL_SLAP && !NoAliveMonsForEitherParty())
+                    {
+                        BattleScriptPush(gBattlescriptCurrInstr + 1);
+                        gBattlescriptCurrInstr = BattleScript_TailSlapEffect;
+                    }
+
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_MultiHitPrintStrings;
                     effect = TRUE;
