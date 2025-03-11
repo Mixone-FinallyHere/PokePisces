@@ -1186,7 +1186,7 @@ void EndLotteryCornerComputerEffect(void)
 void SetTrickHouseNuggetFlag(void)
 {
     u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_HIDDEN_ITEM_TRICK_HOUSE_NUGGET;
+    u16 flag = FLAG_HIDDEN_ITEMS_START;
     *specVar = flag;
     FlagSet(flag);
 }
@@ -1194,7 +1194,7 @@ void SetTrickHouseNuggetFlag(void)
 void ResetTrickHouseNuggetFlag(void)
 {
     u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_HIDDEN_ITEM_TRICK_HOUSE_NUGGET;
+    u16 flag = FLAG_HIDDEN_ITEMS_START;
     *specVar = flag;
     FlagClear(flag);
 }
@@ -1340,7 +1340,7 @@ u16 GetSlotMachineId(void)
 bool8 FoundAbandonedShipRoom1Key(void)
 {
     u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_1_KEY;
+    u16 flag = FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL;
     *specVar = flag;
     if (!FlagGet(flag))
         return FALSE;
@@ -1351,7 +1351,7 @@ bool8 FoundAbandonedShipRoom1Key(void)
 bool8 FoundAbandonedShipRoom2Key(void)
 {
     u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_2_KEY;
+    u16 flag = FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL;
     *specVar = flag;
     if (!FlagGet(flag))
         return FALSE;
@@ -1362,7 +1362,7 @@ bool8 FoundAbandonedShipRoom2Key(void)
 bool8 FoundAbandonedShipRoom4Key(void)
 {
     u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_4_KEY;
+    u16 flag = FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL;
     *specVar = flag;
     if (!FlagGet(flag))
         return FALSE;
@@ -1373,7 +1373,7 @@ bool8 FoundAbandonedShipRoom4Key(void)
 bool8 FoundAbandonedShipRoom6Key(void)
 {
     u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_6_KEY;
+    u16 flag = FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL;
     *specVar = flag;
     if (!FlagGet(flag))
         return FALSE;

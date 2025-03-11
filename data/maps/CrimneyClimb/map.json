@@ -389,7 +389,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CrimneyClimb_EventScript_ItemPRockyHelmet",
-      "flag": "0"
+      "flag": "FLAG_P_CRIMNEY_CLIMB_ROCKY_HELMET"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -402,7 +402,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CrimneyClimb_EventScript_ItemPAbilityCookie",
-      "flag": "0"
+      "flag": "FLAG_P_CRIMNEY_CLIMB_ABILITY_COOKIE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
@@ -415,7 +415,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMDazzleGleam",
-      "flag": "0"
+      "flag": "FLAG_P_CRIMNEY_CLIMB_TM_DAZZLE_GLEAM"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -428,7 +428,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CrimneyClimb_EventScript_ItemPRareCandy",
-      "flag": "0"
+      "flag": "FLAG_P_CRIMNEY_CLIMB_RARE_CANDY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -441,7 +441,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CrimneyClimb_EventScript_ItemPXSpeed",
-      "flag": "0"
+      "flag": "FLAG_P_CRIMNEY_CLIMB_X_SPEED"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -454,7 +454,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CrimneyClimb_EventScript_ItemPAirBalloon",
-      "flag": "0"
+      "flag": "FLAG_P_CRIMNEY_CLIMB_AIR_BALLOON"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -467,7 +467,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CrimneyClimb_EventScript_ItemPGoldTooth",
-      "flag": "0"
+      "flag": "FLAG_P_CRIMNEY_CLIMB_GOLD_TOOTH"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -480,7 +480,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CrimneyClimb_EventScript_ItemPNugget",
-      "flag": "0"
+      "flag": "FLAG_P_CRIMNEY_CLIMB_NUGGET"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -493,7 +493,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CrimneyClimb_EventScript_ItemPCoralCrown",
-      "flag": "0"
+      "flag": "FLAG_P_CRIMNEY_CLIMB_CORAL_CROWN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GILDED_MONK",
