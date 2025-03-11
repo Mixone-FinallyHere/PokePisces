@@ -40085,6 +40085,7 @@ static const u16 sOohbaabaTeachableLearnset[] = {
     MOVE_EVAPORATE,
     MOVE_THUNDER_PUNCH,
     MOVE_FIRE_PUNCH,
+    MOVE_CROSS_POISON,
     MOVE_DOUBLE_SLAP,
     MOVE_POISON_JAB,
     MOVE_FLAME_CHARGE,

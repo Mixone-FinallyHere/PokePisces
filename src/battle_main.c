@@ -4942,7 +4942,11 @@ s8 GetMovePriority(u32 battler, u16 move)
     {
         priority = 4;
     }
-    else if (gBattleMoves[move].effect == EFFECT_CLEAR_SMOG && (CountBattlerStatIncreases(gBattlerTarget, TRUE) > 0 || CountBattlerStatDecreases(gBattlerTarget, TRUE) > 0))
+    else if (gBattleMoves[move].effect == EFFECT_CLEAR_SMOG && CountBattlerStatIncreases(gBattlerTarget, TRUE) > 0) 
+    {
+        priority++;
+    }
+    else if (gBattleMoves[move].effect == EFFECT_CLEAR_SMOG && CountBattlerStatDecreases(gBattlerTarget, TRUE) > 0) 
     {
         priority++;
     }

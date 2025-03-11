@@ -6375,7 +6375,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && IsBattlerAlive(gBattlerAttacker) 
             && TARGET_TURN_DAMAGED 
             && (!(IS_MOVE_STATUS(gCurrentMove)))
-            && gBattleStruct->overwrittenAbilities[gBattlerAttacker] != GetBattlerAbility(gBattlerTarget))
+            && gBattleStruct->overwrittenAbilities[gBattlerAttacker] != ABILITY_SADDENED)
             {
                 if (IsGastroAcidBannedAbility(gBattleMons[gBattlerAttacker].ability))
                 {
@@ -12143,7 +12143,7 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         break;
     case ABILITY_PURPLE_HAZE:
         if (gDisableStructs[battlerAtk].purpleHazeOffense && IS_MOVE_PHYSICAL(gCurrentMove))
-            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
+            modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
         break;
     case ABILITY_DREAD_VEIL:
         if (gBattleMons[battlerDef].status1 & STATUS1_PANIC)

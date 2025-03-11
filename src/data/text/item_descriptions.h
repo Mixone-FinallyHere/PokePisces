@@ -4431,7 +4431,7 @@ static const u8 sWideArmorDesc[] = _(
 
 static const u8 sLostMantleDesc[] = _(
     "An unusual garment\n"
-    "that may lower a foe's\n"
+    "that may lower foes'\n"
     "defenses when the\n"
     "holder is attacked.");
 
