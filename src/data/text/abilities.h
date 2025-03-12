@@ -1712,9 +1712,9 @@ static const u8 sStormBrewDescription[] = _(
     "Electric move used that turn.");
 
 static const u8 sRuinWardDescription[] = _(
-    "Summons Safeguard and Lucky\n"
-    "Chant when the Pokémon enters\n"
-    "battle. It loses HP every turn.");
+    "The Pokémon summons a veil that\n"
+    "protects from certain statuses\n"
+    "when it enters battle.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =

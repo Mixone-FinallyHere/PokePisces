@@ -5316,23 +5316,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_RUIN_WARD:
-            if ((!(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_SAFEGUARD)
-                && (!(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_LUCKY_CHANT))))
-            {
-                u8 side = GetBattlerSide(battler);
-                gBattlerAttacker = battler;
-                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
-                gSideStatuses[side] |= SIDE_STATUS_SAFEGUARD;
-                gSideTimers[side].safeguardBattlerId = battler;
-                gSideTimers[side].safeguardTimer = 6;
-                gSideStatuses[side] |= SIDE_STATUS_LUCKY_CHANT;
-                gSideTimers[side].luckyChantBattlerId = battler;
-                gSideTimers[side].luckyChantTimer = 6;
-                BattleScriptPushCursorAndCallback(BattleScript_RuinWardActivates);
-                effect++;
-            }
-            else if ((!(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_SAFEGUARD))
-                && gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_LUCKY_CHANT)
+            if (!gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_SAFEGUARD
+            && !gSpecialStatuses[battler].switchInAbilityDone)
             {
                 u8 side = GetBattlerSide(gBattlerAttacker);
                 gBattlerAttacker = battler;
@@ -5343,18 +5328,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 BattleScriptPushCursorAndCallback(BattleScript_RuinWardSafeguardActivates);
                 effect++;
             }
-            else if (gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_SAFEGUARD
-                && (!(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_LUCKY_CHANT)))
-            {
-                u8 side = GetBattlerSide(gBattlerAttacker);
-                gBattlerAttacker = battler;
-                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
-                gSideStatuses[side] |= SIDE_STATUS_LUCKY_CHANT;
-                gSideTimers[side].luckyChantBattlerId = battler;
-                gSideTimers[side].luckyChantTimer = 6;
-                BattleScriptPushCursorAndCallback(BattleScript_RuinWardLuckyChantActivates);
-                effect++;
-            }            
             break;
         case ABILITY_ENTRANCING:
             if (!gSpecialStatuses[battler].switchInAbilityDone)
@@ -5564,16 +5537,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     gBattleMoveDamage *= -1;
-                    effect++;
-                }
-                break;
-            case ABILITY_RUIN_WARD:
-                if (IsBattlerAlive(gBattlerAttacker))
-                {
-                    gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
-                    if (gBattleMoveDamage == 0)
-                        gBattleMoveDamage = 1;
-                    BattleScriptExecute(BattleScript_RuinWardHurtActivates);
                     effect++;
                 }
                 break;
