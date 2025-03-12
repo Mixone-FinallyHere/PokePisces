@@ -8927,7 +8927,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_WORK_UP] =
     {
-        .effect = EFFECT_WORK_UP,
+        .effect = EFFECT_ATTACK_SPATK_UP,
         .power = 0,
         .type = TYPE_NORMAL,
         .accuracy = 0,

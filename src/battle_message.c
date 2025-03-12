@@ -997,13 +997,13 @@ static const u8 sText_OrderedAnExtraHeal[] = _("{B_ATK_NAME_WITH_PREFIX} ordered
 static const u8 sText_TheHealOrderCameIn[] = _("{B_ATK_NAME_WITH_PREFIX} got the\nheal order!");
 static const u8 sText_UserHasExhaustion[] = _("{B_ATK_NAME_WITH_PREFIX} became exhausted\nfrom overexertion!");
 static const u8 sText_TargetIsExhausted[] = _("{B_DEF_NAME_WITH_PREFIX} became exhausted from\n{B_ATK_NAME_WITH_PREFIX}'s ESP!");
-static const u8 sText_SuperMagnetNoStatLoss[] = _("{B_ATK_NAME_WITH_PREFIX}'s Super-charged Magnet\nRise prevented stat loss!");
-static const u8 sText_TargetBecomesSupercharged[] = _("{B_DEF_NAME_WITH_PREFIX} became Super-charged!");
-static const u8 sText_TargetBecomesGearedUp[] = _("{B_DEF_NAME_WITH_PREFIX} became Geared Up!");
-static const u8 sText_UserGainsPhantom[] = _("{B_ATK_NAME_WITH_PREFIX} is now a Phantom.");
+static const u8 sText_SuperMagnetNoStatLoss[] = _("{B_ATK_NAME_WITH_PREFIX}'s super-charged Magnet\nRise prevented stat loss!");
+static const u8 sText_TargetBecomesSupercharged[] = _("{B_DEF_NAME_WITH_PREFIX} became super-charged!");
+static const u8 sText_TargetBecomesGearedUp[] = _("{B_DEF_NAME_WITH_PREFIX} became geared up!");
+static const u8 sText_UserGainsPhantom[] = _("{B_ATK_NAME_WITH_PREFIX} is now a Phantom!");
 static const u8 sText_ProtectedDefender[] = _("{B_DEF_NAME_WITH_PREFIX} gained a Crafty Shield!");
 static const u8 sText_FairyLockDropsEvasion[] = _("Fairy Lock dropped {B_ATK_NAME_WITH_PREFIX}'s\n evasion!");
-static const u8 sText_AcidArmorDropsDefense[] = _("{B_DEF_NAME_WITH_PREFIX}'s Acid Armor dropped\n {B_ATK_NAME_WITH_PREFIX}'s\n defense!");
+static const u8 sText_AcidArmorDropsDefense[] = _("{B_DEF_NAME_WITH_PREFIX}'s Acid Armor dropped\n{B_ATK_NAME_WITH_PREFIX}'s defense!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
