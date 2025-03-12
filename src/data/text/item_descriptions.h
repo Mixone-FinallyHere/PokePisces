@@ -4386,8 +4386,9 @@ static const u8 sTragedyMaskDesc[] = _(
 
 static const u8 sPebbleriteDesc[] = _(
     "A stone made of pure\n"
-    "pebblericium that came\n"
-    "from another planet.");
+    "pebblericium that\n"
+    "came from another\n"
+    "planet.");
 
 static const u8 sCheeseDesc[] = _(
     "Some cheese that can\n"

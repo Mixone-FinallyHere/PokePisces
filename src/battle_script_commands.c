@@ -1773,6 +1773,12 @@ static bool32 AccuracyCalcHelper(u16 move)
         return TRUE;
     }
 
+    if (gProtectStructs[gBattlerAttacker].extraMoveUsed)
+    {
+        JumpIfMoveFailed(7, move);
+        return TRUE;
+    }
+
     if (gStatuses4[gBattlerTarget] & STATUS4_GLAIVE_RUSH)
     {
         JumpIfMoveFailed(7, move);
@@ -4711,7 +4717,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                         gBattlescriptCurrInstr++;
                     }
                     {
-                        static const u8 sTriAttackEffects[] = { MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FREEZE };
+                        static const u8 sTriAttackEffects[] = {MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FREEZE };
                         gBattleScripting.moveEffect = RandomElement(RNG_TRI_ATTACK, sTriAttackEffects);
                         SetMoveEffect(FALSE, 0);
                     }
@@ -7286,8 +7292,7 @@ static void Cmd_moveend(void)
                   || gBattleMoves[gCurrentMove].effect != EFFECT_SPOOK
                   || gBattleStruct->hitSwitchTargetFailed)
                   && IsBattlerAlive(gBattlerAttacker)
-                  && !TestSheerForceFlag(gBattlerAttacker, gCurrentMove)
-                  && GetBattlerAbility(gBattlerAttacker) != ABILITY_GUARD_DOG)
+                  && !TestSheerForceFlag(gBattlerAttacker, gCurrentMove))
                 {
                     // Since we check if battler was damaged, we don't need to check move result.
                     // In fact, doing so actually prevents multi-target moves from activating red card properly
@@ -11323,7 +11328,7 @@ static void Cmd_various(void)
         {
             gSideStatuses[GetBattlerSide(battler)] |= SIDE_STATUS_LUCKY_CHANT;
             gSideTimers[GetBattlerSide(battler)].luckyChantBattlerId = battler;
-            gSideTimers[GetBattlerSide(battler)].luckyChantTimer = 6;
+            gSideTimers[GetBattlerSide(battler)].luckyChantTimer = 3;
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
         else
@@ -11691,8 +11696,7 @@ static void Cmd_various(void)
         if (IsBattlerAlive(gBattlerAttacker)
          && IsBattlerAlive(gBattlerTarget)
          && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
-         && TARGET_TURN_DAMAGED
-         && GetBattlerAbility(gBattlerTarget) != ABILITY_GUARD_DOG)
+         && TARGET_TURN_DAMAGED)
         {
             gBattleScripting.switchCase = B_SWITCH_HIT;
             gBattlescriptCurrInstr = cmd->nextInstr;
@@ -16493,6 +16497,7 @@ static bool8 IsTwoTurnsMove(u16 move)
      || gBattleMoves[move].effect == EFFECT_TWO_TURNS_ATTACK
      || gBattleMoves[move].effect == EFFECT_SOLAR_BEAM
      || gBattleMoves[move].effect == EFFECT_SEMI_INVULNERABLE
+     || gBattleMoves[move].effect == EFFECT_DIG
      || gBattleMoves[move].effect == EFFECT_DIVE
      || gBattleMoves[move].effect == EFFECT_BIDE
      || gBattleMoves[move].effect == EFFECT_FLY
@@ -16524,6 +16529,7 @@ static u8 AttacksThisTurn(u8 battler, u16 move) // Note: returns 1 if it's a cha
      || gBattleMoves[move].effect == EFFECT_TWO_TURNS_ATTACK
      || gBattleMoves[move].effect == EFFECT_SOLAR_BEAM
      || gBattleMoves[move].effect == EFFECT_SEMI_INVULNERABLE
+     || gBattleMoves[move].effect == EFFECT_DIG
      || gBattleMoves[move].effect == EFFECT_DIVE
      || gBattleMoves[move].effect == EFFECT_BIDE
      || gBattleMoves[move].effect == EFFECT_FLY
@@ -18219,6 +18225,7 @@ static void Cmd_assistattackselect(void)
                  || gBattleMoves[move].effect == EFFECT_TWO_TURNS_ATTACK
                  || gBattleMoves[move].effect == EFFECT_SOLAR_BEAM
                  || gBattleMoves[move].effect == EFFECT_SEMI_INVULNERABLE
+                 || gBattleMoves[move].effect == EFFECT_DIG
                  || gBattleMoves[move].effect == EFFECT_DIVE
                  || gBattleMoves[move].effect == EFFECT_BIDE
                  || gBattleMoves[move].effect == EFFECT_FLY
@@ -20071,6 +20078,7 @@ static const u16 sParentalBondBannedEffects[] =
     EFFECT_OHKO,
     EFFECT_ROLLOUT,
     EFFECT_SEMI_INVULNERABLE,
+    EFFECT_DIG,
     EFFECT_DIVE,
     EFFECT_SKULL_BASH,
     EFFECT_SKY_DROP,
@@ -20795,16 +20803,17 @@ void BS_SetRemoveTerrain(void)
         statusFlag = STATUS_FIELD_PSYCHIC_TERRAIN;
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_SET_PSYCHIC;
         break;
+    case EFFECT_DRUM_BEATING: // Drum Beating
+    case EFFECT_DIG: // Drum Beating
+        statusFlag = STATUS_FIELD_GRASSY_TERRAIN;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_SET_GRASSY;
+        break;
     case EFFECT_HIT_SET_REMOVE_TERRAIN:
         switch (gBattleMoves[gCurrentMove].argument)
         {
         case ARG_SET_PSYCHIC_TERRAIN: // Genesis Supernova
             statusFlag = STATUS_FIELD_PSYCHIC_TERRAIN;
             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_SET_PSYCHIC;
-            break;
-        case ARG_SET_GRASSY_TERRAIN: // Drum Beating
-            statusFlag = STATUS_FIELD_GRASSY_TERRAIN;
-            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_SET_GRASSY;
             break;
         case ARG_TRY_REMOVE_TERRAIN_HIT: // Splintered Stormshards
         case ARG_TRY_REMOVE_TERRAIN_FAIL: // Steel Roller
@@ -20832,7 +20841,6 @@ void BS_SetRemoveTerrain(void)
             gBattlescriptCurrInstr = cmd->jumpInstr;
         }
         return;
-        break;
     }
 
     if (gFieldStatuses & statusFlag || statusFlag == 0)
