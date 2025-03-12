@@ -136,7 +136,7 @@ const struct Item gItems[] =
     [ITEM_DUSK_BALL] =
     {
         .name = _("Dusk Ball"),
-        .price = 800,
+        .price = 700,
         .description = sDuskBallDesc,
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_BAG_MENU,
@@ -336,7 +336,7 @@ const struct Item gItems[] =
     [ITEM_POTION] =
     {
         .name = _("Potion"),
-        .price = 450,
+        .price = 600,
         .holdEffectParam = 60,
         .description = sPotionDesc,
         .pocket = POCKET_MEDICINE,
@@ -349,7 +349,7 @@ const struct Item gItems[] =
     [ITEM_SUPER_POTION] =
     {
         .name = _("Super Potion"),
-        .price = 750,
+        .price = 900,
         .holdEffectParam = 100,
         .description = sSuperPotionDesc,
         .pocket = POCKET_MEDICINE,
@@ -438,7 +438,7 @@ const struct Item gItems[] =
     [ITEM_SODA_POP] =
     {
         .name = _("Soda Pop"),
-        .price = 150,
+        .price = 350,
         .holdEffectParam = 30,
         .description = sSodaPopDesc,
         .pocket = POCKET_MEDICINE,
@@ -584,7 +584,7 @@ const struct Item gItems[] =
     [ITEM_FULL_HEAL] =
     {
         .name = _("Panacea"),
-        .price = 400,
+        .price = 800,
         .description = sFullHealDesc,
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
@@ -596,7 +596,7 @@ const struct Item gItems[] =
     [ITEM_ETHER] =
     {
         .name = _("Ether"),
-        .price = 200,
+        .price = 600,
         .holdEffectParam = 5,
         .description = sEtherDesc,
         .pocket = POCKET_MEDICINE,
@@ -609,7 +609,7 @@ const struct Item gItems[] =
     [ITEM_MAX_ETHER] =
     {
         .name = _("Max Ether"),
-        .price = 400,
+        .price = 1200,
         .holdEffectParam = 10,
         .description = sMaxEtherDesc,
         .pocket = POCKET_MEDICINE,
@@ -622,7 +622,7 @@ const struct Item gItems[] =
     [ITEM_ELIXIR] =
     {
         .name = _("Elixir"),
-        .price = 750,
+        .price = 1500,
         .holdEffectParam = 5,
         .description = sElixirDesc,
         .pocket = POCKET_MEDICINE,
@@ -635,7 +635,7 @@ const struct Item gItems[] =
     [ITEM_MAX_ELIXIR] =
     {
         .name = _("Max Elixir"),
-        .price = 1500,
+        .price = 3000,
         .holdEffectParam = 10,
         .description = sMaxElixirDesc,
         .pocket = POCKET_MEDICINE,
