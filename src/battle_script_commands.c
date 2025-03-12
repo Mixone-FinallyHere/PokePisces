@@ -3554,6 +3554,11 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUSED_BY_ABILITY;
                 gHitMarker &= ~HITMARKER_IGNORE_SAFEGUARD;
             }
+            else if (gHitMarker & HITMARKER_SYNCHRONIZE_SKIP)
+            {
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUSED_BY_ABILITY;
+                gHitMarker &= ~HITMARKER_SYNCHRONIZE_SKIP;
+            }
             else
             {
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUSED;                
@@ -3570,7 +3575,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
              || gBattleScripting.moveEffect == MOVE_EFFECT_BURN)
              {
                 gBattleStruct->synchronizeMoveEffect = gBattleScripting.moveEffect;
-                gHitMarker |= HITMARKER_SYNCHRONISE_EFFECT;
+                gHitMarker |= HITMARKER_SYNCHRONIZE_EFFECT;
              }
             return;
         }
@@ -5648,7 +5653,7 @@ static void MoveValuesCleanUp(void)
     gBattleScripting.moveEffect = 0;
     gBattleCommunication[MISS_TYPE] = 0;
     gHitMarker &= ~HITMARKER_DESTINYBOND;
-    gHitMarker &= ~HITMARKER_SYNCHRONISE_EFFECT;
+    gHitMarker &= ~HITMARKER_SYNCHRONIZE_EFFECT;
 }
 
 static void Cmd_movevaluescleanup(void)

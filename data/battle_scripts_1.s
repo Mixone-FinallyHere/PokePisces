@@ -17987,25 +17987,20 @@ BattleScript_StormBrewActivates::
 	return
 
 BattleScript_SynchronizeActivates::
-	waitstate
-	copybyte gBattlerTarget, gBattlerAttacker
-	setbyte gBattleCommunication, 0
-	setbyte gBattleCommunication + 1, 0
-BattleScript_Synchronize_TryStatus:
-	copybyte gBattlerAttacker, gBattlerTarget
-	jumpifstatus BS_TARGET, STATUS1_ANY, BattleScript_SynchronizeLoopIncrement
-	jumpifbyte CMP_NOT_EQUAL, gBattleCommunication + 1, 0x0, BattleScript_SynchronizeNoPopUp
-	call BattleScript_AbilityPopUp
-	setbyte gBattleCommunication + 1, 1
-BattleScript_SynchronizeNoPopUp:
+	copybyte sSAVED_BATTLER, gBattlerAttacker
+	call BattleScript_AbilityPopUpTarget
+	copybyte gEffectBattler, gBattlerTarget
+	swapattackerwithtarget
+	setbyte gBattlerTarget, 0
+BattleScript_SynchronizeLoop:
+	jumpiffainted BS_TARGET, TRUE, BattleScript_SynchronizeLoopIncrement
+	jumpiftargetally BattleScript_SynchronizeLoopIncrement
 	seteffectprimary
 BattleScript_SynchronizeLoopIncrement:
-	jumpifbyte CMP_NOT_EQUAL, gBattleCommunication, 0x0, BattleScript_SynchronizeRet
-	addbyte gBattleCommunication, 1
-	jumpifnoally BS_TARGET, BattleScript_SynchronizeRet
-	setallytonexttarget BattleScript_Synchronize_TryStatus
-	goto BattleScript_SynchronizeRet
-BattleScript_SynchronizeRet:
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_SynchronizeLoop
+	swapattackerwithtarget
+	copybyte gBattlerAttacker, sSAVED_BATTLER
 	return
 
 BattleScript_NoItemSteal::
