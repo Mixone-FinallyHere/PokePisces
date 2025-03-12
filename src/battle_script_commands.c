@@ -13203,23 +13203,13 @@ static void Cmd_various(void)
     }
     case VARIOUS_JUMP_IF_STATUS4:
     {
-        VARIOUS_ARGS(u32 flags, bool8 jumpIfTrue, const u8 *jumpInstr);
+        VARIOUS_ARGS(u32 flags, const u8 *jumpInstr);
 
         u32 battler = GetBattlerForBattleScript(cmd->battler);
-        if (cmd->jumpIfTrue)
-        {
-            if ((gStatuses4[battler] & cmd->flags) != 0)
-                gBattlescriptCurrInstr = cmd->nextInstr;
-            else
-                gBattlescriptCurrInstr = cmd->jumpInstr;
-        }
+        if (gStatuses4[battler] & cmd->flags)
+            gBattlescriptCurrInstr = cmd->jumpInstr;
         else
-        {
-            if ((gStatuses4[battler] & cmd->flags) != 0)
-                gBattlescriptCurrInstr = cmd->jumpInstr;
-            else
-                gBattlescriptCurrInstr = cmd->nextInstr;
-        }
+            gBattlescriptCurrInstr = cmd->nextInstr;
         return;
     }
     case VARIOUS_SHELL_SIDE_ARM_CHECK: // 0% chance GameFreak actually checks this way according to DaWobblefet, but this is the only functional explanation at the moment

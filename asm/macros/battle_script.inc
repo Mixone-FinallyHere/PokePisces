@@ -2821,16 +2821,10 @@
 	.4byte \failInstr
 	.endm
 
-	.macro jumpifstatus4condition battler:req, flags:req, jumpIfTrue:req, jumpInstr:req
-	various 0, VARIOUS_JUMP_IF_STATUS4
-	.byte \battler
-	.4byte \flags
-	.byte \jumpIfTrue
-	.4byte \jumpInstr
-	.endm
-
 	.macro jumpifstatus4 battler:req, flags:req, jumpInstr:req
-	jumpifstatus4condition \battler, \flags, FALSE, \jumpInstr
+	various \battler, VARIOUS_JUMP_IF_STATUS4
+	.4byte \flags
+	.4byte \jumpInstr
 	.endm
 
 	@ Will jump to script pointer if the specified battler has or has not fainted.

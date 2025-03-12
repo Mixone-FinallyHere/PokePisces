@@ -4423,7 +4423,7 @@ BattleScript_TickTackHealBlock::
 	jumpifsubstituteblocks BattleScript_MoveEnd
 	jumpifstatus4 BS_TARGET, STATUS4_TICKED, BattleScript_MoveEnd
 	setseeded
-	printfromtable gLeechSeedStringIds
+	printfromtable gTickedStringIds
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
