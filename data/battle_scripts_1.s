@@ -2364,6 +2364,7 @@ BattleScript_BurningEnvyTormentandBurn:
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEnd
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
+	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_MoveEnd
 	jumpifsafeguard BattleScript_MoveEnd
 	settorment BattleScript_MoveEnd
 	printstring STRINGID_PKMNSUBJECTEDTOTORMENT
@@ -4537,6 +4538,7 @@ BattleScript_EffectVoid::
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryDestinyKnotDisabledAttacker
 BattleScript_TryVoidTorment::
+	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_MoveEnd
 	settorment BattleScript_MoveEnd
 	printstring STRINGID_PKMNSUBJECTEDTOTORMENT
 	waitmessage B_WAIT_TIME_LONG
@@ -4959,6 +4961,7 @@ BattleScript_EffectVexingKi:
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEnd
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
+	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_MoveEnd
 	jumpifsafeguard BattleScript_MoveEnd
 	settorment BattleScript_MoveEnd
 	printstring STRINGID_PKMNSUBJECTEDTOTORMENT
@@ -5185,6 +5188,7 @@ BattleScript_EffectRagePowder::
 	setforcedtarget
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_EffectRagePowderJustFollowMe
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_EffectRagePowderJustFollowMe
+	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_EffectRagePowderJustFollowMe
 	jumpifsafeguard BattleScript_EffectRagePowderJustFollowMe
 	settaunt BattleScript_EffectRagePowderJustFollowMe
 	attackanimation
@@ -5207,6 +5211,7 @@ BattleScript_EffectRagePowderJustTaunt::
 	ppreduce
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEnd
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
+	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_MoveEnd
 	jumpifsafeguard BattleScript_MoveEnd
 	settaunt BattleScript_MoveEnd
 	attackanimation
@@ -11220,6 +11225,7 @@ BattleScript_EffectMiseryWailTorments::
     jumpifmovehadnoeffect BattleScript_MoveEnd
     jumpifbattleend BattleScript_MoveEnd
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
+	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_MoveEnd
     jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEnd
 	jumpifsafeguard BattleScript_MoveEnd
     settorment BattleScript_MoveEnd
@@ -12353,6 +12359,7 @@ BattleScript_EffectTorment::
 	accuracycheck BattleScript_ButItFailed, ACC_CURR_MOVE
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_AromaVeilProtects
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_AbilityProtectsDoesntAffect
+	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_AbilityProtectsDoesntAffect
 	jumpifsafeguard BattleScript_SafeguardProtected
 	settorment BattleScript_ButItFailed
 	attackanimation
@@ -12599,6 +12606,7 @@ BattleScript_EffectTaunt::
 	ppreduce
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_AromaVeilProtects
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_AbilityProtectsDoesntAffect
+	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_AbilityProtectsDoesntAffect
 	jumpifsafeguard BattleScript_SafeguardProtected
 	accuracycheck BattleScript_ButItFailed, ACC_CURR_MOVE
 	settaunt BattleScript_ButItFailed
@@ -15183,6 +15191,7 @@ BattleScript_TormentAfter::
 	jumpiffainted BS_TARGET, TRUE, BattleScript_TormentAfterRet
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_TormentAfterRet
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TormentAfterRet
+	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_TormentAfterRet
 	jumpifsafeguard BattleScript_TormentAfterRet
 	settorment BattleScript_TormentAfterRet
 	printstring STRINGID_PKMNSUBJECTEDTOTORMENT
@@ -16417,6 +16426,7 @@ BattleScript_UnnerveLoop:
 	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_UnnervePrevented
 	jumpifstatus2 BS_TARGET, STATUS2_TORMENT, BattleScript_UnnervePrevented
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TitanicUnnervePrevented
+	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_TitanicUnnervePrevented
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_AromaVeilUnnervePrevented
 	jumpifsafeguard BattleScript_SafeguardUnnervePrevented
 BattleScript_UnnerveEffect:
@@ -17950,6 +17960,7 @@ BattleScript_ItemBloomingEffect::
 BattleScript_ItemTauntEffect::
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_ItemTauntEffectRet
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_ItemTauntEffectRet
+	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_ItemTauntEffectRet
 	jumpifsafeguard BattleScript_ItemTauntEffectRet
 	settaunt BattleScript_ItemTauntEffectRet
 	printstring STRINGID_PKMNFELLFORTAUNT
