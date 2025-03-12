@@ -3070,6 +3070,7 @@ bool32 AI_CanSleep(u32 battler, u32 ability)
     if (ability == ABILITY_INSOMNIA
       || ability == ABILITY_VITAL_SPIRIT
       || ability == ABILITY_COMATOSE
+      || ability == ABILITY_TITANIC
       || (IS_BATTLER_OF_TYPE(battler, TYPE_RELIC))
       || gBattleMons[battler].status1 & STATUS1_ANY
       || gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD
@@ -3383,7 +3384,7 @@ bool32 AI_CanBeInfatuated(u32 battlerAtk, u32 battlerDef, u32 defAbility)
 u32 ShouldTryToFlinch(u32 battlerAtk, u32 battlerDef, u32 atkAbility, u32 defAbility, u32 move)
 {
     if (((AI_DATA->abilities[battlerAtk] != ABILITY_MOLD_BREAKER 
-      && (defAbility == ABILITY_PROPELLER_TAIL || defAbility == ABILITY_SHIELD_DUST || defAbility == ABILITY_INNER_FOCUS || defAbility == ABILITY_TITANIC || defAbility == ABILITY_STEADFAST || defAbility == ABILITY_PROPELLER_TAIL))
+      && (defAbility == ABILITY_PROPELLER_TAIL || defAbility == ABILITY_SHIELD_DUST || (defAbility == ABILITY_INNER_FOCUS && gBattleMons[battlerDef].status2 & STATUS2_FOCUS_ENERGY) || defAbility == ABILITY_STEADFAST || defAbility == ABILITY_PROPELLER_TAIL))
       || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
       || AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_SLOWER)) // Opponent goes first
@@ -3430,10 +3431,10 @@ bool32 ShouldFakeOut(u32 battlerAtk, u32 battlerDef, u32 move)
     || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
     || (!IsMoldBreakerTypeAbility(battlerAtk, AI_DATA->abilities[battlerAtk])
     && (AI_DATA->abilities[battlerDef] == ABILITY_SHIELD_DUST 
-        || AI_DATA->abilities[battlerDef] == ABILITY_INNER_FOCUS
+        || (AI_DATA->abilities[battlerDef] == ABILITY_INNER_FOCUS && 
+        gBattleMons[battlerDef].status2 & STATUS2_FOCUS_ENERGY)
         || AI_DATA->abilities[battlerDef] == ABILITY_PROPELLER_TAIL
-        || AI_DATA->abilities[battlerDef] == ABILITY_STEADFAST
-        || AI_DATA->abilities[battlerDef] == ABILITY_TITANIC)))
+        || AI_DATA->abilities[battlerDef] == ABILITY_STEADFAST)))
         return FALSE;
 
     return TRUE;
@@ -3454,7 +3455,6 @@ bool32 ShouldLoveTap(u32 battlerAtk, u32 battlerDef, u32 move)
         || AI_DATA->abilities[battlerDef] == ABILITY_SHIELD_DUST 
         || AI_DATA->abilities[battlerDef] == ABILITY_TANGLED_FEET
         || AI_DATA->abilities[battlerDef] == ABILITY_OWN_TEMPO
-        || AI_DATA->abilities[battlerDef] == ABILITY_TITANIC
         || AI_DATA->abilities[battlerDef] == ABILITY_LOVESICK)))
         return FALSE;
 

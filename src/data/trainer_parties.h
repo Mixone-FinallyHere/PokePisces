@@ -12552,7 +12552,7 @@ static const struct TrainerMon sParty_PCatt[] = {
     {
     .species = SPECIES_KOWAKO,
     .ability = ABILITY_DISDAIN,
-    .heldItem = ITEM_FLOAT_STONE,
+    .heldItem = ITEM_LEFTOVERS,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 0, 0, 0, 240, 0),
     .lvl = 76,
@@ -12634,7 +12634,7 @@ static const struct TrainerMon sParty_PErkinAndKaya[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 240, 0, 0, 0, 0),
     .lvl = 75,
-    .moves = {MOVE_PETAL_BLIZZARD, MOVE_JUNGLE_HEALING, MOVE_GRASSY_TERRAIN, MOVE_BREAKING_SWIPE},
+    .moves = {MOVE_PETAL_BLIZZARD, MOVE_JUNGLE_HEALING, MOVE_SUNNY_DAY, MOVE_BREAKING_SWIPE},
     },
     {
     .species = SPECIES_SUMMERASU,
@@ -12801,7 +12801,7 @@ static const struct TrainerMon sParty_PAnthreeny[] = {
     {
     .species = SPECIES_ABSOLARIA,
     .ability = ABILITY_DRAINAGE,
-    .heldItem = ITEM_BIG_ROOT,
+    .heldItem = ITEM_ASSAULT_VEST,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 120, 0, 240, 120, 0),
     .lvl = 75,
@@ -13116,7 +13116,7 @@ static const struct TrainerMon sParty_PMelulu[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 240, 0, 0, 0, 0),
     .lvl = 81,
-    .moves = {MOVE_TROP_KICK, MOVE_SYNTHESIS, MOVE_ATTRACT, MOVE_PSYSHIELD_BASH},
+    .moves = {MOVE_TROP_KICK, MOVE_SYNTHESIS, MOVE_ALLURING_VOICE, MOVE_PSYSHIELD_BASH},
     },
     {
     .species = SPECIES_KOWAKO,
@@ -13125,7 +13125,7 @@ static const struct TrainerMon sParty_PMelulu[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 0, 0, 0, 240, 0),
     .lvl = 81,
-    .moves = {MOVE_DRAINING_KISS, MOVE_SWEET_KISS, MOVE_ATTRACT, MOVE_SPIRIT_AWAY},
+    .moves = {MOVE_DRAINING_KISS, MOVE_SWEET_KISS, MOVE_ALLURING_VOICE, MOVE_SPIRIT_AWAY},
     }
 };
 
