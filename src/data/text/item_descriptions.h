@@ -740,7 +740,7 @@ static const u8 sXAccuracyDesc[] = _(
 
 static const u8 sDireHitDesc[] = _(
     "An item that sharply\n"
-    "boosts the critical-hit\n"
+    "boosts the critical hit\n"
     "ratio of a Pokémon for\n"
     "one battle.");
 
@@ -2116,7 +2116,7 @@ static const u8 sLeekDesc[] = _(
     "A special Leek crafted\n"
     "by the gods that boosts\n"
     "the Absir'd line's\n"
-    "critical-hit ratio.");
+    "critical hit ratio.");
 
 static const u8 sThickClubDesc[] = _(
     "A held item that\n"
@@ -2126,7 +2126,7 @@ static const u8 sThickClubDesc[] = _(
 static const u8 sLuckyPunchDesc[] = _(
     "A held item that\n"
     "raises Chansey's\n"
-    "critical-hit rate.");
+    "critical hit rate.");
 
 static const u8 sMetalPowderDesc[] = _(
     "A held item that\n"
@@ -2568,7 +2568,7 @@ static const u8 sScopeLensDesc[] = _(
     "A lens for scoping out\n"
     "weak points. It boosts\n"
     "the holder's\n"
-    "critical-hit ratio.");
+    "critical hit ratio.");
 
 static const u8 sLeftoversDesc[] = _(
     "Some leftovers that\n"
@@ -2691,7 +2691,7 @@ static const u8 sBigRootDesc[] = _(
 static const u8 sRazorClawDesc[] = _(
     "A hooked claw that\n"
     "ups the holder's\n"
-    "critical-hit ratio.");
+    "critical hit ratio.");
 
 static const u8 sRazorFangDesc[] = _(
     "A fang that boosts the\n"
@@ -3453,7 +3453,7 @@ static const u8 sTM38Desc[] = _(
 static const u8 sTM39Desc[] = _(
     "Gets rid of the foe's\n"
     "Berry and Blooming.\n"
-    "Also critical-hits if\n"
+    "Also critical hits if\n"
     "the foe is Blooming.");
 
 static const u8 sTM40Desc[] = _(
@@ -4510,7 +4510,7 @@ static const u8 sDoughStickDesc[] = _(
 static const u8 sYellowSodaDesc[] = _(
     "A berry soda for a\n"
     "Voreon. It heals HP,\n"
-    "ups Speed/critical-hit\n"
+    "ups Speed/critical hit\n"
     "ratio-but only once.");
 
 static const u8 sDripShoesDesc[] = _(
@@ -4562,7 +4562,7 @@ static const u8 sPanicOrbDesc[] = _(
 static const u8 sSolarSwordDesc[] = _(
     "A legendary sword that\n"
     "makes Solrock always\n"
-    "land critical-hits in\n"
+    "land critical hits in\n"
     "harsh sunlight.");
 
 static const u8 sMoonMirrorDesc[] = _(

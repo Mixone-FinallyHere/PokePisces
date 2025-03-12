@@ -2544,8 +2544,8 @@ static const u8 sCircleThrowDescription[] = _(
 
 static const u8 sIncinerateDescription[] = _(
     "Gets rid of the foe's Berry and\n"
-    "Blooming. Also critical-hits if\n"
-    "the foe is Blooming.");
+    "Blooming. Also lands critical\n"
+    "hits if the foe is Blooming.");
 
 static const u8 sQuashDescription[] = _(
     "The user suppresses the target\n"

@@ -486,7 +486,7 @@ static const u8 sMoldBreakerDescription[] = _(
     "target.");
 
 static const u8 sSuperLuckDescription[] = _(
-    "Boosts the critical-hit ratios\n"
+    "Boosts the critical hit ratios\n"
     "of moves and chances to find a\n"
     "wild Pokémon holding an item.");
 
@@ -1426,7 +1426,7 @@ static const u8 sRisingDescription[] = _(
 
 static const u8 sRisktakerDescription[] = _(
     "Boosts the chance of additional\n"
-    "effects and critical-hits. Takes\n"
+    "effects and critical hits. Takes\n"
     "more damage after using attacks.");
 
 static const u8 sSaddenedDescription[] = _(
