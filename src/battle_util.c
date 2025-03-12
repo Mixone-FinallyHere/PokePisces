@@ -13105,7 +13105,7 @@ static inline uq4_12_t GetLuckyChantModifier(u32 abilityAtk, u32 battlerAtk, u32
     && (typeEffectivenessModifier >= UQ_4_12(2.0))
     && ((abilityAtk != ABILITY_INFILTRATOR)
     || !(IS_BATTLER_OF_TYPE(battlerAtk, TYPE_BUG))))
-        return UQ_4_12(0.75);
+        return UQ_4_12(0.7);
     return UQ_4_12(1.0);
 }
 
