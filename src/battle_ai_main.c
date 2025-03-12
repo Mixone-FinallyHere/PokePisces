@@ -892,7 +892,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         }
 
         // check off screen
-        if (IsSemiInvulnerable(battlerDef, move) && moveEffect != (EFFECT_SEMI_INVULNERABLE || EFFECT_DIVE || EFFECT_FLY || EFFECT_SHADOW_FORCE) && AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_FASTER)
+        if (IsSemiInvulnerable(battlerDef, move) && moveEffect != (EFFECT_SEMI_INVULNERABLE || EFFECT_DIG || EFFECT_DIVE || EFFECT_FLY || EFFECT_SHADOW_FORCE) && AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_FASTER)
             RETURN_SCORE_MINUS(20);    // if target off screen and we go first, don't use move
 
         // check if negates type
@@ -2696,6 +2696,12 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 bool32 decreased = FALSE;
                 switch (move)
                 {
+                case MOVE_PROTECT:
+                    if (IS_BATTLER_OF_TYPE(battlerDef, TYPE_BUG))
+                    {
+                        score -= 10;
+                        break;
+                    }
                 case MOVE_QUICK_GUARD:
                 case MOVE_WIDE_GUARD:
                 case MOVE_CRAFTY_SHIELD:
@@ -2839,12 +2845,17 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 4;
             break;
         case EFFECT_SEMI_INVULNERABLE:
+        case EFFECT_DIG:
         case EFFECT_DIVE:
         case EFFECT_FLY:
         case EFFECT_SHADOW_FORCE:
             if (predictedMove != MOVE_NONE
               && AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_SLOWER
-              && gBattleMoves[predictedMove].effect == EFFECT_SEMI_INVULNERABLE)
+              && (gBattleMoves[predictedMove].effect == EFFECT_SEMI_INVULNERABLE
+                || gBattleMoves[predictedMove].effect == EFFECT_DIG
+                || gBattleMoves[predictedMove].effect == EFFECT_DIVE
+                || gBattleMoves[predictedMove].effect == EFFECT_FLY
+                || gBattleMoves[predictedMove].effect == EFFECT_SHADOW_FORCE))
                 score -= 10; // Don't Fly/dig/etc if opponent is going to fly/dig/etc after you
 
             if (BattlerWillFaintFromWeather(battlerAtk, aiData->abilities[battlerAtk])
@@ -5842,6 +5853,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         }
         break;
     case EFFECT_SEMI_INVULNERABLE:
+    case EFFECT_DIG:
     case EFFECT_DIVE:
     case EFFECT_FLY:
     case EFFECT_SHADOW_FORCE:
@@ -5854,7 +5866,12 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                   || gBattleMoves[predictedMove].effect == EFFECT_PROTECT)
                     score += 3;
             }
-            else if (gBattleMoves[predictedMove].effect == EFFECT_SEMI_INVULNERABLE && !(gStatuses3[battlerDef] & STATUS3_SEMI_INVULNERABLE))
+            else if ((gBattleMoves[predictedMove].effect == EFFECT_SEMI_INVULNERABLE
+                || gBattleMoves[predictedMove].effect == EFFECT_DIG
+                || gBattleMoves[predictedMove].effect == EFFECT_DIVE
+                || gBattleMoves[predictedMove].effect == EFFECT_FLY
+                || gBattleMoves[predictedMove].effect == EFFECT_SHADOW_FORCE)
+                && !(gStatuses3[battlerDef] & STATUS3_SEMI_INVULNERABLE))
             {
                 score += 3;
             }

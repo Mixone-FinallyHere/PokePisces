@@ -701,6 +701,56 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectSteelBeam               @ EFFECT_STEEL_BEAM
 	.4byte BattleScript_EffectFocusBlast              @ EFFECT_FOCUS_BLAST
 	.4byte BattleScript_EffectSpikeCannon             @ EFFECT_SPIKE_CANNON
+	.4byte BattleScript_EffectDig                     @ EFFECT_DIG
+
+BattleScript_EffectDig::
+	jumpifstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS, BattleScript_SecondTurnDig
+	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING, BattleScript_SecondTurnDig
+	setbyte sTWOTURN_STRINGID, B_MSG_TURN1_DIG
+	call BattleScriptFirstChargingTurn
+	setsemiinvulnerablebit
+	jumpifnoholdeffect BS_ATTACKER, HOLD_EFFECT_POWER_HERB, BattleScript_MoveEnd
+	call BattleScript_PowerHerbActivation
+BattleScript_SecondTurnDig::
+	attackcanceler
+	setmoveeffect MOVE_EFFECT_CHARGING
+	setbyte sB_ANIM_TURN, 1
+	clearstatusfromeffect BS_ATTACKER
+	orword gHitMarker, HITMARKER_NO_PPDEDUCT
+	argumenttomoveeffect
+	accuracycheck BattleScript_DigMiss, ACC_CURR_MOVE
+	clearsemiinvulnerablebit
+	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_DigSummonGrassyTerrain
+	goto BattleScript_HitFromAtkString
+BattleScript_DigMiss::
+	clearsemiinvulnerablebit
+	goto BattleScript_PrintMoveMissed
+BattleScript_DigSummonGrassyTerrain::
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	jumpifmovehadnoeffect BattleScript_DigTryFaint
+	seteffectwithchance
+	setremoveterrain BattleScript_DigTryFaint
+	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG
+	printfromtable gTerrainStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_DigTryFaint:
+	tryfaintmon BS_TARGET
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectSpikeCannon::
 	attackcanceler
@@ -1959,6 +2009,7 @@ BattleScript_DefenderEffectExtraHit::
 BattleScript_DefenderExtraHitFromAtkCanceler::
 	attackcanceler
 BattleScript_DefenderExtraHitFromAtkString::
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 BattleScript_DefenderExtraHitFromCritCalc::
 	critcalc
@@ -3079,9 +3130,20 @@ BattleScript_WoodHammerBloomCureFailed:
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectDrumBeating::
-	setmoveeffect MOVE_EFFECT_SPD_MINUS_1 | MOVE_EFFECT_CERTAIN
-	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_EffectHitSetRemoveTerrain
+	setmoveeffect MOVE_EFFECT_SPD_MINUS_1
+	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_EffectDrumBeatingBlooming
 	goto BattleScript_EffectHit
+BattleScript_EffectDrumBeatingBlooming::
+	call BattleScript_EffectHit_Ret
+	jumpifmovehadnoeffect BattleScript_DrumBeatingTryFaint
+	seteffectwithchance
+	setremoveterrain BattleScript_DrumBeatingTryFaint
+	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG
+	printfromtable gTerrainStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_DrumBeatingTryFaint:
+	tryfaintmon BS_TARGET
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectSnapblossom::
 	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_SnapBlossomPlantSeeds
@@ -12149,42 +12211,18 @@ BattleScript_BeatUpEnd::
 BattleScript_EffectSemiInvulnerable::
 	jumpifstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS, BattleScript_SecondTurnSemiInvulnerable
 	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING, BattleScript_SecondTurnSemiInvulnerable
-	jumpifmove MOVE_FLY, BattleScript_FirstTurnFly
-	jumpifmove MOVE_DIVE, BattleScript_FirstTurnDive
-	jumpifmove MOVE_BOUNCE, BattleScript_FirstTurnBounce
-	jumpifmove MOVE_SHADOW_FORCE, BattleScript_FirstTurnShadowForce
 	jumpifmove MOVE_PHANTOM_FORCE, BattleScript_FirstTurnPhantomForce
-	setbyte sTWOTURN_STRINGID, B_MSG_TURN1_DIG
-	goto BattleScript_FirstTurnSemiInvulnerable
-BattleScript_FirstTurnBounce::
 	setbyte sTWOTURN_STRINGID, B_MSG_TURN1_BOUNCE
-	goto BattleScript_FirstTurnSemiInvulnerable
-BattleScript_FirstTurnDive::
-	setbyte sTWOTURN_STRINGID, B_MSG_TURN1_DIVE
-	goto BattleScript_FirstTurnSemiInvulnerable
-BattleScript_FirstTurnShadowForce:
-	setbyte sTWOTURN_STRINGID, B_MSG_TURN1_PHANTOM_FORCE
 	goto BattleScript_FirstTurnSemiInvulnerable
 BattleScript_FirstTurnPhantomForce:
 	setbyte sTWOTURN_STRINGID, B_MSG_TURN1_PHANTOM_FORCE
-	jumpifstatus4 BS_ATTACKER, STATUS4_PHANTOM, BattleScript_PhantomForceOnFirstTurn
-	goto BattleScript_FirstTurnSemiInvulnerable
-BattleScript_FirstTurnFly::
-	setbyte sTWOTURN_STRINGID, B_MSG_TURN1_FLY
-	goto BattleScript_FirstTurnSemiInvulnerable
-BattleScript_PhantomForceOnFirstTurn::
-	call BattleScriptFirstChargingTurn
-	setsemiinvulnerablebit
-	goto BattleScript_SecondTurnSemiInvulnerable
 BattleScript_FirstTurnSemiInvulnerable::
-	jumpifmove MOVE_DIG, BattleScript_TryTheDigFirstTurnSemiInvulnerable
 	call BattleScriptFirstChargingTurn
 	setsemiinvulnerablebit
 	jumpifmove MOVE_PHANTOM_FORCE, BattleScript_PhaseForcePhantomShenanigans
 	jumpifnoholdeffect BS_ATTACKER, HOLD_EFFECT_POWER_HERB, BattleScript_MoveEnd
 	call BattleScript_PowerHerbActivation
 BattleScript_SecondTurnSemiInvulnerable::
-	jumpifmove MOVE_DIG, BattleScript_TryTheDigSecondTurnSemiInvulnerable
 	attackcanceler
 	setmoveeffect MOVE_EFFECT_CHARGING
 	setbyte sB_ANIM_TURN, 1
@@ -12198,47 +12236,8 @@ BattleScript_SemiInvulnerableTryHit::
 BattleScript_SemiInvulnerableMiss::
 	clearsemiinvulnerablebit
 	goto BattleScript_PrintMoveMissed
-BattleScript_TryTheDigFirstTurnSemiInvulnerable::
-	call BattleScriptFirstChargingTurn
-	setsemiinvulnerablebit
-	jumpifnoholdeffect BS_ATTACKER, HOLD_EFFECT_POWER_HERB, BattleScript_MoveEnd
-	call BattleScript_PowerHerbActivation
-BattleScript_TryTheDigSecondTurnSemiInvulnerable::
-	attackcanceler
-	setmoveeffect MOVE_EFFECT_CHARGING
-	setbyte sB_ANIM_TURN, 1
-	clearstatusfromeffect BS_ATTACKER
-	orword gHitMarker, HITMARKER_NO_PPDEDUCT
-	argumenttomoveeffect
-	accuracycheck BattleScript_SemiInvulnerableMiss, ACC_CURR_MOVE
-	clearsemiinvulnerablebit
-	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_DigSetGrassyTerrain
-	goto BattleScript_HitFromAtkString
-BattleScript_DigSetGrassyTerrain::
-	setremoveterrain BattleScript_HitFromAtkString
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
-	seteffectwithchance
-	tryfaintmon BS_TARGET
-	printfromtable gTerrainStringIds
-	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
 BattleScript_PhaseForcePhantomShenanigans::
-	jumpifstatus4 BS_ATTACKER, STATUS4_PHANTOM, BattleScript_TryTheDigSecondTurnSemiInvulnerable
+	jumpifstatus4 BS_ATTACKER, STATUS4_PHANTOM, BattleScript_SecondTurnSemiInvulnerable
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectDefenseCurl::
@@ -14422,6 +14421,38 @@ BattleScript_SeedSowerActivates::
 	waitmessage B_WAIT_TIME_LONG
 	playanimation BS_SCRIPTING, B_ANIM_RESTORE_BG
 	call BattleScript_ActivateTerrainEffects
+	return
+
+BattleScript_GuardDogActivates::
+	copybyte sSAVED_BATTLER, gBattlerAttacker
+	call BattleScript_AbilityPopUpTarget
+	printstring STRINGID_ABILITYLETITUSEMOVEGUARDDOG
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_TARGET, B_ANIM_GUARD_DOG
+	waitanimation
+	copybyte gEffectBattler, gBattlerTarget
+	swapattackerwithtarget
+	setbyte gBattlerTarget, 0
+BattleScript_GuardDogLoop:
+	jumpiffainted BS_TARGET, TRUE, BattleScript_GuardDogLoopIncrement
+	jumpiftargetally BattleScript_GuardDogLoopIncrement
+	setstatchanger STAT_ATK, 1, TRUE
+	jumpifbyteequal gBattlerTarget, gEffectBattler, BattleScript_GuardDogLoopIncrement
+	statbuffchange STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_GuardDogLoopIncrement
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_GuardDogTargetSpeedCantGoLower
+	setgraphicalstatchangevalues
+	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_GuardDogLoopIncrement
+BattleScript_GuardDogTargetSpeedCantGoLower:
+	printstring STRINGID_STATSWONTDECREASE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_GuardDogLoopIncrement:
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_GuardDogLoop
+	swapattackerwithtarget
+	copybyte gBattlerAttacker, sSAVED_BATTLER
 	return
 
 BattleScript_AngerShellActivates::
@@ -17140,7 +17171,6 @@ BattleScript_MoveStatDrain::
 .endif
 BattleScript_MoveStatDrain_Cont:
 	clearsemiinvulnerablebit
-	tryfaintmon BS_ATTACKER
 	goto BattleScript_MoveEnd
 
 BattleScript_MoveStatDrain2_PPLoss::
@@ -17171,7 +17201,6 @@ BattleScript_MoveStatDrain2TrySpAtk::
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_MoveStatDrain2End:
 	clearsemiinvulnerablebit
-	tryfaintmon BS_ATTACKER
 	goto BattleScript_MoveEnd
 
 BattleScript_DrySkinHealStatUp_PPLoss::
@@ -17198,7 +17227,6 @@ BattleScript_DrySkinHealStatUp::
 .endif
 BattleScript_DrySkinHealStatUp_Cont:
 	clearsemiinvulnerablebit
-	tryfaintmon BS_ATTACKER
 	goto BattleScript_MoveEnd
 
 BattleScript_MoveStatNegativeDrain_PPLoss::
@@ -17220,7 +17248,6 @@ BattleScript_MoveStatNegativeDrain::
 .endif
 BattleScript_MoveStatNegativeDrain_Cont:
 	clearsemiinvulnerablebit
-	tryfaintmon BS_ATTACKER
 	goto BattleScript_MoveEnd
 
 BattleScript_WindPowerCharge_PPLoss::
@@ -17233,7 +17260,6 @@ BattleScript_WindPowerCharge::
 	printstring STRINGID_BEINGHITCHARGEDPKMNWITHPOWER
 	waitmessage B_WAIT_TIME_LONG
 	clearsemiinvulnerablebit
-	tryfaintmon BS_ATTACKER
 	goto BattleScript_MoveEnd
 
 BattleScript_MonMadeMoveUseless_PPLoss::
@@ -17244,7 +17270,6 @@ BattleScript_MonMadeMoveUseless::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNSXMADEYUSELESS
 	waitmessage B_WAIT_TIME_LONG
-	tryfaintmon BS_ATTACKER
 	orhalfword gMoveResultFlags, MOVE_RESULT_DOESNT_AFFECT_FOE
 	goto BattleScript_MoveEnd
 
@@ -17256,7 +17281,6 @@ BattleScript_FlashFireBoost::
 	call BattleScript_AbilityPopUp
 	printfromtable gFlashFireStringIds
 	waitmessage B_WAIT_TIME_LONG
-	tryfaintmon BS_ATTACKER
 	goto BattleScript_MoveEnd
 
 BattleScript_AbilityPreventsPhasingOut::
@@ -19162,6 +19186,7 @@ BattleScript_ExtremeEvoboostEnd::
 BattleScript_EffectHitSetRemoveTerrain:
     call BattleScript_EffectHit_Ret
 	jumpifmovehadnoeffect BattleScript_TryFaint
+	seteffectwithchance
 	setremoveterrain BattleScript_TryFaint
 	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG
 	printfromtable gDemolisherStringIds

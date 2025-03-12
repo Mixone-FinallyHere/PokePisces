@@ -217,7 +217,7 @@ CyclingRoad_Text_HichaelsonDefeated:
 
 CyclingRoad_Text_HichaelsonPostBattle:
 	.string "I've been on a journey to find my dad,\n"
-	.string "whom I have not seen since I was a\n"
+	.string "whom I have not seen since I was a\l"
 	.string "child.$"
 
 CyclingRoad_Text_LuluIntro:

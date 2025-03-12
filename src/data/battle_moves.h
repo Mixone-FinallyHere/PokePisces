@@ -1602,7 +1602,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         #else
             .power = 60,
         #endif
-        .effect = EFFECT_SEMI_INVULNERABLE,
+        .effect = EFFECT_DIG,
         .type = TYPE_GROUND,
         .accuracy = 100,
         .pp = 10,

@@ -6543,7 +6543,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
             && !IsBattlerAlive(gBattlerTarget)
             && IsBattlerAlive(gBattlerAttacker)
-            && !IsAbilityOnField(ABILITY_DAMP)
             && gBattlerAttacker != gBattlerTarget
             && !gProtectStructs[gBattlerTarget].confusionSelfDmg
             && !gProtectStructs[gBattlerTarget].extraMoveUsed
@@ -6617,36 +6616,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 u8 movePower = 70;                  //The Move power, leave at 0 if you want it to be the same as the normal move
                 u8 moveEffectPercentChance  = 100;  //The percent chance of the move effect happening
                 u8 extraMoveSecondaryEffect = MOVE_EFFECT_RANDOM_STAT_DROP;  //Leave at 0 to remove it's secondary effect
-                gTempMove = gCurrentMove;
-                gCurrentMove = extraMove;
-                gMultiHitCounter = 0;
-                gProtectStructs[battler].extraMoveUsed = TRUE;
-
-                //Move Effect
-                VarSet(VAR_EXTRA_MOVE_DAMAGE,      movePower);
-                VarSet(VAR_TEMP_MOVEEFFECT_CHANCE, moveEffectPercentChance);
-                VarSet(VAR_TEMP_MOVEEFFECT,        extraMoveSecondaryEffect);
-
-                gBattlescriptCurrInstr = BattleScript_DefenderUsedAnExtraMove;
-                effect++;
-            }
-            break;
-        case ABILITY_SWEET_VEIL:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-            && gBattleMons[gBattlerTarget].hp != 0
-            && IsBattlerAlive(gBattlerAttacker) 
-            && TARGET_TURN_DAMAGED
-            && gBattlerAttacker != gBattlerTarget
-            && !gProtectStructs[gBattlerTarget].confusionSelfDmg
-            && !gProtectStructs[gBattlerTarget].extraMoveUsed
-            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_SLEEP_ANY)
-            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE)
-            && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
-            {
-                u16 extraMove = MOVE_SWEET_SCENT;     //The Extra Move to be used
-                u8 movePower = 0;                 //The Move power, leave at 0 if you want it to be the same as the normal move
-                u8 moveEffectPercentChance  = 0;  //The percent chance of the move effect happening
-                u8 extraMoveSecondaryEffect = MOVE_EFFECT_EVS_MINUS_1;  //Leave at 0 to remove it's secondary effect
                 gTempMove = gCurrentMove;
                 gCurrentMove = extraMove;
                 gMultiHitCounter = 0;
@@ -6917,6 +6886,15 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 effect++;
             }
             break;
+        case ABILITY_GUARD_DOG:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerAttacker].hp != 0 && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED)
+            {
+                gEffectBattler = gBattlerTarget;
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_GuardDogActivates;
+                effect++;
+            }
+            break;
         case ABILITY_STEAM_ENGINE:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && TARGET_TURN_DAMAGED && IsBattlerAlive(battler) && CompareStat(battler, STAT_SPEED, MAX_STAT_STAGE, CMP_LESS_THAN) && (moveType == TYPE_FIRE || moveType == TYPE_WATER))
             {
@@ -7000,7 +6978,11 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_SEED_SOWER:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED && IsBattlerAlive(gBattlerTarget) && TryChangeBattleTerrain(gBattlerTarget, STATUS_FIELD_GRASSY_TERRAIN, &gFieldTimers.terrainTimer))
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
+            && TARGET_TURN_DAMAGED
+            && IsBattlerAlive(gBattlerTarget)
+            && TryChangeBattleTerrain(gBattlerTarget, STATUS_FIELD_GRASSY_TERRAIN, &gFieldTimers.terrainTimer))
             {
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_SeedSowerActivates;
