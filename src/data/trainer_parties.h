@@ -14460,7 +14460,7 @@ static const struct TrainerMon sParty_PMrBonding[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(192, 0, 0, 0, 192, 0),
     .lvl = 46,
-    .moves = {MOVE_HYPER_VOICE, MOVE_BLEAKWIND_STORM, MOVE_MILK_DRINK, MOVE_SAFEGUARD},
+    .moves = {MOVE_HYPER_VOICE, MOVE_BLEAKWIND_STORM, MOVE_MOONBLAST, MOVE_GLACIATE},
     .nature = NATURE_MODEST,
     },
     {
@@ -14479,7 +14479,7 @@ static const struct TrainerMon sParty_PMrBonding[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(192, 0, 0, 0, 128, 64),
     .lvl = 46,
-    .moves = {MOVE_RECOVER, MOVE_SWIFT, MOVE_VENOM_DRAIN, MOVE_DRAINING_KISS},
+    .moves = {MOVE_KNOCK_OFF, MOVE_SWIFT, MOVE_VENOM_DRAIN, MOVE_DRAINING_KISS},
     .nature = NATURE_QUIET,
     },
     {

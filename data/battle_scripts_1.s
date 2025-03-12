@@ -4387,22 +4387,37 @@ BattleScript_EffectTickTack::
 	waitmessage B_WAIT_TIME_LONG
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
-	jumpifstatus4 BS_TARGET, STATUS4_TICKED, BattleScript_TickTackContinue
-	tryfaintmon BS_TARGET
-	jumpifhasnohp BS_TARGET, BattleScript_TickTackContinue
-	setseeded
-	printfromtable gTickedStringIds
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_TickTackContinue::
-	jumpiffullhp BS_ATTACKER, BattleScript_AbsorbTryFainting
-	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_AbsorbHealBlock
-	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_AbsorbHealBlock
+	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_TickTackHealBlock
+	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_TickTackHealBlock
 	setdrainedhp
 	manipulatedamage DMG_BIG_ROOT
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE
-	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_AbsorbLiquidOoze
+	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_TickTackLiquidOoze
 	setbyte cMULTISTRING_CHOOSER, B_MSG_ABSORB
-	goto BattleScript_AbsorbUpdateHp
+	goto BattleScript_TickTackUpdateHp
+BattleScript_TickTackLiquidOoze::
+	call BattleScript_AbilityPopUpTarget
+	manipulatedamage DMG_CHANGE_SIGN
+	setbyte cMULTISTRING_CHOOSER, B_MSG_ABSORB_OOZE
+BattleScript_TickTackUpdateHp::
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	jumpifmovehadnoeffect BattleScript_TickTackTryFainting
+	printfromtable gAbsorbDrainStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_TickTackTryFainting::
+	tryfaintmon BS_ATTACKER
+BattleScript_TickTackHealBlock::
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	jumpifsubstituteblocks BattleScript_MoveEnd
+	jumpifstatus4 BS_TARGET, STATUS4_TICKED, BattleScript_MoveEnd
+	setseeded
+	printfromtable gLeechSeedStringIds
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectTerrorize::
 	attackcanceler
