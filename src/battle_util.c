@@ -2518,6 +2518,7 @@ enum
     ENDTURN_INFERNAL_REIGN,
     ENDTURN_SYRUP_BOMB,
     ENDTURN_DAYBREAK,
+    ENDTURN_MAGIC_COAT,
     ENDTURN_ITEMS3,
     ENDTURN_BATTLER_COUNT
 };
@@ -3110,6 +3111,15 @@ u8 DoBattlerEndTurnEffects(void)
             if (gDisableStructs[battler].throatChopTimer && --gDisableStructs[battler].throatChopTimer == 0)
             {
                 BattleScriptExecute(BattleScript_ThroatChopEndTurn);
+                effect++;
+            }
+            gBattleStruct->turnEffectsTracker++;
+            break;
+        case ENDTURN_MAGIC_COAT:
+            if (gDisableStructs[battler].bounceMoveTimer && --gDisableStructs[battler].bounceMoveTimer == 0)
+            {
+                gDisableStructs[battler].bounceMove = FALSE;
+                BattleScriptExecute(BattleScript_MagicCoatEndTurn);
                 effect++;
             }
             gBattleStruct->turnEffectsTracker++;
@@ -4286,6 +4296,8 @@ bool32 TryChangeBattleWeather(u32 battler, u32 weatherEnumId, bool32 viaAbility)
         gBattleWeather = (sWeatherFlagsInfo[weatherEnumId][0]);
         if (GetBattlerHoldEffect(battler, TRUE) == sWeatherFlagsInfo[weatherEnumId][2])
             gWishFutureKnock.weatherDuration = 8;
+        else if (gCurrentMove == MOVE_SOLAR_FLARE && GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_SOLAR_SWORD && gBattleWeather & B_WEATHER_SUN)
+            gWishFutureKnock.weatherDuration = 6;
         else
             gWishFutureKnock.weatherDuration = 5;
         ShouldChangeFormInWeather(battler);

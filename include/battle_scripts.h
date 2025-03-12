@@ -501,6 +501,7 @@ extern const u8 BattleScript_SelectingNotAllowedMoveThroatChop[];
 extern const u8 BattleScript_MoveUsedIsThroatChopPrevented[];
 extern const u8 BattleScript_SelectingNotAllowedMoveThroatChopInPalace[];
 extern const u8 BattleScript_ThroatChopEndTurn[];
+extern const u8 BattleScript_MagicCoatEndTurn[];
 extern const u8 BattleScript_GemActivates[];
 extern const u8 BattleScript_BerryReduceDmg[];
 extern const u8 BattleScript_PrintBerryReduceString[];

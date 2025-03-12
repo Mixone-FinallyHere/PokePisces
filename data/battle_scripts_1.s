@@ -703,6 +703,24 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectSpikeCannon             @ EFFECT_SPIKE_CANNON
 	.4byte BattleScript_EffectDig                     @ EFFECT_DIG
 
+BattleScript_EffectSolarFlare::
+	jumpifholdeffect BS_ATTACKER, HOLD_EFFECT_SOLAR_SWORD, BattleScript_TrueSolarFlare
+	goto BattleScript_EffectHit
+BattleScript_TrueSolarFlare::
+    call BattleScript_EffectHit_Ret
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_SUN_PRIMAL, BattleScript_ExtremelyHarshSunlightWasNotLessened
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_RAIN_PRIMAL, BattleScript_NoReliefFromHeavyRain
+	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_STRONG_WINDS, BattleScript_MysteriousAirCurrentBlowsOn
+	setsunny
+	printfromtable gMoveWeatherChangeStringIds
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_ActivateWeatherAbilities
+	goto BattleScript_MoveEnd
+
 BattleScript_EffectDig::
 	jumpifstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS, BattleScript_SecondTurnDig
 	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING, BattleScript_SecondTurnDig
@@ -2148,7 +2166,12 @@ BattleScript_HunkerDownEnd::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectMoonBeam:
-	setmoveeffect MOVE_EFFECT_PANIC
+	jumpifholdeffect BS_ATTACKER, HOLD_EFFECT_MOON_MIRROR, BattleScript_TrueMoonBeam
+	goto BattleScript_MoonBeamWithoutEffect
+BattleScript_TrueMoonBeam::
+	setmoveeffect MOVE_EFFECT_SPECTRAL_THIEF
+BattleScript_MoonBeamWithoutEffect::
+	attackcanceler
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
@@ -14682,6 +14705,11 @@ BattleScript_SelectingNotAllowedMoveThroatChopInPalace::
 
 BattleScript_ThroatChopEndTurn::
 	printstring STRINGID_THROATCHOPENDS
+	waitmessage B_WAIT_TIME_LONG
+	end2
+
+BattleScript_MagicCoatEndTurn::
+	printstring STRINGID_MAGICCOATENDS
 	waitmessage B_WAIT_TIME_LONG
 	end2
 

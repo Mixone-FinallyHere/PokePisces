@@ -633,6 +633,7 @@ static const u8 sText_Electromagnetism[] = _("electromagnetism");
 static const u8 sText_Daybreak[] = _("daybreak");
 static const u8 sText_BufferEnds[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_BUFF1}\nwore off!");
 static const u8 sText_ThroatChopEnds[] = _("{B_ATK_NAME_WITH_PREFIX} can\nuse sound-based moves again!");
+static const u8 sText_MagicCoatEnds[] = _("{B_ATK_NAME_WITH_PREFIX} can no\nlonger bounce back status moves!");
 static const u8 sText_TelekinesisEnds[] = _("{B_ATK_NAME_WITH_PREFIX} was freed\nfrom the telekinesis!");
 static const u8 sText_TailwindEnds[] = _("{B_ATK_TEAM1} team's tailwind\npetered out!");
 static const u8 sText_FoeTailwindEnds[] = _("{B_DEF_TEAM1} team's tailwind\npetered out!");

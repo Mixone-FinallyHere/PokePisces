@@ -1407,6 +1407,7 @@ static void Cmd_attackcanceler(void)
         && !gProtectStructs[gBattlerAttacker].usesBouncedMove)
     {
         gDisableStructs[gBattlerTarget].bounceMove = FALSE;
+        gDisableStructs[gBattlerTarget].bounceMoveTimer = 0;
         PressurePPLose(gBattlerAttacker, gBattlerTarget, MOVE_MAGIC_COAT);
         gProtectStructs[gBattlerTarget].usesBouncedMove = TRUE;
         gBattleCommunication[MULTISTRING_CHOOSER] = 0;
@@ -18288,6 +18289,7 @@ static void Cmd_trysetmagiccoat(void)
     }
     else
     {
+        gDisableStructs[battler].bounceMoveTimer = 3;
         gDisableStructs[battler].bounceMove = TRUE;
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
