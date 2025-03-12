@@ -4768,7 +4768,8 @@ const u16 gEggMoves[] = {
         MOVE_LASH_OUT,
         MOVE_LOVELY_KISS,
         MOVE_OMINOUS_WIND,
-        MOVE_DEARLY_DEPART),
+        MOVE_DEARLY_DEPART,
+        MOVE_ALLURING_VOICE),
 
     egg_moves(MANNIKO,
         MOVE_DRAINING_KISS,
@@ -4776,7 +4777,8 @@ const u16 gEggMoves[] = {
         MOVE_LASH_OUT,
         MOVE_LOVELY_KISS,
         MOVE_OMINOUS_WIND,
-        MOVE_DEARLY_DEPART),
+        MOVE_DEARLY_DEPART,
+        MOVE_ALLURING_VOICE),
 
     egg_moves(KOWAKO,
         MOVE_DRAINING_KISS,
@@ -4784,7 +4786,8 @@ const u16 gEggMoves[] = {
         MOVE_LASH_OUT,
         MOVE_LOVELY_KISS,
         MOVE_OMINOUS_WIND,
-        MOVE_DEARLY_DEPART),
+        MOVE_DEARLY_DEPART,
+        MOVE_ALLURING_VOICE),
 
     egg_moves(STRAWNGMAN,
         MOVE_SPIKES,

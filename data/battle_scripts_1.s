@@ -509,7 +509,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectVerglastrom             @ EFFECT_VERGLASTROM
 	.4byte BattleScript_EffectHit                     @ EFFECT_EXORCISM
 	.4byte BattleScript_EffectLoveTap                 @ EFFECT_LOVE_TAP
-	.4byte BattleScript_EffectBurnHit                 @ EFFECT_SOLAR_FLARE
+	.4byte BattleScript_EffectSolarFlare              @ EFFECT_SOLAR_FLARE
 	.4byte BattleScript_EffectPanicHit                @ EFFECT_PANIC_HIT
 	.4byte BattleScript_EffectBloomingHit             @ EFFECT_BLOOMING_HIT
 	.4byte BattleScript_EffectExposedHit              @ EFFECT_EXPOSED_HIT
