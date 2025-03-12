@@ -721,6 +721,22 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "MangrottoTunnel_EventScript_RockSmashDoor"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 10,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MangrottoTunnel_EventScript_ToSootopolis"
+    },
+    {
+      "type": "sign",
+      "x": 81,
+      "y": 12,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MangrottoTunnel_EventScript_ToCosmossBridge"
     }
   ]
 }

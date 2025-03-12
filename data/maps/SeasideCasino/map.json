@@ -86,7 +86,7 @@
       "x": 2,
       "y": 10,
       "elevation": 0,
-      "dest_map": "MAP_SEASIDE_CASINO",
+      "dest_map": "MAP_SEASIDE_CASINO_EGG_GACHA_ROOM",
       "dest_warp_id": "0"
     },
     {
@@ -103,8 +103,8 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 2,
-      "y": 11,
+      "x": 4,
+      "y": 10,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "NULL"

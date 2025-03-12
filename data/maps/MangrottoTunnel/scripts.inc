@@ -620,6 +620,20 @@ MangrottoTunnel_EventScript_DoorAlreadySmashed::
 	releaseall
 	end
 
+MangrottoTunnel_EventScript_ToSootopolis::
+	msgbox MangrottoTunnel_Text_ToSootopolis, MSGBOX_SIGN
+	end
+
+MangrottoTunnel_EventScript_ToCosmossBridge::
+	msgbox MangrottoTunnel_Text_ToCosmossBridge, MSGBOX_SIGN
+	end
+
+MangrottoTunnel_Text_ToSootopolis:
+	.string "TO SOOTOPOLIS CITY$"
+
+MangrottoTunnel_Text_ToCosmossBridge:
+	.string "TO LOWER MOSSDEEP CITY$"
+
 MangrottoTunnel_Text_WeirdIndent:
 	.string "There is an odd indent in\n"
 	.string "the cave wall here.\p"

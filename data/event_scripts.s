@@ -4026,3 +4026,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/OldaleInteriors/scripts.inc"
 
 	.include "data/maps/SlateportSodaShop/scripts.inc"
+
+	.include "data/maps/SeasideCasinoEggGachaRoom/scripts.inc"

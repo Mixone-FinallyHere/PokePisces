@@ -190,7 +190,7 @@ Route126_EventScript_RematchPablo::
 
 Route126_EventScript_RayEncounterNorth::
 	lock
-	setflag FLAG_TEMP_16
+	setflag FLAG_TEMP_18
 	applymovement LOCALID_RAY, Route126_Movement_RayEncounterNorth
 	waitmovement 0
 	goto Route126_EventScript_RayBattleStart
@@ -243,7 +243,7 @@ Route126_EventScript_RayLeaves::
 	msgbox Route126_Text_RayLeaves, MSGBOX_DEFAULT
 	closemessage
 	speakername NULL
-	goto_if_set FLAG_TEMP_16, Route126_EventScript_RayLeavesNorth
+	goto_if_set FLAG_TEMP_18, Route126_EventScript_RayLeavesNorth
 	goto_if_set FLAG_TEMP_17, Route126_EventScript_RayLeavesSouth
 	release
 	end
@@ -428,6 +428,35 @@ Route126_EventScript_OzoneRoadblocker2::
 Route126_EventScript_OzoneRoadblocker3::
 	msgbox Route126_Text_OzoneRoadblocker3, MSGBOX_NPC
 	end
+
+Route126_EventScript_Launchpad1::
+	msgbox Route126_Text_Launchpad1, MSGBOX_SIGN
+	end
+
+Route126_EventScript_Launchpad2::
+	msgbox Route126_Text_Launchpad2, MSGBOX_SIGN
+	end
+
+Route126_EventScript_Launchpad3::
+	msgbox Route126_Text_Launchpad3, MSGBOX_SIGN
+	end
+
+Route126_EventScript_SpaceCenterSign::
+	msgbox Route126_Text_SpaceCenterSign, MSGBOX_SIGN
+	end
+
+Route126_Text_Launchpad1:
+	.string "Rocket Launch Pad No. 01$"
+
+Route126_Text_Launchpad2:
+	.string "Rocket Launch Pad No. 02$"
+
+Route126_Text_Launchpad3:
+	.string "Rocket Launch Pad No. 03$"
+
+Route126_Text_SpaceCenterSign:
+	.string "THE COSMOSS SPACE CENTER\n"
+	.string "To The Stars And Beyond!$"
 
 Route126_Text_OzoneRoadblocker1:
 	.string "Apologies, but I'm afraid that Cosmoss\n"

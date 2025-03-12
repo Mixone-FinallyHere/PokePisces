@@ -48,6 +48,29 @@
 
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 16,
+      "y": 7,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CaveOfOrigin_EventScript_ToSootopolis"
+    },
+    {
+      "type": "sign",
+      "x": 25,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CaveOfOrigin_EventScript_ToMangrotto"
+    },
+    {
+      "type": "sign",
+      "x": 24,
+      "y": 21,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CaveOfOrigin_EventScript_PlaceOfWorship"
+    }
   ]
 }

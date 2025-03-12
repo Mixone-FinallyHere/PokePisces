@@ -6470,6 +6470,16 @@
       "secondary_tileset": "gTileset_SeashoreHouse",
       "border_filepath": "data/layouts/SlateportSodaShop/border.bin",
       "blockdata_filepath": "data/layouts/SlateportSodaShop/map.bin"
+    },
+    {
+      "id": "LAYOUT_SEASIDE_CASINO_EGG_GACHA_ROOM",
+      "name": "SeasideCasinoEggGachaRoom_Layout",
+      "width": 7,
+      "height": 7,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_CasinoNew",
+      "border_filepath": "data/layouts/SeasideCasinoEggGachaRoom/border.bin",
+      "blockdata_filepath": "data/layouts/SeasideCasinoEggGachaRoom/map.bin"
     }
   ]
 }
