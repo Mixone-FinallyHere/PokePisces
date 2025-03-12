@@ -1642,9 +1642,9 @@ static const u8 sStarScreenDescription[] = _(
     "moves.");
 
 static const u8 sStrongholdDescription[] = _(
-    "Reduces damage taken, more if\n"
-    "under half health. The Pokémon\n"
-    "is unable to heal.");
+    "The Pokémon deals more damage\n"
+    "and takes less damage for each\n"
+    "Defense boost it has.");
 
 static const u8 sTransfusionDescription[] = _(
     "When using a draining move, the\n"

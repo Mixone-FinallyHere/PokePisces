@@ -962,9 +962,7 @@ BattleScript_Treat::
 	attackstring
 	ppreduce
     jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_MoveUsedHealBlockPrevents @ stops pollen puff
-	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_MoveUsedHealBlockPrevents
     jumpifstatus3 BS_TARGET, STATUS3_HEAL_BLOCK, BattleScript_MoveUsedHealBlockPrevents
-	jumpifability BS_TARGET, ABILITY_STRONGHOLD, BattleScript_MoveUsedHealBlockPrevents
 	accuracycheck BattleScript_ButItFailed, NO_ACC_CALC_CHECK_LOCK_ON
 	jumpifsubstituteblocks BattleScript_ButItFailed
 	tryhealpulse BS_TARGET, BattleScript_TreatTryStatRaise
@@ -1174,7 +1172,6 @@ BattleScript_JungleRageMaxFrenzy::
 	call BattleScript_EffectHit_Ret
 	seteffectwithchance
 	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_JungleRageMaxFrenzyHealBlock
-	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_JungleRageMaxFrenzyHealBlock
 	setdrainedhp
 	manipulatedamage DMG_BIG_ROOT
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE
@@ -3165,7 +3162,6 @@ BattleScript_SnapBlossomPlantSeeds::
 	call BattleScript_EffectHit_Ret
 	seteffectwithchance
 	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_SnapblossomHealBlock
-	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_SnapblossomHealBlock
 	setdrainedhp
 	manipulatedamage DMG_BIG_ROOT
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE
@@ -3364,9 +3360,7 @@ BattleScript_EffectFloralHealing:
 	attackstring
 	ppreduce
     jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_MoveUsedHealBlockPrevents @ stops pollen puff
-	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_MoveUsedHealBlockPrevents
     jumpifstatus3 BS_TARGET, STATUS3_HEAL_BLOCK, BattleScript_MoveUsedHealBlockPrevents
-	jumpifability BS_TARGET, ABILITY_STRONGHOLD, BattleScript_MoveUsedHealBlockPrevents
 	accuracycheck BattleScript_ButItFailed, NO_ACC_CALC_CHECK_LOCK_ON
 	jumpifsubstituteblocks BattleScript_ButItFailed
 	tryhealpulse BS_TARGET, BattleScript_AlreadyAtFullHp
@@ -3383,9 +3377,7 @@ BattleScript_FloralHealingTryRestoreStatDrops:
 	ppreduce
 	accuracycheck BattleScript_ButItFailed, NO_ACC_CALC_CHECK_LOCK_ON
     jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_FloralHealingRestoreStatDropsOnly
-	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_FloralHealingRestoreStatDropsOnly
     jumpifstatus3 BS_TARGET, STATUS3_HEAL_BLOCK, BattleScript_FloralHealingRestoreStatDropsOnly
-	jumpifability BS_TARGET, ABILITY_STRONGHOLD, BattleScript_FloralHealingRestoreStatDropsOnly
 	jumpifsubstituteblocks BattleScript_FloralHealingRestoreStatDropsOnly
 	tryhealpulse BS_TARGET, BattleScript_FloralHealingRestoreStatDropsOnly
 	attackanimation
@@ -3562,7 +3554,6 @@ BattleScript_EffectSpiritAway::
 	call BattleScript_EffectHit_Ret
 	seteffectwithchance
 	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_SpiritAwayHealBlock
-	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_SpiritAwayHealBlock
 	setdrainedhp
 	manipulatedamage DMG_BIG_ROOT
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE
@@ -3938,7 +3929,6 @@ BattleScript_PowerDrainTryHp:
 	waitanimation
 BattleScript_PowerDrainHp:
 	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_MoveEnd
-	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_MoveEnd
 	jumpiffullhp BS_ATTACKER, BattleScript_MoveEnd
 	manipulatedamage DMG_BIG_ROOT
 	healthbarupdate BS_ATTACKER
@@ -4400,7 +4390,6 @@ BattleScript_EffectTickTack::
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
 	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_TickTackHealBlock
-	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_TickTackHealBlock
 	setdrainedhp
 	manipulatedamage DMG_BIG_ROOT
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE
@@ -4738,7 +4727,6 @@ BattleScript_VenomDrain::
 	call BattleScript_EffectHit_Ret
 	seteffectwithchance
 	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_VenomDrainHealBlock
-	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_VenomDrainHealBlock
 	setdrainedhp
 	manipulatedamage DMG_BIG_ROOT
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE
@@ -6977,7 +6965,6 @@ BattleScript_StrengthSapTryHp:
 	waitanimation
 BattleScript_StrengthSapHp:
 	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_MoveEnd
-	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_MoveEnd
 	jumpiffullhp BS_ATTACKER, BattleScript_MoveEnd
 	manipulatedamage DMG_BIG_ROOT
 	healthbarupdate BS_ATTACKER
@@ -7029,7 +7016,6 @@ BattleScript_StrengthSapQuashTryHp:
 	waitanimation
 BattleScript_StrengthSapQuashHp:
 	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_MoveEnd
-	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_MoveEnd
 	jumpiffullhp BS_ATTACKER, BattleScript_MoveEnd
 	manipulatedamage DMG_BIG_ROOT
 	healthbarupdate BS_ATTACKER
@@ -8714,9 +8700,7 @@ BattleScript_EffectHealPulse:
 	attackstring
 	ppreduce
     jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_MoveUsedHealBlockPrevents @ stops pollen puff
-	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_MoveUsedHealBlockPrevents
     jumpifstatus3 BS_TARGET, STATUS3_HEAL_BLOCK, BattleScript_MoveUsedHealBlockPrevents
-	jumpifability BS_TARGET, ABILITY_STRONGHOLD, BattleScript_MoveUsedHealBlockPrevents
 	accuracycheck BattleScript_ButItFailed, NO_ACC_CALC_CHECK_LOCK_ON
 	jumpifsubstituteblocks BattleScript_ButItFailed
 	tryhealpulse BS_TARGET, BattleScript_AlreadyAtFullHp
@@ -9850,7 +9834,6 @@ BattleScript_Absorb::
 	call BattleScript_EffectHit_Ret
 	seteffectwithchance
 	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_AbsorbHealBlock
-	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_AbsorbHealBlock
 	setdrainedhp
 	manipulatedamage DMG_BIG_ROOT
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE
@@ -10057,7 +10040,6 @@ BattleScript_DreamEaterWorked:
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
 	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_DreamEaterTryFaintEnd
-	jumpifability BS_ATTACKER, ABILITY_STRONGHOLD, BattleScript_DreamEaterTryFaintEnd
 	setdrainedhp
 	manipulatedamage DMG_BIG_ROOT
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
@@ -13919,7 +13901,6 @@ BattleScript_TickedTurnDrain::
 	jumpifability BS_ATTACKER, ABILITY_LIQUID_OOZE, BattleScript_TickedTurnPrintLiquidOoze
 	setbyte cMULTISTRING_CHOOSER, B_MSG_LEECH_SEED_DRAIN
 	jumpifstatus3 BS_TARGET, STATUS3_HEAL_BLOCK, BattleScript_TickedHealBlock
-	jumpifability BS_TARGET, ABILITY_STRONGHOLD, BattleScript_TickedHealBlock
 	manipulatedamage DMG_BIG_ROOT
 	goto BattleScript_TickedTurnPrintAndUpdateHp
 BattleScript_TickedTurnPrintLiquidOoze::
@@ -13948,7 +13929,6 @@ BattleScript_LeechSeedTurnDrain::
 	jumpifability BS_ATTACKER, ABILITY_LIQUID_OOZE, BattleScript_LeechSeedTurnPrintLiquidOoze
 	setbyte cMULTISTRING_CHOOSER, B_MSG_LEECH_SEED_DRAIN
 	jumpifstatus3 BS_TARGET, STATUS3_HEAL_BLOCK, BattleScript_LeechSeedHealBlock
-	jumpifability BS_TARGET, ABILITY_STRONGHOLD, BattleScript_LeechSeedHealBlock
 	manipulatedamage DMG_BIG_ROOT
 	goto BattleScript_LeechSeedTurnPrintAndUpdateHp
 BattleScript_LeechSeedTurnPrintLiquidOoze::
@@ -18468,21 +18448,21 @@ BattleScript_Cheese_End2Part2:
 	removeitem BS_ATTACKER
 	end2
 
-BattleScript_YellowSoda_End2::
-	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
-	jumpifstatus2 BS_ATTACKER, STATUS2_FOCUS_ENERGY_ANY, BattleScript_YellowSoda_End2Part2
-	tryyellowsodafocusenergy
+BattleScript_YellowSodaActivatesRet::
+	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
+	jumpifstatus2 BS_TARGET, STATUS2_FOCUS_ENERGY_ANY, BattleScript_YellowSodaActivatesRet2
+	setfocusenergy BS_TARGET
 	printfromtable gFocusEnergyUsedStringIds
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_YellowSoda_End2Part2:
+BattleScript_YellowSodaActivatesRet2:
 	setstatchanger STAT_SPEED, 1, FALSE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_YellowSoda_End2Part3
-	jumpifbyte CMP_NOT_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_YellowSoda_End2Part3
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_YellowSodaActivatesRet3
+	jumpifbyte CMP_NOT_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_YellowSodaActivatesRet3
 	setgraphicalstatchangevalues
 	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_YellowSoda_End2Part3:
+BattleScript_YellowSodaActivatesRet3:
 	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
 	waitmessage B_WAIT_TIME_LONG
 	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE | HITMARKER_PASSIVE_DAMAGE

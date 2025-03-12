@@ -13875,23 +13875,6 @@ static void Cmd_various(void)
         }
         return;
     }
-    case VARIOUS_TRY_YELLOW_SODA_FOCUS_ENERGY:
-    {
-        VARIOUS_ARGS();
-
-        if (gBattleMons[gBattlerAttacker].status2 & STATUS2_FOCUS_ENERGY_ANY)
-        {
-            gMoveResultFlags |= MOVE_RESULT_FAILED;
-            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_FOCUS_ENERGY_FAILED;
-        }
-        else
-        {
-            gBattleMons[gBattlerAttacker].status2 |= STATUS2_FOCUS_ENERGY;
-            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_GETTING_PUMPED;
-        }
-        gBattlescriptCurrInstr = cmd->nextInstr;
-        return;
-    }
     case VARIOUS_TRY_NORMALISE_SPEED:
     {
         VARIOUS_ARGS();
