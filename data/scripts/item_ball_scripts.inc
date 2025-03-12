@@ -2114,8 +2114,8 @@ DetermaniteQuarry_EventScript_ItemPLoveBall::
 	finditem ITEM_LOVE_BALL
 	end
 
-DetermaniteQuarB1F_EventScript_ItemPExtrapolator::
-	finditem ITEM_EXTRAPOLATOR
+DetermaniteQuarB1F_EventScript_ItemPHeavyBall::
+	finditem ITEM_HEAVY_BALL
 	end
 
 DetermaniteQuarB1F_EventScript_ItemPPPMax::
