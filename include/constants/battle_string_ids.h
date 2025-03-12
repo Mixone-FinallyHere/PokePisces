@@ -864,8 +864,10 @@
 #define STRINGID_PKMNSHEARTFLUTTERSSHALALALA2         862
 #define STRINGID_ABILITYLETITUSEMOVEGUARDDOG          863
 #define STRINGID_ABILITYLETITUSEMOVESWEETVEIL         864
+#define STRINGID_PKMNSXPREVENTSFROSTBITE              865
+#define STRINGID_MAGICCOATENDS                        866
 
-#define BATTLESTRINGS_COUNT                           865
+#define BATTLESTRINGS_COUNT                           867
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

@@ -27894,6 +27894,7 @@ SonicBoomHit:
 	delay 4
 	return
 
+Move_LIGHTNING:
 Move_THUNDER_SHOCK:
 	loadspritegfx ANIM_TAG_SPARK
 	loadspritegfx ANIM_TAG_SPARK_2
@@ -27915,7 +27916,6 @@ Move_THUNDER_SHOCK:
 	waitforvisualfinish
 	end
 
-Move_LIGHTNING:
 Move_THUNDERBOLT:
 	loadspritegfx ANIM_TAG_SPARK
 	loadspritegfx ANIM_TAG_SHOCK_3
