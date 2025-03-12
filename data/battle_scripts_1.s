@@ -360,7 +360,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectIncinerate              @ EFFECT_INCINERATE
 	.4byte BattleScript_EffectBugBite                 @ EFFECT_BUG_BITE
 	.4byte BattleScript_EffectStrengthSap             @ EFFECT_STRENGTH_SAP
-	.4byte BattleScript_EffectMindBlown               @ EFFECT_MIND_BLOWN
+	.4byte BattleScript_EffectHit                     @ EFFECT_MIND_BLOWN
 	.4byte BattleScript_EffectPurify                  @ EFFECT_PURIFY
 	.4byte BattleScript_EffectBurnUp                  @ EFFECT_BURN_UP
 	.4byte BattleScript_EffectShoreUp                 @ EFFECT_SHORE_UP
@@ -624,7 +624,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectRoar                    @ EFFECT_PSY_SWAP
 	.4byte BattleScript_EffectShieldsUp               @ EFFECT_SHIELDS_UP
 	.4byte BattleScript_EffectBerryBadJoke            @ EFFECT_BERRY_BAD_JOKE
-	.4byte BattleScript_EffectMindBlown               @ EFFECT_STALAG_BLAST
+	.4byte BattleScript_EffectHit                     @ EFFECT_STALAG_BLAST
 	.4byte BattleScript_EffectMoonBeam                @ EFFECT_MOON_BEAM
 	.4byte BattleScript_EffectHunkerDown              @ EFFECT_HUNKER_DOWN
 	.4byte BattleScript_EffectHighRollHit             @ EFFECT_HIGH_ROLL_HIT
@@ -9918,66 +9918,23 @@ BattleScript_EffectExplosion::
 	attackcanceler
 	attackstring
 	ppreduce
-@ Below jumps to BattleScript_DampStopsExplosion if it fails (only way it can)
 	tryexplosion
-	waitstate
-BattleScript_EffectExplosion_AnimDmgFaintAttacker:
-	call BattleScript_EffectExplosion_AnimDmgRet
-	moveendall
 	setatkhptozero
-	tryfaintmon BS_ATTACKER
-	end
+	waitstate
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	goto BattleScript_HitFromCritCalc
 
-BattleScript_EffectMindBlown::
-	attackcanceler
-	attackstring
-	ppreduce
-	jumpifabilitypresent ABILITY_DAMP, BattleScript_MindBlownDamp
-	accuracycheck BattleScript_MindBlownMiss, ACC_CURR_MOVE
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
-	seteffectwithchance
-	jumpifability BS_ATTACKER, ABILITY_MAGIC_GUARD, BattleScript_MindBlownAfterSelfDamage
-	jumpifability BS_ATTACKER, ABILITY_SUGAR_COAT, BattleScript_MindBlownAfterSelfDamage
-	jumpifterucharmprotected BS_ATTACKER, BattleScript_MindBlownAfterSelfDamage
-	call BattleScript_MindBlownSelfDamage
-BattleScript_MindBlownAfterSelfDamage::
-	waitstate
+BattleScript_FaintAttackerForExplosion::
 	tryfaintmon BS_ATTACKER
-	tryfaintmon BS_TARGET
-	goto BattleScript_MoveEnd
-BattleScript_MindBlownMiss::
-	pause B_WAIT_TIME_SHORT
-	effectivenesssound
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
-	jumpifability BS_ATTACKER, ABILITY_MAGIC_GUARD, BattleScript_MoveEnd
-	jumpifability BS_ATTACKER, ABILITY_SUGAR_COAT, BattleScript_MoveEnd
-	jumpifterucharmprotected BS_ATTACKER, BattleScript_MoveEnd
-	bichalfword gMoveResultFlags, MOVE_RESULT_MISSED
-	call BattleScript_MindBlownSelfDamage
-	orhalfword gMoveResultFlags, MOVE_RESULT_MISSED
-	goto BattleScript_MindBlownAfterSelfDamage
-BattleScript_MindBlownSelfDamage::
-	dmg_1_2_attackerhp
+	return
+
+BattleScript_MaxHp50Recoil::
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
+	tryfaintmon BS_ATTACKER
 	return
-BattleScript_MindBlownDamp:
-	copybyte gBattlerTarget, gBattlerAbility
-	goto BattleScript_DampStopsExplosion
 
 BattleScript_PreserveMissedBitDoMoveAnim:
 	bichalfword gMoveResultFlags, MOVE_RESULT_MISSED

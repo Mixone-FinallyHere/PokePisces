@@ -3560,6 +3560,8 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
     u8 effect = 0;
     u32 count = 0;
     u32 i;
+    u32 dampBattler = IsAbilityOnField(ABILITY_DAMP);
+
     do
     {
         switch (gBattleStruct->atkCancellerTracker)
@@ -3918,6 +3920,20 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                 gProtectStructs[gBattlerAttacker].usedThroatChopPreventedMove = TRUE;
                 CancelMultiTurnMoves(gBattlerAttacker);
                 gBattlescriptCurrInstr = BattleScript_MoveUsedIsThroatChopPrevented;
+                gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
+                effect = 1;
+            }
+            gBattleStruct->atkCancellerTracker++;
+            break;
+        case CANCELLER_EXPLODING_DAMP:
+            if (dampBattler 
+            && (gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION
+            || gBattleMoves[gCurrentMove].effect == EFFECT_MIND_BLOWN
+            || gBattleMoves[gCurrentMove].effect == EFFECT_STALAG_BLAST)
+            && gCurrentMove != MOVE_FINAL_SHRIEK)
+            {
+                gBattleScripting.battler = dampBattler - 1;
+                gBattlescriptCurrInstr = BattleScript_DampStopsExplosion;
                 gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
                 effect = 1;
             }

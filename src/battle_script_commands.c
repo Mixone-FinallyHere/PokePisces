@@ -1297,7 +1297,7 @@ static void Cmd_attackcanceler(void)
         gCurrentActionFuncId = B_ACTION_FINISHED;
         return;
     }
-    if (gBattleMons[gBattlerAttacker].hp == 0 && !gProtectStructs[gBattlerAttacker].aftermathBlowUp && !(gHitMarker & HITMARKER_NO_ATTACKSTRING))
+    if (gBattleMons[gBattlerAttacker].hp == 0 && gBattleMoves[gCurrentMove].effect != EFFECT_EXPLOSION && !gProtectStructs[gBattlerAttacker].aftermathBlowUp && !(gHitMarker & HITMARKER_NO_ATTACKSTRING))
     {
         gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
         gBattlescriptCurrInstr = BattleScript_MoveEnd;
@@ -6699,6 +6699,29 @@ static void Cmd_moveend(void)
                     break;
                 }
             }
+            if (!(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE) && gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION && !IsAbilityOnField(ABILITY_DAMP))
+            {
+                gBattleMoveDamage = 0;
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_FaintAttackerForExplosion;
+                effect = TRUE;
+                break;
+            }
+            else if (!(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
+                  && (gBattleMoves[gCurrentMove].effect == EFFECT_MIND_BLOWN
+                  || gBattleMoves[gCurrentMove].effect == EFFECT_STALAG_BLAST)
+                  && IsBattlerAlive(gBattlerAttacker)
+                  && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+                  && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD
+                  && GetBattlerAbility(gBattlerAttacker) != ABILITY_SUGAR_COAT 
+                  && !TestTeruCharm(gBattlerAttacker))
+            {
+                gBattleMoveDamage = (gBattleMons[gBattlerAttacker].maxHP + 1) / 2; // Half of Max HP Rounded UP
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_MaxHp50Recoil;
+                effect = TRUE;
+                break;
+            }
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_SYNCHRONIZE_TARGET: // target synchronize
@@ -7098,7 +7121,10 @@ static void Cmd_moveend(void)
                         gBattleScripting.moveendState = 0;
                         MoveValuesCleanUp();
                         gBattleScripting.moveEffect = gBattleScripting.savedMoveEffect;
-                        BattleScriptPush(gBattleScriptsForMoveEffects[gBattleMoves[gCurrentMove].effect]);
+                        if (gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION)
+                            BattleScriptPush(gBattleScriptsForMoveEffects[EFFECT_HIT]); // Edge case for Explosion not changing targets
+                        else
+                            BattleScriptPush(gBattleScriptsForMoveEffects[gBattleMoves[gCurrentMove].effect]);
                         gBattlescriptCurrInstr = BattleScript_FlushMessageBox;
                         return;
                     }
@@ -14249,18 +14275,8 @@ static void Cmd_tryexplosion(void)
 {
     CMD_ARGS();
 
-    u32 dampBattler;
     if (gBattleControllerExecFlags)
         return;
-
-    if ((dampBattler = IsAbilityOnField(ABILITY_DAMP)))
-    {
-        // Failed, a battler has Damp
-        gLastUsedAbility = ABILITY_DAMP;
-        gBattlerTarget = --dampBattler;
-        gBattlescriptCurrInstr = BattleScript_DampStopsExplosion;
-        return;
-    }
 
     gBattleMoveDamage = gBattleMons[gBattlerAttacker].hp;
     BtlController_EmitHealthBarUpdate(gBattlerAttacker, BUFFER_A, INSTANT_HP_BAR_DROP);
