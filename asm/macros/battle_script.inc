@@ -1893,6 +1893,11 @@
 	various BS_ATTACKER, VARIOUS_JUMP_IF_TARGET_ALLY
 	.4byte \jumpInstr
 	.endm
+	
+	.macro jumpifdefenderally jumpInstr:req
+	various BS_TARGET, VARIOUS_JUMP_IF_TARGET_ALLY
+	.4byte \jumpInstr
+	.endm
 
 	.macro trypsychoshift failInstr:req
 	various BS_ATTACKER, VARIOUS_PSYCHO_SHIFT
@@ -2647,6 +2652,15 @@
 	goto \jumpInstr
 	1:
 	subbyte gBattlerTarget, 0x2
+	goto \jumpInstr
+	.endm
+
+	.macro setallytonextattacker jumpInstr:req
+	jumpifbyte CMP_GREATER_THAN, gBattlerAttacker, 0x1, 1f
+	addbyte gBattlerAttacker, 0x2
+	goto \jumpInstr
+	1:
+	subbyte gBattlerAttacker, 0x2
 	goto \jumpInstr
 	.endm
 

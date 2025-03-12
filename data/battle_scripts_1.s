@@ -17864,6 +17864,7 @@ BattleScript_Synchronize_TryStatus:
 	jumpifstatus BS_TARGET, STATUS1_ANY, BattleScript_SynchronizeLoopIncrement
 	jumpifbyte CMP_NOT_EQUAL, gBattleCommunication + 1, 0x0, BattleScript_SynchronizeNoPopUp
 	call BattleScript_AbilityPopUp
+	printstring STRINGID_SYNCHRONIZESTARTS
 	setbyte gBattleCommunication + 1, 1
 BattleScript_SynchronizeNoPopUp:
 	seteffectprimary
