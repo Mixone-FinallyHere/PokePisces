@@ -3001,17 +3001,19 @@ BattleScript_EffectGreenGuise:
 	attackcanceler
 	attackstring
 	ppreduce
-	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_GreenGuiseBloomingFailPlayAnimation
-	jumpiftype BS_ATTACKER, TYPE_FIRE, BattleScript_GreenGuiseBloomingFailPlayAnimation
-	jumpifability BS_ATTACKER, ABILITY_COMATOSE, BattleScript_GreenGuiseBloomingFailPlayAnimation
-	jumpifstatus BS_ATTACKER, STATUS1_ANY, BattleScript_GreenGuiseBloomingFailPlayAnimation
+	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_GreenGuiseBloomingFailTryFocusEnergy
+	jumpiftype BS_ATTACKER, TYPE_FIRE, BattleScript_GreenGuiseBloomingFailTryFocusEnergy
+	jumpifability BS_ATTACKER, ABILITY_COMATOSE, BattleScript_GreenGuiseBloomingFailTryFocusEnergy
+	jumpifstatus BS_ATTACKER, STATUS1_ANY, BattleScript_GreenGuiseBloomingFailTryFocusEnergy
+	jumpifstatus2 BS_ATTACKER, STATUS2_FOCUS_ENERGY_ANY, BattleScript_GreenGuiseBloomingSucceedFocusEnergyFail
 	attackanimation
 	waitanimation
 	setmoveeffect MOVE_EFFECT_BLOOMING | MOVE_EFFECT_AFFECTS_USER
 	seteffectprimary
-BattleScript_GreenGuiseContinue::
+BattleScript_GreenGuiseFocusEnergy::
 	setfocusenergy BS_ATTACKER
 	printfromtable gFocusEnergyUsedStringIds
+BattleScript_GreenGuiseStatBoost::
 	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_GreenGuiseStatUpEnd
 	jumpifbyte CMP_NOT_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_GreenGuiseStatUpAttackAnim
 	pause B_WAIT_TIME_SHORT
@@ -3024,10 +3026,21 @@ BattleScript_GreenGuiseStatUpPrintString::
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_GreenGuiseStatUpEnd::
 	goto BattleScript_MoveEnd
-BattleScript_GreenGuiseBloomingFailPlayAnimation::
+BattleScript_GreenGuiseBloomingFailTryFocusEnergy::
+	jumpifstatus2 BS_ATTACKER, STATUS2_FOCUS_ENERGY_ANY, BattleScript_GreenGuiseBloomingFailFocusEnergyFail
 	attackanimation
 	waitanimation
-	goto BattleScript_GreenGuiseContinue
+	goto BattleScript_GreenGuiseFocusEnergy
+BattleScript_GreenGuiseBloomingSucceedFocusEnergyFail::
+	attackanimation
+	waitanimation
+	setmoveeffect MOVE_EFFECT_BLOOMING | MOVE_EFFECT_AFFECTS_USER
+	seteffectprimary
+	goto BattleScript_GreenGuiseStatBoost
+BattleScript_GreenGuiseBloomingFailFocusEnergyFail::
+	attackanimation
+	waitanimation
+	goto BattleScript_GreenGuiseStatBoost
 
 BattleScript_EffectAromatherapy:
 	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_AromatherapyAndSafeguard
