@@ -13845,7 +13845,7 @@ static inline void MulByTypeEffectiveness(uq4_12_t *modifier, u32 move, u32 move
         mod = UQ_4_12(1.0);
     if (gBattleMoves[move].effect == EFFECT_PLASMA_CUTTER && defType == TYPE_GROUND)
         mod = UQ_4_12(1.0);
-    if (gCurrentMove == MOVE_BREAK_LANCE && (typeEffectivenessModifier > UQ_4_12(0.0)) && (typeEffectivenessModifier <= UQ_4_12(0.5)))
+    if (gCurrentMove == MOVE_BREAK_LANCE && mod > UQ_4_12(0.0) && mod <= UQ_4_12(0.5))
         mod = UQ_4_12(1.0);
     if (gBattleMoves[move].effect == EFFECT_BEATBOX && defType == TYPE_GHOST)
         mod = UQ_4_12(1.0);
@@ -13871,7 +13871,7 @@ static inline void MulByTypeEffectiveness(uq4_12_t *modifier, u32 move, u32 move
         mod = UQ_4_12(2.0);
     if (gBattleMoves[move].effect == EFFECT_FALSE_SWIPE)
         mod = UQ_4_12(1.0);
-    if (gCurrentMove == MOVE_CHROMA_BEAM && (typeEffectivenessModifier < UQ_4_12(2.0)))
+    if (gCurrentMove == MOVE_CHROMA_BEAM)
         mod = UQ_4_12(2.0);
     if (gCurrentMove == MOVE_MASS_DESTRUCTION && (defType == TYPE_NORMAL || defType == TYPE_FIGHTING))
         mod = UQ_4_12(2.0);
