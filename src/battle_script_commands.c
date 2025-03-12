@@ -326,7 +326,7 @@ static const u16 sBadgeFlags[8] = {
     FLAG_BADGE05_GET, FLAG_BADGE06_GET, FLAG_BADGE07_GET, FLAG_BADGE08_GET,
 };
 
-static const u16 sWhiteOutBadgeMoney[9] = { 30, 60, 90, 135, 180, 240, 300, 375, 450 };
+static const u16 sWhiteOutBadgeMoney[9] = { 25, 50, 75, 115, 155, 205, 255, 320, 385 };
 
 #define STAT_CHANGE_WORKED      0
 #define STAT_CHANGE_DIDNT_WORK  1
@@ -1890,9 +1890,9 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
         calc = (calc * 90) / 100; // 10% evasion increase
         break;
     case ABILITY_ANTICIPATION:
-        if (gDisableStructs[battlerDef].isFirstTurn)
+        if (gProtectStructs[battlerDef].anticipated)
         {
-            calc = min(calc, 50);                 // max accuraccy of move is 50%
+            calc = min(calc, 50); // max accuracy of move is 50%
         }
     }
 
@@ -20361,6 +20361,8 @@ void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBat
         *expAmount = (*expAmount * 125) / 100;
     if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
         *expAmount = (*expAmount * 200) / 100;
+    if (GetMonData(&gPlayerParty[expGetterMonId], MON_DATA_LEVEL) < GetPreviousLevelCap())
+        *expAmount = (*expAmount * 150) / 100;
     if (B_UNEVOLVED_EXP_MULTIPLIER >= GEN_6 && IsMonPastEvolutionLevel(&gPlayerParty[expGetterMonId]))
         *expAmount = (*expAmount * 4915) / 4096;
     if (B_AFFECTION_MECHANICS == TRUE && GetBattlerFriendshipScore(expGetterMonId) >= FRIENDSHIP_50_TO_99)

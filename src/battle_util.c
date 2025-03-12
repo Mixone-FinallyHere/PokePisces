@@ -4778,48 +4778,13 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         case ABILITY_ANTICIPATION:
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
-                u32 side = GetBattlerSide(battler);
-
-                for (i = 0; i < MAX_BATTLERS_COUNT; i++)
-                {
-                    if (IsBattlerAlive(i) && side != GetBattlerSide(i))
-                    {
-                        for (j = 0; j < MAX_MON_MOVES; j++)
-                        {
-                            move = gBattleMons[i].moves[j];
-                            GET_MOVE_TYPE(move, moveType);
-                            if (CalcTypeEffectivenessMultiplier(move, moveType, i, battler, ABILITY_ANTICIPATION, FALSE) >= UQ_4_12(2.0))
-                            {
-                                effect++;
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                if (effect != 0)
-                {
-                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWITCHIN_ANTICIPATION;
-                }
-                else
-                {
-                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWITCHIN_ANTICIPATION_EVADE;
-                    effect++;
-                }
+                gProtectStructs[gBattlerAttacker].anticipated = TRUE;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWITCHIN_ANTICIPATION;
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 BattleScriptPushCursorAndCallback(BattleScript_SwitchInAbilityMsg);
+                effect++;
             }
             break;
-            // case ABILITY_FOREWARN:
-            // if (!gSpecialStatuses[battler].switchInAbilityDone)
-            //{
-            // ForewarnChooseMove(battler);
-            // gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWITCHIN_FOREWARN;
-            // gSpecialStatuses[battler].switchInAbilityDone = TRUE;
-            // BattleScriptPushCursorAndCallback(BattleScript_SwitchInAbilityMsg);
-            // effect++;
-            //}
-            // break;
         case ABILITY_DOWNLOAD:
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
