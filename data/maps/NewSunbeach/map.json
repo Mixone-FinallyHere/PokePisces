@@ -392,7 +392,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewSunbeach_EventScript_ItemPSuperPotion",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_NEW_SUNBEACH_SUPER_POTION"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -405,7 +405,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewSunbeach_EventScript_ItemPBigMushroom",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_NEW_SUNBEACH_BIG_MUSHROOM"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -418,7 +418,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewSunbeach_EventScript_ItemPBlackGlasses",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_NEW_SUNBEACH_BLACK_GLASSES"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -431,7 +431,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewSunbeach_EventScript_ItemPPokeDoll",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_NEW_SUNBEACH_POKE_DOLL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -444,7 +444,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewSunbeach_EventScript_ItemPCoralCrown",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_NEW_SUNBEACH_CORAL_CROWN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -457,7 +457,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewSunbeach_EventScript_ItemPPPUp",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_NEW_SUNBEACH_PP_UP"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -470,7 +470,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewSunbeach_EventScript_ItemPStarPiece",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_NEW_SUNBEACH_STAR_PIECE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -483,7 +483,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewSunbeach_EventScript_ItemPCoralCrownPostSurf",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_NEW_SUNBEACH_CORAL_CROWN_POST_SURF"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",

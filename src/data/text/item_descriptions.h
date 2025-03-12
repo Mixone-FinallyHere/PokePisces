@@ -197,8 +197,8 @@ static const u8 sFullRestoreDesc[] = _(
 static const u8 sReviveDesc[] = _(
     "A medicine that\n"
     "revives a fainted\n"
-    "Pokémon, healing HP by\n"
-    "half the max amount.");
+    "Pokémon, healing by\n"
+    "half the max HP.");
 
 static const u8 sMaxReviveDesc[] = _(
     "A medicine that\n"
@@ -697,40 +697,40 @@ static const u8 sMaxLureDesc[] = _(
 
 static const u8 sEscapeRopeDesc[] = _(
     "A long and durable\n"
-    "rope. Use it to escape\n"
+    "rope. Use it to flee\n"
     "instantly from places\n"
-    "like caves or dungeons.");
+    "like caves/dungeons.");
 
 // Battle items
 static const u8 sXAttackDesc[] = _(
     "An item that sharply\n"
-    "boosts the Atk of a\n"
-    "Pokémon. It wears off\n"
-    "if the Pokémon leaves.");
+    "boosts Attack. It\n"
+    "wears off if the\n"
+    "Pokémon leaves.");
 
 static const u8 sXDefenseDesc[] = _(
     "An item that sharply\n"
-    "boosts the Def of a\n"
-    "Pokémon. It wears off\n"
-    "if the Pokémon leaves.");
+    "boosts Defense. It\n"
+    "wears off if the\n"
+    "Pokémon leaves.");
 
 static const u8 sXSpAtkDesc[] = _(
     "An item that sharply\n"
-    "boosts the Sp. Atk of a\n"
-    "Pokémon. It wears off\n"
-    "if the Pokémon leaves.");
+    "boosts Sp. Atk. It\n"
+    "wears off if the\n"
+    "Pokémon leaves.");
 
 static const u8 sXSpDefDesc[] = _(
     "An item that sharply\n"
-    "boosts the Sp. Def of a\n"
-    "Pokémon. It wears off\n"
-    "if the Pokémon leaves.");
+    "boosts Sp. Def. It\n"
+    "wears off if the\n"
+    "Pokémon leaves.");
 
 static const u8 sXSpeedDesc[] = _(
     "An item that sharply\n"
-    "boosts the Speed of a\n"
-    "Pokémon. It wears off\n"
-    "if the Pokémon leaves.");
+    "boosts Speed. It wears\n"
+    "off if the Pokémon\n"
+    "leaves.");
 
 static const u8 sXAccuracyDesc[] = _(
     "An item that sharply\n"
@@ -823,10 +823,10 @@ static const u8 sBigPearlDesc[] = _(
     "real witch.");
 
 static const u8 sPearlStringDesc[] = _(
-    "Very large pearls that\n"
-    "have a nice sheen\n"
-    "to them. They can be\n"
-    "sold at a high price.");
+    "A necklace made of\n"
+    "beautiful pearls.\n"
+    "Shellylouh are very\n"
+    "fond of these.");
 
 static const u8 sStardustDesc[] = _(
     "A pretty red sand with\n"
@@ -2395,7 +2395,7 @@ static const u8 sChoiceBandDesc[] = _(
 static const u8 sChoiceSpecsDesc[] = _(
     "Some curious glasses\n"
     "that boost Sp. Atk but\n"
-    "only allow the use ofn"
+    "only allow the use of\n"
     "a single move.");
 
 static const u8 sChoiceScarfDesc[] = _(
@@ -4058,7 +4058,8 @@ static const u8 sFameCheckerDesc[] = _(
 static const u8 sTeachyTVDesc[] = _(
     "A TV set tuned to\n"
     "an advice program\n"
-    "for Trainers.");
+    "for Trainers.\n"
+    "Could be traded.");
 
 // Story Key Items
 static const u8 sSSTicketDesc[] = _(
@@ -4082,9 +4083,9 @@ static const u8 sAuroraTicketDesc[] = _(
     "to Birth Island.");
 
 static const u8 sOldSeaMapDesc[] = _(
-    "A faded sea chart\n"
-    "that shows the way\n"
-    "to a certain island.");
+    "A faded old map\n"
+    "that shows your way\n"
+    "to orb locations.");
 
 static const u8 sLetterDesc[] = _(
     "A letter to Steven\n"
@@ -4092,9 +4093,9 @@ static const u8 sLetterDesc[] = _(
     "of the Devon Corp.");
 
 static const u8 sDevonPartsDesc[] = _(
-    "A package that\n"
-    "contains Devon's\n"
-    "machine parts.");
+    "A very shadily\n"
+    "obtained case.\n"
+    "For your associate.");
 
 static const u8 sGoGogglesDesc[] = _(
     "A pair of protective\n"
@@ -4108,9 +4109,9 @@ static const u8 sDevonScopeDesc[] = _(
     "unseeable Pokémon.");
 
 static const u8 sBasementKeyDesc[] = _(
-    "The key for New\n"
-    "Mauville beneath\n"
-    "Mauville City.");
+    "The key for the\n"
+    "Maintenance tunnels\n"
+    "under New Mauville.");
 
 static const u8 sScannerDesc[] = _(
     "A device found\n"
@@ -4172,9 +4173,9 @@ static const u8 sBikeVoucherDesc[] = _(
     "from the Bike Shop.");
 
 static const u8 sGoldTeethDesc[] = _(
-    "Gold dentures lost\n"
-    "by the Safari\n"
-    "Zone's Warden.");
+    "A set of solid gold\n"
+    "dentures. You could\n"
+    "use them for trading.");
 
 static const u8 sCardKeyDesc[] = _(
     "A card-type door\n"
@@ -4202,9 +4203,9 @@ static const u8 sRainbowPassDesc[] = _(
     "Sevii Islands.");
 
 static const u8 sTeaDesc[] = _(
-    "A thirst-quenching\n"
-    "tea prepared by an\n"
-    "old lady.");
+    "Dubbed, Tea Mauville.\n"
+    "This should be what\n"
+    "Nob wants.");
 
 static const u8 sRubyDesc[] = _(
     "An exquisite, red-\n"
@@ -4386,8 +4387,9 @@ static const u8 sTragedyMaskDesc[] = _(
 
 static const u8 sPebbleriteDesc[] = _(
     "A stone made of pure\n"
-    "pebblericium that came\n"
-    "from another planet.");
+    "pebblericium that\n"
+    "came from another\n"
+    "planet.");
 
 static const u8 sCheeseDesc[] = _(
     "Some cheese that can\n"
@@ -4407,10 +4409,10 @@ static const u8 sKeychainDesc[] = _(
     "Only for the factual.");
 
 static const u8 sFlipCoinDesc[] = _(
-    "A mysterious coin\n"
-    "that inverts foes'\n"
-    "stat boosts-but only\n"
-    "once.");
+    "A gambler's coin that\n"
+    "flips the foe's stat\n"
+    "buffs after the holder\n"
+    "attacks-but only once.");
 
 static const u8 sGravityCoreDesc[] = _(
     "An odd cube that\n"
@@ -4431,7 +4433,7 @@ static const u8 sWideArmorDesc[] = _(
 
 static const u8 sLostMantleDesc[] = _(
     "An unusual garment\n"
-    "that may lower a foe's\n"
+    "that may lower foes'\n"
     "defenses when the\n"
     "holder is attacked.");
 

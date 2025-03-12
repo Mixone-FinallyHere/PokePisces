@@ -1178,6 +1178,7 @@ gBattleAnims_General::
 	.4byte Status_Blooming				    @ B_ANIM_BLOOMING
 	.4byte Move_SAFEGUARD                   @ B_ANIM_SAFEGUARD
 	.4byte Move_LUCKY_CHANT                 @ B_ANIM_LUCKY_CHANT
+	.4byte Move_GROWL                       @ B_ANIM_GUARD_DOG
 
 	.align 2
 gBattleAnims_Special::
@@ -35280,6 +35281,7 @@ Move_ROLE_PLAY:
 Move_REFRESH:
 	loadspritegfx ANIM_TAG_THIN_RING
 	loadspritegfx ANIM_TAG_SPARKLE_2
+	delay 1
 	playsewithpan SE_M_STAT_INCREASE, SOUND_PAN_ATTACKER
 	createvisualtask AnimTask_StatusClearedEffect, 2, 0
 	waitforvisualfinish

@@ -106,7 +106,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "OzoneInstitute_EventScript_ItemPBigMushroom",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_OZONE_INSTITUTE_BIG_MUSHROOM"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -119,7 +119,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "OzoneInstitute_EventScript_ItemPHyperPotion",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_OZONE_INSTITUTE_HYPER_POTION"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -132,7 +132,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "OzoneInstitute_EventScript_ItemPGoldTooth",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_OZONE_INSTITUTE_GOLD_TOOTH"
     }
   ],
   "warp_events": [

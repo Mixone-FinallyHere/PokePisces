@@ -652,9 +652,9 @@ static const u8 sSkullBashDescription[] = _(
     "Based on the user's Defense.");
 
 static const u8 sSpikeCannonDescription[] = _(
-    "Sharp spikes are shot at the\n"
-    "target in rapid succession. They\n"
-    "hit 2 to 5 times in a row.");
+    "Sharp spikes are shot at the foe\n"
+    "2 to 5 times. Lays 2 layers of\n"
+    "spikes if the move misses.");
 
 static const u8 sConstrictDescription[] = _(
     "Rampages for 2 to 5 turns,\n"
@@ -986,9 +986,9 @@ static const u8 sDetectDescription[] = _(
     "attacker uses a contact move.");
 
 static const u8 sBoneRushDescription[] = _(
-    "The user strikes the target with\n"
-    "a hard bone that contains a\n"
-    "spirit 2 to 5 times in a row.");
+    "Strikes the foe 2 to 5 times\n"
+    "with a spiritual bone. Gains\n"
+    "priority against statused foes.");
 
 static const u8 sLockOnDescription[] = _(
     "Ensures the next attack hits.\n"
@@ -1151,14 +1151,14 @@ static const u8 sSweetScentDescription[] = _(
     "Pokémon's evasiveness.");
 
 static const u8 sIronTailDescription[] = _(
-    "The foe is slammed with a steel\n"
-    "tail. This may boost the user's\n"
-    "Defense stat. Always goes last.");
+    "This may boost the user's\n"
+    "Defense. Boosted for every\n"
+    "Defense boost. Always goes last.");
 
 static const u8 sMetalClawDescription[] = _(
-    "The target is raked with steel\n"
-    "claws. This may also boost the\n"
-    "user's Attack stat.");
+    "May boost the user's Attack\n"
+    "stat. Boosts chances and power\n"
+    "for every Defense stat boost.");
 
 static const u8 sVitalThrowDescription[] = _(
     "Moves last, but it never misses,\n"
@@ -1884,7 +1884,7 @@ static const u8 sGastroAcidDescription[] = _(
     "Ability and lowers its Sp. Def.");
 
 static const u8 sLuckyChantDescription[] = _(
-    "For 6 turns, prevents critical\n"
+    "For 3 turns, prevents critical\n"
     "hits and weakens super effective\n"
     "moves. This always goes first.");
 
@@ -2034,9 +2034,9 @@ static const u8 sVacuumWaveDescription[] = _(
     "the foe has no stat changes.");
 
 static const u8 sFocusBlastDescription[] = _(
-    "An energy blast that may cut the\n"
-    "foe's Sp. Def. Its accuracy is\n"
-    "boosted after using Focus Energy.");
+    "Accuracy is boosted after using\n"
+    "Focus Energy. Drastically boosts\n"
+    "the user's Attack if it misses.");
 
 static const u8 sEnergyBallDescription[] = _(
     "Draws natural power and fires\n"
@@ -2344,9 +2344,9 @@ static const u8 sPsystrikeDescription[] = _(
     "redirection, and breaks screens.");
 
 static const u8 sTailSlapDescription[] = _(
-    "The user attacks by striking the\n"
-    "foe with its hard tail. This\n"
-    "move hits 2 to 5 times in a row.");
+    "Hits the foe with a hard tail 2\n"
+    "to 5 times. Removes the user's\n"
+    "hazards and foe's stat changes.");
 
 static const u8 sVenoshockDescription[] = _(
     "Drenches the foe in a special\n"
@@ -3541,9 +3541,9 @@ static const u8 sEternabeamDescription[] = _(
     "user can't move on the next turn.");
 
 static const u8 sSteelBeamDescription[] = _(
-    "The user fires a beam of steel\n"
-    "that it collected from its entire\n"
-    "body. This also damages the user.");
+    "The user fires a beam of steel.\n"
+    "This damages the user and sharply\n"
+    "boosts its Defense stat.");
 
 static const u8 sExpandingForceDescription[] = _(
     "This move's power goes up and\n"
@@ -3601,9 +3601,9 @@ static const u8 sBurningJealousyDescription[] = _(
     "of using moves in succession.");
 
 static const u8 sLashOutDescription[] = _(
-    "The user lashes out to vent its\n"
-    "envy towards the foe. Doubles in\n"
-    "power if the user has stat drops.");
+    "Boosted if the user has a stat\n"
+    "drop. Lands critical hits if\n"
+    "the user's last move failed.");
 
 static const u8 sPoltergeistDescription[] = _(
     "The user attacks by controlling\n"
@@ -4361,8 +4361,8 @@ static const u8 sSoulCutterDescription[] = _(
     "Def. Deals bonus true damage.");
 
 static const u8 sVoidDescription[] = _(
-    "The user sends foes to the void.\n"
-    "Disables their last move, goes\n"
+    "Sends foes to the void. Disables\n"
+    "moves, torments them, goes\n"
     "first, and ignores protection.");
 
 static const u8 sKerfuffleDescription[] = _(

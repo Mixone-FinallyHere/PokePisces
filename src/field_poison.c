@@ -134,15 +134,15 @@ s32 DoPoisonFieldEffect(void)
     {
         if (GetMonData(pokemon, MON_DATA_SANITY_HAS_SPECIES)
         && GetAilmentFromStatus(GetMonData(pokemon, MON_DATA_STATUS)) == AILMENT_PSN
-        && (GetMonAbility(&gPlayerParty[i]) != ABILITY_POISON_HEAL
-        || GetMonAbility(&gPlayerParty[i]) != ABILITY_IMMUNITY
-        || GetMonAbility(&gPlayerParty[i]) != ABILITY_MAGIC_GUARD
-        || GetMonAbility(&gPlayerParty[i]) != ABILITY_PASTEL_VEIL
-        || GetMonAbility(&gPlayerParty[i]) != ABILITY_TITANIC
-        || GetMonAbility(&gPlayerParty[i]) != ABILITY_GOOD_AS_GOLD
-        || GetMonAbility(&gPlayerParty[i]) != ABILITY_NATURAL_CURE
-        || GetMonAbility(&gPlayerParty[i]) != ABILITY_PURIFYING_SALT
-        || GetMonAbility(&gPlayerParty[i]) != ABILITY_RESET))
+        && (GetMonAbility(pokemon) != ABILITY_POISON_HEAL
+        || GetMonAbility(pokemon) != ABILITY_IMMUNITY
+        || GetMonAbility(pokemon) != ABILITY_MAGIC_GUARD
+        || GetMonAbility(pokemon) != ABILITY_PASTEL_VEIL
+        || GetMonAbility(pokemon) != ABILITY_TITANIC
+        || GetMonAbility(pokemon) != ABILITY_GOOD_AS_GOLD
+        || GetMonAbility(pokemon) != ABILITY_NATURAL_CURE
+        || GetMonAbility(pokemon) != ABILITY_PURIFYING_SALT
+        || GetMonAbility(pokemon) != ABILITY_RESET))
         {
             // Apply poison damage
             hp = GetMonData(pokemon, MON_DATA_HP);

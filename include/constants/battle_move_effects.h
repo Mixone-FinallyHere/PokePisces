@@ -383,7 +383,7 @@
 #define EFFECT_RISING_VOLTAGE               377
 #define EFFECT_BEAK_BLAST                   378
 #define EFFECT_COURT_CHANGE                 379
-#define EFFECT_STEEL_BEAM                   380
+#define EFFECT_CHLOROBLAST                  380
 #define EFFECT_EXTREME_EVOBOOST             381
 #define EFFECT_HIT_SET_REMOVE_TERRAIN       382 //Edited for Pisces
 #define EFFECT_DARK_VOID                    383
@@ -673,7 +673,13 @@
 #define EFFECT_PSYCHIC_FANGS                667
 #define EFFECT_TRICK_OR_TREAT               668
 #define EFFECT_WORK_UP                      669
+#define EFFECT_METAL_CLAW                   670
+#define EFFECT_IRON_TAIL                    671
+#define EFFECT_STEEL_BEAM                   672
+#define EFFECT_FOCUS_BLAST                  673
+#define EFFECT_SPIKE_CANNON                 674
+#define EFFECT_DIG                          675
 
-#define NUM_BATTLE_MOVE_EFFECTS             670
+#define NUM_BATTLE_MOVE_EFFECTS             676
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

@@ -32,7 +32,7 @@ SweltornPalace_EventScript_TreasureSeeker::
 	goto_if_set FLAG_CHOSE_SANDSTONE, SweltornPalace_EventScript_CantTakeAnother
 	goto_if_set FLAG_CHOSE_SANDBAG, SweltornPalace_EventScript_CantTakeAnother
 	msgbox SweltornPalace_Text_IFoundTreasure, MSGBOX_DEFAULT
-	multichoice 19, 4, MULTI_CHOICE_ITEM_PICK, FALSE
+	multichoice 19, 4, MULTI_SAND_ITEM_PICK, FALSE
 	copyvar VAR_TEMP_1, VAR_RESULT
 	goto_if_eq VAR_TEMP_1, 0, SweltornPalace_EventScript_TakeSandbag
 	goto_if_eq VAR_TEMP_1, 1, SweltornPalace_EventScript_TakeSandstone

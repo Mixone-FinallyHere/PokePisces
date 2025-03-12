@@ -317,6 +317,144 @@ CosmossSpaceCenter_EventScript_ThankYou::
 	release
 	end
 
+CosmossSpaceCenter_EventScript_EncryptionExpert::
+	lock
+	faceplayer
+	goto_if_set FLAG_SUMMONED_PEBB_METEOR, CosmossSpaceCenter_EventScript_CheckSweltorn
+	goto_if_unset FLAG_SUMMONED_PEBB_METEOR, CosmossSpaceCenter_EventScript_EnterPebbleriteCodes
+	release
+	end
+
+CosmossSpaceCenter_EventScript_EnterPebbleriteCodes::
+	msgbox CosmossSpaceCenter_Text_EnterCodeText, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, CosmossSpaceCenter_EventScript_CodeEntryRelease
+    special EnterCode
+    waitstate
+    special GetCodeFeedback
+    goto_if_eq VAR_RESULT, 3, CosmossSpaceCenter_EventScript_CheckCode2
+	goto CosmossSpaceCenter_EventScript_CodeEntryFail
+	release
+	end
+
+CosmossSpaceCenter_EventScript_CheckCode2::
+	msgbox CosmossSpaceCenter_Text_EnterCode2, MSGBOX_DEFAULT
+    special EnterCode
+    waitstate
+    special GetCodeFeedback
+    goto_if_eq VAR_RESULT, 4, CosmossSpaceCenter_EventScript_CheckCode3
+	goto CosmossSpaceCenter_EventScript_CodeEntryFail
+	release
+	end
+
+CosmossSpaceCenter_EventScript_CheckCode3::
+	msgbox CosmossSpaceCenter_Text_EnterCode3, MSGBOX_DEFAULT
+    special EnterCode
+    waitstate
+    special GetCodeFeedback
+    goto_if_eq VAR_RESULT, 5, CosmossSpaceCenter_EventScript_CheckCode4
+	goto CosmossSpaceCenter_EventScript_CodeEntryFail
+	release
+	end
+
+CosmossSpaceCenter_EventScript_CheckCode4::
+	msgbox CosmossSpaceCenter_Text_EnterCode4, MSGBOX_DEFAULT
+    special EnterCode
+    waitstate
+    special GetCodeFeedback
+    goto_if_eq VAR_RESULT, 6, CosmossSpaceCenter_EventScript_CodeEntrySuccess
+	goto CosmossSpaceCenter_EventScript_CodeEntryFail
+	release
+	end
+
+CosmossSpaceCenter_EventScript_CodeEntrySuccess::
+	setflag FLAG_SUMMONED_PEBB_METEOR
+	msgbox CosmossSpaceCenter_Text_CodeEntrySuccess, MSGBOX_AUTOCLOSE
+	release
+	end
+
+CosmossSpaceCenter_EventScript_CodeEntryFail::
+	msgbox CosmossSpaceCenter_Text_CodeEntryFail, MSGBOX_AUTOCLOSE
+	release
+	end
+
+CosmossSpaceCenter_EventScript_CodeEntryRelease::
+	release
+	end
+
+CosmossSpaceCenter_EventScript_CheckSweltorn::
+	msgbox CosmossSpaceCenter_Text_CheckSweltorn, MSGBOX_AUTOCLOSE
+	release
+	end
+
+CosmossSpaceCenter_Text_EnterCodeText:
+	.string "Oi. I've been put in charge\n"
+	.string "of the Space Center's\l"
+	.string "encryption department.\p"
+	.string "You'd be surprised how many\n"
+	.string "encrypted messages and files\l"
+	.string "find their way to our network\l"
+	.string "from deep space. Most of the\l"
+	.string "time, they're gibberish.\l"
+	.string "Seems like they're all coincidences\l"
+	.string "or scrambled data from satellites.\p"
+	.string "There's this one I haven't been\n"
+	.string "able to crack, though. And it's\l"
+	.string "been on my mind for months.\l"
+	.string "This one exe file that actually\l"
+	.string "opened a basic program, asking\l"
+	.string "for a four word passcode.\p"
+	.string "I've tried so many combos, bruv.\n"
+	.string "All came up short. So I've been\l"
+	.string "hitting up anyone interested to\l"
+	.string "take a crack at it.\p"
+	.string "So? Want to enter the first of\n"
+	.string "the four words? Can't hurt to try.$"
+
+CosmossSpaceCenter_Text_EnterCode2:
+	.string "W-Woah, alright, bruv. Seems like\n"
+	.string "that first guess was on the money...!\p"
+	.string "I've never seen it go to the\n"
+	.string "second code before. We're in\l"
+	.string "uncharted waters now.\p"
+	.string "Maybe you know something I don't.\n"
+	.string "Anyways, get ready for code 2.$"
+
+CosmossSpaceCenter_Text_EnterCode3:
+	.string "That's it! Cripes, never expected\n"
+	.string "something like this outta you!\l"
+	.string "Keep on keepin' on,\l"
+	.string "here's code number 3.$"
+
+CosmossSpaceCenter_Text_EnterCode4:
+	.string "On more left to get right!\n"
+	.string "I know you've probably got it!$"
+
+CosmossSpaceCenter_Text_CodeEntrySuccess:
+	.string "All four right? I'm very impressed!\p"
+	.string "...\p"
+	.string "...It just... closed the program?\n"
+	.string "Did nothing else happen?\l"
+	.string "Hold up, let me check task manager...\p"
+	.string "...O-Oh, the uh, Network usage\n"
+	.string "skyrocketted...\l"
+	.string "Looks like my computer is sending\l"
+	.string "out some sort of signal to space...?\p"
+	.string "...Oh, no.\p"
+	.string "SOMETHING just crash landed in\n"
+	.string "Sweltorn Desert! I-I gotta brief\l"
+	.string "my superiors, on the double!$"
+
+CosmossSpaceCenter_Text_CodeEntryFail:
+	.string "Ah, nuts! The program locked\n"
+	.string "up again. Looks like that passcode\l"
+	.string "wasn't entirely correct.$"
+
+CosmossSpaceCenter_Text_CheckSweltorn:
+	.string "Beans... I don't know what in\n"
+	.string "the hell we just caused to happen,\l"
+	.string "but it seems like something\l"
+	.string "crashed in the desert.$"
+
 CosmossSpaceCenter_Text_NoAccess:
 	.string "(You hear a sassy female voice\n"
 	.string "on the loudspeakers.)\p"
@@ -416,6 +554,8 @@ CosmossSpaceCenter_Text_LearnedALot:
 CosmossSpaceCenter_Text_HelpMyFriend:
 	.string "If you have time, please check on my\n"
 	.string "comms officer, Eiffel.\p"
+	.string "He's the lackadaisical man pretending\n"
+	.string "to work at the rightmost laptop.\p"
 	.string "He, regrettably, is easily…\n"
 	.string "distracted.$"
 
@@ -423,7 +563,13 @@ CosmossSpaceCenter_Text_AboutCryplin:
 	.string "Our battle brought to mind the time\n"
 	.string "I had to defend the facility from a\l"
 	.string "rampaging Cardiovor.\p"
-	.string "Hah… good times.$"
+	.string "Hah… good times.\p"
+	.string "If you have time, please check on my\n"
+	.string "comms officer, Eiffel.\p"
+	.string "He's the lackadaisical man pretending\n"
+	.string "to work at the rightmost laptop.\p"
+	.string "He, regrettably, is easily…\n"
+	.string "distracted.$"
 
 CosmossSpaceCenter_Text_HelpFightUFO:
 	.string "What now?\p"

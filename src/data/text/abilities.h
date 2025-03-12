@@ -263,8 +263,8 @@ static const u8 sHustleDescription[] = _(
 
 static const u8 sCuteCharmDescription[] = _(
     "When contact is made either way,\n"
-    "the foe may be infatuated with\n"
-    "the user.");
+    "sets allure on the foe. After 2\n"
+    "stacks, infatuates instead.");
 
 static const u8 sPlusDescription[] = _(
     "Boosts power if user or ally are\n"
@@ -1239,7 +1239,7 @@ static const u8 sWindRiderDescription[] = _(
 static const u8 sGuardDogDescription[] = _(
     "Sharply boosts Attack if\n"
     "intimidated, disturbed, or\n"
-    "mocked. Stops forced switches.");
+    "mocked. Uses Growl if attacked.");
 
 static const u8 sRockyPayloadDescription[] = _(
     "Powers up Rock-type moves.");
@@ -1712,9 +1712,9 @@ static const u8 sStormBrewDescription[] = _(
     "Electric move used that turn.");
 
 static const u8 sRuinWardDescription[] = _(
-    "Summons Safeguard and Lucky\n"
-    "Chant when the Pokémon enters\n"
-    "battle. It loses HP every turn.");
+    "The Pokémon summons a veil that\n"
+    "protects from certain statuses\n"
+    "when it enters battle.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =

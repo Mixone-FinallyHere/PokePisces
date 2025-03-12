@@ -9,10 +9,10 @@
 .set LOCALID_YANDEMIC, 18
 
 MossdeepCity_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, MossdeepCity_OnLoad
 	.byte 0
 
-MossdeepCity_OnTransition:
+MossdeepCity_OnLoad:
 	call MossdeepCity_EventScript_SetEggState
 	call_if_ge VAR_NOTICED_BY_YANDEMIC, 5, MossdeepCity_EventScript_RemoveYandemic
 	call_if_lt VAR_PISCES_STORY_PROGRESS, 2, MossdeepCity_EventScript_RemoveHintMonk

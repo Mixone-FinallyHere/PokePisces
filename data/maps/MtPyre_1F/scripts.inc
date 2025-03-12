@@ -1,7 +1,17 @@
 .set LOCALID_BARRELFISHER, 7
 
 MtPyre_1F_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, MtPyre_1F_OnLoad
 	.byte 0
+
+MtPyre_1F_OnLoad:
+	call MtPyre_1F_EventScript_RemoveBarrelFisher
+	end
+
+MtPyre_1F_EventScript_RemoveBarrelFisher::
+	removeobject LOCALID_BARRELFISHER
+	setflag FLAG_TEMP_1E
+	return
 
 MtPyre_1F_EventScript_CleanseTagWoman::
 	lock
@@ -77,8 +87,9 @@ MtPyre_1F_EventScript_SpookBarrelCheck::
 	end
 
 MtPyre_1F_EventScript_SpookBarrel::
-	clearflag FLAG_RECEIVED_TM_POUNCE
+	clearflag FLAG_TEMP_1E
 	addobject LOCALID_BARRELFISHER
+	delay 4
 	applymovement LOCALID_BARRELFISHER, MtPyre_1F_Movement_JumpFromBarrel
 	waitmovement 0
 	checkitem ITEM_TM_SPOOK
@@ -87,7 +98,8 @@ MtPyre_1F_EventScript_SpookBarrel::
 	giveitem ITEM_TM_SPOOK
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setvar VAR_TEMP_1, 1
-	setflag FLAG_RECEIVED_TM_POUNCE
+	removeobject LOCALID_BARRELFISHER
+	setflag FLAG_TEMP_1E
 	applymovement LOCALID_BARRELFISHER, MtPyre_1F_Movement_JumpIntoBarrel
 	waitmovement 0
 	release

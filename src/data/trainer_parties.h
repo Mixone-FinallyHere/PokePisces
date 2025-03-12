@@ -12778,7 +12778,7 @@ static const struct TrainerMon sParty_PAnthreeny[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 240, 0, 0, 0, 0),
     .lvl = 75,
-    .moves = {MOVE_FOCUS_ENERGY, MOVE_SILVER_EDGE, MOVE_DRAIN_PUNCH, MOVE_SUCKER_PUNCH},
+    .moves = {MOVE_FOCUS_ENERGY, MOVE_SILVER_EDGE, MOVE_SACRED_SWORD, MOVE_SUCKER_PUNCH},
     },
     {
     .species = SPECIES_FROSLASS,
@@ -12831,11 +12831,11 @@ static const struct TrainerMon sParty_PSchuli[] = {
     {
     .species = SPECIES_OOHBAABA,
     .ability = ABILITY_WHITE_SMOKE,
-    .heldItem = ITEM_FLIP_COIN,
+    .heldItem = ITEM_COVERT_CLOAK,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 0, 120, 0, 0, 120),
     .lvl = 75,
-    .moves = {MOVE_SAFEGUARD, MOVE_WILL_O_WISP, MOVE_VENOM_GALE, MOVE_STRANGE_STEAM},
+    .moves = {MOVE_LUCKY_CHANT, MOVE_WILL_O_WISP, MOVE_VENOM_GALE, MOVE_STRANGE_STEAM},
     },
     {
     .species = SPECIES_HAIBUN,
@@ -12847,13 +12847,13 @@ static const struct TrainerMon sParty_PSchuli[] = {
     .moves = {MOVE_AURORA_VEIL, MOVE_BLIZZARD, MOVE_NONE, MOVE_NONE},
     },
     {
-    .species = SPECIES_CARDIOVOR,
-    .ability = ABILITY_SEED_SOWER,
-    .heldItem = ITEM_BLOOM_ORB,
+    .species = SPECIES_ARMAGATTON,
+    .ability = ABILITY_RUIN_WARD,
+    .heldItem = ITEM_FLIP_COIN,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .ev = TRAINER_PARTY_EVS(240, 240, 0, 0, 0, 0),
+    .ev = TRAINER_PARTY_EVS(240, 0, 0, 0, 240, 0),
     .lvl = 76,
-    .moves = {MOVE_POWER_WHIP, MOVE_BREAKING_SWIPE, MOVE_STUN_SPORE, MOVE_METEOR_BEAM},
+    .moves = {MOVE_DECIMATION, MOVE_PURGE_RAY, MOVE_NONE, MOVE_NONE},
     },
     {
     .species = SPECIES_LYORESA,
@@ -14241,7 +14241,7 @@ static const struct TrainerMon sParty_PWinona[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(120, 0, 0, 0, 132, 0),
     .lvl = 33,
-    .moves = {MOVE_MAGIC_COAT, MOVE_EERIE_IMPULSE, MOVE_DARK_VOID, MOVE_FEAR_FACTOR},
+    .moves = {MOVE_SNORE, MOVE_FIRE_BLAST, MOVE_DARK_VOID, MOVE_FEAR_FACTOR},
     .nature = NATURE_MILD,
     },
     {
@@ -14264,7 +14264,7 @@ static const struct TrainerMon sParty_PAarune[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(128, 0, 124, 0, 4, 0),
     .lvl = 32,
-    .moves = {MOVE_NIGHT_DAZE, MOVE_GEO_PULSE, MOVE_MAGIC_COAT, MOVE_SPOOK},
+    .moves = {MOVE_NIGHT_DAZE, MOVE_GEO_PULSE, MOVE_ROADBLOCK, MOVE_SPOOK},
     .nature = NATURE_BOLD,
     },
     {
@@ -14274,7 +14274,7 @@ static const struct TrainerMon sParty_PAarune[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(4, 124, 4, 124, 0, 0),
     .lvl = 33,
-    .moves = {MOVE_EARTHQUAKE, MOVE_MIRACLE_EYE, MOVE_KNOCK_OFF, MOVE_PLAY_ROUGH},
+    .moves = {MOVE_EARTHQUAKE, MOVE_MIRACLE_EYE, MOVE_ROCK_SLIDE, MOVE_PLAY_ROUGH},
     .nature = NATURE_JOLLY,
     },
     {
@@ -14284,7 +14284,7 @@ static const struct TrainerMon sParty_PAarune[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(124, 8, 0, 0, 0, 124),
     .lvl = 34,
-    .moves = {MOVE_EARTHQUAKE, MOVE_PROTECT, MOVE_ROADBLOCK, MOVE_IRON_HEAD},
+    .moves = {MOVE_EARTHQUAKE, MOVE_GRAND_SLAM, MOVE_REST, MOVE_SLEEP_TALK},
     .nature = NATURE_CAREFUL,
     }
 };
@@ -14460,7 +14460,7 @@ static const struct TrainerMon sParty_PMrBonding[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(192, 0, 0, 0, 192, 0),
     .lvl = 46,
-    .moves = {MOVE_HYPER_VOICE, MOVE_BLEAKWIND_STORM, MOVE_MILK_DRINK, MOVE_SAFEGUARD},
+    .moves = {MOVE_HYPER_VOICE, MOVE_BLEAKWIND_STORM, MOVE_MOONBLAST, MOVE_GLACIATE},
     .nature = NATURE_MODEST,
     },
     {
@@ -14474,13 +14474,13 @@ static const struct TrainerMon sParty_PMrBonding[] = {
     },
     {
     .species = SPECIES_LEUKUNEHO,
-    .ability = ABILITY_REGENERATOR,
+    .ability = ABILITY_TRIAGE,
     .heldItem = ITEM_FLIP_COIN,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(192, 0, 0, 0, 128, 64),
     .lvl = 46,
-    .moves = {MOVE_ACID_SPRAY, MOVE_GIGA_DRAIN, MOVE_U_TURN, MOVE_SCALD},
-    .nature = NATURE_MODEST,
+    .moves = {MOVE_KNOCK_OFF, MOVE_SWIFT, MOVE_VENOM_DRAIN, MOVE_DRAINING_KISS},
+    .nature = NATURE_QUIET,
     },
     {
     .species = SPECIES_PAPYPUS,

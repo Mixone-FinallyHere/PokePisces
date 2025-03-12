@@ -31,7 +31,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ArctaigaSpindaDen_EventScript_ItemPIceStone",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_ARCTAIGA_SPINDA_DEN_ICE_STONE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -44,7 +44,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ArctaigaSpindaDen_EventScript_ItemPMaxRevive",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_ARCTAIGA_SPINDA_DEN_MAX_REVIVE"
     }
   ],
   "warp_events": [

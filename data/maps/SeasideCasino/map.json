@@ -72,8 +72,8 @@
       "x": 16,
       "y": 16,
       "elevation": 0,
-      "dest_map": "MAP_SEASIDE_CASINO",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_SEA_MAUVILLE",
+      "dest_warp_id": "4"
     },
     {
       "x": 27,

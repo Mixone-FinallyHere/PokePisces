@@ -344,22 +344,23 @@ const u8 gTypeNames[NUMBER_OF_MON_TYPES][TYPE_NAME_LENGTH + 1] =
 // This is a factor in how much money you get for beating a trainer.
 const struct TrainerMoney gTrainerMoneyTable[] =
 {
-    {TRAINER_CLASS_TEAM_AQUA, 5},
+    {TRAINER_CLASS_TEAM_AQUA, 12},
     {TRAINER_CLASS_AQUA_ADMIN, 10},
     {TRAINER_CLASS_AQUA_LEADER, 20},
     {TRAINER_CLASS_AROMA_LADY, 10},
     {TRAINER_CLASS_RUIN_MANIAC, 15},
-    {TRAINER_CLASS_INTERVIEWER, 12},
+    {TRAINER_CLASS_INTERVIEWER, 20},
     {TRAINER_CLASS_TUBER_F, 1},
     {TRAINER_CLASS_TUBER_M, 1},
     {TRAINER_CLASS_SIS_AND_BRO, 3},
-    {TRAINER_CLASS_COOLTRAINER, 12},
+    {TRAINER_CLASS_COOLTRAINER, 20},
+    {TRAINER_CLASS_ACE_TRAINER, 20},
     {TRAINER_CLASS_HEX_MANIAC, 6},
     {TRAINER_CLASS_LADY, 50},
     {TRAINER_CLASS_BEAUTY, 20},
     {TRAINER_CLASS_RICH_BOY, 50},
     {TRAINER_CLASS_POKEMANIAC, 15},
-    {TRAINER_CLASS_SWIMMER_M, 2},
+    {TRAINER_CLASS_SWIMMER_M, 3},
     {TRAINER_CLASS_BLACK_BELT, 8},
     {TRAINER_CLASS_GUITARIST, 8},
     {TRAINER_CLASS_KINDLER, 8},
@@ -373,7 +374,7 @@ const struct TrainerMoney gTrainerMoneyTable[] =
     {TRAINER_CLASS_SCHOOL_KID, 5},
     {TRAINER_CLASS_SR_AND_JR, 4},
     {TRAINER_CLASS_POKEFAN, 20},
-    {TRAINER_CLASS_EXPERT, 10},
+    {TRAINER_CLASS_EXPERT, 12},
     {TRAINER_CLASS_YOUNGSTER, 4},
     {TRAINER_CLASS_CHAMPION, 50},
     {TRAINER_CLASS_FISHERMAN, 10},
@@ -383,15 +384,15 @@ const struct TrainerMoney gTrainerMoneyTable[] =
     {TRAINER_CLASS_NINJA_BOY, 3},
     {TRAINER_CLASS_BATTLE_GIRL, 6},
     {TRAINER_CLASS_PARASOL_LADY, 10},
-    {TRAINER_CLASS_SWIMMER_F, 2},
+    {TRAINER_CLASS_SWIMMER_F, 3},
     {TRAINER_CLASS_PICNICKER, 4},
     {TRAINER_CLASS_TWINS, 3},
     {TRAINER_CLASS_SAILOR, 8},
     {TRAINER_CLASS_COLLECTOR, 15},
     {TRAINER_CLASS_RIVAL, 15},
-    {TRAINER_CLASS_PKMN_BREEDER, 10},
+    {TRAINER_CLASS_PKMN_BREEDER, 9},
     {TRAINER_CLASS_PKMN_RANGER, 12},
-    {TRAINER_CLASS_TEAM_MAGMA, 5},
+    {TRAINER_CLASS_TEAM_MAGMA, 12},
     {TRAINER_CLASS_MAGMA_ADMIN, 10},
     {TRAINER_CLASS_MAGMA_LEADER, 20},
     {TRAINER_CLASS_LASS, 4},
@@ -399,6 +400,66 @@ const struct TrainerMoney gTrainerMoneyTable[] =
     {TRAINER_CLASS_HIKER, 10},
     {TRAINER_CLASS_YOUNG_COUPLE, 8},
     {TRAINER_CLASS_WINSTRATE, 10},
+    {TRAINER_CLASS_GILDED_MONK, 40},
+    {TRAINER_CLASS_TOPAZ_ACOLYTE, 40},
+    {TRAINER_CLASS_DEMOLITIONIST, 4},
+    {TRAINER_CLASS_SCUBA_DIVER, 2},
+    {TRAINER_CLASS_FREE_DIVER, 2},
+    {TRAINER_CLASS_SHRINE_MAIDEN, 12},
+    {TRAINER_CLASS_STREET_THUG, 20},
+    {TRAINER_CLASS_ELECTRICIAN, 7},
+    {TRAINER_CLASS_YOU_TUBER, 30},
+    {TRAINER_CLASS_HARDHATTER, 7},
+    {TRAINER_CLASS_MECHANIC, 7},
+    {TRAINER_CLASS_CLIMBER, 10},
+    {TRAINER_CLASS_RUIN_HUNTER, 12},
+    {TRAINER_CLASS_ANGLER, 10},
+    {TRAINER_CLASS_FAIRYTALE_GIRL, 4},
+    {TRAINER_CLASS_WAYFARER, 8},
+    {TRAINER_CLASS_CHEERLEADERS, 10},
+    {TRAINER_CLASS_POKE_FREAK, 13},
+    {TRAINER_CLASS_GAMBLER, 40},
+    {TRAINER_CLASS_BREADWINNER, 1},
+    {TRAINER_CLASS_BASSIST, 8},
+    {TRAINER_CLASS_SEA_SHELLER, 2},
+    {TRAINER_CLASS_SNOW_CHILD, 3},
+    {TRAINER_CLASS_SNOW_KID, 2},
+    {TRAINER_CLASS_SKIER, 10},
+    {TRAINER_CLASS_ESPER, 6},
+    {TRAINER_CLASS_BURGLAR, 22},
+    {TRAINER_CLASS_KUNOICHI, 12},
+    {TRAINER_CLASS_MEDIUM, 6},
+    {TRAINER_CLASS_MADAME, 50},
+    {TRAINER_CLASS_BIRD_WATCHER, 2},
+    {TRAINER_CLASS_COURIER, 20},
+    {TRAINER_CLASS_HUNTER, 15},
+    {TRAINER_CLASS_LANDSCAPERS, 20},
+    {TRAINER_CLASS_GO_GETTER, 10},
+    {TRAINER_CLASS_UPSTART, 10},
+    {TRAINER_CLASS_JANITOR, 4},
+    {TRAINER_CLASS_RESEARCHER, 8},
+    {TRAINER_CLASS_SCIENTIST, 8},
+    {TRAINER_CLASS_DRAGON_CALLER, 12},
+    {TRAINER_CLASS_ICE_POPS, 8},
+    {TRAINER_CLASS_KLUTZ, 1},
+    {TRAINER_CLASS_DRAGON_RIDER, 3},
+    {TRAINER_CLASS_WALTZER, 15},
+    {TRAINER_CLASS_DANCER, 15},
+    {TRAINER_CLASS_ANGY_WANGY, 1},
+    {TRAINER_CLASS_DELINQUENT, 7},
+    {TRAINER_CLASS_PAPER_BOY, 6},
+    {TRAINER_CLASS_MONK, 1},
+    {TRAINER_CLASS_MASTER, 12},
+    {TRAINER_CLASS_PLUMBER, 15},
+    {TRAINER_CLASS_METEOROLOGISTS, 10},
+    {TRAINER_CLASS_VANDAL, 2},
+    {TRAINER_CLASS_CLOWN, 8},
+    {TRAINER_CLASS_CHARMER, 20},
+    {TRAINER_CLASS_MOGUL, 40},
+    {TRAINER_CLASS_MARCHONESS, 30},
+    {TRAINER_CLASS_PROFITEER, 45},
+    {TRAINER_CLASS_NURSE, 7},
+    {TRAINER_CLASS_PKMN_RANCHER, 9},
     {0xFF, 5}, // Any trainer class not listed above uses this
 };
 
@@ -4847,6 +4908,7 @@ static bool8 IsTwoTurnsMove(u16 move)
      || gBattleMoves[move].effect == EFFECT_TWO_TURNS_ATTACK
      || gBattleMoves[move].effect == EFFECT_SOLAR_BEAM
      || gBattleMoves[move].effect == EFFECT_SEMI_INVULNERABLE
+     || gBattleMoves[move].effect == EFFECT_DIG
      || gBattleMoves[move].effect == EFFECT_DIVE
      || gBattleMoves[move].effect == EFFECT_BIDE
      || gBattleMoves[move].effect == EFFECT_FLY
@@ -4902,6 +4964,10 @@ s8 GetMovePriority(u32 battler, u16 move)
     {
         priority++;
     }
+    else if (gCurrentMove == MOVE_BONE_RUSH && gBattleMons[gBattlerTarget].status1 & STATUS1_ANY_NEGATIVE)
+    {
+        priority++;
+    }
     else if (gCurrentMove == MOVE_ODD_STEP && (gBattleMons[gBattlerTarget].status1 & STATUS1_PANIC || gBattleMons[gBattlerTarget].status2 & STATUS2_CONFUSION))
     {
         priority++;
@@ -4942,7 +5008,11 @@ s8 GetMovePriority(u32 battler, u16 move)
     {
         priority = 4;
     }
-    else if (gBattleMoves[move].effect == EFFECT_CLEAR_SMOG && (CountBattlerStatIncreases(gBattlerTarget, TRUE) > 0 || CountBattlerStatDecreases(gBattlerTarget, TRUE) > 0))
+    else if (gBattleMoves[move].effect == EFFECT_CLEAR_SMOG && CountBattlerStatIncreases(gBattlerTarget, TRUE) > 0) 
+    {
+        priority++;
+    }
+    else if (gBattleMoves[move].effect == EFFECT_CLEAR_SMOG && CountBattlerStatDecreases(gBattlerTarget, TRUE) > 0) 
     {
         priority++;
     }
@@ -5001,29 +5071,32 @@ u32 GetWhichBattlerFasterArgs(u32 battler1, u32 battler2, bool32 ignoreChosenMov
         bool32 battler2HasStallingItem = holdEffectBattler2 == HOLD_EFFECT_LAGGING_TAIL;
 
         if (battler1HasQuickEffect && !battler2HasQuickEffect)
-            strikesFirst = -1;
+            strikesFirst = 0;
         else if (battler2HasQuickEffect && !battler1HasQuickEffect)
             strikesFirst = 1;
         else if (battler1HasStallingItem && !battler2HasStallingItem)
-            strikesFirst = -1;
+            strikesFirst = 0;
         else if (battler2HasStallingItem && !battler1HasStallingItem)
-            strikesFirst = -1;
+            strikesFirst = 0;
         else if (battler1HasStallingAbility && !battler2HasStallingAbility)
             strikesFirst = 1;
         else if (battler2HasStallingAbility && !battler1HasStallingAbility)
-            strikesFirst = -1;
+            strikesFirst = 0;
         else
         {
             if (speedBattler1 == speedBattler2)
             {
                 // same speeds, same priorities
-                strikesFirst = 0;
+                if (Random() % 2 == 0)
+                    strikesFirst = 0;
+                else
+                    strikesFirst = 1;
             }
             else if (speedBattler1 < speedBattler2)
             {
                 // battler2 has more speed
                 if (gFieldStatuses & STATUS_FIELD_TRICK_ROOM)
-                    strikesFirst = -1;
+                    strikesFirst = 0;
                 else
                     strikesFirst = 1;
             }
@@ -5033,7 +5106,7 @@ u32 GetWhichBattlerFasterArgs(u32 battler1, u32 battler2, bool32 ignoreChosenMov
                 if (gFieldStatuses & STATUS_FIELD_TRICK_ROOM)
                     strikesFirst = 1;
                 else
-                    strikesFirst = -1;
+                    strikesFirst = 0;
             }
         }
     }
@@ -5043,7 +5116,7 @@ u32 GetWhichBattlerFasterArgs(u32 battler1, u32 battler2, bool32 ignoreChosenMov
     }
     else
     {
-        strikesFirst = -1; // battler1's move has greater priority
+        strikesFirst = 0; // battler1's move has greater priority
     }
     return strikesFirst;
 }

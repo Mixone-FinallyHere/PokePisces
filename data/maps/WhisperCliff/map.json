@@ -6,7 +6,7 @@
   "region_map_section": "MAPSEC_ROUTE_129",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_ROUTE",
+  "map_type": "MAP_TYPE_CHIMNEY_ROUTE",
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
@@ -41,7 +41,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMAuraSphere",
-      "flag": "0"
+      "flag": "FLAG_P_WHISPER_CLIFF_TM_AURA_SPHERE"
     }
   ],
   "warp_events": [

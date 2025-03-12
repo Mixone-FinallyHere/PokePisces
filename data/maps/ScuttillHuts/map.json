@@ -25,7 +25,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ScutillHuts_EventScript_ItemPSuperPotion",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SCUTTILL_HUTS_SUPER_POTION"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -38,7 +38,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ScutillHuts_EventScript_ItemPMaxRepel",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SCUTTILL_HUTS_MAX_REPEL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -51,7 +51,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ScutillHuts_EventScript_ItemPMaxEther",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SCUTTILL_HUTS_MAX_ETHER"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -64,7 +64,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ScutillHuts_EventScript_ItemPPPUp",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SCUTTILL_HUTS_PP_UP"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
@@ -77,7 +77,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMStickyWeb",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SCUTTILL_HUTS_TM_STICKY_WEB"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -90,7 +90,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ScutillHuts_EventScript_ItemPBigMushroom",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SCUTTILL_HUTS_BIG_MUSHROOM"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -103,7 +103,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ScutillHuts_EventScript_ItemPPeskyPlush",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SCUTTILL_HUTS_PESKY_PLUSH"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -116,7 +116,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ScutillHuts_EventScript_ItemPAbilityCookie",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SCUTTILL_HUTS_ABILITY_COOKIE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -129,7 +129,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ScutillHuts_EventScript_ItemPRevive",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SCUTTILL_HUTS_REVIVE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -142,7 +142,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ScutillHuts_EventScript_ItemPEscapeRope",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SCUTTILL_HUTS_ESCAPE_ROPE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BUG_CATCHER",
@@ -307,7 +307,7 @@
       "y": 49,
       "elevation": 0,
       "dest_map": "MAP_ROUTE120",
-      "dest_warp_id": "10"
+      "dest_warp_id": "17"
     },
     {
       "x": 51,
@@ -335,14 +335,14 @@
       "y": 13,
       "elevation": 0,
       "dest_map": "MAP_ROUTE120",
-      "dest_warp_id": "14"
+      "dest_warp_id": "16"
     },
     {
       "x": 30,
       "y": 62,
       "elevation": 0,
       "dest_map": "MAP_ROUTE120",
-      "dest_warp_id": "8"
+      "dest_warp_id": "19"
     },
     {
       "x": 39,
@@ -356,7 +356,7 @@
       "y": 6,
       "elevation": 0,
       "dest_map": "MAP_ROUTE120",
-      "dest_warp_id": "11"
+      "dest_warp_id": "18"
     }
   ],
   "coord_events": [

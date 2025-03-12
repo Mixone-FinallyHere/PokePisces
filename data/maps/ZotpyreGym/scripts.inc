@@ -288,7 +288,7 @@ ZotpyreGym_Text_JunjiPostBattle:
 	.string "constructed to combat\l"
 	.string "otherworldly beings.\p"
 	.string "As such, it is good against magical\n"
-	.string "Pokémon, lke Dragon- & Fairy-types.\p"
+	.string "Pokémon, like Dragon & Fairy-types.\p"
 	.string "Conversely, Relic-type Pokémon are\n"
 	.string "weak to the natural element of Grass.\p"
 	.string "You will surely find out more by\n"

@@ -4407,7 +4407,8 @@ const u16 gEggMoves[] = {
         MOVE_CRUSH_CLAW,
         MOVE_QUICK_GUARD,
         MOVE_EXTREME_SPEED,
-        MOVE_WIDE_GUARD),
+        MOVE_WIDE_GUARD,
+        MOVE_LASH_OUT),
 
     egg_moves(FLUFFSIR,
         MOVE_HOLD_HANDS,
@@ -4547,13 +4548,15 @@ const u16 gEggMoves[] = {
         MOVE_RAGE,
         MOVE_ACID_SPRAY,
         MOVE_JUMP_KICK,
-        MOVE_MIMIC),
+        MOVE_MIMIC,
+        MOVE_FAKE_OUT),
 
     egg_moves(LEUKUNEHO,
         MOVE_RAGE,
         MOVE_ACID_SPRAY,
         MOVE_JUMP_KICK,
         MOVE_MIMIC,
+        MOVE_FAKE_OUT,
         MOVE_TEMPER_FLARE,
         MOVE_HAMMER_ARM,
         MOVE_SHADOW_PUNCH,
@@ -4800,9 +4803,7 @@ const u16 gEggMoves[] = {
 
     egg_moves(OOHBAABA,
         MOVE_HOLD_HANDS,
-        MOVE_SACRED_FIRE,
-        MOVE_FIERY_DANCE,
-        MOVE_WAKE_UP_SLAP),
+        MOVE_FIERY_DANCE),
 
     egg_moves(GOLDEROCK,
         MOVE_UPPER_HAND,

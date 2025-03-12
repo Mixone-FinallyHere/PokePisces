@@ -874,6 +874,9 @@
 #define METATILE_Snow_MeralBuriedRight1    0x3C7
 #define METATILE_Snow_MeralBuriedTop1      0x3BE
 #define METATILE_Snow_MeralSnow            0x3AD
+#define METATILE_Snow_PunchedMan1          0x3F5
+#define METATILE_Snow_PunchedMan2          0x3FD
+#define METATILE_Snow_PunchedMan3          0x3FE
 #define METATILE_Snow_SnowPileBottomLeft   0x376
 #define METATILE_Snow_SnowPileBottomRight  0x377
 #define METATILE_Snow_SnowPileTopLeft      0x36E
@@ -1023,6 +1026,12 @@
 #define METATILE_Underwater_SeaBottom    0x256
 
 // gTileset_desert
+#define METATILE_desert_MeteorlessBone           0x326
+#define METATILE_desert_MeteorlessCorner         0x31E
+#define METATILE_desert_MeteorlessRock           0x327
+#define METATILE_desert_MeteorlessTop            0x31F
+#define METATILE_desert_NoPebbleriteBottom       0x336
+#define METATILE_desert_NoPebbleriteTop          0x32E
 #define METATILE_desert_door_poke_mart_sweltorn  0x308
 #define METATILE_desert_door_sweltorn            0x27F
 

@@ -1602,7 +1602,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         #else
             .power = 60,
         #endif
-        .effect = EFFECT_SEMI_INVULNERABLE,
+        .effect = EFFECT_DIG,
         .type = TYPE_GROUND,
         .accuracy = 100,
         .pp = 10,
@@ -2278,10 +2278,10 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_SPIKE_CANNON] =
     {
-        .effect = EFFECT_MULTI_HIT,
+        .effect = EFFECT_SPIKE_CANNON,
         .power = 25,
         .type = TYPE_STEEL,
-        .accuracy = 90,
+        .accuracy = 80,
         .pp = 20,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
@@ -4029,7 +4029,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_IRON_TAIL] =
     {
-        .effect = EFFECT_DEFENSE_UP_HIT,
+        .effect = EFFECT_IRON_TAIL,
         .power = 120,
         .type = TYPE_STEEL,
         .accuracy = 90,
@@ -4045,7 +4045,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_METAL_CLAW] =
     {
-        .effect = EFFECT_ATTACK_UP_HIT,
+        .effect = EFFECT_METAL_CLAW,
         .power = 50,
         .type = TYPE_STEEL,
         .accuracy = 95,
@@ -7053,10 +7053,10 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_FOCUS_BLAST] =
     {
-        .effect = EFFECT_SPECIAL_DEFENSE_DOWN_HIT,
+        .effect = EFFECT_FOCUS_BLAST,
         .power = 120,
         .type = TYPE_FIGHTING,
-        .accuracy = 80,
+        .accuracy = 75,
         .pp = 5,
         .secondaryEffectChance = 30,
         .target = MOVE_TARGET_SELECTED,
@@ -12196,7 +12196,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .type = TYPE_STEEL,
         .accuracy = 95,
         .pp = 5,
-        .secondaryEffectChance = 0,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_SPECIAL,
@@ -12839,7 +12839,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         #else
             .power = 120,
         #endif
-        .effect = EFFECT_STEEL_BEAM,
+        .effect = EFFECT_CHLOROBLAST,
         .type = TYPE_GRASS,
         .accuracy = 95,
         .pp = 5,
@@ -16601,7 +16601,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .type = TYPE_ICE,
         .accuracy = 100,
         .pp = 10,
-        .secondaryEffectChance = 60,
+        .secondaryEffectChance = 40,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_SPECIAL,
