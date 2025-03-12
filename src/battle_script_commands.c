@@ -6707,14 +6707,14 @@ static void Cmd_moveend(void)
                 effect = TRUE;
                 break;
             }
-            else if (!(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
-                  && (gBattleMoves[gCurrentMove].effect == EFFECT_MIND_BLOWN
-                  || gBattleMoves[gCurrentMove].effect == EFFECT_STALAG_BLAST)
-                  && IsBattlerAlive(gBattlerAttacker)
-                  && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
-                  && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD
-                  && GetBattlerAbility(gBattlerAttacker) != ABILITY_SUGAR_COAT 
-                  && !TestTeruCharm(gBattlerAttacker))
+            if (!(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
+            && (gBattleMoves[gCurrentMove].effect == EFFECT_MIND_BLOWN
+            || gBattleMoves[gCurrentMove].effect == EFFECT_STALAG_BLAST)
+            && IsBattlerAlive(gBattlerAttacker)
+            && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD
+            && GetBattlerAbility(gBattlerAttacker) != ABILITY_SUGAR_COAT 
+            && !TestTeruCharm(gBattlerAttacker))
             {
                 gBattleMoveDamage = (gBattleMons[gBattlerAttacker].maxHP + 1) / 2; // Half of Max HP Rounded UP
                 BattleScriptPushCursor();
