@@ -4560,10 +4560,10 @@ static const u8 sPanicOrbDesc[] = _(
     "during battle.");
 
 static const u8 sSolarSwordDesc[] = _(
-    "A sword that makes\n"
-    "Solrock always land\n"
-    "critical-hits in sun,\n"
-    "and boosts them.");
+    "A legendary sword that\n"
+    "makes Solrock always\n"
+    "land critical-hits in\n"
+    "harsh sunlight.");
 
 static const u8 sMoonMirrorDesc[] = _(
     "A mystical mirror that\n"

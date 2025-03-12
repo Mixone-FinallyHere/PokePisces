@@ -7215,8 +7215,12 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_TOXIC_CHAIN:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerTarget].hp != 0 && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && CanBePoisoned(gBattlerAttacker, gBattlerTarget) && TARGET_TURN_DAMAGED // Need to actually hit the target
-                && (Random() % 3) == 0)
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+            && gBattleMons[gBattlerTarget].hp != 0 
+            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
+            && CanBePoisoned(gBattlerAttacker, gBattlerTarget) 
+            && TARGET_TURN_DAMAGED // Need to actually hit the target
+            && (Random() % 3) == 0)
             {
                 gBattleScripting.moveEffect = MOVE_EFFECT_TOXIC;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
@@ -7255,7 +7259,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
             && TARGET_TURN_DAMAGED
             && gBattleMons[gBattlerTarget].hp != 0
-            && RandomPercentage(RNG_POISON_POINT, 25)
             && !(gBattleMons[gBattlerTarget].status2 & STATUS2_INFATUATION)
             && AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget)
             && GetBattlerAbility(gBattlerTarget) != ABILITY_OBLIVIOUS
@@ -13469,10 +13472,6 @@ static inline uq4_12_t GetAttackerItemsModifier(u32 battlerAtk, uq4_12_t typeEff
             return UQ_4_12(1.5);
         if (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_RELIC) && typeEffectivenessModifier <= UQ_4_12(0.5))
             return UQ_4_12(0.75);
-        break;
-    case HOLD_EFFECT_SOLAR_SWORD:
-        if (gIsCriticalHit && IsBattlerWeatherAffected(battlerAtk, B_WEATHER_SUN) && gBattleMons[battlerAtk].species == SPECIES_SOLROCK)
-            return UQ_4_12(1.2);
         break;
     case HOLD_EFFECT_LIFE_ORB:
         return UQ_4_12_FLOORED(1.3);
