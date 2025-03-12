@@ -8,9 +8,53 @@ SweltornDesert_MapScripts::
 	.byte 0
 
 SweltornDesert_OnLoad:
+	call_if_unset FLAG_SUMMONED_PEBB_METEOR, SweltornDesert_EventScript_NoMeteorite
+	call_if_set FLAG_GOT_PEBBLERITE, SweltornDesert_EventScript_NoPebblerite
 	call_if_lt VAR_OZONE_ADMINS_STATE, 8, SweltornDesert_EventScript_RemoveMattAndMinions
 	call_if_gt VAR_OZONE_ADMINS_STATE, 8, SweltornDesert_EventScript_RemoveMattAndMinions
 	end
+
+SweltornDesert_EventScript_NoMeteorite::
+	setmetatile 10, 19, METATILE_desert_MeteorlessCorner, FALSE
+	setmetatile 11, 19, METATILE_desert_MeteorlessTop, FALSE
+	setmetatile 12, 19, METATILE_desert_MeteorlessTop, FALSE
+	setmetatile 13, 19, METATILE_desert_MeteorlessTop, FALSE
+	setmetatile 9, 20, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 10, 20, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 11, 20, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 12, 20, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 13, 20, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 14, 20, METATILE_desert_MeteorlessBone, TRUE
+	setmetatile 9, 21, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 10, 21, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 11, 21, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 12, 21, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 13, 21, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 14, 21, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 9, 22, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 10, 22, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 11, 22, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 12, 22, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 13, 22, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 14, 22, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 9, 23, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 10, 23, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 11, 23, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 12, 23, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 13, 23, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 14, 23, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 9, 24, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 10, 24, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 11, 24, METATILE_desert_MeteorlessRock, FALSE
+	setmetatile 12, 24, METATILE_desert_MeteorlessRock, FALSE
+	special DrawWholeMapView
+	return
+
+SweltornDesert_EventScript_NoPebblerite::
+	setmetatile 13, 21, METATILE_desert_NoPebbleriteTop, TRUE
+	setmetatile 13, 22, METATILE_desert_NoPebbleriteBottom, TRUE
+	special DrawWholeMapView
+	return
 
 SweltornDesert_EventScript_RemoveMattAndMinions::
 	removeobject LOCALID_MATT
@@ -361,6 +405,40 @@ SweltornDesert_EventScript_Dotty::
     trainerbattle_single TRAINER_P_DOTTY, SweltornDesert_Text_DottyIntro, SweltornDesert_Text_DottyDefeated
     msgbox SweltornDesert_Text_DottyPostBattle, MSGBOX_AUTOCLOSE
     end
+
+SweltornDesert_EventScript_TakePebblerite::
+	lock
+	goto_if_unset FLAG_SUMMONED_PEBB_METEOR, SweltornDesert_EventScript_ReleaseOut
+	goto_if_set FLAG_GOT_PEBBLERITE, SweltornDesert_EventScript_PebbleriteGotten
+	msgbox SweltornDesert_Text_TakePebblerite, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_PEBBLERITE
+	closemessage
+	call SweltornDesert_EventScript_NoPebblerite
+	delay 8
+	setflag FLAG_GOT_PEBBLERITE
+	release
+	end
+
+SweltornDesert_EventScript_PebbleriteGotten::
+	msgbox SweltornDesert_Text_PebbleriteGotten, MSGBOX_AUTOCLOSE
+	release
+	end
+
+SweltornDesert_EventScript_ReleaseOut::
+	release
+	end
+
+SweltornDesert_Text_TakePebblerite:
+	.string "(It's a giant meteor!\n"
+	.string "It is glowing green with\l"
+	.string "radioactive energy...)\p"
+	.string "(You see a peculiar looking gem\n"
+	.string "embedded in the front.\l"
+	.string "...Couldn't hurt to take it.)$"
+
+SweltornDesert_Text_PebbleriteGotten:
+	.string "(You've already taken the gem.)$"
 
 SweltornDesert_Text_SantoIntro:
 	.string "Hold it kid! Sweltorn Desert is\n"

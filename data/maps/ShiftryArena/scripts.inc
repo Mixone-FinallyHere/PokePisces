@@ -50,11 +50,14 @@ ShiftryArena_EventScript_ShiftryBattle::
 	clearflag FLAG_SMART_WILD_AI_FLAG
 	setflag FLAG_DEFEATED_FOREST_SHIFTRY
 	setvar VAR_TEMP_4, 1
+	fadescreen FADE_TO_BLACK
 	setmetatile 9, 3, METATILE_General_Grass, FALSE
 	setmetatile 8, 4, METATILE_General_Grass, FALSE
 	setmetatile 9, 4, METATILE_General_Grass, FALSE
 	setmetatile 10, 4, METATILE_General_Grass, FALSE
 	special DrawWholeMapView
+	delay 16
+	fadescreen FADE_FROM_BLACK
 	msgbox ShiftryArena_Text_ItLeftBehindSomething, MSGBOX_DEFAULT
 	closemessage
 	giveitem ITEM_EERIE_MASK

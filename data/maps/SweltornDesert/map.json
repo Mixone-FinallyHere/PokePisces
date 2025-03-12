@@ -649,6 +649,13 @@
     }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 13,
+      "y": 22,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SweltornDesert_EventScript_TakePebblerite"
+    }
   ]
 }

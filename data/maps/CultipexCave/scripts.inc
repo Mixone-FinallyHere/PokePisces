@@ -35,6 +35,7 @@ CultipexCave_EventScript_CultipexBattle::
 	delay 40
 	waitmoncry
 	msgbox CultipexCave_Text_BigBug, MSGBOX_DEFAULT
+	closemessage
 	setflag FLAG_WILD_NO_CATCHING_FLAG
 	setflag FLAG_WILD_NO_RUNNING_FLAG
 	setflag FLAG_SMART_WILD_AI_FLAG

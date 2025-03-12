@@ -52,6 +52,7 @@ MasonriedHike_EventScript_Tabitha::
 	waitmoncry
 	speakername NULL
 	msgbox MasonriedHike_Text_BolterockJoltedAwake, MSGBOX_DEFAULT
+	closemessage
 	setflag FLAG_WILD_NO_RUNNING_FLAG
 	setflag FLAG_SMART_WILD_AI_FLAG
 	delay 4
@@ -60,6 +61,7 @@ MasonriedHike_EventScript_Tabitha::
 	clearflag FLAG_WILD_NO_RUNNING_FLAG
 	clearflag FLAG_SMART_WILD_AI_FLAG
 	delay 8
+	fadescreen FADE_TO_BLACK
 	setmetatile 27, 14, METATILE_Chimney_BolterockGone, FALSE
 	setmetatile 28, 14, METATILE_Chimney_BolterockGone, FALSE
 	setmetatile 29, 14, METATILE_Chimney_BolterockGoneCliff, TRUE
@@ -74,6 +76,8 @@ MasonriedHike_EventScript_Tabitha::
 	setmetatile 29, 16, METATILE_Chimney_BolterockGone, FALSE
 	setmetatile 30, 16, METATILE_Chimney_BolterockGone, FALSE
 	special DrawWholeMapView
+	delay 16
+	fadescreen FADE_FROM_BLACK
 	setflag FLAG_TEMP_11
 	setvar VAR_OZONE_ADMINS_STATE, 7
 	speakername MasonriedHike_Text_NameTabitha
@@ -115,6 +119,7 @@ MasonriedHike_EventScript_BlockingBolterock2::
 	waitmoncry
 	speakername NULL
 	msgbox MasonriedHike_Text_BolterockJoltedAwake, MSGBOX_DEFAULT
+	closemessage
 	setflag FLAG_WILD_NO_RUNNING_FLAG
 	setflag FLAG_SMART_WILD_AI_FLAG
 	delay 4
@@ -123,6 +128,7 @@ MasonriedHike_EventScript_BlockingBolterock2::
 	clearflag FLAG_WILD_NO_RUNNING_FLAG
 	clearflag FLAG_SMART_WILD_AI_FLAG
 	delay 8
+	fadescreen FADE_TO_BLACK
 	setmetatile 39, 29, METATILE_Chimney_BolterockGone, FALSE
 	setmetatile 40, 29, METATILE_Chimney_BolterockGone, FALSE
 	setmetatile 41, 29, METATILE_Chimney_BolterockGone, FALSE
@@ -137,6 +143,8 @@ MasonriedHike_EventScript_BlockingBolterock2::
 	setmetatile 41, 31, METATILE_Chimney_BolterockGone, FALSE
 	setmetatile 42, 31, METATILE_Chimney_BolterockGone, FALSE
 	special DrawWholeMapView
+	delay 16
+	fadescreen FADE_FROM_BLACK
 	msgbox MasonriedHike_Text_TheWildBoltFled, MSGBOX_AUTOCLOSE
 	setflag FLAG_TEMP_12
 	release

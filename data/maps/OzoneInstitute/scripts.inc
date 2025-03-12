@@ -28,6 +28,7 @@ OzoneInstitute_Movement_RayEncounterWest1:
 
 OzoneInstitute_EventScript_RayEncounterWest2::
 	lock
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
 	applymovement LOCALID_RAY, OzoneInstitute_Movement_RayEncounterWest2
 	waitmovement 0
 	goto OzoneInstitute_EventScript_RayBattleStart
