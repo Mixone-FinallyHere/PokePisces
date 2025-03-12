@@ -10755,12 +10755,14 @@ static void Cmd_various(void)
             {
                 gDisableStructs[gBattlerTarget].allureCounter++;
                 gDisableStructs[gBattlerTarget].allureCounter++;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ALLURE;
             }
             else
             {
-                gDisableStructs[gBattlerTarget].allureCounter++;
+                gDisableStructs[gBattlerTarget].allureCounter = 0;
+                gBattleMons[gBattlerTarget].status2 |= STATUS2_INFATUATED_WITH(gBattlerAttacker);
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_INFATUATION;
             }
-            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ALLURE;
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
         else
