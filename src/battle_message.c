@@ -959,7 +959,8 @@ static const u8 sText_ScarfWasChargedByBeingHit[] = _("Being hit by {B_CURRENT_M
 static const u8 sText_PkmnGemstoneMaxedEvasion[] = _("Gemstone maxed out\n{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s evasion!");
 static const u8 sText_UsingItemTheStatOfPkmnFell[] = _("Using {B_LAST_ITEM}, the {B_BUFF1}\nof {B_SCR_ACTIVE_NAME_WITH_PREFIX} {B_BUFF2}");
 static const u8 sText_AbilityLetItUseMove[] = _("{B_ATK_NAME_WITH_PREFIX}'s ability let it use\n{B_CURRENT_MOVE}!");
-static const u8 sText_AbilityLetItUseMoveGuardDog[] = _("{B_DEF_NAME_WITH_PREFIX}'s ability let it use\nGrowl!");
+static const u8 sText_AbilityLetItUseMoveGuardDog[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_ATK_ABILITY} let it use\nGrowl!");
+static const u8 sText_AbilityLetItUseMoveSweetVeil[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_ATK_ABILITY} let it use\nSweet Scent!");
 static const u8 sText_WepearBerryHit[] = _("Wepear Berry allowed\nhitting through protection!");
 static const u8 sText_PkmnCutsHPWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\ncuts {B_DEF_NAME_WITH_PREFIX}'s HP!");
 static const u8 sText_HealerRestoration[] = _("{B_ATK_PARTNER_NAME} was healed\nby {B_ATK_NAME_WITH_PREFIX}!");
@@ -1857,6 +1858,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_FLIPCOINMESSAGE - BATTLESTRINGS_TABLE_START] = sText_FlipCoinMessage,
     [STRINGID_PKMNSHEARTFLUTTERSSHALALALA2 - BATTLESTRINGS_TABLE_START] = sText_PkmnsHeartFluttersShalalala2,
     [STRINGID_ABILITYLETITUSEMOVEGUARDDOG - BATTLESTRINGS_TABLE_START] = sText_AbilityLetItUseMoveGuardDog,
+    [STRINGID_ABILITYLETITUSEMOVESWEETVEIL - BATTLESTRINGS_TABLE_START] = sText_AbilityLetItUseMoveSweetVeil,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

@@ -14466,6 +14466,38 @@ BattleScript_GuardDogLoopIncrement:
 	copybyte gBattlerAttacker, sSAVED_BATTLER
 	return
 
+BattleScript_SweetVeilActivates::
+	copybyte sSAVED_BATTLER, gBattlerAttacker
+	call BattleScript_AbilityPopUpTarget
+	printstring STRINGID_ABILITYLETITUSEMOVESWEETVEIL
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_TARGET, B_ANIM_GUARD_DOG
+	waitanimation
+	copybyte gEffectBattler, gBattlerTarget
+	swapattackerwithtarget
+	setbyte gBattlerTarget, 0
+BattleScript_SweetVeilLoop:
+	jumpiffainted BS_TARGET, TRUE, BattleScript_SweetVeilLoopIncrement
+	jumpiftargetally BattleScript_SweetVeilLoopIncrement
+	setstatchanger STAT_EVASION, 1, TRUE
+	jumpifbyteequal gBattlerTarget, gEffectBattler, BattleScript_SweetVeilLoopIncrement
+	statbuffchange STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_SweetVeilLoopIncrement
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_SweetVeilTargetSpeedCantGoLower
+	setgraphicalstatchangevalues
+	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_SweetVeilLoopIncrement
+BattleScript_SweetVeilTargetSpeedCantGoLower:
+	printstring STRINGID_STATSWONTDECREASE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_SweetVeilLoopIncrement:
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_SweetVeilLoop
+	swapattackerwithtarget
+	copybyte gBattlerAttacker, sSAVED_BATTLER
+	return
+
 BattleScript_AngerShellActivates::
 	copybyte sSAVED_BATTLER, gBattlerAttacker
 	copybyte gBattlerAbility, gEffectBattler

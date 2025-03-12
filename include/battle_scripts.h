@@ -556,6 +556,7 @@ extern const u8 BattleScript_WindRiderStatRaiseOnSwitchIn[];
 extern const u8 BattleScript_WindPowerChargeOnSwitchIn[];
 extern const u8 BattleScript_CottonDownActivates[];
 extern const u8 BattleScript_GuardDogActivates[];
+extern const u8 BattleScript_SweetVeilActivates[];
 extern const u8 BattleScript_BallFetch[];
 extern const u8 BattleScript_SandSpitActivates[];
 extern const u8 BattleScript_PerishBodyActivates[];
