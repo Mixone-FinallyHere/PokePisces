@@ -1239,7 +1239,7 @@ static const u8 sWindRiderDescription[] = _(
 static const u8 sGuardDogDescription[] = _(
     "Sharply boosts Attack if\n"
     "intimidated, disturbed, or\n"
-    "mocked. Stops forced switches.");
+    "mocked. Uses Growl if attacked.");
 
 static const u8 sRockyPayloadDescription[] = _(
     "Powers up Rock-type moves.");

@@ -2622,7 +2622,6 @@ BattleScript_EffectWhirlwind::
 	attackstring
 	ppreduce
 	jumpifroarfails BattleScript_ButItFailed
-	jumpifability BS_TARGET, ABILITY_GUARD_DOG, BattleScript_ButItFailed
 	jumpifability BS_TARGET, ABILITY_SUCTION_CUPS, BattleScript_AbilityPreventsPhasingOut
 	jumpifability BS_TARGET, ABILITY_STALWART, BattleScript_AbilityPreventsPhasingOut
 	jumpifstatus3 BS_TARGET, STATUS3_ROOTED, BattleScript_PrintMonIsRooted
@@ -5305,7 +5304,6 @@ BattleScript_EffectSpook::
 	attackstring
 	ppreduce
 	jumpifroarfails BattleScript_ButItFailed
-	jumpifability BS_TARGET, ABILITY_GUARD_DOG, BattleScript_ButItFailed
 	jumpifability BS_TARGET, ABILITY_SUCTION_CUPS, BattleScript_AbilityPreventsPhasingOut
 	jumpifability BS_TARGET, ABILITY_STALWART, BattleScript_AbilityPreventsPhasingOut
 	jumpifstatus3 BS_TARGET, STATUS3_ROOTED, BattleScript_PrintMonIsRooted
@@ -5365,7 +5363,6 @@ BattleScript_EffectDearlyDepart::
 	attackstring
 	ppreduce
 	jumpifroarfails BattleScript_ButItFailed
-	jumpifability BS_TARGET, ABILITY_GUARD_DOG, BattleScript_ButItFailed
 	jumpifability BS_TARGET, ABILITY_SUCTION_CUPS, BattleScript_AbilityPreventsPhasingOut
 	jumpifability BS_TARGET, ABILITY_STALWART, BattleScript_AbilityPreventsPhasingOut
 	jumpifstatus3 BS_TARGET, STATUS3_ROOTED, BattleScript_PrintMonIsRooted
@@ -10291,7 +10288,6 @@ BattleScript_EffectRoar::
 	attackstring
 	ppreduce
 	jumpifroarfails BattleScript_ButItFailed
-	jumpifability BS_TARGET, ABILITY_GUARD_DOG, BattleScript_ButItFailed
 	jumpifability BS_TARGET, ABILITY_SUCTION_CUPS, BattleScript_AbilityPreventsPhasingOut
 	jumpifability BS_TARGET, ABILITY_STALWART, BattleScript_AbilityPreventsPhasingOut
 	jumpifstatus3 BS_TARGET, STATUS3_ROOTED, BattleScript_PrintMonIsRooted

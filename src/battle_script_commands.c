@@ -7292,8 +7292,7 @@ static void Cmd_moveend(void)
                   || gBattleMoves[gCurrentMove].effect != EFFECT_SPOOK
                   || gBattleStruct->hitSwitchTargetFailed)
                   && IsBattlerAlive(gBattlerAttacker)
-                  && !TestSheerForceFlag(gBattlerAttacker, gCurrentMove)
-                  && GetBattlerAbility(gBattlerAttacker) != ABILITY_GUARD_DOG)
+                  && !TestSheerForceFlag(gBattlerAttacker, gCurrentMove))
                 {
                     // Since we check if battler was damaged, we don't need to check move result.
                     // In fact, doing so actually prevents multi-target moves from activating red card properly
@@ -11697,8 +11696,7 @@ static void Cmd_various(void)
         if (IsBattlerAlive(gBattlerAttacker)
          && IsBattlerAlive(gBattlerTarget)
          && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
-         && TARGET_TURN_DAMAGED
-         && GetBattlerAbility(gBattlerTarget) != ABILITY_GUARD_DOG)
+         && TARGET_TURN_DAMAGED)
         {
             gBattleScripting.switchCase = B_SWITCH_HIT;
             gBattlescriptCurrInstr = cmd->nextInstr;
