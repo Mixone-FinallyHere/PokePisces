@@ -1884,7 +1884,7 @@ static const u8 sGastroAcidDescription[] = _(
     "Ability and lowers its Sp. Def.");
 
 static const u8 sLuckyChantDescription[] = _(
-    "For 6 turns, prevents critical\n"
+    "For 3 turns, prevents critical\n"
     "hits and weakens super effective\n"
     "moves. This always goes first.");
 

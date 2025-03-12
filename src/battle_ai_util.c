@@ -802,6 +802,8 @@ bool32 IsTruantMonVulnerable(u32 battlerAI, u32 opposingBattler)
             return TRUE;
         if (gBattleMoves[move].effect == EFFECT_DIVE && AI_WhoStrikesFirst(battlerAI, opposingBattler, GetAIChosenMove(battlerAI)) == AI_IS_SLOWER)
             return TRUE;
+        if (gBattleMoves[move].effect == EFFECT_DIG && AI_WhoStrikesFirst(battlerAI, opposingBattler, GetAIChosenMove(battlerAI)) == AI_IS_SLOWER)
+            return TRUE;
         if (gBattleMoves[move].effect == EFFECT_FLY && AI_WhoStrikesFirst(battlerAI, opposingBattler, GetAIChosenMove(battlerAI)) == AI_IS_SLOWER)
             return TRUE;
         if (gBattleMoves[move].effect == EFFECT_SHADOW_FORCE && AI_WhoStrikesFirst(battlerAI, opposingBattler, GetAIChosenMove(battlerAI)) == AI_IS_SLOWER)
