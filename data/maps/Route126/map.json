@@ -469,6 +469,69 @@
     }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 42,
+      "y": 32,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route126_EventScript_Launchpad2"
+    },
+    {
+      "type": "sign",
+      "x": 46,
+      "y": 32,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route126_EventScript_Launchpad2"
+    },
+    {
+      "type": "sign",
+      "x": 58,
+      "y": 17,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route126_EventScript_Launchpad3"
+    },
+    {
+      "type": "sign",
+      "x": 65,
+      "y": 17,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route126_EventScript_Launchpad3"
+    },
+    {
+      "type": "sign",
+      "x": 16,
+      "y": 14,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route126_EventScript_Launchpad1"
+    },
+    {
+      "type": "sign",
+      "x": 19,
+      "y": 14,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route126_EventScript_Launchpad1"
+    },
+    {
+      "type": "sign",
+      "x": 36,
+      "y": 17,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route126_EventScript_SpaceCenterSign"
+    },
+    {
+      "type": "sign",
+      "x": 46,
+      "y": 17,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route126_EventScript_SpaceCenterSign"
+    }
   ]
 }

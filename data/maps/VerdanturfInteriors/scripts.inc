@@ -8,7 +8,7 @@ VerdanturfInteriors_MapScripts::
 	.byte 0
 
 VerdanturfInteriors_OnFrame:
-	map_script_2 VAR_WALLY_QUEST_STATE, 0, VerdanturfInteriors_EventScript_WallyHouse
+	map_script_2 VAR_WALLY_QUEST_STATE, 58, VerdanturfInteriors_EventScript_WallyHouse
 	.2byte 0
 
 VerdanturfInteriors_EventScript_WallyHouse::

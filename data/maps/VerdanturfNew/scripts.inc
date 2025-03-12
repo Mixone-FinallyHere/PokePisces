@@ -105,6 +105,7 @@ VerdanturfNew_EventScript_FirstWallyEncounter::
 	speakername VerdanturfNew_Text_NameWally
 	msgbox VerdanturfNew_Text_ComeToMyHouse, MSGBOX_DEFAULT
 	closemessage
+	setvar VAR_WALLY_QUEST_STATE, 58
 	delay 8
 	warp MAP_VERDANTURF_INTERIORS, 19, 6
 	waitstate
