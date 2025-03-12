@@ -463,7 +463,7 @@ const struct MonCoords gMonBackPicCoords[NUM_SPECIES + 1] =
     [SPECIES_YANMEGA]                      = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  6 },
     [SPECIES_LEAFEON]                      = { .size = MON_COORDS_SIZE(48, 64), .y_offset =  0 },
     [SPECIES_GLACEON]                      = { .size = MON_COORDS_SIZE(56, 64), .y_offset =  6 },
-    [SPECIES_GLISCOR]                      = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  4 },
+    [SPECIES_GLISCOR]                      = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  7 },
     [SPECIES_MAMOSWINE]                    = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  6 },
     [SPECIES_PORYGON_Z]                    = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  6 },
     [SPECIES_GALLADE]                      = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  5 },
