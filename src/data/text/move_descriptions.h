@@ -4641,7 +4641,7 @@ static const u8 sSpiritAwayDescription[] = _(
     "Absorbs 3/4 the damage dealt.");
 
 static const u8 sPhantasmDescription[] = _(
-    "The user gains the Phantom status\n"
+    "The user gains the Phantom\n"
     "status by sacrificing 1/4 of its\n"
     "own HP.");
 
