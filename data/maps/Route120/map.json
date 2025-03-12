@@ -572,6 +572,34 @@
       "elevation": 0,
       "dest_map": "MAP_SCUTTILL_HUTS",
       "dest_warp_id": "3"
+    },
+    {
+      "x": 25,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE120",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 22,
+      "y": 27,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE120",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 17,
+      "y": 22,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE120",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 20,
+      "y": 76,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE120",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

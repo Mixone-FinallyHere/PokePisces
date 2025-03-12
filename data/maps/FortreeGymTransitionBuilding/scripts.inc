@@ -5,13 +5,14 @@ FortreeGymTransitionBuilding_MapScripts::
 
 FortreeGymTransitionBuilding_EventScript_Aarune::
 	lock
+	faceplayer
 	setflag FLAG_MET_AARUNE
 	msgbox FortreeGymTransitionBuilding_Text_AaruneGreeting, MSGBOX_DEFAULT
 	speakername FortreeGymTransitionBuilding_Text_NameAarune
 	msgbox FortreeGymTransitionBuilding_Text_AaruneMission, MSGBOX_DEFAULT
 	closemessage
 	delay 8
-	applymovement LOCALID_AARUNE, FortreeGymTransitionBuilding_Movement_AaruneLookUp
+	applymovement LOCALID_AARUNE, FortreeGymTransitionBuilding_Movement_AaruneWalkOut
 	waitmovement 0
 	delay 16
 	playse SE_EXIT
@@ -64,8 +65,15 @@ FortreeGymTransitionBuilding_EventScript_CancelOut::
 	release
 	end
 
-FortreeGymTransitionBuilding_Movement_AaruneLookUp:
-	face_up
+FortreeGymTransitionBuilding_Movement_AaruneWalkOut:
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
 	step_end
 
 FortreeGymTransitionBuilding_Movement_AaruneLookLeft:
@@ -104,7 +112,7 @@ FortreeGymTransitionBuilding_Text_AaruneMission:
 	.string "her spacey mountain climbs again!\p"
 	.string "I can't gym battle without my\n"
 	.string "partner in crime, little buddy!\l"
-	.string "See, Fortree's Gym is entirely\n"
+	.string "See, Fortree's Gym is entirely\l"
 	.string "outdoors, unlike the lot of 'em.\p"
 	.string "We built it around a red-rock\n"
 	.string "mountain in the middle of the\l"

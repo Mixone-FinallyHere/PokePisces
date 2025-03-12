@@ -47,21 +47,21 @@
       "y": 6,
       "elevation": 0,
       "dest_map": "MAP_CANOPOUR_WILDS",
-      "dest_warp_id": "0"
+      "dest_warp_id": "3"
     },
     {
       "x": 19,
       "y": 7,
       "elevation": 0,
       "dest_map": "MAP_CANOPOUR_WILDS",
-      "dest_warp_id": "1"
+      "dest_warp_id": "4"
     },
     {
       "x": 32,
       "y": 9,
       "elevation": 0,
       "dest_map": "MAP_CANOPOUR_WILDS",
-      "dest_warp_id": "2"
+      "dest_warp_id": "5"
     },
     {
       "x": 40,

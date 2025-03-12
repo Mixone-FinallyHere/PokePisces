@@ -56,34 +56,74 @@ SlateportSodaShop_EventScript_YoutuberBlock2::
     end
 
 SlateportSodaShop_Text_MrBeastIntro:
-	.string "intro$"
+	.string "(This guy is tensing up every\n"
+	.string "single one of his veins.\l"
+	.string "Gearing up for one, solid, shout.)\p"
+	.string "mmmmMMMMMMMMMMIIIISSSTTERRRRRRRR\n"
+	.string "BEEEEAAAAASSSSSTT-TYYYYYYYPPPE...!$"
 
 SlateportSodaShop_Text_MrBeastDefeated:
-	.string "defeat$"
+	.string "GONE WRONG!$"
 
 SlateportSodaShop_Text_MrBeastPostBattle:
-	.string "post$"
+	.string "Look, it's not every day you\n"
+	.string "get to run into an e-celeb like me.\l"
+	.string "And you're just gonna waltz by?\l"
+	.string "No autograph? No begging for money?\l"
+	.string "Why won't you give me attention!?!?$"
 
 SlateportSodaShop_Text_KaiSenatIntro:
-	.string "intro$"
+	.string "What's UP guys, Kai here,\n"
+	.string "and to-DAY, we're gonna be\l"
+	.string "CRUSHING these NPCs in\l"
+	.string "Pokemon Battles!\p"
+	.string "Oh look what we got here, guys!\n"
+	.string "Some rando! They'll go down easy!$"
 
 SlateportSodaShop_Text_KaiSenatDefeated:
-	.string "defeat$"
+	.string "I stopped recording the instant\n"
+	.string "one of my 'mons fainted!$"
 
 SlateportSodaShop_Text_KaiSenatPostBattle:
-	.string "post$"
+	.string "I'll explain it all away as\n"
+	.string "a glitch, or something. I don't\l"
+	.string "lose, 'least in the eyes of my fans.$"
 
 SlateportSodaShop_Text_YoutuberBlock1:
-	.string "blockin u$"
+	.string "Try To Get Past Me Challenge!\n"
+	.string "(FAILED)$"
 
 SlateportSodaShop_Text_YoutuberBlock2:
-	.string "blockin u$"
+	.string "I Spent 4 Hours BLOCKING This Path!\n"
+	.string "(EMOTIONAL)$"
 
 SlateportSodaShop_Text_RunningAPromotion:
-	.string "runnin a promo$"
+	.string "The Seashore House wasn't seeing\n"
+	.string "a lot of hubbub lately. Then I\l"
+	.string "had the brilliant idea of inviting\l"
+	.string "these clout goblins to the beach!\p"
+	.string "We've been SWIMMING in dough since!\n"
+	.string "And hey, I bet you heard about\l"
+	.string "our current promotion. If you can\l"
+	.string "beat the trainers in the\l"
+	.string "Seashore House and get to me,\l"
+	.string "you get to try an experimental\l"
+	.string "new soda flavor!\p"
+	.string "...And it looks like you already\n"
+	.string "did just that! Here's our new,\l"
+	.string "never before tested flavor...\l"
+	.string "...Yellow!$"
 
 SlateportSodaShop_Text_NowGetLost:
-	.string "get out$"
+	.string "We hope you enjoy it! And hey,\n"
+	.string "while you're here, why not\l"
+	.string "check in with those e-celebs?\l"
+	.string "You're a youngin! You love 'em!$"
 
 SlateportSodaShop_Text_AlreadyGaveYellowSoda:
-	.string "alr gave u yellow soda$"
+	.string "Ah-ah-ah! No more free samples!\p"
+	.string "You'll have to come back next\n"
+	.string "week when we debut the newest\l"
+	.string "flavor, macaroni and cheese...\p"
+	.string "N-Named after the COLOR, not\n"
+	.string "the food...$"

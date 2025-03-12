@@ -60,7 +60,6 @@ DewfordInteriors_EventScript_SpitfaxLiker::
 
 DewfordInteriors_EventScript_SpitfaxLikerEnterCode::
 	msgbox DewfordInteriors_Text_EnterCodeText, MSGBOX_YESNO
-	compare VAR_RESULT, 0
 	goto_if_eq VAR_RESULT, NO, DewfordInteriors_EventScript_CodeEntryRelease
     special EnterCode
     waitstate

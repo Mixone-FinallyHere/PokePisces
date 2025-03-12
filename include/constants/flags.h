@@ -674,8 +674,8 @@
 #define FLAG_RECEIVED_TEA  0x277 // Unused Flag
 #define FLAG_DEFEATED_LUO_KYO  0x278 // Unused Flag
 #define FLAG_DEFEATED_SHA_GROU  0x279 // Unused Flag
-#define FLAG_UNUSED_0x27A  0x27A // Unused Flag
-#define FLAG_UNUSED_0x27B  0x27B // Unused Flag
+#define FLAG_SUMMONED_PEBB_METEOR  0x27A // Unused Flag
+#define FLAG_GOT_PEBBLERITE  0x27B // Unused Flag
 #define FLAG_UNUSED_0x27C  0x27C // Unused Flag
 #define FLAG_UNUSED_0x27D  0x27D // Unused Flag
 #define FLAG_UNUSED_0x27E  0x27E // Unused Flag

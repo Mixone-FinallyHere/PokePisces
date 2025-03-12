@@ -1026,6 +1026,12 @@
 #define METATILE_Underwater_SeaBottom    0x256
 
 // gTileset_desert
+#define METATILE_desert_MeteorlessBone           0x326
+#define METATILE_desert_MeteorlessCorner         0x31E
+#define METATILE_desert_MeteorlessRock           0x327
+#define METATILE_desert_MeteorlessTop            0x31F
+#define METATILE_desert_NoPebbleriteBottom       0x336
+#define METATILE_desert_NoPebbleriteTop          0x32E
 #define METATILE_desert_door_poke_mart_sweltorn  0x308
 #define METATILE_desert_door_sweltorn            0x27F
 

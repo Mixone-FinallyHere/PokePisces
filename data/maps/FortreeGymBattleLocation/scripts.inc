@@ -11,6 +11,8 @@ FortreeGymBattleLocation_OnFrame:
 
 FortreeGymBattleLocation_EventScript_GymBattle::
 	lock
+	delay 4
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	speakername FortreeGymBattleLocation_Text_NameWinona
 	msgbox FortreeGymBattleLocation_Text_NiceHops, MSGBOX_DEFAULT
 	speakername FortreeGymBattleLocation_Text_NameAarune

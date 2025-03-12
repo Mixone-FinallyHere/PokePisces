@@ -442,6 +442,27 @@
       "elevation": 0,
       "dest_map": "MAP_CANOPOUR_BUSHES",
       "dest_warp_id": "2"
+    },
+    {
+      "x": 116,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_CANOPOUR_WILDS",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 63,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_CANOPOUR_WILDS",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 34,
+      "y": 24,
+      "elevation": 0,
+      "dest_map": "MAP_CANOPOUR_WILDS",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
