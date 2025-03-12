@@ -3864,9 +3864,9 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             if ((gBattleMoves[gCurrentMove].powderMove) && (gBattlerAttacker != gBattlerTarget))
             {
 #if B_POWDER_GRASS >= GEN_6
-                if (!(GetBattlerAbility(gBattlerAttacker) == ABILITY_MYCELIUM_MIGHT) && (IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_GRASS) || GetBattlerAbility(gBattlerTarget) == ABILITY_OVERCOAT || GetBattlerAbility(gBattlerTarget) == ABILITY_TITANIC))
+                if (!(GetBattlerAbility(gBattlerAttacker) == ABILITY_MYCELIUM_MIGHT) && (IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_GRASS) || GetBattlerAbility(gBattlerTarget) == ABILITY_OVERCOAT))
 #else
-                if ((GetBattlerAbility(gBattlerTarget) == ABILITY_OVERCOAT) || (GetBattlerAbility(gBattlerTarget) == ABILITY_TITANIC))
+                if ((GetBattlerAbility(gBattlerTarget) == ABILITY_OVERCOAT))
 #endif
                 {
                     gBattlerAbility = gBattlerTarget;
@@ -6289,7 +6289,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && TARGET_TURN_DAMAGED 
             && IsBattlerAlive(gBattlerAttacker) 
             && !IsAbilityOnSide(gBattlerAttacker, ABILITY_AROMA_VEIL)
-            && !GetBattlerAbility(gBattlerAttacker) != ABILITY_TITANIC
             && gBattleMons[gBattlerAttacker].pp[gChosenMovePos] != 0 
             && RandomPercentage(RNG_POISON_POINT, 20))
             {
@@ -6301,9 +6300,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
             && TARGET_TURN_DAMAGED 
             && IsBattlerAlive(gBattlerAttacker) 
-            && !GetBattlerAbility(gBattlerAttacker) != ABILITY_TITANIC
             && gBattleMons[gBattlerAttacker].pp[gChosenMovePos] != 0 
-            && RandomPercentage(RNG_POISON_POINT, 20))
+            && RandomPercentage(RNG_POISON_POINT, 10))
             {
                 gBattleMons[gBattlerAttacker].status2 |= STATUS2_CURSED;
                 BattleScriptPushCursor();
@@ -6606,7 +6604,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_EFFECT_SPORE:
-            if (!IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GRASS) && GetBattlerAbility(gBattlerAttacker) != ABILITY_OVERCOAT && GetBattlerAbility(gBattlerAttacker) != ABILITY_TITANIC && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOGGLES)
+            if (!IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GRASS) && GetBattlerAbility(gBattlerAttacker) != ABILITY_OVERCOAT && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOGGLES)
             {
                 i = Random() % 4;
                 if (i == 0)
@@ -7236,7 +7234,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             || IsBattlerWeatherAffected(gBattlerTarget, B_WEATHER_SUN)
             || gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_SAFEGUARD 
             || gBattleMons[gBattlerTarget].ability == ABILITY_MAGMA_ARMOR
-            || gBattleMons[gBattlerTarget].ability == ABILITY_COMATOSE 
+            || gBattleMons[gBattlerTarget].ability == ABILITY_COMATOSE
+            || gBattleMons[gBattlerTarget].ability == ABILITY_TITANIC
             || IsAbilityStatusProtected(gBattlerTarget) 
             || (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[gBattlerTarget].species == SPECIES_SEEDOT || gBattleMons[gBattlerTarget].species == SPECIES_NUZLEAF || gBattleMons[gBattlerTarget].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_TAILWIND))))
             && gBattleMoves[move].bitingMove
@@ -7938,7 +7937,8 @@ bool32 CanSleep(u32 battler)
     u16 ability = GetBattlerAbility(battler);
     if (ability == ABILITY_INSOMNIA 
     || ability == ABILITY_VITAL_SPIRIT 
-    || ability == ABILITY_COMATOSE 
+    || ability == ABILITY_COMATOSE
+    || ability == ABILITY_TITANIC
     || (IS_BATTLER_OF_TYPE(battler, TYPE_RELIC))
     || gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD 
     || gBattleMons[battler].status1 & STATUS1_ANY 
@@ -7962,6 +7962,7 @@ bool32 CanBePoisoned(u32 battlerAttacker, u32 battlerTarget)
     || gBattleMons[battlerTarget].status1 & STATUS1_ANY 
     || ability == ABILITY_IMMUNITY 
     || ability == ABILITY_COMATOSE 
+    || ability == ABILITY_TITANIC
     || IsAbilityOnSide(battlerTarget, ABILITY_PASTEL_VEIL) 
     || IsAbilityStatusProtected(battlerTarget) 
     || (GetBattlerHoldEffect(battlerTarget, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battlerTarget].species == SPECIES_SEEDOT || gBattleMons[battlerTarget].species == SPECIES_NUZLEAF || gBattleMons[battlerTarget].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battlerTarget)] & SIDE_STATUS_TAILWIND))
@@ -7981,6 +7982,7 @@ bool32 CanBeBurned(u32 battler)
     || gBattleMons[battler].status1 & STATUS1_ANY 
     || ability == ABILITY_WATER_BUBBLE 
     || ability == ABILITY_COMATOSE 
+    || ability == ABILITY_TITANIC
     || ability == ABILITY_THERMAL_EXCHANGE 
     || IsAbilityOnSide(battler, ABILITY_WATER_VEIL) 
     || IsAbilityStatusProtected(battler) 
@@ -8003,6 +8005,7 @@ bool32 CanBeParalyzed(u32 battler)
 #endif
         gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD 
         || ability == ABILITY_LIMBER || ability == ABILITY_COMATOSE 
+        || ability == ABILITY_TITANIC
         || gBattleMons[battler].status1 & STATUS1_ANY 
         || IsAbilityStatusProtected(battler)
         || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND))
@@ -8022,6 +8025,7 @@ bool32 CanBeFrozen(u32 battler)
     || gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD 
     || ability == ABILITY_MAGMA_ARMOR
     || ability == ABILITY_COMATOSE 
+    || ability == ABILITY_TITANIC
     || gBattleMons[battler].status1 & STATUS1_ANY 
     || IsAbilityStatusProtected(battler) 
     || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND))
@@ -8040,6 +8044,7 @@ bool32 CanGetFrostbite(u32 battler)
     || gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD 
     || ability == ABILITY_MAGMA_ARMOR 
     || ability == ABILITY_COMATOSE 
+    || ability == ABILITY_TITANIC
     || IsAbilityOnSide(battler, ABILITY_WATER_VEIL) 
     || gBattleMons[battler].status1 & STATUS1_ANY 
     || IsAbilityStatusProtected(battler) 
@@ -8059,6 +8064,7 @@ bool32 CanGetPanicked(u32 battler)
       || IS_BATTLER_OF_TYPE(battler, TYPE_GHOST)
       || gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD
       || ability == ABILITY_COMATOSE
+      || ability == ABILITY_TITANIC
       || ability == ABILITY_IGNORANT_BLISS
       || ability == ABILITY_OBLIVIOUS
       || ability == ABILITY_UNAWARE
@@ -8079,6 +8085,7 @@ bool32 CanStartBlooming(u32 battler)
     // NOT blocked by safeguard or flower veil, etc
     if (IS_BATTLER_OF_TYPE(battler, TYPE_FIRE)
             || ability == ABILITY_COMATOSE
+            || ability == ABILITY_TITANIC
             || gBattleMons[battler].status1 & STATUS1_ANY
             || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(1)
             || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(2)
@@ -8092,6 +8099,7 @@ bool32 CanBeExposed(u32 battler)
     u16 ability = GetBattlerAbility(battler);
     if (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD
             || ability == ABILITY_COMATOSE
+            || ability == ABILITY_TITANIC
             || gBattleMons[battler].status1 & STATUS1_ANY
             || IsAbilityStatusProtected(battler)
             || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND))
@@ -14966,7 +14974,7 @@ bool32 IsBattlerAffectedByHazards(u32 battler, bool32 toxicSpikes)
     {
         ret = FALSE;
     }
-    else if (GetBattlerAbility(battler) == ABILITY_SHIELD_DUST || GetBattlerAbility(battler) == ABILITY_IGNORANT_BLISS || GetBattlerAbility(battler) == ABILITY_STURDY || ((gBattleWeather & B_WEATHER_HAIL || gBattleWeather & B_WEATHER_SNOW) && GetBattlerAbility(battler) == ABILITY_SNOW_CLOAK))
+    else if (GetBattlerAbility(battler) == ABILITY_SHIELD_DUST || GetBattlerAbility(battler) == ABILITY_TITANIC || GetBattlerAbility(battler) == ABILITY_IGNORANT_BLISS || GetBattlerAbility(battler) == ABILITY_STURDY || ((gBattleWeather & B_WEATHER_HAIL || gBattleWeather & B_WEATHER_SNOW) && GetBattlerAbility(battler) == ABILITY_SNOW_CLOAK))
     {
         ret = FALSE;
     }

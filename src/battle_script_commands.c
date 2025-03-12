@@ -3428,7 +3428,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 RecordAbilityBattle(gEffectBattler, battlerAbility);
 
                 BattleScriptPush(gBattlescriptCurrInstr + 1);
-                gBattlescriptCurrInstr = BattleScript_BRNPrevention;
+                gBattlescriptCurrInstr = BattleScript_FSBPrevention;
                 if (battlerAbility != ABILITY_WATER_VEIL && IsAbilityOnSide(gBattlerTarget, ABILITY_WATER_VEIL)) {
                     gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ALLY_ABILITY_PREVENTS_ABILITY_STATUS;
                 }
@@ -3447,7 +3447,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 && (gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
                 && (primary == TRUE || certain == MOVE_EFFECT_CERTAIN)) {
                     BattleScriptPush(gBattlescriptCurrInstr + 1);
-                    gBattlescriptCurrInstr = BattleScript_BRNPrevention;
+                    gBattlescriptCurrInstr = BattleScript_FSBPrevention;
 
                     gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUS_HAD_NO_EFFECT;
                     RESET_RETURN
@@ -3458,6 +3458,30 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 statusChanged = TRUE;
             break;
         case STATUS1_PANIC:
+            if (battlerAbility == ABILITY_IGNORANT_BLISS)
+            {
+                if (primary == TRUE || certain == MOVE_EFFECT_CERTAIN)
+                {
+                    gLastUsedAbility = ABILITY_IGNORANT_BLISS;
+                    RecordAbilityBattle(gEffectBattler, ABILITY_IGNORANT_BLISS);
+
+                    BattleScriptPush(gBattlescriptCurrInstr + 1);
+                    gBattlescriptCurrInstr = BattleScript_PNCPrevention;
+
+                    if (gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
+                    {
+                        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ABILITY_PREVENTS_ABILITY_STATUS;
+                        gHitMarker &= ~HITMARKER_IGNORE_SAFEGUARD;
+                    }
+                    else
+                    {
+                        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ABILITY_PREVENTS_MOVE_STATUS;
+                    }
+                    RESET_RETURN
+                }
+                else
+                    break;
+            }
             if (!CanGetPanicked(gEffectBattler)
                 && (gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
                 && (primary == TRUE || certain == MOVE_EFFECT_CERTAIN))
@@ -6211,8 +6235,8 @@ static void Cmd_playstatchangeanimation(void)
                         && GetBattlerHoldEffect(battler, TRUE) != HOLD_EFFECT_CLEAR_AMULET
                         && (GetBattlerHoldEffect(battler, TRUE) != HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species != SPECIES_SEEDOT || gBattleMons[battler].species != SPECIES_NUZLEAF || gBattleMons[battler].species != SPECIES_SHIFTRY) && (!(gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND)))
                         && ability != ABILITY_CLEAR_BODY
-                        && (!gDisableStructs[battler].purified)
                         && ability != ABILITY_TITANIC
+                        && (!gDisableStructs[battler].purified)
                         && ability != ABILITY_FULL_METAL_BODY
                         && !((gStatuses3[battler] & STATUS3_MAGNET_RISE) && (gStatuses4[battler] & STATUS4_SUPERCHARGED))
                         && !(ability == ABILITY_KEEN_EYE && currStat == STAT_ACC)
@@ -10742,6 +10766,7 @@ static void Cmd_various(void)
         || (GetBattlerAbility(gBattlerAttacker) != ABILITY_FREE_LOVE
         && !AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget))
         || GetBattlerAbility(gBattlerTarget) == ABILITY_OBLIVIOUS
+        || GetBattlerAbility(gBattlerTarget) == ABILITY_TITANIC
         || GetBattlerAbility(gBattlerTarget) == ABILITY_IGNORANT_BLISS)
         {
             gBattlescriptCurrInstr = cmd->failInstr;
@@ -15765,7 +15790,6 @@ static void Cmd_weatherdamage(void)
                 && ability != ABILITY_SAND_FORCE
                 && ability != ABILITY_SAND_RUSH
                 && ability != ABILITY_OVERCOAT
-                && ability != ABILITY_TITANIC
                 && !(gStatuses3[gBattlerAttacker] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
                 && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOGGLES)
             {
@@ -15792,7 +15816,6 @@ static void Cmd_weatherdamage(void)
             else if (!IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_ICE)
                 && ability != ABILITY_SNOW_CLOAK
                 && ability != ABILITY_OVERCOAT
-                && ability != ABILITY_TITANIC
                 && ability != ABILITY_ICE_BODY
                 && ability != ABILITY_SLUSH_RUSH
                 && ability != ABILITY_HIBERNAL
@@ -15843,6 +15866,12 @@ static void Cmd_tryinfatuating(void)
         gBattlescriptCurrInstr = BattleScript_NotAffectedAbilityPopUp;
         gLastUsedAbility = ABILITY_IGNORANT_BLISS;
         RecordAbilityBattle(gBattlerTarget, ABILITY_IGNORANT_BLISS);
+    }
+    if (GetBattlerAbility(gBattlerTarget) == ABILITY_TITANIC)
+    {
+        gBattlescriptCurrInstr = BattleScript_NotAffectedAbilityPopUp;
+        gLastUsedAbility = ABILITY_TITANIC;
+        RecordAbilityBattle(gBattlerTarget, ABILITY_TITANIC);
     }
     else
     {

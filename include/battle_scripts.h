@@ -241,6 +241,7 @@ extern const u8 BattleScript_ItemNoSpecificStatLoss[];
 extern const u8 BattleScript_SuperMagnetNoStatLoss[];
 extern const u8 BattleScript_PurifiedNoStatChange[];
 extern const u8 BattleScript_BRNPrevention[];
+extern const u8 BattleScript_FSBPrevention[];
 extern const u8 BattleScript_PNCPrevention[];
 extern const u8 BattleScript_BloomingPrevention[];
 extern const u8 BattleScript_ExposedPrevention[];
