@@ -10637,48 +10637,16 @@ BattleScript_EffectMist::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
-BattleScript_EffectFocusEnergy:
+BattleScript_EffectFocusEnergy::
 	attackcanceler
 	attackstring
 	ppreduce
-	jumpifstatus2 BS_ATTACKER, STATUS2_FOCUS_ENERGY_ANY, BattleScript_FocusEnergyFailedCheckInnerFocus
+	jumpifstatus2 BS_ATTACKER, STATUS2_FOCUS_ENERGY_ANY, BattleScript_ButItFailed
 	setfocusenergy BS_ATTACKER
 	attackanimation
 	waitanimation
 	printfromtable gFocusEnergyUsedStringIds
 	waitmessage B_WAIT_TIME_LONG
-	jumpifability BS_TARGET, ABILITY_INNER_FOCUS, BattleScript_FocusEnergyTryToRaiseStats
-	goto BattleScript_MoveEnd
-BattleScript_FocusEnergyFailedCheckInnerFocus::
-	jumpifability BS_TARGET, ABILITY_INNER_FOCUS, BattleScript_FocusEnergyTryToRaiseStats2
-	goto BattleScript_ButItFailed
-BattleScript_FocusEnergyTryToRaiseStats2::
-	call BattleScript_AbilityPopUp
-	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_FocusEnergyMoveAnim
-	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_ATK, MAX_STAT_STAGE, BattleScript_CantRaiseMultipleStats
-BattleScript_FocusEnergyMoveAnim::
-	attackanimation
-	waitanimation
-	goto BattleScript_FocusEnergyStatRaise
-BattleScript_FocusEnergyTryToRaiseStats::
-	call BattleScript_AbilityPopUp
-	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_FocusEnergyStatRaise
-	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_ATK, MAX_STAT_STAGE, BattleScript_CantRaiseMultipleStats
-BattleScript_FocusEnergyStatRaise::
-	setbyte sSTAT_ANIM_PLAYED, FALSE
-	playstatchangeanimation BS_ATTACKER, BIT_SPATK | BIT_ATK, 0
-	setstatchanger STAT_SPATK, 1, FALSE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_FocusEnergyTryAtk
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_FocusEnergyTryAtk
-	printfromtable gStatUpStringIds
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_FocusEnergyTryAtk::
-	setstatchanger STAT_ATK, 1, FALSE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_FocusEnergyEnd
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_FocusEnergyEnd
-	printfromtable gStatUpStringIds
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_FocusEnergyEnd::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectConfuse:
@@ -16422,7 +16390,6 @@ BattleScript_IntimidateLoop:
 	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_IntimidateLoopIncrement
 	jumpiftype BS_TARGET, TYPE_DRAGON, BattleScript_IntimidatePreventedByDragon
 	jumpifability BS_TARGET, ABILITY_HYPER_CUTTER, BattleScript_IntimidatePrevented
-	jumpifability BS_TARGET, ABILITY_INNER_FOCUS, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_SCRAPPY, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_IntimidatePrevented
 	jumpifability BS_TARGET, ABILITY_OBLIVIOUS, BattleScript_IntimidatePrevented
@@ -19696,7 +19663,6 @@ BattleScript_DisturbLoop:
 	jumpifabsent BS_TARGET, BattleScript_DisturbLoopIncrement
 	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_DisturbLoopIncrement
 	jumpiftype BS_TARGET, TYPE_DRAGON, BattleScript_DisturbPreventedDragon
-	jumpifability BS_TARGET, ABILITY_INNER_FOCUS, BattleScript_DisturbPrevented
 	jumpifability BS_TARGET, ABILITY_SCRAPPY, BattleScript_DisturbPrevented // SCRAPPY
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_DisturbPrevented
 	jumpifability BS_TARGET, ABILITY_OBLIVIOUS, BattleScript_DisturbPrevented
@@ -19772,7 +19738,6 @@ BattleScript_MockingLoop:
 	jumpiftargetally BattleScript_MockingLoopIncrement
 	jumpifabsent BS_TARGET, BattleScript_MockingLoopIncrement
 	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_MockingLoopIncrement
-	jumpifability BS_TARGET, ABILITY_INNER_FOCUS, BattleScript_MockingPrevented
 	jumpifability BS_TARGET, ABILITY_SCRAPPY, BattleScript_MockingPrevented
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MockingPrevented
 	jumpifability BS_TARGET, ABILITY_OBLIVIOUS, BattleScript_MockingPrevented

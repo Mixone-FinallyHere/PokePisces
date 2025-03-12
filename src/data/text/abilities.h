@@ -182,9 +182,9 @@ static const u8 sPoisonPointDescription[] = _(
     "poison the attacker.");
 
 static const u8 sInnerFocusDescription[] = _(
-    "Prevents flinching, Intimidate,\n"
-    "Mocking, and Disturb. Focus\n"
-    "Energy raises Atk and Sp. Atk.");
+    "Using Focus Energy prevents\n"
+    "flinching and critical hits, and\n"
+    "heals after landing them.");
 
 static const u8 sMagmaArmorDescription[] = _(
     "After being hit by a Water-type\n"

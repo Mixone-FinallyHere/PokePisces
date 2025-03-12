@@ -2134,8 +2134,12 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
     s32 critChance = 0;
 
     if ((gSideStatuses[battlerDef] & SIDE_STATUS_LUCKY_CHANT && (abilityAtk != ABILITY_INFILTRATOR 
-    || !(IS_BATTLER_OF_TYPE(battlerAtk, TYPE_BUG)))) || gStatuses3[battlerAtk] & STATUS3_CANT_SCORE_A_CRIT
-    || abilityDef == ABILITY_SHELL_ARMOR || abilityDef == ABILITY_IGNORANT_BLISS || gStatuses4[battlerDef] & STATUS4_CRAFTY_SHIELD)
+    || !(IS_BATTLER_OF_TYPE(battlerAtk, TYPE_BUG)))) 
+    || gStatuses3[battlerAtk] & STATUS3_CANT_SCORE_A_CRIT
+    || abilityDef == ABILITY_SHELL_ARMOR
+    || (abilityDef == ABILITY_INNER_FOCUS && gBattleMons[battlerDef].status2 & STATUS2_FOCUS_ENERGY)
+    || abilityDef == ABILITY_IGNORANT_BLISS 
+    || gStatuses4[battlerDef] & STATUS4_CRAFTY_SHIELD)
     {
         critChance = -1;
     }
@@ -3591,7 +3595,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 }
                 break;
             case MOVE_EFFECT_FLINCH:
-                if (battlerAbility == ABILITY_INNER_FOCUS)
+                if (battlerAbility == ABILITY_INNER_FOCUS && gBattleMons[gEffectBattler].status2 & STATUS2_FOCUS_ENERGY)
                 {
                     if (primary == TRUE || certain == MOVE_EFFECT_CERTAIN)
                     {
@@ -4624,7 +4628,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     u8 randomLowerDefenseChance = RandomPercentage(RNG_TRIPLE_ARROWS_DEFENSE_DOWN, CalcSecondaryEffectChance(gBattlerAttacker, 50));
                     u8 randomFlinchChance = RandomPercentage(RNG_TRIPLE_ARROWS_FLINCH, CalcSecondaryEffectChance(gBattlerAttacker, 30));
 
-                    if (randomFlinchChance && battlerAbility != ABILITY_INNER_FOCUS 
+                    if (randomFlinchChance && (battlerAbility != ABILITY_INNER_FOCUS && !gBattleMons[gEffectBattler].status2 & STATUS2_FOCUS_ENERGY)
                         && battlerAbility != ABILITY_PROPELLER_TAIL && GetBattlerTurnOrderNum(gEffectBattler) > gCurrentTurnActionNumber)
                         gBattleMons[gEffectBattler].status2 |= sStatusFlagsForMoveEffects[MOVE_EFFECT_FLINCH];
 
@@ -4687,7 +4691,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 {
                     u8 randomFlinchChance = RandomPercentage(RNG_TRIPLE_ARROWS_FLINCH, CalcSecondaryEffectChance(gBattlerAttacker, 40));
 
-                    if (randomFlinchChance && battlerAbility != ABILITY_INNER_FOCUS 
+                    if (randomFlinchChance && (battlerAbility != ABILITY_INNER_FOCUS && !gBattleMons[gEffectBattler].status2 & STATUS2_FOCUS_ENERGY) 
                         && battlerAbility != ABILITY_PROPELLER_TAIL && GetBattlerTurnOrderNum(gEffectBattler) > gCurrentTurnActionNumber)
                         gBattleMons[gEffectBattler].status2 |= sStatusFlagsForMoveEffects[MOVE_EFFECT_FLINCH];
 
@@ -4699,7 +4703,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 {
                     u8 randomFlinchChance = RandomPercentage(RNG_GRAV_APPLE_FLINCH, CalcSecondaryEffectChance(gBattlerAttacker, 20));
 
-                    if (randomFlinchChance && battlerAbility != ABILITY_INNER_FOCUS 
+                    if (randomFlinchChance && (battlerAbility != ABILITY_INNER_FOCUS && !gBattleMons[gEffectBattler].status2 & STATUS2_FOCUS_ENERGY) 
                         && battlerAbility != ABILITY_PROPELLER_TAIL && GetBattlerTurnOrderNum(gEffectBattler) > gCurrentTurnActionNumber)
                     {
                         gBattleMons[gEffectBattler].status2 |= sStatusFlagsForMoveEffects[MOVE_EFFECT_FLINCH];

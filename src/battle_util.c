@@ -5530,7 +5530,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 }
             // Dry Skin works similarly to Rain Dish in Rain
             case ABILITY_RAIN_DISH:
-                if (IsBattlerWeatherAffected(battler, B_WEATHER_RAIN) && !BATTLER_MAX_HP(battler) && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
+                if (IsBattlerWeatherAffected(battler, B_WEATHER_RAIN) 
+                && !BATTLER_MAX_HP(battler) 
+                && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
                 {
                     BattleScriptPushCursorAndCallback(BattleScript_RainDishActivates);
                     gBattleMoveDamage = gBattleMons[battler].maxHP / (gLastUsedAbility == ABILITY_RAIN_DISH ? 16 : 8);
@@ -7021,6 +7023,25 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
                 gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                effect++;
+            }
+            break;
+        case ABILITY_INNER_FOCUS:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            && TARGET_TURN_DAMAGED
+            && gIsCriticalHit
+            && !BATTLER_MAX_HP(battler)
+            && gBattleMons[battler].status2 & STATUS2_FOCUS_ENERGY
+            && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK)
+            && IsBattlerAlive(battler)
+            && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
+            {
+                gBattleMoveDamage = (gBattleMons[battler].maxHP * 15 / 100);
+                if (gBattleMoveDamage == 0)
+                    gBattleMoveDamage = 1;
+                gBattleMoveDamage *= -1;
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_AppetiteActivates;
                 effect++;
             }
             break;
