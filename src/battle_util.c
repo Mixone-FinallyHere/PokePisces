@@ -7091,7 +7091,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
             {
                 u16 extraMove = MOVE_LIGHTNING;  //The Extra Move to be used
-                u8 movePower = 40 * (1 + gDisableStructs[gBattlerAttacker].stormBrewCounter); //The Move power, leave at 0 if you want it to be the same as the normal move
+                u8 movePower = 20 * (1 + gDisableStructs[gBattlerAttacker].stormBrewCounter); //The Move power, leave at 0 if you want it to be the same as the normal move
                 u8 moveEffectPercentChance  = 0;  //The percent chance of the move effect happening
                 u8 extraMoveSecondaryEffect = 0;  //Leave at 0 to remove it's secondary effect
                 gTempMove = gCurrentMove;
