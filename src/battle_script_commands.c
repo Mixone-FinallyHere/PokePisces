@@ -326,7 +326,7 @@ static const u16 sBadgeFlags[8] = {
     FLAG_BADGE05_GET, FLAG_BADGE06_GET, FLAG_BADGE07_GET, FLAG_BADGE08_GET,
 };
 
-static const u16 sWhiteOutBadgeMoney[9] = { 25, 50, 75, 115, 155, 205, 255, 320, 385 };
+static const u16 sWhiteOutBadgeMoney[9] = { 10, 25, 50, 115, 155, 205, 255, 320, 385 };
 
 #define STAT_CHANGE_WORKED      0
 #define STAT_CHANGE_DIDNT_WORK  1
