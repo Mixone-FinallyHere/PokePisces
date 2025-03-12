@@ -7218,7 +7218,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
             && gBattleMons[gBattlerTarget].hp != 0 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
-            && CanBePoisoned(gBattlerAttacker, gBattlerTarget) 
+            && CanBePoisoned(gBattlerAttacker, gBattlerTarget)
             && TARGET_TURN_DAMAGED // Need to actually hit the target
             && (Random() % 3) == 0)
             {
@@ -7231,21 +7231,22 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_FROST_JAW:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-            && gBattleMons[gBattlerTarget].hp != 0 
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            && gBattleMons[gBattlerTarget].hp != 0
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
-            && (!(IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_ICE) 
-            || IsBattlerWeatherAffected(gBattlerTarget, B_WEATHER_SUN)
-            || gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_SAFEGUARD 
-            || gBattleMons[gBattlerTarget].ability == ABILITY_MAGMA_ARMOR
-            || gBattleMons[gBattlerTarget].ability == ABILITY_COMATOSE
-            || gBattleMons[gBattlerTarget].ability == ABILITY_TITANIC
-            || IsAbilityStatusProtected(gBattlerTarget) 
-            || (GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[gBattlerTarget].species == SPECIES_SEEDOT || gBattleMons[gBattlerTarget].species == SPECIES_NUZLEAF || gBattleMons[gBattlerTarget].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_TAILWIND))))
             && gBattleMoves[move].bitingMove
             && TARGET_TURN_DAMAGED
+            && CanBeFrozenFrostbiteAbilityEdition(gBattlerTarget)
             && (gBattleMons[gBattlerTarget].status1 & STATUS1_PSN_ANY || gBattleMons[gBattlerTarget].status1 & STATUS1_FROSTBITE || gBattleMons[gBattlerTarget].status1 & STATUS1_PARALYSIS))
             {
+                if (gBattleMons[gBattlerTarget].status1 & STATUS1_PSN_ANY)
+                    gBattleMons[gBattlerTarget].status1 &= ~(STATUS1_PSN_ANY | STATUS1_TOXIC_COUNTER);
+                else
+                    gBattleMons[gBattlerTarget].status1 &= ~(gBattleMons[gBattlerTarget].status1 & STATUS1_ANY);
+
+                BtlController_EmitSetMonData(gBattlerTarget, 0, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[gBattlerTarget].status1);
+                MarkBattlerForControllerExec(gBattlerTarget);
+
                 gBattleScripting.moveEffect = MOVE_EFFECT_FREEZE;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
@@ -8036,6 +8037,22 @@ bool32 CanBeFrozen(u32 battler)
     || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(1) 
     || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(2) 
     || gBattleMons[battler].status1 & STATUS1_BLOOMING_TURN(3))
+        return FALSE;
+    return TRUE;
+}
+
+bool32 CanBeFrozenFrostbiteAbilityEdition(u32 battler)
+{
+    u16 ability = GetBattlerAbility(battler);
+    if (IS_BATTLER_OF_TYPE(battler, TYPE_ICE) 
+    || IsBattlerWeatherAffected(battler, B_WEATHER_SUN) 
+    || gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD 
+    || ability == ABILITY_MAGMA_ARMOR
+    || ability == ABILITY_COMATOSE 
+    || ability == ABILITY_TITANIC
+    || IsAbilityStatusProtected(battler) 
+    || (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND))
+    || (gStatuses4[battler] & STATUS4_GEARED_UP && gStatuses3[battler] & STATUS3_MAGNET_RISE))
         return FALSE;
     return TRUE;
 }
@@ -12789,6 +12806,13 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
     if (gBattleMons[battlerDef].status1 & STATUS1_FREEZE)
     {
         defStat /= 2;
+    }
+
+    if (gBattleMons[battlerDef].status1 & STATUS1_FREEZE)
+    {
+        defStat = spDef;
+        defStage = gBattleMons[battlerDef].statStages[STAT_SPDEF];
+        defStat *= 3;
     }
 
     if (gBattleMoves[gCurrentMove].effect == EFFECT_FUTURE_SIGHT && gCurrentMove != MOVE_DECIMATION)
