@@ -1436,7 +1436,8 @@ static const u8 sSaddenedDescription[] = _(
 
 static const u8 sShamblesDescription[] = _(
     "Powers up and gives priority to\n"
-    "the Pokémon's switching moves.");
+    "the Pokémon's switching moves\n"
+    "in rooms.");
 
 static const u8 sStellarBodyDescription[] = _(
     "The Pokémon transforms\n"

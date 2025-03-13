@@ -2359,8 +2359,8 @@ static const u8 sSilverPowderDesc[] = _(
 static const u8 sHardStoneDesc[] = _(
     "A durable rock that\n"
     "boosts Rock-type\n"
-    "moves. Reduces damage\n"
-    "after using one.");
+    "moves. Takes less\n"
+    "damage after using one.");
 
 static const u8 sSpellTagDesc[] = _(
     "An eerie tag that\n"
@@ -4442,9 +4442,9 @@ static const u8 sBattleHelmDesc[] = _(
 
 static const u8 sSpectralIdolDesc[] = _(
     "Increases foes' PP\n"
-    "usage. The holder also\n"
-    "takes less damage from\n"
-    "panicked foes.");
+    "usage. The holder\n"
+    "takes less damage\n"
+    "from panicked foes.");
 
 static const u8 sGlueTubeDesc[] = _(
     "Some sticky glue that\n"

@@ -274,7 +274,7 @@ static const u8 sFlamethrowerDescription[] = _(
 
 static const u8 sMistDescription[] = _(
     "Stops stat drops and added\n"
-    "effects for 6 turns. This move\n"
+    "effects for 5 turns. This move\n"
     "always goes first.");
 
 static const u8 sWaterGunDescription[] = _(
@@ -1091,7 +1091,7 @@ static const u8 sFrustrationDescription[] = _(
     "the user has a stat drop.");
 
 static const u8 sSafeguardDescription[] = _(
-    "Prevents certain statuses for 6\n"
+    "Prevents certain statuses for 5\n"
     "turns. This move always goes\n"
     "first.");
 
@@ -1285,7 +1285,7 @@ static const u8 sHailDescription[] = _(
     "Pokémon except Ice-types.");
 
 static const u8 sTormentDescription[] = _(
-    "Foes cannot use moves repeatedly.\n"
+    "Foes can't use moves repeatedly.\n"
     "If a foe is already tormented,\n"
     "cuts their PP and a random stat.");
 
@@ -1606,7 +1606,7 @@ static const u8 sWaterSpoutDescription[] = _(
 static const u8 sSignalBeamDescription[] = _(
     "Shoots a beam of light that may\n"
     "confuse the foe. If the foe is\n"
-    "confused, always lowers accuracy.");
+    "confused, lowers accuracy.");
 
 static const u8 sShadowPunchDescription[] = _(
     "The user throws a punch from the\n"
@@ -4097,9 +4097,9 @@ static const u8 sSpookDescription[] = _(
     "foe's HP by nearly a third.");
 
 static const u8 sChillyAirDescription[] = _(
-    "The user blows cold winds\n"
-    "that lower foes' evasion\n"
-    "and Speed stats.");
+    "The user blows cold winds that\n"
+    "lower foes' evasion and Speed\n"
+    "stats.");
 
 static const u8 sHitNRunDescription[] = _(
     "After running over the foe, the\n"

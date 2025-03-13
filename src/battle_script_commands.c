@@ -1891,9 +1891,8 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
         break;
     case ABILITY_ANTICIPATION:
         if (gProtectStructs[battlerDef].anticipated)
-        {
             calc = min(calc, 50); // max accuracy of move is 50%
-        }
+        break;
     }
 
     // Attacker's ally's ability
