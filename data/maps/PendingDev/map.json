@@ -166,7 +166,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PendingDev_EventScript_ItemPPPMax",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_PENDING_DEV_PP_MAX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -179,7 +179,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PendingDev_EventScript_ItemPAbilityGuard",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_PENDING_DEV_ABILITY_GUARD"
     }
   ],
   "warp_events": [
