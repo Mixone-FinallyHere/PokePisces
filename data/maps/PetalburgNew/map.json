@@ -129,29 +129,29 @@
       "x": 20,
       "y": 16,
       "elevation": 0,
-      "dest_map": "MAP_PETALBURG_NEW",
+      "dest_map": "MAP_PETALBURG_INTERIORS",
       "dest_warp_id": "0"
     },
     {
       "x": 29,
       "y": 19,
       "elevation": 0,
-      "dest_map": "MAP_PETALBURG_NEW",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_PETALBURG_INTERIORS",
+      "dest_warp_id": "2"
     },
     {
       "x": 13,
       "y": 32,
       "elevation": 0,
-      "dest_map": "MAP_PETALBURG_NEW",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_PETALBURG_INTERIORS",
+      "dest_warp_id": "4"
     },
     {
       "x": 27,
       "y": 29,
       "elevation": 0,
-      "dest_map": "MAP_PETALBURG_NEW",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_PETALBURG_INTERIORS",
+      "dest_warp_id": "6"
     },
     {
       "x": 40,

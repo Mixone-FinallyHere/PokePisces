@@ -4028,3 +4028,11 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/SlateportSodaShop/scripts.inc"
 
 	.include "data/maps/SeasideCasinoEggGachaRoom/scripts.inc"
+
+	.include "data/maps/PetalburgInteriors/scripts.inc"
+
+	.include "data/maps/RustburgWharfHouse/scripts.inc"
+
+	.include "data/maps/LittlerootNewHouseTwo/scripts.inc"
+
+	.include "data/maps/PebblerLab/scripts.inc"

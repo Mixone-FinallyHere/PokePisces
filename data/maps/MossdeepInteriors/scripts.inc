@@ -32,6 +32,87 @@ MossdeepInteriors_EventScript_AlreadyGaveTriumphStar::
 	release
 	end
 
+MossdeepInteriors_EventScript_CardTrader::
+	lock
+	faceplayer
+	checkitem ITEM_BUSINESS_CARD
+	goto_if_eq VAR_RESULT, TRUE, MossdeepInteriors_EventScript_TradeForCard
+	checkitem ITEM_LEGEND_CARD
+	goto_if_eq VAR_RESULT, TRUE, MossdeepInteriors_EventScript_GaveYouMyCard
+	msgbox MossdeepInteriors_Text_WhatINeed, MSGBOX_AUTOCLOSE
+	release
+	end
+
+MossdeepInteriors_EventScript_TradeForCard::
+	msgbox MossdeepInteriors_Text_WillYouTradeCards, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, MossdeepInteriors_EventScript_CardTrade
+	release
+	end
+
+MossdeepInteriors_EventScript_CardTrade::
+	delay 4
+	msgbox MossdeepInteriors_Text_AboutThatCard, MSGBOX_DEFAULT
+	closemessage
+	removeitem ITEM_BUSINESS_CARD
+	giveitem ITEM_LEGEND_CARD
+	closemessage
+	release
+	end
+
+MossdeepInteriors_EventScript_GaveYouMyCard::
+	msgbox MossdeepInteriors_Text_GaveYouMyCard, MSGBOX_AUTOCLOSE
+	release
+	end
+
+MossdeepInteriors_EventScript_BikeChild::
+	msgbox MossdeepInteriors_Text_BikeChild, MSGBOX_NPC
+	end
+
+MossdeepInteriors_Text_WhatINeed:
+	.string "My son is so full of energy\n"
+	.string "at his age... Oh, I'm exhausted!\p"
+	.string "His birthday is coming up, and I\n"
+	.string "have no clue what he'll want best!\l"
+	.string "Oh, whatever can I do...$"
+
+MossdeepInteriors_Text_WillYouTradeCards:
+	.string "My son is so full of energy\n"
+	.string "at his age... Oh, I'm exhausted!\p"
+	.string "His birthday is coming up, and I\n"
+	.string "have no clue what he'll want best!\l"
+	.string "Oh, whatever can I do...\p"
+	.string "(You flash Rydel's Business Card\n"
+	.string "at the distraught man.)\p"
+	.string "R-Rydel? Ah, that's it!\n"
+	.string "I'll get him a bicycle from\l"
+	.string "Rydel's Cycles! It's perfect!\l"
+	.string "Please, c-can I have that card?\l"
+	.string "I'll give you something good\l"
+	.string "in return for the favor!$"
+
+MossdeepInteriors_Text_AboutThatCard:
+	.string "You're a lifesaver!\p"
+	.string "Let's see here...\n"
+	.string "...You're giving me a card,\l"
+	.string "so I think it's fitting to\l"
+	.string "give YOU a card in return.\p"
+	.string "This Legend Card is one from\n"
+	.string "my collection! It has a pretty\l"
+	.string "high value these days. Maybe\l"
+	.string "you can get a pretty penny for it!\l"
+	.string "Or maybe you can trade it to\l"
+	.string "another collector.\p"
+	.string "Either way, it's yours!\n$"
+
+MossdeepInteriors_Text_GaveYouMyCard:
+	.string "I sure hope they sell bikes\n"
+	.string "at that shop for such little kids...$"
+
+MossdeepInteriors_Text_BikeChild:
+	.string "I wanna ride an Acro Bike!\n"
+	.string "So so bad! Pewww....!\l"
+	.string "Hop-hop-hop!$"
+
 MossdeepInteriors_Text_DoAPaperForMe:
 	.string "Oh, what is an art teacher to do\n"
 	.string "during the off season for school...\p"

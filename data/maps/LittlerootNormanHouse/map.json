@@ -59,29 +59,29 @@
       "x": 8,
       "y": 21,
       "elevation": 0,
-      "dest_map": "MAP_LITTLEROOT_NORMAN_HOUSE",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_LITTLEROOT_NEW",
+      "dest_warp_id": "1"
     },
     {
       "x": 9,
       "y": 21,
       "elevation": 0,
-      "dest_map": "MAP_LITTLEROOT_NORMAN_HOUSE",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_LITTLEROOT_NEW",
+      "dest_warp_id": "1"
     },
     {
       "x": 8,
       "y": 15,
       "elevation": 0,
       "dest_map": "MAP_LITTLEROOT_NORMAN_HOUSE",
-      "dest_warp_id": "0"
+      "dest_warp_id": "3"
     },
     {
       "x": 7,
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_LITTLEROOT_NORMAN_HOUSE",
-      "dest_warp_id": "0"
+      "dest_warp_id": "2"
     }
   ],
   "coord_events": [
