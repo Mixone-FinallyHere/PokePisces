@@ -218,6 +218,7 @@ static const u8 sText_PkmnTryingToTakeFoe[] = _("{B_ATK_NAME_WITH_PREFIX} is try
 static const u8 sText_PkmnTookFoe[] = _("{B_DEF_NAME_WITH_PREFIX} took\n{B_ATK_NAME_WITH_PREFIX} with it!");
 static const u8 sText_PkmnReducedPP[] = _("Reduced {B_DEF_NAME_WITH_PREFIX}'s\n{B_BUFF1} by {B_BUFF2}!");
 static const u8 sText_AtkPkmnReducedPP[] = _("{B_LAST_ITEM} reduced {B_ATK_NAME_WITH_PREFIX}'s\n{B_BUFF1} by {B_BUFF2}!");
+static const u8 sText_AtkPkmnConfused[] = _("{B_LAST_ITEM} made {B_ATK_NAME_WITH_PREFIX}\nbecome confused!");
 static const u8 sText_ClearAmuletWontLowerStats[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1} prevents\nits stats from being lowered!");
 static const u8 sText_PurifiedNoStatChange[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is too pure\nfor stat changes!");
 static const u8 sText_TargetWasPurifiedAndCantChangeStats[] = _("{B_DEF_NAME_WITH_PREFIX} has been purified\nand cannot change their stats!");
@@ -1864,6 +1865,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ABILITYLETITUSEMOVESWEETVEIL - BATTLESTRINGS_TABLE_START] = sText_AbilityLetItUseMoveSweetVeil,
     [STRINGID_PKMNSXPREVENTSFROSTBITE - BATTLESTRINGS_TABLE_START] = sText_PkmnsXPreventsFrostbite,
     [STRINGID_PLAYERWHITEOUT3 - BATTLESTRINGS_TABLE_START] = sText_PlayerWhiteout3,
+    [STRINGID_ATKPKMNCONFUSED - BATTLESTRINGS_TABLE_START] = sText_AtkPkmnConfused,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

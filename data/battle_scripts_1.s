@@ -18985,7 +18985,7 @@ BattleScript_RizzBerryEnd::
 BattleScript_RabutaBerryActivatesRet::
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
 	status2animation BS_ATTACKER, STATUS2_CONFUSION
-	printstring STRINGID_PKMNWASCONFUSED
+	printstring STRINGID_ATKPKMNCONFUSED
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_TARGET
 BattleScript_RabutaBerryEnd::
