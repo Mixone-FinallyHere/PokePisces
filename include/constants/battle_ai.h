@@ -61,8 +61,9 @@
 #define AI_FLAG_OMNISCIENT            (1 << 17)  // AI has full knowledge of player moves, abilities, hold items
 #define AI_FLAG_SEBASTIANS_TRICK      (1 << 18)
 #define AI_FLAG_PASSAWARY             (1 << 19)
+#define AI_FLAG_DOUBLE_ACE_POKEMON    (1 << 20)  // AI has *two* Ace Pokémon. The last two Pokémons in the party won't be used unless they're the last ones remaining. Goes well in battles where the trainer ID equals to twins, couples, etc.
 
-#define AI_FLAG_COUNT                       20
+#define AI_FLAG_COUNT                       21
 
 // 'other' ai logic flags
 #define AI_FLAG_ROAMING               (1 << 29)

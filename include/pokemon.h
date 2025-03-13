@@ -435,6 +435,7 @@ u8 GiveMonToPlayer(struct Pokemon *mon);
 u8 SendMonToPC(struct Pokemon* mon);
 u8 CalculatePlayerPartyCount(void);
 u8 CalculateEnemyPartyCount(void);
+u8 CalculateEnemyPartyCountInSide(u32 battler);
 u8 GetMonsStateToDoubles(void);
 u8 GetMonsStateToDoubles_2(void);
 u16 GetAbilityBySpecies(u16 species, u8 abilityNum);
