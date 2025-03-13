@@ -135,7 +135,6 @@ struct ProtectStruct
 {
     u32 protected:1;
     u32 spikyShielded:1;
-    u32 anticipated:1;
     u32 defendOrder:1;
     u32 kingsShielded:1;
     u32 shelltered:1;

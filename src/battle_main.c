@@ -3447,7 +3447,6 @@ void FaintClearSetData(u32 battler)
 
     gProtectStructs[battler].protected = FALSE;
     gProtectStructs[battler].spikyShielded = FALSE;
-    gProtectStructs[battler].anticipated = FALSE;
     gProtectStructs[battler].hardStoneBoost = FALSE;
     gProtectStructs[battler].kingsShielded = FALSE;
     gProtectStructs[battler].shelltered = FALSE;
@@ -5261,7 +5260,6 @@ static void TurnValuesCleanUp(bool8 var0)
         {
             gProtectStructs[i].protected = FALSE;
             gProtectStructs[i].spikyShielded = FALSE;
-            gProtectStructs[i].anticipated = FALSE;
             gProtectStructs[i].hardStoneBoost = FALSE;
             gProtectStructs[i].kingsShielded = FALSE;
             gProtectStructs[i].shelltered = FALSE;
@@ -5283,7 +5281,7 @@ static void TurnValuesCleanUp(bool8 var0)
             if (gDisableStructs[i].isFirstTurn)
                 gDisableStructs[i].isFirstTurn--;
             
-            if (gDisableStructs[i].stormBrewCounter > 1)
+            if (gDisableStructs[i].stormBrewCounter)
                 gDisableStructs[i].stormBrewCounter = 0;
 
             if (gDisableStructs[i].rechargeTimer)
