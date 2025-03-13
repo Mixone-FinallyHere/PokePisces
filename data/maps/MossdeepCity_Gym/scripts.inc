@@ -118,6 +118,7 @@ MossdeepCity_Gym_EventScript_TateAndLizaDefeated::
 	speakername MossdeepCity_Gym_Text_NameLiza
 	msgbox MossdeepCity_Gym_Text_LizaExplain, MSGBOX_DEFAULT
 	setflag FLAG_BADGE02_GET
+	clearflag FLAG_WITHIN_GYM
 	setvar VAR_PISCES_STORY_PROGRESS, 2
 	setvar VAR_0x8008, 2
 	call MossdeepCity_Gym_EventScript_GiveCalmMind

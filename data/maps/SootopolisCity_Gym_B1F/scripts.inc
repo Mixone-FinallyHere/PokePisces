@@ -92,6 +92,7 @@ SootopolisCity_Gym_B1F_EventScript_JuanDefeated::
 	setvar VAR_NEW_COO_STATE, 1
 	setflag FLAG_DEFEATED_RUSTBORO_GYM
 	setflag FLAG_BADGE01_GET
+	clearflag FLAG_WITHIN_GYM
 	setvar VAR_SOOTOPOLIS_CITY_STATE, 6
 	setvar VAR_ROLAND_STATE, 3
 	call SootopolisCity_Gym_B1F_EventScript_GiveWaterPulse

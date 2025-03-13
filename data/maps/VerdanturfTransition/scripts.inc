@@ -59,6 +59,7 @@ VerdanturfTransition_EventScript_CheckMoney::
 	call Common_EventScript_PlayGymBadgeFanfare
 	setflag FLAG_PAID_FOR_BADGE_06
 	setflag FLAG_BADGE06_GET
+	clearflag FLAG_WITHIN_GYM
 	setflag FLAG_DEFEATED_MAUVILLE_GYM
 	setvar VAR_PISCES_STORY_PROGRESS, 7
 	setvar VAR_TEMP_4, 1

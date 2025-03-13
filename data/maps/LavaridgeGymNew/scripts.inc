@@ -435,6 +435,7 @@ LavaridgeGymNew_EventScript_GymBattleOver::
 	speakername LavaridgeGymNew_Text_NameMoore
 	msgbox LavaridgeGymNew_Text_YouDidIt, MSGBOX_DEFAULT
 	setflag FLAG_BADGE05_GET
+	clearflag FLAG_WITHIN_GYM
 	setflag FLAG_DEFEATED_LAVARIDGE_GYM
 	setvar VAR_PISCES_STORY_PROGRESS, 6
 	giveitem ITEM_TM_WILL_O_WISP

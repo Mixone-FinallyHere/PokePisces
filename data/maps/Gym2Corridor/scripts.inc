@@ -28,6 +28,7 @@ Gym2Corridor_EventScript_PrepForGym::
 	clearflag FLAG_PISCES_D
 	clearflag FLAG_PISCES_E
 	clearflag FLAG_PISCES_F
+	setflag FLAG_WITHIN_GYM
 	cleartrainerflag TRAINER_P_PLANCK
 	cleartrainerflag TRAINER_P_LEGRI
 	cleartrainerflag TRAINER_P_SPITZER

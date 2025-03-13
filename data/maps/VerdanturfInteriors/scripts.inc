@@ -121,6 +121,7 @@ VerdanturfInteriors_EventScript_MeetWattsonAndScott::
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
 	setflag FLAG_BADGE06_GET
+	clearflag FLAG_WITHIN_GYM
 	setflag FLAG_DEFEATED_MAUVILLE_GYM
 	setvar VAR_PISCES_STORY_PROGRESS, 7
 	speakername VerdanturfInteriors_Text_NameWattson
