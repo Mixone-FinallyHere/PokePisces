@@ -916,7 +916,7 @@ static const u32 sStatusFlagsForMoveEffects[NUM_MOVE_EFFECTS] =
     [MOVE_EFFECT_NIGHTMARE]      = STATUS2_NIGHTMARE,
     [MOVE_EFFECT_THRASH]         = STATUS2_LOCK_CONFUSE,
     [MOVE_EFFECT_RECHARGE_REDUCE] = STATUS4_RECHARGE_REDUCE,
-    [MOVE_EFFECT_RECHARGE_BURN] = STATUS4_RECHARGE_BURN,
+    [MOVE_EFFECT_RECHARGE_BURN]  = STATUS4_RECHARGE_BURN,
 };
 
 static const u8 *const sMoveEffectBS_Ptrs[] =
@@ -17998,7 +17998,7 @@ static void Cmd_setgastroacid(void)
 {
     CMD_ARGS(const u8 *failInstr);
 
-    if (IsGastroAcidBannedAbility(gBattleMons[gBattlerTarget].ability))
+    if (IsGastroAcidBannedAbility(gBattleMons[gBattlerTarget].ability) || gStatuses3[gBattlerTarget] & STATUS3_GASTRO_ACID)
     {
         gBattlescriptCurrInstr = cmd->failInstr;
     }

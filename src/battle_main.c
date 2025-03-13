@@ -5290,9 +5290,11 @@ static void TurnValuesCleanUp(bool8 var0)
             {
                 gDisableStructs[i].rechargeTimer--;
                 if (gDisableStructs[i].rechargeTimer == 0)
+                {
                     gBattleMons[i].status2 &= ~STATUS2_RECHARGE;
                     gStatuses4[i] &= ~STATUS4_RECHARGE_REDUCE;
                     gStatuses4[i] &= ~STATUS4_RECHARGE_BURN;
+                }
             }
         }
 
@@ -5648,7 +5650,7 @@ static void HandleEndTurn_BattleLost(void)
     }
     else if (FlagGet(FLAG_WITHIN_GYM))
     {
-        gBattlescriptCurrInstr = BattleScript_LocalBattleLost;
+        gBattlescriptCurrInstr = BattleScript_LocalBattleLostGym;
     }
     else
     {

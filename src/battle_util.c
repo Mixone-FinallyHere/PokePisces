@@ -223,7 +223,10 @@ void HandleAction_UseMove(void)
         gHitMarker |= HITMARKER_NO_PPDEDUCT;
         *(gBattleStruct->moveTarget + gBattlerAttacker) = GetMoveTarget(MOVE_STRUGGLE, NO_TARGET_OVERRIDE);
     }
-    else if (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS || gBattleMons[gBattlerAttacker].status2 & STATUS2_RECHARGE || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_REDUCE || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_BURN)
+    else if (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS 
+        || gBattleMons[gBattlerAttacker].status2 & STATUS2_RECHARGE 
+        || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_REDUCE 
+        || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_BURN)
     {
         gCurrentMove = gChosenMove = gLockedMoves[gBattlerAttacker];
     }
@@ -3676,7 +3679,9 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_RECHARGE: // recharge
-            if (gBattleMons[gBattlerAttacker].status2 & STATUS2_RECHARGE || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_REDUCE || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_BURN)
+            if (gBattleMons[gBattlerAttacker].status2 & STATUS2_RECHARGE 
+            || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_REDUCE 
+            || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_BURN)
             {
                 gBattleMons[gBattlerAttacker].status2 &= ~STATUS2_RECHARGE;
                 gStatuses4[gBattlerAttacker] &= ~STATUS4_RECHARGE_REDUCE;
