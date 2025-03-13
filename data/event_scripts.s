@@ -904,6 +904,7 @@ Common_Mart_TannerShop4:
 	.2byte ITEM_BURN_HEAL
 	.2byte ITEM_ICE_HEAL
 	.2byte ITEM_AWAKENING
+	.2byte ITEM_RELAXANT
 	.2byte ITEM_ENERGY_ROOT
 	.2byte ITEM_NONE
 	release
