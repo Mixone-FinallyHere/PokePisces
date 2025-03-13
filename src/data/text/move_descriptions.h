@@ -4426,7 +4426,7 @@ static const u8 sBlackBuffetDescription[] = _(
     "Boosted the lower the foe's HP.");
 
 static const u8 sExecutionDescription[] = _(
-    "Power doubles if the foe is at\n"
+    "Power triples if the foe is at\n"
     "3/4 HP or less. The user becomes\n"
     "exhausted, reducing their power.");
 

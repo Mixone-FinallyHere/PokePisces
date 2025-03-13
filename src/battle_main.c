@@ -5646,6 +5646,10 @@ static void HandleEndTurn_BattleLost(void)
             gBattleOutcome &= ~B_OUTCOME_LINK_BATTLE_RAN;
         }
     }
+    else if (FlagGet(FLAG_WITHIN_GYM))
+    {
+        gBattlescriptCurrInstr = BattleScript_LocalBattleLost;
+    }
     else
     {
         gBattlescriptCurrInstr = BattleScript_LocalBattleLost;

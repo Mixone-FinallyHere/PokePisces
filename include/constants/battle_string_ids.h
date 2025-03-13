@@ -866,6 +866,7 @@
 #define STRINGID_ABILITYLETITUSEMOVESWEETVEIL         864
 #define STRINGID_PKMNSXPREVENTSFROSTBITE              865
 #define STRINGID_MAGICCOATENDS                        866
+#define STRINGID_PLAYERWHITEOUT3                      867
 
 #define BATTLESTRINGS_COUNT                           867
 
