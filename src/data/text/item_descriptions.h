@@ -4621,10 +4621,10 @@ static const u8 sRizzBerryDesc[] = _(
     "will be infatuated.");
 
 static const u8 sPeskyPlushDesc[] = _(
-    "An ugly plush that may\n"
-    "taunt the foe when the\n"
-    "holder uses Bug-type\n"
-    "moves.");
+    "An ugly plush that\n"
+    "may taunt the foe\n"
+    "when the holder uses\n"
+    "Bug-type moves.");
 
 static const u8 sBlackSaladDesc[] = _(
     "Evil salad that may\n"
