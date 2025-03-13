@@ -260,8 +260,9 @@ static const u8 sAntidoteDesc[] = _(
 
 static const u8 sParalyzeHealDesc[] = _(
     "A spray-type medicine\n"
-    "that frees one Pokémon\n"
-    "from its paralysis.");
+    "that frees one\n"
+    "Pokémon from its\n"
+    "paralysis.");
 
 static const u8 sBurnHealDesc[] = _(
     "A spray-type medicine\n"
@@ -302,14 +303,14 @@ static const u8 sMaxEtherDesc[] = _(
 static const u8 sElixirDesc[] = _(
     "A medicine that can be\n"
     "used to restore 5 PP\n"
-    "to all four moves that\n"
-    "a Pokémon knows.");
+    "to all four moves\n"
+    "that a Pokémon knows.");
 
 static const u8 sMaxElixirDesc[] = _(
     "A medicine that can be\n"
     "used to restore 10 PP\n"
-    "to all four moves that\n"
-    "a Pokémon knows.");
+    "to all four moves\n"
+    "that a Pokémon knows.");
 
 static const u8 sBerryJuiceDesc[] = _(
     "A 100% pure juice made\n"
