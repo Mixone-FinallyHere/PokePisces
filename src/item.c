@@ -960,7 +960,6 @@ u8 ItemId_GetBattleUsage(u16 itemId)
             case ITEM_EFFECT_CURE_BURN:
             case ITEM_EFFECT_CURE_FREEZE_FROSTBITE:
             case ITEM_EFFECT_CURE_PARALYSIS:
-            case ITEM_EFFECT_CURE_EXPOSED:
             case ITEM_EFFECT_CURE_PANIC:
             case ITEM_EFFECT_CURE_ALL_STATUS:
             case ITEM_EFFECT_CURE_CONFUSION:
