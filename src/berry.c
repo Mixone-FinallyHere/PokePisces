@@ -1387,7 +1387,7 @@ const struct Berry gBerries[] =
 
     [ITEM_YELLOW_SODA - FIRST_BERRY_INDEX] =
     {
-        .name = _("Marnga"), // "Maranga" is too long
+        .name = _("Soda"), // "Maranga" is too long
         .firmness = BERRY_FIRMNESS_UNKNOWN,
         .size = 0,
         .maxYield = 5,

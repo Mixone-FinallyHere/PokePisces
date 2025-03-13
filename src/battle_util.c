@@ -5302,7 +5302,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 gSideStatuses[side] |= SIDE_STATUS_MIST;
                 gSideTimers[side].mistBattlerId = battler;
-                gSideTimers[side].mistTimer = 6;
+                gSideTimers[side].mistTimer = 5;
                 BattleScriptPushCursorAndCallback(BattleScript_WhiteSmokeAbilityActivates);
                 effect++;
             }
@@ -5316,7 +5316,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 gSideStatuses[side] |= SIDE_STATUS_SAFEGUARD;
                 gSideTimers[side].safeguardBattlerId = battler;
-                gSideTimers[side].safeguardTimer = 6;
+                gSideTimers[side].safeguardTimer = 5;
                 BattleScriptPushCursorAndCallback(BattleScript_RuinWardSafeguardActivates);
                 effect++;
             }
