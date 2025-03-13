@@ -308,6 +308,9 @@ VerdanturfInteriors_Text_ReceivedMetroBadge:
 	.string "It felt a little hollow.$"
 
 VerdanturfInteriors_Text_YouMayNowLeave:
+	.string "That badge allows you to use the\n"
+	.string "Field Move Surf outside of battle.\l"
+	.string "Lots of places to go now, surely?\p"
 	.string "That is all the time I have\n"
 	.string "allotted for this meaning, kid.\l"
 	.string "You may now leave us be.\l"

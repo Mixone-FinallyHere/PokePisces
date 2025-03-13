@@ -33,6 +33,7 @@ Gym1Corridor_EventScript_PrepForGym::
 	cleartrainerflag TRAINER_P_LISA
 	cleartrainerflag TRAINER_P_MIIKACHAN
 	cleartrainerflag TRAINER_P_EMILY
+	setvar VAR_ROLAND_STATE, 2
 	msgbox Gym1Corridor_Text_TimeForGym, MSGBOX_DEFAULT
 	warp MAP_SOOTOPOLIS_CITY_GYM_B1F, 1, 18
 	waitstate

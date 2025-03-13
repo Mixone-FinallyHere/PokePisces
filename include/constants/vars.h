@@ -157,7 +157,7 @@
 #define VAR_HP_POST_CHALLENGE_TEMP                               0x407A // Unused Var
 #define VAR_ROUTE128_STATE                               0x407B
 #define VAR_SPITFAX_QUEST_STATE                               0x407C // Unused Var
-#define VAR_ROUTE130_STATE                               0x407D // Unused Var
+#define VAR_ROLAND_STATE                               0x407D // Unused Var
 #define VAR_ROUTE131_STATE                               0x407E // Unused Var
 #define VAR_ROUTE132_STATE                               0x407F // Unused Var
 #define VAR_ROUTE133_STATE                               0x4080 // Unused Var

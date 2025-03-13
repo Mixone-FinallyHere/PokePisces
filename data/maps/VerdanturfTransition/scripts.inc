@@ -187,6 +187,8 @@ VerdanturfTransition_Text_ReceivedMetroBadge:
 	.string "through the power of money!$"
 
 VerdanturfTransition_Text_WeWillAlsoThrowIn:
+	.string "This badge allows you to use the\n"
+	.string "Field Move Surf outside of battle.\p"
 	.string "Due to Greater Mauville Holdings'\n"
 	.string "infinite generosity, we will\l"
 	.string "also throw in this prize.$"
