@@ -323,6 +323,7 @@ static const u8 sText_PkmnHurtsWith[] = _("{B_ATK_NAME_WITH_PREFIX} was hurt by\
 static const u8 sText_PkmnHurtsWithInAttk[] = _("{B_DEF_NAME_WITH_PREFIX} was hurt by\n{B_ATK_NAME_WITH_PREFIX}'s {B_BUFF1}!");
 static const u8 sText_PkmnTraced[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} TRACED\n{B_BUFF1}'s {B_BUFF2}!");
 static const u8 sText_PkmnsXPreventsBurns[] = _("{B_EFF_NAME_WITH_PREFIX}'s {B_EFF_ABILITY}\nprevents burns!");
+static const u8 sText_PkmnsXPreventsFrostbite[] = _("{B_EFF_NAME_WITH_PREFIX}'s {B_EFF_ABILITY}\nprevents Frostbite!");
 static const u8 sText_PkmnsXPreventsPanic[] = _("{B_EFF_NAME_WITH_PREFIX}'s {B_EFF_ABILITY}\nprevents panic!");
 static const u8 sText_PkmnIsPanicked[] = _("{B_ATK_NAME_WITH_PREFIX} is panicking!");
 static const u8 sText_PkmnsXBlocksY[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY}\nblocks {B_CURRENT_MOVE}!");
@@ -634,6 +635,7 @@ static const u8 sText_Electromagnetism[] = _("electromagnetism");
 static const u8 sText_Daybreak[] = _("daybreak");
 static const u8 sText_BufferEnds[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_BUFF1}\nwore off!");
 static const u8 sText_ThroatChopEnds[] = _("{B_ATK_NAME_WITH_PREFIX} can\nuse sound-based moves again!");
+static const u8 sText_MagicCoatEnds[] = _("{B_ATK_NAME_WITH_PREFIX} can no\nlonger bounce back status moves!");
 static const u8 sText_TelekinesisEnds[] = _("{B_ATK_NAME_WITH_PREFIX} was freed\nfrom the telekinesis!");
 static const u8 sText_TailwindEnds[] = _("{B_ATK_TEAM1} team's tailwind\npetered out!");
 static const u8 sText_FoeTailwindEnds[] = _("{B_DEF_TEAM1} team's tailwind\npetered out!");
@@ -999,13 +1001,13 @@ static const u8 sText_OrderedAnExtraHeal[] = _("{B_ATK_NAME_WITH_PREFIX} ordered
 static const u8 sText_TheHealOrderCameIn[] = _("{B_ATK_NAME_WITH_PREFIX} got the\nheal order!");
 static const u8 sText_UserHasExhaustion[] = _("{B_ATK_NAME_WITH_PREFIX} became exhausted\nfrom overexertion!");
 static const u8 sText_TargetIsExhausted[] = _("{B_DEF_NAME_WITH_PREFIX} became exhausted from\n{B_ATK_NAME_WITH_PREFIX}'s ESP!");
-static const u8 sText_SuperMagnetNoStatLoss[] = _("{B_ATK_NAME_WITH_PREFIX}'s Super-charged Magnet\nRise prevented stat loss!");
-static const u8 sText_TargetBecomesSupercharged[] = _("{B_DEF_NAME_WITH_PREFIX} became Super-charged!");
-static const u8 sText_TargetBecomesGearedUp[] = _("{B_DEF_NAME_WITH_PREFIX} became Geared Up!");
-static const u8 sText_UserGainsPhantom[] = _("{B_ATK_NAME_WITH_PREFIX} is now a Phantom.");
+static const u8 sText_SuperMagnetNoStatLoss[] = _("{B_ATK_NAME_WITH_PREFIX}'s super-charged Magnet\nRise prevented stat loss!");
+static const u8 sText_TargetBecomesSupercharged[] = _("{B_DEF_NAME_WITH_PREFIX} became super-charged!");
+static const u8 sText_TargetBecomesGearedUp[] = _("{B_DEF_NAME_WITH_PREFIX} became geared up!");
+static const u8 sText_UserGainsPhantom[] = _("{B_ATK_NAME_WITH_PREFIX} is now a Phantom!");
 static const u8 sText_ProtectedDefender[] = _("{B_DEF_NAME_WITH_PREFIX} gained a Crafty Shield!");
 static const u8 sText_FairyLockDropsEvasion[] = _("Fairy Lock dropped {B_ATK_NAME_WITH_PREFIX}'s\n evasion!");
-static const u8 sText_AcidArmorDropsDefense[] = _("{B_DEF_NAME_WITH_PREFIX}'s Acid Armor dropped\n {B_ATK_NAME_WITH_PREFIX}'s\n defense!");
+static const u8 sText_AcidArmorDropsDefense[] = _("{B_DEF_NAME_WITH_PREFIX}'s Acid Armor dropped\n{B_ATK_NAME_WITH_PREFIX}'s defense!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1862,6 +1864,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNSHEARTFLUTTERSSHALALALA2 - BATTLESTRINGS_TABLE_START] = sText_PkmnsHeartFluttersShalalala2,
     [STRINGID_ABILITYLETITUSEMOVEGUARDDOG - BATTLESTRINGS_TABLE_START] = sText_AbilityLetItUseMoveGuardDog,
     [STRINGID_ABILITYLETITUSEMOVESWEETVEIL - BATTLESTRINGS_TABLE_START] = sText_AbilityLetItUseMoveSweetVeil,
+    [STRINGID_PKMNSXPREVENTSFROSTBITE - BATTLESTRINGS_TABLE_START] = sText_PkmnsXPreventsFrostbite,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -2361,6 +2364,14 @@ const u16 gBerryEffectStringIds[] =
 const u16 gBRNPreventionStringIds[] =
 {
     [B_MSG_ABILITY_PREVENTS_MOVE_STATUS]    = STRINGID_PKMNSXPREVENTSBURNS,
+    [B_MSG_ABILITY_PREVENTS_ABILITY_STATUS] = STRINGID_PKMNSXPREVENTSYSZ, 
+    [B_MSG_ALLY_ABILITY_PREVENTS_ABILITY_STATUS] = STRINGID_PKMNSALLYXPREVENTSYSZ,
+    [B_MSG_STATUS_HAD_NO_EFFECT]            = STRINGID_PKMNSXHADNOEFFECTONY
+};
+
+const u16 gFSBPreventionStringIds[] =
+{
+    [B_MSG_ABILITY_PREVENTS_MOVE_STATUS]    = STRINGID_PKMNSXPREVENTSFROSTBITE,
     [B_MSG_ABILITY_PREVENTS_ABILITY_STATUS] = STRINGID_PKMNSXPREVENTSYSZ, 
     [B_MSG_ALLY_ABILITY_PREVENTS_ABILITY_STATUS] = STRINGID_PKMNSALLYXPREVENTSYSZ,
     [B_MSG_STATUS_HAD_NO_EFFECT]            = STRINGID_PKMNSXHADNOEFFECTONY

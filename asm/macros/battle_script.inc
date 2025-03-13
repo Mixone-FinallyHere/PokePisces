@@ -2782,10 +2782,6 @@
 	.4byte \jumpInstr
 	.endm
 
-	.macro tryyellowsodafocusenergy
-	various 0, VARIOUS_TRY_YELLOW_SODA_FOCUS_ENERGY
-	.endm
-
 	.macro normalisespeed
 	various 0, VARIOUS_TRY_NORMALISE_SPEED
 	.endm

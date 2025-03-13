@@ -1375,9 +1375,9 @@ static const u8 sSuperpowerDescription[] = _(
     "lowers the user's Attack stat.");
 
 static const u8 sMagicCoatDescription[] = _(
-    "Barriers for the user and ally\n"
-    "that reflect a status move each.\n"
-    "Fails if the user already has it.");
+    "For 3 turns the user and ally\n"
+    "can reflect status moves. Goes\n"
+    "away after reflecting one.");
 
 static const u8 sRecycleDescription[] = _(
     "The user recycles a held item\n"
@@ -1945,7 +1945,7 @@ static const u8 sHeartSwapDescription[] = _(
 
 static const u8 sAquaRingDescription[] = _(
     "The user envelops itself in a\n"
-    "veil of water. It regains 1/3\n"
+    "veil of water. It regains 1/5\n"
     "of its missing HP every turn.");
 
 static const u8 sMagnetRiseDescription[] = _(
@@ -2544,8 +2544,8 @@ static const u8 sCircleThrowDescription[] = _(
 
 static const u8 sIncinerateDescription[] = _(
     "Gets rid of the foe's Berry and\n"
-    "Blooming. Also critical-hits if\n"
-    "the foe is Blooming.");
+    "Blooming. Also lands critical\n"
+    "hits if the foe is Blooming.");
 
 static const u8 sQuashDescription[] = _(
     "The user suppresses the target\n"
@@ -2617,9 +2617,9 @@ static const u8 sDragonTailDescription[] = _(
     "against a single Pokémon ends.");
 
 static const u8 sWorkUpDescription[] = _(
-    "Boosts the Attack and Special\n"
-    "Attack stats. Speed is also\n"
-    "boosted if it isn't already.");
+    "The user is roused, and its\n"
+    "Attack and Special Attack stats\n"
+    "are boosted.");
 
 static const u8 sElectrowebDescription[] = _(
     "The user captures foes in an\n"
@@ -4406,9 +4406,9 @@ static const u8 sGemBlasterDescription[] = _(
     "5 times in a row.");
 
 static const u8 sSolarFlareDescription[] = _(
-    "The user glows and crashes into\n"
-    "the foe. Super effective on\n"
-    "Dark-types and may burn the foe.");
+    "Super effective on Dark-types.\n"
+    "If the user is holding the Solar\n"
+    "Sword, summons sun for 6 turns.");
 
 static const u8 sCreepyCrawlDescription[] = _(
     "The user attacks by crawling on\n"
@@ -4831,9 +4831,9 @@ static const u8 sStalagBlastDescription[] = _(
     "the user loses half their HP.");
 
 static const u8 sMoonBeamDescription[] = _(
-    "The user glows and blasts the\n"
-    "foe. Cures the user's status\n"
-    "conditions and may panic the foe.");
+    "Cures the user's status. If the\n"
+    "user is holding the Moon Mirror,\n"
+    "steals stat boosts.");
 
 static const u8 sHunkerDownDescription[] = _(
     "The user drastically boosts its\n"

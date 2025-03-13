@@ -56,6 +56,7 @@ FallarborNew_EventScript_RemovePigs::
 
 FallarborNew_EventScript_TabithaEncounter1::
 	lock
+	goto_if_set FLAG_TEMP_1E, FallarborNew_EventScript_TabithaReleaseOut
 	opendoor 29, 34
 	waitdooranim
 	clearflag FLAG_TEMP_11
@@ -66,7 +67,15 @@ FallarborNew_EventScript_TabithaEncounter1::
 	waitdooranim
 	applymovement OBJ_EVENT_ID_PLAYER, FallarborNew_Movement_PlayerMeetTab1
 	waitmovement 0
-	goto FallarborNew_EventScript_TabithaBattle
+	speakername FallarborNew_Text_NameTabitha
+	msgbox FallarborNew_Text_JustVisitedCosmo, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, FallarborNew_EventScript_TabithaBattle
+	setflag FLAG_TEMP_1E
+	speakername FallarborNew_Text_NameTabitha
+	msgbox FallarborNew_Text_IWillGiveYouSomeTime, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, FallarborNew_Movement_PlayerBackAway
+	waitmovement 0
 	release
 	end
 
@@ -84,6 +93,7 @@ FallarborNew_Movement_PlayerMeetTab1:
 
 FallarborNew_EventScript_TabithaEncounter2::
 	lock
+	goto_if_set FLAG_TEMP_1E, FallarborNew_EventScript_TabithaReleaseOut
 	opendoor 29, 34
 	waitdooranim
 	clearflag FLAG_TEMP_11
@@ -94,7 +104,15 @@ FallarborNew_EventScript_TabithaEncounter2::
 	waitdooranim
 	applymovement OBJ_EVENT_ID_PLAYER, FallarborNew_Movement_PlayerMeetTab2
 	waitmovement 0
-	goto FallarborNew_EventScript_TabithaBattle
+	speakername FallarborNew_Text_NameTabitha
+	msgbox FallarborNew_Text_JustVisitedCosmo, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, FallarborNew_EventScript_TabithaBattle
+	setflag FLAG_TEMP_1E
+	speakername FallarborNew_Text_NameTabitha
+	msgbox FallarborNew_Text_IWillGiveYouSomeTime, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, FallarborNew_Movement_PlayerBackAway
+	waitmovement 0
 	release
 	end
 
@@ -107,6 +125,7 @@ FallarborNew_Movement_PlayerMeetTab2:
 
 FallarborNew_EventScript_TabithaEncounter3::
 	lock
+	goto_if_set FLAG_TEMP_1E, FallarborNew_EventScript_TabithaReleaseOut
 	opendoor 29, 34
 	waitdooranim
 	clearflag FLAG_TEMP_11
@@ -117,7 +136,15 @@ FallarborNew_EventScript_TabithaEncounter3::
 	waitdooranim
 	applymovement OBJ_EVENT_ID_PLAYER, FallarborNew_Movement_PlayerMeetTab3
 	waitmovement 0
-	goto FallarborNew_EventScript_TabithaBattle
+	speakername FallarborNew_Text_NameTabitha
+	msgbox FallarborNew_Text_JustVisitedCosmo, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, FallarborNew_EventScript_TabithaBattle
+	setflag FLAG_TEMP_1E
+	speakername FallarborNew_Text_NameTabitha
+	msgbox FallarborNew_Text_IWillGiveYouSomeTime, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, FallarborNew_Movement_PlayerBackAway
+	waitmovement 0
 	release
 	end
 
@@ -127,10 +154,80 @@ FallarborNew_Movement_PlayerMeetTab3:
 	face_up
 	step_end
 
+FallarborNew_Movement_PlayerBackAway:
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+FallarborNew_EventScript_TabithaReleaseOut::
+	release
+	end
+
+FallarborNew_EventScript_TabithaReEncounter::
+	lock
+	faceplayer
+	speakername FallarborNew_Text_NameTabitha
+	msgbox FallarborNew_Text_HowAboutNow, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, FallarborNew_EventScript_TabithaReGoAway
+	goto_if_eq VAR_FACING, DIR_EAST, FallarborNew_EventScript_TabithaReEastFormUp
+	goto_if_eq VAR_FACING, DIR_WEST, FallarborNew_EventScript_TabithaReWestFormUp
+	goto_if_eq VAR_FACING, DIR_NORTH, FallarborNew_EventScript_TabithaReNorthFormUp
+	release
+	end
+
+FallarborNew_EventScript_TabithaReGoAway::
+	speakername FallarborNew_Text_NameTabitha
+	msgbox FallarborNew_Text_IWillGiveYouSomeTime, MSGBOX_AUTOCLOSE
+	release
+	end
+
+FallarborNew_EventScript_TabithaReEastFormUp::
+	delay 4
+	applymovement OBJ_EVENT_ID_PLAYER, FallarborNew_Movement_PlayerReEastFormUp
+	waitmovement 0
+	goto FallarborNew_EventScript_TabithaBattle
+	release
+	end
+
+FallarborNew_Movement_PlayerReEastFormUp:
+	walk_down
+	walk_down
+	walk_right
+	face_up
+	step_end
+
+FallarborNew_EventScript_TabithaReWestFormUp::
+	delay 4
+	applymovement OBJ_EVENT_ID_PLAYER, FallarborNew_Movement_PlayerReWestFormUp
+	waitmovement 0
+	goto FallarborNew_EventScript_TabithaBattle
+	release
+	end
+
+FallarborNew_Movement_PlayerReWestFormUp:
+	walk_down
+	walk_down
+	walk_left
+	face_up
+	step_end
+
+FallarborNew_EventScript_TabithaReNorthFormUp::
+	delay 4
+	applymovement OBJ_EVENT_ID_PLAYER, FallarborNew_Movement_PlayerReNorthFormUp
+	waitmovement 0
+	goto FallarborNew_EventScript_TabithaBattle
+	release
+	end
+
+FallarborNew_Movement_PlayerReNorthFormUp:
+	walk_down
+	face_up
+	step_end
+
 FallarborNew_EventScript_TabithaBattle::
 	setflag FLAG_CABLE_CAR_UNLOCKED
-	speakername FallarborNew_Text_NameTabitha
-	msgbox FallarborNew_Text_JustVisitedCosmo, MSGBOX_DEFAULT
+	turnobject LOCALID_TABITHA, DIR_SOUTH
 	speakername FallarborNew_Text_NameTabitha
 	msgbox FallarborNew_Text_TabithaIntro, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_P_TABITHA_2, FallarborNew_Text_TabithaDefeated
@@ -147,6 +244,7 @@ FallarborNew_EventScript_TabithaPostBattle::
 	waitmovement 0
 	delay 32
 	speakername NULL
+	turnobject LOCALID_RYDEL, DIR_SOUTH
 	msgbox FallarborNew_Text_WhatsUp, MSGBOX_DEFAULT
 	speakername FallarborNew_Text_NameTabitha
 	msgbox FallarborNew_Text_PlayerNeedsABike, MSGBOX_DEFAULT
@@ -166,6 +264,11 @@ FallarborNew_EventScript_TabithaPostBattle::
 	waitmovement 0
 	removeobject LOCALID_TABITHA
 	setflag FLAG_TEMP_11
+	speakername FallarborNew_Text_NameRydel
+	msgbox FallarborNew_Text_OhTakeThisIfYouWannaCallMe, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_BUSINESS_CARD
+	closemessage
 	release
 	end
 
@@ -283,9 +386,7 @@ FallarborNew_Text_NameRydel:
 FallarborNew_Text_JustVisitedCosmo:
 	.string "You are a bit tardy, {PLAYER}.\n"
 	.string "I have gotten what I needed\l"
-	.string "from the good professor.$"
-
-FallarborNew_Text_TabithaIntro:
+	.string "from the good professor.\p"
 	.string "Hmmm... you know, {PLAYER},\n"
 	.string "I keep thinking back to our\l"
 	.string "initial battle. Without words,\l"
@@ -299,8 +400,19 @@ FallarborNew_Text_TabithaIntro:
 	.string "stimulated my brain as I would\l"
 	.string "like from a close comrade.\p"
 	.string "This time, it will be just\n"
-	.string "you and I. Show me how\l"
-	.string "you have grown as a trainer!$"
+	.string "you and I. Will you show me how\l"
+	.string "you have grown as a trainer?$"
+
+FallarborNew_Text_IWillGiveYouSomeTime:
+	.string "Ah, so you're unprepared.\n"
+	.string "That is understandable.\l"
+	.string "I will be waiting here, then.$"
+
+FallarborNew_Text_HowAboutNow:
+	.string "Are you now ready for battle?$"
+
+FallarborNew_Text_TabithaIntro:
+	.string "Then let us have at it!$"
 
 FallarborNew_Text_TabithaDefeated:
 	.string "You have accelerated beyond\n"
@@ -349,6 +461,13 @@ FallarborNew_Text_HopeThatHelpsSeeYa:
 	.string "hence, your next badge.\p"
 	.string "I must be going, {PLAYER}.\n"
 	.string "Safe travels.$"
+
+FallarborNew_Text_OhTakeThisIfYouWannaCallMe:
+	.string "Here, dude! Cop this cizzard!\n"
+	.string "We'll keep in touch.\p"
+	.string "(You purposefully neglect to tell\n"
+	.string "Rydel that your Pokenav\l"
+	.string "cannot make calls.)$"
 
 FallarborNew_Text_StrangeBikeMan:
 	.string "(Its a strange looking man\n"

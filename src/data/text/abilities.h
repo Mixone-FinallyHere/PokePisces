@@ -182,9 +182,9 @@ static const u8 sPoisonPointDescription[] = _(
     "poison the attacker.");
 
 static const u8 sInnerFocusDescription[] = _(
-    "Prevents flinching, Intimidate,\n"
-    "Mocking, and Disturb. Focus\n"
-    "Energy raises Atk and Sp. Atk.");
+    "Using Focus Energy prevents\n"
+    "flinching and critical hits, and\n"
+    "heals after landing them.");
 
 static const u8 sMagmaArmorDescription[] = _(
     "After being hit by a Water-type\n"
@@ -486,7 +486,7 @@ static const u8 sMoldBreakerDescription[] = _(
     "target.");
 
 static const u8 sSuperLuckDescription[] = _(
-    "Boosts the critical-hit ratios\n"
+    "Boosts the critical hit ratios\n"
     "of moves and chances to find a\n"
     "wild Pokémon holding an item.");
 
@@ -1426,7 +1426,7 @@ static const u8 sRisingDescription[] = _(
 
 static const u8 sRisktakerDescription[] = _(
     "Boosts the chance of additional\n"
-    "effects and critical-hits. Takes\n"
+    "effects and critical hits. Takes\n"
     "more damage after using attacks.");
 
 static const u8 sSaddenedDescription[] = _(
@@ -1642,9 +1642,9 @@ static const u8 sStarScreenDescription[] = _(
     "moves.");
 
 static const u8 sStrongholdDescription[] = _(
-    "Reduces damage taken, more if\n"
-    "under half health. The Pokémon\n"
-    "is unable to heal.");
+    "The Pokémon deals more damage\n"
+    "and takes less damage for each\n"
+    "Defense boost it has.");
 
 static const u8 sTransfusionDescription[] = _(
     "When using a draining move, the\n"

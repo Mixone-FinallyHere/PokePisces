@@ -249,6 +249,7 @@ bool32 CanBePoisoned(u32 battlerAttacker, u32 battlerTarget);
 bool32 CanBeBurned(u32 battler);
 bool32 CanBeParalyzed(u32 battler);
 bool32 CanBeFrozen(u32 battler);
+bool32 CanBeFrozenFrostbiteAbilityEdition(u32 battler);
 bool32 CanGetFrostbite(u32 battler);
 bool32 CanBeConfused(u32 battler);
 bool32 CanGetPanicked(u32 battler);

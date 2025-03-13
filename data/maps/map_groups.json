@@ -323,7 +323,8 @@
     "RustGymDarkCafeteria",
     "RustGymDarkCafeArena",
     "DevonCorp",
-    "DetermaniteUnderwater"
+    "DetermaniteUnderwater",
+    "RustburgWharfHouse"
   ],
   "gMapGroup_PiscesLeg10Major": [
     "PetalburgNew",
@@ -340,14 +341,18 @@
     "SeasideCasinoBackrooms",
     "SeasideCasinoVIPLounges",
     "SeasideCasinoBattleRoom",
-    "SouthMossdeep"
+    "SouthMossdeep",
+    "SeasideCasinoEggGachaRoom"
   ],
   "gMapGroup_PiscesLeg10Minor": [
     "PetalburgCity_PokemonCenter_1F",
     "OldaleTown_PokemonCenter_1F",
     "OldaleTown_PokemonCenter_2F",
     "LittlerootNormanHouse",
-    "OldaleInteriors"
+    "OldaleInteriors",
+    "PetalburgInteriors",
+    "LittlerootNewHouseTwo",
+    "PebblerLab"
   ],
   "gMapGroup_PiscesLeg11Major": [
     "CrimneyCaldera",

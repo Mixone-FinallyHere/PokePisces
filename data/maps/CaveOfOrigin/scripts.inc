@@ -73,6 +73,36 @@ CaveOfOrigin_Movement_WallaceWalkAway:
 	set_invisible
 	step_end
 
+CaveOfOrigin_EventScript_ToSootopolis::
+	msgbox CaveOfOrigin_Text_ToSootopolis, MSGBOX_SIGN
+	end
+
+CaveOfOrigin_EventScript_ToMangrotto::
+	msgbox CaveOfOrigin_Text_ToMangrotto, MSGBOX_SIGN
+	end
+
+CaveOfOrigin_EventScript_PlaceOfWorship::
+	msgbox CaveOfOrigin_Text_PlaceOfWorship, MSGBOX_SIGN
+	end
+
+CaveOfOrigin_Text_ToSootopolis:
+	.string "TO SOOTOPOLIS CITY$"
+
+CaveOfOrigin_Text_ToMangrotto:
+	.string "TO MANGROTTO TUNNEL$"
+
+CaveOfOrigin_Text_PlaceOfWorship:
+	.string "This is a protected place of worship.\n"
+	.string "The Lake of Origin is constantly\l"
+	.string "watched for anyone attempting\l"
+	.string "to enter the waters.\l"
+	.string "Infiltrators will be promptly\l"
+	.string "ejected from the premises.\p"
+	.string "Though you may not be able\n"
+	.string "to bask in Sh-yon and Luo-shan's\l"
+	.string "presences, they are keenly\l"
+	.string "aware of your character.$"
+
 CaveOfOrigin_Text_NameWallace:
 	.string "Wallace$"
 

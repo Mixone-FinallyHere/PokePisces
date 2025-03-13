@@ -122,6 +122,92 @@ ZotpyreInteriors_EventScript_MySonMightBeOutThere::
 	release
 	end
 
+ZotpyreInteriors_EventScript_CardTrader::
+	lock
+	faceplayer
+	checkitem ITEM_UNO_CARD
+	goto_if_eq VAR_RESULT, TRUE, ZotpyreInteriors_EventScript_TradeForCard
+	checkitem ITEM_MAGIC_CARD
+	goto_if_eq VAR_RESULT, TRUE, ZotpyreInteriors_EventScript_GaveYouMyCard
+	msgbox ZotpyreInteriors_Text_WhatINeed, MSGBOX_AUTOCLOSE
+	release
+	end
+
+ZotpyreInteriors_EventScript_TradeForCard::
+	msgbox ZotpyreInteriors_Text_WillYouTradeCards, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, ZotpyreInteriors_EventScript_CardTrade
+	release
+	end
+
+ZotpyreInteriors_EventScript_CardTrade::
+	delay 4
+	msgbox ZotpyreInteriors_Text_AboutThatCard, MSGBOX_DEFAULT
+	closemessage
+	removeitem ITEM_UNO_CARD
+	giveitem ITEM_MAGIC_CARD
+	closemessage
+	release
+	end
+
+ZotpyreInteriors_EventScript_GaveYouMyCard::
+	msgbox ZotpyreInteriors_Text_GaveYouMyCard, MSGBOX_AUTOCLOSE
+	release
+	end
+
+ZotpyreInteriors_Text_WhatINeed:
+	.string "Bah! I am a lover of all things Magic!\n"
+	.string "And I mean REAL magic!\l"
+	.string "These “Poke Off Morn” creatures\l"
+	.string "that people adore? They are\l"
+	.string "all dark magic users to me!\l"
+	.string "What happened to the simpler\l"
+	.string "days of simple tricks and conjurings?\p"
+	.string "By the stars above, I remember\n"
+	.string "my very first spell.\l"
+	.string "Reversi Isrever! It made someone\l"
+	.string "speak backwards until you used\l"
+	.string "the spell on them again!\l"
+	.string "Ah! The good old days!\p"
+	.string "If only I could find someone\n"
+	.string "with reversal abilities like\l"
+	.string "that... I may part with one\l"
+	.string "of my prized magic cards...!$"
+
+ZotpyreInteriors_Text_WillYouTradeCards:
+	.string "Bah! I am a lover of all things Magic!\n"
+	.string "And I mean REAL magic!\l"
+	.string "These “Poke Off Morn” creatures\l"
+	.string "that people adore? They are\l"
+	.string "all dark magic users to me!\l"
+	.string "What happened to the simpler\l"
+	.string "days of simple tricks and conjurings?\p"
+	.string "By the stars above, I remember\n"
+	.string "my very first spell.\l"
+	.string "Reversi Isrever! It made someone\l"
+	.string "speak backwards until you used\l"
+	.string "the spell on them again!\l"
+	.string "Ah! The good old days!\p"
+	.string "If only I could find someone\n"
+	.string "with reversal abilities like\l"
+	.string "that... I may part with one\l"
+	.string "of my prized magic cards...!\p"
+	.string "(You flash your Uno Reverse Card\n"
+	.string "at the wizardlike gent.)\p"
+	.string "Could it be...!? A card bearer!?\p"
+	.string "Please, I beseech you...\n"
+	.string "Deliver onto me thy card!$"
+
+ZotpyreInteriors_Text_AboutThatCard:
+	.string "(You hand the Uno Card over.)\p"
+	.string "!semit dlo ekil ,desreveR !suolevraM\n"
+	.string "!kcab em sekat siht ,hO\p"
+	.string ".draC cigaM ym evah yam uoY\n"
+	.string "!drow doog eht hcaerp dna ti ekaT$"
+
+ZotpyreInteriors_Text_GaveYouMyCard:
+	.string "lleps dlo taht did woh ,woN\n"
+	.string "...niaga og esrever-nu ot$"
+
 ZotpyreInteriors_Text_AboutMySon:
 	.string "Welcome to my dwellings.\p"
 	.string "Pardon an old codger's ramblings,\n"

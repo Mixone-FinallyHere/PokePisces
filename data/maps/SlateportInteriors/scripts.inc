@@ -74,6 +74,81 @@ SlateportInteriors_EventScript_TradeCompleted::
 	release
 	end
 
+SlateportInteriors_EventScript_CardTrader::
+	lock
+	faceplayer
+	checkitem ITEM_BUDDY_CARD
+	goto_if_eq VAR_RESULT, TRUE, SlateportInteriors_EventScript_TradeForCard
+	checkitem ITEM_POKEMON_CARD
+	goto_if_eq VAR_RESULT, TRUE, SlateportInteriors_EventScript_GaveYouMyCard
+	msgbox SlateportInteriors_Text_WhatINeed, MSGBOX_AUTOCLOSE
+	release
+	end
+
+SlateportInteriors_EventScript_TradeForCard::
+	msgbox SlateportInteriors_Text_WillYouTradeCards, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, SlateportInteriors_EventScript_CardTrade
+	release
+	end
+
+SlateportInteriors_EventScript_CardTrade::
+	delay 4
+	msgbox SlateportInteriors_Text_AboutThatCard, MSGBOX_DEFAULT
+	closemessage
+	removeitem ITEM_BUDDY_CARD
+	giveitem ITEM_POKEMON_CARD
+	closemessage
+	release
+	end
+
+SlateportInteriors_EventScript_GaveYouMyCard::
+	msgbox SlateportInteriors_Text_GaveYouMyCard, MSGBOX_AUTOCLOSE
+	release
+	end
+
+SlateportInteriors_Text_WhatINeed:
+	.string "The other guys in the fan club\n"
+	.string "are really into Pokemon Card\l"
+	.string "battles. But, even though I liked\l"
+	.string "them when I was little, they've\l"
+	.string "really slipped in my mind.\p"
+	.string "I really want to get into\n"
+	.string "Buddy Cards instead. But all\l"
+	.string "I have to trade are weak\l"
+	.string "Pokemon Cards...\p"
+	.string "Maybe somebody out there\n"
+	.string "is willing to trade...$"
+
+SlateportInteriors_Text_WillYouTradeCards:
+	.string "The other guys in the fan club\n"
+	.string "are really into Pokemon Card\l"
+	.string "battles. But, even though I liked\l"
+	.string "them when I was little, they've\l"
+	.string "really slipped in my mind.\p"
+	.string "I really want to get into\n"
+	.string "Buddy Cards instead. But all\l"
+	.string "I have to trade are weak\l"
+	.string "Pokemon Cards...\p"
+	.string "(You flash your Buddy Card\n"
+	.string "at the burnt out card battler.)\p"
+	.string "Wow! I like the design on this one!\n"
+	.string "It'll be a perfect starter\l"
+	.string "for my new deck...\p"
+	.string "...That is, of course, if you'll\n"
+	.string "take it for this stage 1\l"
+	.string "Pokemon Card...$"
+
+SlateportInteriors_Text_AboutThatCard:
+	.string "Yyyyyesss! Awesome!\n"
+	.string "Thank you so much!\l"
+	.string "I hope that this card gets\l"
+	.string "you places somehow!$"
+
+SlateportInteriors_Text_GaveYouMyCard:
+	.string "The fan club'll never know\n"
+	.string "what hit 'em once I introduce\l"
+	.string "this card battler to them...!$"
+
 SlateportInteriors_Text_IllTradeIfYouWant:
 	.string "I'll trade you my {STR_VAR_2} for\n"
 	.string "a {STR_VAR_1} if you want.$"
