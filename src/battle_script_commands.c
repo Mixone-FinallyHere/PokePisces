@@ -20396,9 +20396,10 @@ void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBat
     if (FlagGet(FLAG_VISITED_VERDANTURF_TOWN))
         if (!FlagGet(FLAG_BADGE06_GET))
             *expAmount = (*expAmount * 150) / 100;
-    if (FlagGet(FLAG_VISITED_DEWFORD_TOWN))
-        if (!FlagGet(FLAG_BADGE07_GET))
-            *expAmount = (*expAmount * 150) / 100;
+    if (FlagGet(FLAG_FOUND_SHELLY))
+        if (FlagGet(FLAG_FOUND_BRAWLY))
+            if (!FlagGet(FLAG_BADGE07_GET))
+                *expAmount = (*expAmount * 150) / 100;
     if (FlagGet(FLAG_VISITED_RUSTBORO_CITY))
         if (!FlagGet(FLAG_BADGE08_GET))
             *expAmount = (*expAmount * 150) / 100;

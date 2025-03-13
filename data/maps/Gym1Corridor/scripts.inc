@@ -28,11 +28,13 @@ Gym1Corridor_EventScript_PrepForGym::
 	clearflag FLAG_PISCES_D
 	clearflag FLAG_PISCES_E
 	clearflag FLAG_PISCES_F
+	setflag FLAG_WITHIN_GYM
 	cleartrainerflag TRAINER_P_ARTHUR
 	cleartrainerflag TRAINER_P_HASPAROTH
 	cleartrainerflag TRAINER_P_LISA
 	cleartrainerflag TRAINER_P_MIIKACHAN
 	cleartrainerflag TRAINER_P_EMILY
+	setvar VAR_ROLAND_STATE, 2
 	msgbox Gym1Corridor_Text_TimeForGym, MSGBOX_DEFAULT
 	warp MAP_SOOTOPOLIS_CITY_GYM_B1F, 1, 18
 	waitstate

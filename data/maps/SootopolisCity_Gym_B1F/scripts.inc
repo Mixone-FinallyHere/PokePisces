@@ -92,7 +92,9 @@ SootopolisCity_Gym_B1F_EventScript_JuanDefeated::
 	setvar VAR_NEW_COO_STATE, 1
 	setflag FLAG_DEFEATED_RUSTBORO_GYM
 	setflag FLAG_BADGE01_GET
+	clearflag FLAG_WITHIN_GYM
 	setvar VAR_SOOTOPOLIS_CITY_STATE, 6
+	setvar VAR_ROLAND_STATE, 3
 	call SootopolisCity_Gym_B1F_EventScript_GiveWaterPulse
 	closemessage
 	delay 30
@@ -206,6 +208,17 @@ SootopolisCity_Gym_B1F_EventScript_NotEnoughMoney::
 	hidemoneybox
 	release
 	end
+
+SootopolisCity_Gym_B1F_EventScript_Roland::
+	msgbox SootopolisCity_Gym_B1F_Text_Roland, MSGBOX_NPC
+	end
+
+SootopolisCity_Gym_B1F_Text_Roland:
+	.string "Hey there again, challenger!\n"
+	.string "Remember to always talk to\l"
+	.string "people in gyms, they can give\l"
+	.string "you valauble information for\l"
+	.string "what to do!$"
 
 SootopolisCity_Gym_B1F_Text_NameJuan:
 	.string "Juan$"

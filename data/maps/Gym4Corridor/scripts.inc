@@ -28,6 +28,7 @@ Gym4Corridor_EventScript_PrepForGym::
 	clearflag FLAG_PISCES_D
 	clearflag FLAG_PISCES_E
 	clearflag FLAG_PISCES_F
+	setflag FLAG_WITHIN_GYM
 	msgbox Gym4Corridor_Text_TimeForGym, MSGBOX_DEFAULT
 	warp MAP_FORTREE_CITY_GYM, 0, 0
 	waitstate

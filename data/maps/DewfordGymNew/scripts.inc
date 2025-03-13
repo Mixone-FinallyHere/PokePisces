@@ -258,6 +258,7 @@ DewfordGymNew_EventScript_LeadersDefeated::
 	speakername DewfordGymNew_Text_NameBrawly
 	msgbox DewfordGymNew_Text_YouDidIt, MSGBOX_DEFAULT
 	setflag FLAG_BADGE07_GET
+	clearflag FLAG_WITHIN_GYM
 	setflag FLAG_DEFEATED_DEWFORD_GYM
 	setvar VAR_PISCES_STORY_PROGRESS, 8
 	speakername NULL

@@ -29,6 +29,7 @@ FortreeGymBattleLocation_EventScript_LeadersDefeated::
 	speakername FortreeGymBattleLocation_Text_NameWinona
 	msgbox FortreeGymBattleLocation_Text_YouDidIt, MSGBOX_DEFAULT
 	setflag FLAG_BADGE04_GET
+	clearflag FLAG_WITHIN_GYM
 	setflag FLAG_DEFEATED_FORTREE_GYM
 	setvar VAR_PISCES_STORY_PROGRESS, 5
 	giveitem ITEM_TM_ACROBATICS

@@ -220,6 +220,7 @@ ZotpyreGym_EventScript_LeadersDefeated::
 	applymovement LOCALID_PHOEBE, ZotpyreGym_Movement_PhoebeTalk
 	msgbox ZotpyreGym_Text_Phoebe3, MSGBOX_DEFAULT
 	setflag FLAG_BADGE03_GET
+	clearflag FLAG_WITHIN_GYM
 	setflag FLAG_DEFEATED_PETALBURG_GYM
 	setvar VAR_PISCES_STORY_PROGRESS, 4
 	setvar VAR_OZONE_ADMINS_STATE, 5
