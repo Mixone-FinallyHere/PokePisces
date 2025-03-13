@@ -629,12 +629,14 @@ static const struct TrainerMon sParty_PShinji[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(20, 20, 20, 20, 20, 20),
     .species = SPECIES_MOSKOPO,
+    .moves = {MOVE_BUG_SNACK, MOVE_AGILITY, MOVE_PURSUIT, MOVE_NONE}
     },
     {
     .lvl = 14,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(20, 20, 20, 20, 20, 20),
     .species = SPECIES_FLAGUE,
+    .moves = {MOVE_BUG_SNACK, MOVE_LEER, MOVE_VENOM_DRENCH, MOVE_NONE}
     }
 };
 
@@ -815,7 +817,7 @@ static const struct TrainerMon sParty_PIsaac[] = {
 
 static const struct TrainerMon sParty_PRise[] = {
     {
-    .lvl = 15,
+    .lvl = 12,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(20, 20, 20, 20, 20, 20),
     .species = SPECIES_LUVDISC,
@@ -842,8 +844,7 @@ static const struct TrainerMon sParty_PGeiger[] = {
     .lvl = 15,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(20, 20, 20, 20, 20, 20),
-    .species = SPECIES_TRANSERA,
-    .moves = {MOVE_SHOCK_WAVE, MOVE_MEGA_DRAIN, MOVE_GLIMMER, MOVE_CHARGE},
+    .species = SPECIES_TOXITIDE,
     }
 };
 

@@ -617,6 +617,22 @@ static void OpponentHandleChooseItem(u32 battler)
     OpponentBufferExecCompleted(battler);
 }
 
+static inline bool32 IsAcePokemon(u32 chosenMonId, u32 pokemonInBattle, u32 battler)
+{
+    return AI_THINKING_STRUCT->aiFlags & AI_FLAG_ACE_POKEMON
+        && (chosenMonId == CalculateEnemyPartyCountInSide(battler) - 1)
+        && CountAIAliveNonEggMonsExcept(PARTY_SIZE) != pokemonInBattle;
+}
+
+static inline bool32 IsDoubleAcePokemon(u32 chosenMonId, u32 pokemonInBattle, u32 battler)
+{
+    return AI_THINKING_STRUCT->aiFlags & AI_FLAG_DOUBLE_ACE_POKEMON
+        && (chosenMonId == CalculateEnemyPartyCountInSide(battler) - 1)
+        && (chosenMonId == CalculateEnemyPartyCountInSide(battler) - 2)
+        && CountAIAliveNonEggMonsExcept(PARTY_SIZE) != pokemonInBattle
+        && CountAIAliveNonEggMonsExcept(PARTY_SIZE-1) != pokemonInBattle;
+}
+
 static void OpponentHandleChoosePokemon(u32 battler)
 {
     s32 chosenMonId;
@@ -650,15 +666,14 @@ static void OpponentHandleChoosePokemon(u32 battler)
 
             for (chosenMonId = (lastId-1); chosenMonId >= firstId; chosenMonId--)
             {
-                if (IsValidForBattle(&gEnemyParty[chosenMonId])
-                    && chosenMonId != gBattlerPartyIndexes[battler1]
-                    && chosenMonId != gBattlerPartyIndexes[battler2]
-                    && (!(AI_THINKING_STRUCT->aiFlags & AI_FLAG_ACE_POKEMON)
-                        || chosenMonId != CalculateEnemyPartyCount() - 1
-                        || CountAIAliveNonEggMonsExcept(PARTY_SIZE) == pokemonInBattle))
-                {
+                if (!IsValidForBattle(&gEnemyParty[chosenMonId])
+                 || chosenMonId == gBattlerPartyIndexes[battler1]
+                 || chosenMonId == gBattlerPartyIndexes[battler2])
+                    continue;
+
+                if (!IsAcePokemon(chosenMonId, pokemonInBattle, battler)
+                 && !IsDoubleAcePokemon(chosenMonId, pokemonInBattle, battler))
                     break;
-                }
             }
         }
         *(gBattleStruct->monToSwitchIntoId + battler) = chosenMonId;

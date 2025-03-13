@@ -260,8 +260,9 @@ static const u8 sAntidoteDesc[] = _(
 
 static const u8 sParalyzeHealDesc[] = _(
     "A spray-type medicine\n"
-    "that frees one Pokémon\n"
-    "from its paralysis.");
+    "that frees one\n"
+    "Pokémon from its\n"
+    "paralysis.");
 
 static const u8 sBurnHealDesc[] = _(
     "A spray-type medicine\n"
@@ -302,14 +303,14 @@ static const u8 sMaxEtherDesc[] = _(
 static const u8 sElixirDesc[] = _(
     "A medicine that can be\n"
     "used to restore 5 PP\n"
-    "to all four moves that\n"
-    "a Pokémon knows.");
+    "to all four moves\n"
+    "that a Pokémon knows.");
 
 static const u8 sMaxElixirDesc[] = _(
     "A medicine that can be\n"
     "used to restore 10 PP\n"
-    "to all four moves that\n"
-    "a Pokémon knows.");
+    "to all four moves\n"
+    "that a Pokémon knows.");
 
 static const u8 sBerryJuiceDesc[] = _(
     "A 100% pure juice made\n"
@@ -2358,8 +2359,8 @@ static const u8 sSilverPowderDesc[] = _(
 static const u8 sHardStoneDesc[] = _(
     "A durable rock that\n"
     "boosts Rock-type\n"
-    "moves. Reduces damage\n"
-    "after using one.");
+    "moves. Takes less\n"
+    "damage after using one.");
 
 static const u8 sSpellTagDesc[] = _(
     "An eerie tag that\n"
@@ -2820,151 +2821,148 @@ static const u8 sUtilityUmbrellaDesc[] = _(
 
 // Berries
 static const u8 sCheriBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "will be able to free\n"
-    "itself from paralysis.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "free itself from\n"
+    "paralysis.");
 
 static const u8 sChestoBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "will be able to wake\n"
-    "itself from sleep.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "wake itself from\n"
+    "sleep.");
 
 static const u8 sPechaBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "will be able to cure\n"
-    "itself from poisoning.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "cure itself from\n"
+    "poisoning.");
 
 static const u8 sRawstBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "will be able to cure\n"
-    "itself of a burn.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "cure itself of a\n"
+    "burn.");
 
 static const u8 sAspearBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "will be able to thaw\n"
-    "itself.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "thaw itself from\n"
+    "freeze or frostbite.");
 
 static const u8 sLeppaBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "will be able to give\n"
-    "10 PP to a move.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "give 10 PP to a move.");
 
 static const u8 sOranBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "will be able to heal\n"
-    "10 HP to itself.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "heal 10 HP to iself.");
 
 static const u8 sPersimBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "will be able to cure\n"
-    "itself of confusion.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "cure itself of\n"
+    "confusion.");
 
 static const u8 sLumBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "will be able to cure\n"
-    "any status condition.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "cure itself of any\n"
+    "status condition.");
 
 static const u8 sSitrusBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "will be able to heal\n"
-    "a small amount of HP.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "heal a small amount of\n"
+    "HP.");
 
 static const u8 sFigyBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "will restore some HP,\n"
-    "but may be confused.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "restore some HP, but\n"
+    "may be confused.");
 
 static const u8 sWikiBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "will restore some HP,\n"
-    "but may be confused.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "restore some HP, but\n"
+    "may be confused.");
 
 static const u8 sMagoBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "will restore some HP,\n"
-    "but may be confused.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "restore some HP, but\n"
+    "may be confused.");
 
 static const u8 sAguavBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "will restore some HP,\n"
-    "but may be confused.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "restore some HP, but\n"
+    "may be confused.");
 
 static const u8 sIapapaBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "will restore some HP,\n"
-    "but may be confused.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "restore some HP, but\n"
+    "may be confused.");
 
 static const u8 sRazzBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "may infatuate an\n"
-    "opposite-gendered foe.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "infatuate opposite-\n"
+    "gendered foes.");
 
 static const u8 sBlukBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
     "reduces the PP of the\n"
     "foe's last used move.");
 
 static const u8 sNanabBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "may stockpile some\n"
-    "power.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "stockpile some power.");
 
 static const u8 sWepearBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "may identify a foe.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "identify a foe.");
 
 static const u8 sPinapBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "may hurt itself.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "hurt itself.");
 
 static const u8 sPomegBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "may flip its own stat\n"
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "flip its own stat\n"
     "drops.");
 
 static const u8 sKelpsyBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "boosts a pulse-based\n"
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "boost a pulse-based\n"
     "move once.");
 
 static const u8 sQualotBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "boosts a wind-based\n"
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "boost a wind-based\n"
     "move once.");
 
 static const u8 sHondewBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "envelops itself in\n"
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "envelop itself in\n"
     "Aqua Ring.");
 
 static const u8 sGrepaBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "boosts a kick-based\n"
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "boost a kick-based\n"
     "move once.");
 
 static const u8 sTamatoBerryDesc[] = _(
@@ -2974,56 +2972,55 @@ static const u8 sTamatoBerryDesc[] = _(
     "their jokes.");
 
 static const u8 sCornnBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "may salt a foe.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "salt a foe.");
 
 static const u8 sMagostBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "may slightly weaken\n"
-    "any foe's attack.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "slightly weaken any\n"
+    "foe's attack.");
 
 static const u8 sRabutaBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "may confuse a foe.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "confuse a foe.");
 
 static const u8 sNomelBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "boosts a pierce-based\n"
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "boost a pierce-based\n"
     "move once.");
 
 static const u8 sSpelonBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "may lay spikes on the\n"
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "lay spikes on the\n"
     "foe's side.");
 
 static const u8 sPamtreBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "will be able to calm\n"
-    "itself from panic.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "calm itself from\n"
+    "panic.");
 
 static const u8 sWatmelBerryDesc[] = _(
     "If the holder is\n"
     "blooming, this berry\n"
-    "will explode and it\n"
-    "hurt the holder.");
+    "will explode and hurt\n"
+    "the holder.");
 
 static const u8 sDurinBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "may lower all the\n"
-    "foe's stats.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "lower all the foe's\n"
+    "stats.");
 
 static const u8 sBelueBerryDesc[] = _(
-    "If a Pokémon holds one\n"
-    "of these Berries, it\n"
-    "may cover the foe in\n"
-    "Tar.");
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "cover the foe in Tar.");
 
 static const u8 sChilanBerryDesc[] = _(
     "If held by a Pokémon,\n"
@@ -4445,9 +4442,9 @@ static const u8 sBattleHelmDesc[] = _(
 
 static const u8 sSpectralIdolDesc[] = _(
     "Increases foes' PP\n"
-    "usage. The holder also\n"
-    "takes less damage from\n"
-    "panicked foes.");
+    "usage. The holder\n"
+    "takes less damage\n"
+    "from panicked foes.");
 
 static const u8 sGlueTubeDesc[] = _(
     "Some sticky glue that\n"
@@ -4624,10 +4621,10 @@ static const u8 sRizzBerryDesc[] = _(
     "will be infatuated.");
 
 static const u8 sPeskyPlushDesc[] = _(
-    "An ugly plush that may\n"
-    "taunt the foe when the\n"
-    "holder uses Bug-type\n"
-    "moves.");
+    "An ugly plush that\n"
+    "may taunt the foe\n"
+    "when the holder uses\n"
+    "Bug-type moves.");
 
 static const u8 sBlackSaladDesc[] = _(
     "Evil salad that may\n"

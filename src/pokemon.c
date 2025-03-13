@@ -6114,6 +6114,20 @@ u8 CalculatePartyCount(struct Pokemon *party)
     return partyCount;
 }
 
+u8 CalculatePartyCountOfSide(u32 battler, struct Pokemon *party)
+{
+    s32 partyCount, partySize;
+    GetAIPartyIndexes(battler, &partyCount, &partySize);
+
+    while (partyCount < partySize
+        && GetMonData(&party[partyCount], MON_DATA_SPECIES, NULL) != SPECIES_NONE)
+    {
+        partyCount++;
+    }
+
+    return partyCount;
+}
+
 u8 CalculatePlayerPartyCount(void)
 {
     gPlayerPartyCount = CalculatePartyCount(gPlayerParty);
@@ -6124,6 +6138,11 @@ u8 CalculateEnemyPartyCount(void)
 {
     gEnemyPartyCount = CalculatePartyCount(gEnemyParty);
     return gEnemyPartyCount;
+}
+
+u8 CalculateEnemyPartyCountInSide(u32 battler)
+{
+    return CalculatePartyCountOfSide(battler, gEnemyParty);
 }
 
 u8 GetMonsStateToDoubles(void)
@@ -7225,7 +7244,7 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_SILENCE_ACTIVATED:
-                if (gEvolutionTable[species][i].param >= stat)
+                if (GetGameStat(stat) >= gEvolutionTable[species][i].param)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_BATTLE_TERRAIN:
@@ -9186,9 +9205,7 @@ u8 GetCurrentLevelCap(void)
 
 u8 GetPreviousLevelCap(void)
 {
-    if (!FlagGet(FLAG_BADGE01_GET))
-        return 10;
-    else if (!FlagGet(FLAG_BADGE02_GET))
+    if (!FlagGet(FLAG_BADGE02_GET))
         return 12;
     else if (!FlagGet(FLAG_DEFEATED_PANIC_EVENT))
         return 17;

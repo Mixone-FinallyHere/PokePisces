@@ -5767,7 +5767,7 @@ const u8 gFlaguePokedexText[] = _(
     "larger Maggorde, however, they lose their will.\n"
     "Whatever Flague wills them to do, the swarm\n"
     "follows. Flague are known to harass other\n"
-    "Pokémon into doing its bidding.");
+    "Pokémon into doing their bidding.");
 
 const u8 gCultipexPokedexText[] = _(
     "A dangerous and mysterious Pokémon that can\n"

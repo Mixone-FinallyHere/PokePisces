@@ -680,7 +680,7 @@
 #define STRINGID_PKMNALREADYHASFROSTBITE              677
 #define STRINGID_PKMNHURTSWITHINATTK                  678
 #define STRINGID_MIASMADMG                            679
-#define STRINGID_ANTICIPATIONEVADEACTIVATES           680
+#define STRINGID_SUPERANTICIPATIONACTIVATES           680
 #define STRINGID_PKMNINCREASEACCWITH                  681    
 #define STRINGID_ABILITYWEAKENEDFSURROUNDINGMONSSTATS 682
 #define STRINGID_STARSGRACESTART                      683
@@ -866,8 +866,10 @@
 #define STRINGID_ABILITYLETITUSEMOVESWEETVEIL         864
 #define STRINGID_PKMNSXPREVENTSFROSTBITE              865
 #define STRINGID_MAGICCOATENDS                        866
+#define STRINGID_PLAYERWHITEOUT3                      867
+#define STRINGID_ATKPKMNCONFUSED                      868
 
-#define BATTLESTRINGS_COUNT                           867
+#define BATTLESTRINGS_COUNT                           869
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -1136,7 +1138,7 @@
 #define B_MSG_SWITCHIN_PASTEL_VEIL          15
 #define B_MSG_SWITCHIN_NEUTRALIZING_GAS     16
 #define B_MSG_SWITCHIN_WATER_VEIL           17
-#define B_MSG_SWITCHIN_ANTICIPATION_EVADE   18
+#define B_MSG_SWITCHIN_SUPER_ANTICIPATION   18
 #define B_MSG_SWITCHIN_WATCHER              19
 #define B_MSG_SWITCHIN_STARSGRACE           20
 
