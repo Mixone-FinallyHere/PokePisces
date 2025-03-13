@@ -96,7 +96,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMPhaseForce",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SAILORS_PAUSE_TM_PHASE_FORCE"
     }
   ],
   "warp_events": [

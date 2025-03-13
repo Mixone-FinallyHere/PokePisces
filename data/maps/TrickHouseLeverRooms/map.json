@@ -194,7 +194,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TrickHouseLeverRooms_EventScript_ItemPPPMax",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_TRICK_HOUSE_LEVER_ROOMS_PP_MAX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -220,7 +220,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TrickHouseLeverRooms_EventScript_ItemPXAttack",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_TRICK_HOUSE_LEVER_ROOMS_X_ATTACK"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -246,7 +246,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TrickHouseLeverRooms_EventScript_ItemPGoldTooth",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_TRICK_HOUSE_LEVER_ROOMS_GOLD_TOOTH"
     }
   ],
   "warp_events": [

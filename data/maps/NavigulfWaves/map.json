@@ -132,7 +132,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NavigulfWaves_EventScript_ItemPBrightPowder",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_NAVIGULF_WAVES_BRIGHT_POWDER"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
@@ -145,7 +145,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMAquaTail",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_NAVIGULF_WAVES_TM_AQUA_TAIL"
     }
   ],
   "warp_events": [

@@ -215,7 +215,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MidneorFalls_EventScript_ItemPPPMax",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MIDNEOR_FALLS_PP_MAX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -228,7 +228,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MidneorFalls_EventScript_ItemPRareCandy",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MIDNEOR_FALLS_RARE_CANDY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -241,7 +241,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MidneorFalls_EventScript_ItemPDuskStone",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MIDNEOR_FALLS_DUSK_STONE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -267,7 +267,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MidneorFalls_EventScript_ItemPMaxRevive",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MIDNEOR_FALLS_MAX_REVIVE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -280,7 +280,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MidneorFalls_EventScript_ItemPDreamBall",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MIDNEOR_FALLS_DREAM_BALL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -293,7 +293,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MidneorFalls_EventScript_ItemPFullRestore",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MIDNEOR_FALLS_FULL_RESTORE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -306,7 +306,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MidneorFalls_EventScript_ItemPCometShard",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MIDNEOR_FALLS_COMET_SHARD"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -319,7 +319,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MidneorFalls_EventScript_ItemPMaxElixir",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MIDNEOR_FALLS_MAX_ELIXIR"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
@@ -332,7 +332,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMZapCannon",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MIDNEOR_FALLS_TM_ZAP_CANNON"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",

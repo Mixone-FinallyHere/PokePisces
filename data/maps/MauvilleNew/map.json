@@ -210,7 +210,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MauvilleNew_EventScript_ItemPGoldTooth",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MAUVILLE_NEW_GOLD_TOOTH"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -223,7 +223,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MauvilleNew_EventScript_ItemPWideLens",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MAUVILLE_NEW_WIDE_LENS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -236,7 +236,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MauvilleNew_EventScript_ItemPGuardSpec",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MAUVILLE_NEW_GUARD_SPEC"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -249,7 +249,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MauvilleNew_EventScript_ItemPTwistedSpoon",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MAUVILLE_NEW_TWISTED_SPOON"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -262,7 +262,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MauvilleNew_EventScript_ItemPZoomLens",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MAUVILLE_NEW_ZOOM_LENS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -275,7 +275,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MauvilleNew_EventScript_ItemPAbilityCookie",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_MAUVILLE_NEW_ABILITY_COOKIE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_1",

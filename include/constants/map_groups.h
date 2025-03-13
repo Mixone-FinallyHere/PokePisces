@@ -272,6 +272,7 @@
 #define MAP_RUST_GYM_DARK_CAFE_ARENA         (19 | (17 << 8))
 #define MAP_DEVON_CORP                       (20 | (17 << 8))
 #define MAP_DETERMANITE_UNDERWATER           (21 | (17 << 8))
+#define MAP_RUSTBURG_WHARF_HOUSE             (22 | (17 << 8))
 
 // gMapGroup_PiscesLeg10Major
 #define MAP_PETALBURG_NEW                 (0 | (18 << 8))
@@ -297,6 +298,9 @@
 #define MAP_OLDALE_TOWN_POKEMON_CENTER_2F    (2 | (19 << 8))
 #define MAP_LITTLEROOT_NORMAN_HOUSE          (3 | (19 << 8))
 #define MAP_OLDALE_INTERIORS                 (4 | (19 << 8))
+#define MAP_PETALBURG_INTERIORS              (5 | (19 << 8))
+#define MAP_LITTLEROOT_NEW_HOUSE_TWO         (6 | (19 << 8))
+#define MAP_PEBBLER_LAB                      (7 | (19 << 8))
 
 // gMapGroup_PiscesLeg11Major
 #define MAP_CRIMNEY_CALDERA             (0 | (20 << 8))

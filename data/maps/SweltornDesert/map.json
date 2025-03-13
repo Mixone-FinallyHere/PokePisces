@@ -262,7 +262,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMDragonPulse",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SWELTORN_DESERT_TM_DRAGON_PULSE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -275,7 +275,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SweltornDesert_EventScript_ItemPHyperPotion",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SWELTORN_DESERT_HYPER_POTION"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -288,7 +288,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SweltornDesert_EventScript_ItemPMaxEther",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SWELTORN_DESERT_MAX_ETHER"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -301,7 +301,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SweltornDesert_EventScript_ItemPDustGoggles",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SWELTORN_DESERT_DUST_GOGGLES"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -314,7 +314,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SweltornDesert_EventScript_ItemPMaxRevive",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SWELTORN_DESERT_MAX_REVIVE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -327,7 +327,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SweltornDesert_EventScript_ItemPGoldTooth",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SWELTORN_DESERT_GOLD_TOOTH"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -340,7 +340,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SweltornDesert_EventScript_ItemPCoralCrown",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SWELTORN_DESERT_CORAL_CROWN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -353,7 +353,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SweltornDesert_EventScript_ItemPFullHeal",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SWELTORN_DESERT_FULL_HEAL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -366,7 +366,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SweltornDesert_EventScript_ItemPPPMax",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SWELTORN_DESERT_PP_MAX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
@@ -379,7 +379,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMFlameLash",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SWELTORN_DESERT_TM_FLAME_LASH"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -392,7 +392,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SweltornDesert_EventScript_ItemPStardust",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SWELTORN_DESERT_STARDUST"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",

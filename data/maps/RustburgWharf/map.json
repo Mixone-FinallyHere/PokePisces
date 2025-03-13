@@ -130,7 +130,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "0",
+      "trainer_sight_or_berry_tree_id": "2",
       "script": "RustburgWharf_EventScript_Inigo",
       "flag": "0"
     },
@@ -143,7 +143,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "0",
+      "trainer_sight_or_berry_tree_id": "2",
       "script": "RustburgWharf_EventScript_Fezzik",
       "flag": "0"
     },
@@ -301,7 +301,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "RustburgWharf_EventScript_ItemPFullRestore",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_RUSTBURG_WHARF_FULL_RESTORE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -314,7 +314,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "RustburgWharf_EventScript_ItemPMaxElixir",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_RUSTBURG_WHARF_MAX_ELIXIR"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -327,7 +327,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "RustburgWharf_EventScript_ItemPMaxRepel",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_RUSTBURG_WHARF_MAX_REPEL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -340,7 +340,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "RustburgWharf_EventScript_ItemPSilkScarf",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_RUSTBURG_WHARF_SILK_SCARF"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -353,7 +353,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "RustburgWharf_EventScript_ItemPGoldTooth",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_RUSTBURG_WHARF_GOLD_TOOTH"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -366,7 +366,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "RustburgWharf_EventScript_ItemPPPMax",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_RUSTBURG_WHARF_PP_MAX"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
@@ -427,7 +427,7 @@
       "x": 23,
       "y": 35,
       "elevation": 0,
-      "dest_map": "MAP_RUSTBURG_WHARF",
+      "dest_map": "MAP_RUSTBURG_WHARF_HOUSE",
       "dest_warp_id": "0"
     }
   ],

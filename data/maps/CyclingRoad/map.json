@@ -257,7 +257,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CyclingRoad_EventScript_ItemPTerrainCoat",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_CYCLING_ROAD_TERRAIN_COAT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -270,7 +270,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CyclingRoad_EventScript_ItemPHyperPotion",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_CYCLING_ROAD_HYPER_POTION"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
@@ -283,7 +283,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMRazorWind",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_CYCLING_ROAD_TM_RAZOR_WIND"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -296,7 +296,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CyclingRoad_EventScript_ItemPMaxEther",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_CYCLING_ROAD_MAX_ETHER"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
@@ -309,7 +309,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMShadowClaw",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_CYCLING_ROAD_TM_SHADOW_CLAW"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -322,7 +322,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CyclingRoad_EventScript_ItemPXSpeed",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_CYCLING_ROAD_X_SPEED"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -335,7 +335,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CyclingRoad_EventScript_ItemPScopeLens",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_CYCLING_ROAD_SCOPE_LENS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -348,7 +348,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CyclingRoad_EventScript_ItemPCarrotHorn",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_CYCLING_ROAD_CARROT_HORN"
     }
   ],
   "warp_events": [

@@ -247,6 +247,7 @@ static const u8 sDoorAnimPalettes_ZotpyreCivilian[] = {6, 6, 6, 6, 6, 6, 6, 6};
 static const u8 sDoorAnimPalettes_CasinoGreen[] = {7, 7, 7, 7, 7, 7, 7, 7};
 static const u8 sDoorAnimPalettes_CasinoRed[] = {8, 8, 8, 8, 7, 7, 7, 7};
 static const u8 sDoorAnimPalettes_GymRustboro[] = {11, 11, 5, 5, 5, 5, 5, 5};
+static const u8 sDoorAnimPalettes_OzoneSandBuilding[] = {8, 8, 8, 8, 8, 8, 8, 8};
 
 static const struct DoorGraphics sDoorAnimGraphicsTable[] =
 {
@@ -323,6 +324,7 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_CasinoNew_doubledoors_red,                    DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_CasinoRed, sDoorAnimPalettes_CasinoRed},
     {METATILE_CasinoNew_doubledoors_green,                  DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_CasinoGreen, sDoorAnimPalettes_CasinoGreen},
     {METATILE_Rustboro_door_gym_entrance,                   DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_GymRustboro, sDoorAnimPalettes_GymRustboro},
+    {METATILE_ozoneinsitute_sand_building_door,             DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_SweltornCivilian, sDoorAnimPalettes_OzoneSandBuilding},
 };
 
 // NOTE: The tiles of a door's animation must be copied to VRAM because they are not already part of any given tileset.
