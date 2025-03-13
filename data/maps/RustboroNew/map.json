@@ -54,7 +54,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "RustboroNew_EventScript_ItemPGoldTooth",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_RUSTBORO_NEW_GOLD_TOOTH"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -67,7 +67,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "RustboroNew_EventScript_ItemPAbilityCookie",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_RUSTBORO_NEW_ABILITY_COOKIE"
     }
   ],
   "warp_events": [

@@ -148,7 +148,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SailorsPauseShips_EventScript_ItemPThroatSpray",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SAILORS_PAUSE_SHIPS_THROAT_SPRAY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
@@ -161,7 +161,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMThroatChop",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SAILORS_PAUSE_SHIPS_TM_THROAT_CHOP"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -174,7 +174,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SailorsPauseShips_EventScript_ItemPAbilityCookie",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SAILORS_PAUSE_SHIPS_ABILITY_COOKIE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -187,7 +187,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SailorsPauseShips_EventScript_ItemPRedCard",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SAILORS_PAUSE_SHIPS_RED_CARD"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
@@ -200,7 +200,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMPsychic",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SAILORS_PAUSE_SHIPS_TM_PSYCHIC"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -213,7 +213,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SailorsPauseShips_EventScript_ItemPMaxPotion",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SAILORS_PAUSE_SHIPS_MAX_POTION"
     }
   ],
   "warp_events": [
