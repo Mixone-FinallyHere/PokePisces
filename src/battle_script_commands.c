@@ -326,7 +326,7 @@ static const u16 sBadgeFlags[8] = {
     FLAG_BADGE05_GET, FLAG_BADGE06_GET, FLAG_BADGE07_GET, FLAG_BADGE08_GET,
 };
 
-static const u16 sWhiteOutBadgeMoney[9] = { 8, 16, 24, 36, 48, 64, 80, 100, 120 };
+static const u16 sWhiteOutBadgeMoney[9] = { 10, 25, 50, 115, 155, 205, 255, 320, 385 };
 
 #define STAT_CHANGE_WORKED      0
 #define STAT_CHANGE_DIDNT_WORK  1
@@ -1297,7 +1297,7 @@ static void Cmd_attackcanceler(void)
         gCurrentActionFuncId = B_ACTION_FINISHED;
         return;
     }
-    if (gBattleMons[gBattlerAttacker].hp == 0 && !gProtectStructs[gBattlerAttacker].aftermathBlowUp && !(gHitMarker & HITMARKER_NO_ATTACKSTRING))
+    if (gBattleMons[gBattlerAttacker].hp == 0 && gBattleMoves[gCurrentMove].effect != EFFECT_EXPLOSION && !gProtectStructs[gBattlerAttacker].aftermathBlowUp && !(gHitMarker & HITMARKER_NO_ATTACKSTRING))
     {
         gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
         gBattlescriptCurrInstr = BattleScript_MoveEnd;
@@ -1890,9 +1890,9 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
         calc = (calc * 90) / 100; // 10% evasion increase
         break;
     case ABILITY_ANTICIPATION:
-        if (gDisableStructs[battlerDef].isFirstTurn)
+        if (gProtectStructs[battlerDef].anticipated)
         {
-            calc = min(calc, 50);                 // max accuraccy of move is 50%
+            calc = min(calc, 50); // max accuracy of move is 50%
         }
     }
 
@@ -3554,6 +3554,11 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUSED_BY_ABILITY;
                 gHitMarker &= ~HITMARKER_IGNORE_SAFEGUARD;
             }
+            else if (gHitMarker & HITMARKER_SYNCHRONIZE_SKIP)
+            {
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUSED_BY_ABILITY;
+                gHitMarker &= ~HITMARKER_SYNCHRONIZE_SKIP;
+            }
             else
             {
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUSED;                
@@ -3570,7 +3575,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
              || gBattleScripting.moveEffect == MOVE_EFFECT_BURN)
              {
                 gBattleStruct->synchronizeMoveEffect = gBattleScripting.moveEffect;
-                gHitMarker |= HITMARKER_SYNCHRONISE_EFFECT;
+                gHitMarker |= HITMARKER_SYNCHRONIZE_EFFECT;
              }
             return;
         }
@@ -5648,7 +5653,7 @@ static void MoveValuesCleanUp(void)
     gBattleScripting.moveEffect = 0;
     gBattleCommunication[MISS_TYPE] = 0;
     gHitMarker &= ~HITMARKER_DESTINYBOND;
-    gHitMarker &= ~HITMARKER_SYNCHRONISE_EFFECT;
+    gHitMarker &= ~HITMARKER_SYNCHRONIZE_EFFECT;
 }
 
 static void Cmd_movevaluescleanup(void)
@@ -6699,6 +6704,29 @@ static void Cmd_moveend(void)
                     break;
                 }
             }
+            if (!(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE) && gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION && !IsAbilityOnField(ABILITY_DAMP))
+            {
+                gBattleMoveDamage = 0;
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_FaintAttackerForExplosion;
+                effect = TRUE;
+                break;
+            }
+            if (!(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
+            && (gBattleMoves[gCurrentMove].effect == EFFECT_MIND_BLOWN
+            || gBattleMoves[gCurrentMove].effect == EFFECT_STALAG_BLAST)
+            && IsBattlerAlive(gBattlerAttacker)
+            && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD
+            && GetBattlerAbility(gBattlerAttacker) != ABILITY_SUGAR_COAT 
+            && !TestTeruCharm(gBattlerAttacker))
+            {
+                gBattleMoveDamage = (gBattleMons[gBattlerAttacker].maxHP + 1) / 2; // Half of Max HP Rounded UP
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_MaxHp50Recoil;
+                effect = TRUE;
+                break;
+            }
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_SYNCHRONIZE_TARGET: // target synchronize
@@ -7098,7 +7126,10 @@ static void Cmd_moveend(void)
                         gBattleScripting.moveendState = 0;
                         MoveValuesCleanUp();
                         gBattleScripting.moveEffect = gBattleScripting.savedMoveEffect;
-                        BattleScriptPush(gBattleScriptsForMoveEffects[gBattleMoves[gCurrentMove].effect]);
+                        if (gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION)
+                            BattleScriptPush(gBattleScriptsForMoveEffects[EFFECT_HIT]); // Edge case for Explosion not changing targets
+                        else
+                            BattleScriptPush(gBattleScriptsForMoveEffects[gBattleMoves[gCurrentMove].effect]);
                         gBattlescriptCurrInstr = BattleScript_FlushMessageBox;
                         return;
                     }
@@ -8891,7 +8922,7 @@ static void Cmd_getmoneyreward(void)
             if (FlagGet(sBadgeFlags[i]) == TRUE)
                 ++count;
         }
-        money = sWhiteOutBadgeMoney[count] * sPartyLevel;
+        money = sWhiteOutBadgeMoney[count] * GetCurrentLevelCap();
         RemoveMoney(&gSaveBlock1Ptr->money, money);
     }
 
@@ -13177,23 +13208,13 @@ static void Cmd_various(void)
     }
     case VARIOUS_JUMP_IF_STATUS4:
     {
-        VARIOUS_ARGS(u32 flags, bool8 jumpIfTrue, const u8 *jumpInstr);
+        VARIOUS_ARGS(u32 flags, const u8 *jumpInstr);
 
         u32 battler = GetBattlerForBattleScript(cmd->battler);
-        if (cmd->jumpIfTrue)
-        {
-            if ((gStatuses4[battler] & cmd->flags) != 0)
-                gBattlescriptCurrInstr = cmd->nextInstr;
-            else
-                gBattlescriptCurrInstr = cmd->jumpInstr;
-        }
+        if (gStatuses4[battler] & cmd->flags)
+            gBattlescriptCurrInstr = cmd->jumpInstr;
         else
-        {
-            if ((gStatuses4[battler] & cmd->flags) != 0)
-                gBattlescriptCurrInstr = cmd->jumpInstr;
-            else
-                gBattlescriptCurrInstr = cmd->nextInstr;
-        }
+            gBattlescriptCurrInstr = cmd->nextInstr;
         return;
     }
     case VARIOUS_SHELL_SIDE_ARM_CHECK: // 0% chance GameFreak actually checks this way according to DaWobblefet, but this is the only functional explanation at the moment
@@ -14249,18 +14270,8 @@ static void Cmd_tryexplosion(void)
 {
     CMD_ARGS();
 
-    u32 dampBattler;
     if (gBattleControllerExecFlags)
         return;
-
-    if ((dampBattler = IsAbilityOnField(ABILITY_DAMP)))
-    {
-        // Failed, a battler has Damp
-        gLastUsedAbility = ABILITY_DAMP;
-        gBattlerTarget = --dampBattler;
-        gBattlescriptCurrInstr = BattleScript_DampStopsExplosion;
-        return;
-    }
 
     gBattleMoveDamage = gBattleMons[gBattlerAttacker].hp;
     BtlController_EmitHealthBarUpdate(gBattlerAttacker, BUFFER_A, INSTANT_HP_BAR_DROP);
@@ -20355,6 +20366,8 @@ void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBat
         *expAmount = (*expAmount * 125) / 100;
     if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
         *expAmount = (*expAmount * 200) / 100;
+    if (GetMonData(&gPlayerParty[expGetterMonId], MON_DATA_LEVEL) < GetPreviousLevelCap())
+        *expAmount = (*expAmount * 150) / 100;
     if (B_UNEVOLVED_EXP_MULTIPLIER >= GEN_6 && IsMonPastEvolutionLevel(&gPlayerParty[expGetterMonId]))
         *expAmount = (*expAmount * 4915) / 4096;
     if (B_AFFECTION_MECHANICS == TRUE && GetBattlerFriendshipScore(expGetterMonId) >= FRIENDSHIP_50_TO_99)

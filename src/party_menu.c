@@ -4442,9 +4442,6 @@ static void GetMedicineItemEffectMessage(u16 item, u32 statusCured)
     case ITEM_EFFECT_CURE_INFATUATION:
         StringExpandPlaceholders(gStringVar4, gText_PkmnGotOverInfatuation);
         break;
-    case ITEM_EFFECT_CURE_EXPOSED:
-        StringExpandPlaceholders(gStringVar4, gText_PkmnNoLongerExposed);
-        break;
     case ITEM_EFFECT_CURE_PANIC:
         StringExpandPlaceholders(gStringVar4, gText_PkmnStoppedPanicking);
         break;
@@ -6058,8 +6055,6 @@ u8 GetItemEffectType(u16 item)
             return ITEM_EFFECT_CURE_PARALYSIS;
         else if (statusCure == ITEM3_CONFUSION)
             return ITEM_EFFECT_CURE_CONFUSION;
-        //else if (statusCure == ITEM3_EXPOSED)
-        //    return ITEM_EFFECT_CURE_EXPOSED;
         else if (statusCure == ITEM3_PANIC)
             return ITEM_EFFECT_CURE_PANIC;
         else if (itemEffect[0] >> 7 && !statusCure)

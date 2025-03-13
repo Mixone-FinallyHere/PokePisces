@@ -786,7 +786,7 @@ void HandleAction_NothingIsFainted(void)
 {
     gCurrentTurnActionNumber++;
     gCurrentActionFuncId = gActionsByTurnOrder[gCurrentTurnActionNumber];
-    gHitMarker &= ~(HITMARKER_DESTINYBOND | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_ATTACKSTRING_PRINTED | HITMARKER_NO_PPDEDUCT | HITMARKER_IGNORE_SAFEGUARD | HITMARKER_PASSIVE_DAMAGE | HITMARKER_OBEYS | HITMARKER_WAKE_UP_CLEAR | HITMARKER_SYNCHRONISE_EFFECT | HITMARKER_CHARGING | HITMARKER_NEVER_SET);
+    gHitMarker &= ~(HITMARKER_DESTINYBOND | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_ATTACKSTRING_PRINTED | HITMARKER_NO_PPDEDUCT | HITMARKER_IGNORE_SAFEGUARD | HITMARKER_PASSIVE_DAMAGE | HITMARKER_OBEYS | HITMARKER_WAKE_UP_CLEAR | HITMARKER_SYNCHRONIZE_EFFECT | HITMARKER_CHARGING | HITMARKER_NEVER_SET | HITMARKER_SYNCHRONIZE_SKIP);
 }
 
 void HandleAction_ActionFinished(void)
@@ -799,7 +799,7 @@ void HandleAction_ActionFinished(void)
     gCurrentTurnActionNumber++;
     gCurrentActionFuncId = gActionsByTurnOrder[gCurrentTurnActionNumber];
     SpecialStatusesClear();
-    gHitMarker &= ~(HITMARKER_DESTINYBOND | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_ATTACKSTRING_PRINTED | HITMARKER_NO_PPDEDUCT | HITMARKER_IGNORE_SAFEGUARD | HITMARKER_PASSIVE_DAMAGE | HITMARKER_OBEYS | HITMARKER_WAKE_UP_CLEAR | HITMARKER_SYNCHRONISE_EFFECT | HITMARKER_CHARGING | HITMARKER_NEVER_SET | HITMARKER_IGNORE_DISGUISE);
+    gHitMarker &= ~(HITMARKER_DESTINYBOND | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_ATTACKSTRING_PRINTED | HITMARKER_NO_PPDEDUCT | HITMARKER_IGNORE_SAFEGUARD | HITMARKER_PASSIVE_DAMAGE | HITMARKER_OBEYS | HITMARKER_WAKE_UP_CLEAR | HITMARKER_SYNCHRONIZE_EFFECT | HITMARKER_CHARGING | HITMARKER_NEVER_SET | HITMARKER_IGNORE_DISGUISE | HITMARKER_SYNCHRONIZE_SKIP);
 
     gCurrentMove = 0;
     gBattleMoveDamage = 0;
@@ -3560,6 +3560,8 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
     u8 effect = 0;
     u32 count = 0;
     u32 i;
+    u32 dampBattler = IsAbilityOnField(ABILITY_DAMP);
+
     do
     {
         switch (gBattleStruct->atkCancellerTracker)
@@ -3918,6 +3920,20 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                 gProtectStructs[gBattlerAttacker].usedThroatChopPreventedMove = TRUE;
                 CancelMultiTurnMoves(gBattlerAttacker);
                 gBattlescriptCurrInstr = BattleScript_MoveUsedIsThroatChopPrevented;
+                gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
+                effect = 1;
+            }
+            gBattleStruct->atkCancellerTracker++;
+            break;
+        case CANCELLER_EXPLODING_DAMP:
+            if (dampBattler 
+            && (gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION
+            || gBattleMoves[gCurrentMove].effect == EFFECT_MIND_BLOWN
+            || gBattleMoves[gCurrentMove].effect == EFFECT_STALAG_BLAST)
+            && gCurrentMove != MOVE_FINAL_SHRIEK)
+            {
+                gBattleScripting.battler = dampBattler - 1;
+                gBattlescriptCurrInstr = BattleScript_DampStopsExplosion;
                 gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
                 effect = 1;
             }
@@ -4762,48 +4778,13 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         case ABILITY_ANTICIPATION:
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
-                u32 side = GetBattlerSide(battler);
-
-                for (i = 0; i < MAX_BATTLERS_COUNT; i++)
-                {
-                    if (IsBattlerAlive(i) && side != GetBattlerSide(i))
-                    {
-                        for (j = 0; j < MAX_MON_MOVES; j++)
-                        {
-                            move = gBattleMons[i].moves[j];
-                            GET_MOVE_TYPE(move, moveType);
-                            if (CalcTypeEffectivenessMultiplier(move, moveType, i, battler, ABILITY_ANTICIPATION, FALSE) >= UQ_4_12(2.0))
-                            {
-                                effect++;
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                if (effect != 0)
-                {
-                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWITCHIN_ANTICIPATION;
-                }
-                else
-                {
-                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWITCHIN_ANTICIPATION_EVADE;
-                    effect++;
-                }
+                gProtectStructs[gBattlerAttacker].anticipated = TRUE;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWITCHIN_ANTICIPATION;
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 BattleScriptPushCursorAndCallback(BattleScript_SwitchInAbilityMsg);
+                effect++;
             }
             break;
-            // case ABILITY_FOREWARN:
-            // if (!gSpecialStatuses[battler].switchInAbilityDone)
-            //{
-            // ForewarnChooseMove(battler);
-            // gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWITCHIN_FOREWARN;
-            // gSpecialStatuses[battler].switchInAbilityDone = TRUE;
-            // BattleScriptPushCursorAndCallback(BattleScript_SwitchInAbilityMsg);
-            // effect++;
-            //}
-            // break;
         case ABILITY_DOWNLOAD:
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
@@ -7518,30 +7499,31 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         }
         break;
     case ABILITYEFFECT_SYNCHRONIZE:
-        if (gLastUsedAbility == ABILITY_SYNCHRONIZE && (gHitMarker & HITMARKER_SYNCHRONISE_EFFECT))
+        if (gLastUsedAbility == ABILITY_SYNCHRONIZE && (gHitMarker & HITMARKER_SYNCHRONIZE_EFFECT))
         {
-            gHitMarker &= ~HITMARKER_SYNCHRONISE_EFFECT;
+            gHitMarker &= ~HITMARKER_SYNCHRONIZE_EFFECT;
 
             if (!(gBattleMons[gBattlerAttacker].status1 & STATUS1_ANY_NEGATIVE))
             {
                 gBattleStruct->synchronizeMoveEffect &= ~(MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN);
+                if (gBattleStruct->synchronizeMoveEffect == MOVE_EFFECT_TOXIC)
+                    gBattleStruct->synchronizeMoveEffect = MOVE_EFFECT_POISON;
 
-                gBattleScripting.moveEffect = gBattleStruct->synchronizeMoveEffect + MOVE_EFFECT_AFFECTS_USER;
+                gBattleScripting.moveEffect = gBattleStruct->synchronizeMoveEffect;
                 gBattleScripting.battler = gBattlerAbility = gBattlerTarget;
                 
                 //PREPARE_ABILITY_BUFFER(gBattleTextBuff1, ABILITY_SYNCHRONIZE);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_SynchronizeActivates;
-                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
-                
+                gHitMarker |= (HITMARKER_IGNORE_SAFEGUARD | HITMARKER_SYNCHRONIZE_SKIP);
                 effect++;
             }
         }
         break;
     case ABILITYEFFECT_ATK_SYNCHRONIZE: // 8
-        if (gLastUsedAbility == ABILITY_SYNCHRONIZE && (gHitMarker & HITMARKER_SYNCHRONISE_EFFECT))
+        if (gLastUsedAbility == ABILITY_SYNCHRONIZE && (gHitMarker & HITMARKER_SYNCHRONIZE_EFFECT))
         {
-            gHitMarker &= ~HITMARKER_SYNCHRONISE_EFFECT;
+            gHitMarker &= ~HITMARKER_SYNCHRONIZE_EFFECT;
 
             if (!(gBattleMons[gBattlerTarget].status1 & STATUS1_ANY_NEGATIVE))
             {
@@ -7549,12 +7531,12 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 if (gBattleStruct->synchronizeMoveEffect == MOVE_EFFECT_TOXIC)
                     gBattleStruct->synchronizeMoveEffect = MOVE_EFFECT_POISON;
 
-                gBattleScripting.moveEffect = gBattleStruct->synchronizeMoveEffect;
+                gBattleScripting.moveEffect = gBattleStruct->synchronizeMoveEffect + MOVE_EFFECT_AFFECTS_USER;
                 gBattleScripting.battler = gBattlerAbility = gBattlerAttacker;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, ABILITY_SYNCHRONIZE);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_SynchronizeActivates;
-                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                gHitMarker |= (HITMARKER_IGNORE_SAFEGUARD | HITMARKER_SYNCHRONIZE_SKIP);
                 effect++;
             }
         }

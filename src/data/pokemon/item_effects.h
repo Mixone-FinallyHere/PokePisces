@@ -60,7 +60,7 @@ const u8 gItemEffect_SuperPotion[7] = {
 #endif
 };
 
-const u8 gItemEffect_FullHeal[6] = {
+const u8 gItemEffect_FullHeal[7] = {
     [3] = ITEM3_STATUS_ALL,
 };
 

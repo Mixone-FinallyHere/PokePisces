@@ -224,6 +224,8 @@ extern const u8 BattleScript_DisturbActivates[];
 extern const u8 BattleScript_MockingActivates[];
 extern const u8 BattleScript_EvilEyeActivates[];
 extern const u8 BattleScript_IlluminateActivates[];
+extern const u8 BattleScript_FaintAttackerForExplosion[];
+extern const u8 BattleScript_MaxHp50Recoil[];
 extern const u8 BattleScript_DroughtActivates[];
 extern const u8 BattleScript_TookAttack[];
 extern const u8 BattleScript_OvertookAttack[];
