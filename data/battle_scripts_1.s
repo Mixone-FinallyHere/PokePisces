@@ -3491,18 +3491,17 @@ BattleScript_EffectDanceMania:
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectBoundary:
-	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_EffectMagnitudeTarget
 	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
-	accuracycheck BattleScript_MoveMissedPause, ACC_CURR_MOVE
+	typecalc
+	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
     boundarydamagecalculation
 BattleScript_Boundary30::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_HIGHROLLHITROLL
 	waitmessage B_WAIT_TIME_LONG
-	typecalc
-	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
 	setword gBattleMoveDamage, 30
 	adjustdamage
 	goto BattleScript_HitFromAtkAnimation
@@ -3510,8 +3509,6 @@ BattleScript_Boundary60::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_HIGHROLLHITROLL
 	waitmessage B_WAIT_TIME_LONG
-	typecalc
-	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
 	jumpifspeciesmegaboss BS_TARGET, BoundaryAgainstBossShunyong
 	setword gBattleMoveDamage, 60
 	adjustdamage
@@ -3520,8 +3517,6 @@ BattleScript_Boundary90::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_HIGHROLLHITROLL
 	waitmessage B_WAIT_TIME_LONG
-	typecalc
-	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
 	jumpifspeciesmegaboss BS_TARGET, BoundaryAgainstBossShunyong
 	setword gBattleMoveDamage, 90
 	adjustdamage
@@ -3530,8 +3525,6 @@ BattleScript_BigBoundary::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_BIGBOUNDARY
 	waitmessage B_WAIT_TIME_LONG
-	typecalc
-	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
 	jumpifspeciesmegaboss BS_TARGET, BoundaryAgainstBossShunyong
 	setword gBattleMoveDamage, 444
 	adjustdamage
@@ -4770,7 +4763,6 @@ BattleScript_LoneSharkSetUp::
 BattleScript_EffectDragonPoker::
 	shellsidearmcheck
 	setmoveeffect MOVE_EFFECT_PAYDAY
-	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_EffectMagnitudeTarget
 	attackcanceler
 	attackstring
 	ppreduce

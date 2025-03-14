@@ -10537,7 +10537,6 @@ static void Cmd_various(void)
         PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, rolling)
 
         gBattlescriptCurrInstr = cmd->nextInstr;
-
         return;
     }
     case VARIOUS_GET_STAT_VALUE:
@@ -12914,7 +12913,9 @@ static void Cmd_various(void)
     }
     case VARIOUS_JUMP_IF_SPECIES_MEGA_BOSS:
     {
-        VARIOUS_ARGS(u16 species, const u8 *jumpInstr);
+        VARIOUS_ARGS(const u8 *jumpInstr);
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+
         if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG))
             gBattlescriptCurrInstr = cmd->jumpInstr;
         else
