@@ -7,7 +7,9 @@ ZotpyreInteriors_EventScript_SpiritBreak::
 	checkitem ITEM_TM_SPIRIT_BREAK
 	goto_if_eq VAR_RESULT, TRUE, ZotpyreInteriors_EventScript_GaveSpiritBreak
 	msgbox ZotpyreInteriors_Text_SpiritBreak, MSGBOX_DEFAULT
+	closemessage
 	giveitem ITEM_TM_SPIRIT_BREAK
+	closemessage
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	release
 	end
@@ -302,7 +304,19 @@ ZotpyreInteriors_Text_MySonMightBeOutThere:
 	.string "It has put my mind more at ease.$"
 
 ZotpyreInteriors_Text_SpiritBreak:
-	.string "here have spirit break$"
+	.string "My spirit remains as solid\n"
+	.string "as that of a Mismagius, in spite\l"
+	.string "of the harshness of my life.\p"
+	.string "I have my strong will to thank\n"
+	.string "for that. Though not everyone has\l"
+	.string "a will that can't be broken.\l"
+	.string "In fact, in a battle, you should\l"
+	.string "take advantage of those\l"
+	.string "weak in spirit.\p"
+	.string "Take this TM, and you may\n"
+	.string "break them...$"
 
 ZotpyreInteriors_Text_GaveSpiritBreak:
-	.string "alr gave u spirit break$"
+	.string "Stay determined, no matter what.\n"
+	.string "The stronger mind always\l"
+	.string "trumps the stronger body...$"

@@ -3712,7 +3712,7 @@ gText_NoLottoTickets:
 
 gText_WantLottoTicket:
 	.string "You would like a Lottery Ticket?\n"
-	.string "That will cost you 5000.$"
+	.string "That will cost you ¥5000.$"
 
 gText_NoLottoMoney:
 	.string "You don't have enough money\n"

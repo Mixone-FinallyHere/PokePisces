@@ -108,8 +108,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "UnduraTunnels_EventScript_ItemPWiseGlasses",
-      "flag": "FLAG_P_ITEM_UNDURA_TUNNELS_WISE_GLASSES"
+      "script": "UnduraTunnels_EventScript_ItemPOddStone",
+      "flag": "FLAG_P_ITEM_UNDURA_TUNNELS_ODD_STONE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNIQUE_BALL",
@@ -121,8 +121,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "UnduraTunnels_EventScript_ItemPMuscleBand",
-      "flag": "0"
+      "script": "UnduraTunnels_EventScript_ItemPWideArmor",
+      "flag": "FLAG_P_ITEM_UNDURA_TUNNELS_WIDE_ARMOR"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
