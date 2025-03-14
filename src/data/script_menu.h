@@ -1074,6 +1074,17 @@ static const struct MenuAction MultichoiceList_SandItemPick[] = {
     {gText_Exit},
 };
 
+static const u8 sText_PlayLottery[] = _("Play Lottery");
+static const u8 sText_BuyTicket[] = _("Buy Ticket");
+static const u8 sText_Prizes[] = _("Prizes?");
+
+static const struct MenuAction MultichoiceList_LottoMenuChoice[] = {
+    {sText_PlayLottery},
+    {sText_BuyTicket},
+    {sText_Prizes},
+    {gText_Exit},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1228,6 +1239,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_BERRY_SHOP_CATEGORY]          = MULTICHOICE(MultichoiceList_BerryShopCategory),
     [MULTI_CHOICE_ITEM_PICK]             = MULTICHOICE(MultichoiceList_ChoiceItemPick),
     [MULTI_SAND_ITEM_PICK]               = MULTICHOICE(MultichoiceList_SandItemPick),
+    [MULTI_LOTTO_MENU_CHOICE]            = MULTICHOICE(MultichoiceList_LottoMenuChoice),
 };
 
 const u8 *const gStdStrings[] =

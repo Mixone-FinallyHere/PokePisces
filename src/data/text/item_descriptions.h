@@ -4070,9 +4070,10 @@ static const u8 sEonTicketDesc[] = _(
     "southern island.");
 
 static const u8 sMysticTicketDesc[] = _(
-    "A ticket required\n"
-    "to board the ship\n"
-    "to Navel Rock.");
+	"A lottery ticket\n"
+	"that you can spend\n"
+	"at any Pokemon Center\n"
+	"to win prizes.");
 
 static const u8 sAuroraTicketDesc[] = _(
     "A ticket required\n"
