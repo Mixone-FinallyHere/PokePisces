@@ -4324,8 +4324,8 @@ static const u8 sLustrousGlobeDesc[] = _(
 static const u8 sBerserkGene[] = _(
     "A capsule filled with\n"
     "DNA that sharply\n"
-    "boosts Atk, but causes\n"
-    "infinite confusion.");
+    "boosts Atk, but\n"
+    "causes confusion.");
 
 // New items
 static const u8 sBerryMic[] = _(
@@ -4407,9 +4407,9 @@ static const u8 sKeychainDesc[] = _(
 
 static const u8 sFlipCoinDesc[] = _(
     "A gambler's coin that\n"
-    "flips the foe's stat\n"
-    "buffs after the holder\n"
-    "attacks-but only once.");
+    "lets the holder flip\n"
+    "foe's stat buffs-but\n"
+    "only once.");
 
 static const u8 sGravityCoreDesc[] = _(
     "An odd cube that\n"
