@@ -17513,9 +17513,9 @@ BattleScript_AbilityPopUpOverwriteThenNormal:
 
 BattleScript_LovesickMummyEffectActivates::
 .if B_ABILITY_POP_UP == TRUE
-	call BattleScript_AbilityPopUp
+	call BattleScript_AbilityPopUpTarget
 	setbyte sFIXED_ABILITY_POPUP, TRUE
-	copybyte gBattlerAbility, gBattlerTarget
+	copybyte gBattlerAbility, gBattlerAttacker
 	copyhword sABILITY_OVERWRITE, gLastUsedAbility
 	call BattleScript_AbilityPopUpOverwriteThenNormal
 .endif
@@ -17884,7 +17884,7 @@ BattleScript_CuteCharmAllureActivates2::
 BattleScript_LovesickActivates::
 	call BattleScript_AbilityPopUp
 	status2animation BS_ATTACKER, STATUS2_INFATUATION
-	printstring STRINGID_PKMNSXINFATUATEDY2
+	printstring STRINGID_PKMNSXINFATUATEDY3
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryDestinyKnotInfatuateTarget
 	end3

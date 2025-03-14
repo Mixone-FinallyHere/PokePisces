@@ -5450,6 +5450,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 break;
             case ABILITY_LOVESICK:
                 if (IsBattlerAlive(battler)
+                && IsBattlerAlive(GetBattlerAtPosition(BATTLE_OPPOSITE(GetBattlerPosition(battler))))
                 && (!(gBattleMons[battler].status2 & STATUS2_INFATUATION))
                 && (!(IsAbilityOnSide(battler, ABILITY_AROMA_VEIL))))
                 {
@@ -7032,7 +7033,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             break;
         case ABILITY_LOVESICK:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-            && IsBattlerAlive(gBattlerTarget) 
+            && IsBattlerAlive(gBattlerTarget)
             && TARGET_TURN_DAMAGED
             && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_PROTECTIVE_PADS
             && IsMoveMakingContact(move, gBattlerAttacker) 

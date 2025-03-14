@@ -9205,7 +9205,9 @@ u8 GetCurrentLevelCap(void)
 
 u8 GetPreviousLevelCap(void)
 {
-    if (!FlagGet(FLAG_BADGE02_GET))
+    if (!FlagGet(FLAG_BADGE01_GET))
+        return 1;
+    else if (!FlagGet(FLAG_BADGE02_GET))
         return 12;
     else if (!FlagGet(FLAG_DEFEATED_PANIC_EVENT))
         return 17;

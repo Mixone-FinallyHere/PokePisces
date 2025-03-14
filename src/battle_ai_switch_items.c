@@ -38,7 +38,7 @@ static bool32 IsAceMon(u32 battler, u32 monPartyId)
         return TRUE;
     if (AI_THINKING_STRUCT->aiFlags & AI_FLAG_DOUBLE_ACE_POKEMON
             && !(gBattleStruct->forcedSwitch & gBitTable[battler])
-            && (monPartyId == CalculateEnemyPartyCount()-1 || monPartyId == CalculateEnemyPartyCount()-2))
+            && (monPartyId == CalculateEnemyPartyCount() || monPartyId == CalculateEnemyPartyCount() - 1))
         return TRUE;
     return FALSE;
 }

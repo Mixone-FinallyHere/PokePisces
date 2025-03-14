@@ -946,6 +946,7 @@ static const u8 sText_SeedWrap[] = _("Life-stealing seeds wrapped\naround {B_DEF
 static const u8 sText_ReadyingSnap[] = _("{B_ATK_NAME_WITH_PREFIX} is getting\nready to snap!");
 static const u8 sText_FlorescenceStatusNormal[] = _("Florescence made the status\nreturn to normal!");
 static const u8 sText_PkmnsXInfatuatedY2[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY}\ninfatuated {B_DEF_NAME_WITH_PREFIX}!");
+static const u8 sText_PkmnsXInfatuatedY3[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY}\ninfatuated {B_ATK_NAME_WITH_PREFIX}!");
 static const u8 sText_BigBoundary[] = _("{B_ATK_NAME_WITH_PREFIX} got a\ndeadly roll!");
 static const u8 sText_StartedADanceMania[] = _("{B_ATK_NAME_WITH_PREFIX} made everyone\ndance wildly!");
 static const u8 sText_PkmnCutHPMaxedSpAtk[] = _("{B_ATK_NAME_WITH_PREFIX} cut its own HP\nand maximized SP. ATTACK!");
@@ -963,8 +964,8 @@ static const u8 sText_ScarfWasChargedByBeingHit[] = _("Being hit by {B_CURRENT_M
 static const u8 sText_PkmnGemstoneMaxedEvasion[] = _("Gemstone maxed out\n{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s evasion!");
 static const u8 sText_UsingItemTheStatOfPkmnFell[] = _("Using {B_LAST_ITEM}, the {B_BUFF1}\nof {B_SCR_ACTIVE_NAME_WITH_PREFIX} {B_BUFF2}");
 static const u8 sText_AbilityLetItUseMove[] = _("{B_ATK_NAME_WITH_PREFIX}'s ability let it use\n{B_CURRENT_MOVE}!");
-static const u8 sText_AbilityLetItUseMoveGuardDog[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_ATK_ABILITY} let it use\nGrowl!");
-static const u8 sText_AbilityLetItUseMoveSweetVeil[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_ATK_ABILITY} let it use\nSweet Scent!");
+static const u8 sText_AbilityLetItUseMoveGuardDog[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY} let it use\nGrowl!");
+static const u8 sText_AbilityLetItUseMoveSweetVeil[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY} let it use\nSweet Scent!");
 static const u8 sText_WepearBerryHit[] = _("Wepear Berry allowed\nhitting through protection!");
 static const u8 sText_PkmnCutsHPWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\ncuts {B_DEF_NAME_WITH_PREFIX}'s HP!");
 static const u8 sText_HealerRestoration[] = _("{B_ATK_PARTNER_NAME} was healed\nby {B_ATK_NAME_WITH_PREFIX}!");
@@ -1866,6 +1867,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNSXPREVENTSFROSTBITE - BATTLESTRINGS_TABLE_START] = sText_PkmnsXPreventsFrostbite,
     [STRINGID_PLAYERWHITEOUT3 - BATTLESTRINGS_TABLE_START] = sText_PlayerWhiteout3,
     [STRINGID_ATKPKMNCONFUSED - BATTLESTRINGS_TABLE_START] = sText_AtkPkmnConfused,
+    [STRINGID_PKMNSXINFATUATEDY3 - BATTLESTRINGS_TABLE_START] = sText_PkmnsXInfatuatedY3,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
