@@ -10432,7 +10432,7 @@ const struct Item gItems[] =
     {
         .name = _("Shelly Brew"),
         .price = 1000,
-        .holdEffectParam = 0,
+        .holdEffectParam = 10,
         .description = sShellyBrewDesc,
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,
