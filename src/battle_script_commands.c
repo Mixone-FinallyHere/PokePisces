@@ -6703,7 +6703,10 @@ static void Cmd_moveend(void)
                     break;
                 }
             }
-            if (!(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE) && gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION && !IsAbilityOnField(ABILITY_DAMP))
+            if (!(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE) 
+            && gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION
+            && gCurrentMove != MOVE_FINAL_SHRIEK
+            && !IsAbilityOnField(ABILITY_DAMP))
             {
                 gBattleMoveDamage = 0;
                 BattleScriptPushCursor();
