@@ -15512,12 +15512,12 @@ static const struct TrainerMon sParty_PWallace[] = {
     {
     .species = SPECIES_PROMISCBUS,
     .ability = ABILITY_FREE_LOVE,
-    .heldItem = ITEM_COVERT_CLOAK,
+    .heldItem = ITEM_ABILITY_SHIELD,
     .isShiny = TRUE,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(168, 0, 252, 0, 0, 88),
     .lvl = 81,
-    .moves = {MOVE_HEART_STEAL, MOVE_THUNDER_WAVE, MOVE_DETECT, MOVE_SPRINGTIDE_STORM},
+    .moves = {MOVE_HEART_STEAL, MOVE_STRENGTH_SAP, MOVE_DETECT, MOVE_SPRINGTIDE_STORM},
     .nature = NATURE_IMPISH,
     },
     {
