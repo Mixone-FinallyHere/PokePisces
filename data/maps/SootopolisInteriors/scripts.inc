@@ -58,6 +58,7 @@ SootopolisInteriors_EventScript_LunasterTale::
 	end
 
 SootopolisInteriors_EventScript_LunasterDefeated:
+	goto_if_unset FLAG_RECEIVED_SOOTHE_BELL, SootopolisInteriors_EventScript_HealBellQuest
 	msgbox SootopolisInteriors_Text_LunasterDefeated, MSGBOX_AUTOCLOSE
 	speakername NULL
 	release

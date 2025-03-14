@@ -484,14 +484,14 @@ MauvilleNew_Text_SomeLoreDrops:
 	.string "to give to you this.$"
 
 MauvilleNew_Text_GoToVerdanturf:
-	.string "It seems he much enjoyed that item.\p"
-	.string "Regardless, I have a favor to repay.\n"
-	.string "Go forth to the gate of Verdanturf.\l"
+	.string "It seems he much enjoyed that item.\n"
+	.string "Regardless, I have a favor to repay.\p"
+	.string "Go forth to the gate of Verdanturf.\n"
 	.string "I will be getting you a personal\l"
 	.string "audience with the Gym Leader.$"
 
 MauvilleNew_Text_TheBadgeAwaits:
-	.string "Go forth to the gate of Verdanturf.\l"
+	.string "Go forth to the gate of Verdanturf.\n"
 	.string "I will be getting you a personal\l"
 	.string "audience with the Gym Leader.$"
 

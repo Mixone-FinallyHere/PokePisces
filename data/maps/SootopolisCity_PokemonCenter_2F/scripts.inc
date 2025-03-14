@@ -87,8 +87,19 @@ SootopolisCity_PokemonCenter_2F_Text_NamePhillipe:
 	.string "Phillipe$"
 
 SootopolisCity_PokemonCenter_2F_Text_HaveYouCaughtThisMon:
-	.string "you needa catch uhh\n"
-	.string "spryte lumelmo snotloud$"
+	.string "Salut! It is you again, mon\n"
+	.string "super étoile! Honh honh,\l"
+	.string "you have un parfaite timing,\l"
+	.string "for I am in need of artistic\l"
+	.string "inspiration again!\l"
+	.string "Could you assister your\l"
+	.string "amie, Phillipe, again?\p"
+	.string "I would like to lay an eye on\n"
+	.string "3 particular Pokémon.\p"
+	.string "Spryte, Lumelmo, and Snotloud.\p"
+	.string "Catch those trés and show me your\n"
+	.string "Pokédex, and I will make it\l"
+	.string "worth your troubles.$"
 
 SootopolisCity_PokemonCenter_2F_Text_CaughtMonReminder:
 	.string "Spryte, Lumelmo, and Snotloud...\n"
@@ -97,13 +108,31 @@ SootopolisCity_PokemonCenter_2F_Text_CaughtMonReminder:
 	.string "in your Pokédex?$"
 
 SootopolisCity_PokemonCenter_2F_Text_GoCatchIt:
-	.string "go GET em shithead$"
+	.string "I see you have not the required\n"
+	.string "Pokémon, amie. You should check\l"
+	.string "their locations in your Pokédex.\p"
+	.string "Bonne chance!$"
 
 SootopolisCity_PokemonCenter_2F_Text_YouveUnlockedNewBall:
-	.string "you have unlocked moon ball$"
+	.string "...\p"
+	.string "Ah! There they are! Lovely catches!\p"
+	.string "Lumelmo's brilliant colour...\n"
+	.string "Snotloud's lovely music...\l"
+	.string "Spryte's segmented body...\p"
+	.string "Inspiration strikes! Incroyable!\n"
+	.string "I must get to painting.\p"
+	.string "Merci, trainer. I will put in a good\n"
+	.string "word for you with Purplina;\l"
+	.string "you should soon be able to\l"
+	.string "purchase Orbit Balls from her.\p"
+	.string "Au revoir!$"
 
 SootopolisCity_PokemonCenter_2F_Text_GoDoPreviousQuest:
 	.string "go do the last one(s)$"
 
 SootopolisCity_PokemonCenter_2F_Text_NoMoreQuest:
-	.string "no more quest dood$"
+	.string "Bon aprés-midi, trainer.\n"
+	.string "I have naught in the way of new\l"
+	.string "jobs for you this very moment.\p"
+	.string "Perhaps when we next meet,\n"
+	.string "we shall work together again.$"
