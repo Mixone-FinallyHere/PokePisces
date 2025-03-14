@@ -4475,7 +4475,6 @@ static void PrintEditEVsOrViewStats(int caseId)
     iconXPos = (stringXPos - 16);
     PrintAOrBButtonIcon(PSS_LABEL_WINDOW_PROMPT_EVS, bButton, iconXPos);
     PrintTextOnWindow(PSS_LABEL_WINDOW_PROMPT_EVS, str, stringXPos, 1, 0, 0);
-    CalculateMonStats(&sMonSummaryScreen->monList.mons[sMonSummaryScreen->curMonIndex]);
 }
 
 static void PrintEditEVs(void)
