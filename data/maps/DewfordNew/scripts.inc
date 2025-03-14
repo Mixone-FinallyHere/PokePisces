@@ -5,6 +5,7 @@ DewfordNew_MapScripts::
 	.byte 0
 
 DewfordNew_OnLoad:
+	setflag FLAG_VISITED_DEWFORD_TOWN
 	call DewfordNew_EventScript_SetTempFlag
 	call_if_set FLAG_TEMP_12, DewfordNew_EventScript_RemoveGymBlock
 	end

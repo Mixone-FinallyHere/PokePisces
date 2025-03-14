@@ -1001,6 +1001,7 @@ Common_EventScript_TannerShop1Progress::
 
 	.align 2
 Common_Mart_TannerShop1:
+	.2byte ITEM_REVIVE
 	.2byte ITEM_POTION
 	.2byte ITEM_SODA_POP
 	.2byte ITEM_POKE_BALL
@@ -1019,6 +1020,7 @@ Common_EventScript_TannerShop2Progress::
 
 	.align 2
 Common_Mart_TannerShop2:
+	.2byte ITEM_REVIVE
 	.2byte ITEM_POTION
 	.2byte ITEM_GREAT_BALL
 	.2byte ITEM_ETHER
@@ -1044,6 +1046,7 @@ Common_EventScript_TannerShop3Progress::
 Common_Mart_TannerShop3:
 	.2byte ITEM_SUPER_POTION
 	.2byte ITEM_MAX_ETHER
+	.2byte ITEM_REVIVE
 	.2byte ITEM_POTION
 	.2byte ITEM_GREAT_BALL
 	.2byte ITEM_ETHER
