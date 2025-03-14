@@ -19268,19 +19268,21 @@ WyvernWave_Doubles:
 	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 1, 0, 6, 1
 	createvisualtask AnimTask_ShakeMon2, 2, ANIM_DEF_PARTNER, 1, 0, 6, 1
 	createvisualtask AnimTask_ShakeBattleTerrain, 2, 1, 0, 6, 1
-	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_ATTACKER
+	playsewithpan SE_M_EXPLOSION, SOUND_PAN_ATTACKER
 	createsprite gExplosionSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, 1, 1
-	delay 2
-	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_ATTACKER
+	createsprite gExplosionSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, 2, 1
+	delay 4
+	playsewithpan SE_M_EXPLOSION, SOUND_PAN_ATTACKER
 	createsprite gExplosionSpriteTemplate, ANIM_ATTACKER, 3, 24, -24, 1, 1
-	delay 2
-	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_ATTACKER
+	delay 4
+	playsewithpan SE_M_EXPLOSION, SOUND_PAN_ATTACKER
 	createsprite gExplosionSpriteTemplate, ANIM_ATTACKER, 3, -16, 16, 1, 1
-	delay 2
-	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_ATTACKER
+	delay 4
+	playsewithpan SE_M_EXPLOSION, SOUND_PAN_ATTACKER
 	createsprite gExplosionSpriteTemplate, ANIM_ATTACKER, 3, -24, -12, 1, 1
-	delay 2
-	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_ATTACKER
+	createsprite gExplosionSpriteTemplate, ANIM_ATTACKER, 3, -24, -12, 2, 1
+	delay 4
+	playsewithpan SE_M_EXPLOSION, SOUND_PAN_ATTACKER
 	createsprite gExplosionSpriteTemplate, ANIM_ATTACKER, 3, 16, 16, 1, 1
 	waitforvisualfinish
 	clearmonbg ANIM_DEF_PARTNER
@@ -26852,7 +26854,34 @@ Move_HIGH_ROLL_HIT::
 	goto Move_DRAGON_POKER
 
 Move_SHARPSHOOT::
-	goto Move_LOCK_ON
+	loadspritegfx ANIM_TAG_LOCK_ON
+	loadspritegfx ANIM_TAG_GLASS_BREAK_1
+	loadspritegfx ANIM_TAG_GLASS_BREAK_2
+	monbg ANIM_TARGET
+	setalpha 12, 8
+	createsprite gLockOnTargetSpriteTemplate, ANIM_ATTACKER, 40
+	createsprite gLockOnMoveTargetSpriteTemplate, ANIM_ATTACKER, 40, 1
+	createsprite gLockOnMoveTargetSpriteTemplate, ANIM_ATTACKER, 40, 2
+	createsprite gLockOnMoveTargetSpriteTemplate, ANIM_ATTACKER, 40, 3
+	createsprite gLockOnMoveTargetSpriteTemplate, ANIM_ATTACKER, 40, 4  @ Also transitions to red target
+	delay 120
+	setarg 7, 0xFFFF  @ Signal target to flash/disappear
+	waitforvisualfinish
+	playsewithpan SE_M_TRI_ATTACK2, SOUND_PAN_TARGET
+	createvisualtask AnimTask_Flash, 2
+	delay 30
+	playsewithpan SE_M_BRICK_BREAK, SOUND_PAN_TARGET
+	createsprite gGlassBreak1SpriteTemplate, ANIM_ATTACKER, 2, 0, 0, ANIM_TARGET, 2
+	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 3, 0, 6, 1
+	delay 10
+	createsprite gGlassBreak2SpriteTemplate, ANIM_ATTACKER, 2, 0, 0, ANIM_TARGET, 2
+	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 3, 0, 6, 1
+	waitforvisualfinish
+	clearmonbg ANIM_TARGET
+	blendoff
+	end
+
+	end
 
 Move_RAZOR_BEAM::
 	loadspritegfx ANIM_TAG_AIR_WAVE

@@ -6709,7 +6709,6 @@ static void Cmd_moveend(void)
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_FaintAttackerForExplosion;
                 effect = TRUE;
-                break;
             }
             if (!(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
             && (gBattleMoves[gCurrentMove].effect == EFFECT_MIND_BLOWN
@@ -6724,7 +6723,6 @@ static void Cmd_moveend(void)
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_MaxHp50Recoil;
                 effect = TRUE;
-                break;
             }
             gBattleScripting.moveendState++;
             break;

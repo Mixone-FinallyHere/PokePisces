@@ -813,6 +813,10 @@ const u32 gContestResults_Pal[]                  = INCBIN_U32("graphics/contest/
 const u32 gBattleAnimSpriteGfx_Impact[] = INCBIN_U32("graphics/battle_anims/sprites/impact.4bpp.lz");
 const u32 gBattleAnimSpritePal_Impact[] = INCBIN_U32("graphics/battle_anims/sprites/impact.gbapal.lz");
 
+const u32 gBattleAnimSpriteGfx_GlassBreak1[] = INCBIN_U32("graphics/battle_anims/sprites/glass_break_1.4bpp.lz");
+const u32 gBattleAnimSpriteGfx_GlassBreak2[] = INCBIN_U32("graphics/battle_anims/sprites/glass_break_2.4bpp.lz");
+const u32 gBattleAnimSpritePal_GlassBreak[] = INCBIN_U32("graphics/battle_anims/sprites/glass_break.gbapal.lz");
+
 const u32 gBattleAnimSpriteGfx_Beam[] = INCBIN_U32("graphics/battle_anims/sprites/beam.4bpp.lz");
 const u32 gBattleAnimSpritePal_Beam[] = INCBIN_U32("graphics/battle_anims/sprites/beam.gbapal.lz");
 

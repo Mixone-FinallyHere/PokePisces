@@ -2404,12 +2404,11 @@ BattleScript_EffectCannonadeMalfunctioned:
 	ppreduce
 	printstring STRINGID_CANNONADEMALFUNCTIONED
 	tryexplosion
-	waitstate
-	call BattleScript_EffectExplosion_AnimDmgRet
-	moveendall
 	setatkhptozero
-	tryfaintmon BS_ATTACKER
-	end
+	waitstate
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	goto BattleScript_HitFromCritCalc
 
 BattleScript_EffectReservoir:
 	attackcanceler
