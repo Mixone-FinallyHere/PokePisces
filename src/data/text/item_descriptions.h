@@ -2357,10 +2357,10 @@ static const u8 sSilverPowderDesc[] = _(
     "the foe in powder.");
 
 static const u8 sHardStoneDesc[] = _(
-    "A durable rock that\n"
-    "boosts Rock-type\n"
-    "moves. Takes less\n"
-    "damage after using one.");
+    "A stone that boosts\n"
+    "Rock-type moves.\n"
+    "Takes less damage\n"
+    "after using one.");
 
 static const u8 sSpellTagDesc[] = _(
     "An eerie tag that\n"
@@ -4325,8 +4325,8 @@ static const u8 sLustrousGlobeDesc[] = _(
 static const u8 sBerserkGene[] = _(
     "A capsule filled with\n"
     "DNA that sharply\n"
-    "boosts Atk, but causes\n"
-    "infinite confusion.");
+    "boosts Atk, but\n"
+    "causes confusion.");
 
 // New items
 static const u8 sBerryMic[] = _(
@@ -4337,9 +4337,9 @@ static const u8 sBerryMic[] = _(
 
 static const u8 sBurntBranch[] = _(
     "An old branch that\n"
-    "may make the foe\n"
-    "burn when the holder\n"
-    "uses Grass-type moves.");
+    "may burn the foe\n"
+    "when the holder uses\n"
+    "Grass-type moves.");
 
 static const u8 sCursedAmulet[] = _(
     "A skull-shaped amulet\n"
@@ -4408,9 +4408,9 @@ static const u8 sKeychainDesc[] = _(
 
 static const u8 sFlipCoinDesc[] = _(
     "A gambler's coin that\n"
-    "flips the foe's stat\n"
-    "buffs after the holder\n"
-    "attacks-but only once.");
+    "lets the holder flip\n"
+    "foe's stat buffs-but\n"
+    "only once.");
 
 static const u8 sGravityCoreDesc[] = _(
     "An odd cube that\n"
@@ -4658,10 +4658,10 @@ static const u8 sSilverCrownDesc[] = _(
     "the holder is hit.");
 
 static const u8 sLongNoseDesc[] = _(
-    "A spear for a Moskopo.\n"
-    "Bug and Dark-type\n"
-    "moves go first and\n"
-    "drop offensive stats.");
+    "A spear for a\n"
+    "Moskopo. Bug and\n"
+    "Dark moves go first\n"
+    "and drop offenses.");
 
 static const u8 sKamenScarfDesc[] = _(
     "A scarf that drops SE\n"

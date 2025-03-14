@@ -2404,12 +2404,11 @@ BattleScript_EffectCannonadeMalfunctioned:
 	ppreduce
 	printstring STRINGID_CANNONADEMALFUNCTIONED
 	tryexplosion
-	waitstate
-	call BattleScript_EffectExplosion_AnimDmgRet
-	moveendall
 	setatkhptozero
-	tryfaintmon BS_ATTACKER
-	end
+	waitstate
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	goto BattleScript_HitFromCritCalc
 
 BattleScript_EffectReservoir:
 	attackcanceler
@@ -14435,7 +14434,7 @@ BattleScript_KamenScarfActivates_Ret:
 BattleScript_SilverCrownActivates::
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
 	waitanimation
-	printfromtable STRINGID_CROWNINFESTEDATTACKER
+	printstring STRINGID_CROWNINFESTEDATTACKER
 	waitmessage B_WAIT_TIME_LONG
 	return
 
