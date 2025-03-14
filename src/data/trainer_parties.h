@@ -5746,7 +5746,7 @@ static const struct TrainerMon sParty_PHedon[] = {
 static const struct TrainerMon sParty_PHedorah[] = {
     {
     .species = SPECIES_SOLASU,
-    .ability = ABILITY_LEVITATE,
+    .ability = ABILITY_DAZZLING,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(52, 52, 52, 52, 52, 52),
     .lvl = 36,
@@ -15522,7 +15522,7 @@ static const struct TrainerMon sParty_PWallace[] = {
     },
     {
     .species = SPECIES_SUMMERASU,
-    .ability = ABILITY_LEVITATE,
+    .ability = ABILITY_DAZZLING,
     .heldItem = ITEM_SHELL_BELL,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(252, 0, 252, 0, 4, 0),
