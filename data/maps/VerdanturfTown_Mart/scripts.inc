@@ -81,19 +81,52 @@ VerdanturfTown_Mart_Text_NamePhillipe:
 	.string "Phillipe$"
 
 VerdanturfTown_Mart_Text_HaveYouCaughtThisMon:
-	.string "GOLTIGATOR BLOTTA PAWNIARD$"
+	.string "Salut! It is you again, mon\n"
+	.string "super étoile! Honh honh,\l"
+	.string "you have un parfaite timing,\l"
+	.string "for I am in need of artistic\l"
+	.string "inspiration again!\l"
+	.string "Could you assister your\l"
+	.string "amie, Phillipe, again?\p"
+	.string "I would like to lay an eye on\n"
+	.string "3 particular Pokémon.\p"
+	.string "Goltigator, Blotta, and Pawniard.\p"
+	.string "Catch those trés and show me your\n"
+	.string "Pokédex, and I will make it\l"
+	.string "worth your troubles.$"
 
 VerdanturfTown_Mart_Text_CaughtMonReminder:
-	.string "GOLTIGATOR, BLOTTA, and PAWNIARD...\n"
+	.string "Goltigator, Blotta, and Pawniard...\n"
 	.string "I very much would like to see them!\p"
 	.string "Do you have them registered\l"
 	.string "in your Pokédex?$"
 
 VerdanturfTown_Mart_Text_GoCatchIt:
-	.string "go GET em shithead$"
+	.string "I see you have not the required\n"
+	.string "Pokémon, amie. You should check\l"
+	.string "their locations in your Pokédex.\p"
+	.string "Bonne chance!$"
 
 VerdanturfTown_Mart_Text_YouveUnlockedNewBall:
-	.string "you have unlocked new ball$"
+	.string "...\p"
+	.string "Ah! There they are! Lovely catches!\p"
+	.string "Pawniard, the sharpest Pokemon...\n"
+	.string "Blotta's inkblot patterns...\l"
+	.string "Goltigator, the enigma...\p"
+	.string "Inspiration strikes! Incroyable!\n"
+	.string "I must get to painting.\p"
+	.string "Merci, trainer. I will put in a good\n"
+	.string "word for you with Purplina;\l"
+	.string "you should soon be able to\l"
+	.string "purchase Safari Balls from her.\p"
+	.string "Au revoir!$"
+
+VerdanturfTown_Mart_Text_GoDoPreviousQuest:
+	.string "go do the last one(s)$"
 
 VerdanturfTown_Mart_Text_NoMoreQuest:
-	.string "no more quest dood$"
+	.string "Bon aprés-midi, trainer.\n"
+	.string "I have naught in the way of new\l"
+	.string "jobs for you this very moment.\p"
+	.string "Perhaps when we next meet,\n"
+	.string "we shall work together again.$"
