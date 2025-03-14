@@ -155,6 +155,7 @@ const u32 gBattleAnimSpriteGfx_GigavoltHavocSpear[] = INCBIN_U32("graphics/battl
 const u32 gBattleAnimSpritePal_GigavoltHavocSpear[] = INCBIN_U32("graphics/battle_anims/sprites/gigavolt_havoc_spear.gbapal.lz");
 
 const u32 gBattleAnimSpriteGfx_GiantsSpear[] = INCBIN_U32("graphics/battle_anims/sprites/giants_spear.4bpp.lz");
+const u32 gBattleAnimSpriteGfx_GiantsSpearOpponent[] = INCBIN_U32("graphics/battle_anims/sprites/giants_spear_opponent.4bpp.lz");
 const u32 gBattleAnimSpritePal_GiantsSpear[] = INCBIN_U32("graphics/battle_anims/sprites/giants_spear.gbapal.lz");
 
 const u32 gBattleAnimSpriteGfx_LightBall[] = INCBIN_U32("graphics/battle_anims/sprites/light_ball.4bpp.lz");
