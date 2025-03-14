@@ -703,8 +703,8 @@
 #define FLAG_P_ITEM_RUSTBURG_WHARF_SILK_SCARF  0x294
 #define FLAG_P_ITEM_RUSTBURG_WHARF_GOLD_TOOTH  0x295
 #define FLAG_P_ITEM_RUSTBURG_WHARF_PP_MAX  0x296
-#define FLAG_P_ITEM_UNDURA_TUNNELS_WISE_GLASSES  0x297
-#define FLAG_P_ITEM_UNDURA_TUNNELS_MUSCLE_BAND  0x298
+#define FLAG_P_ITEM_UNDURA_TUNNELS_ODD_STONE  0x297
+#define FLAG_P_ITEM_UNDURA_TUNNELS_WIDE_ARMOR  0x298
 #define FLAG_P_ITEM_UNDURA_TUNNELS_MAX_REVIVE  0x299
 #define FLAG_P_ITEM_UNDURA_TUNNELS_DEEP_CORAL_CROWN  0x29A
 #define FLAG_P_ITEM_UNDURA_TUNNELS_DEEP_TM_MOONBLAST  0x29B
@@ -1307,8 +1307,8 @@
 #define FLAG_EVER_GRANDE_ROAD_MAX_REVIVE                            0x4E9
 #define FLAG_EVER_GRANDE_ROAD_TM_EARTHQUAKE                         0x4EA
 #define FLAG_EVER_GRANDE_PEAK_MAX_REVIVE                            0x4EB
-#define FLAG_UNUSED_0x4EC                                           0x4EC // Unused Flag
-#define FLAG_UNUSED_0x4ED                                           0x4ED // Unused Flag
+#define FLAG_P_ITEM_FORTREE_WISE_GLASSES                                           0x4EC // Unused Flag
+#define FLAG_P_ITEM_FORTREE_MUSCLE_BAND                                           0x4ED // Unused Flag
 #define FLAG_UNUSED_0x4EE                                           0x4EE // Unused Flag
 #define FLAG_UNUSED_0x4EF                                           0x4EF // Unused Flag
 

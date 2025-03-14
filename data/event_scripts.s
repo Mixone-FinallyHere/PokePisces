@@ -823,7 +823,7 @@ Common_Lottery_EventScript_WantLottoTicket::
 	showmoneybox 0, 0
 	delay 4
 	msgbox gText_WantLottoTicket, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, Common_Lottery_EventScript_ReleaseOut
+	goto_if_eq VAR_RESULT, NO, Common_Lottery_EventScript_HideMoneyReleaseOut
 	checkmoney 5000
 	goto_if_eq VAR_RESULT, FALSE, Common_Lottery_EventScript_NotEnoughMoney
 	playse SE_SHOP
@@ -838,6 +838,10 @@ Common_Lottery_EventScript_WantLottoTicket::
 	end
 
 Common_Lottery_EventScript_ReleaseOut::
+	release
+	end
+
+Common_Lottery_EventScript_HideMoneyReleaseOut::
 	hidemoneybox
 	closemessage
 	release
@@ -1001,6 +1005,7 @@ Common_EventScript_TannerShop1Progress::
 
 	.align 2
 Common_Mart_TannerShop1:
+	.2byte ITEM_REVIVE
 	.2byte ITEM_POTION
 	.2byte ITEM_SODA_POP
 	.2byte ITEM_POKE_BALL
@@ -1019,6 +1024,7 @@ Common_EventScript_TannerShop2Progress::
 
 	.align 2
 Common_Mart_TannerShop2:
+	.2byte ITEM_REVIVE
 	.2byte ITEM_POTION
 	.2byte ITEM_GREAT_BALL
 	.2byte ITEM_ETHER
@@ -1044,6 +1050,7 @@ Common_EventScript_TannerShop3Progress::
 Common_Mart_TannerShop3:
 	.2byte ITEM_SUPER_POTION
 	.2byte ITEM_MAX_ETHER
+	.2byte ITEM_REVIVE
 	.2byte ITEM_POTION
 	.2byte ITEM_GREAT_BALL
 	.2byte ITEM_ETHER
@@ -3705,7 +3712,7 @@ gText_NoLottoTickets:
 
 gText_WantLottoTicket:
 	.string "You would like a Lottery Ticket?\n"
-	.string "That will cost you 5000.$"
+	.string "That will cost you ¥5000.$"
 
 gText_NoLottoMoney:
 	.string "You don't have enough money\n"

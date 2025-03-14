@@ -46,3 +46,63 @@ NewSunbeach_EventScript_SetTuberTempFlags3::
 NewSunbeach_EventScript_SetParasolTempVar::
 	setvar VAR_TEMP_4, 2
 	return
+
+NewSunbeach_EventScript_BladeTrainer::
+	lock
+	faceplayer
+	checkitem ITEM_LEADERS_CREST
+	goto_if_eq VAR_RESULT, TRUE, NewSunbeach_EventScript_AlreadyGaveLeadersCrest
+	msgbox NewSunbeach_Text_BeautyOfBlades, MSGBOX_DEFAULT
+	checkpartynonhmmove MOVE_EXECUTION
+	goto_if_eq VAR_RESULT, PARTY_SIZE, NewSunbeach_EventScript_NoExecution
+	msgbox NewSunbeach_Text_YouKnowTheArt, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_LEADERS_CREST
+	closemessage
+	release
+	end
+
+NewSunbeach_EventScript_NoExecution::
+	msgbox NewSunbeach_Text_NoExecution, MSGBOX_AUTOCLOSE
+	release
+	end
+
+NewSunbeach_EventScript_AlreadyGaveLeadersCrest::
+	msgbox NewSunbeach_Text_AlreadyGaveLeadersCrest, MSGBOX_AUTOCLOSE
+	release
+	end
+
+NewSunbeach_Text_BeautyOfBlades:
+	.string "You have come all the way\n"
+	.string "to the Sunset Palm, stranger?\p"
+	.string "Heh. You seem naive. This is\n"
+	.string "a location bathed in a bloody\l"
+	.string "history... though that time\l"
+	.string "has since passed.\p"
+	.string "Legends tell of samurai carrying out\n"
+	.string "executions under this very palm.\l"
+	.string "Murder, you see, can be described\l"
+	.string "as an artform, if you are so\l"
+	.string "inclined to. There is a certain\l"
+	.string "beauty in a clean swing...\p"
+	.string "Should you possess a Pokemon that\n"
+	.string "channels the knowledge of\l"
+	.string "those ancient executions...\l"
+	.string "I have a very important to bestow.$"
+
+NewSunbeach_Text_YouKnowTheArt:
+	.string "...So you are just as naive\n"
+	.string "as I had surmised. Heh...\l"
+	.string "ignorance is bliss, child.$"
+
+NewSunbeach_Text_NoExecution:
+	.string "...So, you do know the art\n"
+	.string "of death's blade...\p"
+	.string "Excellent. You will make\n"
+	.string "exceptional use of this shard.$"
+
+NewSunbeach_Text_AlreadyGaveLeadersCrest:
+	.string "The Blade Shard you now own\n"
+	.string "are remnants of those olden samurai.\l"
+	.string "Treat it with respect, and\l"
+	.string "carry on the artform of the blade.$"

@@ -204,6 +204,65 @@ FortreeInteriors_EventScript_MadeYourChoice::
 	release
 	end
 
+FortreeInteriors_EventScript_TMGiverNuzzle::
+	lock
+	faceplayer
+	checkitem ITEM_TM_NUZZLE
+	goto_if_eq VAR_RESULT, TRUE, FortreeInteriors_EventScript_GaveNuzzle
+	msgbox FortreeInteriors_Text_NuzzlingNyarly, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_TM_NUZZLE
+	closemessage
+	release
+	end
+
+FortreeInteriors_EventScript_GaveNuzzle::
+	msgbox FortreeInteriors_Text_GaveNuzzle, MSGBOX_AUTOCLOSE
+	release
+	end
+
+FortreeInteriors_EventScript_TMGiverFlashCannon::
+	lock
+	faceplayer
+	checkitem ITEM_TM_FLASH_CANNON
+	goto_if_eq VAR_RESULT, TRUE, FortreeInteriors_EventScript_GaveFlashCannon
+	msgbox FortreeInteriors_Text_WannaBlindSomebody, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_TM_FLASH_CANNON
+	closemessage
+	release
+	end
+
+FortreeInteriors_EventScript_GaveFlashCannon::
+	msgbox FortreeInteriors_Text_GaveFlashCannon, MSGBOX_AUTOCLOSE
+	release
+	end
+
+FortreeInteriors_Text_WannaBlindSomebody:
+	.string "Wanna blind somebody?$"
+
+FortreeInteriors_Text_GaveFlashCannon:
+	.string "C'mon, I'm telling you.\n"
+	.string "Use that move in battle?\l"
+	.string "It's curtains. They'll\l"
+	.string "be too flashbanged to react!$"
+
+FortreeInteriors_Text_NuzzlingNyarly:
+	.string "I love cuddling up with\n"
+	.string "my Nyarly and watching some TV\l"
+	.string "backed by the sounds of the rain.\l"
+	.string "Maxxing the relaxing!\p"
+	.string "When we do Pokemon battles,\n"
+	.string "my Nyarly nuzzles then, too.\l"
+	.string "But in those cases, it hurts!\l"
+	.string "Here, take this TM.\l"
+	.string "Your Pokemon can Nuzzle too!$"
+
+FortreeInteriors_Text_GaveNuzzle:
+	.string "Nyarly are so affectionate!\n"
+	.string "They're perfect pets in\l"
+	.string "my opinion.$"
+
 FortreeInteriors_Text_PickAChoiceItem:
 	.string "Sometimes in life, you must make\n"
 	.string "hard choices! You cannot just\l"

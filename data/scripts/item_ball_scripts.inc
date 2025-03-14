@@ -1159,14 +1159,24 @@ MidneorNadir_EventScript_ItemPDampRock::
 	setflag FLAG_P_ITEM_METEOR_NADIR_DAMP_ROCK
 	end
 
-UnduraTunnels_EventScript_ItemPMuscleBand::
+FortreeCity_EventScript_ItemPMuscleBand::
 	finditem ITEM_MUSCLE_BAND
-	setflag FLAG_P_ITEM_UNDURA_TUNNELS_MUSCLE_BAND
+	setflag FLAG_P_ITEM_FORTREE_MUSCLE_BAND
 	end
 
-UnduraTunnels_EventScript_ItemPWiseGlasses::
+FortreeCity_EventScript_ItemPWiseGlasses::
 	finditem ITEM_WISE_GLASSES
-	setflag FLAG_P_ITEM_UNDURA_TUNNELS_WISE_GLASSES
+	setflag FLAG_P_ITEM_FORTREE_WISE_GLASSES
+	end
+
+UnduraTunnels_EventScript_ItemPWideArmor::
+	finditem ITEM_WIDE_ARMOR
+	setflag FLAG_P_ITEM_UNDURA_TUNNELS_WIDE_ARMOR
+	end
+
+UnduraTunnels_EventScript_ItemPOddStone::
+	finditem ITEM_ODD_STONE
+	setflag FLAG_P_ITEM_UNDURA_TUNNELS_ODD_STONE
 	end
 
 PetalburgNew_EventScript_ItemPClearAmulet::

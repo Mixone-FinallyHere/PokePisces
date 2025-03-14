@@ -792,7 +792,7 @@
       "x": 28,
       "y": 7,
       "elevation": 0,
-      "var": "VAR_TEMP_4",
+      "var": "VAR_TEMP_9",
       "var_value": "0",
       "script": "MossdeepCity_EventScript_YandemicNoticed"
     },
@@ -801,7 +801,7 @@
       "x": 28,
       "y": 5,
       "elevation": 0,
-      "var": "VAR_TEMP_4",
+      "var": "VAR_TEMP_9",
       "var_value": "0",
       "script": "MossdeepCity_EventScript_YandemicNoticed"
     },
@@ -810,7 +810,7 @@
       "x": 15,
       "y": 9,
       "elevation": 0,
-      "var": "VAR_TEMP_4",
+      "var": "VAR_TEMP_9",
       "var_value": "0",
       "script": "MossdeepCity_EventScript_YandemicNoticed"
     }

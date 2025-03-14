@@ -61,6 +61,57 @@ Maintenance_EventScript_Sin::
     msgbox Maintenance_Text_SinPostBattle, MSGBOX_AUTOCLOSE
     end
 
+Maintenance_EventScript_GeneResearcher::
+	lock
+	faceplayer
+	checkitem ITEM_BERSERK_GENE
+	goto_if_eq VAR_RESULT, TRUE, Maintenance_EventScript_AlreadyGaveBerserkGene
+	msgbox Maintenance_Text_ResearchBreakthrough, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_BERSERK_GENE
+	closemessage
+	msgbox Maintenance_Text_HurtsTheirBrains, MSGBOX_AUTOCLOSE
+	release
+	end
+
+Maintenance_EventScript_AlreadyGaveBerserkGene::
+	msgbox Maintenance_Text_AlreadyGaveBerserkGene, MSGBOX_AUTOCLOSE
+	release
+	end
+
+Maintenance_Text_ResearchBreakthrough:
+	.string "I have been doing intense research\n"
+	.string "into the Pokemon genome...\l"
+	.string "and through that...! I have made\l"
+	.string "a discovery!\p"
+	.string "An... unpopular, discovery.\n"
+	.string "There is a certain gene in Pokemon\l"
+	.string "DNA that has been bred out\l"
+	.string "over decades... but I have found a\l"
+	.string "way to re-introduce it temporarily.\p"
+	.string "The Berserk Gene...\n"
+	.string "it grants power at the cost of sanity.\l"
+	.string "Naturally, I can't go public\l"
+	.string "with this. It'll be a Pokemon rights\l"
+	.string "kerfuffle and all that.\p"
+	.string "Buuuuuttt...... I DO want to\n"
+	.string "get field testing for the gene...\l"
+	.string "Sooooo.... if you were willing to\l"
+	.string "help a lady out... on the down low...\p"
+	.string "(This might as well happen.)\p"
+	.string "Thanks.\n$"
+
+Maintenance_Text_HurtsTheirBrains:
+	.string "Use that on whatever Pokemon\n"
+	.string "you want to go berserk...\l"
+	.string "as, uh, ethically as possible...\l"
+	.string "I guess...$"
+
+Maintenance_Text_AlreadyGaveBerserkGene:
+	.string "It seems certain Bug Pokemon\n"
+	.string "react to that gene stronger than\l"
+	.string "other species...$"
+
 Maintenance_Text_FigliosiIntro:
 	.string "intro$"
 
