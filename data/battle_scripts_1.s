@@ -14434,7 +14434,7 @@ BattleScript_KamenScarfActivates_Ret:
 BattleScript_SilverCrownActivates::
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
 	waitanimation
-	printfromtable STRINGID_CROWNINFESTEDATTACKER
+	printstring STRINGID_CROWNINFESTEDATTACKER
 	waitmessage B_WAIT_TIME_LONG
 	return
 

@@ -10071,7 +10071,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && TARGET_TURN_DAMAGED 
                 && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_WRAPPED)
                 && IsBattlerAlive(gBattlerAttacker)
-                && gBattleMons[gBattlerTarget].species == SPECIES_FLAGUE)
+                && gBattleMons[gBattlerTarget].species == SPECIES_FLAGUE_PRINCE)
                 {
                     effect = ITEM_EFFECT_OTHER;
 
@@ -10079,7 +10079,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     gDisableStructs[gBattlerAttacker].wrapTurns = (Random() % 2) + 4;
 
                     gBattleStruct->wrappedMove[gBattlerAttacker] = MOVE_INFESTATION;
-                    gBattleStruct->wrappedBy[gBattlerAttacker] = gBattlerAttacker;
+                    gBattleStruct->wrappedBy[gBattlerAttacker] = gBattlerTarget;
 
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_SilverCrownActivates;
