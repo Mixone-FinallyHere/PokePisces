@@ -440,6 +440,8 @@
 #define ANIM_TAG_PINKVIO_ORB                (ANIM_SPRITES_START + 426)
 #define ANIM_TAG_PURPLE_SMALL_EMBER         (ANIM_SPRITES_START + 427)
 #define ANIM_TAG_PURPLE_FIRE_PLUME          (ANIM_SPRITES_START + 428)
+#define ANIM_TAG_GLASS_BREAK_1              (ANIM_SPRITES_START + 429)
+#define ANIM_TAG_GLASS_BREAK_2              (ANIM_SPRITES_START + 430)
 
 // battlers
 #define ANIM_ATTACKER         0

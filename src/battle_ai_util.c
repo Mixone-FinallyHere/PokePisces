@@ -477,6 +477,7 @@ static const u16 sIgnoredPowerfulMoveEffects[] =
     EFFECT_FRENZY_PLANT,
     EFFECT_AIR_CANNON,
     EFFECT_RECHARGE_REDUCE,
+    EFFECT_RECHARGE_BURN,
     EFFECT_FLEUR_CANNON,
     EFFECT_AXEL_HEEL,
     EFFECT_MIND_BREAK,
@@ -3059,7 +3060,7 @@ bool32 IsBattlerIncapacitated(u32 battler, u32 ability)
     if (gBattleMons[battler].status1 & STATUS1_SLEEP_ANY)
         return TRUE;
 
-    if (gBattleMons[battler].status2 & STATUS2_RECHARGE || gStatuses4[battler] & STATUS4_RECHARGE_REDUCE || (ability == ABILITY_TRUANT && gDisableStructs[battler].truantCounter != 0))
+    if (gBattleMons[battler].status2 & STATUS2_RECHARGE || gStatuses4[battler] & STATUS4_RECHARGE_REDUCE || gStatuses4[battler] & STATUS4_RECHARGE_BURN || (ability == ABILITY_TRUANT && gDisableStructs[battler].truantCounter != 0))
         return TRUE;
 
     return FALSE;

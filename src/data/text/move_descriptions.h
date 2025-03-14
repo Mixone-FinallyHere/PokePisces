@@ -4731,7 +4731,7 @@ static const u8 sIgnitionDescription[] = _(
     "to half its max HP.");
 
 static const u8 sSharpGlideDescription[] = _(
-    "The user glides quicky into the\n"
+    "The user glides quickly into the\n"
     "target. This move's power\n"
     "doubles in user's Tailwind.");
 

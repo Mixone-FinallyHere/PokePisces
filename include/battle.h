@@ -108,6 +108,7 @@ struct DisableStruct
     u8 noRetreat:1;
     u8 tarShot:1;
     u8 octolock:1;
+    u8 anticipated:1;
     u8 bounceMove:1;
     u8 cudChew:1;
     u8 spikesDone:1;
@@ -135,7 +136,6 @@ struct ProtectStruct
 {
     u32 protected:1;
     u32 spikyShielded:1;
-    u32 anticipated:1;
     u32 defendOrder:1;
     u32 kingsShielded:1;
     u32 shelltered:1;

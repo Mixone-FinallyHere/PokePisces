@@ -200,9 +200,8 @@
 #define STATUS4_INFINITE_CONFUSION      (1 << 4)    // Used for Berserk Gene
 #define STATUS4_SALT_CURE               (1 << 5)
 #define STATUS4_GLAIVE_RUSH             (1 << 6)
-#define STATUS4_TICKED                  (1 << 7) 
-#define STATUS4_TICKED_BATTLER          (1 << 8 | 1 << 9) // The battler to receive HP from Ticked
-#define STATUS4_TICKED_BY(battler)      ((battler) << 8)
+#define STATUS4_TICKED_BATTLER          (1 << 7 | 1 << 8) // The battler to receive HP from Ticked
+#define STATUS4_TICKED                  (1 << 9) 
 #define STATUS4_GLAIVE_RUSH_2           (1 << 10)
 #define STATUS4_HEARTHWARM              (1 << 11)
 #define STATUS4_FAIRY_LOCK              (1 << 12)
