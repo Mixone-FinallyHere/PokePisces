@@ -823,7 +823,7 @@ Common_Lottery_EventScript_WantLottoTicket::
 	showmoneybox 0, 0
 	delay 4
 	msgbox gText_WantLottoTicket, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, Common_Lottery_EventScript_ReleaseOut
+	goto_if_eq VAR_RESULT, NO, Common_Lottery_EventScript_HideMoneyReleaseOut
 	checkmoney 5000
 	goto_if_eq VAR_RESULT, FALSE, Common_Lottery_EventScript_NotEnoughMoney
 	playse SE_SHOP
@@ -838,6 +838,10 @@ Common_Lottery_EventScript_WantLottoTicket::
 	end
 
 Common_Lottery_EventScript_ReleaseOut::
+	release
+	end
+
+Common_Lottery_EventScript_HideMoneyReleaseOut::
 	hidemoneybox
 	closemessage
 	release
