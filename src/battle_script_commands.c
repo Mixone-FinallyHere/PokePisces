@@ -1890,7 +1890,7 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
         calc = (calc * 90) / 100; // 10% evasion increase
         break;
     case ABILITY_ANTICIPATION:
-        if (gDisableStructs[battlerDef].isFirstTurn)
+        if (gDisableStructs[battlerDef].anticipated)
             calc = min(calc, 50); // max accuracy of move is 50%
         break;
     }
@@ -7630,6 +7630,8 @@ static void Cmd_moveend(void)
             gSpecialStatuses[gBattlerAttacker].damagedMons = 0;
             gSpecialStatuses[gBattlerAttacker].preventLifeOrbDamage = 0;
             gSpecialStatuses[gBattlerTarget].berryReduced = FALSE;
+            gDisableStructs[gBattlerTarget].anticipated = FALSE;
+            gDisableStructs[gBattlerAttacker].anticipated = FALSE;
             gBattleScripting.moveEffect = 0;
             // clear attacker z move data
             gBattleStruct->zmove.active = FALSE;
