@@ -27095,7 +27095,7 @@ Move_TORPEDOES::
 	playsewithpan SE_M_BUBBLE3, SOUND_PAN_TARGET
 	waitforvisualfinish
 	playsewithpan SE_M_WATERFALL, SOUND_PAN_ATTACKER
-	createsprite gTorpedoSpriteTemplate, ANIM_TARGET, 2, 25, 1, 25
+	createsprite gTorpedoSpriteTemplate, ANIM_TARGET, 2, 0, 0, 10, 2
 	delay 13
 	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 0, 8, 18, 1
 	waitforvisualfinish
