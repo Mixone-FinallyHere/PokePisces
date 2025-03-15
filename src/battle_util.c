@@ -8860,7 +8860,10 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
         if ((gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE || gBattleMons[battler].status2 & STATUS2_CONFUSION) && !UnnerveOn(battler, gLastUsedItem))
         {
             BufferStatusCondition(battler, TRUE);
-            gBattleMons[battler].status1 = 0;
+            if (gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE)
+            {
+                gBattleMons[battler].status1 = 0;
+            }
             RemoveConfusionStatus(battler);
             BattleScriptPushCursor();
             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
@@ -8872,7 +8875,10 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
         if ((gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE || gBattleMons[battler].status2 & STATUS2_CONFUSION) && (Random() % 5) == 0)
         {
             BufferStatusCondition(battler, TRUE);
-            gBattleMons[battler].status1 = 0;
+            if (gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE)
+            {
+                gBattleMons[battler].status1 = 0;
+            }
             RemoveConfusionStatus(battler);
             BattleScriptPushCursor();
             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
@@ -9092,7 +9098,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
                     else
                         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_NORMALIZED_STATUS;
-                    gBattleMons[battler].status1 = 0;
+                    if (gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE)
+                    {
+                        gBattleMons[battler].status1 = 0;
+                    }
                     RemoveConfusionStatus(battler);
                     BattleScriptExecute(BattleScript_BerryCureChosenStatusEnd2);
                     effect = ITEM_STATUS_CHANGE;
@@ -9106,7 +9115,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
                     else
                         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_NORMALIZED_STATUS;
-                    gBattleMons[battler].status1 = 0;
+                    if (gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE)
+                    {
+                        gBattleMons[battler].status1 = 0;
+                    }
                     RemoveConfusionStatus(battler);
                     BattleScriptExecute(BattleScript_FavorScarfCuredStatusEnd2);
                     effect = ITEM_STATUS_CHANGE;
@@ -9519,7 +9531,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
                     else
                         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_NORMALIZED_STATUS;
-                    gBattleMons[battler].status1 = 0;
+                    if (gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE)
+                    {
+                        gBattleMons[battler].status1 = 0;
+                    }
                     RemoveConfusionStatus(battler);
                     BattleScriptExecute(BattleScript_BerryCureChosenStatusEnd2);
                     effect = ITEM_STATUS_CHANGE;
@@ -9533,7 +9548,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PROBLEM;
                     else
                         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_NORMALIZED_STATUS;
-                    gBattleMons[battler].status1 = 0;
+                    if (gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE)
+                    {
+                        gBattleMons[battler].status1 = 0;
+                    }
                     RemoveConfusionStatus(battler);
                     BattleScriptExecute(BattleScript_FavorScarfCuredStatusEnd2);
                     effect = ITEM_STATUS_CHANGE;
