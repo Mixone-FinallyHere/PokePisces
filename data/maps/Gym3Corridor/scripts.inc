@@ -28,6 +28,7 @@ Gym3Corridor_EventScript_PrepForGym::
 	clearflag FLAG_PISCES_D
 	clearflag FLAG_PISCES_E
 	clearflag FLAG_PISCES_F
+	setflag FLAG_WITHIN_GYM
 	cleartrainerflag TRAINER_P_JUNJI
 	cleartrainerflag TRAINER_P_KIRIE
 	cleartrainerflag TRAINER_P_SHUICHI

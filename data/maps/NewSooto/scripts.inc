@@ -1,15 +1,17 @@
 .set LOCALID_DRAKE, 2
 .set LOCALID_YANDEMIC, 7
+.set LOCALID_ROLAND, 23
 
 NewSooto_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, NewSooto_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, NewSooto_OnLoad
 	.byte 0
 
-NewSooto_OnTransition:
+NewSooto_OnLoad:
 	setflag FLAG_VISITED_SOOTOPOLIS_CITY
 	call_if_ge VAR_NOTICED_BY_YANDEMIC, 5, NewSooto_EventScript_RemoveYandemic
 	call_if_lt VAR_NEW_COO_STATE, 1, NewSooto_EventScript_RemoveDrake
 	call_if_gt VAR_NEW_COO_STATE, 1, NewSooto_EventScript_RemoveDrakeAndBlocker
+	call NewSooto_EventScript_RemoveRoland
 	end
 
 NewSooto_EventScript_RemoveYandemic::
@@ -28,6 +30,11 @@ NewSooto_EventScript_RemoveDrakeAndBlocker::
 	setflag FLAG_TEMP_12
 	removeobject LOCALID_BLOCKER
 	setflag FLAG_TEMP_13
+	return
+
+NewSooto_EventScript_RemoveRoland::
+	removeobject LOCALID_ROLAND
+	setflag FLAG_TEMP_17
 	return
 
 NewSooto_EventScript_DontGoInCave::
@@ -359,6 +366,324 @@ NewSooto_EventScript_CosmossBridgeSign::
 	msgbox NewSooto_Text_CosmossBridgeSign, MSGBOX_SIGN
 	end
 
+NewSooto_EventScript_RolandEncounter1::
+	lock
+	setvar VAR_TEMP_6, 1
+	goto_if_eq VAR_ROLAND_STATE, 0, NewSooto_EventScript_RolandAdvice1
+	goto_if_eq VAR_ROLAND_STATE, 2, NewSooto_EventScript_RolandYouLost1
+	release
+	end
+
+NewSooto_EventScript_RolandAdvice1::
+	opendoor 41, 15
+	waitdooranim
+	clearflag FLAG_TEMP_17
+	addobject LOCALID_ROLAND
+	applymovement LOCALID_ROLAND, NewSooto_Movement_RolandOutOfDoor
+	waitmovement 0
+	closedoor 41, 15
+	waitdooranim
+	applymovement OBJ_EVENT_ID_PLAYER, NewSooto_Movement_PlayerMeetRoland1
+	waitmovement 0
+	call NewSooto_EventScript_RolandAdviceBulk
+	release
+	end
+
+NewSooto_EventScript_RolandYouLost1::
+	opendoor 41, 15
+	waitdooranim
+	clearflag FLAG_TEMP_17
+	addobject LOCALID_ROLAND
+	applymovement LOCALID_ROLAND, NewSooto_Movement_RolandOutOfDoor
+	waitmovement 0
+	closedoor 41, 15
+	waitdooranim
+	applymovement OBJ_EVENT_ID_PLAYER, NewSooto_Movement_PlayerMeetRoland1
+	waitmovement 0
+	call NewSooto_EventScript_RolandYouLostBulk
+	release
+	end
+
+NewSooto_Movement_PlayerMeetRoland1:
+	walk_down
+	walk_right
+	walk_right
+	face_up
+	step_end
+
+NewSooto_EventScript_RolandEncounter2::
+	lock
+	setvar VAR_TEMP_6, 1
+	goto_if_eq VAR_ROLAND_STATE, 0, NewSooto_EventScript_RolandAdvice2
+	goto_if_eq VAR_ROLAND_STATE, 2, NewSooto_EventScript_RolandYouLost2
+	release
+	end
+
+NewSooto_EventScript_RolandAdvice2::
+	opendoor 41, 15
+	waitdooranim
+	clearflag FLAG_TEMP_17
+	addobject LOCALID_ROLAND
+	applymovement LOCALID_ROLAND, NewSooto_Movement_RolandOutOfDoor
+	waitmovement 0
+	closedoor 41, 15
+	waitdooranim
+	applymovement OBJ_EVENT_ID_PLAYER, NewSooto_Movement_PlayerMeetRoland2
+	waitmovement 0
+	call NewSooto_EventScript_RolandAdviceBulk
+	release
+	end
+
+NewSooto_EventScript_RolandYouLost2::
+	opendoor 41, 15
+	waitdooranim
+	clearflag FLAG_TEMP_17
+	addobject LOCALID_ROLAND
+	applymovement LOCALID_ROLAND, NewSooto_Movement_RolandOutOfDoor
+	waitmovement 0
+	closedoor 41, 15
+	waitdooranim
+	applymovement OBJ_EVENT_ID_PLAYER, NewSooto_Movement_PlayerMeetRoland2
+	waitmovement 0
+	call NewSooto_EventScript_RolandYouLostBulk
+	release
+	end
+
+NewSooto_Movement_PlayerMeetRoland2:
+	walk_right
+	walk_right
+	face_up
+	step_end
+
+NewSooto_EventScript_RolandEncounter3::
+	lock
+	setvar VAR_TEMP_6, 1
+	goto_if_eq VAR_ROLAND_STATE, 0, NewSooto_EventScript_RolandAdvice3
+	goto_if_eq VAR_ROLAND_STATE, 2, NewSooto_EventScript_RolandYouLost3
+	release
+	end
+
+NewSooto_EventScript_RolandAdvice3::
+	opendoor 41, 15
+	waitdooranim
+	clearflag FLAG_TEMP_17
+	addobject LOCALID_ROLAND
+	applymovement LOCALID_ROLAND, NewSooto_Movement_RolandOutOfDoor
+	waitmovement 0
+	closedoor 41, 15
+	waitdooranim
+	applymovement OBJ_EVENT_ID_PLAYER, NewSooto_Movement_PlayerMeetRoland3
+	waitmovement 0
+	call NewSooto_EventScript_RolandAdviceBulk
+	release
+	end
+
+NewSooto_EventScript_RolandYouLost3::
+	opendoor 41, 15
+	waitdooranim
+	clearflag FLAG_TEMP_17
+	addobject LOCALID_ROLAND
+	applymovement LOCALID_ROLAND, NewSooto_Movement_RolandOutOfDoor
+	waitmovement 0
+	closedoor 41, 15
+	waitdooranim
+	applymovement OBJ_EVENT_ID_PLAYER, NewSooto_Movement_PlayerMeetRoland3
+	waitmovement 0
+	call NewSooto_EventScript_RolandYouLostBulk
+	release
+	end
+
+NewSooto_Movement_PlayerMeetRoland3:
+	walk_up
+	walk_right
+	walk_right
+	face_up
+	step_end
+
+NewSooto_EventScript_RolandEncounter4::
+	lock
+	setvar VAR_TEMP_6, 1
+	goto_if_eq VAR_ROLAND_STATE, 0, NewSooto_EventScript_RolandAdvice4
+	goto_if_eq VAR_ROLAND_STATE, 2, NewSooto_EventScript_RolandYouLost4
+	release
+	end
+
+NewSooto_EventScript_RolandAdvice4::
+	opendoor 41, 15
+	waitdooranim
+	clearflag FLAG_TEMP_17
+	addobject LOCALID_ROLAND
+	applymovement LOCALID_ROLAND, NewSooto_Movement_RolandOutOfDoor
+	waitmovement 0
+	closedoor 41, 15
+	waitdooranim
+	applymovement OBJ_EVENT_ID_PLAYER, NewSooto_Movement_PlayerMeetRoland4
+	waitmovement 0
+	call NewSooto_EventScript_RolandAdviceBulk
+	release
+	end
+
+NewSooto_EventScript_RolandYouLost4::
+	opendoor 41, 15
+	waitdooranim
+	clearflag FLAG_TEMP_17
+	addobject LOCALID_ROLAND
+	applymovement LOCALID_ROLAND, NewSooto_Movement_RolandOutOfDoor
+	waitmovement 0
+	closedoor 41, 15
+	waitdooranim
+	applymovement OBJ_EVENT_ID_PLAYER, NewSooto_Movement_PlayerMeetRoland4
+	waitmovement 0
+	call NewSooto_EventScript_RolandYouLostBulk
+	release
+	end
+
+NewSooto_Movement_PlayerMeetRoland4:
+	walk_down
+	walk_left
+	walk_left
+	face_up
+	step_end
+
+NewSooto_EventScript_RolandEncounter5::
+	lock
+	setvar VAR_TEMP_6, 1
+	goto_if_eq VAR_ROLAND_STATE, 0, NewSooto_EventScript_RolandAdvice5
+	goto_if_eq VAR_ROLAND_STATE, 2, NewSooto_EventScript_RolandYouLost5
+	release
+	end
+
+NewSooto_EventScript_RolandAdvice5::
+	opendoor 41, 15
+	waitdooranim
+	clearflag FLAG_TEMP_17
+	addobject LOCALID_ROLAND
+	applymovement LOCALID_ROLAND, NewSooto_Movement_RolandOutOfDoor
+	waitmovement 0
+	closedoor 41, 15
+	waitdooranim
+	applymovement OBJ_EVENT_ID_PLAYER, NewSooto_Movement_PlayerMeetRoland5
+	waitmovement 0
+	call NewSooto_EventScript_RolandAdviceBulk
+	release
+	end
+
+NewSooto_EventScript_RolandYouLost5::
+	opendoor 41, 15
+	waitdooranim
+	clearflag FLAG_TEMP_17
+	addobject LOCALID_ROLAND
+	applymovement LOCALID_ROLAND, NewSooto_Movement_RolandOutOfDoor
+	waitmovement 0
+	closedoor 41, 15
+	waitdooranim
+	applymovement OBJ_EVENT_ID_PLAYER, NewSooto_Movement_PlayerMeetRoland5
+	waitmovement 0
+	call NewSooto_EventScript_RolandYouLostBulk
+	release
+	end
+
+NewSooto_Movement_PlayerMeetRoland5:
+	walk_left
+	walk_left
+	face_up
+	step_end
+
+NewSooto_EventScript_RolandEncounter6::
+	lock
+	setvar VAR_TEMP_6, 1
+	goto_if_eq VAR_ROLAND_STATE, 0, NewSooto_EventScript_RolandAdvice6
+	goto_if_eq VAR_ROLAND_STATE, 2, NewSooto_EventScript_RolandYouLost6
+	release
+	end
+
+NewSooto_EventScript_RolandAdvice6::
+	opendoor 41, 15
+	waitdooranim
+	clearflag FLAG_TEMP_17
+	addobject LOCALID_ROLAND
+	applymovement LOCALID_ROLAND, NewSooto_Movement_RolandOutOfDoor
+	waitmovement 0
+	closedoor 41, 15
+	waitdooranim
+	applymovement OBJ_EVENT_ID_PLAYER, NewSooto_Movement_PlayerMeetRoland6
+	waitmovement 0
+	call NewSooto_EventScript_RolandAdviceBulk
+	release
+	end
+
+NewSooto_EventScript_RolandYouLost6::
+	opendoor 41, 15
+	waitdooranim
+	clearflag FLAG_TEMP_17
+	addobject LOCALID_ROLAND
+	applymovement LOCALID_ROLAND, NewSooto_Movement_RolandOutOfDoor
+	waitmovement 0
+	closedoor 41, 15
+	waitdooranim
+	applymovement OBJ_EVENT_ID_PLAYER, NewSooto_Movement_PlayerMeetRoland6
+	waitmovement 0
+	call NewSooto_EventScript_RolandYouLostBulk
+	release
+	end
+
+NewSooto_Movement_PlayerMeetRoland6:
+	walk_up
+	walk_left
+	walk_left
+	face_up
+	step_end
+
+NewSooto_EventScript_RolandAdviceBulk::
+	msgbox NewSooto_Text_AboutTheGym, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_RARE_CANDY
+	closemessage
+	msgbox NewSooto_Text_AboutRareCandies, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_ROLAND_STATE, 1
+	delay 4
+	turnobject LOCALID_ROLAND, DIR_NORTH
+	opendoor 41, 15
+	waitdooranim
+	applymovement LOCALID_ROLAND, NewSooto_Movement_RolandLeaves
+	waitmovement 0
+	removeobject LOCALID_ROLAND
+	setflag FLAG_TEMP_17
+	closedoor 41, 15
+	waitdooranim
+	return
+
+NewSooto_EventScript_RolandYouLostBulk::
+	msgbox NewSooto_Text_TryAndPrepare, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_RARE_CANDY, 3
+	closemessage
+	giveitem ITEM_REVIVE, 1
+	closemessage
+	msgbox NewSooto_Text_YouCanDoIt, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_ROLAND_STATE, 1
+	delay 4
+	turnobject LOCALID_ROLAND, DIR_NORTH
+	opendoor 41, 15
+	waitdooranim
+	applymovement LOCALID_ROLAND, NewSooto_Movement_RolandLeaves
+	waitmovement 0
+	removeobject LOCALID_ROLAND
+	setflag FLAG_TEMP_17
+	closedoor 41, 15
+	waitdooranim
+	return
+
+NewSooto_Movement_RolandOutOfDoor:
+	walk_down
+	step_end
+
+NewSooto_Movement_RolandLeaves:
+	walk_up
+	step_end
+
 NewSooto_Text_YouFeelWatched:
 	.string "(You begin to notice that\n"
 	.string "you are being intently watched...)$"
@@ -598,3 +923,69 @@ NewSooto_Text_JuancoreRestaurantSign:
 NewSooto_Text_CosmossBridgeSign:
 	.string "EAST - COSMOSS BRIDGE,\n"
 	.string "COSMOSS SPACE CENTER$"
+
+NewSooto_Text_AboutTheGym:
+	.string "Oh, hey there! It's you!\n"
+	.string "That aspiring gym challenger\l"
+	.string "from the S.S. Tidal!\l"
+	.string "Good to see you again.\p"
+	.string "I see you're making good on\n"
+	.string "your desires to re-do the challenge!\l"
+	.string "That's pretty commendable.\p"
+	.string "Here's a few things you may want\n"
+	.string "to know about the new gyms.\l"
+	.string "First, is that they are all\l"
+	.string "gauntlets now. As in, once you\l"
+	.string "start the gym, you won't be able\l"
+	.string "to leave until you either complete\l"
+	.string "it, or you have a full party wipe.\p"
+	.string "The trainers inside will rematch you\n"
+	.string "each time you re-challenge a gym.\l"
+	.string "So make sure you're well prepared\l"
+	.string "for it all before going in!\p"
+	.string "It tends to be easier to prepare\n"
+	.string "your team once you have reached a\l"
+	.string "city with a gym in it. Your Pokemon\l"
+	.string "will feel a deep resolve to beat it,\l"
+	.string "and will gain experience at a much\l"
+	.string "faster rate until you get the badge!\p"
+	.string "Not that they can go above a certain\n"
+	.string "level threshold until you obtain\l"
+	.string "said badge, but still, this should\l"
+	.string "help getting lower leveled team\l"
+	.string "members all caught up.\p"
+	.string "Speaking of helping low leveled\n"
+	.string "Pokemon, have one of these!$"
+
+NewSooto_Text_AboutRareCandies:
+	.string "Rare Candies are a good way to\n"
+	.string "level without battling. They don't\l"
+	.string "let your Pokemon go above the\l"
+	.string "level threshold for a gym, but they\l"
+	.string "certainly help with catch-up.\p"
+	.string "One last thing is that losing in\n"
+	.string "the gym is not so bad! You get to\l"
+	.string "learn a lot from the loss and\l"
+	.string "re-apply your knowledge.\l"
+	.string "Gym trainers and the leaders also\l"
+	.string "don't take your money when\l"
+	.string "you lose to them.\p"
+	.string "Give it your best shot, challenger!\n"
+	.string "I'll be in the audience of Juan's\l"
+	.string "show. I hope to be impressed!$"
+
+NewSooto_Text_TryAndPrepare:
+	.string "Hey there! I saw your loss\n"
+	.string "in the gym fights back there.\l"
+	.string "Remember what I told you!\l"
+	.string "Use the opportunity to learn\l"
+	.string "and re-strategize. Don't just throw\l"
+	.string "in the towel!\p"
+	.string "Here, have a few more gifts from\n"
+	.string "me to maybe ease your time\l"
+	.string "in the gym.$"
+
+NewSooto_Text_YouCanDoIt:
+	.string "You can do it, challenger!\n"
+	.string "I believe in your abilities.\l"
+	.string "Give it another good try!$"

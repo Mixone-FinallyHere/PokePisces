@@ -23,7 +23,7 @@ MossdeepCity_OnLoad:
 MossdeepCity_EventScript_RemoveYandemic::
 	removeobject LOCALID_YANDEMIC
 	setflag FLAG_TEMP_B
-	setvar VAR_TEMP_4, 1
+	setvar VAR_TEMP_9, 1
 	return
 
 MossdeepCity_EventScript_RemoveHintMonk::

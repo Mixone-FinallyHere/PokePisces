@@ -26,6 +26,7 @@ RustGymGym_EventScript_LeadersDefeated::
 	speakername RustGymGym_Text_NameRoxanne
 	msgbox RustGymGym_Text_YouDidIt, MSGBOX_DEFAULT
 	setflag FLAG_BADGE08_GET
+	clearflag FLAG_WITHIN_GYM
 	setflag FLAG_DEFEATED_RUSTBORO_GYM
 	setvar VAR_PISCES_STORY_PROGRESS, 9
 	giveitem ITEM_TM_ROADBLOCK

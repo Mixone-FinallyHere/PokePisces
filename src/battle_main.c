@@ -3447,7 +3447,6 @@ void FaintClearSetData(u32 battler)
 
     gProtectStructs[battler].protected = FALSE;
     gProtectStructs[battler].spikyShielded = FALSE;
-    gProtectStructs[battler].anticipated = FALSE;
     gProtectStructs[battler].hardStoneBoost = FALSE;
     gProtectStructs[battler].kingsShielded = FALSE;
     gProtectStructs[battler].shelltered = FALSE;
@@ -5261,7 +5260,6 @@ static void TurnValuesCleanUp(bool8 var0)
         {
             gProtectStructs[i].protected = FALSE;
             gProtectStructs[i].spikyShielded = FALSE;
-            gProtectStructs[i].anticipated = FALSE;
             gProtectStructs[i].hardStoneBoost = FALSE;
             gProtectStructs[i].kingsShielded = FALSE;
             gProtectStructs[i].shelltered = FALSE;
@@ -5283,16 +5281,18 @@ static void TurnValuesCleanUp(bool8 var0)
             if (gDisableStructs[i].isFirstTurn)
                 gDisableStructs[i].isFirstTurn--;
             
-            if (gDisableStructs[i].stormBrewCounter > 1)
+            if (gDisableStructs[i].stormBrewCounter)
                 gDisableStructs[i].stormBrewCounter = 0;
 
             if (gDisableStructs[i].rechargeTimer)
             {
                 gDisableStructs[i].rechargeTimer--;
                 if (gDisableStructs[i].rechargeTimer == 0)
+                {
                     gBattleMons[i].status2 &= ~STATUS2_RECHARGE;
                     gStatuses4[i] &= ~STATUS4_RECHARGE_REDUCE;
                     gStatuses4[i] &= ~STATUS4_RECHARGE_BURN;
+                }
             }
         }
 
@@ -5645,6 +5645,10 @@ static void HandleEndTurn_BattleLost(void)
             gBattlescriptCurrInstr = BattleScript_LinkBattleWonOrLost;
             gBattleOutcome &= ~B_OUTCOME_LINK_BATTLE_RAN;
         }
+    }
+    else if (FlagGet(FLAG_WITHIN_GYM))
+    {
+        gBattlescriptCurrInstr = BattleScript_LocalBattleLostGym;
     }
     else
     {

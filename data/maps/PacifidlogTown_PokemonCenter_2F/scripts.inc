@@ -148,8 +148,8 @@ PacifidlogTown_PokemonCenter_2F_Text_CaughtMonReminder:
 
 PacifidlogTown_PokemonCenter_2F_Text_GoCatchIt:
 	.string "I see you have not the required\n"
-	.string "Pokémon, amie. They should be in\l"
-	.string "areas close to here.\p"
+	.string "Pokémon, amie. You should check\l"
+	.string "their locations in your Pokédex.\p"
 	.string "Bonne chance!$"
 
 PacifidlogTown_PokemonCenter_2F_Text_YouveUnlockedNewBall:

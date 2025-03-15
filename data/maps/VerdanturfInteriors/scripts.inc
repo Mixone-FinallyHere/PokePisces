@@ -121,6 +121,7 @@ VerdanturfInteriors_EventScript_MeetWattsonAndScott::
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
 	setflag FLAG_BADGE06_GET
+	clearflag FLAG_WITHIN_GYM
 	setflag FLAG_DEFEATED_MAUVILLE_GYM
 	setvar VAR_PISCES_STORY_PROGRESS, 7
 	speakername VerdanturfInteriors_Text_NameWattson
@@ -308,6 +309,9 @@ VerdanturfInteriors_Text_ReceivedMetroBadge:
 	.string "It felt a little hollow.$"
 
 VerdanturfInteriors_Text_YouMayNowLeave:
+	.string "That badge allows you to use the\n"
+	.string "Field Move Surf outside of battle.\l"
+	.string "Lots of places to go now, surely?\p"
 	.string "That is all the time I have\n"
 	.string "allotted for this meaning, kid.\l"
 	.string "You may now leave us be.\l"

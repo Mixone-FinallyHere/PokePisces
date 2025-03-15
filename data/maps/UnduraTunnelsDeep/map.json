@@ -109,7 +109,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "UnduraTunnelsDeep_EventScript_ItemPCoralCrown",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_UNDURA_TUNNELS_DEEP_CORAL_CROWN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
@@ -122,7 +122,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMMoonblast",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_UNDURA_TUNNELS_DEEP_TM_MOONBLAST"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
@@ -148,7 +148,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "UnduraTunnelsDeep_EventScript_ItemPStarPiece",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_UNDURA_TUNNELS_DEEP_STAR_PIECE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -161,7 +161,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "UnduraTunnelsDeep_EventScript_ItemPBeastBall",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_UNDURA_TUNNELS_DEEP_BEAST_BALL"
     }
   ],
   "warp_events": [

@@ -564,6 +564,7 @@ ShoalCave_LowTideIceRoom_EventScript_ItemNeverMeltIce::
 
 SeafloorCavern_Room9_EventScript_ItemTMEarthquake::
 	finditem ITEM_TM_EARTHQUAKE
+	setflag FLAG_EVER_GRANDE_ROAD_TM_EARTHQUAKE
 	end
 
 Route110_TrickHousePuzzle1_EventScript_ItemOrangeMail::
@@ -835,22 +836,27 @@ MangrottoTunnel_EventScript_ItemSilverPowder::
 
 Route126_EventScript_ItemPotion::
 	finditem ITEM_POTION
+	setflag FLAG_P_ITEM_ROUTE_126_POTION
 	end
 
 Route126_EventScript_ItemEther::
 	finditem ITEM_ETHER
+	setflag FLAG_P_ITEM_ROUTE_126_ETHER
 	end
 
 Route126_EventScript_ItemStardust::
 	finditem ITEM_STARDUST
+	setflag FLAG_P_ITEM_ROUTE_126_STARDUST
 	end
 
 Route126_EventScript_ItemPPUp::
 	finditem ITEM_PP_UP
+	setflag FLAG_P_ITEM_ROUTE_126_PP_UP
 	end
 
 Route126_EventScript_ItemLureBall::
 	finditem ITEM_LURE_BALL
+	setflag FLAG_P_ITEM_ROUTE_126_LURE_BALL
 	end
 
 CosmossSpaceCenter_EventScript_ItemStardust::
@@ -1005,146 +1011,192 @@ LavaridgeInt_EventScript_ItemPPoisonBarb::
 
 CrimneyCaldera_EventScript_ItemPHeatRock::
 	finditem ITEM_HEAT_ROCK
+	setflag FLAG_P_ITEM_CRIMNEY_CALDERA_HEAT_ROCK
 	end
 
 SweltornTransitionCave_EventScript_ItemPSoftSand::
 	finditem ITEM_SOFT_SAND
+	setflag FLAG_P_ITEM_SWELTORN_TRANSITION_CAVE_SOFT_SAND
 	end
 
 SweltornDesert_EventScript_ItemPDustGoggles::
 	finditem ITEM_SAFETY_GOGGLES
+	setflag FLAG_P_ITEM_SWELTORN_DESERT_DUST_GOGGLES
 	end
 
 SweltornPalace_EventScript_ItemPKingsRock::
 	finditem ITEM_KINGS_ROCK
+	setflag FLAG_P_ITEM_SWELTORN_PALACE_OUTSIDE_KINGS_ROCK
 	end
 
 MauvilleNew_EventScript_ItemPTwistedSpoon::
 	finditem ITEM_TWISTED_SPOON
+	setflag FLAG_P_ITEM_MAUVILLE_NEW_TWISTED_SPOON
 	end
 
 MauvilleNew_EventScript_ItemPZoomLens::
 	finditem ITEM_ZOOM_LENS
+	setflag FLAG_P_ITEM_MAUVILLE_NEW_ZOOM_LENS
 	end
 
 MauvilleNew_EventScript_ItemPWideLens::
 	finditem ITEM_WIDE_LENS
+	setflag FLAG_P_ITEM_MAUVILLE_NEW_WIDE_LENS
 	end
 
 HatchloamField_EventScript_ItemPMiracleSeed::
 	finditem ITEM_MIRACLE_SEED
+	setflag FLAG_P_ITEM_HATCHLOAM_FIELD_MIRACLE_SEED
 	end
 
 CyclingRoad_EventScript_ItemPScopeLens::
 	finditem ITEM_SCOPE_LENS
+	setflag FLAG_P_ITEM_CYCLING_ROAD_SCOPE_LENS
 	end
 
 CyclingRoad_EventScript_ItemPTerrainCoat::
 	finditem ITEM_TERRAIN_EXTENDER
+	setflag FLAG_P_ITEM_CYCLING_ROAD_TERRAIN_COAT
 	end
 
 Maintenance_EventScript_ItemPBlackSludge::
 	finditem ITEM_BLACK_SLUDGE
+	setflag FLAG_P_ITEM_MAINTENANCE_BLACK_SLUDGE
 	end
 
 Maintenance_EventScript_ItemPMetalCoat::
 	finditem ITEM_METAL_COAT
+	setflag FLAG_P_ITEM_MAINTENANCE_METAL_COAT
 	end
 
 Route126_EventScript_ItemPMagnet::
 	finditem ITEM_MAGNET
+	setflag FLAG_P_ITEM_ROUTE_126_MAGNET
 	end
 
 SouthMossdeep_EventScript_ItemPFairyFeather::
 	finditem ITEM_FAIRY_FEATHER
+	setflag FLAG_P_ITEM_SOUTH_MOSSDEEP_FAIRY_FEATHER
 	end
 
 NavigulfWaves_EventScript_ItemPBrightPowder::
 	finditem ITEM_BRIGHT_POWDER
+	setflag FLAG_P_ITEM_NAVIGULF_WAVES_BRIGHT_POWDER
 	end
 
 ShoalCaveNewFloor2_EventScript_ItemPDawnStone::
 	finditem ITEM_DAWN_STONE
+	setflag FLAG_P_ITEM_SHOAL_CAVE_NEW_FLOOR_2_DAWN_STONE
 	end
 
 StraeSeapath_EventScript_ItemPSmoothRock::
 	finditem ITEM_SMOOTH_ROCK
+	setflag FLAG_P_ITEM_STRAE_SEAPATH_SMOOTH_ROCK
 	end
 
 MidneorFalls_EventScript_ItemPDuskStone::
 	finditem ITEM_DUSK_STONE
+	setflag FLAG_P_ITEM_MIDNEOR_FALLS_DUSK_STONE
 	end
 
 DewfordNew_EventScript_ItemPBoxingGlove::
 	finditem ITEM_PUNCHING_GLOVE
+	setflag FLAG_P_ITEM_DEWFORD_NEW_BOXING_GLOVE
 	end
 
 SailorsPauseShips_EventScript_ItemPRedCard::
 	finditem ITEM_RED_CARD
+	setflag FLAG_P_ITEM_SAILORS_PAUSE_SHIPS_RED_CARD
 	end
 
 SailorsPauseShips_EventScript_ItemPThroatSpray::
 	finditem ITEM_THROAT_SPRAY
+	setflag FLAG_P_ITEM_SAILORS_PAUSE_SHIPS_THROAT_SPRAY
 	end
 
 StraeSeapathUnderwater_EventScript_ItemPCorrodeMod::
 	finditem ITEM_CORRODE_MOD
+	setflag FLAG_P_ITEM_STRAE_SEAPATH_UNDERWATER_CORRODE_MOD
 	end
 
 ShoalCaveNewFloor2_EventScript_ItemPIcyRock::
 	finditem ITEM_ICY_ROCK
+	setflag FLAG_P_ITEM_SHOAL_CAVE_NEW_FLOOR_2_ICY_ROCK
 	end
 
 StraeSeapath_EventScript_ItemPShinyStone::
 	finditem ITEM_SHINY_STONE
+	setflag FLAG_P_ITEM_STRAE_SEAPATH_SHINY_STONE
 	end
 
 DetermaniteBeach_EventScript_ItemPMetronome::
 	finditem ITEM_METRONOME
+	setflag FLAG_P_ITEM_DETERMANITE_BEACH_METRONOME
 	end
 
 DetermaniteBeach_EventScript_ItemPBlackBelt::
 	finditem ITEM_BLACK_BELT
+	setflag FLAG_P_ITEM_DETERMANITE_BEACH_BLACK_BELT
 	end
 
 WishwellOcean_EventScript_ItemPLeftovers::
 	finditem ITEM_LEFTOVERS
+	setflag FLAG_P_ITEM_WISHWELL_OCEAN_LEFTOVERS
 	end
 
 WishwellOcean_EventScript_ItemPMysticWater::
 	finditem ITEM_MYSTIC_WATER
+	setflag FLAG_P_ITEM_WISHWELL_OCEAN_MYSTIC_WATER
 	end
 
 RustburgWharf_EventScript_ItemPSilkScarf::
 	finditem ITEM_SILK_SCARF
+	setflag FLAG_P_ITEM_RUSTBURG_WHARF_SILK_SCARF
 	end
 
 MidneorNadir_EventScript_ItemPDampRock::
 	finditem ITEM_DAMP_ROCK
+	setflag FLAG_P_ITEM_METEOR_NADIR_DAMP_ROCK
 	end
 
-UnduraTunnels_EventScript_ItemPMuscleBand::
+FortreeCity_EventScript_ItemPMuscleBand::
 	finditem ITEM_MUSCLE_BAND
+	setflag FLAG_P_ITEM_FORTREE_MUSCLE_BAND
 	end
 
-UnduraTunnels_EventScript_ItemPWiseGlasses::
+FortreeCity_EventScript_ItemPWiseGlasses::
 	finditem ITEM_WISE_GLASSES
+	setflag FLAG_P_ITEM_FORTREE_WISE_GLASSES
+	end
+
+UnduraTunnels_EventScript_ItemPWideArmor::
+	finditem ITEM_WIDE_ARMOR
+	setflag FLAG_P_ITEM_UNDURA_TUNNELS_WIDE_ARMOR
+	end
+
+UnduraTunnels_EventScript_ItemPOddStone::
+	finditem ITEM_ODD_STONE
+	setflag FLAG_P_ITEM_UNDURA_TUNNELS_ODD_STONE
 	end
 
 PetalburgNew_EventScript_ItemPClearAmulet::
 	finditem ITEM_CLEAR_AMULET
+	setflag FLAG_P_ITEM_PETALBURG_NEW_CLEAR_AMULET
 	end
 
 PetalburgWoodsNew_EventScript_ItemPCovertCLoak::
 	finditem ITEM_COVERT_CLOAK
+	setflag FLAG_P_ITEM_PETALBURG_WOODS_NEW_COVERT_CLOAK
 	end
 
 NovicesWalk_EventScript_ItemPAThing::
 	finditem ITEM_A_THING
+	setflag FLAG_P_ITEM_NOVICE_WALK_A_THING
 	end
 
 PendingDev_EventScript_ItemPAbilityGuard::
 	finditem ITEM_ABILITY_SHIELD
+	setflag FLAG_P_ITEM_PENDING_DEV_ABILITY_GUARD
 	end
 
 TechnicalMachines_EventScript_ItemPTMThunderWave::
@@ -1219,94 +1271,117 @@ TechnicalMachines_EventScript_ItemPTMBodySlam::
 
 TechnicalMachines_EventScript_ItemPTMVenoshock::
 	finditem ITEM_TM_VENOSHOCK
+	setflag FLAG_P_ITEM_MAINTENANCE_TM_VENOSHOCK
 	end
 
 TechnicalMachines_EventScript_ItemPTMPsyshock::
 	finditem ITEM_TM_PSYSHOCK
+	setflag FLAG_P_ITEM_SWELTORN_PALACE_OUTSIDE_TM_PSYSHOCK
 	end
 
 TechnicalMachines_EventScript_ItemPTMWillpower::
 	finditem ITEM_TM_WILLPOWER
+	setflag FLAG_P_ITEM_SWELTORN_PALACE_TM_WILLPOWER
 	end
 
 TechnicalMachines_EventScript_ItemPTMIronHead::
 	finditem ITEM_TM_IRON_HEAD
+	setflag FLAG_P_ITEM_NEW_MAUVILLE_INSIDE_TM_IRON_HEAD
 	end
 
 TechnicalMachines_EventScript_ItemPTMShadowClaw::
 	finditem ITEM_TM_SHADOW_CLAW
+	setflag FLAG_P_ITEM_CYCLING_ROAD_TM_SHADOW_CLAW
 	end
 
 TechnicalMachines_EventScript_ItemPTMZenHeadbutt::
 	finditem ITEM_TM_ZEN_HEADBUTT
+	setflag FLAG_P_ITEM_SOUTHERN_ISLAND_TM_ZEN_HEADBUTT
 	end
 
 TechnicalMachines_EventScript_ItemPTMLunge::
 	finditem ITEM_TM_LUNGE
+	setflag FLAG_P_ITEM_NEW_MAUVILLE_INSIDE_TM_LUNGE
 	end
 
 TechnicalMachines_EventScript_ItemPTMFlameLash::
 	finditem ITEM_TM_FIRE_LASH
+	setflag FLAG_P_ITEM_SWELTORN_DESERT_TM_FLAME_LASH
 	end
 
 TechnicalMachines_EventScript_ItemPTMSeedBomb::
 	finditem ITEM_TM_SEED_BOMB
+	setflag FLAG_P_ITEM_HATCHLOAM_FIELD_TM_SEED_BOMB
 	end
 
 TechnicalMachines_EventScript_ItemPTMDragonPulse::
 	finditem ITEM_TM_DRAGON_PULSE
+	setflag FLAG_P_ITEM_SWELTORN_DESERT_TM_DRAGON_PULSE
 	end
 
 TechnicalMachines_EventScript_ItemPTMFoulPlay::
 	finditem ITEM_TM_FOUL_PLAY
+	setflag FLAG_P_ITEM_TRICK_HOUSE_DARK_ROOM_TM_FOUL_PLAY
 	end
 
 TechnicalMachines_EventScript_ItemPTMRazorWind::
 	finditem ITEM_TM_RAZOR_WIND
+	setflag FLAG_P_ITEM_CYCLING_ROAD_TM_RAZOR_WIND
 	end
 
 TechnicalMachines_EventScript_ItemPTMThroatChop::
 	finditem ITEM_TM_THROAT_CHOP
+	setflag FLAG_P_ITEM_SAILORS_PAUSE_SHIPS_TM_THROAT_CHOP
 	end
 
 TechnicalMachines_EventScript_ItemPTMIcicleCrash::
 	finditem ITEM_TM_ICICLE_CRASH
+	setflag FLAG_P_ITEM_SHOAL_CAVE_NEW_FLOOR_1_TM_ICICLE_CRASH
 	end
 
 TechnicalMachines_EventScript_ItemPTMPhaseForce::
 	finditem ITEM_TM_PHANTOM_FORCE
+	setflag FLAG_P_ITEM_SAILORS_PAUSE_TM_PHASE_FORCE
 	end
 
 TechnicalMachines_EventScript_ItemPTMAquaTail::
 	finditem ITEM_TM_AQUA_TAIL
+	setflag FLAG_P_ITEM_NAVIGULF_WAVES_TM_AQUA_TAIL
 	end
 
 TechnicalMachines_EventScript_ItemPTMDireClaw::
 	finditem ITEM_TM_DIRE_CLAW
+	setflag FLAG_P_ITEM_DETERMANITE_BEACH_TM_DIRE_CLAW
 	end
 
 TechnicalMachines_EventScript_ItemPTMThunderbolt::
 	finditem ITEM_TM_THUNDERBOLT
+	setflag FLAG_P_ITEM_NAVIGULF_UNDERWATER_TM_THUNDERBOLT
 	end
 
 TechnicalMachines_EventScript_ItemPTMPlayRough::
 	finditem ITEM_TM_PLAY_ROUGH
+	setflag FLAG_P_ITEM_UNDURA_TUNNELS_DEEP_TM_PLAY_ROUGH
 	end
 
 TechnicalMachines_EventScript_ItemPTMFlamethrower::
 	finditem ITEM_TM_FLAMETHROWER
+	setflag FLAG_P_ITEM_DETERMANITE_QUARRY_TM_FLAMETHROWER
 	end
 
 TechnicalMachines_EventScript_ItemPTMIceBeam::
 	finditem ITEM_TM_ICE_BEAM
+	setflag FLAG_P_ITEM_DETERMANITE_QUARRY_TM_ICE_BEAM
 	end
 
 TechnicalMachines_EventScript_ItemPTMPsychic::
 	finditem ITEM_TM_PSYCHIC
+	setflag FLAG_P_ITEM_SAILORS_PAUSE_SHIPS_TM_PSYCHIC
 	end
 
 TechnicalMachines_EventScript_ItemPTMMoonblast::
 	finditem ITEM_TM_MOONBLAST
+	setflag FLAG_P_ITEM_UNDURA_TUNNELS_DEEP_TM_MOONBLAST
 	end
 
 TechnicalMachines_EventScript_ItemPTMEarthquake::
@@ -1315,10 +1390,12 @@ TechnicalMachines_EventScript_ItemPTMEarthquake::
 
 TechnicalMachines_EventScript_ItemPTMZapCannon::
 	finditem ITEM_TM_ZAP_CANNON
+	setflag FLAG_P_ITEM_MIDNEOR_FALLS_TM_ZAP_CANNON
 	end
 
 TechnicalMachines_EventScript_ItemPTMRagingFury::
 	finditem ITEM_TM_RAGING_FURY
+	setflag FLAG_EVER_GRANDE_ROAD_TM_RAGING_FURY
 	end
 
 Route125_EventScript_ItemPPPUp::
@@ -1837,210 +1914,262 @@ PiratesGrotto_EventScript_ItemPGoldTooth::
 
 SweltornDesert_EventScript_ItemPGoldTooth::
 	finditem ITEM_GOLD_TOOTH
+	setflag FLAG_P_ITEM_SWELTORN_DESERT_GOLD_TOOTH
 	end
 
 SweltornDesert_EventScript_ItemPPPMax::
 	finditem ITEM_PP_MAX
+	setflag FLAG_P_ITEM_SWELTORN_DESERT_PP_MAX
 	end
 
 SweltornDesert_EventScript_ItemPCoralCrown::
 	finditem ITEM_CORAL_CROWN
+	setflag FLAG_P_ITEM_SWELTORN_DESERT_CORAL_CROWN
 	end
 
 SweltornDesert_EventScript_ItemPStardust::
 	finditem ITEM_STARDUST
+	setflag FLAG_P_ITEM_SWELTORN_DESERT_STARDUST
 	end
 
 SweltornDesert_EventScript_ItemPFullHeal::
 	finditem ITEM_FULL_HEAL
+	setflag FLAG_P_ITEM_SWELTORN_DESERT_FULL_HEAL
 	end
 
 SweltornDesert_EventScript_ItemPHyperPotion::
 	finditem ITEM_HYPER_POTION
+	setflag FLAG_P_ITEM_SWELTORN_DESERT_HYPER_POTION
 	end
 
 SweltornDesert_EventScript_ItemPMaxEther::
 	finditem ITEM_MAX_ETHER
+	setflag FLAG_P_ITEM_SWELTORN_DESERT_MAX_ETHER
 	end
 
 SweltornDesert_EventScript_ItemPMaxRevive::
 	finditem ITEM_MAX_REVIVE
+	setflag FLAG_P_ITEM_SWELTORN_DESERT_MAX_REVIVE
 	end
 
 SweltornPalace_EventScript_ItemPRareBone::
 	finditem ITEM_RARE_BONE
+	setflag FLAG_P_ITEM_SWELTORN_PALACE_RARE_BONE
 	end
 
 SweltornPalace_EventScript_ItemPBitterRoot::
 	finditem ITEM_ENERGY_ROOT
+	setflag FLAG_P_ITEM_SWELTORN_PALACE_BITTER_ROOT
 	end
 
 SweltornPalace_EventScript_ItemPNugget::
 	finditem ITEM_NUGGET
+	setflag FLAG_P_ITEM_SWELTORN_PALACE_NUGGET
 	end
 
 SweltornPalaceOutside_EventScript_ItemPEscapeRope::
 	finditem ITEM_ESCAPE_ROPE
+	setflag FLAG_P_ITEM_SWELTORN_PALACE_OUTSIDE_ESCAPE_ROPE
 	end
 
 SweltornPalaceOutside_EventScript_ItemPRareCandy::
 	finditem ITEM_RARE_CANDY
+	setflag FLAG_P_ITEM_SWELTORN_PALACE_OUTSIDE_RARE_CANDY
 	end
 
 SweltornPalaceOutside_EventScript_ItemPLuxuryBall::
 	finditem ITEM_LUXURY_BALL
+	setflag FLAG_P_ITEM_SWELTORN_PALACE_OUTSIDE_LUXURY_BALL
 	end
 
 SweltornTransitionCave_EventScript_ItemPXAccuracy::
 	finditem ITEM_X_ACCURACY
+	setflag FLAG_P_ITEM_SWELTORN_TRANSITION_CAVE_X_ACCURACY
 	end
 
 SweltornTransitionCave_EventScript_ItemPLaxMint::
 	finditem ITEM_LAX_MINT
+	setflag FLAG_P_ITEM_SWELTORN_TRANSITION_CAVE_LAX_MINT
 	end
 
 SweltornTransitionCave_EventScript_ItemPAbilityCookie::
 	finditem ITEM_ABILITY_CAPSULE
+	setflag FLAG_P_ITEM_SWELTORN_TRANSITION_CAVE_ABILITY_COOKIE
 	end
 
 SweltornTransitionHallway_EventScript_ItemPTimerBall::
 	finditem ITEM_TIMER_BALL
+	setflag FLAG_P_ITEM_SWELTORN_TRANSITION_HALLWAY_TIMER_BALL
 	end
 
 SweltornTransitionHallway_EventScript_ItemPQuickBall::
 	finditem ITEM_QUICK_BALL
+	setflag FLAG_P_ITEM_SWELTORN_TRANSITION_HALLWAY_QUICK_BALL
 	end
 
 MauvilleNew_EventScript_ItemPAbilityCookie::
 	finditem ITEM_ABILITY_CAPSULE
+	setflag FLAG_P_ITEM_MAUVILLE_NEW_ABILITY_COOKIE
 	end
 
 MauvilleNew_EventScript_ItemPGoldTooth::
 	finditem ITEM_GOLD_TOOTH
+	setflag FLAG_P_ITEM_MAUVILLE_NEW_GOLD_TOOTH
 	end
 
 MauvilleNew_EventScript_ItemPGuardSpec::
 	finditem ITEM_GUARD_SPEC
+	setflag FLAG_P_ITEM_MAUVILLE_NEW_GUARD_SPEC
 	end
 
 HatchloamField_EventScript_ItemPCarrotHorn1::
 	finditem ITEM_CARROT_HORN
+	setflag FLAG_P_ITEM_HATCHLOAM_FIELD_CARROT_HORN
 	end
 
 HatchloamField_EventScript_ItemPCarrotHorn2::
 	finditem ITEM_CARROT_HORN
+	setflag FLAG_P_ITEM_HATCHLOAM_FIELD_CARROT_HORN_2
 	end
 
 HatchloamField_EventScript_ItemPPPUp::
 	finditem ITEM_PP_UP
+	setflag FLAG_P_ITEM_HATCHLOAM_FIELD_PP_UP
 	end
 
 HatchloamField_EventScript_ItemPTimidMint::
 	finditem ITEM_TIMID_MINT
+	setflag FLAG_P_ITEM_HATCHLOAM_FIELD_TIMID_MINT
 	end
 
 HatchloamField_EventScript_ItemPRevive::
 	finditem ITEM_REVIVE
+	setflag FLAG_P_ITEM_HATCHLOAM_FIELD_REVIVE
 	end
 
 TrickHouseMainPortion_EventScript_ItemPFullHeal::
 	finditem ITEM_FULL_HEAL
+	setflag FLAG_P_ITEM_TRICK_HOUSE_MAIN_PORTION_FULL_HEAL
 	end
 
 TrickHouseLeverRooms_EventScript_ItemPPPMax::
 	finditem ITEM_PP_MAX
+	setflag FLAG_P_ITEM_TRICK_HOUSE_LEVER_ROOMS_PP_MAX
 	end
 
 TrickHouseLeverRooms_EventScript_ItemPXAttack::
 	finditem ITEM_X_ATTACK
+	setflag FLAG_P_ITEM_TRICK_HOUSE_LEVER_ROOMS_X_ATTACK
 	end
 
 TrickHouseLeverRooms_EventScript_ItemPGoldTooth::
 	finditem ITEM_GOLD_TOOTH
+	setflag FLAG_P_ITEM_TRICK_HOUSE_LEVER_ROOMS_GOLD_TOOTH
 	end
 
 SouthernIsland_EventScript_ItemPMaxRevive::
 	finditem ITEM_MAX_REVIVE
+	setflag FLAG_P_ITEM_SOUTHERN_ISLAND_MAX_REVIVE
 	end
 
 CyclingRoad_EventScript_ItemPXSpeed::
 	finditem ITEM_X_SPEED
+	setflag FLAG_P_ITEM_CYCLING_ROAD_X_SPEED
 	end
 
 CyclingRoad_EventScript_ItemPCarrotHorn::
 	finditem ITEM_CARROT_HORN
+	setflag FLAG_P_ITEM_CYCLING_ROAD_CARROT_HORN
 	end
 
 CyclingRoad_EventScript_ItemPHyperPotion::
 	finditem ITEM_HYPER_POTION
+	setflag FLAG_P_ITEM_CYCLING_ROAD_HYPER_POTION
 	end
 
 CyclingRoad_EventScript_ItemPMaxEther::
 	finditem ITEM_MAX_ETHER
+	setflag FLAG_P_ITEM_CYCLING_ROAD_MAX_ETHER
 	end
 
 SeaMauville_EventScript_ItemPElixir::
 	finditem ITEM_ELIXIR
+	setflag FLAG_P_ITEM_SEA_MAUVILLE_ELIXIR
 	end
 
 SeaMauville_EventScript_ItemPMaxRepel::
 	finditem ITEM_MAX_REPEL
+	setflag FLAG_P_ITEM_SEA_MAUVILLE_MAX_REPEL
 	end
 
 Maintenance_EventScript_ItemPUltraBall::
 	finditem ITEM_ULTRA_BALL
+	setflag FLAG_P_ITEM_MAINTENANCE_ULTRA_BALL
 	end
 
 Maintenance_EventScript_ItemPFastBall::
 	finditem ITEM_FAST_BALL
+	setflag FLAG_P_ITEM_MAINTENANCE_FAST_BALL
 	end
 
 Maintenance_EventScript_ItemPDireHit::
 	finditem ITEM_DIRE_HIT
+	setflag FLAG_P_ITEM_MAINTENANCE_DIRE_HIT
 	end
 
 NewMauville_Inside_EventScript_ItemPMaxRepel::
 	finditem ITEM_MAX_REPEL
+	setflag FLAG_P_ITEM_NEW_MAUVILLE_INSIDE_MAX_REPEL
 	end
 
 NewMauville_Inside_EventScript_ItemPXDefense::
 	finditem ITEM_X_DEFENSE
+	setflag FLAG_P_ITEM_NEW_MAUVILLE_INSIDE_X_DEFENSE
 	end
 
 VerdanturfNew_EventScript_ItemPRareCandy::
 	finditem ITEM_RARE_CANDY
+	setflag FLAG_P_ITEM_VERDANTURF_NEW_RARE_CANDY
 	end
 
 VerdanturfNew_EventScript_ItemPCarrotHorn::
 	finditem ITEM_CARROT_HORN
+	setflag FLAG_P_ITEM_VERDANTURF_NEW_CARROT_HORN
 	end
 
 VerdanturfNew_EventScript_ItemPLonelyMint::
 	finditem ITEM_LONELY_MINT
+	setflag FLAG_P_ITEM_VERDANTURF_NEW_LONELY_MINT
 	end
 
 SlateportShore_EventScript_ItemPMaxPotion::
 	finditem ITEM_MAX_POTION
+	setflag FLAG_P_ITEM_SLATEPORT_SHORE_MAX_POTION
 	end
 
 SlateportShore_EventScript_ItemPMaxEther::
 	finditem ITEM_MAX_ETHER
+	setflag FLAG_P_ITEM_SLATEPORT_SHORE_MAX_ETHER
 	end
 
 DewfordNew_EventScript_ItemPCarrotHorn::
 	finditem ITEM_CARROT_HORN
+	setflag FLAG_P_ITEM_DEWFORD_NEW_CARROT_HORN
 	end
 
 StraeSeapath_EventScript_ItemPXSpAtk::
 	finditem ITEM_X_SP_ATK
+	setflag FLAG_P_ITEM_STRAE_SEAPATH_X_SP_ATK
 	end
 
 StraeSeapath_EventScript_ItemPGoldTooth::
 	finditem ITEM_GOLD_TOOTH
+	setflag FLAG_P_ITEM_STRAE_SEAPATH_GOLD_TOOTH
 	end
 
 StraeSeapath_EventScript_ItemPNugget::
 	finditem ITEM_NUGGET
+	setflag FLAG_P_ITEM_STRAE_SEAPATH_NUGGET
 	end
 
 Flotshore_EventScript_ItemPPPMax::
@@ -2050,10 +2179,12 @@ Flotshore_EventScript_ItemPPPMax::
 
 SailorsPauseShips_EventScript_ItemPAbilityCookie::
 	finditem ITEM_ABILITY_CAPSULE
+	setflag FLAG_P_ITEM_SAILORS_PAUSE_SHIPS_ABILITY_COOKIE
 	end
 
 SailorsPauseShips_EventScript_ItemPMaxPotion::
 	finditem ITEM_MAX_POTION
+	setflag FLAG_P_ITEM_SAILORS_PAUSE_SHIPS_MAX_POTION
 	end
 
 NewSunbeach_EventScript_ItemPCoralCrownPostSurf::
@@ -2068,232 +2199,290 @@ NewSunbeach_EventScript_ItemPStarPiece::
 
 ShoalCaveNewFloor1_EventScript_ItemPRareCandy::
 	finditem ITEM_RARE_CANDY
+	setflag FLAG_P_ITEM_SHOAL_CAVE_NEW_FLOOR_1_RARE_CANDY
 	end
 
 ShoalCaveNewFloor2_EventScript_ItemPHeavyBall::
 	finditem ITEM_HEAVY_BALL
+	setflag FLAG_P_ITEM_SHOAL_CAVE_NEW_FLOOR_2_HEAVY_BALL
 	end
 
 NavigulfUnderwater_EventScript_ItemPCoralCrown::
 	finditem ITEM_CORAL_CROWN
+	setflag FLAG_P_ITEM_NAVIGULF_UNDERWATER_CORAL_CROWN
 	end
 
 NavigulfUnderwater_EventScript_ItemPDuskBall::
 	finditem ITEM_DUSK_BALL
+	setflag FLAG_P_ITEM_NAVIGULF_UNDERWATER_DUSK_BALL
 	end
 
 StraeSeapathUnderwater_EventScript_ItemPPPMax::
 	finditem ITEM_PP_MAX
+	setflag FLAG_P_ITEM_STRAE_SEAPATH_UNDERWATER_PP_MAX
 	end
 
 StraeSeapathUnderwater_EventScript_ItemPMaxElixir::
 	finditem ITEM_MAX_ELIXIR
+	setflag FLAG_P_ITEM_STRAE_SEAPATH_UNDERWATER_MAX_ELIXIR
 	end
 
 StraeSeapathUnderwater_EventScript_ItemPCoralCrown::
 	finditem ITEM_CORAL_CROWN
+	setflag FLAG_P_ITEM_STRAE_SEAPATH_UNDERWATER_CORAL_CROWN
 	end
 
 DetermaniteBeach_EventScript_ItemPXSpDef::
 	finditem ITEM_X_SP_DEF
+	setflag FLAG_P_ITEM_DETERMANITE_BEACH_X_SP_DEF
 	end
 
 DetermaniteBeach_EventScript_ItemPCoolBall::
 	finditem ITEM_COOL_BALL
+	setflag FLAG_P_ITEM_DETERMANITE_BEACH_COOL_BALL
 	end
 
 DetermaniteBeach_EventScript_ItemPMaxElixir::
 	finditem ITEM_MAX_ELIXIR
+	setflag FLAG_P_ITEM_DETERMANITE_BEACH_MAX_ELIXIR
 	end
 
 DetermaniteBeach_EventScript_ItemPCoralCrown::
 	finditem ITEM_CORAL_CROWN
+	setflag FLAG_P_ITEM_DETERMANITE_BEACH_CORAL_CROWN
 	end
 
 DetermaniteQuarry_EventScript_ItemPLoveBall::
 	finditem ITEM_LOVE_BALL
+	setflag FLAG_P_ITEM_DETERMANITE_QUARRY_LOVE_BALL
 	end
 
 DetermaniteQuarB1F_EventScript_ItemPHeavyBall::
 	finditem ITEM_HEAVY_BALL
+	setflag FLAG_P_ITEM_DETERMANITE_QUARRY_B1F_HEAVY_BALL
 	end
 
 DetermaniteQuarB1F_EventScript_ItemPPPMax::
 	finditem ITEM_PP_MAX
+	setflag FLAG_P_ITEM_DETERMANITE_QUARRY_B1F_PP_MAX
 	end
 
 DetermaniteQuarB1F_EventScript_ItemPRareCandy::
 	finditem ITEM_RARE_CANDY
+	setflag FLAG_P_ITEM_DETERMANITE_QUARRY_B1F_RARE_CANDY
 	end
 
 WishwellOcean_EventScript_ItemPCarrotHorn::
 	finditem ITEM_CARROT_HORN
+	setflag FLAG_P_ITEM_WISHWELL_OCEAN_CARROT_HORN
 	end
 
 WishwellOcean_EventScript_ItemPAbilityCookie::
 	finditem ITEM_ABILITY_CAPSULE
+	setflag FLAG_P_ITEM_WISHWELL_OCEAN_ABILITY_COOKIE
 	end
 
 WishwellOcean_EventScript_ItemPQuietMint::
 	finditem ITEM_QUIET_MINT
+	setflag FLAG_P_ITEM_WISHWELL_OCEAN_QUIET_MINT
 	end
 
 RustburgWharf_EventScript_ItemPGoldTooth::
 	finditem ITEM_GOLD_TOOTH
+	setflag FLAG_P_ITEM_RUSTBURG_WHARF_GOLD_TOOTH
 	end
 
 RustburgWharf_EventScript_ItemPMaxRepel::
 	finditem ITEM_MAX_REPEL
+	setflag FLAG_P_ITEM_RUSTBURG_WHARF_MAX_REPEL
 	end
 
 RustburgWharf_EventScript_ItemPMaxElixir::
 	finditem ITEM_MAX_ELIXIR
+	setflag FLAG_P_ITEM_RUSTBURG_WHARF_MAX_ELIXIR
 	end
 
 RustburgWharf_EventScript_ItemPPPMax::
 	finditem ITEM_PP_MAX
+	setflag FLAG_P_ITEM_RUSTBURG_WHARF_PP_MAX
 	end
 
 RustburgWharf_EventScript_ItemPFullRestore::
 	finditem ITEM_FULL_RESTORE
+	setflag FLAG_P_ITEM_RUSTBURG_WHARF_FULL_RESTORE
 	end
 
 UnduraTunnels_EventScript_ItemPMaxRevive::
 	finditem ITEM_MAX_REVIVE
+	setflag FLAG_P_ITEM_UNDURA_TUNNELS_MAX_REVIVE
 	end
 
 UnduraTunnelsDeep_EventScript_ItemPCoralCrown::
 	finditem ITEM_CORAL_CROWN
+	setflag FLAG_P_ITEM_UNDURA_TUNNELS_DEEP_CORAL_CROWN
 	end
 
 UnduraTunnelsDeep_EventScript_ItemPStarPiece::
 	finditem ITEM_STAR_PIECE
+	setflag FLAG_P_ITEM_UNDURA_TUNNELS_DEEP_STAR_PIECE
 	end
 
 UnduraTunnelsDeep_EventScript_ItemPBeastBall::
 	finditem ITEM_BEAST_BALL
+	setflag FLAG_P_ITEM_UNDURA_TUNNELS_DEEP_BEAST_BALL
 	end
 
 MidneorFalls_EventScript_ItemPStarPiece::
 	finditem ITEM_STAR_PIECE
+	setflag FLAG_P_ITEM_MIDNEOR_FALLS_STAR_PIECE
 	end
 
 MidneorFalls_EventScript_ItemPCometShard::
 	finditem ITEM_COMET_SHARD
+	setflag FLAG_P_ITEM_MIDNEOR_FALLS_COMET_SHARD
 	end
 
 MidneorFalls_EventScript_ItemPMaxRevive::
 	finditem ITEM_MAX_REVIVE
+	setflag FLAG_P_ITEM_MIDNEOR_FALLS_MAX_REVIVE
 	end
 
 MidneorFalls_EventScript_ItemPMaxElixir::
 	finditem ITEM_MAX_ELIXIR
+	setflag FLAG_P_ITEM_MIDNEOR_FALLS_MAX_ELIXIR
 	end
 
 MidneorFalls_EventScript_ItemPPPMax::
 	finditem ITEM_PP_MAX
+	setflag FLAG_P_ITEM_MIDNEOR_FALLS_PP_MAX
 	end
 
 MidneorFalls_EventScript_ItemPRareCandy::
 	finditem ITEM_RARE_CANDY
+	setflag FLAG_P_ITEM_MIDNEOR_FALLS_RARE_CANDY
 	end
 
 MidneorFalls_EventScript_ItemPFullRestore::
 	finditem ITEM_FULL_RESTORE
+	setflag FLAG_P_ITEM_MIDNEOR_FALLS_FULL_RESTORE
 	end
 
 MidneorFalls_EventScript_ItemPDreamBall::
 	finditem ITEM_DREAM_BALL
+	setflag FLAG_P_ITEM_MIDNEOR_FALLS_DREAM_BALL
 	end
 
 RustboroNew_EventScript_ItemPAbilityCookie::
 	finditem ITEM_ABILITY_CAPSULE
+	setflag FLAG_P_ITEM_RUSTBORO_NEW_ABILITY_COOKIE
 	end
 
 RustboroNew_EventScript_ItemPGoldTooth::
 	finditem ITEM_GOLD_TOOTH
+	setflag FLAG_P_ITEM_RUSTBORO_NEW_GOLD_TOOTH
 	end
 
 PetalburgNew_EventScript_ItemPCalmMint::
 	finditem ITEM_CALM_MINT
+	setflag FLAG_P_ITEM_PETALBURG_NEW_CALM_MINT
 	end
 
 PetalburgWoodsNew_EventScript_ItemPStarPiece::
 	finditem ITEM_STAR_PIECE
+	setflag FLAG_P_ITEM_PETALBURG_WOODS_NEW_STAR_PIECE
 	end
 
 PetalburgWoodsNew_EventScript_ItemPAbilityCookie::
 	finditem ITEM_ABILITY_CAPSULE
+	setflag FLAG_P_ITEM_PETALBURG_WOODS_NEW_ABILITY_COOKIE
 	end
 
 PetalburgWoodsNew_EventScript_ItemPPokeDoll::
 	finditem ITEM_POKE_DOLL
+	setflag FLAG_P_ITEM_PETALBURG_WOODS_NEW_POKE_DOLL
 	end
 
 OldaleNew_EventScript_ItemPCarrotHorn::
 	finditem ITEM_CARROT_HORN
+	setflag FLAG_P_ITEM_OLDALE_NEW_CARROT_HORN
 	end
 
 NoviceWalk_EventScript_ItemPFullRestore::
 	finditem ITEM_FULL_RESTORE
+	setflag FLAG_P_ITEM_NOVICE_WALK_FULL_RESTORE
 	end
 
 NoviceWalk_EventScript_ItemPMaxEther::
 	finditem ITEM_MAX_ETHER
+	setflag FLAG_P_ITEM_NOVICE_WALK_MAX_ETHER
 	end
 
 NoviceWalk_EventScript_ItemPRareCandy::
 	finditem ITEM_RARE_CANDY
+	setflag FLAG_P_ITEM_NOVICE_WALK_RARE_CANDY
 	end
 
 NoviceWalk_EventScript_ItemPLevelBall::
 	finditem ITEM_LEVEL_BALL
+	setflag FLAG_P_ITEM_NOVICE_WALK_LEVEL_BALL
 	end
 
 PendingDev_EventScript_ItemPPPMax::
 	finditem ITEM_PP_MAX
+	setflag FLAG_P_ITEM_PENDING_DEV_PP_MAX
 	end
 
 EverGrandeTransitionCave_EventScript_ItemPGoldTooth::
 	finditem ITEM_GOLD_TOOTH
+	setflag FLAG_EVER_GRANDE_TRANSITION_CAVE_GOLD_TOOTH
 	end
 
 EverGrandeTransitionCave_EventScript_ItemPFullRestore::
 	finditem ITEM_FULL_RESTORE
+	setflag FLAG_EVER_GRANDE_TRANSITION_CAVE_FULL_RESTORE
 	end
 
 EverGrandeRoad_EventScript_ItemPCoralCrown::
 	finditem ITEM_CORAL_CROWN
+	setflag FLAG_EVER_GRANDE_ROAD_CORAL_CROWN
 	end
 
 EverGrandeRoad_EventScript_ItemPCarrotHorn::
 	finditem ITEM_CARROT_HORN
+	setflag FLAG_EVER_GRANDE_ROAD_CARROT_HORN
 	end
 
 EverGrandeRoad_EventScript_ItemPMaxElixir::
 	finditem ITEM_MAX_ELIXIR
+	setflag FLAG_EVER_GRANDE_ROAD_MAX_ELIXIR
 	end
 
 EverGrandeRoad_EventScript_ItemPGoldBall1::
 	finditem ITEM_PARK_BALL
+	setflag FLAG_EVER_GRANDE_ROAD_GOLD_BALL
 	end
 
 EverGrandeRoad_EventScript_ItemPGoldBall2::
 	finditem ITEM_PARK_BALL
+	setflag FLAG_EVER_GRANDE_ROAD_GOLD_BALL_2
 	end
 
 EverGrandeRoad_EventScript_ItemPBigNugget::
 	finditem ITEM_BIG_NUGGET
+	setflag FLAG_EVER_GRANDE_ROAD_BIG_NUGGET
 	end
 
 EverGrandeRoad_EventScript_ItemPPPMax::
 	finditem ITEM_PP_MAX
+	setflag FLAG_EVER_GRANDE_ROAD_PP_MAX
 	end
 
 EverGrandeRoad_EventScript_ItemPMaxRevive::
 	finditem ITEM_MAX_REVIVE
+	setflag FLAG_EVER_GRANDE_ROAD_MAX_REVIVE
 	end
 
 EverGrandePeak_EventScript_ItemPMaxRevive::
 	finditem ITEM_MAX_REVIVE
+	setflag FLAG_EVER_GRANDE_PEAK_MAX_REVIVE
 	end

@@ -916,7 +916,7 @@ static const u32 sStatusFlagsForMoveEffects[NUM_MOVE_EFFECTS] =
     [MOVE_EFFECT_NIGHTMARE]      = STATUS2_NIGHTMARE,
     [MOVE_EFFECT_THRASH]         = STATUS2_LOCK_CONFUSE,
     [MOVE_EFFECT_RECHARGE_REDUCE] = STATUS4_RECHARGE_REDUCE,
-    [MOVE_EFFECT_RECHARGE_BURN] = STATUS4_RECHARGE_BURN,
+    [MOVE_EFFECT_RECHARGE_BURN]  = STATUS4_RECHARGE_BURN,
 };
 
 static const u8 *const sMoveEffectBS_Ptrs[] =
@@ -1890,10 +1890,9 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
         calc = (calc * 90) / 100; // 10% evasion increase
         break;
     case ABILITY_ANTICIPATION:
-        if (gProtectStructs[battlerDef].anticipated)
-        {
+        if (gDisableStructs[battlerDef].anticipated)
             calc = min(calc, 50); // max accuracy of move is 50%
-        }
+        break;
     }
 
     // Attacker's ally's ability
@@ -6704,13 +6703,15 @@ static void Cmd_moveend(void)
                     break;
                 }
             }
-            if (!(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE) && gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION && !IsAbilityOnField(ABILITY_DAMP))
+            if (!(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE) 
+            && gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION
+            && gCurrentMove != MOVE_FINAL_SHRIEK
+            && !IsAbilityOnField(ABILITY_DAMP))
             {
                 gBattleMoveDamage = 0;
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_FaintAttackerForExplosion;
                 effect = TRUE;
-                break;
             }
             if (!(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)
             && (gBattleMoves[gCurrentMove].effect == EFFECT_MIND_BLOWN
@@ -6725,7 +6726,6 @@ static void Cmd_moveend(void)
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_MaxHp50Recoil;
                 effect = TRUE;
-                break;
             }
             gBattleScripting.moveendState++;
             break;
@@ -7631,6 +7631,8 @@ static void Cmd_moveend(void)
             gSpecialStatuses[gBattlerAttacker].damagedMons = 0;
             gSpecialStatuses[gBattlerAttacker].preventLifeOrbDamage = 0;
             gSpecialStatuses[gBattlerTarget].berryReduced = FALSE;
+            gDisableStructs[gBattlerTarget].anticipated = FALSE;
+            gDisableStructs[gBattlerAttacker].anticipated = FALSE;
             gBattleScripting.moveEffect = 0;
             // clear attacker z move data
             gBattleStruct->zmove.active = FALSE;
@@ -17066,7 +17068,7 @@ static void Cmd_setsafeguard(void)
     else
     {
         gSideStatuses[GetBattlerSide(gBattlerAttacker)] |= SIDE_STATUS_SAFEGUARD;
-        gSideTimers[GetBattlerSide(gBattlerAttacker)].safeguardTimer = 6;
+        gSideTimers[GetBattlerSide(gBattlerAttacker)].safeguardTimer = 5;
         gSideTimers[GetBattlerSide(gBattlerAttacker)].safeguardBattlerId = gBattlerAttacker;
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SET_SAFEGUARD;
     }
@@ -17999,7 +18001,7 @@ static void Cmd_setgastroacid(void)
 {
     CMD_ARGS(const u8 *failInstr);
 
-    if (IsGastroAcidBannedAbility(gBattleMons[gBattlerTarget].ability))
+    if (IsGastroAcidBannedAbility(gBattleMons[gBattlerTarget].ability) || gStatuses3[gBattlerTarget] & STATUS3_GASTRO_ACID)
     {
         gBattlescriptCurrInstr = cmd->failInstr;
     }
@@ -20397,9 +20399,10 @@ void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBat
     if (FlagGet(FLAG_VISITED_VERDANTURF_TOWN))
         if (!FlagGet(FLAG_BADGE06_GET))
             *expAmount = (*expAmount * 150) / 100;
-    if (FlagGet(FLAG_VISITED_DEWFORD_TOWN))
-        if (!FlagGet(FLAG_BADGE07_GET))
-            *expAmount = (*expAmount * 150) / 100;
+    if (FlagGet(FLAG_FOUND_SHELLY))
+        if (FlagGet(FLAG_FOUND_BRAWLY))
+            if (!FlagGet(FLAG_BADGE07_GET))
+                *expAmount = (*expAmount * 150) / 100;
     if (FlagGet(FLAG_VISITED_RUSTBORO_CITY))
         if (!FlagGet(FLAG_BADGE08_GET))
             *expAmount = (*expAmount * 150) / 100;

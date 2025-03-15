@@ -8946,11 +8946,10 @@ const struct Item gItems[] =
 
     [ITEM_MYSTIC_TICKET] =
     {
-        .name = _("Mystic Ticket"),
+        .name = _("Lotto Ticket"),
         .price = 0,
         .description = sMysticTicketDesc,
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
+        .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },

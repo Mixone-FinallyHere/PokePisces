@@ -228,6 +228,28 @@ const struct SpriteTemplate gBasicHitSplatSpriteTemplate =
     .callback = AnimHitSplatBasic,
 };
 
+const struct SpriteTemplate gGlassBreak1SpriteTemplate =
+{
+    .tileTag = ANIM_TAG_GLASS_BREAK_1,
+    .paletteTag = ANIM_TAG_GLASS_BREAK_1,
+    .oam = &gOamData_AffineNormal_ObjBlend_64x64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gAffineAnims_HitSplat,
+    .callback = AnimHitSplatBasic,
+};
+
+const struct SpriteTemplate gGlassBreak2SpriteTemplate =
+{
+    .tileTag = ANIM_TAG_GLASS_BREAK_2,
+    .paletteTag = ANIM_TAG_GLASS_BREAK_2,
+    .oam = &gOamData_AffineNormal_ObjBlend_64x64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gAffineAnims_HitSplat,
+    .callback = AnimHitSplatBasic,
+};
+
 const struct SpriteTemplate gHandleInvertHitSplatSpriteTemplate =
 {
     .tileTag = ANIM_TAG_IMPACT,

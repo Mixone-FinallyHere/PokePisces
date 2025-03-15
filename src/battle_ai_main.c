@@ -891,6 +891,16 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             RETURN_SCORE_MINUS(20);
         }
 
+        if ((moveType == TYPE_NORMAL || moveType == TYPE_FIGHTING) && aiData->abilities[battlerDef] == ABILITY_LEVITATE)
+        {
+            RETURN_SCORE_MINUS(20);
+        }
+
+        if ((moveType == TYPE_POISON) && aiData->abilities[battlerDef] == ABILITY_IMMUNITY)
+        {
+            RETURN_SCORE_MINUS(20);
+        }
+
         // check off screen
         if (IsSemiInvulnerable(battlerDef, move) && moveEffect != (EFFECT_SEMI_INVULNERABLE || EFFECT_DIG || EFFECT_DIVE || EFFECT_FLY || EFFECT_SHADOW_FORCE) && AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_FASTER)
             RETURN_SCORE_MINUS(20);    // if target off screen and we go first, don't use move
@@ -2689,6 +2699,10 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_ENDURE:
             if (gBattleMons[battlerAtk].hp == 1 || GetBattlerSecondaryDamage(battlerAtk)) //Don't use Endure if you'll die after using it
+                score -= 10;
+            break;
+        case EFFECT_ALLY_SWITCH:
+            if (!isDoubleBattle)
                 score -= 10;
             break;
         case EFFECT_PROTECT:
@@ -6121,9 +6135,10 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         break;
     case EFFECT_TRICK:
         if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_FROST_ORB && AI_THINKING_STRUCT->aiFlags & AI_FLAG_SEBASTIANS_TRICK)
-            score += 100;
+            score += 20;
         else if (aiData->holdEffects[battlerAtk] != HOLD_EFFECT_FROST_ORB && AI_THINKING_STRUCT->aiFlags & AI_FLAG_SEBASTIANS_TRICK)
-            score -= 100;
+            score -= 20;
+        break;
     case EFFECT_BESTOW:
         switch (aiData->holdEffects[battlerAtk])
         {

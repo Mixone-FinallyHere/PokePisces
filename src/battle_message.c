@@ -88,6 +88,7 @@ static const u8 sText_PlayerWhiteout2[] = _("{B_PLAYER_NAME} panicked and lost �
 #else
 static const u8 sText_PlayerWhiteout2[] = _("{B_PLAYER_NAME} whited out!{PAUSE_UNTIL_PRESS}");
 #endif
+static const u8 sText_PlayerWhiteout3[] = _("{B_PLAYER_NAME} whited out!{PAUSE_UNTIL_PRESS}");
 static const u8 sText_PreventsEscape[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} prevents\nescape with {B_SCR_ACTIVE_ABILITY}!\p");
 static const u8 sText_CantEscape2[] = _("Can't escape!\p");
 static const u8 sText_AttackerCantEscape[] = _("{B_ATK_NAME_WITH_PREFIX} can't escape!");
@@ -217,6 +218,7 @@ static const u8 sText_PkmnTryingToTakeFoe[] = _("{B_ATK_NAME_WITH_PREFIX} is try
 static const u8 sText_PkmnTookFoe[] = _("{B_DEF_NAME_WITH_PREFIX} took\n{B_ATK_NAME_WITH_PREFIX} with it!");
 static const u8 sText_PkmnReducedPP[] = _("Reduced {B_DEF_NAME_WITH_PREFIX}'s\n{B_BUFF1} by {B_BUFF2}!");
 static const u8 sText_AtkPkmnReducedPP[] = _("{B_LAST_ITEM} reduced {B_ATK_NAME_WITH_PREFIX}'s\n{B_BUFF1} by {B_BUFF2}!");
+static const u8 sText_AtkPkmnConfused[] = _("{B_LAST_ITEM} made {B_ATK_NAME_WITH_PREFIX}\nbecome confused!");
 static const u8 sText_ClearAmuletWontLowerStats[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1} prevents\nits stats from being lowered!");
 static const u8 sText_PurifiedNoStatChange[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is too pure\nfor stat changes!");
 static const u8 sText_TargetWasPurifiedAndCantChangeStats[] = _("{B_DEF_NAME_WITH_PREFIX} has been purified\nand cannot change their stats!");
@@ -860,7 +862,7 @@ static const u8 sText_BeingHitChargedPkmnWithPower[] = _("Being hit by {B_CURREN
 static const u8 sText_SunlightActivatedAbility[] = _("The harsh sunlight activated\n{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_LAST_ABILITY}!");
 static const u8 sText_StatWasHeightened[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_BUFF1} was heightened!");
 static const u8 sText_ElectricTerrainActivatedAbility[] = _("The Electric Terrain activated\n{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_LAST_ABILITY}!");
-static const u8 sText_AbilityWeakenedSurroundingMonsStat[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY}\nweakened the {B_BUFF1} of\lall opposing Pokémon!\p");
+static const u8 sText_AbilityWeakenedSurroundingMonsStat[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY} weakened\nthe {B_BUFF1} of all opposing Pokémon!");
 static const u8 sText_AttackerGainedStrengthFromTheFallen[] = _("{B_ATK_NAME_WITH_PREFIX} gained strength\nfrom the fallen!");
 static const u8 sText_PrepareShellTrap[] = _("{B_ATK_NAME_WITH_PREFIX} set a shell trap!");
 static const u8 sText_ShellTrapDidntWork[] = _("{B_ATK_NAME_WITH_PREFIX}'s shell trap didn't work!");
@@ -918,7 +920,7 @@ static const u8 sText_TargetCantEscapeForNow[] = _("{B_DEF_NAME_WITH_PREFIX} can
 static const u8 sText_PkmnStartedBlooming[] = _("{B_EFF_NAME_WITH_PREFIX} started\nblooming!");
 static const u8 sText_PkmnBloomingFrom[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} started blooming\nfrom its {B_SCR_ACTIVE_ABILITY}!");
 static const u8 sText_ItemCausedBlooming[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} started blooming\nfrom its {B_LAST_ITEM}!");
-static const u8 sText_PkmnBecameExposed[] = _("{B_ATK_NAME_WITH_PREFIX} became\nexposed!");
+static const u8 sText_PkmnBecameExposed[] = _("{B_EFF_NAME_WITH_PREFIX} became\nexposed!");
 static const u8 sText_PkmnExposedBy[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} was exposed\nfrom its {B_SCR_ACTIVE_ABILITY}!");
 static const u8 sText_ItemCausedExposed[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} became exposed\nfrom its {B_LAST_ITEM}!");
 static const u8 sText_PreventBlooming[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_EFF_ABILITY}\nprevents blooming!");
@@ -1865,6 +1867,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ABILITYLETITUSEMOVEGUARDDOG - BATTLESTRINGS_TABLE_START] = sText_AbilityLetItUseMoveGuardDog,
     [STRINGID_ABILITYLETITUSEMOVESWEETVEIL - BATTLESTRINGS_TABLE_START] = sText_AbilityLetItUseMoveSweetVeil,
     [STRINGID_PKMNSXPREVENTSFROSTBITE - BATTLESTRINGS_TABLE_START] = sText_PkmnsXPreventsFrostbite,
+    [STRINGID_PLAYERWHITEOUT3 - BATTLESTRINGS_TABLE_START] = sText_PlayerWhiteout3,
+    [STRINGID_ATKPKMNCONFUSED - BATTLESTRINGS_TABLE_START] = sText_AtkPkmnConfused,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

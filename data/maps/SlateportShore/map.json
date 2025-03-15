@@ -197,7 +197,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SlateportShore_EventScript_ItemPMaxPotion",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SLATEPORT_SHORE_MAX_POTION"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -210,7 +210,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SlateportShore_EventScript_ItemPMaxEther",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_SLATEPORT_SHORE_MAX_ETHER"
     }
   ],
   "warp_events": [

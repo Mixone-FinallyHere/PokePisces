@@ -477,6 +477,7 @@ static const u16 sIgnoredPowerfulMoveEffects[] =
     EFFECT_FRENZY_PLANT,
     EFFECT_AIR_CANNON,
     EFFECT_RECHARGE_REDUCE,
+    EFFECT_RECHARGE_BURN,
     EFFECT_FLEUR_CANNON,
     EFFECT_AXEL_HEEL,
     EFFECT_MIND_BREAK,
@@ -3059,7 +3060,7 @@ bool32 IsBattlerIncapacitated(u32 battler, u32 ability)
     if (gBattleMons[battler].status1 & STATUS1_SLEEP_ANY)
         return TRUE;
 
-    if (gBattleMons[battler].status2 & STATUS2_RECHARGE || gStatuses4[battler] & STATUS4_RECHARGE_REDUCE || (ability == ABILITY_TRUANT && gDisableStructs[battler].truantCounter != 0))
+    if (gBattleMons[battler].status2 & STATUS2_RECHARGE || gStatuses4[battler] & STATUS4_RECHARGE_REDUCE || gStatuses4[battler] & STATUS4_RECHARGE_BURN || (ability == ABILITY_TRUANT && gDisableStructs[battler].truantCounter != 0))
         return TRUE;
 
     return FALSE;
@@ -3407,6 +3408,9 @@ u32 ShouldTryToFlinch(u32 battlerAtk, u32 battlerDef, u32 atkAbility, u32 defAbi
 
 bool32 ShouldTrap(u32 battlerAtk, u32 battlerDef, u32 move)
 {
+    if (IS_BATTLER_OF_TYPE(battlerDef, TYPE_GHOST))
+        return FALSE; 
+    
     if (BattlerWillFaintFromSecondaryDamage(battlerDef, AI_DATA->abilities[battlerDef]))
         return TRUE;    // battler is taking secondary damage with low HP
 

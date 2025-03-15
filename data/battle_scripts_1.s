@@ -2404,12 +2404,11 @@ BattleScript_EffectCannonadeMalfunctioned:
 	ppreduce
 	printstring STRINGID_CANNONADEMALFUNCTIONED
 	tryexplosion
-	waitstate
-	call BattleScript_EffectExplosion_AnimDmgRet
-	moveendall
 	setatkhptozero
-	tryfaintmon BS_ATTACKER
-	end
+	waitstate
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	goto BattleScript_HitFromCritCalc
 
 BattleScript_EffectReservoir:
 	attackcanceler
@@ -13411,6 +13410,13 @@ BattleScript_LocalBattleLostEnd::
 	end2
 .endif
 
+BattleScript_LocalBattleLostGym::
+	printstring STRINGID_PLAYERWHITEOUT
+	waitmessage B_WAIT_TIME_LONG
+	printstring STRINGID_PLAYERWHITEOUT3
+	waitmessage B_WAIT_TIME_LONG
+	end2
+
 BattleScript_CheckDomeDrew::
 	jumpifbyte CMP_EQUAL, gBattleOutcome, B_OUTCOME_DREW, BattleScript_LocalBattleLostEnd_
 BattleScript_LocalBattleLostPrintTrainersWinText::
@@ -14428,7 +14434,7 @@ BattleScript_KamenScarfActivates_Ret:
 BattleScript_SilverCrownActivates::
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
 	waitanimation
-	printfromtable STRINGID_CROWNINFESTEDATTACKER
+	printstring STRINGID_CROWNINFESTEDATTACKER
 	waitmessage B_WAIT_TIME_LONG
 	return
 
@@ -18978,7 +18984,7 @@ BattleScript_RizzBerryEnd::
 BattleScript_RabutaBerryActivatesRet::
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
 	status2animation BS_ATTACKER, STATUS2_CONFUSION
-	printstring STRINGID_PKMNWASCONFUSED
+	printstring STRINGID_ATKPKMNCONFUSED
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_TARGET
 BattleScript_RabutaBerryEnd::

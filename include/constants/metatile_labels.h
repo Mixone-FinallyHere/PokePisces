@@ -1040,4 +1040,7 @@
 #define METATILE_mauvillenew_door_pokecenter  0x2B1
 #define METATILE_mauvillenew_doors_entrance   0x200
 
+// gTileset_ozoneinsitute
+#define METATILE_ozoneinsitute_sand_building_door  0x2DB
+
 #endif // GUARD_METATILE_LABELS_H

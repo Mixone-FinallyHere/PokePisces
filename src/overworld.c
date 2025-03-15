@@ -379,6 +379,7 @@ void Overworld_ResetStateAfterFly(void)
     FlagClear(FLAG_SYS_SAFARI_MODE);
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_USE_FLASH);
+    FlagClear(FLAG_WITHIN_GYM);
 }
 
 void Overworld_ResetStateAfterTeleport(void)
@@ -389,6 +390,7 @@ void Overworld_ResetStateAfterTeleport(void)
     FlagClear(FLAG_SYS_SAFARI_MODE);
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_USE_FLASH);
+    FlagClear(FLAG_WITHIN_GYM);
     RunScriptImmediately(EventScript_ResetMrBriney);
 }
 
@@ -400,6 +402,7 @@ void Overworld_ResetStateAfterDigEscRope(void)
     FlagClear(FLAG_SYS_SAFARI_MODE);
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_USE_FLASH);
+    FlagClear(FLAG_WITHIN_GYM);
 }
 
 #if B_RESET_FLAGS_VARS_AFTER_WHITEOUT  == TRUE
@@ -419,6 +422,7 @@ void Overworld_ResetStateAfterDigEscRope(void)
     FlagClear(B_FLAG_NO_BAG_USE);
     FlagClear(B_FLAG_NO_CATCHING);
     FlagClear(B_FLAG_NO_RUNNING);
+    FlagClear(FLAG_WITHIN_GYM);
 }
 #endif
 
@@ -430,6 +434,7 @@ static void Overworld_ResetStateAfterWhiteOut(void)
     FlagClear(FLAG_SYS_SAFARI_MODE);
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_USE_FLASH);
+    FlagClear(FLAG_WITHIN_GYM);
 #if B_RESET_FLAGS_VARS_AFTER_WHITEOUT  == TRUE
     Overworld_ResetBattleFlagsAndVars();
 #endif

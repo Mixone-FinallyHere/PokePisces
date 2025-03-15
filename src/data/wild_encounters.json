@@ -18414,6 +18414,95 @@
               }
             ]
           }
+        },
+        {
+          "map": "MAP_MIRAGE_ISLAND",
+          "base_label": "gMirageIsland0",
+          "water_mons": {
+            "encounter_rate": 0,
+            "mons": [
+              {
+                "min_level": 40,
+                "max_level": 45,
+                "species": "SPECIES_RAITAIC"
+              },
+              {
+                "min_level": 40,
+                "max_level": 45,
+                "species": "SPECIES_FOGGLEHIND"
+              },
+              {
+                "min_level": 40,
+                "max_level": 45,
+                "species": "SPECIES_FOGGLEHIND"
+              },
+              {
+                "min_level": 40,
+                "max_level": 45,
+                "species": "SPECIES_FOGGLEHIND"
+              },
+              {
+                "min_level": 40,
+                "max_level": 45,
+                "species": "SPECIES_FOGGLEHIND"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 0,
+            "mons": [
+              {
+                "min_level": 42,
+                "max_level": 42,
+                "species": "SPECIES_SADSOD"
+              },
+              {
+                "min_level": 42,
+                "max_level": 42,
+                "species": "SPECIES_SADSOD"
+              },
+              {
+                "min_level": 42,
+                "max_level": 42,
+                "species": "SPECIES_SADSOD"
+              },
+              {
+                "min_level": 42,
+                "max_level": 42,
+                "species": "SPECIES_SADSOD"
+              },
+              {
+                "min_level": 42,
+                "max_level": 42,
+                "species": "SPECIES_SADSOD"
+              },
+              {
+                "min_level": 42,
+                "max_level": 42,
+                "species": "SPECIES_SADSOD"
+              },
+              {
+                "min_level": 42,
+                "max_level": 42,
+                "species": "SPECIES_SADSOD"
+              },
+              {
+                "min_level": 42,
+                "max_level": 42,
+                "species": "SPECIES_MAERACHOLY"
+              },
+              {
+                "min_level": 42,
+                "max_level": 42,
+                "species": "SPECIES_MAERACHOLY"
+              },
+              {
+                "min_level": 42,
+                "max_level": 42,
+                "species": "SPECIES_MAERACHOLY"
+              }
+            ]
+          }
         }
       ]
     },

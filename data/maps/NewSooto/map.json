@@ -300,16 +300,29 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
-      "x": 39,
+      "x": 37,
       "y": 18,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
-      "movement_range_x": 3,
+      "movement_range_x": 1,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewSooto_EventScript_SebastianFriend",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_IN_BLACK_SUIT",
+      "x": 41,
+      "y": 15,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_17"
     }
   ],
   "warp_events": [
@@ -482,6 +495,60 @@
       "var": "VAR_TEMP_4",
       "var_value": "0",
       "script": "NewSooto_EventScript_YandemicNoticed"
+    },
+    {
+      "type": "trigger",
+      "x": 39,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_TEMP_6",
+      "var_value": "0",
+      "script": "NewSooto_EventScript_RolandEncounter1"
+    },
+    {
+      "type": "trigger",
+      "x": 39,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_TEMP_6",
+      "var_value": "0",
+      "script": "NewSooto_EventScript_RolandEncounter2"
+    },
+    {
+      "type": "trigger",
+      "x": 39,
+      "y": 18,
+      "elevation": 0,
+      "var": "VAR_TEMP_6",
+      "var_value": "0",
+      "script": "NewSooto_EventScript_RolandEncounter3"
+    },
+    {
+      "type": "trigger",
+      "x": 43,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_TEMP_6",
+      "var_value": "0",
+      "script": "NewSooto_EventScript_RolandEncounter4"
+    },
+    {
+      "type": "trigger",
+      "x": 43,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_TEMP_6",
+      "var_value": "0",
+      "script": "NewSooto_EventScript_RolandEncounter5"
+    },
+    {
+      "type": "trigger",
+      "x": 43,
+      "y": 18,
+      "elevation": 0,
+      "var": "VAR_TEMP_6",
+      "var_value": "0",
+      "script": "NewSooto_EventScript_RolandEncounter6"
     }
   ],
   "bg_events": [

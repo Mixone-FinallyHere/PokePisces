@@ -129,7 +129,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMLunge",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_NEW_MAUVILLE_INSIDE_TM_LUNGE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -142,7 +142,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewMauville_Inside_EventScript_ItemPXDefense",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_NEW_MAUVILLE_INSIDE_X_DEFENSE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
@@ -155,7 +155,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMIronHead",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_NEW_MAUVILLE_INSIDE_TM_IRON_HEAD"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -168,7 +168,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NewMauville_Inside_EventScript_ItemPMaxRepel",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_NEW_MAUVILLE_INSIDE_MAX_REPEL"
     }
   ],
   "warp_events": [

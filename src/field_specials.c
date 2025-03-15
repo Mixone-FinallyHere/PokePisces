@@ -1725,7 +1725,7 @@ static void StopCameraShake(u8 taskId)
 
 bool8 FoundBlackGlasses(void)
 {
-    return FlagGet(FLAG_HIDDEN_ITEM_ROUTE_116_BLACK_GLASSES);
+    return FlagGet(FLAG_UNUSED_0x4F9);
 }
 
 void SetRoute119Weather(void)
@@ -5283,8 +5283,12 @@ bool8 PoisonPlayerParty(void)
             species = GetMonData(mon, MON_DATA_SPECIES);
             ability = gSpeciesInfo[species].abilities[GetMonData(&gPlayerParty[i], MON_DATA_ABILITY_NUM)];
 
-            if (!(gSpeciesInfo[species].types[0] == TYPE_POISON || gSpeciesInfo[species].types[1] == TYPE_POISON) && !(gSpeciesInfo[species].types[0] == TYPE_STEEL || gSpeciesInfo[species].types[1] == TYPE_STEEL))
+            if (!(gSpeciesInfo[species].types[0] == TYPE_POISON || gSpeciesInfo[species].types[1] == TYPE_POISON) && !(gSpeciesInfo[species].types[0] == TYPE_STEEL || gSpeciesInfo[species].types[1] == TYPE_STEEL) && !GetMonData(mon, MON_DATA_IS_EGG))
                 SetMonData(mon, MON_DATA_STATUS, &sStatusFlags);
+        }
+        else
+        {
+            j++;
         }
         if (j == count)
             break;

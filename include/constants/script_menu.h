@@ -149,6 +149,7 @@
 #define MULTI_BERRY_SHOP_CATEGORY           137
 #define MULTI_CHOICE_ITEM_PICK              138
 #define MULTI_SAND_ITEM_PICK                139
+#define MULTI_LOTTO_MENU_CHOICE             140
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

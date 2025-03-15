@@ -7994,12 +7994,6 @@ static const struct TrainerMon sParty_PLibra[] = {
     .ev = TRAINER_PARTY_EVS(72, 72, 72, 72, 72, 72),
     .lvl = 50,
     },
-    {
-    .species = SPECIES_JUSTRICHA,
-    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .ev = TRAINER_PARTY_EVS(72, 72, 72, 72, 72, 72),
-    .lvl = 50,
-    }
 };
 
 static const struct TrainerMon sParty_PMary[] = {

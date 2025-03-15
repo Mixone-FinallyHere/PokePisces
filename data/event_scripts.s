@@ -679,6 +679,188 @@ Common_EventScript_ReadyPetalburgGymForBattle::
 Common_Lottery_EventScript_LotteryClerk::
 	lock
 	faceplayer
+	goto_if_eq VAR_NEW_LOTTERY_STATE, 0, Common_Lottery_EventScript_LottoIntroduction
+	msgbox gText_WelcomeToLottery, MSGBOX_DEFAULT
+	call_if_set FLAG_BADGE01_GET, Common_Lottery_EventScript_LotteryCheckBadge1
+	call_if_set FLAG_BADGE02_GET, Common_Lottery_EventScript_LotteryCheckBadge2
+	call_if_set FLAG_BADGE03_GET, Common_Lottery_EventScript_LotteryCheckBadge3
+	call_if_set FLAG_BADGE04_GET, Common_Lottery_EventScript_LotteryCheckBadge4
+	call_if_set FLAG_BADGE05_GET, Common_Lottery_EventScript_LotteryCheckBadge5
+	call_if_set FLAG_BADGE06_GET, Common_Lottery_EventScript_LotteryCheckBadge6
+	call_if_set FLAG_BADGE07_GET, Common_Lottery_EventScript_LotteryCheckBadge7
+	call_if_set FLAG_BADGE08_GET, Common_Lottery_EventScript_LotteryCheckBadge8
+	goto Common_Lottery_EventScript_LotteryMenu
+	release
+	end
+
+Common_Lottery_EventScript_LottoIntroduction::
+	msgbox gText_LottoIntroduction, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_MYSTIC_TICKET, 3
+	closemessage
+	setvar VAR_NEW_LOTTERY_STATE, 1
+	goto Common_Lottery_EventScript_LotteryMenu
+	release
+	end
+
+Common_Lottery_EventScript_LotteryCheckBadge1::
+	goto_if_eq VAR_NEW_LOTTERY_STATE, 1, Common_Lottery_EventScript_LotteryGiveFreeTicket
+	return
+
+Common_Lottery_EventScript_LotteryCheckBadge2::
+	goto_if_eq VAR_NEW_LOTTERY_STATE, 2, Common_Lottery_EventScript_LotteryGiveFreeTicket
+	return
+
+Common_Lottery_EventScript_LotteryCheckBadge3::
+	goto_if_eq VAR_NEW_LOTTERY_STATE, 3, Common_Lottery_EventScript_LotteryGiveFreeTicket
+	return
+
+Common_Lottery_EventScript_LotteryCheckBadge4::
+	goto_if_eq VAR_NEW_LOTTERY_STATE, 4, Common_Lottery_EventScript_LotteryGiveFreeTicket
+	return
+
+Common_Lottery_EventScript_LotteryCheckBadge5::
+	goto_if_eq VAR_NEW_LOTTERY_STATE, 5, Common_Lottery_EventScript_LotteryGiveFreeTicket
+	return
+
+Common_Lottery_EventScript_LotteryCheckBadge6::
+	goto_if_eq VAR_NEW_LOTTERY_STATE, 6, Common_Lottery_EventScript_LotteryGiveFreeTicket
+	return
+
+Common_Lottery_EventScript_LotteryCheckBadge7::
+	goto_if_eq VAR_NEW_LOTTERY_STATE, 7, Common_Lottery_EventScript_LotteryGiveFreeTicket
+	return
+
+Common_Lottery_EventScript_LotteryCheckBadge8::
+	goto_if_eq VAR_NEW_LOTTERY_STATE, 8, Common_Lottery_EventScript_LotteryGiveFreeTicket
+	return
+
+Common_Lottery_EventScript_LotteryGiveFreeTicket::
+	msgbox gText_LotteryGiveFreeTicket, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_MYSTIC_TICKET
+	addvar VAR_NEW_LOTTERY_STATE, 1
+	return
+
+Common_Lottery_EventScript_LotteryMenu::
+	msgbox gText_WhatLottoThingYouWant, MSGBOX_DEFAULT
+	multichoice 19, 4, MULTI_LOTTO_MENU_CHOICE, FALSE
+	copyvar VAR_TEMP_1, VAR_RESULT
+	goto_if_eq VAR_TEMP_1, 0, Common_Lottery_EventScript_AttemptToPlayLotto
+	goto_if_eq VAR_TEMP_1, 1, Common_Lottery_EventScript_WantLottoTicket
+	goto_if_eq VAR_TEMP_1, 2, Common_Lottery_EventScript_PrizeExplanation
+	closemessage
+	release
+	end
+
+Common_Lottery_EventScript_AttemptToPlayLotto::
+	checkitem ITEM_MYSTIC_TICKET
+	goto_if_eq VAR_RESULT, FALSE, Common_Lottery_EventScript_NoLottoTickets
+	msgbox gText_WillYouSpendALottoTicket, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Common_Lottery_EventScript_ReleaseOut
+	playse SE_SHOP
+	removeitem ITEM_MYSTIC_TICKET, 1
+	msgbox gText_LetsDrawYourNumber, MSGBOX_DEFAULT
+	random 10  @ 1/10 chance of first prize
+	goto_if_ne VAR_RESULT, 0, Common_Lottery_EventScript_LottoWinNothing
+	random 10  @ 1/100 chance of second prize
+	goto_if_ne VAR_RESULT, 0, Common_Lottery_EventScript_LottoWinBeastBall
+	random 10  @ 1/1000 chance of third prize
+	goto_if_ne VAR_RESULT, 0, Common_Lottery_EventScript_LottoWinAmuletCoin
+	goto Common_Lottery_EventScript_LottoWinNeoBattery
+	release
+	end
+
+Common_Lottery_EventScript_LottoWinNothing::
+	playfanfare MUS_TOO_BAD
+	message gText_PlayerWonNothing
+	waitfanfare
+	waitmessage
+	msgbox gText_HopeYouPlayLottoAgain, MSGBOX_AUTOCLOSE
+	release
+	end
+
+Common_Lottery_EventScript_LottoWinBeastBall::
+	playfanfare MUS_SLOTS_WIN
+	message gText_PlayerWonBeastBall
+	waitfanfare
+	waitmessage
+	giveitem ITEM_BEAST_BALL
+	closemessage
+	msgbox gText_HopeYouPlayLottoAgain, MSGBOX_AUTOCLOSE
+	release
+	end
+
+Common_Lottery_EventScript_LottoWinAmuletCoin::
+	playfanfare MUS_SLOTS_JACKPOT
+	message gText_PlayerWonAmuletCoin
+	waitfanfare
+	waitmessage
+	giveitem ITEM_AMULET_COIN
+	closemessage
+	msgbox gText_HopeYouPlayLottoAgain, MSGBOX_AUTOCLOSE
+	release
+	end
+
+Common_Lottery_EventScript_LottoWinNeoBattery::
+	playfanfare MUS_OBTAIN_SYMBOL
+	message gText_PlayerWonNeoBattery
+	waitfanfare
+	waitmessage
+	giveitem ITEM_NEO_BATTERY
+	closemessage
+	msgbox gText_HopeYouPlayLottoAgain, MSGBOX_AUTOCLOSE
+	release
+	end
+
+Common_Lottery_EventScript_NoLottoTickets::
+	msgbox gText_NoLottoTickets, MSGBOX_AUTOCLOSE
+	release
+	end
+
+Common_Lottery_EventScript_WantLottoTicket::
+	delay 4
+	showmoneybox 0, 0
+	delay 4
+	msgbox gText_WantLottoTicket, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Common_Lottery_EventScript_HideMoneyReleaseOut
+	checkmoney 5000
+	goto_if_eq VAR_RESULT, FALSE, Common_Lottery_EventScript_NotEnoughMoney
+	playse SE_SHOP
+	removemoney 5000
+	updatemoneybox
+	delay 40
+	hidemoneybox
+	giveitem ITEM_MYSTIC_TICKET
+	closemessage
+	goto Common_Lottery_EventScript_WantLottoTicket
+	release
+	end
+
+Common_Lottery_EventScript_ReleaseOut::
+	release
+	end
+
+Common_Lottery_EventScript_HideMoneyReleaseOut::
+	hidemoneybox
+	closemessage
+	release
+	end
+
+Common_Lottery_EventScript_NotEnoughMoney::
+	hidemoneybox
+	msgbox gText_NoLottoMoney, MSGBOX_AUTOCLOSE
+	release
+	end
+
+Common_Lottery_EventScript_PrizeExplanation::
+	msgbox gText_LottoPrizes, MSGBOX_AUTOCLOSE
+	release
+	end
+
+Common_Lottery_EventScript_LotteryClerkOLD::
+	lock
+	faceplayer
 	dotimebasedevents
 	goto_if_ne VAR_POKELOT_PRIZE_ITEM, ITEM_NONE, Common_Lottery_EventScript_GivePrizeFromEarlier
 	goto_if_set FLAG_DAILY_PICKED_LOTO_TICKET, Common_Lottery_EventScript_ComeBackTomorrow
@@ -823,6 +1005,7 @@ Common_EventScript_TannerShop1Progress::
 
 	.align 2
 Common_Mart_TannerShop1:
+	.2byte ITEM_REVIVE
 	.2byte ITEM_POTION
 	.2byte ITEM_SODA_POP
 	.2byte ITEM_POKE_BALL
@@ -841,6 +1024,7 @@ Common_EventScript_TannerShop2Progress::
 
 	.align 2
 Common_Mart_TannerShop2:
+	.2byte ITEM_REVIVE
 	.2byte ITEM_POTION
 	.2byte ITEM_GREAT_BALL
 	.2byte ITEM_ETHER
@@ -866,6 +1050,7 @@ Common_EventScript_TannerShop3Progress::
 Common_Mart_TannerShop3:
 	.2byte ITEM_SUPER_POTION
 	.2byte ITEM_MAX_ETHER
+	.2byte ITEM_REVIVE
 	.2byte ITEM_POTION
 	.2byte ITEM_GREAT_BALL
 	.2byte ITEM_ETHER
@@ -904,6 +1089,7 @@ Common_Mart_TannerShop4:
 	.2byte ITEM_BURN_HEAL
 	.2byte ITEM_ICE_HEAL
 	.2byte ITEM_AWAKENING
+	.2byte ITEM_RELAXANT
 	.2byte ITEM_ENERGY_ROOT
 	.2byte ITEM_NONE
 	release
@@ -3460,6 +3646,96 @@ gText_PokerusExplanation::
 	.string "forms that attach to POKéMON.\p"
 	.string "While infected, POKéMON are said to\n"
 	.string "grow exceptionally well.$"
+
+gText_WelcomeToLottery:
+	.string "Welcome to the Lottery Corner!$"
+
+gText_WhatLottoThingYouWant:
+	.string "What do you want to do?$"
+
+gText_LottoIntroduction:
+	.string "Ah! I haven't seen your face\n"
+	.string "before. Let me explain to you\l"
+	.string "how the Lottery Corner works!\p"
+	.string "It's pretty simple. You can buy\n"
+	.string "Lottery Tickets and spend them\l"
+	.string "on Lottery Pulls! We will run\l"
+	.string "the Lottery Pull immediately after\l"
+	.string "you spend a Ticket. A number\l"
+	.string "will then be rolled between\l"
+	.string "1 and 1000. Depending on that number,\l"
+	.string "you can win fabulous prizes!\p"
+	.string "Here are three tickets on\n"
+	.string "the house to get you started!$"
+
+gText_LotteryGiveFreeTicket:
+	.string "The staff at the Center has\n"
+	.string "been keeping track of your badges!\l"
+	.string "Seems like you picked up a new one.\p"
+	.string "You can have this free ticket\n"
+	.string "in the name of encouragement!$"
+
+gText_WillYouSpendALottoTicket:
+	.string "You would like to do a\n"
+	.string "Lottery Pull? That will cost\l"
+	.string "you one Lottery Ticket!$"
+
+gText_LetsDrawYourNumber:
+	.string "Alright then! I'll\n"
+	.string "take your Ticket...\p"
+	.string "Let's draw your number!$"
+
+gText_PlayerWonNothing:
+	.string "Aw, too bad! Your number\n"
+	.string "matches none of our prize numbers!$"
+
+gText_PlayerWonBeastBall:
+	.string "Your number has an 8 in it! That's\n"
+	.string "enough for a third tier prize...!$"
+
+gText_PlayerWonAmuletCoin:
+	.string "Your number has two 2s in it! That's\n"
+	.string "enough for a second tier prize...!$"
+
+gText_PlayerWonNeoBattery:
+	.string "Incredible! You rolled a 777!\n"
+	.string "That's a first tier prize!$"
+
+gText_HopeYouPlayLottoAgain:
+	.string "We hope you come back\n"
+	.string "to play the Lottery in the future!$"
+
+gText_NoLottoTickets:
+	.string "You don't have any Lottery Tickets!\n"
+	.string "You can buy some with Pokedollars\l"
+	.string "if you so wish.$"
+
+gText_WantLottoTicket:
+	.string "You would like a Lottery Ticket?\n"
+	.string "That will cost you ¥5000.$"
+
+gText_NoLottoMoney:
+	.string "You don't have enough money\n"
+	.string "for that! If you're that poor,\l"
+	.string "errm, maybe you shouldn't\l"
+	.string "be gambling...$"
+
+gText_LottoPrizes:
+	.string "We have three tiers of prizes!\p"
+	.string "The third tier prize, for getting\n"
+	.string "a number with an 8 in it,\l"
+	.string "is a Beast Ball!\l"
+	.string "That's about a 1 in 10 chance.\p"
+	.string "The second tier prize, for getting\n"
+	.string "a number with two 2s in it,\l"
+	.string "is an Amulet Coin!\l"
+	.string "That's about a 1 in 100 chance.\p"
+	.string "The first tier prize, for getting\n"
+	.string "exactly the number 777,\l"
+	.string "is a Neo Battery!\l"
+	.string "That's about a 1 in 1000 chance.\p"
+	.string "If you're lucky, you\n"
+	.string "could win big!$"
 
 	.include "data/text/surf.inc"
 

@@ -199,6 +199,24 @@ DevonCorp_EventScript_DevonMeetingPostWally::
 	release
 	end
 
+DevonCorp_EventScript_StaircaseTrigger::
+	lock
+	msgbox DevonCorp_Text_CantEnterPresidentsRoom, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, DevonCorp_Movement_PlayerBackUp
+	waitmovement 0
+	release
+	end
+
+DevonCorp_Movement_PlayerBackUp:
+	walk_down
+	step_end
+
+DevonCorp_Text_CantEnterPresidentsRoom:
+	.string "Our President is very busy!\n"
+	.string "We can't let commonfolk upstairs\l"
+	.string "while he is hard at work.$"
+
 DevonCorp_Text_NameMrStone:
 	.string "Mr. Stone$"
 

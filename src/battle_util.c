@@ -223,7 +223,10 @@ void HandleAction_UseMove(void)
         gHitMarker |= HITMARKER_NO_PPDEDUCT;
         *(gBattleStruct->moveTarget + gBattlerAttacker) = GetMoveTarget(MOVE_STRUGGLE, NO_TARGET_OVERRIDE);
     }
-    else if (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS || gBattleMons[gBattlerAttacker].status2 & STATUS2_RECHARGE || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_REDUCE || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_BURN)
+    else if (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS 
+        || gBattleMons[gBattlerAttacker].status2 & STATUS2_RECHARGE 
+        || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_REDUCE 
+        || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_BURN)
     {
         gCurrentMove = gChosenMove = gLockedMoves[gBattlerAttacker];
     }
@@ -3676,7 +3679,9 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_RECHARGE: // recharge
-            if (gBattleMons[gBattlerAttacker].status2 & STATUS2_RECHARGE || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_REDUCE || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_BURN)
+            if (gBattleMons[gBattlerAttacker].status2 & STATUS2_RECHARGE 
+            || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_REDUCE 
+            || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_BURN)
             {
                 gBattleMons[gBattlerAttacker].status2 &= ~STATUS2_RECHARGE;
                 gStatuses4[gBattlerAttacker] &= ~STATUS4_RECHARGE_REDUCE;
@@ -4775,16 +4780,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
             }
             break;
-        case ABILITY_ANTICIPATION:
-            if (!gSpecialStatuses[battler].switchInAbilityDone)
-            {
-                gProtectStructs[gBattlerAttacker].anticipated = TRUE;
-                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWITCHIN_ANTICIPATION;
-                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
-                BattleScriptPushCursorAndCallback(BattleScript_SwitchInAbilityMsg);
-                effect++;
-            }
-            break;
         case ABILITY_DOWNLOAD:
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
@@ -5302,7 +5297,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 gSideStatuses[side] |= SIDE_STATUS_MIST;
                 gSideTimers[side].mistBattlerId = battler;
-                gSideTimers[side].mistTimer = 6;
+                gSideTimers[side].mistTimer = 5;
                 BattleScriptPushCursorAndCallback(BattleScript_WhiteSmokeAbilityActivates);
                 effect++;
             }
@@ -5316,7 +5311,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 gSideStatuses[side] |= SIDE_STATUS_SAFEGUARD;
                 gSideTimers[side].safeguardBattlerId = battler;
-                gSideTimers[side].safeguardTimer = 6;
+                gSideTimers[side].safeguardTimer = 5;
                 BattleScriptPushCursorAndCallback(BattleScript_RuinWardSafeguardActivates);
                 effect++;
             }
@@ -8122,7 +8117,7 @@ bool32 CanBeExposed(u32 battler)
 
 bool32 CanBeConfused(u32 battler)
 {
-    if (GetBattlerAbility(battler) == ABILITY_OWN_TEMPO || gBattleMons[battler].status2 & STATUS2_CONFUSION || gStatuses4[battler] & STATUS4_INFINITE_CONFUSION || gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD || IS_BATTLER_OF_TYPE(battler, TYPE_PSYCHIC))
+    if (GetBattlerAbility(battler) == ABILITY_OWN_TEMPO || gBattleMons[battler].status2 & STATUS2_CONFUSION || gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD || IS_BATTLER_OF_TYPE(battler, TYPE_PSYCHIC))
         return FALSE;
     return TRUE;
 }
@@ -10077,7 +10072,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && TARGET_TURN_DAMAGED 
                 && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_WRAPPED)
                 && IsBattlerAlive(gBattlerAttacker)
-                && gBattleMons[gBattlerTarget].species == SPECIES_FLAGUE)
+                && gBattleMons[gBattlerTarget].species == SPECIES_FLAGUE_PRINCE)
                 {
                     effect = ITEM_EFFECT_OTHER;
 
@@ -10085,7 +10080,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     gDisableStructs[gBattlerAttacker].wrapTurns = (Random() % 2) + 4;
 
                     gBattleStruct->wrappedMove[gBattlerAttacker] = MOVE_INFESTATION;
-                    gBattleStruct->wrappedBy[gBattlerAttacker] = gBattlerAttacker;
+                    gBattleStruct->wrappedBy[gBattlerAttacker] = gBattlerTarget;
 
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_SilverCrownActivates;
