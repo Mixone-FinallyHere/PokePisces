@@ -869,7 +869,7 @@
 #define STRINGID_PLAYERWHITEOUT3                      867
 #define STRINGID_ATKPKMNCONFUSED                      868
 #define STRINGID_PKMNSXINFATUATEDY3                   869
-#define STRINGID_WEPEARIDENTIFIEDPKMN                 870
+#define STRINGID_WEPEARHEALBLOCKPKMN                  870
 
 #define BATTLESTRINGS_COUNT                           871
 
