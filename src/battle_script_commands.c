@@ -326,7 +326,7 @@ static const u16 sBadgeFlags[8] = {
     FLAG_BADGE05_GET, FLAG_BADGE06_GET, FLAG_BADGE07_GET, FLAG_BADGE08_GET,
 };
 
-static const u16 sWhiteOutBadgeMoney[9] = { 10, 25, 50, 115, 155, 205, 255, 320, 385 };
+static const u16 sWhiteOutBadgeMoney[9] = { 12, 11, 10, 9, 8, 7, 6, 5, 4 };
 
 #define STAT_CHANGE_WORKED      0
 #define STAT_CHANGE_DIDNT_WORK  1
@@ -8924,7 +8924,7 @@ static void Cmd_getmoneyreward(void)
             if (FlagGet(sBadgeFlags[i]) == TRUE)
                 ++count;
         }
-        money = sWhiteOutBadgeMoney[count] * GetCurrentLevelCap();
+        money = GetMoney(&gSaveBlock1Ptr->money) / sWhiteOutBadgeMoney[count];
         RemoveMoney(&gSaveBlock1Ptr->money, money);
     }
 

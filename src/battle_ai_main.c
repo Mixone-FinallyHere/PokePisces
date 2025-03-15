@@ -1461,7 +1461,11 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_DEF))
                 score -= 10;
             else if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPDEF))
-                score -= 8;
+                score -= 10;
+            else if (gBattleMons[battlerAtk].statStages[STAT_DEF] >= 9 && gBattleMons[battlerAtk].statStages[STAT_SPDEF] >= 9)
+                score -= 20;
+            if (!gDisableStructs[battlerAtk].isFirstTurn)
+                score -= 2;
             break;
         case EFFECT_VICTORY_DANCE:
             if (gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE || !HasMoveWithSplit(battlerAtk, SPLIT_PHYSICAL))
@@ -4855,6 +4859,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         {
             score += 5;
             if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_LIGHT_CLAY)
+                score += 2;
+            if (aiData->abilities[battlerAtk] == ABILITY_STAR_SCREEN)
                 score += 2;
             if (AI_THINKING_STRUCT->aiFlags & AI_FLAG_SCREENER)
                 score += 2;
