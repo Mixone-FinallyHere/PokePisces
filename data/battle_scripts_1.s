@@ -18915,7 +18915,7 @@ BattleScript_CornnBerryActivatesRet::
 
 BattleScript_WepearBerryActivatesRet::
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
-	printstring STRINGID_WEPEARIDENTIFIEDPKMN
+	printstring STRINGID_WEPEARHEALBLOCKPKMN
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_TARGET
 	return

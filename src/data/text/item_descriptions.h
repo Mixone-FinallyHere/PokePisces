@@ -2926,9 +2926,10 @@ static const u8 sNanabBerryDesc[] = _(
     "stockpile some power.");
 
 static const u8 sWepearBerryDesc[] = _(
-    "If a Pokémon holds\n"
-    "this Berry, it can\n"
-    "identify a foe.");
+    "If the holder is hit\n"
+    "at half HP, prevents\n"
+    "the attacker from\n"
+    "healing.");
 
 static const u8 sPinapBerryDesc[] = _(
     "If a Pokémon holds\n"
@@ -2972,9 +2973,10 @@ static const u8 sTamatoBerryDesc[] = _(
     "their jokes.");
 
 static const u8 sCornnBerryDesc[] = _(
-    "If a Pokémon holds\n"
-    "this Berry, it can\n"
-    "salt a foe.");
+    "If the holder is hit\n"
+    "at a quarter HP, it\n" 
+    "covers the attacker\n"
+    "in salt.");
 
 static const u8 sMagostBerryDesc[] = _(
     "If a Pokémon holds\n"

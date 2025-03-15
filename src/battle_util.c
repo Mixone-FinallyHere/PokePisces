@@ -10150,11 +10150,12 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 if (IsBattlerAlive(gBattlerAttacker)
                 && TARGET_TURN_DAMAGED
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
-                && !gBattleMons[gBattlerAttacker].status2 & STATUS2_FORESIGHT
+                && !gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK
                 && gBattleMons[gBattlerTarget].hp <= (gBattleMons[battler].maxHP / 2))
                 {
                     effect = ITEM_EFFECT_OTHER;
-                    gBattleMons[gBattlerAttacker].status2 |= STATUS2_FORESIGHT;
+                    gStatuses3[gBattlerAttacker] |= STATUS3_HEAL_BLOCK;
+                    gDisableStructs[gBattlerAttacker].healBlockTimer = 5;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_WepearBerryActivatesRet;
                     PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
