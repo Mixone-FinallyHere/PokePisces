@@ -1590,6 +1590,17 @@ const struct SpriteTemplate gWaterShurikenRingTemplate =
     .callback = AnimWaterPulseRing
 };
 
+const struct SpriteTemplate gTorpedoSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_TORPEDO,
+    .paletteTag = ANIM_TAG_TORPEDO,
+    .oam = &gOamData_AffineDouble_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gWaterPulseRingAffineAnimTable,
+    .callback = AnimWaterPulseRing
+};
+
 const struct SpriteTemplate gWaterShurikenImpactTemplate =
 {
     .tileTag = ANIM_TAG_IMPACT,

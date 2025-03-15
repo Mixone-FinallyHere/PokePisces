@@ -11542,6 +11542,8 @@ extern const u32 gBattleAnimSpritePal_Impact[];
 extern const u32 gBattleAnimSpriteGfx_GlassBreak1[];
 extern const u32 gBattleAnimSpriteGfx_GlassBreak2[];
 extern const u32 gBattleAnimSpritePal_GlassBreak[];
+extern const u32 gBattleAnimSpriteGfx_Torpedo[];
+extern const u32 gBattleAnimSpritePal_Torpedo[];
 extern const u32 gBattleAnimSpritePal_Particles2[];
 extern const u32 gBattleAnimSpritePal_CircleImpact[];
 extern const u32 gBattleAnimSpritePal_Impact[];

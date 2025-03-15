@@ -13199,7 +13199,6 @@ BattleScript_EffectCamouflage::
 	goto BattleScript_MoveEnd
 
 BattleScript_FaintAttacker::
-	tryillusionoff BS_ATTACKER
 	playfaintcry BS_ATTACKER
 	pause B_WAIT_TIME_SHORT
 	dofaintanimation BS_ATTACKER

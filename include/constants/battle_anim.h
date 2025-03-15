@@ -443,6 +443,7 @@
 #define ANIM_TAG_GLASS_BREAK_1              (ANIM_SPRITES_START + 429)
 #define ANIM_TAG_GLASS_BREAK_2              (ANIM_SPRITES_START + 430)
 #define ANIM_TAG_GIANTS_SPEAR_OPPONENT      (ANIM_SPRITES_START + 431)
+#define ANIM_TAG_TORPEDO                    (ANIM_SPRITES_START + 432)
 
 // battlers
 #define ANIM_ATTACKER         0
