@@ -14594,7 +14594,7 @@ static const struct TrainerMon sParty_PBrawly[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 224, 0, 224, 0, 0),
     .lvl = 55,
-    .moves = {MOVE_TROP_KICK, MOVE_DETECT, MOVE_VINE_PALM_STRIKE, MOVE_KNOCK_OFF},
+    .moves = {MOVE_POWER_WHIP, MOVE_DETECT, MOVE_VINE_PALM_STRIKE, MOVE_KNOCK_OFF},
     .nature = NATURE_ADAMANT,
     }
 };
@@ -14669,11 +14669,11 @@ static const struct TrainerMon sParty_PLannette[] = {
     {
     .species = SPECIES_LEDIAN,
     .ability = ABILITY_STAR_SCREEN,
-    .heldItem = ITEM_FLOAT_STONE,
+    .heldItem = ITEM_TRIUMPH_STAR,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .ev = TRAINER_PARTY_EVS(252, 0, 252, 0, 0, 4),
+    .ev = TRAINER_PARTY_EVS(252, 124, 124, 0, 0, 0),
     .lvl = 62,
-    .moves = {MOVE_LIGHT_SCREEN, MOVE_THUNDER_WAVE, MOVE_U_TURN, MOVE_STELLAR_FIST},
+    .moves = {MOVE_COMET_PUNCH, MOVE_STELLAR_FIST, MOVE_U_TURN, MOVE_REFLECT},
     .nature = NATURE_IMPISH,
     },
     {
@@ -14683,7 +14683,7 @@ static const struct TrainerMon sParty_PLannette[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(252, 0, 4, 0, 0, 252),
     .lvl = 63,
-    .moves = {MOVE_MIRACLE_EYE, MOVE_INSTRUCT, MOVE_HEAL_ORDER, MOVE_THUNDER_WAVE},
+    .moves = {MOVE_MIRACLE_EYE, MOVE_SAFEGUARD, MOVE_HEAL_ORDER, MOVE_ATTACK_ORDER},
     .nature = NATURE_CALM,
     },
     {
