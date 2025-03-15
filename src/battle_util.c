@@ -13689,6 +13689,16 @@ static inline s32 DoMoveDamageCalcVars(u32 move, u32 battlerAtk, u32 battlerDef,
             uniqueDamage = 50;
         dmg = dmg + uniqueDamage;
     }
+    else if (move == MOVE_LICK)
+    {
+        uniqueDamage = gBattleMons[battlerDef].maxHP / 10;
+        uniqueDamage *= CountBattlerStatDecreases(battlerDef, TRUE) + 1;
+        if (CountBattlerStatDecreases(battlerDef, TRUE) >= 10)
+            uniqueDamage = gBattleMons[battlerDef].maxHP;
+        if (IsSpeciesOneOf(gBattleMons[battlerDef].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && uniqueDamage > 50)
+            uniqueDamage = 50;
+        dmg = dmg + uniqueDamage;
+    }
     else if (move == MOVE_NEEDLE_ARM
     || (move == MOVE_SHADOW_CLAW && gIsCriticalHit)
     || (move == MOVE_ASTONISH && gBattleMons[battlerDef].status1 & STATUS1_PANIC)
@@ -15294,6 +15304,8 @@ u32 CalcSecondaryEffectChance(u32 battler, u8 secondaryEffectChance)
         secondaryEffectChance *= 3;
     else if (CountBattlerSpeedDecreases(gBattlerTarget) > 0 && gCurrentMove == MOVE_FREEZING_GLARE)
         secondaryEffectChance *= CountBattlerSpeedDecreases(gBattlerTarget) + 1;
+    else if (CountBattlerStatDecreases(gBattlerTarget, TRUE) > 0 && gCurrentMove == MOVE_LICK)
+        secondaryEffectChance *= CountBattlerStatDecreases(gBattlerTarget, TRUE) + 1;
     else if (CountBattlerDefenseIncreases(gBattlerAttacker) > 0 && gCurrentMove == MOVE_METAL_CLAW)
         secondaryEffectChance *= CountBattlerDefenseIncreases(gBattlerAttacker) + 1;
     else if (CountBattlerSpecialAttackIncreases(gBattlerAttacker) > 0 && CountBattlerSpecialDefenseIncreases(gBattlerAttacker) > 0 && gCurrentMove == MOVE_PSYBEAM)

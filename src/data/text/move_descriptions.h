@@ -607,9 +607,9 @@ static const u8 sEggBombDescription[] = _(
     "damage and remove its Ability.");
 
 static const u8 sLickDescription[] = _(
-    "The user licks the foe with a\n"
-    "long tongue to deal damage. This\n"
-    "may leave the foe paralyzed.");
+    "May paralyze and does bonus true\n"
+    "damage. Boosts bonus and chances\n"
+    "based on foe's stat drops.");
 
 static const u8 sSmogDescription[] = _(
     "The foe is attacked with exhaust\n"
