@@ -18906,22 +18906,18 @@ BattleScript_JabocaRowapBerryActivate_Dmg:
 	return
 
 BattleScript_CornnBerryActivatesRet::
-	jumpifstatus4 BS_ATTACKER, STATUS4_SALT_CURE, BattleScript_CornnBerryEnd
-	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
 	applysaltcure BS_ATTACKER
 	printstring STRINGID_TARGETISBEINGSALTCORNED
 	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_SCRIPTING
-BattleScript_CornnBerryEnd::
+	removeitem BS_TARGET
 	return
 
 BattleScript_WepearBerryActivatesRet::
-	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
-	removeitem BS_SCRIPTING
-	setforesight
-BattleScript_WepearBerryEnd::
-	printstring STRINGID_PKMNIDENTIFIED
+	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	printstring STRINGID_WEPEARIDENTIFIEDPKMN
 	waitmessage B_WAIT_TIME_LONG
+	removeitem BS_TARGET
 	return
 
 BattleScript_SpelonBerryActivatesRet::
