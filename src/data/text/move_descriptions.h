@@ -2245,7 +2245,7 @@ static const u8 sAquaJetDescription[] = _(
 
 static const u8 sAttackOrderDescription[] = _(
     "May poison or paralyze. Traps\n"
-    "and hurts the foe for 4 to 5\n"
+    "and hurts the foe for 4 or 5\n"
     "turns. Always goes first.");
 
 static const u8 sDefendOrderDescription[] = _(
@@ -3653,7 +3653,7 @@ static const u8 sSurgingStrikesDescription[] = _(
 static const u8 sThunderCageDescription[] = _(
     "The user traps the target in a\n"
     "cage of sparking electricity for\n"
-    "4 to 5 turns.");
+    "4 or 5 turns.");
 
 static const u8 sDragonEnergyDescription[] = _(
     "Converts life-force into power\n"
@@ -4172,9 +4172,9 @@ static const u8 sGeoPulseDescription[] = _(
     "boost the user's Defense stat.");
 
 static const u8 sDemolisherDescription[] = _(
-    "The user demolishes everyone on\n"
-    "the field. Boosted in Terrains\n"
-    "and Rooms and destroys them.");
+    "The user demolishes foes on the\n"
+    "field. Boosted in Terrains and\n"
+    "Rooms and destroys them.");
 
 static const u8 sIceSpinnerDescription[] = _(
     "The user twirls hitting the\n"

@@ -1337,16 +1337,16 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_RATICATE] =
     {
-        .baseHP        = 200,
-        .baseAttack    = 70,
-        .baseDefense   = 70,
-        .baseSpeed     = 2,
-        .baseSpAttack  = 70,
-        .baseSpDefense = 70,
+        .baseHP        = 255,
+        .baseAttack    = 255,
+        .baseDefense   = 255,
+        .baseSpeed     = 255,
+        .baseSpAttack  = 255,
+        .baseSpDefense = 255,
         .types = { TYPE_MYSTERY, TYPE_MYSTERY },
         .catchRate = 127,
         .expYield = 145,
-        .evYield_Speed     = 2,
+        .evYield_Speed = 2,
         .itemCommon = ITEM_TINY_MUSHROOM,
         .itemRare = ITEM_BIG_MUSHROOM,
         .genderRatio = PERCENT_FEMALE(50),
