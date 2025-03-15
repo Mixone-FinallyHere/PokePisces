@@ -135,7 +135,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TechnicalMachines_EventScript_ItemPTMPlayRough",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_UNDURA_TUNNELS_DEEP_TM_PLAY_ROUGH"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",

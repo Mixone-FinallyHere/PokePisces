@@ -1,5 +1,6 @@
 .set LOCALID_RAY, 5
 .set LOCALID_PARRYER, 21
+.set LOCALID_DIRECTOR, 32
 
 Route126_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route126_OnFrame
@@ -7,8 +8,15 @@ Route126_MapScripts::
 	.byte 0
 
 Route126_OnTransition:
+	call_if_lt VAR_ORBS_QUEST_STATE, 7, Route126_EventScript_RemoveDirector
+	call_if_gt VAR_ORBS_QUEST_STATE, 7, Route126_EventScript_RemoveDirector
 	goto_if_lt VAR_SPACE_CENTER_QUEST_STATE, 3, Route126_EventScript_HideMeteors
 	end
+
+Route126_EventScript_RemoveDirector::
+	removeobject LOCALID_DIRECTOR
+	setflag FLAG_TEMP_1D
+	return
 
 Route126_EventScript_HideMeteors::
 	setflag FLAG_TEMP_11
@@ -445,6 +453,16 @@ Route126_EventScript_SpaceCenterSign::
 	msgbox Route126_Text_SpaceCenterSign, MSGBOX_SIGN
 	end
 
+Route126_EventScript_WereUnderSiege::
+	lock
+	faceplayer
+	msgbox Route126_Text_WereUnderSiege, MSGBOX_DEFAULT
+	closemessage
+	warp MAP_SPACE_CENTER_SIEGE_CUTSCENE, 3, 7
+	waitstate
+	release
+	end
+
 Route126_Text_Launchpad1:
 	.string "Rocket Launch Pad No. 01$"
 
@@ -634,3 +652,17 @@ Route126_Text_GugumbirPostBattle:
 
 Route126_Text_GugumbirNeedTwoMons:
 	.string "need 2 dood$"
+
+Route126_Text_WereUnderSiege:
+	.string "Officer! You're an officer, yes?\n"
+	.string "Well, even if you aren't, I\l"
+	.string "designate you an honorary one\l"
+	.string "for the time being. You look\l"
+	.string "strong. We need your help.\p"
+	.string "Jacobi... that fool...!\n"
+	.string "He has somehow built some\l"
+	.string "infernal death machine without\l"
+	.string "our knowledge and is planning\l"
+	.string "on using it to destroy\l"
+	.string "our beloved space center!\p"
+	.string "You have to help us stop him!$"

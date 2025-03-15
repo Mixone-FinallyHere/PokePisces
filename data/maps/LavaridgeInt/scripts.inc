@@ -20,6 +20,7 @@ LavaridgeInt_EventScript_RemoveAngryLady::
 LavaridgeInt_EventScript_SouthTriggerLeft::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, LavaridgeInt_Movement_PositionPlayerLeft
+	waitmovement 0
 	goto LavaridgeInt_EventScript_AngryLadySouth
 	release
 	end
@@ -32,6 +33,7 @@ LavaridgeInt_Movement_PositionPlayerLeft:
 LavaridgeInt_EventScript_SouthTriggerRight::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, LavaridgeInt_Movement_PositionPlayerRight
+	waitmovement 0
 	goto LavaridgeInt_EventScript_AngryLadySouth
 	release
 	end

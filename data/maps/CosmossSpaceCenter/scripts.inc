@@ -4,6 +4,7 @@ CosmossSpaceCenter_MapScripts::
 
 CosmossSpaceCenter_OnFrame:
 	map_script_2 VAR_SPACE_CENTER_QUEST_STATE, 50, CosmossSpaceCenter_EventScript_AfterInvasion
+	map_script_2 VAR_ORBS_QUEST_STATE, 8, CosmossSpaceCenter_EventScript_AfterJacobi
 	.2byte 0
 
 CosmossSpaceCenter_EventScript_AfterInvasion::
@@ -26,6 +27,24 @@ CosmossSpaceCenter_LookLeft:
 CosmossSpaceCenter_LookRight:
 	face_right
 	step_end
+
+CosmossSpaceCenter_EventScript_AfterJacobi::
+	lock
+	delay 4
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	msgbox CosmossSpaceCenter_Text_SavedTheCenter, MSGBOX_DEFAULT
+	setvar VAR_ORBS_QUEST_STATE, 9
+	giveitem ITEM_LIFE_ORB
+	msgbox CosmossSpaceCenter_Text_ThanksForSaving, MSGBOX_DEFAULT
+	closemessage
+	delay 16
+	playse SE_M_SWORDS_DANCE
+	waitse
+	playse SE_M_BUBBLE_BEAM2
+	msgbox CosmossSpaceCenter_Text_TheMapPointsToRustboro, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
 
 CosmossSpaceCenter_EventScript_AIBlock::
 	lock
@@ -684,3 +703,37 @@ CosmossSpaceCenter_Text_NotEnoughMinior:
 	.string "all six Minior forms on you.\p"
 	.string "What a shame…\p"
 	.string "Come meet me with all 6 in your party.$"
+
+CosmossSpaceCenter_Text_SavedTheCenter:
+	.string "Thank you for busting up\n"
+	.string "that impressive automaton.\l"
+	.string "I actually think Jacobi did a\l"
+	.string "phenomenal job crafting it,\l"
+	.string "though he did use parts from\l"
+	.string "the generator without sanctions...\l"
+	.string "so, as far as I'm concerned,\l"
+	.string "he's dead to me.\p"
+	.string "And you know what? He's dead\n"
+	.string "to everyone else too! Because\l"
+	.string "I was able to detonate that bomb\l"
+	.string "strapped to his chest soon as\l"
+	.string "he was isolated from Cosmoss Bridge.\l"
+	.string "Kaboom! And there he went.\l"
+	.string "Nothing but a crater.\p"
+	.string "And it's all thanks to you!\n"
+	.string "As a token of my appreciation,\l"
+	.string "you can have this orb that was\l"
+	.string "powering that massive robot.\l"
+	.string "We have more potent energy sources\l"
+	.string "lying around than that, trust me.$"
+
+CosmossSpaceCenter_Text_ThanksForSaving:
+	.string "Thank you for seeing the\n"
+	.string "bigger picture in all this,\l"
+	.string "Officer {PLAYER}. Toodles!$"
+
+CosmossSpaceCenter_Text_TheMapPointsToRustboro:
+	.string "(Your magical map shines once more,\n"
+	.string "pointing you to your final location.)\p"
+	.string "(This time, it is leading you to a\n"
+	.string "structure in a cave you don't recognize...)$"

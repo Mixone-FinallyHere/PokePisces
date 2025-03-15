@@ -4312,3 +4312,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/LittlerootNewHouseTwo/scripts.inc"
 
 	.include "data/maps/PebblerLab/scripts.inc"
+
+	.include "data/maps/SpaceCenterSiegeCutscene/scripts.inc"

@@ -267,15 +267,15 @@
       "x": 5,
       "y": 8,
       "elevation": 0,
-      "dest_map": "MAP_DEVON_CORP",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_RUSTBORO_NEW",
+      "dest_warp_id": "3"
     },
     {
       "x": 6,
       "y": 8,
       "elevation": 0,
-      "dest_map": "MAP_DEVON_CORP",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_RUSTBORO_NEW",
+      "dest_warp_id": "4"
     },
     {
       "x": 14,

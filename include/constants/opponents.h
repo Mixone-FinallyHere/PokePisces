@@ -702,7 +702,7 @@
 #define TRAINER_P_BRENDAN_FINAL                    698
 #define TRAINER_P_MAY_FINAL                       699
 #define TRAINER_P_CENTAURIPH                      700
-#define TRAINER_ALYSSA                      701
+#define TRAINER_P_JACOBI                      701
 #define TRAINER_P_JIMMYOS                      702
 #define TRAINER_P_SADFISHER_3                       703
 #define TRAINER_P_DADDY_BIGBUCKS                       704
