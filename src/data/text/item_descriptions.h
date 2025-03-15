@@ -729,9 +729,9 @@ static const u8 sXSpDefDesc[] = _(
 
 static const u8 sXSpeedDesc[] = _(
     "An item that sharply\n"
-    "boosts Speed. It wears\n"
-    "off if the Pokémon\n"
-    "leaves.");
+    "boosts Speed. It\n"
+    "wears off if the\n"
+    "Pokémon leaves.");
 
 static const u8 sXAccuracyDesc[] = _(
     "An item that sharply\n"
@@ -741,9 +741,9 @@ static const u8 sXAccuracyDesc[] = _(
 
 static const u8 sDireHitDesc[] = _(
     "An item that sharply\n"
-    "boosts the critical hit\n"
-    "ratio of a Pokémon for\n"
-    "one battle.");
+    "boosts the critical\n"
+    "hit ratio of a Pokémon\n"
+    "for one battle.");
 
 static const u8 sGuardSpecDesc[] = _(
     "An item that prevents\n"
