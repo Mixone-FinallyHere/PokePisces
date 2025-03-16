@@ -3885,6 +3885,8 @@ BattleScript_FlorescenceCureStatus:
 	goto BattleScript_FlorescenceTryRestoreAlly
 
 BattleScript_EffectPowerDrain:
+	jumpiffullhp BS_ATTACKER, BattleScript_PowerDrainJustTryRemoveElectricType
+BattleScript_EffectPowerDrainContinue:
 	setstatchanger STAT_SPEED, 1, TRUE
 	attackcanceler
 	jumpifsubstituteblocks BattleScript_FailedFromAtkString
@@ -3893,16 +3895,10 @@ BattleScript_EffectPowerDrain:
 	ppreduce
 	jumpifstat BS_TARGET, CMP_NOT_EQUAL, STAT_SPEED, MIN_STAT_STAGE, BattleScript_PowerDrainTryLower
 	pause B_WAIT_TIME_SHORT
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_MoveEnd
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_PowerDrainElectricLossAfterPPReduce
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
-	jumpiftype BS_TARGET, TYPE_ELECTRIC, BattleScript_EffectPowerDrainElectricType
-	goto BattleScript_MoveEnd
-BattleScript_EffectPowerDrainElectricType:
-	losetype BS_TARGET, TYPE_ELECTRIC
-	printstring STRINGID_TARGETLOSTELECTRICTYPE
-	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
+	goto BattleScript_PowerDrainElectricLossAfterPPReduce
 BattleScript_PowerDrainTryLower:
 	getstatvalue BS_TARGET, STAT_SPEED
 	jumpiffullhp BS_ATTACKER, BattleScript_PowerDrainMustLower
@@ -3915,32 +3911,72 @@ BattleScript_PowerDrainLower:
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
-	jumpiftype BS_TARGET, TYPE_ELECTRIC, BattleScript_EffectPowerDrainElectricType2
-	goto BattleScript_PowerDrainHp
-BattleScript_EffectPowerDrainElectricType2:
-	losetype BS_TARGET, TYPE_ELECTRIC
-	printstring STRINGID_TARGETLOSTELECTRICTYPE
-	waitmessage B_WAIT_TIME_LONG
 @ Drain HP without lowering a stat
-BattleScript_PowerDrainTryHp:
-	jumpiffullhp BS_ATTACKER, BattleScript_ButItFailed
-	attackanimation
-	waitanimation
 BattleScript_PowerDrainHp:
-	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_MoveEnd
-	jumpiffullhp BS_ATTACKER, BattleScript_MoveEnd
+	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_PowerDrainManipulateDmg
+	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_PowerDrainElectricLossAfterAnimation
+	jumpiffullhp BS_ATTACKER, BattleScript_PowerDrainElectricLossAfterAnimation
+BattleScript_PowerDrainManipulateDmg:
 	manipulatedamage DMG_BIG_ROOT
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_PowerDrainLiquidOoze
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
 	printstring STRINGID_PKMNENERGYDRAINED
 	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
+	goto BattleScript_PowerDrainElectricLossAfterAnimation
+BattleScript_PowerDrainLiquidOoze:
+	call BattleScript_AbilityPopUpTarget
+	manipulatedamage DMG_CHANGE_SIGN
+	setbyte cMULTISTRING_CHOOSER, B_MSG_ABSORB_OOZE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	printfromtable gAbsorbDrainStringIds
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_ATTACKER
+	goto BattleScript_PowerDrainElectricLossAfterAnimation
 BattleScript_PowerDrainMustLower:
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_MoveEnd
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY, BattleScript_MoveEnd
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_PowerDrainElectricLossAfterPPReduce
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY, BattleScript_PowerDrainElectricLossAfterPPReduce
 	attackanimation
 	waitanimation
 	goto BattleScript_PowerDrainLower
+BattleScript_PowerDrainJustTryRemoveElectricType:
+	jumpifstat BS_TARGET, CMP_NOT_EQUAL, STAT_SPEED, MIN_STAT_STAGE, BattleScript_PowerDrainJustTryRemoveElectricType2
+	goto BattleScript_EffectPowerDrainContinue
+BattleScript_PowerDrainJustTryRemoveElectricType2:
+	jumpiftype BS_TARGET, TYPE_ELECTRIC, BattleScript_PowerDrainElectricLossWorks
+	goto BattleScript_EffectPowerDrainContinue
+BattleScript_PowerDrainElectricLossWorks:
+	attackcanceler
+	jumpifsubstituteblocks BattleScript_FailedFromAtkString
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	losetype BS_TARGET, TYPE_ELECTRIC
+	attackanimation
+	waitanimation
+	printstring STRINGID_TARGETLOSTELECTRICTYPE
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_PowerDrainElectricLossAfterPPReduce:
+	jumpiftype BS_TARGET, TYPE_ELECTRIC, BattleScript_PowerDrainElectricLossWorks2
+	goto BattleScript_MoveEnd
+BattleScript_PowerDrainElectricLossWorks2:
+	losetype BS_TARGET, TYPE_ELECTRIC
+	attackanimation
+	waitanimation
+	printstring STRINGID_TARGETLOSTELECTRICTYPE
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_PowerDrainElectricLossAfterAnimation:
+	jumpiftype BS_TARGET, TYPE_ELECTRIC, BattleScript_PowerDrainElectricLossWorks3
+	goto BattleScript_MoveEnd
+BattleScript_PowerDrainElectricLossWorks3:
+	losetype BS_TARGET, TYPE_ELECTRIC
+	printstring STRINGID_TARGETLOSTELECTRICTYPE
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectHearthwarm:
 	jumpifnoally BS_ATTACKER, BattleScript_HearthwarmSingleBattle
@@ -6924,7 +6960,6 @@ BattleScript_PurifyWorks:
 
 BattleScript_EffectStrengthSap:
 	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_StrengthSapQuash
-BattleScript_StrengthSapQuashFailed:
 	setstatchanger STAT_ATK, 1, TRUE
 	attackcanceler
 	jumpifsubstituteblocks BattleScript_FailedFromAtkString
@@ -6950,18 +6985,28 @@ BattleScript_StrengthSapLower:
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 @ Drain HP without lowering a stat
-BattleScript_StrengthSapTryHp:
-	jumpiffullhp BS_ATTACKER, BattleScript_ButItFailed
-	attackanimation
-	waitanimation
 BattleScript_StrengthSapHp:
+	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_StrengthSapManipulateDmg
 	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_MoveEnd
 	jumpiffullhp BS_ATTACKER, BattleScript_MoveEnd
+BattleScript_StrengthSapManipulateDmg:
 	manipulatedamage DMG_BIG_ROOT
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_StrengthSapLiquidOoze
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
 	printstring STRINGID_PKMNENERGYDRAINED
 	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_StrengthSapLiquidOoze:
+	call BattleScript_AbilityPopUpTarget
+	manipulatedamage DMG_CHANGE_SIGN
+	setbyte cMULTISTRING_CHOOSER, B_MSG_ABSORB_OOZE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	printfromtable gAbsorbDrainStringIds
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_ATTACKER
 	goto BattleScript_MoveEnd
 BattleScript_StrengthSapMustLower:
 	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_MoveEnd
@@ -6969,25 +7014,23 @@ BattleScript_StrengthSapMustLower:
 	attackanimation
 	waitanimation
 	goto BattleScript_StrengthSapLower
-
 BattleScript_StrengthSapQuash:
-	tryquash BattleScript_StrengthSapQuashFailed
-	setstatchanger STAT_ATK, 1, TRUE
+	jumpiffullhp BS_ATTACKER, BattleScript_StrengthSapJustQuash
+BattleScript_EffectStrengthSapQuashContinue:
+	setstatchanger STAT_SPEED, 1, TRUE
 	attackcanceler
 	jumpifsubstituteblocks BattleScript_FailedFromAtkString
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
-	jumpifstat BS_TARGET, CMP_NOT_EQUAL, STAT_ATK, MIN_STAT_STAGE, BattleScript_StrengthSapQuashTryLower
+	jumpifstat BS_TARGET, CMP_NOT_EQUAL, STAT_SPEED, MIN_STAT_STAGE, BattleScript_StrengthSapQuashTryLower
 	pause B_WAIT_TIME_SHORT
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_MoveEnd
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_StrengthSapQuashAfterPPReduce
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
-	printstring STRINGID_QUASHSUCCESS
-    waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
+	goto BattleScript_StrengthSapQuashAfterPPReduce
 BattleScript_StrengthSapQuashTryLower:
-	getstatvalue BS_TARGET, STAT_ATK
+	getstatvalue BS_TARGET, STAT_SPEED
 	jumpiffullhp BS_ATTACKER, BattleScript_StrengthSapQuashMustLower
 	attackanimation
 	waitanimation
@@ -6998,28 +7041,61 @@ BattleScript_StrengthSapQuashLower:
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
-	printstring STRINGID_QUASHSUCCESS
-    waitmessage B_WAIT_TIME_LONG
 @ Drain HP without lowering a stat
-BattleScript_StrengthSapQuashTryHp:
-	jumpiffullhp BS_ATTACKER, BattleScript_ButItFailed
-	attackanimation
-	waitanimation
 BattleScript_StrengthSapQuashHp:
-	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_MoveEnd
-	jumpiffullhp BS_ATTACKER, BattleScript_MoveEnd
+	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_StrengthSapQuashManipulateDmg
+	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_StrengthSapQuashAfterAnimation
+	jumpiffullhp BS_ATTACKER, BattleScript_StrengthSapQuashAfterAnimation
+BattleScript_StrengthSapQuashManipulateDmg:
 	manipulatedamage DMG_BIG_ROOT
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_StrengthSapQuashLiquidOoze
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
 	printstring STRINGID_PKMNENERGYDRAINED
 	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
+	goto BattleScript_StrengthSapQuashAfterAnimation
+BattleScript_StrengthSapQuashLiquidOoze:
+	call BattleScript_AbilityPopUpTarget
+	manipulatedamage DMG_CHANGE_SIGN
+	setbyte cMULTISTRING_CHOOSER, B_MSG_ABSORB_OOZE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	printfromtable gAbsorbDrainStringIds
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_ATTACKER
+	goto BattleScript_StrengthSapQuashAfterAnimation
 BattleScript_StrengthSapQuashMustLower:
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_MoveEnd
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY, BattleScript_MoveEnd
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_StrengthSapQuashAfterPPReduce
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_EMPTY, BattleScript_StrengthSapQuashAfterPPReduce
 	attackanimation
 	waitanimation
 	goto BattleScript_StrengthSapQuashLower
+BattleScript_StrengthSapJustQuash:
+	jumpifstat BS_TARGET, CMP_GREATER_THAN, STAT_ATK, MIN_STAT_STAGE, BattleScript_EffectStrengthSapQuashContinue
+	tryquash BattleScript_EffectStrengthSapQuashContinue
+BattleScript_StrengthSapJustQuashWorks:
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	attackanimation
+	waitanimation
+	printstring STRINGID_QUASHSUCCESS
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_StrengthSapQuashAfterPPReduce:
+	tryquash BattleScript_MoveEnd
+	attackanimation
+	waitanimation
+	printstring STRINGID_QUASHSUCCESS
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_StrengthSapQuashAfterAnimation:
+	tryquash BattleScript_MoveEnd
+	printstring STRINGID_QUASHSUCCESS
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectBugBite:
 	setmoveeffect MOVE_EFFECT_BUG_BITE | MOVE_EFFECT_CERTAIN
