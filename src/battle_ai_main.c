@@ -7550,7 +7550,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_COLD_MEND:
             case EFFECT_DECAY_BEAM:
             case EFFECT_CRITICAL_REPAIR:
-                score -= 2;
+                score -= 4;
                 break;
             case EFFECT_SPIRIT_AWAY:
                 score += 1;
