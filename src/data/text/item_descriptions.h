@@ -4603,7 +4603,7 @@ static const u8 sWeirdStickDesc[] = _(
     "Don't try to eat it.");
 
 static const u8 sFairyFeatherDesc[] = _(
-    "A mystical feathern"
+    "A mystical feather\n"
     "that boosts Fairy-type\n"
     "moves, and may make\n"
     "them confuse the foe.");

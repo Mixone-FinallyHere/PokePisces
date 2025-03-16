@@ -675,13 +675,12 @@ static bool8 FindMonWithFlagsAndSuperEffective(u32 battler, u16 flags, u8 modulo
 
 bool32 ShouldSwitch(u32 battler)
 {
-    u8 battlerIn1, battlerIn2;
+    u32 battlerIn1, battlerIn2;
     s32 firstId;
     s32 lastId; // + 1
     struct Pokemon *party;
     s32 i;
     s32 availableToSwitch;
-    bool32 hasAceMon = FALSE;
 
     if (gBattleMons[battler].status2 & (STATUS2_WRAPPED | STATUS2_ESCAPE_PREVENTION))
         return FALSE;
@@ -694,13 +693,14 @@ bool32 ShouldSwitch(u32 battler)
 
     availableToSwitch = 0;
 
-    if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+    if (IsDoubleBattle())
     {
+        u32 partner = GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerAtPosition(battler)));
         battlerIn1 = battler;
-        if (gAbsentBattlerFlags & gBitTable[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))])
+        if (gAbsentBattlerFlags & (1u << partner))
             battlerIn2 = battler;
         else
-            battlerIn2 = GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)));
+            battlerIn2 = partner;
     }
     else
     {
@@ -709,11 +709,7 @@ bool32 ShouldSwitch(u32 battler)
     }
 
     GetAIPartyIndexes(battler, &firstId, &lastId);
-
-    if (GetBattlerSide(battler) == B_SIDE_PLAYER)
-        party = gPlayerParty;
-    else
-        party = gEnemyParty;
+    party = GetBattlerParty(battler);
 
     for (i = firstId; i < lastId; i++)
     {
@@ -723,26 +719,18 @@ bool32 ShouldSwitch(u32 battler)
             continue;
         if (i == gBattlerPartyIndexes[battlerIn2])
             continue;
-        if (i == *(gBattleStruct->monToSwitchIntoId + battlerIn1))
+        if (i == gBattleStruct->monToSwitchIntoId[battlerIn1])
             continue;
-        if (i == *(gBattleStruct->monToSwitchIntoId + battlerIn2))
+        if (i == gBattleStruct->monToSwitchIntoId[battlerIn2])
             continue;
         if (IsAceMon(battler, i))
-        {
-            hasAceMon = TRUE;
             continue;
-        }
 
         availableToSwitch++;
     }
 
     if (availableToSwitch == 0)
-    {
-        if (hasAceMon) // If the ace mon is the only available mon, use it
-            availableToSwitch++;
-        else
             return FALSE;
-    }
 
     //NOTE: The sequence of the below functions matter! Do not change unless you have carefully considered the outcome.
     //Since the order is sequencial, and some of these functions prompt switch to specific party members.
@@ -794,12 +782,13 @@ void AI_TrySwitchOrUseItem(u32 battler)
     {
         if (ShouldSwitch(battler))
         {
-            if (*(gBattleStruct->AI_monToSwitchIntoId + battler) == PARTY_SIZE)
+            BtlController_EmitTwoReturnValues(battler, 1, B_ACTION_SWITCH, 0);
+            if (gBattleStruct->AI_monToSwitchIntoId[battler] == PARTY_SIZE)
             {
                 s32 monToSwitchId = GetMostSuitableMonToSwitchInto(battler);
                 if (monToSwitchId == PARTY_SIZE)
                 {
-                    if (!(gBattleTypeFlags & BATTLE_TYPE_DOUBLE))
+                    if (!IsDoubleBattle())
                     {
                         battlerIn1 = GetBattlerAtPosition(battlerPosition);
                         battlerIn2 = battlerIn1;
@@ -820,9 +809,9 @@ void AI_TrySwitchOrUseItem(u32 battler)
                             continue;
                         if (monToSwitchId == gBattlerPartyIndexes[battlerIn2])
                             continue;
-                        if (monToSwitchId == *(gBattleStruct->monToSwitchIntoId + battlerIn1))
+                        if (monToSwitchId == gBattleStruct->monToSwitchIntoId[battlerIn1])
                             continue;
-                        if (monToSwitchId == *(gBattleStruct->monToSwitchIntoId + battlerIn2))
+                        if (monToSwitchId == gBattleStruct->monToSwitchIntoId[battlerIn2])
                             continue;
                         if (IsAceMon(battler, monToSwitchId))
                             continue;
@@ -831,10 +820,10 @@ void AI_TrySwitchOrUseItem(u32 battler)
                     }
                 }
 
-                *(gBattleStruct->AI_monToSwitchIntoId + battler) = monToSwitchId;
+                gBattleStruct->AI_monToSwitchIntoId[battler] = monToSwitchId;
             }
 
-            *(gBattleStruct->monToSwitchIntoId + battler) = *(gBattleStruct->AI_monToSwitchIntoId + battler);
+            gBattleStruct->monToSwitchIntoId[battler] = gBattleStruct->AI_monToSwitchIntoId[battler];
             return;
         }
         else if (ShouldUseItem(battler))

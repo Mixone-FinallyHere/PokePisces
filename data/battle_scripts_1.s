@@ -4461,7 +4461,6 @@ BattleScript_EffectRazingSun::
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	jumpifbattleend BattleScript_MoveEnd
 	checkdaybreakcounter 3, BattleScript_RazingSunWith3Daybreak
-BattleScript_RazingSunSkipWeather::
 	applydaybreakcounter BS_ATTACKER, BattleScript_MoveEnd
 	printstring STRINGID_USERGAINEDDAYBREAK
 	waitmessage B_WAIT_TIME_LONG

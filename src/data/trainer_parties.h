@@ -14875,6 +14875,7 @@ static const struct TrainerMon sParty_PWally[] = {
     {
     .species = SPECIES_WALLY,
     .ability = ABILITY_MIND_GAMES,
+    .heldItem = ITEM_TWISTED_SPOON,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(252, 252, 252, 252, 252, 252),
     .lvl = 75,

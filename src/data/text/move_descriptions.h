@@ -383,8 +383,8 @@ static const u8 sSolarBeamDescription[] = _(
 
 static const u8 sPoisonPowderDescription[] = _(
     "Scatters a powder that poisons\n"
-    "foes. If user is blooming, makes\n"
-    "foes exhausted, lowering power.");
+    "the foe. If the user is blooming,\n"
+    "also makes the foe exhausted.");
 
 static const u8 sStunSporeDescription[] = _(
     "Scatters a powder that paralyzes\n"
@@ -667,9 +667,9 @@ static const u8 sAmnesiaDescription[] = _(
     "This sharply boosts Sp. Def.");
 
 static const u8 sKinesisDescription[] = _(
-    "Cuts foes' accuracy and evasion.\n"
-    "On Psychic Terrain, makes foes\n"
-    "exhausted, lowering their power.");
+    "Lowers targets' accuracy and\n"
+    "evasion. On Psychic Terrain,\n"
+    "also makes targets exhausted.");
 
 static const u8 sSoftBoiledDescription[] = _(
     "The user creates and eats a\n"
@@ -4271,9 +4271,9 @@ static const u8 sRealTearsDescription[] = _(
     "with no effect at all... ");
 
 static const u8 sRazingSunDescription[] = _(
-    "The user gains 1 Daybreak\n"
-    "Counter. Gains effects based\n"
-    "on the amount of counters.");
+    "Gains daybreak. At 1, ignores\n"
+    "stats. At 2, ignores abilities.\n"
+    "At 3, uses all to heal.");
 
 static const u8 sDragonPokerDescription[] = _(
     "Damage category is based on which\n"
@@ -4426,9 +4426,9 @@ static const u8 sBlackBuffetDescription[] = _(
     "Boosted the lower the foe's HP.");
 
 static const u8 sExecutionDescription[] = _(
-    "Power triples if the foe is at\n"
-    "3/4 HP or less. The user becomes\n"
-    "exhausted, reducing their power.");
+    "Triples in power if the foe has\n"
+    "3/4 or less HP. The user becomes\n"
+    "exhausted afterwards.");    
 
 static const u8 sSeizeChanceDescription[] = _(
     "Flinches if the foe is readying\n"
@@ -4617,8 +4617,8 @@ static const u8 sBassCannonDescription[] = _(
 
 static const u8 sPowerDrainDescription[] = _(
     "Heals by using the foe's Speed\n"
-    "and lowers it. Also makes the\n"
-    "foe no longer Electric-type.");
+    "and lowers it. Also removes the\n"
+    "foe's Electric-type. Goes first.");
 
 static const u8 sGrippingNailDescription[] = _(
     "Hits 3 times and rises in power.\n"
@@ -4641,9 +4641,9 @@ static const u8 sSpiritAwayDescription[] = _(
     "Absorbs 3/4 the damage dealt.");
 
 static const u8 sPhantasmDescription[] = _(
-    "The user gains the Phantom\n"
-    "status by sacrificing 1/4 of its\n"
-    "own HP.");
+    "Becomes a Phantom by cutting HP,\n"
+    "granting certain capabilities.\n"
+    "Goes away after using an attack.");
 
 static const u8 sSnapblossomDescription[] = _(
     "Drains HP. Blooms the user if\n"
