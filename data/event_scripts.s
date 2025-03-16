@@ -1377,7 +1377,7 @@ Common_EventScript_BallShop::
 	goto_if_eq VAR_PISCES_STORY_PROGRESS, 9, Common_EventScript_BallShop8Badge
 	goto_if_eq VAR_PISCES_STORY_PROGRESS, 10, Common_EventScript_BallShop8Badge
 	goto_if_eq VAR_PISCES_STORY_PROGRESS, 11, Common_EventScript_BallShop8Badge
-	goto_if_eq VAR_PISCES_STORY_PROGRESS, 12, Common_EventScript_BallShop8Badge
+	goto_if_ge VAR_PISCES_STORY_PROGRESS, 12, Common_EventScript_BallShop8Badge
 	msgbox gText_SafeTravels, MSGBOX_DEFAULT
 	release
 	end
@@ -4312,3 +4312,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/maps/LittlerootNewHouseTwo/scripts.inc"
 
 	.include "data/maps/PebblerLab/scripts.inc"
+
+	.include "data/maps/SpaceCenterSiegeCutscene/scripts.inc"

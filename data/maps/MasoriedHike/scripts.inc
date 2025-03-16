@@ -156,7 +156,7 @@ MasonriedHike_EventScript_BolterockGone::
 	end
 
 MasonriedHike_EventScript_Michael::
-    trainerbattle_single TRAINER_P_MICHAEL, MasonriedHike_Text_MichaelIntro, MasonriedHike_Text_MichaelDefeated
+    trainerbattle_single TRAINER_P_MENDEL, MasonriedHike_Text_MichaelIntro, MasonriedHike_Text_MichaelDefeated
     msgbox MasonriedHike_Text_MichaelPostBattle, MSGBOX_AUTOCLOSE
     end
 

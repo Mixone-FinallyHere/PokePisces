@@ -2,7 +2,7 @@
   "id": "MAP_SHUNYONG_BATTLE_ARENA",
   "name": "ShunyongBattleArena",
   "layout": "LAYOUT_SHUNYONG_BATTLE_ARENA",
-  "music": "MUS_NONE",
+  "music": "MUS_NINETALES_LEGEND",
   "region_map_section": "MAPSEC_EVER_GRANDE_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -44,7 +44,7 @@
   "warp_events": [
     {
       "x": 4,
-      "y": 9,
+      "y": 7,
       "elevation": 0,
       "dest_map": "MAP_SHUNYONG_BATTLE_ARENA",
       "dest_warp_id": "0"
