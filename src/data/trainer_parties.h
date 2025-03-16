@@ -17,16 +17,10 @@ static const struct TrainerMon sParty_Sawyer1[] = {
 static const struct TrainerMon sParty_PMendel[] = {
     {
     .lvl = 50,
-    .species = SPECIES_FAKYSNAKY,
-    .ability = ABILITY_DISGUISE,
+    .species = SPECIES_GOLDEROCK,
+    .ability = ABILITY_INNER_FOCUS,
     .heldItem = ITEM_POKE_BALL,
-    .moves = {MOVE_SHED_TAIL, MOVE_NONE, MOVE_NONE, MOVE_NONE}
-    },
-    {
-    .lvl = 50,
-    .species = SPECIES_POMELONIAN,
-    .heldItem = ITEM_POKE_BALL,
-    .moves = {MOVE_LEAFAGE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
+    .moves = {MOVE_BLAZING_SOUL, MOVE_NONE, MOVE_NONE, MOVE_NONE}
     }
 };
 

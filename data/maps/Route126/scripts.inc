@@ -479,7 +479,7 @@ Route126_Text_SpaceCenterSign:
 Route126_Text_OzoneRoadblocker1:
 	.string "Apologies, but I'm afraid that Cosmoss\n"
 	.string "Bridge has a temporary closure.\p"
-	.string "A metoerite impacted the bridge this\n"
+	.string "A meteorite impacted the bridge this\n"
 	.string "morning and damaged its structural\l"
 	.string "integrity.\p"
 	.string "It shouldn't take much longer to be\n"

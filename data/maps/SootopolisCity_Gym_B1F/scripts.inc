@@ -279,7 +279,7 @@ SootopolisCity_Gym_B1F_Text_HasparothPostBattle:
 	.string "on the stage after all...$"
 
 SootopolisCity_Gym_B1F_Text_EmilyIntro:
-	.string "I purchased this speically bred\n"
+	.string "I purchased this specially bred\n"
 	.string "Pokemon for a high price!\l"
 	.string "She won't be losing, trust me!$"
 

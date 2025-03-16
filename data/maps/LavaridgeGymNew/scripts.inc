@@ -148,6 +148,7 @@ LavaridgeGymNew_EventScript_Cop::
 	applymovement LOCALID_GOJIRA, LavaridgeGymNew_Movement_ShockAtCop
 	msgbox LavaridgeGymNew_Text_GetOutDirtyCop, MSGBOX_DEFAULT
 	warp MAP_LAVARIDGE_INT, 23, 11
+	waitstate
 	release
 	end
 
@@ -1153,7 +1154,7 @@ LavaridgeGymNew_Text_ByeBye:
 	.string "Alright, that's enough.\p"
 	.string "Truth be told, I went REAL\n"
 	.string "easy on you. Was worried you'd\l"
-	.string "have a heart attack of somethin'\l"
+	.string "have a heart attack or somethin'\l"
 	.string "if I went at 100 percent.\p"
 	.string "So, with that badge, your Pokemon\n"
 	.string "can use the Strength field move\l"

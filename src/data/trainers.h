@@ -26,10 +26,10 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_P_MENDEL] =
     {
-        .trainerClass = TRAINER_CLASS_GAMBLER,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_COOL,
-        .trainerPic = TRAINER_PIC_GAMBLER,
-        .trainerName = _("Kaiji"),
+        .trainerClass = TRAINER_CLASS_HIKER,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HIKER,
+        .trainerPic = TRAINER_PIC_HIKER,
+        .trainerName = _("Michael"),
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,

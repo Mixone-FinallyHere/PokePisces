@@ -498,7 +498,7 @@ NewMauvilleFloor1_Text_RydelGuard:
 	.string "outside entrance, he said.$"
 
 NewMauvilleFloor1_Text_WantCookie:
-	.string "I bake tasty Ability Cookies!\n"
+	.string "I bake tasty Ability Snacks!\n"
 	.string "Pokemon love them. If you give\l"
 	.string "one to a Pokemon, it can change\l"
 	.string "its ability to another!\p"

@@ -32,9 +32,6 @@ RustboroNew_Movement_EmployeeStartUpLeft:
 	walk_left
 	walk_left
 	walk_left
-	walk_left
-	walk_left
-	walk_left
 	step_end
 
 RustboroNew_EventScript_DevonEncounterStartDownLeft::
@@ -54,9 +51,6 @@ RustboroNew_Movement_PlayerStartDownLeft:
 
 RustboroNew_Movement_EmployeeStartDownLeft:
 	walk_down
-	walk_left
-	walk_left
-	walk_left
 	walk_left
 	walk_left
 	walk_left
@@ -90,8 +84,6 @@ RustboroNew_Movement_EmployeeStartDown:
 	walk_left
 	walk_left
 	walk_left
-	walk_left
-	walk_left
 	walk_down
 	step_end
 
@@ -112,8 +104,6 @@ RustboroNew_Movement_PlayerStartDownRight:
 
 RustboroNew_Movement_EmployeeStartDownRight:
 	walk_down
-	walk_left
-	walk_left
 	walk_left
 	walk_left
 	walk_left
@@ -142,12 +132,9 @@ RustboroNew_Movement_EmployeeStartUpRight:
 	walk_left
 	walk_left
 	walk_left
-	walk_left
-	walk_left
 	step_end
 
 RustboroNew_EventScript_DevonEncounter::
-	lock
 	setvar VAR_RUST_GYM_STATE, 15
 	msgbox RustboroNew_Text_DevonNeedsYou, MSGBOX_DEFAULT
 	closemessage
