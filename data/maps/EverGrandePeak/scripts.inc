@@ -9,7 +9,12 @@
 
 EverGrandePeak_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, EverGrandePeak_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, EverGrandePeak_OnFrame
 	.byte 0
+
+EverGrandePeak_OnFrame:
+	map_script_2 VAR_PISCES_STORY_PROGRESS, 12, EverGrandePeak_EventScript_ToTheHallOfFame
+	.2byte 0
 
 EverGrandePeak_OnLoad:
 	call_if_gt VAR_NEW_COO_STATE, 10, EverGrandePeak_EventScript_RemoveMonkBlock
@@ -55,6 +60,27 @@ EverGrandePeak_EventScript_AddLuoshanOrb::
 	setmetatile 70, 68, METATILE_Golden_LuoShanOrbBottom, TRUE
 	special DrawWholeMapView
 	return
+
+EverGrandePeak_EventScript_ToTheHallOfFame::
+	lock
+	turnobject LOCALID_WALLACE, DIR_SOUTH
+	turnobject LOCALID_STEVEN, DIR_SOUTH
+	delay 8
+	speakername EverGrandePeak_Text_NameWallace
+	msgbox EverGrandePeak_Text_OurWorldsTruth, MSGBOX_DEFAULT
+	speakername EverGrandePeak_Text_NameSteven
+	msgbox EverGrandePeak_Text_YoureAGreatTrainer, MSGBOX_DEFAULT
+	speakername NULL
+	msgbox EverGrandePeak_Text_TheMeaningOfItAll, MSGBOX_DEFAULT
+	speakername EverGrandePeak_Text_NameWallace
+	msgbox EverGrandePeak_Text_GoToTheHallOfFame, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_PISCES_STORY_PROGRESS, 13
+	delay 4
+	warp MAP_EVER_GRANDE_CITY_HALL_OF_FAME, 7, 16
+	waitstate
+	release
+	end
 
 EverGrandePeak_EventScript_SWTriggerWest1::
 	lock
@@ -387,9 +413,11 @@ EverGrandePeak_EventScript_MayBattle::
 	applymovement OBJ_EVENT_ID_PLAYER, EverGrandePeak_Movement_PlayerWalkToRival
 	waitmovement 0
 	delay 8
+	goto_if_set FLAG_DEFEATED_GOLDEN_PLAINS_RIVAL, EverGrandePeak_EventScript_ShunyongAwakens
 	speakername NULL
 	msgbox EverGrandePeak_Text_YouLockEyes, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_P_MAY_FINAL, EverGrandePeak_Text_MayDefeated
+	setflag FLAG_DEFEATED_GOLDEN_PLAINS_RIVAL
 	goto EverGrandePeak_EventScript_ShunyongAwakens
 	release
 	end
@@ -408,9 +436,11 @@ EverGrandePeak_EventScript_BrendanBattle::
 	applymovement OBJ_EVENT_ID_PLAYER, EverGrandePeak_Movement_PlayerWalkToRival
 	waitmovement 0
 	delay 8
+	goto_if_set FLAG_DEFEATED_GOLDEN_PLAINS_RIVAL, EverGrandePeak_EventScript_ShunyongAwakens
 	speakername NULL
 	msgbox EverGrandePeak_Text_YouLockEyes, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_P_BRENDAN_FINAL, EverGrandePeak_Text_BrendanDefeated
+	setflag FLAG_DEFEATED_GOLDEN_PLAINS_RIVAL
 	goto EverGrandePeak_EventScript_ShunyongAwakens
 	release
 	end
@@ -544,4 +574,16 @@ EverGrandePeak_Text_BrendanDefeated:
 	.string "$"
 
 EverGrandePeak_Text_HardFoughtVictory:
+	.string "$"
+
+EverGrandePeak_Text_OurWorldsTruth:
+	.string "$"
+
+EverGrandePeak_Text_YoureAGreatTrainer:
+	.string "$"
+
+EverGrandePeak_Text_TheMeaningOfItAll:
+	.string "$"
+
+EverGrandePeak_Text_GoToTheHallOfFame:
 	.string "$"

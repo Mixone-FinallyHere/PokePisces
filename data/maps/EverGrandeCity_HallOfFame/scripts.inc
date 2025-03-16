@@ -25,6 +25,7 @@ EverGrandeCity_HallOfFame_EventScript_EnterHallOfFame::
 	applymovement LOCALID_WALLACE, Common_Movement_WalkInPlaceFasterRight
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
+	speakername EverGrandeCity_HallOfFame_Text_NameWallace
 	msgbox EverGrandeCity_HallOfFame_Text_HereWeHonorLeagueChampions, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_WALLACE, EverGrandeCity_HallOfFame_Movement_WalkIntoHallOfFame2
@@ -34,6 +35,7 @@ EverGrandeCity_HallOfFame_EventScript_EnterHallOfFame::
 	applymovement LOCALID_WALLACE, Common_Movement_WalkInPlaceFasterRight
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
+	speakername EverGrandeCity_HallOfFame_Text_NameWallace
 	msgbox EverGrandeCity_HallOfFame_Text_LetsRecordYouAndYourPartnersNames, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_WALLACE, Common_Movement_WalkInPlaceFasterUp
@@ -82,6 +84,9 @@ EverGrandeCity_HallOfFame_Movement_WalkIntoHallOfFame2:
 	walk_up
 	walk_up
 	step_end
+
+EverGrandeCity_HallOfFame_Text_NameWallace:
+	.string "Wallace$"
 
 EverGrandeCity_HallOfFame_Text_HereWeHonorLeagueChampions:
 	.string "WALLACE: This room…\p"

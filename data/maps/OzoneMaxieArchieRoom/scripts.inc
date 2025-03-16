@@ -36,6 +36,7 @@ OzoneMaxieArchieRoom_Movement_WalkToBattle:
 
 OzoneMaxieArchieRoom_EventScript_LeadersDefeated::
 	lock
+	setflag FLAG_DEFEATED_OZONE_MAXIE_ARCHIE
 	speakername OzoneMaxieArchieRoom_Text_NameArchie
 	msgbox OzoneMaxieArchieRoom_Text_ThatWasGreat, MSGBOX_DEFAULT
 	speakername OzoneMaxieArchieRoom_Text_NameMaxie

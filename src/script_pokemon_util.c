@@ -310,6 +310,6 @@ void ScriptSetShunyongBattle(struct ScriptContext *ctx)
     
     // set 2v1
     gIsScriptedWildDouble = TRUE;
-    gBattleTypeFlags = BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_SHUNYONG;
+    gBattleTypeFlags = BATTLE_TYPE_SHUNYONG;
 }
 
