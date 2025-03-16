@@ -11979,7 +11979,7 @@ BattleScript_EffectStickyHold::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_ATTACKERCANTESCAPENOW
 	waitmessage B_WAIT_TIME_SHORT
-	end
+	return
 
 BattleScript_EffectDefenseUpHit::
 	setmoveeffect MOVE_EFFECT_DEF_PLUS_1 | MOVE_EFFECT_AFFECTS_USER
