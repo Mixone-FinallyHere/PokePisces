@@ -5444,7 +5444,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     gBattleMoveDamage *= -1;
-                    BattleScriptExecute(BattleScript_RainDishActivates);
+                    BattleScriptPushCursorAndCallback(BattleScript_RainDishActivates);
                     effect++;
                 }
                 break;
@@ -5468,7 +5468,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     gBattleMoveDamage *= -1;
-                    BattleScriptExecute(BattleScript_ResetActivates);
+                    BattleScriptPushCursorAndCallback(BattleScript_ResetActivates);
                     effect++;
                 }
                 else if (gBattleMons[battler].status1 & STATUS1_ANY && ((!(gBattleMons[battler].hp < gBattleMons[battler].maxHP)) || !(gStatuses3[battler] & STATUS3_HEAL_BLOCK)))
@@ -5508,7 +5508,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 if (IsBattlerWeatherAffected(battler, B_WEATHER_SUN))
                 {
                 SOLAR_POWER_HP_DROP:
-                    BattleScriptPushCursorAndCallback(BattleScript_SolarPowerActivatesEveryone);
+                    BattleScriptPushCursorAndCallback(BattleScript_SolarPowerActivates);
                     gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
@@ -5569,12 +5569,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 }
                 break;
             case ABILITY_ARBITER:
-                if (gDisableStructs[battler].isFirstTurn != 2)
-                {
-                    gBattlerAttacker = battler;
-                    BattleScriptPushCursorAndCallback(BattleScript_ArbiterActivates);
-                    effect++;
-                }
+                BattleScriptPushCursorAndCallback(BattleScript_ArbiterActivates);
+                effect++;
                 break;
             case ABILITY_WATCHER:
                 if (gDisableStructs[battler].watcherTimer
@@ -5687,17 +5683,15 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 effect++;
                 break;
             case ABILITY_SOLAR_POWER:
-                if (IsBattlerWeatherAffected(battler, B_WEATHER_SUN)
-                && (gDisableStructs[gBattlerAttacker].daybreakCounter < 3))
+                if (IsBattlerWeatherAffected(battler, B_WEATHER_SUN) && gDisableStructs[battler].daybreakCounter < 3)
                 {
                     gDisableStructs[gBattlerAttacker].daybreakCounter++;
                     PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, gDisableStructs[gBattlerAttacker].daybreakCounter);
                     BattleScriptPushCursorAndCallback(BattleScript_SolarPowerActivatesSun);
                     effect++;
                 }
-                if (gDisableStructs[battler].isFirstTurn != 2 && gDisableStructs[gBattlerAttacker].daybreakCounter != 0)
+                if (IsBattlerWeatherAffected(battler, B_WEATHER_SUN) && gDisableStructs[battler].daybreakCounter != 0)
                 {
-                    gBattlerAttacker = battler;
                     BattleScriptPushCursorAndCallback(BattleScript_SolarPowerActivatesEveryone);
                     effect++;
                 }
@@ -6840,7 +6834,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_GUARD_DOG:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerAttacker].hp != 0 && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED)
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerAttacker].hp != 0 && gBattleMons[gBattlerTarget].hp != 0 && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED)
             {
                 gEffectBattler = gBattlerTarget;
                 BattleScriptPushCursor();
@@ -6849,7 +6843,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_SWEET_VEIL:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerAttacker].hp != 0 && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED)
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && gBattleMons[gBattlerAttacker].hp != 0 && gBattleMons[gBattlerTarget].hp != 0 && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED)
             {
                 gEffectBattler = gBattlerTarget;
                 BattleScriptPushCursor();

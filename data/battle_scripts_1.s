@@ -12348,14 +12348,15 @@ BattleScript_TormentSuperEffect::
 	attackstring
 	ppreduce
 	tryrandomstatdrop BS_TARGET, BattleScript_TormentTrySpite
-	tryspiteppreduce BattleScript_TormentJustRandomStatDrop
 	attackanimation
 	waitanimation
 	setgraphicalstatchangevalues
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-	statbuffchange MOVE_EFFECT_CERTAIN, BattleScript_MoveEnd
+	statbuffchange MOVE_EFFECT_CERTAIN, BattleScript_CheckTormentSpitePPReduce
 	printstring STRINGID_DEFENDERSSTATFELL
 	waitmessage B_WAIT_TIME_LONG
+BattleScript_CheckTormentSpitePPReduce::
+	tryspiteppreduce BattleScript_MoveEnd
 	printstring STRINGID_PKMNREDUCEDPP
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
@@ -16511,28 +16512,18 @@ BattleScript_GlaringStaggerLoop:
 	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_GlaringStaggerLoopIncrement
 	jumpiftargetally BattleScript_GlaringStaggerLoopIncrement
 	jumpifabsent BS_TARGET, BattleScript_GlaringStaggerLoopIncrement
+	jumpifability BS_TARGET, ABILITY_MAGIC_GUARD, BattleScript_GlaringStaggerLoopIncrement
+	jumpifability BS_TARGET, ABILITY_SUGAR_COAT, BattleScript_GlaringStaggerLoopIncrement
+	jumpifterucharmprotected BS_TARGET, BattleScript_GlaringStaggerLoopIncrement
 BattleScript_GlaringStaggerEffect:
 	copybyte sBATTLER, gBattlerAttacker
-	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
 	staggerdamage
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_TARGET
 	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
+	printstring STRINGID_PKMNCUTSHPWITH
 	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_TARGET
-	printstring STRINGID_PKMNCUTSHPWITH
-BattleScript_GlaringStaggerEffect_WaitString:
-	waitmessage B_WAIT_TIME_LONG
-	saveattacker
-	savetarget
-	copybyte sBATTLER, gBattlerTarget
-	restoreattacker
-	restoretarget
 BattleScript_GlaringStaggerLoopIncrement:
 	addbyte gBattlerTarget, 1
 	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_GlaringStaggerLoop
@@ -16543,44 +16534,41 @@ BattleScript_GlaringStaggerLoopIncrement:
 	end3
 
 BattleScript_ArbiterActivates::
-	savetarget
-	showabilitypopup BS_ATTACKER
-	pause B_WAIT_TIME_LONG
-	destroyabilitypopup
 	setbyte gBattlerTarget, 0
-BattleScript_ArbiterLoop:
-	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_ArbiterLoopIncrement
-	jumpifabsent BS_TARGET, BattleScript_ArbiterLoopIncrement
-BattleScript_ArbiterEffect:
-	copybyte sBATTLER, gBattlerAttacker
-	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
+BattleScript_ArbiterActivatesLoop:
+	jumpiftargetally BattleScript_ArbiterActivatesIncrement
+	jumpifability BS_TARGET, ABILITY_MAGIC_GUARD, BattleScript_ArbiterActivatesIncrement
+	jumpifability BS_TARGET, ABILITY_SUGAR_COAT, BattleScript_ArbiterActivatesIncrement
+	jumpifterucharmprotected BS_TARGET, BattleScript_ArbiterActivatesIncrement
+	checkstatboosts 1, BattleScript_ArbiterActivatesDmg
+	goto BattleScript_ArbiterActivatesIncrement
+BattleScript_ArbiterActivatesDmg::
+	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_ArbiterActivates_ShowPopUp
+BattleScript_ArbiterActivates_DmgAfterPopUp:
+	printstring STRINGID_PKMNCUTSHPWITH
+	waitmessage B_WAIT_TIME_LONG
 	arbiterdamage
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_TARGET
 	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
-	tryfaintmon BS_TARGET
-	printstring STRINGID_PKMNCUTSHPWITH
-BattleScript_ArbiterEffect_WaitString:
-	waitmessage B_WAIT_TIME_LONG
-	saveattacker
-	savetarget
-	copybyte sBATTLER, gBattlerTarget
-	restoreattacker
-	restoretarget
-BattleScript_ArbiterLoopIncrement:
+	jumpifhasnohp BS_TARGET, BattleScript_ArbiterActivates_HidePopUp
+BattleScript_ArbiterActivatesIncrement:
 	addbyte gBattlerTarget, 1
-	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_ArbiterLoop
-	copybyte sBATTLER, gBattlerAttacker
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_ArbiterActivatesLoop
+	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_ArbiterActivatesEnd
 	destroyabilitypopup
-	restoretarget
-	pause B_WAIT_TIME_MED
+	pause 15
+BattleScript_ArbiterActivatesEnd:
 	end3
+BattleScript_ArbiterActivates_ShowPopUp:
+	copybyte gBattlerAbility, gBattlerAttacker
+	call BattleScript_AbilityPopUp
+	setbyte sFIXED_ABILITY_POPUP, TRUE
+	goto BattleScript_ArbiterActivates_DmgAfterPopUp
+BattleScript_ArbiterActivates_HidePopUp:
+	destroyabilitypopup
+	tryfaintmon BS_TARGET
+	goto BattleScript_ArbiterActivatesIncrement
 
 BattleScript_WatcherActivates::
 	savetarget
@@ -16614,44 +16602,38 @@ BattleScript_WatcherLoopIncrement:
 	end3
 
 BattleScript_SolarPowerActivatesEveryone::
-	savetarget
-	showabilitypopup BS_ATTACKER
-	pause B_WAIT_TIME_LONG
-	destroyabilitypopup
 	setbyte gBattlerTarget, 0
-BattleScript_SolarPowerLoop:
-	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_SolarPowerLoopIncrement
-	jumpifabsent BS_TARGET, BattleScript_SolarPowerLoopIncrement
-BattleScript_SolarPowerEffect:
-	copybyte sBATTLER, gBattlerAttacker
-	bichalfword gMoveResultFlags, MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
+BattleScript_SolarPowerActivatesEveryoneLoop:
+	jumpiftargetally BattleScript_SolarPowerActivatesEveryoneIncrement
+	jumpifability BS_TARGET, ABILITY_MAGIC_GUARD, BattleScript_SolarPowerActivatesEveryoneIncrement
+	jumpifability BS_TARGET, ABILITY_SUGAR_COAT, BattleScript_SolarPowerActivatesEveryoneIncrement
+	jumpifterucharmprotected BS_TARGET, BattleScript_SolarPowerActivatesEveryoneIncrement
+	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_SolarPowerActivatesEveryone_ShowPopUp
+BattleScript_SolarPowerActivatesEveryone_DmgAfterPopUp:
+	printstring STRINGID_PKMNCUTSHPWITH
+	waitmessage B_WAIT_TIME_LONG
 	solarpowerdamage
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_TARGET
 	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
-	tryfaintmon BS_TARGET
-	printstring STRINGID_PKMNCUTSHPWITH
-BattleScript_SolarPowerEffect_WaitString:
-	waitmessage B_WAIT_TIME_LONG
-	saveattacker
-	savetarget
-	copybyte sBATTLER, gBattlerTarget
-	restoreattacker
-	restoretarget
-BattleScript_SolarPowerLoopIncrement:
+	jumpifhasnohp BS_TARGET, BattleScript_SolarPowerActivatesEveryone_HidePopUp
+BattleScript_SolarPowerActivatesEveryoneIncrement:
 	addbyte gBattlerTarget, 1
-	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_SolarPowerLoop
-	copybyte sBATTLER, gBattlerAttacker
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_SolarPowerActivatesEveryoneLoop
+	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_SolarPowerActivatesEveryoneEnd
 	destroyabilitypopup
-	restoretarget
-	pause B_WAIT_TIME_MED
+	pause 15
+BattleScript_SolarPowerActivatesEveryoneEnd:
 	end3
+BattleScript_SolarPowerActivatesEveryone_ShowPopUp:
+	copybyte gBattlerAbility, gBattlerAttacker
+	call BattleScript_AbilityPopUp
+	setbyte sFIXED_ABILITY_POPUP, TRUE
+	goto BattleScript_SolarPowerActivatesEveryone_DmgAfterPopUp
+BattleScript_SolarPowerActivatesEveryone_HidePopUp:
+	destroyabilitypopup
+	tryfaintmon BS_TARGET
+	goto BattleScript_SolarPowerActivatesEveryoneIncrement
 
 BattleScript_DroughtActivates::
 	pause B_WAIT_TIME_SHORT
