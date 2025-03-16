@@ -839,7 +839,7 @@ BattleScript_EffectFocusBlastMiss::
 	orhalfword gMoveResultFlags, MOVE_RESULT_MISSED
 	goto BattleScript_MoveEnd
 BattleScript_FocusBlastStatUp::
-	setstatchanger STAT_ATK, 3, FALSE
+	setstatchanger STAT_ATK, 2, FALSE
 	attackcanceler
 	attackstring
 	ppreduce
