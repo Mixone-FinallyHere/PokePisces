@@ -5256,6 +5256,7 @@ BattleScript_EffectSilverWind:
 	tryfaintmon BS_TARGET
 	jumpifmovehadnoeffect BattleScript_MoveEnd
 	jumpiffainted BS_TARGET, TRUE, BattleScript_SilverWind2
+	jumpifstatus2 BS_TARGET, STATUS2_POWDER, BattleScript_SilverWind2
 	setpowder BS_TARGET
 	seteffectwithchance
 	printstring STRINGID_COVEREDINPOWDER
@@ -7182,10 +7183,23 @@ BattleScript_EffectSpAtkUpHit:
 	goto BattleScript_EffectHit
 
 BattleScript_EffectPowder:
+	jumpifstat BS_TARGET, CMP_EQUAL, STAT_ACC, MIN_STAT_STAGE, BattleScript_EffectPowderJustPowder
 	setstatchanger STAT_ACC, 1, TRUE
 	jumpifstatus2 BS_TARGET, STATUS2_POWDER, BattleScript_EffectStatDown
 	setpowder BS_TARGET
 	call BattleScript_EffectStatDown_Ret
+	printstring STRINGID_COVEREDINPOWDER
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_EffectPowderJustPowder::
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, NO_ACC_CALC_CHECK_LOCK_ON
+	attackstring
+	ppreduce
+	jumpifstatus2 BS_TARGET, STATUS2_POWDER, BattleScript_ButItFailed
+	setpowder BS_TARGET
+	attackanimation
+	waitanimation
 	printstring STRINGID_COVEREDINPOWDER
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
