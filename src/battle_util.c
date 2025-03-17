@@ -11375,10 +11375,11 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         hpFraction = GetScaledHPFraction(gBattleMons[battlerDef].hp, gBattleMons[battlerDef].maxHP, 5);
         for (i = 0; i < sizeof(sBlackBuffetHpScaleToPowerTable); i += 2)
         {
-            if (hpFraction <= sBlackBuffetHpScaleToPowerTable[i])
+            if (hpFraction < sBlackBuffetHpScaleToPowerTable[i])
                 break;
         }
         basePower = sBlackBuffetHpScaleToPowerTable[i + 1];
+        basePower = (basePower < 25) ? 25 : basePower;
         break;
     case EFFECT_RETURN:
         if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT)
