@@ -42,10 +42,27 @@ OzoneShellyRoom_Text_NameShelly:
 	.string "Shelly$"
 
 OzoneShellyRoom_Text_ShellyIntro:
-	.string "intro$"
+	.string "Z z  z ......\p"
+	.string "...Oh, it's you again...\p"
+	.string "I don't even know why I'm\n"
+	.string "one of the four here,\l"
+	.string "to be... yawn... honest...\p"
+	.string "But, Maxie and Archie, uhm,\n"
+	.string "called up all the former\l"
+	.string "Aqua and... yawn... Magma Admins\l"
+	.string "for this event, and I felt\l"
+	.string "awkward being the only one\l"
+	.string "to say no...\p"
+	.string "...So here I am.\n"
+	.string "Might as well try hard to beat you.\l"
+	.string "Well... hard, for my standards...$"
 
 OzoneShellyRoom_Text_ShellyDefeated:
-	.string "defeat$"
+	.string "What a nightmare...$"
 
 OzoneShellyRoom_Text_ShellyPost:
-	.string "post$"
+	.string "Trusties... I was trying to\n"
+	.string "be aggressive in that fight...\p"
+	.string "...Would I lie Ä?\p"
+	.string "I think you should...\n"
+	.string "get going, y'know...?$"

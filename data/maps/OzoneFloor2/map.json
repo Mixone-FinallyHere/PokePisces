@@ -51,7 +51,7 @@
     },
     {
       "x": 28,
-      "y": 4,
+      "y": 3,
       "elevation": 0,
       "dest_map": "MAP_OZONE_ELITE_FOUR_HUB",
       "dest_warp_id": "0"
@@ -93,6 +93,15 @@
       "var": "VAR_RAY_STATE",
       "var_value": "6",
       "script": "OzoneFloor2_EventScript_RayEncounter4"
+    },
+    {
+      "type": "trigger",
+      "x": 28,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "OzoneFloor2_EventScript_EliteFourTrigger"
     }
   ],
   "bg_events": [
