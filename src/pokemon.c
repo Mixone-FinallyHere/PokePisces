@@ -9194,13 +9194,15 @@ u8 GetCurrentLevelCap(void)
     else if (!FlagGet(FLAG_BADGE07_GET))
         return 54;
     else if (!FlagGet(FLAG_BADGE08_GET))
-        return 63;
+        return 62;
     else if (!FlagGet(FLAG_DEFEATED_EVIL_WALLY))
-        return 73;
+        return 69;
     else if (!FlagGet(FLAG_DEFEATED_OZONE_MAXIE_ARCHIE))
-        return 77;
+        return 73;
+    else if (!FlagGet(FLAG_DEFEATED_TWO_PISCES_LEGENDS))
+        return 75;
     else if (!FlagGet(FLAG_DEFEATED_GOLDEN_PLAINS_RIVAL))
-        return 84;
+        return 78;
     else
         return 100;
 }
@@ -9228,11 +9230,13 @@ u8 GetPreviousLevelCap(void)
     else if (!FlagGet(FLAG_BADGE08_GET))
         return 54;
     else if (!FlagGet(FLAG_DEFEATED_EVIL_WALLY))
-        return 63;
+        return 62;
     else if (!FlagGet(FLAG_DEFEATED_OZONE_MAXIE_ARCHIE))
+        return 69;
+    else if (!FlagGet(FLAG_DEFEATED_TWO_PISCES_LEGENDS))
         return 73;
     else if (!FlagGet(FLAG_DEFEATED_GOLDEN_PLAINS_RIVAL))
-        return 77;
+        return 75;
     else
         return 100;
 }

@@ -1,4 +1,4 @@
-.set LOCALID_BREAD, 1
+.set LOCALID_BREAD, 13
 
 PetalburgWoodsNew_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, PetalburgWoodsNew_OnLoad
@@ -535,40 +535,89 @@ PetalburgWoodsNew_Text_NamePandou:
 	.string "Pandou$"
 
 PetalburgWoodsNew_Text_BreadwinnerIntro:
-	.string "$"
+	.string "...Is this some sort of\n"
+	.string "divine punishment...?\p"
+	.string "I get lost in the woods on my\n"
+	.string "way to work, only to be\l"
+	.string "cornered by you again when\l"
+	.string "I finally get my bearings...\l"
+	.string "life has its ways of kicking\l"
+	.string "you while you're down, I suppose...\p"
+	.string "Sigh... A-Alright, you just want\n"
+	.string "your battle, right? That's all?\p"
+	.string "(You nod. He seems to finally\n"
+	.string "understand the deal here.)\p"
+	.string "You know, my Kodough don't seem\n"
+	.string "to mind the fights. They're\l"
+	.string "squishy and don't particularly\l"
+	.string "get bruised... so, since\l"
+	.string "they like it, I'll cooperate.\p"
+	.string "B-But, at least make it kind of\n"
+	.string "quick... I still have to clock in...$"
 
 PetalburgWoodsNew_Text_BreadwinnerDefeat:
-	.string "$"
+	.string "The Kodough are giggling\n"
+	.string "with glee...! That makes me\l"
+	.string "want to smile, too...\p"
+	.string "(He glances at his watch.)\p"
+	.string "B-Blast! I can't keep wasting time!$"
 
 PetalburgWoodsNew_Text_BreadwinnerRunAway:
-	.string "$"
+	.string "Alright, th-there's your battle...\n"
+	.string "satisfied? I hope?\p"
+	.string "Look, I'll battle you again someday,\n"
+	.string "just, stay out of my commute path\l"
+	.string "for the time being, okay...?\p"
+	.string "(You are moderately accepting\n"
+	.string "of this proposal. Moderately.)\p"
+	.string "I've got to make tracks...\n"
+	.string "g-goodbye...$"
 
 PetalburgWoodsNew_Text_DoYouLookInside:
-	.string "$"
+	.string "(It's an oversized birdhouse...)\p"
+	.string "(You can hear scratching noises\n"
+	.string "inside... do you attempt to make\l"
+	.string "whatever is in there come out?)$"
 
 PetalburgWoodsNew_Text_ProbablyShouldnt:
-	.string "$"
+	.string "(That WOULD probably be a bad idea.)$"
 
 PetalburgWoodsNew_Text_PunishingPresence:
-	.string "$"
+	.string "(You sense a punishing aura\n"
+	.string "emanating from the birdhouse...!)\p"
+	.string "(A Pokemon came out to attack you!)$"
 
 PetalburgWoodsNew_Text_BigPresence:
-	.string "$"
+	.string "(You sense a large presence\n"
+	.string "emanating from the birdhouse...!)\p"
+	.string "(A Pokemon came out to attack you!)$"
 
 PetalburgWoodsNew_Text_JudgingPresence:
-	.string "$"
+	.string "(You sense a feeling of judgment\n"
+	.string "emanating from the birdhouse...!)\p"
+	.string "(A Pokemon came out to attack you!)$"
 
 PetalburgWoodsNew_Text_ShishimaBecameEgg:
-	.string "$"
+	.string "(The felled Wild Shishima\n"
+	.string "transformed into an Egg before\l"
+	.string "your very eyes...)\p"
+	.string "(Guess you should take it?)$"
 
 PetalburgWoodsNew_Text_OlFlookieBecameEgg:
-	.string "$"
+	.string "(The felled Wild Ol'Flookie\n"
+	.string "transformed into an Egg before\l"
+	.string "your very eyes...)\p"
+	.string "(Guess you should take it?)$"
 
 PetalburgWoodsNew_Text_JustrichaBecameEgg:
-	.string "$"
+	.string "(The felled Wild Justricha\n"
+	.string "transformed into an Egg before\l"
+	.string "your very eyes...)\p"
+	.string "(Guess you should take it?)$"
 
 PetalburgWoodsNew_Text_PlayerReceivedEgg:
-	.string "$"
+	.string "{PLAYER} received an Egg!$"
 
 PetalburgWoodsNew_Text_BirdIsGone:
-	.string "$"
+	.string "(That abnormal avian Pokemon\n"
+	.string "is no longer in its birdhouse.)$"

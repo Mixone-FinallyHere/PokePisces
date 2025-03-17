@@ -300,7 +300,8 @@ void ScriptSetShunyongBattle(struct ScriptContext *ctx)
     
     // create shunyong
     ZeroEnemyPartyMons();
-    CreateMonWithNature(mon, SPECIES_SHUNYONG, 100, 31, NATURE_HARDY);
+
+    CreateMonWithNature(mon, SPECIES_SHUNYONG, 90, 31, NATURE_HARDY);
     
     // even evs
     val = 84;

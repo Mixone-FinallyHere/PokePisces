@@ -212,6 +212,7 @@ MidneorFalls_EventScript_BeatBothLegends::
 	closemessage
 	setvar VAR_NEW_COO_STATE, 9
 	setflag FLAG_TEMP_11
+	setflag FLAG_DEFEATED_TWO_PISCES_LEGENDS
 	clearflag FLAG_HIDE_MAXIE_OZONE
 	release
 	end
