@@ -11175,14 +11175,6 @@ static const u8 sLoneSharkHpScaleToPowerTable[] =
         95, 80,
         100, 75};
 
-static const u8 sBlackBuffetHpScaleToPowerTable[] =
-    {
-        1, 45,
-        2, 40,
-        3, 35,
-        4, 30,
-        5, 25,};
-
 // format: min. weight (hectograms), base power
 static const u16 sWeightToDamageTable[] =
     {
@@ -11372,14 +11364,16 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         basePower = sLoneSharkHpScaleToPowerTable[i + 1];
         break;
     case EFFECT_BLACK_BUFFET:
-        hpFraction = GetScaledHPFraction(gBattleMons[battlerDef].hp, gBattleMons[battlerDef].maxHP, 5);
-        for (i = 0; i < sizeof(sBlackBuffetHpScaleToPowerTable); i += 2)
-        {
-            if (hpFraction < sBlackBuffetHpScaleToPowerTable[i])
-                break;
-        }
-        basePower = sBlackBuffetHpScaleToPowerTable[i + 1];
-        basePower = (basePower < 25) ? 25 : basePower;
+        if (gBattleMons[battlerDef].hp <= (gBattleMons[battlerDef].maxHP / 5))
+            basePower = 45;
+        else if (gBattleMons[battlerDef].hp <= (gBattleMons[battlerDef].maxHP * 2 / 5))
+            basePower = 40;
+        else if (gBattleMons[battlerDef].hp <= (gBattleMons[battlerDef].maxHP * 3 / 5))
+            basePower = 35;
+        else if (gBattleMons[battlerDef].hp <= (gBattleMons[battlerDef].maxHP * 4 / 5))
+            basePower = 30;
+        else
+            basePower = 25;
         break;
     case EFFECT_RETURN:
         if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT)
