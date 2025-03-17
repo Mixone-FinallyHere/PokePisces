@@ -17,16 +17,10 @@ static const struct TrainerMon sParty_Sawyer1[] = {
 static const struct TrainerMon sParty_PMendel[] = {
     {
     .lvl = 50,
-    .species = SPECIES_FAKYSNAKY,
-    .ability = ABILITY_DISGUISE,
+    .species = SPECIES_GOLDEROCK,
+    .ability = ABILITY_INNER_FOCUS,
     .heldItem = ITEM_POKE_BALL,
-    .moves = {MOVE_SHED_TAIL, MOVE_NONE, MOVE_NONE, MOVE_NONE}
-    },
-    {
-    .lvl = 50,
-    .species = SPECIES_POMELONIAN,
-    .heldItem = ITEM_POKE_BALL,
-    .moves = {MOVE_LEAFAGE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
+    .moves = {MOVE_BLAZING_SOUL, MOVE_NONE, MOVE_NONE, MOVE_NONE}
     }
 };
 
@@ -15704,10 +15698,44 @@ static const struct TrainerMon sParty_PCentauriph[] = {
     }
 };
 
-static const struct TrainerMon sParty_Alyssa[] = {
+static const struct TrainerMon sParty_PJacobi[] = {
     {
-    .lvl = 15,
-    .species = SPECIES_MAGNEMITE,
+    .species = SPECIES_SEEDOT,
+    .heldItem = ITEM_FOCUS_SASH,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .ev = TRAINER_PARTY_EVS(30, 30, 30, 30, 30, 30),
+    .lvl = 38,
+    .moves = {MOVE_EXPLOSION, MOVE_NONE, MOVE_NONE, MOVE_NONE},
+    .nature = NATURE_SERIOUS,
+    },
+    {
+    .species = SPECIES_GLALIE,
+    .ability = ABILITY_REFRIGERATE,
+    .heldItem = ITEM_FOCUS_SASH,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .ev = TRAINER_PARTY_EVS(30, 30, 30, 30, 30, 30),
+    .lvl = 38,
+    .moves = {MOVE_EXPLOSION, MOVE_NONE, MOVE_NONE, MOVE_NONE},
+    .nature = NATURE_SERIOUS,
+    },
+    {
+    .species = SPECIES_LUNATONE,
+    .heldItem = ITEM_FOCUS_SASH,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .ev = TRAINER_PARTY_EVS(30, 30, 30, 30, 30, 30),
+    .lvl = 38,
+    .moves = {MOVE_MISTY_EXPLOSION, MOVE_NONE, MOVE_NONE, MOVE_NONE},
+    .nature = NATURE_SERIOUS,
+    },
+    {
+    .species = SPECIES_REGIGIGAS,
+    .ability = ABILITY_LUMBERING,
+    .heldItem = ITEM_SHUCA_BERRY,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .ev = TRAINER_PARTY_EVS(30, 30, 30, 30, 30, 30),
+    .lvl = 40,
+    .moves = {MOVE_GEAR_UP, MOVE_GEAR_GRIND, MOVE_MAGNET_BOMB, MOVE_ZAP_CANNON},
+    .nature = NATURE_SERIOUS,
     }
 };
 

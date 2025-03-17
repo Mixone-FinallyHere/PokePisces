@@ -10,7 +10,7 @@ Route109_SeashoreHouse_EventScript_Owner::
 	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_6_SODA_POP, Route109_SeashoreHouse_EventScript_AlreadyReceivedSodaPop
-	goto_if_set FLAG_DEFEATED_SEASHORE_HOUSE, Route109_SeashoreHouse_EventScript_DefeatedTrainers
+	goto_if_set FLAG_DEFEATED_GOLDEN_PLAINS_RIVAL, Route109_SeashoreHouse_EventScript_DefeatedTrainers
 	goto_if_set FLAG_TEMP_2, Route109_SeashoreHouse_EventScript_AlreadyGaveIntroduction
 	msgbox Route109_SeashoreHouse_Text_SeashoreHouseIntro, MSGBOX_DEFAULT
 	setflag FLAG_TEMP_2
@@ -88,7 +88,7 @@ Route109_SeashoreHouse_EventScript_CheckTrainersCompletion::
 	goto_if_not_defeated TRAINER_P_HOOK, Route109_SeashoreHouse_EventScript_TrainersNotCompleted
 	goto_if_not_defeated TRAINER_P_LANAYA, Route109_SeashoreHouse_EventScript_TrainersNotCompleted
 	goto_if_not_defeated TRAINER_P_PETE, Route109_SeashoreHouse_EventScript_TrainersNotCompleted
-	setflag FLAG_DEFEATED_SEASHORE_HOUSE
+	setflag FLAG_DEFEATED_GOLDEN_PLAINS_RIVAL
 	release
 	end
 

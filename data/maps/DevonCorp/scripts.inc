@@ -13,9 +13,9 @@ DevonCorp_OnFrame:
 
 DevonCorp_EventScript_DevonMeeting::
 	lock
-	setvar VAR_RUST_GYM_STATE, 14
 	playbgm MUS_RG_VICTORY_ROAD, FALSE
 	delay 4
+	special HealPlayerParty
 	applymovement OBJ_EVENT_ID_PLAYER, DevonCorp_Movement_PlayerFaceRight
 	waitmovement 0
 	speakername DevonCorp_Text_NameMrStone
@@ -47,6 +47,7 @@ DevonCorp_EventScript_DevonMeeting::
 	waitmovement 0
 	speakername DevonCorp_Text_NameRay
 	msgbox DevonCorp_Text_RayIntro, MSGBOX_DEFAULT
+	speakername NULL
 	trainerbattle_no_intro TRAINER_P_RAY_6, DevonCorp_Text_RayDefeated
 	goto DevonCorp_EventScript_RayDefeat
 	release

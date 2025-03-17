@@ -75,7 +75,7 @@
       "y": 8,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "MuseumSanctum_EventScript_JumpIntoPainting"
     },
     {
       "type": "sign",
@@ -83,7 +83,7 @@
       "y": 8,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "MuseumSanctum_EventScript_JumpIntoPainting"
     },
     {
       "type": "sign",
@@ -91,7 +91,7 @@
       "y": 8,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "MuseumSanctum_EventScript_JumpIntoPainting"
     },
     {
       "type": "sign",
@@ -99,7 +99,7 @@
       "y": 8,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "MuseumSanctum_EventScript_JumpIntoPainting"
     }
   ]
 }

@@ -5263,6 +5263,10 @@ bool8 PoisonPlayerParty(void)
                         statusChosen = TRUE;
                         break;
                     }
+                    else
+                    {
+                        break;
+                    }
                 }
                 if (j == count)
                     break;

@@ -697,7 +697,7 @@ NewSooto_Text_OzoneRoadblockAhead:
 	.string "blockade up ahead.$"
 
 NewSooto_Text_WantToSeeFlyingMon:
-	.string "I am doing important research\n$"
+	.string "I am doing important research\n"
 	.string "on Hoenn's atmosphere on behalf\l"
 	.string "of Team Ozone.\p"
 	.string "If you can show me a Flying type\n"

@@ -1,4 +1,4 @@
-.set LOCALID_STEVEN, 1
+.set LOCALID_STEVEN, 2
 
 PetalburgNew_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, PetalburgNew_OnLoad

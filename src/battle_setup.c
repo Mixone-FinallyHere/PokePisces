@@ -582,6 +582,17 @@ void BattleSetup_StartScriptedDoubleWildBattle(void)
     LockPlayerFieldControls();
     gMain.savedCallback = CB2_EndScriptedWildBattle;
     gBattleTypeFlags = BATTLE_TYPE_DOUBLE;
+
+    switch (GetMonData(&gEnemyParty[0], MON_DATA_SPECIES, NULL))
+    {
+    case SPECIES_SHUNYONG:
+    case SPECIES_SHUNYONG_GOLDEN_OFFENSE:
+        gBattleTypeFlags |= BATTLE_TYPE_SHUNYONG;
+        break;
+    default:
+        break;
+    }
+    
     CreateBattleStartTask(GetWildBattleTransition(), 0);
     IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
     IncrementGameStat(GAME_STAT_WILD_BATTLES);

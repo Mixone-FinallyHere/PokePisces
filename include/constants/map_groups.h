@@ -165,6 +165,7 @@
 #define MAP_CHIMNEY_SPINDA_AREA              (18 | (11 << 8))
 #define MAP_ASHLANDS_HOUSE                   (19 | (11 << 8))
 #define MAP_CRIMNEY_INTERIORS                (20 | (11 << 8))
+#define MAP_SPACE_CENTER_SIEGE_CUTSCENE      (21 | (11 << 8))
 
 // gMapGroup_PiscesLeg7Major
 #define MAP_SWELTORN_DESERT           (0 | (12 << 8))
