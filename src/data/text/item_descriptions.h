@@ -3300,10 +3300,10 @@ static const u8 sTM13Desc[] = _(
     "upon switching in.");
 
 static const u8 sTM14Desc[] = _(
-    "The user becomes one\n"
-    "with nature, healing\n"
-    "status for and giving\n"
-    "blooming to the team.");
+    "If the user or ally\n"
+    "has a status, they are\n"
+    "cured of it, otherwise\n"
+    "they start to bloom.");
 
 static const u8 sTM15Desc[] = _(
     "A wondrous wall of\n"

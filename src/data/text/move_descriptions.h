@@ -3637,7 +3637,7 @@ static const u8 sScorchingSandsDescription[] = _(
 
 static const u8 sJungleHealingDescription[] = _(
     "If the user or ally has a status\n"
-    "condition they are cured of it,\n"
+    "condition, they are cured of it,\n"
     "otherwise they start to bloom.");
 
 static const u8 sJungleRageDescription[] = _(
