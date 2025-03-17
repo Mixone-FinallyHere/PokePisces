@@ -344,7 +344,7 @@ const struct MonCoords gMonBackPicCoords[NUM_SPECIES + 1] =
     [SPECIES_WALREIN]                      = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_CACNEA]                       = { .size = MON_COORDS_SIZE(64, 40), .y_offset = 12 },
     [SPECIES_CACTURNE]                     = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
-    [SPECIES_SNORUNT]                      = { .size = MON_COORDS_SIZE(56, 40), .y_offset = 11 },
+    [SPECIES_SNORUNT]                      = { .size = MON_COORDS_SIZE(56, 40), .y_offset = 13 },
     [SPECIES_GLALIE]                       = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  7 },
     [SPECIES_LUNATONE]                     = { .size = MON_COORDS_SIZE(56, 56), .y_offset =  5 },
     [SPECIES_SOLROCK]                      = { .size = MON_COORDS_SIZE(64, 56), .y_offset =  5 },

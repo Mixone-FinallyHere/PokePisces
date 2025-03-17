@@ -3902,7 +3902,11 @@ static void AnimLeechSeedSprouts(struct Sprite *sprite)
 // arg 4: blend (0 = off, 1 = on)
 void AnimSporeParticle(struct Sprite *sprite)
 {
-    InitSpritePosToAnimTarget(sprite, TRUE);
+    if (gAnimMoveIndex == MOVE_RAGE_POWDER)
+        InitSpritePosToAnimAttacker(sprite, TRUE);
+    else
+        InitSpritePosToAnimTarget(sprite, TRUE);
+
     StartSpriteAnim(sprite, gBattleAnimArgs[4]);
     if (gBattleAnimArgs[4] == 1)
         sprite->oam.objMode = ST_OAM_OBJ_BLEND;

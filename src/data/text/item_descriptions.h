@@ -11,14 +11,14 @@ static const u8 sPokeBallDesc[] = _(
 static const u8 sGreatBallDesc[] = _(
     "A high-performance\n"
     "Poké Ball that has a\n"
-    "higher Pokémon catch\n"
-    "rate than a Poké Ball.");
+    "higher catch rate\n"
+    "than a Poké Ball.");
 
 static const u8 sUltraBallDesc[] = _(
     "An ultra-performance\n"
     "Poké Ball that has a\n"
-    "higher Pokémon catch\n"
-    "rate than a Great Ball.");
+    "higher catch rate\n"
+    "than a Great Ball.");
 
 static const u8 sMasterBallDesc[] = _(
     "An ultimate Poké Ball\n"
@@ -148,8 +148,8 @@ static const u8 sSportBallDesc[] = _(
 static const u8 sParkBallDesc[] = _(
     "A high-quality Poké\n"
     "Ball that provides a\n"
-    "higher Pokémon catch\n"
-    "rate than a Ultra Ball.");
+    "higher catch rate\n"
+    "than a Ultra Ball.");
 
 static const u8 sBeastBallDesc[] = _(
     "An otherworldly Poké\n"
@@ -729,9 +729,9 @@ static const u8 sXSpDefDesc[] = _(
 
 static const u8 sXSpeedDesc[] = _(
     "An item that sharply\n"
-    "boosts Speed. It wears\n"
-    "off if the Pokémon\n"
-    "leaves.");
+    "boosts Speed. It\n"
+    "wears off if the\n"
+    "Pokémon leaves.");
 
 static const u8 sXAccuracyDesc[] = _(
     "An item that sharply\n"
@@ -741,9 +741,9 @@ static const u8 sXAccuracyDesc[] = _(
 
 static const u8 sDireHitDesc[] = _(
     "An item that sharply\n"
-    "boosts the critical hit\n"
-    "ratio of a Pokémon for\n"
-    "one battle.");
+    "boosts the critical\n"
+    "hit ratio of a Pokémon\n"
+    "for one battle.");
 
 static const u8 sGuardSpecDesc[] = _(
     "An item that prevents\n"
@@ -792,7 +792,7 @@ static const u8 sNuggetDesc[] = _(
 
 static const u8 sBigNuggetDesc[] = _(
     "A big nugget of gold\n"
-    "that gives off a glossy\n"
+    "that has a glossy\n"
     "gleam. It can be sold\n"
     "at a high price.");
 
@@ -879,10 +879,10 @@ static const u8 sGreenShardDesc[] = _(
     "be sold cheaply.");
 
 static const u8 sHeartScaleDesc[] = _(
-    "A pretty, heart-shaped\n"
-    "scale that is very\n"
-    "rare. It can be sold\n"
-    "at a high price.");
+    "A heart-shaped scale\n"
+    "that is very rare. it\n"
+    "can be sold at a high\n"
+    "price.");
     
 static const u8 sHoneyDesc[] = _(
     "Sweet honey that\n"
@@ -1233,10 +1233,10 @@ static const u8 sDuskStoneDesc[] = _(
     "into a cursing witch.");
 
 static const u8 sDawnStoneDesc[] = _(
-    "An extraordinary stone\n"
-    "that makes an odd\n"
-    "triangle become an ice\n"
-    "queen.");
+    "An extraordinary\n"
+    "stone that makes an\n"
+    "odd triangle become\n"
+    "an ice queen.");
 
 static const u8 sSweetAppleDesc[] = _(
     "A very sweet apple\n"
@@ -2926,9 +2926,10 @@ static const u8 sNanabBerryDesc[] = _(
     "stockpile some power.");
 
 static const u8 sWepearBerryDesc[] = _(
-    "If a Pokémon holds\n"
-    "this Berry, it can\n"
-    "identify a foe.");
+    "If the holder is hit\n"
+    "at half HP, prevents\n"
+    "the attacker from\n"
+    "healing.");
 
 static const u8 sPinapBerryDesc[] = _(
     "If a Pokémon holds\n"
@@ -2972,9 +2973,10 @@ static const u8 sTamatoBerryDesc[] = _(
     "their jokes.");
 
 static const u8 sCornnBerryDesc[] = _(
-    "If a Pokémon holds\n"
-    "this Berry, it can\n"
-    "salt a foe.");
+    "If the holder is hit\n"
+    "at a quarter HP, it\n" 
+    "covers the attacker\n"
+    "in salt.");
 
 static const u8 sMagostBerryDesc[] = _(
     "If a Pokémon holds\n"
@@ -3298,10 +3300,10 @@ static const u8 sTM13Desc[] = _(
     "upon switching in.");
 
 static const u8 sTM14Desc[] = _(
-    "The user becomes one\n"
-    "with nature, healing\n"
-    "status for and giving\n"
-    "blooming to the team.");
+    "If the user or ally\n"
+    "has a status, they are\n"
+    "cured of it, otherwise\n"
+    "they start to bloom.");
 
 static const u8 sTM15Desc[] = _(
     "A wondrous wall of\n"
@@ -4601,7 +4603,7 @@ static const u8 sWeirdStickDesc[] = _(
     "Don't try to eat it.");
 
 static const u8 sFairyFeatherDesc[] = _(
-    "A mystical feathern"
+    "A mystical feather\n"
     "that boosts Fairy-type\n"
     "moves, and may make\n"
     "them confuse the foe.");
