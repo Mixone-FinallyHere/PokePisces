@@ -14442,7 +14442,7 @@ BattleScript_SweetVeilActivates::
 	call BattleScript_AbilityPopUpTarget
 	printstring STRINGID_ABILITYLETITUSEMOVESWEETVEIL
 	waitmessage B_WAIT_TIME_LONG
-	playanimation BS_TARGET, B_ANIM_GUARD_DOG
+	playanimation BS_TARGET, B_ANIM_SWEET_VEIL
 	waitanimation
 	copybyte gEffectBattler, gBattlerTarget
 	swapattackerwithtarget
@@ -16818,6 +16818,7 @@ BattleScript_RuinAbilityActivates::
 	end3
 
 BattleScript_WhiteSmokeAbilityActivates::
+	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
 	setmist	
 	printstring STRINGID_ABILITYSUMMONEDMIST
@@ -16848,6 +16849,7 @@ BattleScript_RuinWardActivates::
 	end3
 
 BattleScript_RuinWardSafeguardActivates::
+	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
 	playanimation BS_ATTACKER, B_ANIM_LUCKY_CHANT
 	waitanimation
@@ -16948,13 +16950,12 @@ BattleScript_SnowWarningActivatesSnow::
 	end3
 
 BattleScript_GustyActivatesTailwind::
-	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
-	settailwind BattleScript_TailwindEnd
+	playanimation BS_ATTACKER, B_ANIM_TAILWIND
+	waitanimation
 	printstring STRINGID_TAILWINDBLEW
-	waitstate
+	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryTailwindAbilitiesLoop
-BattleScript_TailwindEnd::
 	end3
 
 BattleScript_ActivateTerrainEffects:

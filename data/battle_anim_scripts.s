@@ -1179,6 +1179,8 @@ gBattleAnims_General::
 	.4byte Move_SAFEGUARD                   @ B_ANIM_SAFEGUARD
 	.4byte Move_LUCKY_CHANT                 @ B_ANIM_LUCKY_CHANT
 	.4byte Move_GROWL                       @ B_ANIM_GUARD_DOG
+	.4byte Move_SWEET_SCENT                 @ B_ANIM_SWEET_VEIL
+	.4byte Move_TAILWIND                    @ B_ANIM_TAILWIND
 
 	.align 2
 gBattleAnims_Special::

@@ -1175,12 +1175,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 RETURN_SCORE_MINUS(20);
         }
 
-        if (AI_IsTerrainAffected(battlerDef, STATUS_FIELD_MISTY_TERRAIN))
-        {
-            if (IsNonVolatileStatusMoveEffect(moveEffect) || IsConfusionMoveEffect(moveEffect))
-                RETURN_SCORE_MINUS(20);
-        }
-
         if (AI_IsTerrainAffected(battlerAtk, STATUS_FIELD_PSYCHIC_TERRAIN) && atkPriority > 0)
         {
             RETURN_SCORE_MINUS(20);
@@ -2614,6 +2608,11 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             {
                score -= 10;
             }
+            if (!AI_CanConfuse(battlerAtk, battlerDef, aiData->abilities[battlerDef], BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove))
+            {
+                score -= 10;
+            }
+            IncreaseConfusionScore(battlerAtk, battlerDef, move, &score);
             break;
         case EFFECT_TRANSFORM:
             if (gBattleMons[battlerAtk].status2 & STATUS2_TRANSFORMED
@@ -5058,6 +5057,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
           || HasMoveEffect(battlerDef, EFFECT_WILL_O_WISP)
           || HasMoveEffect(battlerDef, EFFECT_GLACIATE)
           || HasMoveEffect(battlerDef, EFFECT_CONFUSE)
+          || HasMoveEffect(battlerDef, EFFECT_TEETER_DANCE)
           || HasMoveEffect(battlerDef, EFFECT_FLASH)
           || HasMoveEffect(battlerDef, EFFECT_LEECH_SEED)
           || HasMoveEffect(battlerDef, EFFECT_SCORP_FANG)
@@ -5083,6 +5083,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
           || HasMoveEffect(battlerDef, EFFECT_WILL_O_WISP)
           || HasMoveEffect(battlerDef, EFFECT_GLACIATE)
           || HasMoveEffect(battlerDef, EFFECT_CONFUSE)
+          || HasMoveEffect(battlerDef, EFFECT_TEETER_DANCE)
           || HasMoveEffect(battlerDef, EFFECT_FLASH)
           || HasMoveEffect(battlerDef, EFFECT_LEECH_SEED)
           || HasMoveEffect(battlerDef, EFFECT_SCORP_FANG)

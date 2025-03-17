@@ -619,6 +619,8 @@
 #define B_ANIM_SAFEGUARD                54
 #define B_ANIM_LUCKY_CHANT              55
 #define B_ANIM_GUARD_DOG                56
+#define B_ANIM_SWEET_VEIL               57
+#define B_ANIM_TAILWIND                 58
 
 // special animations table (gBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0
