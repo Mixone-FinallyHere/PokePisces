@@ -14768,13 +14768,9 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .thawsUser = TRUE,
-        .ignoresTargetDefenseEvasionStages = TRUE,
-        .ignoresTargetAbility = TRUE,
-        .ignoresProtect = TRUE,
         .mirrorMoveBanned = B_UPDATED_MOVE_FLAGS < GEN_6,
         .metronomeBanned = TRUE,
         .copycatBanned = TRUE,
-        .ignoresSubstitute = TRUE,
     },
 
     [MOVE_DRAGON_POKER] =
