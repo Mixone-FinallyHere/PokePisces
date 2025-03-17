@@ -2230,12 +2230,21 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     score -= 2;
             }
             break;
-        case EFFECT_BELLY_DRUM:
         case EFFECT_FILLET_AWAY:
-        case EFFECT_IGNITION:
             if (aiData->abilities[battlerAtk] == ABILITY_CONTRARY)
                 score -= 10;
-            else if (aiData->hpPercents[battlerAtk] <= 60)
+            if (aiData->hpPercents[battlerAtk] <= 60)
+                score -= 10;
+            break;
+        case EFFECT_BELLY_DRUM:
+            if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ATK) || !HasMoveWithSplit(battlerAtk, SPLIT_PHYSICAL))
+                score -= 10;
+        case EFFECT_IGNITION:
+            if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPATK) || !HasMoveWithSplit(battlerAtk, SPLIT_SPECIAL))
+                score -= 10;
+            if (aiData->abilities[battlerAtk] == ABILITY_CONTRARY)
+                score -= 10;
+            if (aiData->hpPercents[battlerAtk] <= 60)
                 score -= 10;
             break;
         case EFFECT_STALAG_BLAST:
@@ -6756,16 +6765,6 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         if (gBattleMoves[predictedMove].effect == EFFECT_PROTECT)
             score += 3;
         break;
-    case EFFECT_RAZING_SUN:
-        if (gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_REFLECT)
-            score++;
-        if (gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_LIGHTSCREEN)
-            score++;
-        if (gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_AURORA_VEIL)
-            score++;
-        if (gBattleMoves[predictedMove].effect == EFFECT_PROTECT)
-            score += 3;
-        break;
     case EFFECT_EMBARGO:
         if (aiData->holdEffects[battlerDef] != HOLD_EFFECT_NONE)
             score++;
@@ -7597,7 +7596,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_SILENCE:
             case EFFECT_IGNITION:
             case EFFECT_STALAG_BLAST:
-                score -= 2;
+                score -= 4;
                 break;
             case EFFECT_LONE_SHARK:
             case EFFECT_GREEN_GUISE:
@@ -7644,7 +7643,6 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_DRAGON_CHEER:
             case EFFECT_SILENCE:
             case EFFECT_WARM_WELCOME:
-            case EFFECT_LONE_SHARK:
             case EFFECT_RECOIL_50_HAZARD:
             case EFFECT_GIANTS_SPEAR:
             case EFFECT_ENERVATOR:
@@ -7652,10 +7650,11 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_AIR_CANNON:
             case EFFECT_MIND_READER:
             case EFFECT_STALAG_BLAST:
-                score -= 2;
+                score -= 6;
                 break;
             case EFFECT_GREEN_GUISE:
-                score -= 1;
+            case EFFECT_LONE_SHARK:
+                score -= 3;
                 break;
             case EFFECT_SPIRIT_AWAY:
                 score += 3;

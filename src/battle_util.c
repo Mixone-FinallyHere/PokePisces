@@ -9972,7 +9972,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_ROCKY_HELMET:
                 if (TARGET_TURN_DAMAGED 
                 && IsMoveMakingContact(gCurrentMove, gBattlerAttacker) 
-                && IsBattlerAlive(gBattlerAttacker) 
+                && IsBattlerAlive(gBattlerAttacker)
                 && GetBattlerAbility(gBattlerAttacker) != ABILITY_MAGIC_GUARD 
                 && GetBattlerAbility(gBattlerAttacker) != ABILITY_SUGAR_COAT)
                 {
@@ -9993,6 +9993,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && TARGET_TURN_DAMAGED
                 && !(gStatuses3[gBattlerTarget] & STATUS3_CHARGED_UP)
                 && IsBattlerAlive(gBattlerTarget)
+                && !IS_MOVE_STATUS(gCurrentMove)
                 && gBattleMons[gBattlerTarget].species == SPECIES_SHOCKORE)
                 {
                     effect = ITEM_EFFECT_OTHER;
@@ -10009,6 +10010,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && TARGET_TURN_DAMAGED 
                 && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_WRAPPED)
                 && IsBattlerAlive(gBattlerAttacker)
+                && !IS_MOVE_STATUS(gCurrentMove)
                 && gBattleMons[gBattlerTarget].species == SPECIES_FLAGUE_PRINCE)
                 {
                     effect = ITEM_EFFECT_OTHER;
@@ -10034,7 +10036,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_LOST_MANTLE:
-                if (IsBattlerAlive(battler) && TARGET_TURN_DAMAGED && (Random() % 2) == 0)
+                if (IsBattlerAlive(battler) 
+                && TARGET_TURN_DAMAGED
+                && !IS_MOVE_STATUS(gCurrentMove)
+                && (Random() % 2) == 0)
                 {
                     effect = ITEM_STATS_CHANGE;
                     BattleScriptPushCursor();
@@ -13265,7 +13270,7 @@ static inline uq4_12_t GetScreensModifier(u32 move, u32 battlerAtk, u32 battlerD
     bool32 reflect = (sideStatus & SIDE_STATUS_REFLECT) && IS_MOVE_PHYSICAL(move);
     bool32 auroraVeil = sideStatus & SIDE_STATUS_AURORA_VEIL;
 
-    if (isCrit || abilityAtk == ABILITY_INFILTRATOR || IS_BATTLER_OF_TYPE(battlerAtk, TYPE_BUG) || gProtectStructs[battlerAtk].confusionSelfDmg || gCurrentMove == MOVE_RAZING_SUN)
+    if (isCrit || abilityAtk == ABILITY_INFILTRATOR || IS_BATTLER_OF_TYPE(battlerAtk, TYPE_BUG) || gProtectStructs[battlerAtk].confusionSelfDmg)
         return UQ_4_12(1.0);
     if (reflect || lightScreen || auroraVeil)
         return (gBattleTypeFlags & BATTLE_TYPE_DOUBLE) ? UQ_4_12(0.667) : UQ_4_12(0.5);

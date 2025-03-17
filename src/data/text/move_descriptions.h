@@ -3611,8 +3611,8 @@ static const u8 sPoltergeistDescription[] = _(
     "if the foe isn't holding an item.");
 
 static const u8 sCorrosiveGasDescription[] = _(
-    "The user releases acidic gas\n"
-    "held items and drops Defense.\n"
+    "Releases acidic gas to destroy\n"
+    "held items and drop Defense.\n"
     "This move always goes first.");
 
 static const u8 sCoachingDescription[] = _(
