@@ -3233,28 +3233,27 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_EMERGENCY_EXIT:
-            for (i = 0; i < gBattlersCount; i++)
+            if (gBattleResources->flags->flags[battler] & RESOURCE_FLAG_EMERGENCY_EXIT)
             {
                 if (gBattleStruct->redCardActivates)
                 {
-                    gBattleResources->flags->flags[i] &= ~RESOURCE_FLAG_EMERGENCY_EXIT;
+                    gBattleResources->flags->flags[battler] &= ~RESOURCE_FLAG_EMERGENCY_EXIT;
                     continue;
                 }
-                if (gBattleResources->flags->flags[i] & RESOURCE_FLAG_EMERGENCY_EXIT)
+                else
                 {
-                    gBattleResources->flags->flags[i] &= ~RESOURCE_FLAG_EMERGENCY_EXIT;
-                    gSpecialStatuses[i].emergencyExited = TRUE;
+                    gBattleResources->flags->flags[battler] &= ~RESOURCE_FLAG_EMERGENCY_EXIT;
+                    gSpecialStatuses[battler].emergencyExited = TRUE;
                     gBattlerTarget = gBattlerAbility = i;
                     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER || GetBattlerSide(i) == B_SIDE_PLAYER)
                     {
                         BattleScriptExecute(BattleScript_EmergencyExit);
-                        effect++;
                     }
                     else
                     {
                         BattleScriptExecute(BattleScript_EmergencyExitWild);
-                        effect++;
                     }
+                    effect++;
                 }
             }
             gBattleStruct->turnEffectsTracker++;
@@ -6222,10 +6221,16 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             break;
         case ABILITY_EMERGENCY_EXIT:
         case ABILITY_WIMP_OUT:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && TARGET_TURN_DAMAGED && IsBattlerAlive(battler)
-                // Had more than half of hp before, now has less
-                && gBattleStruct->hpBefore[battler] > gBattleMons[battler].maxHP / 2 && gBattleMons[battler].hp < gBattleMons[battler].maxHP / 2 && (gMultiHitCounter == 0 || gMultiHitCounter == 1) && !(TestSheerForceFlag(gBattlerAttacker, gCurrentMove)) && (CanBattlerSwitch(battler) || !(gBattleTypeFlags & BATTLE_TYPE_TRAINER)) && !(gBattleTypeFlags & BATTLE_TYPE_ARENA) && CountUsablePartyMons(battler) > 0
-                // Not currently held by Sky Drop
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+                && TARGET_TURN_DAMAGED 
+                && IsBattlerAlive(battler)
+                && gBattleStruct->hpBefore[battler] > gBattleMons[battler].maxHP / 2
+                && gBattleMons[battler].hp < gBattleMons[battler].maxHP / 2
+                && (gMultiHitCounter == 0 || gMultiHitCounter == 1) 
+                && !(TestSheerForceFlag(gBattlerAttacker, gCurrentMove)) 
+                && (CanBattlerSwitch(battler) || !(gBattleTypeFlags & BATTLE_TYPE_TRAINER)) 
+                && !(gBattleTypeFlags & BATTLE_TYPE_ARENA) 
+                && CountUsablePartyMons(battler) > 0
                 && !(gStatuses3[battler] & STATUS3_SKY_DROPPED))
             {
                 gBattleResources->flags->flags[battler] |= RESOURCE_FLAG_EMERGENCY_EXIT;
@@ -10144,7 +10149,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && IsBattlerAlive(battler)
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
                 && !gStatuses4[gBattlerAttacker] & STATUS4_SALT_CURE
-                && gBattleMons[gBattlerTarget].hp <= (gBattleMons[battler].maxHP / 4))
+                && gBattleStruct->hpBefore[gBattlerTarget] > gBattleMons[gBattlerTarget].maxHP / 4
+                && gBattleMons[gBattlerTarget].hp < gBattleMons[gBattlerTarget].maxHP / 4)
                 {
                     effect = ITEM_EFFECT_OTHER;
                     BattleScriptPushCursor();
@@ -10159,7 +10165,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && IsBattlerAlive(battler)
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
                 && !gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK
-                && gBattleMons[gBattlerTarget].hp <= (gBattleMons[battler].maxHP / 2))
+                && gBattleStruct->hpBefore[gBattlerTarget] > gBattleMons[gBattlerTarget].maxHP / 2
+                && gBattleMons[gBattlerTarget].hp < gBattleMons[gBattlerTarget].maxHP / 2)
                 {
                     effect = ITEM_EFFECT_OTHER;
                     gStatuses3[gBattlerAttacker] |= STATUS3_HEAL_BLOCK;
@@ -10175,7 +10182,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && TARGET_TURN_DAMAGED
                 && IsBattlerAlive(battler)
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
-                && gBattleMons[gBattlerTarget].hp <= (gBattleMons[battler].maxHP / 2))
+                && gBattleStruct->hpBefore[gBattlerTarget] > gBattleMons[gBattlerTarget].maxHP / 2
+                && gBattleMons[gBattlerTarget].hp < gBattleMons[gBattlerTarget].maxHP / 2)
                 {
                     effect = ITEM_EFFECT_OTHER;
                     BattleScriptPushCursor();
@@ -10185,8 +10193,9 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_YELLOW_SODA:
-                if (gBattleMons[battler].species == SPECIES_VOREON 
-                && gBattleMons[battler].hp < (gBattleMons[battler].maxHP / 2)
+                if (gBattleMons[battler].species == SPECIES_VOREON
+                && gBattleStruct->hpBefore[battler] > gBattleMons[battler].maxHP / 2
+                && gBattleMons[battler].hp < gBattleMons[battler].maxHP / 2
                 && TARGET_TURN_DAMAGED
                 && IsBattlerAlive(battler)
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
@@ -10228,7 +10237,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && TARGET_TURN_DAMAGED
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
                 && CanBeConfused(gBattlerAttacker)
-                && gBattleMons[battler].hp <= gBattleMons[battler].maxHP / 2)
+                && gBattleStruct->hpBefore[gBattlerTarget] > gBattleMons[battler].maxHP / 2
+                && gBattleMons[gBattlerTarget].hp < gBattleMons[battler].maxHP / 2)
                 {
                     effect = ITEM_EFFECT_OTHER;
                     gBattleMons[gBattlerAttacker].status2 |= STATUS2_CONFUSION;
@@ -10278,7 +10288,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 if (IsBattlerAlive(battler) 
                 && TARGET_TURN_DAMAGED 
                 && !DoesSubstituteBlockMove(gBattlerTarget, battler, gCurrentMove) 
-                && HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, ITEM_PINAP_BERRY), ITEM_PINAP_BERRY) 
+                && gBattleStruct->hpBefore[gBattlerTarget] > gBattleMons[battler].maxHP / 4
+                && gBattleMons[gBattlerTarget].hp < gBattleMons[battler].maxHP / 4
                 && GetBattlerAbility(gBattlerTarget) != ABILITY_MAGIC_GUARD 
                 && GetBattlerAbility(gBattlerTarget) != ABILITY_SUGAR_COAT)
                 {
