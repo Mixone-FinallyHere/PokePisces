@@ -11370,6 +11370,10 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         basePower = sBlackBuffetHpScaleToPowerTable[i + 1];
         break;
     case EFFECT_RETURN:
+        if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT)
+        {
+            gBattleMons[battlerAtk].friendship = 255;
+        }
         basePower = 10 * (gBattleMons[battlerAtk].friendship) / 25;
         break;
     case EFFECT_FALSE_SWIPE:
@@ -11377,23 +11381,43 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         basePower = (basePower > 75) ? 75 : basePower;
         break;
     case EFFECT_STRENGTH:
+        if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT)
+        {
+            gBattleMons[battlerAtk].friendship = 255;
+        }
         basePower = 16 * (gBattleMons[battlerAtk].friendship) / 51;
         break;
     case EFFECT_CUT:
     case EFFECT_ROCK_SMASH:
+        if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT)
+        {
+            gBattleMons[battlerAtk].friendship = 255;
+        }
         basePower = 13 * (gBattleMons[battlerAtk].friendship) / 51;
         break;
     case EFFECT_WATERFALL:
     case EFFECT_ROCK_CLIMB:
     case EFFECT_SURF:
+        if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT)
+        {
+            gBattleMons[battlerAtk].friendship = 255;
+        }
         basePower = 6 * (gBattleMons[battlerAtk].friendship) / 17;
         break;
     case EFFECT_DIVE:
     case EFFECT_FLY:
     case EFFECT_WHIRLPOOL:
+        if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT)
+        {
+            gBattleMons[battlerAtk].friendship = 255;
+        }
         basePower = 8 * (gBattleMons[battlerAtk].friendship) / 17;
         break;
     case EFFECT_FRUSTRATION:
+        if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT)
+        {
+            gBattleMons[battlerAtk].friendship = 0;
+        }
         basePower = 10 * (MAX_FRIENDSHIP - gBattleMons[battlerAtk].friendship) / 25;
         break;
     case EFFECT_FURY_CUTTER:

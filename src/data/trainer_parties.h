@@ -7039,6 +7039,7 @@ static const struct TrainerMon sParty_PWoody[] = {
 static const struct TrainerMon sParty_PAna[] = {
     {
     .species = SPECIES_PANTNEY,
+    .friendship = 255,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(72, 72, 72, 72, 72, 72),
     .lvl = 43,
