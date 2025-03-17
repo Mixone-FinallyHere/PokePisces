@@ -2133,8 +2133,9 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
 {
     s32 critChance = 0;
 
-    if ((gSideStatuses[battlerDef] & SIDE_STATUS_LUCKY_CHANT && (abilityAtk != ABILITY_INFILTRATOR 
-    || !(IS_BATTLER_OF_TYPE(battlerAtk, TYPE_BUG)))) 
+    if ((gSideStatuses[battlerDef] & SIDE_STATUS_LUCKY_CHANT 
+    && abilityAtk != ABILITY_INFILTRATOR 
+    && !(IS_BATTLER_OF_TYPE(battlerAtk, TYPE_BUG)))
     || gStatuses3[battlerAtk] & STATUS3_CANT_SCORE_A_CRIT
     || abilityDef == ABILITY_SHELL_ARMOR
     || (abilityDef == ABILITY_INNER_FOCUS && gBattleMons[battlerDef].status2 & STATUS2_FOCUS_ENERGY)

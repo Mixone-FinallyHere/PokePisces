@@ -10106,6 +10106,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 break;
             case HOLD_EFFECT_BLUK_BERRY: // consume and damage attacker if used physical move
                 if (IsBattlerAlive(gBattlerAttacker)
+                && IsBattlerAlive(battler)
                 && TARGET_TURN_DAMAGED
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove))
                 {
@@ -10118,6 +10119,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 break;
             case HOLD_EFFECT_BELUE_BERRY:
                 if (IsBattlerAlive(gBattlerAttacker)
+                && IsBattlerAlive(battler)
                 && TARGET_TURN_DAMAGED
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
                 && !gDisableStructs[gBattlerAttacker].tarShot)
@@ -10132,6 +10134,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_CORNN_BERRY:
                 if (IsBattlerAlive(gBattlerAttacker)
                 && TARGET_TURN_DAMAGED
+                && IsBattlerAlive(battler)
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
                 && !gStatuses4[gBattlerAttacker] & STATUS4_SALT_CURE
                 && gBattleMons[gBattlerTarget].hp <= (gBattleMons[battler].maxHP / 4))
@@ -10146,6 +10149,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_WEPEAR_BERRY:
                 if (IsBattlerAlive(gBattlerAttacker)
                 && TARGET_TURN_DAMAGED
+                && IsBattlerAlive(battler)
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
                 && !gStatuses3[gBattlerAttacker] & STATUS3_HEAL_BLOCK
                 && gBattleMons[gBattlerTarget].hp <= (gBattleMons[battler].maxHP / 2))
@@ -10162,6 +10166,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_DURIN_BERRY:
                 if (IsBattlerAlive(gBattlerAttacker)
                 && TARGET_TURN_DAMAGED
+                && IsBattlerAlive(battler)
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
                 && gBattleMons[gBattlerTarget].hp <= (gBattleMons[battler].maxHP / 2))
                 {
@@ -10173,11 +10178,12 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 }
                 break;
             case HOLD_EFFECT_YELLOW_SODA:
-                if (gBattleMons[gBattlerTarget].species == SPECIES_VOREON 
-                && gBattleMons[gBattlerTarget].hp < (gBattleMons[battler].maxHP / 2)
+                if (gBattleMons[battler].species == SPECIES_VOREON 
+                && gBattleMons[battler].hp < (gBattleMons[battler].maxHP / 2)
                 && TARGET_TURN_DAMAGED
+                && IsBattlerAlive(battler)
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
-                && !(gStatuses3[gBattlerTarget] & STATUS3_HEAL_BLOCK))
+                && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
                 {
                     effect = ITEM_EFFECT_OTHER;
                     gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 2;
@@ -13132,8 +13138,8 @@ static inline uq4_12_t GetLuckyChantModifier(u32 abilityAtk, u32 battlerAtk, u32
 {
     if ((gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_LUCKY_CHANT) 
     && (typeEffectivenessModifier >= UQ_4_12(2.0))
-    && ((abilityAtk != ABILITY_INFILTRATOR)
-    || !(IS_BATTLER_OF_TYPE(battlerAtk, TYPE_BUG))))
+    && (abilityAtk != ABILITY_INFILTRATOR)
+    && !(IS_BATTLER_OF_TYPE(battlerAtk, TYPE_BUG)))
         return UQ_4_12(0.7);
     return UQ_4_12(1.0);
 }
