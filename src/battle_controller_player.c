@@ -1012,10 +1012,10 @@ static void HandleMoveSwitching(u32 battler)
             moveInfo->maxPp[gMoveSelectionCursor[battler]] = moveInfo->maxPp[gMultiUsePlayerCursor];
             moveInfo->maxPp[gMultiUsePlayerCursor] = i;
 
-            if (gDisableStructs[battler].mimickedMoves & gBitTable[gMoveSelectionCursor[battler]])
+            if (gDisableStructs[battler].mimickedMoves & (1u << gMoveSelectionCursor[battler]))
             {
-                gDisableStructs[battler].mimickedMoves &= (~gBitTable[gMoveSelectionCursor[battler]]);
-                gDisableStructs[battler].mimickedMoves |= gBitTable[gMultiUsePlayerCursor];
+                gDisableStructs[battler].mimickedMoves &= ~(1u << gMoveSelectionCursor[battler]);
+                gDisableStructs[battler].mimickedMoves |= 1u << gMultiUsePlayerCursor;
             }
 
             MoveSelectionDisplayMoveNames(battler);

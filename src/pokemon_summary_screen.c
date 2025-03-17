@@ -4623,7 +4623,6 @@ static void Task_HandleEvEditorInput(u8 taskId)
         PrintLeftColumnStats();
         BufferRightColumnStats();
         PrintRightColumnStats();
-        CalculateMonStats(&sMonSummaryScreen->currentMon);
         gTasks[taskId].func = Task_HandleInput;
     } else if (JOY_NEW(DPAD_RIGHT | DPAD_LEFT)) {
         sMonSummaryScreen->firstMoveIndex ^= 1;
@@ -4658,7 +4657,6 @@ static void Task_HandleChangeEV(u8 taskId)
         PlaySE(SE_SELECT);
         SetStatSelectorFixedState(FALSE);
         PrintEditEVsOrViewStats(1);
-        CalculateMonStats(&sMonSummaryScreen->currentMon);
         gTasks[taskId].func = Task_HandleEvEditorInput;
     } else if (JOY_NEW(L_BUTTON | R_BUTTON)) {
         sMonSummaryScreen->firstMoveIndex ^= 1;

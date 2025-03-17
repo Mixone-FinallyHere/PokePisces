@@ -5709,7 +5709,7 @@ const struct Item gItems[] =
         .holdEffect = HOLD_EFFECT_DOUBLE_PRIZE,
         .holdEffectParam = 10,
         .description = sAmuletCoinDesc,
-        .pocket = POCKET_ITEMS,
+        .pocket = POCKET_BATTLE_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 30,
@@ -10432,7 +10432,7 @@ const struct Item gItems[] =
     {
         .name = _("Shelly Brew"),
         .price = 1000,
-        .holdEffectParam = 0,
+        .holdEffectParam = 10,
         .description = sShellyBrewDesc,
         .pocket = POCKET_MEDICINE,
         .type = ITEM_USE_PARTY_MENU,

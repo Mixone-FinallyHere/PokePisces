@@ -6490,9 +6490,9 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                 {
                     dataUnsigned = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES, NULL)].growthRate][GetMonData(mon, MON_DATA_LEVEL, NULL) + 1];
                 }
-                else if (param == 69) // Shelly Brew
+                else if (param == 10) // Shelly Brew
                 {
-                    dataUnsigned = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES, NULL)].growthRate][GetMonData(mon, MON_DATA_LEVEL, NULL) + 1];
+                    dataUnsigned = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES, NULL)].growthRate][GetMonData(mon, MON_DATA_LEVEL, NULL) + (GetPreviousLevelCap() - GetMonData(mon, MON_DATA_LEVEL, NULL))];
                 }
                 else if (param - 1 < ARRAY_COUNT(sExpCandyExperienceTable)) // EXP Candies
                 {
@@ -9209,7 +9209,9 @@ u8 GetCurrentLevelCap(void)
 
 u8 GetPreviousLevelCap(void)
 {
-    if (!FlagGet(FLAG_BADGE02_GET))
+    if (!FlagGet(FLAG_BADGE01_GET))
+        return 1;
+    else if (!FlagGet(FLAG_BADGE02_GET))
         return 12;
     else if (!FlagGet(FLAG_DEFEATED_PANIC_EVENT))
         return 17;

@@ -326,7 +326,7 @@ static const u16 sBadgeFlags[8] = {
     FLAG_BADGE05_GET, FLAG_BADGE06_GET, FLAG_BADGE07_GET, FLAG_BADGE08_GET,
 };
 
-static const u16 sWhiteOutBadgeMoney[9] = { 10, 25, 50, 115, 155, 205, 255, 320, 385 };
+static const u16 sWhiteOutBadgeMoney[9] = { 12, 11, 10, 9, 8, 7, 6, 5, 4 };
 
 #define STAT_CHANGE_WORKED      0
 #define STAT_CHANGE_DIDNT_WORK  1
@@ -2133,8 +2133,9 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
 {
     s32 critChance = 0;
 
-    if ((gSideStatuses[battlerDef] & SIDE_STATUS_LUCKY_CHANT && (abilityAtk != ABILITY_INFILTRATOR 
-    || !(IS_BATTLER_OF_TYPE(battlerAtk, TYPE_BUG)))) 
+    if ((gSideStatuses[battlerDef] & SIDE_STATUS_LUCKY_CHANT 
+    && abilityAtk != ABILITY_INFILTRATOR 
+    && !(IS_BATTLER_OF_TYPE(battlerAtk, TYPE_BUG)))
     || gStatuses3[battlerAtk] & STATUS3_CANT_SCORE_A_CRIT
     || abilityDef == ABILITY_SHELL_ARMOR
     || (abilityDef == ABILITY_INNER_FOCUS && gBattleMons[battlerDef].status2 & STATUS2_FOCUS_ENERGY)
@@ -4904,7 +4905,7 @@ static void Cmd_tryfaintmon(void)
             destinyBondBattler = gBattlerAttacker;
             faintScript = BattleScript_FaintTarget;
         }
-        if (!(gAbsentBattlerFlags & gBitTable[battler])
+        if (!(gAbsentBattlerFlags & (1u << battler))
          && !IsBattlerAlive(battler))
         {
             gHitMarker |= HITMARKER_FAINTED(battler);
@@ -6473,7 +6474,7 @@ static void Cmd_moveend(void)
                     && !TestTeruCharm(gBattlerAttacker))
                 {
                     gProtectStructs[gBattlerAttacker].touchedProtectLike = FALSE;
-                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
+                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 5;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
@@ -8924,7 +8925,7 @@ static void Cmd_getmoneyreward(void)
             if (FlagGet(sBadgeFlags[i]) == TRUE)
                 ++count;
         }
-        money = sWhiteOutBadgeMoney[count] * GetCurrentLevelCap();
+        money = GetMoney(&gSaveBlock1Ptr->money) / sWhiteOutBadgeMoney[count];
         RemoveMoney(&gSaveBlock1Ptr->money, money);
     }
 
@@ -10537,7 +10538,6 @@ static void Cmd_various(void)
         PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, rolling)
 
         gBattlescriptCurrInstr = cmd->nextInstr;
-
         return;
     }
     case VARIOUS_GET_STAT_VALUE:
@@ -12305,7 +12305,7 @@ static void Cmd_various(void)
                 ConvertIntToDecimalStringN(gBattleTextBuff2, ppToDeduct, STR_CONV_MODE_LEFT_ALIGN, 1);
                 PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff2, 1, ppToDeduct)
                 gBattleMons[battler].pp[i] -= ppToDeduct;
-                if (!(gDisableStructs[battler].mimickedMoves & gBitTable[i])
+                if (!(gDisableStructs[battler].mimickedMoves & (1u << i))
                     && !(gBattleMons[battler].status2 & STATUS2_TRANSFORMED))
                 {
                     BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_PPMOVE1_BATTLE + i, 0, sizeof(gBattleMons[battler].pp[i]), &gBattleMons[battler].pp[i]);
@@ -12356,7 +12356,7 @@ static void Cmd_various(void)
                 ConvertIntToDecimalStringN(gBattleTextBuff2, ppToDeduct, STR_CONV_MODE_LEFT_ALIGN, 1);
                 PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff2, 1, ppToDeduct)
                 gBattleMons[battler].pp[i] -= ppToDeduct;
-                if (!(gDisableStructs[battler].mimickedMoves & gBitTable[i])
+                if (!(gDisableStructs[battler].mimickedMoves & (1u << i))
                     && !(gBattleMons[battler].status2 & STATUS2_TRANSFORMED))
                 {
                     BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_PPMOVE1_BATTLE + i, 0, sizeof(gBattleMons[battler].pp[i]), &gBattleMons[battler].pp[i]);
@@ -12404,7 +12404,7 @@ static void Cmd_various(void)
                 ConvertIntToDecimalStringN(gBattleTextBuff2, ppToDeduct, STR_CONV_MODE_LEFT_ALIGN, 1);
                 PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff2, 1, ppToDeduct)
                 gBattleMons[battler].pp[i] -= ppToDeduct;
-                if (!(gDisableStructs[battler].mimickedMoves & gBitTable[i])
+                if (!(gDisableStructs[battler].mimickedMoves & (1u << i))
                     && !(gBattleMons[battler].status2 & STATUS2_TRANSFORMED))
                 {
                     BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_PPMOVE1_BATTLE + i, 0, sizeof(gBattleMons[battler].pp[i]), &gBattleMons[battler].pp[i]);
@@ -12914,7 +12914,9 @@ static void Cmd_various(void)
     }
     case VARIOUS_JUMP_IF_SPECIES_MEGA_BOSS:
     {
-        VARIOUS_ARGS(u16 species, const u8 *jumpInstr);
+        VARIOUS_ARGS(const u8 *jumpInstr);
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+
         if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG))
             gBattlescriptCurrInstr = cmd->jumpInstr;
         else
@@ -14838,9 +14840,10 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
     if (statValue <= -1) // Stat decrease.
     {
         if (gSideTimers[GetBattlerSide(battler)].mistTimer
-            && !certain && gCurrentMove != MOVE_CURSE
-            && (!(battler == gBattlerTarget && GetBattlerAbility(gBattlerAttacker) == ABILITY_INFILTRATOR)
-            || !(battler == gBattlerTarget && IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_BUG))))
+            && !certain 
+            && gCurrentMove != MOVE_CURSE
+            && !(battler == gBattlerTarget && GetBattlerAbility(gBattlerAttacker) == ABILITY_INFILTRATOR)
+            && !(battler == gBattlerTarget && IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_BUG)))
         {
             if (flags == STAT_CHANGE_ALLOW_PTR)
             {
@@ -16098,6 +16101,7 @@ static void Cmd_mimicattackcopy(void)
 
     if ((gBattleMoves[gLastMoves[gBattlerTarget]].mimicBanned)
         || (gBattleMons[gBattlerAttacker].status2 & STATUS2_TRANSFORMED)
+        || gLastMoves[gBattlerTarget] == MOVE_NONE
         || gLastMoves[gBattlerTarget] == MOVE_UNAVAILABLE)
     {
         gBattlescriptCurrInstr = cmd->failInstr;
@@ -16123,7 +16127,7 @@ static void Cmd_mimicattackcopy(void)
 
             PREPARE_MOVE_BUFFER(gBattleTextBuff1, gLastMoves[gBattlerTarget])
 
-            gDisableStructs[gBattlerAttacker].mimickedMoves |= gBitTable[gCurrMovePos];
+            gDisableStructs[gBattlerAttacker].mimickedMoves |= 1u << gCurrMovePos;
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
         else
@@ -16710,7 +16714,7 @@ static void Cmd_tryspiteppreduce(void)
             gBattleMons[gBattlerTarget].pp[i] -= ppToDeduct;
 
             // if (MOVE_IS_PERMANENT(gBattlerTarget, i)), but backwards
-            if (!(gDisableStructs[gBattlerTarget].mimickedMoves & gBitTable[i])
+            if (!(gDisableStructs[gBattlerTarget].mimickedMoves & (1u << i))
                 && !(gBattleMons[gBattlerTarget].status2 & STATUS2_TRANSFORMED))
             {
                 BtlController_EmitSetMonData(gBattlerTarget, BUFFER_A, REQUEST_PPMOVE1_BATTLE + i, 0, sizeof(gBattleMons[gBattlerTarget].pp[i]), &gBattleMons[gBattlerTarget].pp[i]);
@@ -20364,52 +20368,36 @@ void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBat
 {
     u32 holdEffect = GetMonHoldEffect(&gPlayerParty[expGetterMonId]);
 
-    if (IsTradedMon(&gPlayerParty[expGetterMonId]))
-        *expAmount = (*expAmount * 125) / 100;
-    if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
-        *expAmount = (*expAmount * 200) / 100;
-    if (GetMonData(&gPlayerParty[expGetterMonId], MON_DATA_LEVEL) < GetPreviousLevelCap())
-        *expAmount = (*expAmount * 150) / 100;
-    if (B_UNEVOLVED_EXP_MULTIPLIER >= GEN_6 && IsMonPastEvolutionLevel(&gPlayerParty[expGetterMonId]))
-        *expAmount = (*expAmount * 4915) / 4096;
-    if (B_AFFECTION_MECHANICS == TRUE && GetBattlerFriendshipScore(expGetterMonId) >= FRIENDSHIP_50_TO_99)
-        *expAmount = (*expAmount * 4915) / 4096;
-    if (CheckBagHasItem(ITEM_EXP_CHARM, 1)) //is also for other exp boosting Powers if/when implemented
-        *expAmount = (*expAmount * 150) / 100;
     if (gMapHeader.regionMapSectionId == MAPSEC_SCORCHED_SLAB)
-        *expAmount = (*expAmount * 1) / 100;
-    if (FlagGet(FLAG_VISITED_SOOTOPOLIS_CITY))
-        if (!FlagGet(FLAG_BADGE01_GET))
-            *expAmount = (*expAmount * 150) / 100;
-    if (FlagGet(FLAG_VISITED_MOSSDEEP_CITY))
-        if (!FlagGet(FLAG_BADGE02_GET))
-            *expAmount = (*expAmount * 150) / 100;
-    if (FlagGet(FLAG_VISITED_LILYCOVE_CITY))
-        if (!FlagGet(FLAG_DEFEATED_OZONE_BRANCH))
-            *expAmount = (*expAmount * 150) / 100;
-    if (FlagGet(FLAG_VISITED_ZOTPYRE))
-        if (!FlagGet(FLAG_BADGE03_GET))
-            *expAmount = (*expAmount * 150) / 100;
-    if (FlagGet(FLAG_VISITED_FORTREE_CITY))
-        if (!FlagGet(FLAG_BADGE04_GET))
-            *expAmount = (*expAmount * 150) / 100;
-    if (FlagGet(FLAG_VISITED_LAVARIDGE_TOWN))
-        if (!FlagGet(FLAG_BADGE05_GET))
-            *expAmount = (*expAmount * 150) / 100;
-    if (FlagGet(FLAG_VISITED_VERDANTURF_TOWN))
-        if (!FlagGet(FLAG_BADGE06_GET))
-            *expAmount = (*expAmount * 150) / 100;
-    if (FlagGet(FLAG_FOUND_SHELLY))
-        if (FlagGet(FLAG_FOUND_BRAWLY))
-            if (!FlagGet(FLAG_BADGE07_GET))
-                *expAmount = (*expAmount * 150) / 100;
-    if (FlagGet(FLAG_VISITED_RUSTBORO_CITY))
-        if (!FlagGet(FLAG_BADGE08_GET))
-            *expAmount = (*expAmount * 150) / 100;
-    if (FlagGet(FLAG_VISITED_LITTLEROOT_TOWN))
-        if (!FlagGet(FLAG_DEFEATED_EVIL_WALLY))
-            *expAmount = (*expAmount * 150) / 100;
-
+    {
+        *expAmount = 1;
+    }
+    else
+    {
+        if (IsTradedMon(&gPlayerParty[expGetterMonId]))
+            *expAmount = (*expAmount * 125) / 100;
+        if (holdEffect == HOLD_EFFECT_LUCKY_EGG)
+            *expAmount = *expAmount * 2;
+        if (GetMonData(&gPlayerParty[expGetterMonId], MON_DATA_LEVEL) < GetPreviousLevelCap())
+            *expAmount = *expAmount * 3;
+        if (B_UNEVOLVED_EXP_MULTIPLIER >= GEN_6 && IsMonPastEvolutionLevel(&gPlayerParty[expGetterMonId]))
+            *expAmount = (*expAmount * 12) / 10;
+        if (GetBattlerFriendshipScore(expGetterMonId) == FRIENDSHIP_MAX)
+            *expAmount = (*expAmount * 12) / 10;
+        if (CheckBagHasItem(ITEM_EXP_CHARM, 1)) //is also for other exp boosting Powers if/when implemented
+            *expAmount = (*expAmount * 15) / 10;
+        if ((FlagGet(FLAG_VISITED_SOOTOPOLIS_CITY) && !FlagGet(FLAG_BADGE01_GET))
+        || (FlagGet(FLAG_VISITED_MOSSDEEP_CITY) && !FlagGet(FLAG_BADGE02_GET))
+        || (FlagGet(FLAG_VISITED_LILYCOVE_CITY) && !FlagGet(FLAG_DEFEATED_OZONE_BRANCH))
+        || (FlagGet(FLAG_VISITED_ZOTPYRE) && !FlagGet(FLAG_BADGE03_GET))
+        || (FlagGet(FLAG_VISITED_FORTREE_CITY) && !FlagGet(FLAG_BADGE04_GET))
+        || (FlagGet(FLAG_VISITED_LAVARIDGE_TOWN) && !FlagGet(FLAG_BADGE05_GET))
+        || (FlagGet(FLAG_VISITED_VERDANTURF_TOWN) && !FlagGet(FLAG_BADGE06_GET))
+        || (FlagGet(FLAG_FOUND_SHELLY) && FlagGet(FLAG_FOUND_BRAWLY) && !FlagGet(FLAG_BADGE07_GET))
+        || (FlagGet(FLAG_VISITED_RUSTBORO_CITY) && !FlagGet(FLAG_BADGE08_GET))
+        || (FlagGet(FLAG_VISITED_LITTLEROOT_TOWN) && !FlagGet(FLAG_DEFEATED_EVIL_WALLY)))
+            *expAmount = *expAmount * 2;
+    }
     if (B_SCALED_EXP >= GEN_5 && B_SCALED_EXP != GEN_6)
     {
         // Note: There is an edge case where if a pokemon receives a large amount of exp, it wouldn't be properly calculated
@@ -20749,6 +20737,7 @@ void BS_TryCinderDrill(void)
         else if (gBattleMons[gBattlerAttacker].species == SPECIES_CINDRILLON_PIROUETTE)
             gBattleMons[gBattlerAttacker].species = SPECIES_CINDRILLON_FEAROUETTE;
 
+        gBattleScripting.battler = gBattlerAttacker;
         BattleScriptPush(cmd->nextInstr);
         gBattlescriptCurrInstr = BattleScript_AttackerFormChangeMoveEffect;
     }
@@ -20770,6 +20759,7 @@ void BS_TryCinderTwirl(void)
         else if (gBattleMons[gBattlerAttacker].species == SPECIES_CINDRILLON_FEAROUETTE)
             gBattleMons[gBattlerAttacker].species = SPECIES_CINDRILLON_PIROUETTE;
 
+        gBattleScripting.battler = gBattlerAttacker;
         BattleScriptPush(cmd->nextInstr);
         gBattlescriptCurrInstr = BattleScript_AttackerFormChangeMoveEffect;
     }
@@ -20807,6 +20797,7 @@ void BS_TryShieldsUp(void)
         else if (gBattleMons[gBattlerAttacker].species == SPECIES_MINIOR_CORE_VIOLET)
             gBattleMons[gBattlerAttacker].species = SPECIES_MINIOR_METEOR_VIOLET;
 
+        gBattleScripting.battler = gBattlerAttacker;
         BattleScriptPush(cmd->nextInstr);
         gBattlescriptCurrInstr = BattleScript_AttackerFormChangeMoveEffect;
     }

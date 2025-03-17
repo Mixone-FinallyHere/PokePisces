@@ -383,8 +383,8 @@ static const u8 sSolarBeamDescription[] = _(
 
 static const u8 sPoisonPowderDescription[] = _(
     "Scatters a powder that poisons\n"
-    "foes. If user is blooming, makes\n"
-    "foes exhausted, lowering power.");
+    "the foe. If the user is blooming,\n"
+    "also makes the foe exhausted.");
 
 static const u8 sStunSporeDescription[] = _(
     "Scatters a powder that paralyzes\n"
@@ -607,9 +607,9 @@ static const u8 sEggBombDescription[] = _(
     "damage and remove its Ability.");
 
 static const u8 sLickDescription[] = _(
-    "The user licks the foe with a\n"
-    "long tongue to deal damage. This\n"
-    "may leave the foe paralyzed.");
+    "May paralyze and does bonus true\n"
+    "damage. Boosts bonus and chances\n"
+    "based on foe's stat drops.");
 
 static const u8 sSmogDescription[] = _(
     "The foe is attacked with exhaust\n"
@@ -667,9 +667,9 @@ static const u8 sAmnesiaDescription[] = _(
     "This sharply boosts Sp. Def.");
 
 static const u8 sKinesisDescription[] = _(
-    "Cuts foes' accuracy and evasion.\n"
-    "On Psychic Terrain, makes foes\n"
-    "exhausted, lowering their power.");
+    "Lowers targets' accuracy and\n"
+    "evasion. On Psychic Terrain,\n"
+    "also makes targets exhausted.");
 
 static const u8 sSoftBoiledDescription[] = _(
     "The user creates and eats a\n"
@@ -2244,19 +2244,19 @@ static const u8 sAquaJetDescription[] = _(
     "move always goes first.");
 
 static const u8 sAttackOrderDescription[] = _(
-    "May poison or paralyze. Traps\n"
-    "and hurts the foe for 4 to 5\n"
-    "turns. Always goes first.");
+    "May poison or paralyze and always\n"
+    "wraps. Goes first. Boosts chance\n"
+    "of status if used repeatedly.");
 
 static const u8 sDefendOrderDescription[] = _(
-    "Raises the user's Defense.\n"
-    "Attackers take damage when\n"
-    "hitting the user this turn.");
+    "Raises the user's Def. Attackers\n"
+    "take damage when hitting the\n"
+    "user this turn. Goes first.");
  
 static const u8 sHealOrderDescription[] = _(
-    "The user calls out its\n"
-    "underlings to heal it both this\n"
-    "turn and the next.");
+    "The user calls its underlings\n"
+    "to heal it this turn and it or\n"
+    "its ally the next.");
 
 static const u8 sHeadSmashDescription[] = _(
     "The user delivers a hazardous\n"
@@ -3611,8 +3611,8 @@ static const u8 sPoltergeistDescription[] = _(
     "if the foe isn't holding an item.");
 
 static const u8 sCorrosiveGasDescription[] = _(
-    "The user releases acidic gas\n"
-    "held items and drops Defense.\n"
+    "Releases acidic gas to destroy\n"
+    "held items and drop Defense.\n"
     "This move always goes first.");
 
 static const u8 sCoachingDescription[] = _(
@@ -3637,7 +3637,7 @@ static const u8 sScorchingSandsDescription[] = _(
 
 static const u8 sJungleHealingDescription[] = _(
     "If the user or ally has a status\n"
-    "condition they are cured of it,\n"
+    "condition, they are cured of it,\n"
     "otherwise they start to bloom.");
 
 static const u8 sJungleRageDescription[] = _(
@@ -3653,7 +3653,7 @@ static const u8 sSurgingStrikesDescription[] = _(
 static const u8 sThunderCageDescription[] = _(
     "The user traps the target in a\n"
     "cage of sparking electricity for\n"
-    "4 to 5 turns.");
+    "4 or 5 turns.");
 
 static const u8 sDragonEnergyDescription[] = _(
     "Converts life-force into power\n"
@@ -4172,9 +4172,9 @@ static const u8 sGeoPulseDescription[] = _(
     "boost the user's Defense stat.");
 
 static const u8 sDemolisherDescription[] = _(
-    "The user demolishes everyone on\n"
-    "the field. Boosted in Terrains\n"
-    "and Rooms and destroys them.");
+    "The user demolishes foes on the\n"
+    "field. Boosted in Terrains and\n"
+    "Rooms and destroys them.");
 
 static const u8 sIceSpinnerDescription[] = _(
     "The user twirls hitting the\n"
@@ -4271,9 +4271,9 @@ static const u8 sRealTearsDescription[] = _(
     "with no effect at all... ");
 
 static const u8 sRazingSunDescription[] = _(
-    "The user gains 1 Daybreak\n"
-    "Counter. Gains effects based\n"
-    "on the amount of counters.");
+    "Gains daybreak. At 1, ignores\n"
+    "stats. At 2, ignores abilities.\n"
+    "At 3, uses all to heal.");
 
 static const u8 sDragonPokerDescription[] = _(
     "Damage category is based on which\n"
@@ -4371,9 +4371,9 @@ static const u8 sKerfuffleDescription[] = _(
     "Boosted if the user is confused.");
 
 static const u8 sSpindaSwingDescription[] = _(
-    "Confuses the user. Cuts a random\n"
-    "stat of foes'. Lands critical\n"
-    "hits if the user is confused.");
+    "Confuses the user or lands\n"
+    "critical hits if already. Cuts a\n"
+    "random stat. Ignores confusion.");
 
 static const u8 sVerglastromDescription[] = _(
     "The user creates a storm of ice.\n"
@@ -4426,9 +4426,9 @@ static const u8 sBlackBuffetDescription[] = _(
     "Boosted the lower the foe's HP.");
 
 static const u8 sExecutionDescription[] = _(
-    "Power triples if the foe is at\n"
-    "3/4 HP or less. The user becomes\n"
-    "exhausted, reducing their power.");
+    "Triples in power if the foe has\n"
+    "3/4 or less HP. The user becomes\n"
+    "exhausted afterwards.");    
 
 static const u8 sSeizeChanceDescription[] = _(
     "Flinches if the foe is readying\n"
@@ -4617,8 +4617,8 @@ static const u8 sBassCannonDescription[] = _(
 
 static const u8 sPowerDrainDescription[] = _(
     "Heals by using the foe's Speed\n"
-    "and lowers it. Also makes the\n"
-    "foe no longer Electric-type.");
+    "and lowers it. Also removes the\n"
+    "foe's Electric-type. Goes first.");
 
 static const u8 sGrippingNailDescription[] = _(
     "Hits 3 times and rises in power.\n"
@@ -4641,9 +4641,9 @@ static const u8 sSpiritAwayDescription[] = _(
     "Absorbs 3/4 the damage dealt.");
 
 static const u8 sPhantasmDescription[] = _(
-    "The user gains the Phantom\n"
-    "status by sacrificing 1/4 of its\n"
-    "own HP.");
+    "Becomes a Phantom by cutting HP,\n"
+    "granting certain capabilities.\n"
+    "Goes away after using an attack.");
 
 static const u8 sSnapblossomDescription[] = _(
     "Drains HP. Blooms the user if\n"

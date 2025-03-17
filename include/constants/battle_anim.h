@@ -442,6 +442,8 @@
 #define ANIM_TAG_PURPLE_FIRE_PLUME          (ANIM_SPRITES_START + 428)
 #define ANIM_TAG_GLASS_BREAK_1              (ANIM_SPRITES_START + 429)
 #define ANIM_TAG_GLASS_BREAK_2              (ANIM_SPRITES_START + 430)
+#define ANIM_TAG_GIANTS_SPEAR_OPPONENT      (ANIM_SPRITES_START + 431)
+#define ANIM_TAG_TORPEDO                    (ANIM_SPRITES_START + 432)
 
 // battlers
 #define ANIM_ATTACKER         0
@@ -617,6 +619,8 @@
 #define B_ANIM_SAFEGUARD                54
 #define B_ANIM_LUCKY_CHANT              55
 #define B_ANIM_GUARD_DOG                56
+#define B_ANIM_SWEET_VEIL               57
+#define B_ANIM_TAILWIND                 58
 
 // special animations table (gBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0

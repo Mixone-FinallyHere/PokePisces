@@ -5510,11 +5510,7 @@ void ItemUseCB_ShellyBrew(u8 taskId, TaskFunc task)
     u8 holdEffectParam = ItemId_GetHoldEffectParam(*itemPtr);
 
     sInitialLevel = GetMonData(mon, MON_DATA_LEVEL);
-    if (sInitialLevel >= GetPreviousLevelCap())
-    {
-        cannotUseEffect = TRUE;
-    }
-    else if (sInitialLevel != MAX_LEVEL)
+    if (sInitialLevel <= GetPreviousLevelCap())
     {
         BufferMonStatsToTaskData(mon, arrayPtr);
         cannotUseEffect = ExecuteTableBasedItemEffect(mon, *itemPtr, gPartyMenu.slotId, 0);
@@ -5554,7 +5550,7 @@ void ItemUseCB_ShellyBrew(u8 taskId, TaskFunc task)
     }
     else
     {
-        sFinalLevel = GetPreviousLevelCap();
+        sFinalLevel = GetMonData(mon, MON_DATA_LEVEL, NULL);
         gPartyMenuUseExitCallback = TRUE;
         UpdateMonDisplayInfoAfterRareCandy(gPartyMenu.slotId, mon);
         RemoveBagItem(gSpecialVar_ItemId, 1);
@@ -5562,8 +5558,18 @@ void ItemUseCB_ShellyBrew(u8 taskId, TaskFunc task)
         if (sFinalLevel > sInitialLevel)
         {
             PlayFanfareByFanfareNum(FANFARE_LEVEL_UP);
-            ConvertIntToDecimalStringN(gStringVar2, sFinalLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
-            StringExpandPlaceholders(gStringVar4, gText_PkmnElevatedToLvVar2);
+            if (holdEffectParam == 0 || holdEffectParam == 10) // Rare Candy
+            {
+                ConvertIntToDecimalStringN(gStringVar2, sFinalLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
+                StringExpandPlaceholders(gStringVar4, gText_PkmnElevatedToLvVar2);
+            }
+            else // Exp Candies
+            {
+                ConvertIntToDecimalStringN(gStringVar2, sExpCandyExperienceTable[holdEffectParam - 1], STR_CONV_MODE_LEFT_ALIGN, 6);
+                ConvertIntToDecimalStringN(gStringVar3, sFinalLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
+                StringExpandPlaceholders(gStringVar4, gText_PkmnGainedExpAndElevatedToLvVar3);
+            }
+
             DisplayPartyMenuMessage(gStringVar4, TRUE);
             ScheduleBgCopyTilemapToVram(2);
             gTasks[taskId].func = Task_DisplayLevelUpStatsPg1;

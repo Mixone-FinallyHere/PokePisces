@@ -294,6 +294,11 @@ void ScriptSetShunyongBattle(struct ScriptContext *ctx)
     struct Pokemon *mon = &gEnemyParty[0];
     u32 i, val;
     
+    // set 2v1
+    gIsScriptedWildDouble = TRUE;
+    gBattleTypeFlags = BATTLE_TYPE_SHUNYONG; // must be set before createmon
+    
+    // create shunyong
     ZeroEnemyPartyMons();
 
     CreateMonWithNature(mon, SPECIES_SHUNYONG, 90, 31, NATURE_HARDY);
@@ -307,9 +312,5 @@ void ScriptSetShunyongBattle(struct ScriptContext *ctx)
     // set AI
     FlagSet(FLAG_SMART_WILD_AI_FLAG);
     VarSet(VAR_WILD_AI_FLAGS, AI_FLAGS_SHUNYONG);
-    
-    // set 2v1
-    gIsScriptedWildDouble = TRUE;
-    gBattleTypeFlags = BATTLE_TYPE_SHUNYONG;
 }
 
