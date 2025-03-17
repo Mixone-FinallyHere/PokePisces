@@ -14938,11 +14938,12 @@ BattleScript_TurnHeal:
 
 BattleScript_DaybreakTurnDamage::
 	printstring STRINGID_PKMNHURTBY
-BattleScript_TurnDamage:
 	waitmessage B_WAIT_TIME_LONG
-	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
+	tryfaintmon BS_ATTACKER
+	checkteamslost BattleScript_DoTurnDmgEnd
 	end2
 
 BattleScript_AquaRingHeal::

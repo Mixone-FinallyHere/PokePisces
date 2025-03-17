@@ -20737,6 +20737,7 @@ void BS_TryCinderDrill(void)
         else if (gBattleMons[gBattlerAttacker].species == SPECIES_CINDRILLON_PIROUETTE)
             gBattleMons[gBattlerAttacker].species = SPECIES_CINDRILLON_FEAROUETTE;
 
+        gBattleScripting.battler = gBattlerAttacker;
         BattleScriptPush(cmd->nextInstr);
         gBattlescriptCurrInstr = BattleScript_AttackerFormChangeMoveEffect;
     }
@@ -20758,6 +20759,7 @@ void BS_TryCinderTwirl(void)
         else if (gBattleMons[gBattlerAttacker].species == SPECIES_CINDRILLON_FEAROUETTE)
             gBattleMons[gBattlerAttacker].species = SPECIES_CINDRILLON_PIROUETTE;
 
+        gBattleScripting.battler = gBattlerAttacker;
         BattleScriptPush(cmd->nextInstr);
         gBattlescriptCurrInstr = BattleScript_AttackerFormChangeMoveEffect;
     }
@@ -20795,6 +20797,7 @@ void BS_TryShieldsUp(void)
         else if (gBattleMons[gBattlerAttacker].species == SPECIES_MINIOR_CORE_VIOLET)
             gBattleMons[gBattlerAttacker].species = SPECIES_MINIOR_METEOR_VIOLET;
 
+        gBattleScripting.battler = gBattlerAttacker;
         BattleScriptPush(cmd->nextInstr);
         gBattlescriptCurrInstr = BattleScript_AttackerFormChangeMoveEffect;
     }
