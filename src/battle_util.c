@@ -3764,7 +3764,9 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_CONFUSED: // confusion
-            if (!gBattleStruct->isAtkCancelerForCalledMove && gBattleMons[gBattlerAttacker].status2 & STATUS2_CONFUSION)
+            if (!gBattleStruct->isAtkCancelerForCalledMove 
+            && gBattleMons[gBattlerAttacker].status2 & STATUS2_CONFUSION
+            && && gBattleMoves[gCurrentMove].effect != EFFECT_SPINDA_SWING)
             {
                 if (!(gStatuses4[gBattlerAttacker] & STATUS4_INFINITE_CONFUSION))
                     gBattleMons[gBattlerAttacker].status2 -= STATUS2_CONFUSION_TURN(1);
@@ -13244,14 +13246,14 @@ static inline uq4_12_t GetDaybreakDefenderModifier(u32 battlerDef)
 
 static inline uq4_12_t GetInfatuationDefenderModifier(u32 battlerDef)
 {
-    if (gBattleMons[battlerDef].status2 & STATUS2_INFATUATION)
+    if (gBattleMons[battlerDef].status2 & STATUS2_INFATUATION && gBattleMons[battlerDef].species != SPECIES_YANDEMIC && gBattleMons[battlerDef].ability != ABILITY_LOVESICK)
         return UQ_4_12(1.25);
     return UQ_4_12(1.0);
 }
 
 static inline uq4_12_t GetInfatuationAttackerModifier(u32 battlerAtk)
 {
-    if (gBattleMons[battlerAtk].status2 & STATUS2_INFATUATION)
+    if (gBattleMons[battlerAtk].status2 & STATUS2_INFATUATION && gBattleMons[battlerAtk].species != SPECIES_YANDEMIC && gBattleMons[battlerAtk].ability != ABILITY_LOVESICK)
         return UQ_4_12(0.75);
     return UQ_4_12(1.0);
 }

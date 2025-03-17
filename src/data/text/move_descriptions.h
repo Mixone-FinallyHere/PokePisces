@@ -2254,9 +2254,9 @@ static const u8 sDefendOrderDescription[] = _(
     "hitting the user this turn.");
  
 static const u8 sHealOrderDescription[] = _(
-    "The user calls out its\n"
-    "underlings to heal it both this\n"
-    "turn and the next.");
+    "The user calls its underlings\n"
+    "to heal it this turn and it or\n"
+    "its ally the next.");
 
 static const u8 sHeadSmashDescription[] = _(
     "The user delivers a hazardous\n"
@@ -4371,9 +4371,9 @@ static const u8 sKerfuffleDescription[] = _(
     "Boosted if the user is confused.");
 
 static const u8 sSpindaSwingDescription[] = _(
-    "Confuses the user. Cuts a random\n"
-    "stat of foes'. Lands critical\n"
-    "hits if the user is confused.");
+    "Confuses the user or lands\n"
+    "critical hits if already. Cuts a\n"
+    "random stat. Ignores confusion.");
 
 static const u8 sVerglastromDescription[] = _(
     "The user creates a storm of ice.\n"

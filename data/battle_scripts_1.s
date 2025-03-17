@@ -5229,11 +5229,11 @@ BattleScript_SpiderWebTurnDmgEnd:
 	end2
 
 BattleScript_EffectRagePowder::
+	jumpifnotbattletype BATTLE_TYPE_DOUBLE, BattleScript_EffectTaunt
 	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_EffectRagePowderJustTaunt
 	attackcanceler
 	attackstring
 	ppreduce
-	jumpifnotbattletype BATTLE_TYPE_DOUBLE, BattleScript_ButItFailed
 	setforcedtarget
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_EffectRagePowderJustFollowMe
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_EffectRagePowderJustFollowMe
