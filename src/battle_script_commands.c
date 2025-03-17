@@ -14873,9 +14873,10 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
                   || battlerAbility == ABILITY_TITANIC
                   || battlerAbility == ABILITY_FULL_METAL_BODY
                   || ((gStatuses3[battler] & STATUS3_MAGNET_RISE) && (gStatuses4[battler] & STATUS4_SUPERCHARGED)))
-                  && (!affectsUser || mirrorArmored)) || (gDisableStructs[battler].purified))
-                  && !certain 
+                  && (!affectsUser || mirrorArmored))
+                  && !certain
                   && gCurrentMove != MOVE_CURSE)
+                  || gDisableStructs[battler].purified)
         {
             if (flags == STAT_CHANGE_ALLOW_PTR)
             {
@@ -15033,9 +15034,7 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
     }
     else // stat increase
     {
-        if (gDisableStructs[battler].purified
-        && !certain 
-        && gCurrentMove != MOVE_CURSE)
+        if (gDisableStructs[battler].purified)
         {
             if (flags == STAT_CHANGE_ALLOW_PTR)
             {
