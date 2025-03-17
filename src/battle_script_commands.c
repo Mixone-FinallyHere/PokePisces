@@ -6229,7 +6229,7 @@ static void Cmd_playstatchangeanimation(void)
         {
             if (stats & 1)
             {
-                if (flags & STAT_CHANGE_CANT_PREVENT)
+                if (flags & STAT_CHANGE_CANT_PREVENT && !gDisableStructs[battler].purified)
                 {
                     if (gBattleMons[battler].statStages[currStat] > MIN_STAT_STAGE)
                     {
@@ -6277,7 +6277,7 @@ static void Cmd_playstatchangeanimation(void)
         else
             startingStatAnimId = STAT_ANIM_PLUS1;
 
-        while (stats != 0)
+        while (stats != 0 && !gDisableStructs[battler].purified)
         {
             if (stats & 1 && gBattleMons[battler].statStages[currStat] < MAX_STAT_STAGE)
             {
@@ -14867,13 +14867,13 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
             gBattlescriptCurrInstr = BattleScript_ButItFailed;
             return STAT_CHANGE_DIDNT_WORK;
         }
-        else if ((((battlerHoldEffect == HOLD_EFFECT_CLEAR_AMULET
+        else if (((battlerHoldEffect == HOLD_EFFECT_CLEAR_AMULET
                   || (battlerHoldEffect == HOLD_EFFECT_EERIE_MASK && (gBattleMons[battler].species == SPECIES_SEEDOT || gBattleMons[battler].species == SPECIES_NUZLEAF || gBattleMons[battler].species == SPECIES_SHIFTRY) && (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND))
                   || battlerAbility == ABILITY_CLEAR_BODY
                   || battlerAbility == ABILITY_TITANIC
                   || battlerAbility == ABILITY_FULL_METAL_BODY
                   || ((gStatuses3[battler] & STATUS3_MAGNET_RISE) && (gStatuses4[battler] & STATUS4_SUPERCHARGED)))
-                  && (!affectsUser || mirrorArmored))
+                  && (!affectsUser || mirrorArmored)
                   && !certain
                   && gCurrentMove != MOVE_CURSE)
                   || gDisableStructs[battler].purified)
