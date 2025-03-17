@@ -2244,14 +2244,14 @@ static const u8 sAquaJetDescription[] = _(
     "move always goes first.");
 
 static const u8 sAttackOrderDescription[] = _(
-    "May poison or paralyze. Traps\n"
-    "and hurts the foe for 4 or 5\n"
-    "turns. Always goes first.");
+    "May poison or paralyze and always\n"
+    "wraps. Goes first. Boosts chance\n"
+    "of status if used repeatedly.");
 
 static const u8 sDefendOrderDescription[] = _(
-    "Raises the user's Defense.\n"
-    "Attackers take damage when\n"
-    "hitting the user this turn.");
+    "Raises the user's Def. Attackers\n"
+    "take damage when hitting the\n"
+    "user this turn. Goes first.");
  
 static const u8 sHealOrderDescription[] = _(
     "The user calls its underlings\n"

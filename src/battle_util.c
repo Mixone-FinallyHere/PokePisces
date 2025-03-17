@@ -3766,7 +3766,7 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
         case CANCELLER_CONFUSED: // confusion
             if (!gBattleStruct->isAtkCancelerForCalledMove 
             && gBattleMons[gBattlerAttacker].status2 & STATUS2_CONFUSION
-            && && gBattleMoves[gCurrentMove].effect != EFFECT_SPINDA_SWING)
+            && gBattleMoves[gCurrentMove].effect != EFFECT_SPINDA_SWING)
             {
                 if (!(gStatuses4[gBattlerAttacker] & STATUS4_INFINITE_CONFUSION))
                     gBattleMons[gBattlerAttacker].status2 -= STATUS2_CONFUSION_TURN(1);
@@ -15304,12 +15304,14 @@ u32 CalcSecondaryEffectChance(u32 battler, u8 secondaryEffectChance)
         else
             secondaryEffectChance = 50;
     }
-    if (gCurrentMove == MOVE_ASTRAL_BARRAGE && gBattleStruct->faintedMonCount[GetBattlerSide(battler)] > 0)
+    if (gCurrentMove == MOVE_ASTRAL_BARRAGE && gBattleStruct->faintedMonCount[GetBattlerSide(battler)] != 0)
         secondaryEffectChance = 20 + (10 * gBattleStruct->faintedMonCount[GetBattlerSide(battler)]);
     else if (gCurrentMove == MOVE_METEOR_MASH && gFieldStatuses & STATUS_FIELD_GRAVITY)
         secondaryEffectChance = 100;
     else if ((CanUseLastResort(battler) && gCurrentMove == MOVE_ANCIENT_POWER) || (gBattleMons[gBattlerTarget].status1 & STATUS1_PANIC && gCurrentMove == MOVE_OMINOUS_WIND))
         secondaryEffectChance *= 3;
+    else if (gBattleMoves[gCurrentMove].effect == EFFECT_ATTACK_ORDER && gBattleStruct->sameMoveTurns[gBattlerAttacker] != 0)
+        secondaryEffectChance = 30 + (10 * gBattleStruct->sameMoveTurns[gBattlerAttacker]);
     else if (CountBattlerSpeedDecreases(gBattlerTarget) > 0 && gCurrentMove == MOVE_FREEZING_GLARE)
         secondaryEffectChance *= CountBattlerSpeedDecreases(gBattlerTarget) + 1;
     else if (CountBattlerStatDecreases(gBattlerTarget, TRUE) > 0 && gCurrentMove == MOVE_LICK)

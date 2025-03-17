@@ -6474,7 +6474,7 @@ static void Cmd_moveend(void)
                     && !TestTeruCharm(gBattlerAttacker))
                 {
                     gProtectStructs[gBattlerAttacker].touchedProtectLike = FALSE;
-                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 8;
+                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 5;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
