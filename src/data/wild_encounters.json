@@ -12067,63 +12067,63 @@
             "encounter_rate": 20,
             "mons": [
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_SOLASU"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_GAOTERRA"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_SOLASU"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_GLAREYALE"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_MOTHRAMITY"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_GOLDEROCK"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_LYORESA"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_BISHOUCHA"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_LEVIALAGO"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_AETHEREAL"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_AETHEREAL"
               },
               {
-                "min_level": 74,
-                "max_level": 74,
+                "min_level": 73,
+                "max_level": 73,
                 "species": "SPECIES_RETROROACH"
               }
             ]
@@ -12132,28 +12132,28 @@
             "encounter_rate": 4,
             "mons": [
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_MYSTICIAN"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_ORROCAST"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_NIMBOZOA"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_DAKKAPOD"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_DAKKAPOD"
               }
             ]
@@ -12163,52 +12163,52 @@
             "mons": [
               {
                 "min_level": 4,
-                "max_level": 78,
+                "max_level": 75,
                 "species": "SPECIES_AGOMAGO"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_OROFLOW"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_AGOMAGO"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_AGOMAGO"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_OROFLOW"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_AGOMAGO"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_ORROCAST"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_DETERIOTL"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_ORROCAST"
               },
               {
-                "min_level": 74,
-                "max_level": 78,
+                "min_level": 73,
+                "max_level": 75,
                 "species": "SPECIES_ORROCAST"
               }
             ]
@@ -17294,27 +17294,27 @@
             "mons": [
               {
                 "min_level": 74,
-                "max_level": 78,
+                "max_level": 76,
                 "species": "SPECIES_MYSTICIAN"
               },
               {
                 "min_level": 74,
-                "max_level": 78,
+                "max_level": 76,
                 "species": "SPECIES_ORROCAST"
               },
               {
                 "min_level": 74,
-                "max_level": 78,
+                "max_level": 76,
                 "species": "SPECIES_NIMBOZOA"
               },
               {
                 "min_level": 74,
-                "max_level": 78,
+                "max_level": 76,
                 "species": "SPECIES_DAKKAPOD"
               },
               {
                 "min_level": 74,
-                "max_level": 78,
+                "max_level": 76,
                 "species": "SPECIES_DAKKAPOD"
               }
             ]
@@ -17324,52 +17324,52 @@
             "mons": [
               {
                 "min_level": 4,
-                "max_level": 78,
+                "max_level": 76,
                 "species": "SPECIES_AGOMAGO"
               },
               {
                 "min_level": 74,
-                "max_level": 78,
+                "max_level": 76,
                 "species": "SPECIES_OROFLOW"
               },
               {
                 "min_level": 74,
-                "max_level": 78,
+                "max_level": 76,
                 "species": "SPECIES_AGOMAGO"
               },
               {
                 "min_level": 74,
-                "max_level": 78,
+                "max_level": 76,
                 "species": "SPECIES_AGOMAGO"
               },
               {
                 "min_level": 74,
-                "max_level": 78,
+                "max_level": 76,
                 "species": "SPECIES_OROFLOW"
               },
               {
                 "min_level": 74,
-                "max_level": 78,
+                "max_level": 76,
                 "species": "SPECIES_AGOMAGO"
               },
               {
                 "min_level": 74,
-                "max_level": 78,
+                "max_level": 76,
                 "species": "SPECIES_ORROCAST"
               },
               {
                 "min_level": 74,
-                "max_level": 78,
+                "max_level": 76,
                 "species": "SPECIES_DETERIOTL"
               },
               {
                 "min_level": 74,
-                "max_level": 78,
+                "max_level": 76,
                 "species": "SPECIES_ORROCAST"
               },
               {
                 "min_level": 74,
-                "max_level": 78,
+                "max_level": 76,
                 "species": "SPECIES_ORROCAST"
               }
             ]

@@ -33,7 +33,7 @@ CrimneyCaldera_EventScript_LegendaryEncounter::
 	waitmoncry
 	msgbox CrimneyCaldera_Text_TimeToStepIn, MSGBOX_DEFAULT
 	closemessage
-	setwildbattle SPECIES_SHAYON, 80, ITEM_NONE, SPECIES_GROUDON, 80, ITEM_NONE
+	setwildbattle SPECIES_SHAYON, 75, ITEM_NONE, SPECIES_GROUDON, 75, ITEM_NONE
 	setflag FLAG_WILD_NO_CATCHING_FLAG
 	setflag FLAG_WILD_NO_RUNNING_FLAG
 	setflag FLAG_SMART_WILD_AI_FLAG
@@ -105,6 +105,7 @@ CrimneyCaldera_EventScript_BeatBothLegends::
 	msgbox CrimneyCaldera_Text_TheFishWentToEGR, MSGBOX_DEFAULT
 	closemessage
 	setvar VAR_NEW_COO_STATE, 9
+	setflag FLAG_DEFEATED_TWO_PISCES_LEGENDS
 	clearflag FLAG_HIDE_MAXIE_OZONE
 	release
 	end
