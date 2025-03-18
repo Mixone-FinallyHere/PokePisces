@@ -6400,7 +6400,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_PAYBACK] =
     {
-        .effect = EFFECT_PAYBACK,
+        .effect = EFFECT_REVENGE,
         .power = 60,
         .type = TYPE_DARK,
         .accuracy = 100,

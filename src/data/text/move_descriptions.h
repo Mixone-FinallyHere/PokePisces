@@ -4287,8 +4287,8 @@ static const u8 sLoneSharkDescription[] = _(
 
 static const u8 sHeartStealDescription[] = _(
     "Sets 2 stacks of allure. Hitting\n"
-    "foes at 2 stacks infatuates them.\n"
-    "Steals stat boosts. Goes first.");
+    "foes at 2 stacks infatuates\n"
+    "them. Steals boosts. Goes first.");
 
 static const u8 sIgnaStrikeDescription[] = _(
     "Charges with blazing speed and\n"
