@@ -2,6 +2,7 @@
 #define GUARD_BATTLE_SCRIPTS_H
 
 extern const u8 BattleScript_MoveEffectPPReduce[];
+extern const u8 BattleScript_MoveEffectTorment[];
 extern const u8 BattleScript_AccDown[];
 extern const u8 BattleScript_MoveEffectPowder[];
 extern const u8 BattleScript_ResetNegativeStatStages[];
@@ -274,6 +275,7 @@ extern const u8 BattleScript_AbilitySetMagmaArmored[];
 extern const u8 BattleScript_TransfusionAbilityCopy[];
 extern const u8 BattleScript_ItemBloomingEffect[];
 extern const u8 BattleScript_ItemTauntEffect[];
+extern const u8 BattleScript_ItemHealBlockEffect[];
 extern const u8 BattleScript_SynchronizeActivates[];
 extern const u8 BattleScript_NoItemSteal[];
 extern const u8 BattleScript_AbilityCuredStatus[];
@@ -509,6 +511,10 @@ extern const u8 BattleScript_GemActivates[];
 extern const u8 BattleScript_BerryReduceDmg[];
 extern const u8 BattleScript_PrintBerryReduceString[];
 extern const u8 BattleScript_WeaknessPolicy[];
+extern const u8 BattleScript_Snowball[];
+extern const u8 BattleScript_CellBattery[];
+extern const u8 BattleScript_LuminousMoss[];
+extern const u8 BattleScript_AbsorbBulb[];
 extern const u8 BattleScript_LostMantle[];
 extern const u8 BattleScript_TargetItemStatRaise[];
 extern const u8 BattleScript_TargetItemStatDrop[];
@@ -656,6 +662,7 @@ extern const u8 BattleScript_GoodAsGoldActivates[];
 extern const u8 BattleScript_RuinAbilityActivates[];
 extern const u8 BattleScript_WhiteSmokeAbilityActivates[];
 extern const u8 BattleScript_RuinWardHurtActivates[];
+extern const u8 BattleScript_GravityWellActivates[];
 extern const u8 BattleScript_RuinWardActivates[];
 extern const u8 BattleScript_RuinWardSafeguardActivates[];
 extern const u8 BattleScript_RuinWardLuckyChantActivates[];

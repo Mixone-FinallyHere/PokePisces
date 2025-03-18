@@ -6313,6 +6313,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
+        .argument = STATUS1_BLOOMING,
     },
 
     [MOVE_TAILWIND] =
@@ -6399,7 +6400,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_PAYBACK] =
     {
-        .effect = EFFECT_PAYBACK,
+        .effect = EFFECT_REVENGE,
         .power = 60,
         .type = TYPE_DARK,
         .accuracy = 100,
@@ -7711,6 +7712,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
         .bitingMove = TRUE,
+        .argument = STATUS1_BLOOMING,
     },
 
     [MOVE_CHARGE_BEAM] =
@@ -15373,7 +15375,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .type = TYPE_DARK,
         .accuracy = 100,
         .pp = 5,
-        .secondaryEffectChance = 0,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 2,
         .split = SPLIT_PHYSICAL,

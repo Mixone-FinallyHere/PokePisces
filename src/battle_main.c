@@ -4401,7 +4401,7 @@ static void HandleTurnActionSelectionState(void)
                         BtlController_EmitChoosePokemon(battler, BUFFER_A, PARTY_ACTION_CANT_SWITCH, PARTY_SIZE, ABILITY_NONE, gBattleStruct->battlerPartyOrders[battler]);
                     }
                     else if (ItemId_GetHoldEffect(gBattleMons[battler].item) != HOLD_EFFECT_SHED_SHELL
-                      && i == IsAbilityPreventingEscape(battler))   // must be last to keep i value integrity
+                      && (i = IsAbilityPreventingEscape(battler)))   // must be last to keep i value integrity
                     {
                         BtlController_EmitChoosePokemon(battler, BUFFER_A, ((i - 1) << 4) | PARTY_ACTION_ABILITY_PREVENTS, PARTY_SIZE, gBattleMons[i - 1].ability, gBattleStruct->battlerPartyOrders[battler]);
                     }
@@ -5768,6 +5768,13 @@ static void HandleEndTurn_FinishBattle(void)
 
             if (!changedForm)
                 changedForm = TryFormChange(i, B_SIDE_PLAYER, FORM_CHANGE_END_BATTLE);
+
+            if (GetBattlerHoldEffect(i, FALSE) == HOLD_EFFECT_BLOOM_ORB && gBattleMons[i].status1 & STATUS1_BLOOMING)
+            {
+                gBattleMons[i].status1 = 0;
+                BtlController_EmitSetMonData(i, BUFFER_A, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[i].status1);
+                MarkBattlerForControllerExec(i);
+            }
 
             // Clear original species field
             gBattleStruct->changedSpecies[B_SIDE_PLAYER][i] = SPECIES_NONE;

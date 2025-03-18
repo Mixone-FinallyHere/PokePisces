@@ -1016,9 +1016,28 @@ BattleScript_TreatOnlyHeal::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
+BattleScript_HeartSteal::
+	printstring STRINGID_SPECTRALTHIEFSTEAL
+	waitmessage B_WAIT_TIME_LONG
+	setbyte sB_ANIM_ARG2, 0
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	spectralthiefprintstats
+	printstring STRINGID_EMPTYSTRING3
+	waitmessage 1
+	goto BattleScript_EffectHeartStealFromDamage
+
 BattleScript_EffectHeartSteal::
-	setmoveeffect MOVE_EFFECT_SPECTRAL_THIEF
-    call BattleScript_EffectHit_Ret
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	typecalc
+	tryspectralthiefsteal BattleScript_HeartSteal
+BattleScript_EffectHeartStealFromDamage:
+	critcalc
+	damagecalc
+	adjustdamage
+	call BattleScript_Hit_RetFromAtkAnimation
 	seteffectwithchance
 	tryfaintmon BS_TARGET
 	jumpifbattleend BattleScript_MoveEnd
@@ -2167,35 +2186,42 @@ BattleScript_HunkerDownEnd::
 
 BattleScript_EffectMoonBeam:
 	jumpifholdeffect BS_ATTACKER, HOLD_EFFECT_MOON_MIRROR, BattleScript_TrueMoonBeam
-	goto BattleScript_MoonBeamWithoutEffect
-BattleScript_TrueMoonBeam::
-	setmoveeffect MOVE_EFFECT_SPECTRAL_THIEF
-BattleScript_MoonBeamWithoutEffect::
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	curestatuswithmove BS_ATTACKER, BattleScript_HitFromCritCalc
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
-	seteffectwithchance
+    call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	curestatuswithmove BS_ATTACKER, BattleScript_MoveEnd
 	updatestatusicon BS_ATTACKER
 	printstring STRINGID_PKMNSTATUSNORMAL
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
+BattleScript_TrueMoonBeam::
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	typecalc
+	tryspectralthiefsteal BattleScript_MoonBeamSteal
+BattleScript_EffectMoonBeamFromDamage:
+	critcalc
+	damagecalc
+	adjustdamage
+	call BattleScript_Hit_RetFromAtkAnimation
+	tryfaintmon BS_TARGET
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	curestatuswithmove BS_ATTACKER, BattleScript_MoveEnd
+	updatestatusicon BS_ATTACKER
+	printstring STRINGID_PKMNSTATUSNORMAL
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+BattleScript_MoonBeamSteal::
+	printstring STRINGID_SPECTRALTHIEFSTEAL
+	waitmessage B_WAIT_TIME_LONG
+	setbyte sB_ANIM_ARG2, 0
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	spectralthiefprintstats
+	printstring STRINGID_EMPTYSTRING3
+	waitmessage 1
+	goto BattleScript_EffectMoonBeamFromDamage
 
 BattleScript_EffectBerryBadJoke::
 	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_BerryBadJokeAddFrostbite
@@ -2896,12 +2922,36 @@ BattleScript_StunSporeFlinch:
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
+BattleScript_PlunderSteal::
+	printstring STRINGID_SPECTRALTHIEFSTEAL
+	waitmessage B_WAIT_TIME_LONG
+	setbyte sB_ANIM_ARG2, 0
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	spectralthiefprintstats
+	printstring STRINGID_EMPTYSTRING3
+	waitmessage 1
+	goto BattleScript_EffectPlunderFromDamage
+
 BattleScript_EffectPlunder::
-	setmoveeffect MOVE_EFFECT_PLUNDER
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	typecalc
+	tryspectralthiefsteal BattleScript_PlunderSteal
+BattleScript_EffectPlunderFromDamage:
+	critcalc
+	damagecalc
+	adjustdamage
+	call BattleScript_Hit_RetFromAtkAnimation
+	tryfaintmon BS_TARGET
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	setmoveeffect MOVE_EFFECT_PAYDAY
 	seteffectprimary
-	setmoveeffect MOVE_EFFECT_SPECTRAL_THIEF
-	seteffectsecondary
-	goto BattleScript_EffectHit
+	jumpifbattleend BattleScript_MoveEnd
+	setmoveeffect MOVE_EFFECT_STEAL_ITEM
+	seteffectprimary
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectSleepPowder:
 	jumpifstatus BS_ATTACKER, STATUS1_BLOOMING, BattleScript_EffectSleepPowderDefenseDrop
@@ -7098,9 +7148,18 @@ BattleScript_StrengthSapQuashAfterAnimation:
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectBugBite:
-	setmoveeffect MOVE_EFFECT_BUG_BITE | MOVE_EFFECT_CERTAIN
+	setmoveeffect MOVE_EFFECT_BUG_BITE
 	jumpifmove MOVE_DINE_N_DASH, BattleScript_EffectHitEscape
-	goto BattleScript_EffectHit
+    call BattleScript_EffectHit_Ret
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	seteffectprimary
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifsubstituteblocks BattleScript_MoveEnd
+	setmoveeffect MOVE_EFFECT_REMOVE_STATUS
+	seteffectsecondary
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectIncinerate:
     call BattleScript_EffectHit_Ret
@@ -7219,11 +7278,25 @@ BattleScript_SpectralThiefSteal::
 	setbyte sB_ANIM_ARG2, 0
 	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
 	spectralthiefprintstats
-	return
+	printstring STRINGID_EMPTYSTRING3
+	waitmessage 1
+	goto BattleScript_EffectSpectralThiefFromDamage
 
-BattleScript_EffectSpectralThief:
-	setmoveeffect MOVE_EFFECT_SPECTRAL_THIEF
-	goto BattleScript_EffectHit
+BattleScript_EffectSpectralThief::
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	typecalc
+	tryspectralthiefsteal BattleScript_SpectralThiefSteal
+BattleScript_EffectSpectralThiefFromDamage:
+	critcalc
+	damagecalc
+	adjustdamage
+	call BattleScript_Hit_RetFromAtkAnimation
+	tryfaintmon BS_TARGET
+	moveendall
+	end
 
 BattleScript_EffectPartingShot::
 	attackcanceler
@@ -9640,12 +9713,15 @@ BattleScript_MoveEnd::
 
 BattleScript_EffectHit_Ret::
 	attackcanceler
+BattleScript_EffectHit_RetFromAccCheck::
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
+BattleScript_EffectHit_RetFromCritCalc::
 	critcalc
 	damagecalc
 	adjustdamage
+BattleScript_Hit_RetFromAtkAnimation::
 	attackanimation
 	waitanimation
 	effectivenesssound
@@ -14096,6 +14172,106 @@ BattleScript_WeaknessPolicyRemoveItem:
 BattleScript_WeaknessPolicyEnd:
 	return
 
+BattleScript_Snowball::
+	copybyte sBATTLER, gBattlerTarget
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_SnowballSpAtk
+	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPEED, MAX_STAT_STAGE, BattleScript_SnowballEnd
+BattleScript_SnowballSpAtk:
+	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_SPATK | BIT_SPEED, STAT_CHANGE_BY_TWO
+	setstatchanger STAT_SPATK, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_SnowballSpeed
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_SnowballSpeed
+	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_SnowballSpeed:
+	setstatchanger STAT_SPEED, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_SnowballRemoveItem
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_SnowballRemoveItem
+	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_SnowballRemoveItem:
+	removeitem BS_TARGET
+BattleScript_SnowballEnd:
+	return
+
+BattleScript_LuminousMoss::
+	copybyte sBATTLER, gBattlerTarget
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_LuminousMossSpAtk
+	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_LuminousMossEnd
+BattleScript_LuminousMossSpAtk:
+	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_SPATK | BIT_SPDEF, STAT_CHANGE_BY_TWO
+	setstatchanger STAT_SPATK, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_LuminousMossSpDef
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_LuminousMossSpDef
+	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_LuminousMossSpDef:
+	setstatchanger STAT_SPDEF, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_LuminousMossRemoveItem
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_LuminousMossRemoveItem
+	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_LuminousMossRemoveItem:
+	removeitem BS_TARGET
+BattleScript_LuminousMossEnd:
+	return
+
+BattleScript_CellBattery::
+	copybyte sBATTLER, gBattlerTarget
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_CellBatteryAtk
+	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPEED, MAX_STAT_STAGE, BattleScript_CellBatteryEnd
+BattleScript_CellBatteryAtk:
+	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_ATK | BIT_SPEED, STAT_CHANGE_BY_TWO
+	setstatchanger STAT_ATK, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_CellBatterySpeed
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_CellBatterySpeed
+	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_CellBatterySpeed:
+	setstatchanger STAT_SPEED, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_CellBatteryRemoveItem
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_CellBatteryRemoveItem
+	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_CellBatteryRemoveItem:
+	removeitem BS_TARGET
+BattleScript_CellBatteryEnd:
+	return
+
+BattleScript_AbsorbBulb::
+	copybyte sBATTLER, gBattlerTarget
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_AbsorbBulbAtk
+	jumpifstat BS_TARGET, CMP_EQUAL, STAT_DEF, MAX_STAT_STAGE, BattleScript_AbsorbBulbEnd
+BattleScript_AbsorbBulbAtk:
+	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_ATK | BIT_DEF, STAT_CHANGE_BY_TWO
+	setstatchanger STAT_ATK, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_AbsorbBulbDef
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_AbsorbBulbDef
+	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_AbsorbBulbDef:
+	setstatchanger STAT_DEF, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_AbsorbBulbRemoveItem
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_AbsorbBulbRemoveItem
+	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_AbsorbBulbRemoveItem:
+	removeitem BS_TARGET
+BattleScript_AbsorbBulbEnd:
+	return
+
 BattleScript_LostMantle::
 	copybyte sBATTLER, gBattlerAttacker
 	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_DEF, MIN_STAT_STAGE, BattleScript_LostMantleDef
@@ -16852,10 +17028,17 @@ BattleScript_RuinWardActivates::
 BattleScript_RuinWardSafeguardActivates::
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
-	playanimation BS_ATTACKER, B_ANIM_LUCKY_CHANT
+	playanimation BS_ATTACKER, B_ANIM_SAFEGUARD
 	waitanimation
 	printstring STRINGID_ABILITYCOVEREDVEIL
-	playanimation BS_ATTACKER, B_ANIM_SAFEGUARD
+	end3
+
+BattleScript_GravityWellActivates::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	playanimation BS_ATTACKER, B_ANIM_GRAVITY
+	waitanimation
+	printstring STRINGID_ABILITYINTENSIFIEDGRAVITY
 	waitmessage B_WAIT_TIME_LONG
 	end3
 
@@ -18027,6 +18210,17 @@ BattleScript_ItemTauntEffect::
 BattleScript_ItemTauntEffectRet::
 	return
 
+BattleScript_ItemHealBlockEffect::
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_ItemHealBlockEffectRet
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_ItemHealBlockEffectRet
+	jumpifsafeguard BattleScript_ItemHealBlockEffectRet
+	sethealblock BattleScript_ItemHealBlockEffectRet
+	printstring STRINGID_PKMNPREVENTEDFROMHEALING
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotHealBlockAttacker
+BattleScript_ItemHealBlockEffectRet::
+	return
+
 BattleScript_BattleBondActivatesOnMoveEndAttacker::
 	pause 5
 	copybyte gBattlerAbility, gBattlerAttacker
@@ -18985,10 +19179,10 @@ BattleScript_CornnBerryActivatesRet::
 	return
 
 BattleScript_WepearBerryActivatesRet::
-	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
 	printstring STRINGID_WEPEARHEALBLOCKPKMN
 	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_TARGET
+	removeitem BS_ATTACKER
 	return
 
 BattleScript_SpelonBerryActivatesRet::
@@ -19053,20 +19247,16 @@ BattleScript_BlukBerryActivatesRet::
 	blukberryppreduce BattleScript_BlukBerryReturn
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
 	printstring STRINGID_ATKPKMNREDUCEDPP
-BattleScript_BlukBerryEnd::
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_TARGET
 BattleScript_BlukBerryReturn::
 	return
 
 BattleScript_NanabBerryActivatesRet::
-	stockpile BS_SCRIPTING, 0
-	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
-	printstring STRINGID_PKMNSTOCKPILED
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	printstring STRINGID_NANABMINIMIZE
 	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_SCRIPTING
-BattleScript_NanabBerryEnd::
-	stockpile BS_SCRIPTING, 1
+	removeitem BS_ATTACKER
 	return
 
 BattleScript_HondewBerryActivatesRet::
@@ -20085,4 +20275,16 @@ BattleScript_MoveEffectPPReduce::
 	printstring STRINGID_PKMNREDUCEDPP
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_MoveEffectPPReduce_End:
+	return
+
+BattleScript_MoveEffectTorment::
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEffectTorment_Ret
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEffectTorment_Ret
+	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_MoveEffectTorment_Ret
+	jumpifsafeguard BattleScript_MoveEffectTorment_Ret
+	settorment BattleScript_MoveEffectTorment_Ret
+	printstring STRINGID_PKMNSUBJECTEDTOTORMENT
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotTormentAttacker
+BattleScript_MoveEffectTorment_Ret:
 	return

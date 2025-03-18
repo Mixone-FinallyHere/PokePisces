@@ -883,6 +883,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         if (moveType == TYPE_GROUND
           && !IsBattlerGrounded(battlerDef)
           && ((aiData->abilities[battlerDef] == ABILITY_LEVITATE
+          && (AI_DATA->abilities[battlerDef] == ABILITY_GRAVITY_WELL && gFieldStatuses & STATUS_FIELD_GRAVITY)
           && DoesBattlerIgnoreAbilityChecks(aiData->abilities[battlerAtk], move))
           || aiData->holdEffects[battlerDef] == HOLD_EFFECT_AIR_BALLOON
           || (gStatuses3[battlerDef] & (STATUS3_MAGNET_RISE | STATUS3_TELEKINESIS)))
@@ -891,7 +892,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             RETURN_SCORE_MINUS(20);
         }
 
-        if ((moveType == TYPE_NORMAL || moveType == TYPE_FIGHTING) && aiData->abilities[battlerDef] == ABILITY_LEVITATE)
+        if ((moveType == TYPE_NORMAL || moveType == TYPE_FIGHTING) && aiData->abilities[battlerDef] == ABILITY_EMPTY)
         {
             RETURN_SCORE_MINUS(20);
         }
@@ -2182,7 +2183,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 10;
             break;
         case EFFECT_MAGNITUDE:
-            if (aiData->abilities[battlerDef] == ABILITY_LEVITATE)
+            if (aiData->abilities[battlerDef] == ABILITY_LEVITATE || (AI_DATA->abilities[battlerDef] == ABILITY_GRAVITY_WELL && gFieldStatuses & STATUS_FIELD_GRAVITY))
                 score -= 10;
             break;
         case EFFECT_PARTING_SHOT:

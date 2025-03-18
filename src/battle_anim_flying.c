@@ -305,6 +305,18 @@ const struct SpriteTemplate gBounceBallLandSpriteTemplate =
     .callback = AnimBounceBallLand,
 };
 
+
+const struct SpriteTemplate gRedBounceBallLandSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_RED_SHADOW,
+    .paletteTag = ANIM_TAG_RED_SHADOW,
+    .oam = &gOamData_AffineDouble_ObjNormal_64x64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gAffineAnims_BounceBallLand,
+    .callback = AnimBounceBallLand,
+};
+
 const struct SpriteTemplate gCrashLandBallLandSpriteTemplate =
 {
     .tileTag = ANIM_TAG_ROCK_SHADOW,
