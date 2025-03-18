@@ -87,9 +87,15 @@ NewMauvilleFloor1_EventScript_PowerlessManEvent::
 	closemessage
 	applymovement LOCALID_P_MAN, NewMauvilleFloor1_Movement_PManGoToElevator
 	waitmovement 0
+	opendoor 26, 2
+	waitdooranim
+	applymovement LOCALID_P_MAN, NewMauvilleFloor1_Movement_PManEntersElevator
+	waitmovement 0
 	playse SE_EXIT
 	removeobject LOCALID_P_MAN
 	setflag FLAG_TEMP_11
+	closedoor 26, 2
+	waitdooranim
 	setflag FLAG_VISITED_MAUVILLE_CITY
 	setvar VAR_OLD_GUYS_STATE, 1
 	releaseall
@@ -125,6 +131,10 @@ NewMauvilleFloor1_Movement_PManJoinUp:
 
 NewMauvilleFloor1_Movement_PManGoToElevator:
 	walk_left
+	walk_up
+	step_end
+
+NewMauvilleFloor1_Movement_PManEntersElevator:
 	walk_up
 	step_end
 

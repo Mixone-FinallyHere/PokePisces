@@ -106,12 +106,19 @@ NewMauvilleRydelCycles_EventScript_RydelLackey::
 	lock
 	faceplayer
 	goto_if_lt VAR_OLD_GUYS_STATE, 6, NewMauvilleRydelCycles_EventScript_RydelLackeyPreRetire
+	goto_if_eq VAR_OLD_GUYS_STATE, 6, NewMauvilleRydelCycles_EventScript_RydelLackeyDuring
+	goto_if_eq VAR_OLD_GUYS_STATE, 7, NewMauvilleRydelCycles_EventScript_RydelLackeyDuring
 	msgbox NewMauvilleRydelCycles_Text_RydelLackeyPost, MSGBOX_AUTOCLOSE
 	release
 	end
 
 NewMauvilleRydelCycles_EventScript_RydelLackeyPreRetire::
 	msgbox NewMauvilleRydelCycles_Text_RydelLackeyPreRetire, MSGBOX_AUTOCLOSE
+	release
+	end
+
+NewMauvilleRydelCycles_EventScript_RydelLackeyDuring::
+	msgbox NewMauvilleRydelCycles_Text_RydelLackeyDuring, MSGBOX_AUTOCLOSE
 	release
 	end
 
@@ -189,6 +196,13 @@ NewMauvilleRydelCycles_Text_RydelLackeyPreRetire:
 	.string "journey or whatever. So, we only\l"
 	.string "offer mechanical fixes to bikes,\l"
 	.string "no new ones till he gets back.$"
+
+NewMauvilleRydelCycles_Text_RydelLackeyDuring:
+	.string "Hey, dude. Welcome to Rydel's Cycles\n"
+	.string "and all that...\p"
+	.string "You can talk to the boss\n"
+	.string "if you want something done right,\l"
+	.string "I'm currently on my break...$"
 
 NewMauvilleRydelCycles_Text_RydelLackeyPost:
 	.string "Oh, what's up, dude.\n"

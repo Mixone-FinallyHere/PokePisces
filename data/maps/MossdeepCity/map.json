@@ -460,6 +460,13 @@
       "elevation": 0,
       "dest_map": "MAP_FAMILY_MOSS_CAVE",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 48,
+      "y": 13,
+      "elevation": 0,
+      "dest_map": "MAP_MOSSDEEP_CITY",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

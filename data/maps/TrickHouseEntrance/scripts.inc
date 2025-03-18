@@ -7,7 +7,8 @@ TrickHouseEntrance_MapScripts::
 	.byte 0
 
 TrickHouseEntrance_OnTransition:
-	goto_if_lt VAR_OLD_GUYS_STATE, 5, TrickHouseEntrance_EventScript_SetMauvilleOldManGfx
+	call_if_lt VAR_OLD_GUYS_STATE, 5, TrickHouseEntrance_EventScript_SetMauvilleOldManGfx
+	call_if_ge VAR_OLD_GUYS_STATE, 5, TrickHouseEntrance_EventScript_RemoveNPCs
 	end
 
 TrickHouseEntrance_OnWarp:
@@ -21,7 +22,14 @@ TrickHouseEntrance_OnWarp:
 TrickHouseEntrance_EventScript_SetMauvilleOldManGfx::
 	setvar VAR_BARD_COLOR, MAUVILLE_MAN_GIDDY
 	special SetMauvilleOldManObjEventGfx
-	end
+	return
+
+TrickHouseEntrance_EventScript_RemoveNPCs::
+	removeobject LOCALID_TRICK_MASTER
+	setflag FLAG_TEMP_11
+	removeobject LOCALID_P_MAN
+	setflag FLAG_TEMP_14
+	return
 
 TrickHouseEntrance_EventScript_RemoveTrigger::
 	setvar VAR_TEMP_5, 1

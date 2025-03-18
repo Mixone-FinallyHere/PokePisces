@@ -2499,7 +2499,8 @@ TheColdMines_Text_GotouIntro:
 	.string "Prepare, then, to take on the might of\na glacier!$"
 
 TheColdMines_Text_GotouDefeated:
-	.string "Stalwart and confident. Very impressive.$"
+	.string "Stalwart and confident.\n"
+	.string "Very impressive.$"
 
 TheColdMines_Text_GotouPostBattle:
 	.string "post$"
