@@ -11814,63 +11814,63 @@
             "encounter_rate": 20,
             "mons": [
               {
-                "min_level": 100,
-                "max_level": 100,
+                "min_level": 50,
+                "max_level": 50,
                 "species": "SPECIES_RATICATE"
               },
               {
-                "min_level": 100,
-                "max_level": 100,
+                "min_level": 50,
+                "max_level": 50,
                 "species": "SPECIES_RATICATE"
               },
               {
-                "min_level": 100,
-                "max_level": 100,
+                "min_level": 50,
+                "max_level": 50,
                 "species": "SPECIES_RATICATE"
               },
               {
-                "min_level": 100,
-                "max_level": 100,
+                "min_level": 50,
+                "max_level": 50,
                 "species": "SPECIES_RATICATE"
               },
               {
-                "min_level": 100,
-                "max_level": 100,
+                "min_level": 50,
+                "max_level": 50,
                 "species": "SPECIES_RATICATE"
               },
               {
-                "min_level": 100,
-                "max_level": 100,
+                "min_level": 50,
+                "max_level": 50,
                 "species": "SPECIES_RATICATE"
               },
               {
-                "min_level": 100,
-                "max_level": 100,
+                "min_level": 50,
+                "max_level": 50,
                 "species": "SPECIES_RATICATE"
               },
               {
-                "min_level": 100,
-                "max_level": 100,
+                "min_level": 50,
+                "max_level": 50,
                 "species": "SPECIES_RATICATE"
               },
               {
-                "min_level": 100,
-                "max_level": 100,
+                "min_level": 50,
+                "max_level": 50,
                 "species": "SPECIES_RATICATE"
               },
               {
-                "min_level": 100,
-                "max_level": 100,
+                "min_level": 50,
+                "max_level": 50,
                 "species": "SPECIES_RATICATE"
               },
               {
-                "min_level": 100,
-                "max_level": 100,
+                "min_level": 50,
+                "max_level": 50,
                 "species": "SPECIES_RATICATE"
               },
               {
-                "min_level": 100,
-                "max_level": 100,
+                "min_level": 5,
+                "max_level": 50,
                 "species": "SPECIES_RATICATE"
               }
             ]

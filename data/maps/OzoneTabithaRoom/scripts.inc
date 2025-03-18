@@ -42,10 +42,28 @@ OzoneTabithaRoom_Text_NameTabitha:
 	.string "Tabitha$"
 
 OzoneTabithaRoom_Text_TabithaIntro:
-	.string "intro$"
+	.string "As soon as Maxie briefed me\n"
+	.string "on what we would be doing today,\l"
+	.string "I knew the trainer we would be\l"
+	.string "battling would be you, {PLAYER}.\p"
+	.string "I am inclined to believe you may\n"
+	.string "well be the best Pokemon Trainer\l"
+	.string "Hoenn has seen in some time.\l"
+	.string "It is an honor to have sparred\l"
+	.string "with you in the past, and it will\l"
+	.string "again be an honor today.\p"
+	.string "Hold nothing back, {PLAYER}.\n"
+	.string "I certainly will not...!$"
 
 OzoneTabithaRoom_Text_TabithaDefeated:
-	.string "defeat$"
+	.string "You continually impress me...$"
 
 OzoneTabithaRoom_Text_TabithaPost:
-	.string "post$"
+	.string "Even through hail and sleet,\n"
+	.string "you and your team never\l"
+	.string "extinguished your inner fire...\p"
+	.string "You should be proud of where\n"
+	.string "you are at, skill-wise.\l"
+	.string "I have no doubt the others will\l"
+	.string "fold like paper to your team.\p"
+	.string "Go forth with your head held high!$"

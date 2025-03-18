@@ -18,13 +18,6 @@
   ],
   "warp_events": [
     {
-      "x": 13,
-      "y": 12,
-      "elevation": 0,
-      "dest_map": "MAP_OZONE_FLOOR2",
-      "dest_warp_id": "1"
-    },
-    {
       "x": 2,
       "y": 5,
       "elevation": 0,

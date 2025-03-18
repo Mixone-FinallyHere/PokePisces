@@ -74,10 +74,24 @@ OzoneOutsideCutscene_Text_NameWallace:
 	.string "Wallace$"
 
 OzoneOutsideCutscene_Text_HeyWallace:
-	.string "$"
+	.string "...Wallace! We were just on\n"
+	.string "our way to come talk with you.\l"
+	.string "What's the word on Sootopolis?$"
 
 OzoneOutsideCutscene_Text_OriginIsUnderSiege:
-	.string "$"
+	.string "Funny how fate works its magic\n"
+	.string "sometimes, for I was also seeking\l"
+	.string "to rendezvous with you all.\p"
+	.string "Groudon and Kyogre have awoken.\n"
+	.string "And, yes... they commenced a battle\l"
+	.string "within the Cave of Origin.\l"
+	.string "I was, at least, able to fend them\l"
+	.string "off with my Pokemon, but...\l"
+	.string "there were... complications...$"
 
 OzoneOutsideCutscene_Text_LetsGetTherePostHaste:
-	.string "$"
+	.string "I suppose we will get the answers\n"
+	.string "we seek with our own eyes better\l"
+	.string "than hearing your words.\l"
+	.string "Let us head to the Cave of Origin,\l"
+	.string "post-haste.$"

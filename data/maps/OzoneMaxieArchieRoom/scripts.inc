@@ -73,31 +73,64 @@ OzoneMaxieArchieRoom_Text_NameArchie:
 	.string "Archie$"
 
 OzoneMaxieArchieRoom_Text_HowImpressive:
-	.string "$"
+	.string "How impressive, {PLAYER}.\n"
+	.string "You seem to have made quick work\l"
+	.string "of our subordinates.$"
 
 OzoneMaxieArchieRoom_Text_ThisIsYourLastFight:
-	.string "$"
+	.string "They tried to pull out all\n"
+	.string "the stops! I hope they weren't\l"
+	.string "total pushovers, ah-hah-hah-hah!\p"
+	.string "Still, they were never even in the\n"
+	.string "same ballpark as the two of us.\l"
+	.string "However hard you thought those\l"
+	.string "chumps were? Multiply that tenfold!$"
 
 OzoneMaxieArchieRoom_Text_MyAnalysis:
-	.string "$"
+	.string "I have been watching and analyzing\n"
+	.string "each and every one of those\l"
+	.string "previous four battles. And, I have\l"
+	.string "mapped out a path for sure victory.\l"
+	.string "Victory for Archibald and I,\l"
+	.string "of course.$"
 
 OzoneMaxieArchieRoom_Text_LetsGetToIt:
-	.string "$"
+	.string "This is it, {PLAYER}!\n"
+	.string "The final battle, winner take all!\l"
+	.string "Bombs... away...!$"
 
 OzoneMaxieArchieRoom_Text_MaxieDefeat:
-	.string "defeat$"
+	.string "You always were such an\n"
+	.string "unpredictable variable...$"
 
 OzoneMaxieArchieRoom_Text_ArchieDefeat:
-	.string "defeat$"
+	.string "I salute you, {PLAYER}!\n"
+	.string "I haven't gotten my behind kicked\l"
+	.string "that hard in ages! Gah-hah-hah!$"
 
 OzoneMaxieArchieRoom_Text_ThatWasGreat:
-	.string "post$"
+	.string "Yyaarrrr....! That was exhilerating!$"
 
 OzoneMaxieArchieRoom_Text_ToCommemorateTheOccasion:
-	.string "$"
+	.string "Indeed. I am glad to have met\n"
+	.string "you, {PLAYER}. And I do hope\l"
+	.string "that the Ozone Challenge gave you\l"
+	.string "a satisfactory amount of closure\l"
+	.string "to your adventure.\p"
+	.string "To commemorate the occasion, I\n"
+	.string "would like to-$"
 
 OzoneMaxieArchieRoom_Text_ItsLikeBefore:
-	.string "$"
+	.string "This weather... Maxie, it\n"
+	.string "has to be...\p"
+	.string "It's just like when...\n"
+	.string "well....$"
 
 OzoneMaxieArchieRoom_Text_SomethingIsVeryWrong:
-	.string "$"
+	.string "Like Sootopolis years ago?\n"
+	.string "I was thinking similarly.\p"
+	.string "Something is very wrong.\n"
+	.string "{PLAYER}, please come with us\l"
+	.string "to the situation room.\l"
+	.string "We could be in the midst of\l"
+	.string "an event with dire consequences...$"

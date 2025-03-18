@@ -191,13 +191,22 @@ OzoneInt_Text_ArchieGatherOthers:
 	.string "a Bolterock fly!$"
 
 OzoneInt_Text_CantLetYouUpstairs:
-	.string "$"
+	.string "Sorry, I can't let you upstairs\n"
+	.string "without explicit permission\l"
+	.string "from the higher-ups.$"
 
 OzoneInt_Text_ReadyForTheChallenge:
-	.string "$"
+	.string "{PLAYER}! Thanks for coming!\p"
+	.string "I'm assuming you're here for\n"
+	.string "the Ozone Challenge that\l"
+	.string "Maxie and Archie organized?\p"
+	.string "Great! Well, I hope you've\n"
+	.string "adequately prepared. When you're\l"
+	.string "good to go, come on in!$"
 
 OzoneInt_Text_GuardPostBattles:
-	.string "$"
+	.string "Hope you had a fun time\n"
+	.string "doing the Ozone Challenge!$"
 
 OzoneInt_Text_ThingsHaveGottenSerious:
 	.string "$"

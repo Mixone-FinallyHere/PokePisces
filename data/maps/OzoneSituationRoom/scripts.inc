@@ -94,28 +94,66 @@ OzoneSituationRoom_Text_NameMatt:
 	.string "Matt$"
 
 OzoneSituationRoom_Text_GroudonAndKyogreAreFighting:
-	.string "$"
+	.string "It is just as we had feared,\n"
+	.string "unfortunately...\l"
+	.string "Our weather analysis has concluded\l"
+	.string "that Groudon and Kyogre must\l"
+	.string "have returned from their slumber,\l"
+	.string "and are fighting somewhere\l"
+	.string "as we speak...$"
 
 OzoneSituationRoom_Text_WhatCourseOfAction:
-	.string "$"
+	.string "What is our course of action?\n"
+	.string "Surely, we possess the resources\l"
+	.string "to quash those two?$"
 
 OzoneSituationRoom_Text_ToTheCaveOfOrigin:
-	.string "$"
+	.string "...We must first head to the\n"
+	.string "Cave of Origin, and converse\l"
+	.string "with Deacon Wallace.\l"
+	.string "He possesses countless knowledge\l"
+	.string "about the Legendary Pokemon\l"
+	.string "of Hoenn. In addition, the last\l"
+	.string "time Groudon and Kyogre battled,\l"
+	.string "it was in front of the\l"
+	.string "Cave of Origin. There is a high\l"
+	.string "likelihood they are there once more.\p"
+	.string "{PLAYER}, you will be coming\n"
+	.string "with us. We will need a masterful\l"
+	.string "trainer like you on our side.$"
 
 OzoneSituationRoom_Text_GetReady:
-	.string "$"
+	.string "Prepare however you see fit.\n"
+	.string "Once you are ready, we will\l"
+	.string "follow you out of the building.$"
 
 OzoneSituationRoom_Text_NeverThoughtThisWouldHappen:
-	.string "$"
+	.string "Never, in a million years,\n"
+	.string "was I prepared for this to happen\l"
+	.string "again so soon...$"
 
 OzoneSituationRoom_Text_YouAlwaysCauseTrouble:
-	.string "$"
+	.string "You always seem to cause trouble.\n"
+	.string "This potentially world-altering\l"
+	.string "event was not on my schedule.$"
 
 OzoneSituationRoom_Text_TheCrops:
-	.string "$"
+	.string "I need to be off to the farm\n"
+	.string "to check on the crops with this\l"
+	.string "crazy weather... but, Maxie is\l"
+	.string "not allowing me to leave...\p"
+	.string "Oh, I hope they will be alright...$"
 
 OzoneSituationRoom_Text_MakingAPlan:
-	.string "$"
+	.string "I am drafting up a plan for\n"
+	.string "us Admins to do what we are able\l"
+	.string "to assist people who may be affected\l"
+	.string "by the sudden abnormal weather.\l"
+	.string "If it means Matt and I must\l"
+	.string "band together again... so be it.$"
 
 OzoneSituationRoom_Text_ThisRilesMeUp:
-	.string "$"
+	.string "This really riles me up, man!\n"
+	.string "Just who do these Pokemon think\l"
+	.string "they are that they can just\l"
+	.string "cause an apocalypse on a whim!?$"
