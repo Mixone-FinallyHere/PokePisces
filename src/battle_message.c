@@ -595,6 +595,7 @@ static const u8 sText_PkmnPreventedFromHealing[] = _("{B_DEF_NAME_WITH_PREFIX} w
 static const u8 sText_PkmnSwitchedAtkAndDef[] = _("{B_ATK_NAME_WITH_PREFIX} switched its\nAttack and Defense!");
 static const u8 sText_PkmnsAbilitySuppressed[] = _("{B_DEF_NAME_WITH_PREFIX}'s ability\nwas suppressed!");
 static const u8 sText_AbilityCoveredVeil[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY} covered\n{B_ATK_TEAM2} team with a veil!");
+static const u8 sText_AbilityIntensifiedGravity[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY}\nintensified gravity!");
 static const u8 sText_AbilityShieldedFromCriticalHits[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY} shielded\n{B_ATK_TEAM2} team from critical hits\land super effective moves!");
 static const u8 sText_ShieldedFromCriticalHits[] = _("{B_CURRENT_MOVE} shielded\n{B_ATK_TEAM2} team from critical hits\land super effective moves!");
 static const u8 sText_SwitchedAtkAndSpAtk[] = _("{B_ATK_NAME_WITH_PREFIX} switched all its\nchanges to its Attack and\pSp. Atk with the target!");
@@ -1872,6 +1873,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PLAYERWHITEOUT3 - BATTLESTRINGS_TABLE_START] = sText_PlayerWhiteout3,
     [STRINGID_ATKPKMNCONFUSED - BATTLESTRINGS_TABLE_START] = sText_AtkPkmnConfused,
     [STRINGID_PKMNSXINFATUATEDY3 - BATTLESTRINGS_TABLE_START] = sText_PkmnsXInfatuatedY3,
+    [STRINGID_ABILITYINTENSIFIEDGRAVITY - BATTLESTRINGS_TABLE_START] = sText_AbilityIntensifiedGravity,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

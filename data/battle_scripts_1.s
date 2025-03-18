@@ -17028,10 +17028,17 @@ BattleScript_RuinWardActivates::
 BattleScript_RuinWardSafeguardActivates::
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
-	playanimation BS_ATTACKER, B_ANIM_LUCKY_CHANT
+	playanimation BS_ATTACKER, B_ANIM_SAFEGUARD
 	waitanimation
 	printstring STRINGID_ABILITYCOVEREDVEIL
-	playanimation BS_ATTACKER, B_ANIM_SAFEGUARD
+	end3
+
+BattleScript_GravityWellActivates::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	playanimation BS_ATTACKER, B_ANIM_GRAVITY
+	waitanimation
+	printstring STRINGID_ABILITYINTENSIFIEDGRAVITY
 	waitmessage B_WAIT_TIME_LONG
 	end3
 

@@ -5312,6 +5312,18 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 effect++;
             }
             break;
+        case ABILITY_GRAVITY_WELL:
+            if (!gFieldStatuses & STATUS_FIELD_GRAVITY
+            && !gSpecialStatuses[battler].switchInAbilityDone)
+            {
+                gBattlerAttacker = battler;
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                gFieldStatuses |= STATUS_FIELD_GRAVITY;
+                gFieldTimers.gravityTimer = 6;
+                BattleScriptPushCursorAndCallback(BattleScript_GravityWellActivates);
+                effect++;
+            }
+            break;
         case ABILITY_ENTRANCING:
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
@@ -10855,6 +10867,8 @@ static bool32 IsBattlerGrounded2(u32 battler, bool32 considerInverse)
         return FALSE;
     if (GetBattlerAbility(battler) == ABILITY_LEVITATE)
         return FALSE;
+    if (GetBattlerAbility(battler) == ABILITY_GRAVITY_WELL && gFieldStatuses & STATUS_FIELD_GRAVITY)
+        return FALSE;
     if (IS_BATTLER_OF_TYPE(battler, TYPE_FLYING) && (!considerInverse || !FlagGet(B_FLAG_INVERSE_BATTLE) || (!(gFieldStatuses & STATUS_FIELD_INVERSE_ROOM))))
         return FALSE;
     return TRUE;
@@ -14031,6 +14045,18 @@ static inline uq4_12_t CalcTypeEffectivenessMultiplierInternal(u32 move, u32 mov
         }
 #endif
     }
+    else if (moveType == TYPE_GROUND && defAbility == ABILITY_GRAVITY_WELL && gFieldStatuses & STATUS_FIELD_GRAVITY && !(gBattleMoves[move].ignoreTypeIfFlyingAndUngrounded))
+    {
+        modifier = UQ_4_12(0.0);
+        if (recordAbilities && defAbility == ABILITY_GRAVITY_WELL)
+        {
+            gLastUsedAbility = ABILITY_GRAVITY_WELL;
+            gMoveResultFlags |= (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE);
+            gLastLandedMoves[battlerDef] = 0;
+            gBattleCommunication[MISS_TYPE] = B_MSG_GROUND_MISS;
+            RecordAbilityBattle(battlerDef, ABILITY_GRAVITY_WELL);
+        }
+    }
     else if (moveType == TYPE_GROUND && !IsBattlerGrounded2(battlerDef, TRUE) && !(gBattleMoves[move].ignoreTypeIfFlyingAndUngrounded))
     {
         modifier = UQ_4_12(0.0);
@@ -14062,7 +14088,7 @@ static inline uq4_12_t CalcTypeEffectivenessMultiplierInternal(u32 move, u32 mov
             RecordAbilityBattle(battlerDef, ABILITY_IMMUNITY);
         }
     }
-
+    
     // All Game
     if ((gBattleMoves[move].type == TYPE_GROUND || gBattleMoves[move].type == TYPE_WATER) && defAbility == ABILITY_ALL_GAME)
     {
@@ -14159,6 +14185,14 @@ uq4_12_t CalcPartyMonTypeEffectivenessMultiplier(u16 move, u16 speciesDef, u16 a
             MulByTypeEffectiveness(&modifier, move, moveType, 0, gSpeciesInfo[speciesDef].types[1], 0, FALSE, FALSE);
 
         if (moveType == TYPE_GROUND && abilityDef == ABILITY_LEVITATE && !(gFieldStatuses & STATUS_FIELD_GRAVITY))
+            modifier = UQ_4_12(0.0);
+        if (moveType == TYPE_POISON && abilityDef == ABILITY_IMMUNITY)
+            modifier = UQ_4_12(0.0);
+        if (moveType == TYPE_NORMAL && abilityDef == ABILITY_EMPTY)
+            modifier = UQ_4_12(0.0);
+        if (moveType == TYPE_FIGHTING && abilityDef == ABILITY_EMPTY)
+            modifier = UQ_4_12(0.0);
+        if (moveType == TYPE_GROUND && abilityDef == ABILITY_GRAVITY_WELL && gFieldStatuses & STATUS_FIELD_GRAVITY)
             modifier = UQ_4_12(0.0);
         if (abilityDef == ABILITY_WONDER_GUARD && modifier <= UQ_4_12(1.0) && gBattleMoves[move].power)
             modifier = UQ_4_12(0.0);

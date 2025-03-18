@@ -662,6 +662,7 @@ extern const u8 BattleScript_GoodAsGoldActivates[];
 extern const u8 BattleScript_RuinAbilityActivates[];
 extern const u8 BattleScript_WhiteSmokeAbilityActivates[];
 extern const u8 BattleScript_RuinWardHurtActivates[];
+extern const u8 BattleScript_GravityWellActivates[];
 extern const u8 BattleScript_RuinWardActivates[];
 extern const u8 BattleScript_RuinWardSafeguardActivates[];
 extern const u8 BattleScript_RuinWardLuckyChantActivates[];

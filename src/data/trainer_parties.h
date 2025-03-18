@@ -7963,7 +7963,7 @@ static const struct TrainerMon sParty_PLibra[] = {
     },
     {
     .species = SPECIES_SOLROCK,
-    .ability = ABILITY_LEVITATE,
+    .ability = ABILITY_GRAVITY_WELL,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(72, 72, 72, 72, 72, 72),
     .lvl = 50,
@@ -7977,7 +7977,7 @@ static const struct TrainerMon sParty_PLibra[] = {
     },
     {
     .species = SPECIES_LUNATONE,
-    .ability = ABILITY_LEVITATE,
+    .ability = ABILITY_GRAVITY_WELL,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(72, 72, 72, 72, 72, 72),
     .lvl = 50,
