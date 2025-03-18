@@ -1123,7 +1123,7 @@ BattleScript_NightDazeTrueEffect::
 
 BattleScript_EffectFearFactor::
 	setmoveeffect MOVE_EFFECT_PANIC
-	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_EffectMagnitudeTarget
+	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_EffectFearFactorTarget
 	attackcanceler
 	attackstring
 	ppreduce
@@ -1131,6 +1131,7 @@ BattleScript_EffectFearFactor::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_MAGNITUDESTRENGTH
 	waitmessage B_WAIT_TIME_LONG
+BattleScript_EffectFearFactorTarget:
 	accuracycheck BattleScript_MoveMissedPause, ACC_CURR_MOVE
 	goto BattleScript_HitFromCritCalc
 

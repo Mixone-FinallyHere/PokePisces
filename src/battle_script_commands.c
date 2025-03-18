@@ -10488,16 +10488,7 @@ static void Cmd_various(void)
             fearFactor = 10;
         }
     
-        PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 2, fearFactor)
-    
-        for (gBattlerTarget = 0; gBattlerTarget < gBattlersCount; gBattlerTarget++)
-        {
-            if (gBattlerTarget == gBattlerAttacker)
-                continue;
-            if (!(gAbsentBattlerFlags & gBitTable[gBattlerTarget])) // A valid target was found.
-                break;
-        }
-        
+        PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 2, fearFactor)        
         gBattlescriptCurrInstr = cmd->nextInstr;
         return;
     }
