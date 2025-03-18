@@ -1996,8 +1996,13 @@
 	various \battler, VARIOUS_SET_POWDER
 	.endm
 
+	.macro tryspectralthiefsteal jumpInstr:req
+	callnative BS_TrySpectralThiefSteal
+	.4byte \jumpInstr
+	.endm
+
 	.macro spectralthiefprintstats
-	various BS_ATTACKER, VARIOUS_SPECTRAL_THIEF
+	callnative BS_SpectralThiefPrintStats
 	.endm
 
 	.macro bringdownairbornebattler battler:req
