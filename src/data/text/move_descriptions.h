@@ -4928,7 +4928,7 @@ static const u8 sDrainPunchDescription[] = _(
 static const u8 sSabreBreakDescription[] = _(
     "This move lands critical hits\n"
     "against frostbitten or frozen\n"
-    "foes and may flinch them.");
+    "foes. It may also flinch foes.");
 
 static const u8 sColdSnapDescription[] = _(
     "Flinches the foe. This move goes\n"
