@@ -2917,7 +2917,7 @@ static const u8 sRazzBerryDesc[] = _(
 static const u8 sBlukBerryDesc[] = _(
     "If a Pokémon holds\n"
     "this Berry, it can\n"
-    "reduces the PP of the\n"
+    "reduce the PP of the\n"
     "foe's last used move.");
 
 static const u8 sNanabBerryDesc[] = _(
