@@ -9700,6 +9700,16 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 effect++;
                 SetMoveEffect(TRUE, 0);
             }
+            else if (gBattleMoveDamage != 0 // Need to have done damage
+                && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+                && TARGET_TURN_DAMAGED
+                && gBattleMons[gBattlerTarget].hp 
+                && gBattleMons[gBattlerTarget].status1 & STATUS1_BLOOMING)
+            {
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_ItemHealBlockEffect;
+                effect++;
+            }
         }
         break;
         case HOLD_EFFECT_COARSE_SAND:

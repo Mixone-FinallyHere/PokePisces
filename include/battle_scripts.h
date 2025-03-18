@@ -274,6 +274,7 @@ extern const u8 BattleScript_AbilitySetMagmaArmored[];
 extern const u8 BattleScript_TransfusionAbilityCopy[];
 extern const u8 BattleScript_ItemBloomingEffect[];
 extern const u8 BattleScript_ItemTauntEffect[];
+extern const u8 BattleScript_ItemHealBlockEffect[];
 extern const u8 BattleScript_SynchronizeActivates[];
 extern const u8 BattleScript_NoItemSteal[];
 extern const u8 BattleScript_AbilityCuredStatus[];

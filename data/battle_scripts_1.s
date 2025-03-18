@@ -18036,6 +18036,17 @@ BattleScript_ItemTauntEffect::
 BattleScript_ItemTauntEffectRet::
 	return
 
+BattleScript_ItemHealBlockEffect::
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_ItemHealBlockEffectRet
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_ItemHealBlockEffectRet
+	jumpifsafeguard BattleScript_ItemHealBlockEffectRet
+	sethealblock BattleScript_ItemHealBlockEffectRet
+	printstring STRINGID_PKMNPREVENTEDFROMHEALING
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotHealBlockAttacker
+BattleScript_ItemHealBlockEffectRet::
+	return
+
 BattleScript_BattleBondActivatesOnMoveEndAttacker::
 	pause 5
 	copybyte gBattlerAbility, gBattlerAttacker

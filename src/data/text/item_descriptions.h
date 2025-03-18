@@ -4630,10 +4630,10 @@ static const u8 sPeskyPlushDesc[] = _(
     "Bug-type moves.");
 
 static const u8 sBlackSaladDesc[] = _(
-    "Evil salad that may\n"
-    "cause foes to bloom,\n"
-    "but increases damage\n"
-    "done to blooming foes.");
+    "Boosts damage against\n"
+    "blooming foes and\n"
+    "blocks healing. May\n"
+    "make foes bloom.");
 
 static const u8 sDistillModDesc[] = _(
     "A device for Relic-\n"
