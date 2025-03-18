@@ -1804,9 +1804,9 @@ static const u8 sFeintDescription[] = _(
     "protect-like moves. Goes first.");
 
 static const u8 sPluckDescription[] = _(
-    "The user pecks the foe. If the\n"
-    "foe is holding a Berry, the user\n"
-    "eats it and gains its effect.");
+    "Eats the foe's berry. If the foe\n"
+    "is blooming, lands critical hits\n"
+    "and removes it.");
 
 static const u8 sTailwindDescription[] = _(
     "Whips up a turbulent whirlwind\n"
@@ -5418,7 +5418,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_GRASS_KNOT - 1] = sGrassKnotDescription,
     [MOVE_CHATTER - 1] = sChatterDescription,
     [MOVE_JUDGMENT - 1] = sJudgmentDescription,
-    [MOVE_BUG_BITE - 1] = sBugBiteDescription,
+    [MOVE_BUG_BITE - 1] = sPluckDescription,
     [MOVE_CHARGE_BEAM - 1] = sChargeBeamDescription,
     [MOVE_WOOD_HAMMER - 1] = sWoodHammerDescription,
     [MOVE_AQUA_JET - 1] = sAquaJetDescription,

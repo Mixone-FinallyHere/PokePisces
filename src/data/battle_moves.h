@@ -6313,6 +6313,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
+        .argument = STATUS1_BLOOMING,
     },
 
     [MOVE_TAILWIND] =
@@ -7711,6 +7712,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
         .bitingMove = TRUE,
+        .argument = STATUS1_BLOOMING,
     },
 
     [MOVE_CHARGE_BEAM] =

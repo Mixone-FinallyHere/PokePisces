@@ -7098,9 +7098,18 @@ BattleScript_StrengthSapQuashAfterAnimation:
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectBugBite:
-	setmoveeffect MOVE_EFFECT_BUG_BITE | MOVE_EFFECT_CERTAIN
+	setmoveeffect MOVE_EFFECT_BUG_BITE
 	jumpifmove MOVE_DINE_N_DASH, BattleScript_EffectHitEscape
-	goto BattleScript_EffectHit
+    call BattleScript_EffectHit_Ret
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	seteffectprimary
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifsubstituteblocks BattleScript_MoveEnd
+	setmoveeffect MOVE_EFFECT_REMOVE_STATUS
+	seteffectsecondary
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectIncinerate:
     call BattleScript_EffectHit_Ret
