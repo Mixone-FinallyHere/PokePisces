@@ -2,6 +2,7 @@
 #define GUARD_BATTLE_SCRIPTS_H
 
 extern const u8 BattleScript_MoveEffectPPReduce[];
+extern const u8 BattleScript_MoveEffectTorment[];
 extern const u8 BattleScript_AccDown[];
 extern const u8 BattleScript_MoveEffectPowder[];
 extern const u8 BattleScript_ResetNegativeStatStages[];
@@ -510,6 +511,10 @@ extern const u8 BattleScript_GemActivates[];
 extern const u8 BattleScript_BerryReduceDmg[];
 extern const u8 BattleScript_PrintBerryReduceString[];
 extern const u8 BattleScript_WeaknessPolicy[];
+extern const u8 BattleScript_Snowball[];
+extern const u8 BattleScript_CellBattery[];
+extern const u8 BattleScript_LuminousMoss[];
+extern const u8 BattleScript_AbsorbBulb[];
 extern const u8 BattleScript_LostMantle[];
 extern const u8 BattleScript_TargetItemStatRaise[];
 extern const u8 BattleScript_TargetItemStatDrop[];

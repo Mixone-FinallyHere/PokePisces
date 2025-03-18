@@ -2311,8 +2311,8 @@ static const u8 sMagnetDesc[] = _(
 static const u8 sMiracleSeedDesc[] = _(
     "A seed that boosts\n"
     "Grass-type moves, and\n"
-    "may make them give\n"
-    "the holder blooming.");
+    "makes them heal the\n"
+    "holder a little bit.");
 
 static const u8 sNeverMeltIceDesc[] = _(
     "A chunk of ice that\n"
@@ -2375,10 +2375,10 @@ static const u8 sDragonFangDesc[] = _(
     "it is resisted.");
 
 static const u8 sBlackGlassesDesc[] = _(
-    "Glasses that boost\n"
-    "Dark-type moves.\n"
-    "More likely to cause\n"
-    "secondary effects.");
+    "Some glasses that\n"
+    "boost Dark-type moves\n"
+    "and make them Torment\n"
+    "targets.");
 
     static const u8 sMetalCoatDesc[] = _(
     "A film that boosts\n"
@@ -2470,26 +2470,26 @@ static const u8 sGrassySeedDesc[] = _(
 // Type-activated Stat Modifiers
 static const u8 sAbsorbBulbDesc[] = _(
     "A single-use bulb\n"
-    "that ups Sp. Atk if\n"
-    "the holder is hit by\n"
-    "a Water-type move.");
+    "that boosts Atk and\n"
+    "Def if hit by a\n"
+    "Water-type move.");
 
 static const u8 sCellBatteryDesc[] = _(
     "A single-use battery\n"
-    "that boosts Atk if the\n"
-    "holder is hit by a\n"
+    "that boosts Sp. Atk\n"
+    "and Speed if hit by a\n"
     "Electric-type move.");
 
 static const u8 sLuminousMossDesc[] = _(
     "Single-use moss that\n"
-    "boost Sp. Def if the\n"
-    "holder is hit by a\n"
+    "boost Sp. Atk/Sp. Def\n"
+    "if hit by a\n"
     "Water-type move.");
 
 static const u8 sSnowballDesc[] = _(
     "A single-use snowball\n"
-    "that boosts Atk if the\n"
-    "holder is hit by a\n"
+    "that boosts Attack\n"
+    "and Speed if hit by a\n"
     "Ice-type move.");
 
 // Misc. Held Items
@@ -2923,12 +2923,12 @@ static const u8 sBlukBerryDesc[] = _(
 static const u8 sNanabBerryDesc[] = _(
     "If a Pokémon holds\n"
     "this Berry, it can\n"
-    "stockpile some power.");
+    "minimize a target.");
 
 static const u8 sWepearBerryDesc[] = _(
-    "If the holder is hit\n"
-    "at half HP, prevents\n"
-    "the attacker from\n"
+    "If a Pokémon holds\n"
+    "this Berry, it can\n"
+    "prevent a target from\n"
     "healing.");
 
 static const u8 sPinapBerryDesc[] = _(
@@ -4551,9 +4551,9 @@ static const u8 sSaltyTearDesc[] = _(
     "less friendly.");
 
 static const u8 sBloomOrbDesc[] = _(
-    "A bizarre orb that\n"
-    "will make the holder\n"
-    "bloom during battle.");
+    "Blooms the holder on\n"
+    "switch-in. Removes it\n"
+    "at the end of battle.");
 
 static const u8 sPanicOrbDesc[] = _(
     "A bizarre orb that\n"

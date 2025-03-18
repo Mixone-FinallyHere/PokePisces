@@ -5769,6 +5769,13 @@ static void HandleEndTurn_FinishBattle(void)
             if (!changedForm)
                 changedForm = TryFormChange(i, B_SIDE_PLAYER, FORM_CHANGE_END_BATTLE);
 
+            if (GetBattlerHoldEffect(i, FALSE) == HOLD_EFFECT_BLOOM_ORB && gBattleMons[i].status1 & STATUS1_BLOOMING)
+            {
+                gBattleMons[i].status1 = 0;
+                BtlController_EmitSetMonData(i, BUFFER_A, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[i].status1);
+                MarkBattlerForControllerExec(i);
+            }
+
             // Clear original species field
             gBattleStruct->changedSpecies[B_SIDE_PLAYER][i] = SPECIES_NONE;
             gBattleStruct->changedSpecies[B_SIDE_OPPONENT][i] = SPECIES_NONE;

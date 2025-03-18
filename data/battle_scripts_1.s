@@ -14172,6 +14172,106 @@ BattleScript_WeaknessPolicyRemoveItem:
 BattleScript_WeaknessPolicyEnd:
 	return
 
+BattleScript_Snowball::
+	copybyte sBATTLER, gBattlerTarget
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_SnowballSpAtk
+	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPEED, MAX_STAT_STAGE, BattleScript_SnowballEnd
+BattleScript_SnowballSpAtk:
+	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_SPATK | BIT_SPEED, STAT_CHANGE_BY_TWO
+	setstatchanger STAT_SPATK, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_SnowballSpeed
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_SnowballSpeed
+	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_SnowballSpeed:
+	setstatchanger STAT_SPEED, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_SnowballRemoveItem
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_SnowballRemoveItem
+	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_SnowballRemoveItem:
+	removeitem BS_TARGET
+BattleScript_SnowballEnd:
+	return
+
+BattleScript_LuminousMoss::
+	copybyte sBATTLER, gBattlerTarget
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_LuminousMossSpAtk
+	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPDEF, MAX_STAT_STAGE, BattleScript_LuminousMossEnd
+BattleScript_LuminousMossSpAtk:
+	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_SPATK | BIT_SPDEF, STAT_CHANGE_BY_TWO
+	setstatchanger STAT_SPATK, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_LuminousMossSpDef
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_LuminousMossSpDef
+	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_LuminousMossSpDef:
+	setstatchanger STAT_SPDEF, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_LuminousMossRemoveItem
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_LuminousMossRemoveItem
+	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_LuminousMossRemoveItem:
+	removeitem BS_TARGET
+BattleScript_LuminousMossEnd:
+	return
+
+BattleScript_CellBattery::
+	copybyte sBATTLER, gBattlerTarget
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_CellBatteryAtk
+	jumpifstat BS_TARGET, CMP_EQUAL, STAT_SPEED, MAX_STAT_STAGE, BattleScript_CellBatteryEnd
+BattleScript_CellBatteryAtk:
+	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_ATK | BIT_SPEED, STAT_CHANGE_BY_TWO
+	setstatchanger STAT_ATK, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_CellBatterySpeed
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_CellBatterySpeed
+	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_CellBatterySpeed:
+	setstatchanger STAT_SPEED, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_CellBatteryRemoveItem
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_CellBatteryRemoveItem
+	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_CellBatteryRemoveItem:
+	removeitem BS_TARGET
+BattleScript_CellBatteryEnd:
+	return
+
+BattleScript_AbsorbBulb::
+	copybyte sBATTLER, gBattlerTarget
+	jumpifstat BS_TARGET, CMP_LESS_THAN, STAT_ATK, MAX_STAT_STAGE, BattleScript_AbsorbBulbAtk
+	jumpifstat BS_TARGET, CMP_EQUAL, STAT_DEF, MAX_STAT_STAGE, BattleScript_AbsorbBulbEnd
+BattleScript_AbsorbBulbAtk:
+	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_ATK | BIT_DEF, STAT_CHANGE_BY_TWO
+	setstatchanger STAT_ATK, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_AbsorbBulbDef
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_AbsorbBulbDef
+	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_AbsorbBulbDef:
+	setstatchanger STAT_DEF, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_AbsorbBulbRemoveItem
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_AbsorbBulbRemoveItem
+	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_AbsorbBulbRemoveItem:
+	removeitem BS_TARGET
+BattleScript_AbsorbBulbEnd:
+	return
+
 BattleScript_LostMantle::
 	copybyte sBATTLER, gBattlerAttacker
 	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_DEF, MIN_STAT_STAGE, BattleScript_LostMantleDef
@@ -19072,10 +19172,10 @@ BattleScript_CornnBerryActivatesRet::
 	return
 
 BattleScript_WepearBerryActivatesRet::
-	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
 	printstring STRINGID_WEPEARHEALBLOCKPKMN
 	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_TARGET
+	removeitem BS_ATTACKER
 	return
 
 BattleScript_SpelonBerryActivatesRet::
@@ -19140,20 +19240,16 @@ BattleScript_BlukBerryActivatesRet::
 	blukberryppreduce BattleScript_BlukBerryReturn
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
 	printstring STRINGID_ATKPKMNREDUCEDPP
-BattleScript_BlukBerryEnd::
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_TARGET
 BattleScript_BlukBerryReturn::
 	return
 
 BattleScript_NanabBerryActivatesRet::
-	stockpile BS_SCRIPTING, 0
-	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
-	printstring STRINGID_PKMNSTOCKPILED
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	printstring STRINGID_NANABMINIMIZE
 	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_SCRIPTING
-BattleScript_NanabBerryEnd::
-	stockpile BS_SCRIPTING, 1
+	removeitem BS_ATTACKER
 	return
 
 BattleScript_HondewBerryActivatesRet::
@@ -20172,4 +20268,16 @@ BattleScript_MoveEffectPPReduce::
 	printstring STRINGID_PKMNREDUCEDPP
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_MoveEffectPPReduce_End:
+	return
+
+BattleScript_MoveEffectTorment::
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEffectTorment_Ret
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEffectTorment_Ret
+	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_MoveEffectTorment_Ret
+	jumpifsafeguard BattleScript_MoveEffectTorment_Ret
+	settorment BattleScript_MoveEffectTorment_Ret
+	printstring STRINGID_PKMNSUBJECTEDTOTORMENT
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotTormentAttacker
+BattleScript_MoveEffectTorment_Ret:
 	return

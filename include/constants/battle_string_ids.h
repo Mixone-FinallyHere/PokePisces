@@ -870,8 +870,9 @@
 #define STRINGID_ATKPKMNCONFUSED                      868
 #define STRINGID_PKMNSXINFATUATEDY3                   869
 #define STRINGID_WEPEARHEALBLOCKPKMN                  870
+#define STRINGID_NANABMINIMIZE                        871
 
-#define BATTLESTRINGS_COUNT                           871
+#define BATTLESTRINGS_COUNT                           872
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
