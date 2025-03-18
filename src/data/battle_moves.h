@@ -16144,7 +16144,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     },
 
     [MOVE_DOWNFALL] = {
-        .power = 60,
+        .power = 120,
         .effect = EFFECT_DOWNFALL,
         .type = TYPE_POISON,
         .accuracy = 100,

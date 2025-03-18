@@ -90,12 +90,12 @@ NewSunbeach_Text_BeautyOfBlades:
 	.string "those ancient executions...\l"
 	.string "I have a very important to bestow.$"
 
-NewSunbeach_Text_YouKnowTheArt:
+NewSunbeach_Text_NoExecution:
 	.string "...So you are just as naive\n"
 	.string "as I had surmised. Heh...\l"
 	.string "ignorance is bliss, child.$"
 
-NewSunbeach_Text_NoExecution:
+NewSunbeach_Text_YouKnowTheArt:
 	.string "...So, you do know the art\n"
 	.string "of death's blade...\p"
 	.string "Excellent. You will make\n"
