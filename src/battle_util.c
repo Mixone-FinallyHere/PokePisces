@@ -11706,8 +11706,8 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
             basePower *= 2;
         break;
     case EFFECT_LASH_OUT:
-        if (gBattleMons[gBattlerAttacker].statStages[i] < DEFAULT_STAT_STAGE)
-            basePower *= 2;
+        if (CountBattlerStatDecreases(battlerAtk, TRUE) != 0)
+            basePower = uq4_12_multiply(basePower, UQ_4_12(2.0));
         break;
     case EFFECT_EXPLOSION:
         if (move == MOVE_MISTY_EXPLOSION && gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN && IsBattlerGrounded(battlerAtk))
