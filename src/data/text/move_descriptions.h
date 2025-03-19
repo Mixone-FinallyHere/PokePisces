@@ -4087,9 +4087,9 @@ static const u8 sUpperHandDescription[] = _(
     "This move always goes first.");
 
 static const u8 sMalignantChainDescription[] = _(
-    "The user pours toxins into the\n"
-    "foe by wrapping them in chains.\n"
-    "This may badly poison the foe.");
+    "Wraps the foe with toxic chains.\n"
+    "This deals bonus true damage and\n"
+    "makes them move last next turn.");
 
 static const u8 sSpookDescription[] = _(
     "The target is spooked and\n"
@@ -4283,7 +4283,7 @@ static const u8 sDragonPokerDescription[] = _(
 static const u8 sLoneSharkDescription[] = _(
     "Takes more damage before\n"
     "attacking. Boosted at low HP.\n"
-    "Absorbs half the damage dealt.");
+    "Absorbs all the damage dealt.");
 
 static const u8 sHeartStealDescription[] = _(
     "Sets 2 stacks of allure. Hitting\n"
@@ -4959,6 +4959,11 @@ static const u8 sDearlyDepartDescription[] = _(
     "The foe is forcibly switched.\n"
     "Lowers the next foe's Sp. Def.\n"
     "In the wild, the battle ends.");
+
+static const u8 sBabyBluesDescription[] = _(
+    "Crystallized newborn goo is put\n"
+    "up to reduce damage taken and\n"
+    "boost damage done for allies.");
 
 const u8 gNotDoneYetDescription[] = _(
     "This move can't be used. Its\n"
@@ -6004,4 +6009,5 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_DEARLY_DEPART - 1] = sDearlyDepartDescription,
     [MOVE_FIREBRAND - 1] = sTackleDescription,
     [MOVE_LIGHTNING - 1] = sTackleDescription,
+    [MOVE_BABY_BLUES - 1] = sBabyBluesDescription,
 };

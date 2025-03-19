@@ -1793,7 +1793,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .effect = EFFECT_DEFENSE_DOWN_2,
         .power = 0,
         .type = TYPE_NORMAL,
-        .accuracy = 85,
+        .accuracy = 100,
         .pp = 40,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
@@ -5529,7 +5529,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .effect = EFFECT_METAL_SOUND,
         .power = 0,
         .type = TYPE_STEEL,
-        .accuracy = 85,
+        .accuracy = 100,
         .pp = 40,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
@@ -14087,12 +14087,12 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_MALIGNANT_CHAIN] =
     {
-        .effect = EFFECT_POISON_FANG,
-        .power = 100,
+        .effect = EFFECT_LETHAL_CHAIN,
+        .power = 80,
         .type = TYPE_POISON,
         .accuracy = 100,
         .pp = 5,
-        .secondaryEffectChance = 50,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_SPECIAL,
@@ -14760,7 +14760,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_RAZING_SUN] =
     {
         .effect = EFFECT_RAZING_SUN,
-        .power = 95,
+        .power = 80,
         .type = TYPE_FIRE,
         .accuracy = 100,
         .pp = 10,
@@ -15048,7 +15048,6 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .target = MOVE_TARGET_BOTH,
         .priority = 0,
         .split = SPLIT_SPECIAL,
-        .argument = STATUS1_FROSTBITE,
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
         .windMove = TRUE,
@@ -16214,7 +16213,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_PLASMA_CUTTER] =
     {
-        .power = 60,
+        .power = 55,
         .effect = EFFECT_PLASMA_CUTTER,
         .type = TYPE_ELECTRIC,
         .accuracy = 100,
@@ -17257,6 +17256,21 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
         .argument = STATUS1_BURN,
+    },
+
+    [MOVE_BABY_BLUES] =
+    {
+        .effect = EFFECT_BABY_BLUES,
+        .power = 0,
+        .type = TYPE_WATER,
+        .accuracy = 0,
+        .pp = 20,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_USER,
+        .priority = 0,
+        .split = SPLIT_STATUS,
+        .zMoveEffect = Z_EFFECT_SPD_UP_1,
+        .snatchAffected = TRUE,
     },
 
     // Z-Moves

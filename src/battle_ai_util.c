@@ -3139,8 +3139,6 @@ bool32 ShouldBloomSelf(u32 battler, u32 ability)
       || HasMoveEffect(battler, EFFECT_LEAF_TORNADO)
       || HasMoveEffect(battler, EFFECT_GRAV_APPLE)
       || HasMoveEffect(battler, EFFECT_SOLAR_BEAM)
-      || HasMoveEffect(battler, EFFECT_THIRD_TYPE)
-      || HasMoveEffect(battler, EFFECT_INGRAIN)
       || HasMoveEffect(battler, EFFECT_LEECH_SEED)
       || HasMoveEffect(battler, EFFECT_STRENGTH_SAP)
       || HasMoveEffect(battler, EFFECT_SYNTHESIS)
@@ -3601,6 +3599,11 @@ bool32 ShouldSetScreen(u32 battlerAtk, u32 battlerDef, u32 moveEffect)
         // Use only in Hail and only if AI doesn't already have Reflect, Light Screen or Aurora Veil itself active.
         if ((AI_GetWeather(AI_DATA) & (B_WEATHER_HAIL | B_WEATHER_SNOW))
             && !(gSideStatuses[atkSide] & (SIDE_STATUS_REFLECT | SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL)))
+            return TRUE;
+        break;
+    case EFFECT_BABY_BLUES:
+        // Use only if the player has a physical move and AI doesn't already have Reflect itself active.
+        if (!(gSideStatuses[atkSide] & SIDE_STATUS_GOOGOO_SCREEN))
             return TRUE;
         break;
     case EFFECT_REFLECT:

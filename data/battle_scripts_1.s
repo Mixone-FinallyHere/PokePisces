@@ -500,7 +500,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectHitEscape               @ EFFECT_MANEUVER
 	.4byte BattleScript_EffectScorpFang               @ EFFECT_SCORP_FANG
 	.4byte BattleScript_EffectHitSetEntryHazard       @ EFFECT_RECOIL_50_HAZARD
-	.4byte BattleScript_EffectWickedWinds             @ EFFECT_WICKED_WINDS
+	.4byte BattleScript_EffectFrostbiteHit            @ EFFECT_WICKED_WINDS
 	.4byte BattleScript_EffectSandTomb                @ EFFECT_SAND_TOMB
 	.4byte BattleScript_EffectConfuseHit              @ EFFECT_SONIC_BURST
 	.4byte BattleScript_EffectHit                     @ EFFECT_SOUL_CUTTER
@@ -702,6 +702,19 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectFocusBlast              @ EFFECT_FOCUS_BLAST
 	.4byte BattleScript_EffectSpikeCannon             @ EFFECT_SPIKE_CANNON
 	.4byte BattleScript_EffectDig                     @ EFFECT_DIG
+	.4byte BattleScript_EffectBabyBlues               @ EFFECT_BABY_BLUES
+	.4byte BattleScript_EffectLethalChain             @ EFFECT_LETHAL_CHAIN
+
+BattleScript_EffectLethalChain::
+	setmoveeffect MOVE_EFFECT_LETHAL_CHAIN
+    goto BattleScript_EffectHit
+
+BattleScript_EffectBabyBlues::
+	attackcanceler
+	attackstring
+	ppreduce
+	setbabyblues BS_ATTACKER
+	goto BattleScript_PrintReflectLightScreenSafeguardString
 
 BattleScript_EffectSolarFlare::
 	jumpifholdeffect BS_ATTACKER, HOLD_EFFECT_SOLAR_SWORD, BattleScript_TrueSolarFlare
@@ -1123,7 +1136,7 @@ BattleScript_NightDazeTrueEffect::
 
 BattleScript_EffectFearFactor::
 	setmoveeffect MOVE_EFFECT_PANIC
-	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_EffectMagnitudeTarget
+	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_EffectFearFactorTarget
 	attackcanceler
 	attackstring
 	ppreduce
@@ -1131,6 +1144,7 @@ BattleScript_EffectFearFactor::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_MAGNITUDESTRENGTH
 	waitmessage B_WAIT_TIME_LONG
+BattleScript_EffectFearFactorTarget:
 	accuracycheck BattleScript_MoveMissedPause, ACC_CURR_MOVE
 	goto BattleScript_HitFromCritCalc
 
@@ -4449,10 +4463,13 @@ BattleScript_EffectDefenseDownHit2::
 
 BattleScript_EffectBrutalize::
 	call BattleScript_EffectHit_Ret
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_ATK_TWO_DOWN | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
 	seteffectprimary
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	argumentstatuseffect
-	tryfaintmon BS_TARGET
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectTickTack::
@@ -4576,13 +4593,6 @@ BattleScript_EffectExecution::
 	applyexhaustioncounter BS_ATTACKER, BattleScript_MoveEnd
 	printstring STRINGID_USERHASEXHAUSTION
 	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
-
-BattleScript_EffectWickedWinds::
-	call BattleScript_EffectHit_Ret
-	seteffectwithchance
-	argumentstatuseffect
-	tryfaintmon BS_TARGET
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectLoveTap::
@@ -4713,6 +4723,8 @@ BattleScript_AllStatsDownRet::
 BattleScript_DurinBerryAllStatsDown::
 	copybyte sBATTLER, gBattlerAttacker
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	printstring STRINGID_DURINBERRYREALLYSTINKS
+	waitmessage B_WAIT_TIME_LONG
 	jumpifstat BS_ATTACKER, CMP_GREATER_THAN, STAT_ATK, MIN_STAT_STAGE, BattleScript_DurinBerryAllStatsDownAtk
 	jumpifstat BS_ATTACKER, CMP_GREATER_THAN, STAT_DEF, MIN_STAT_STAGE, BattleScript_DurinBerryAllStatsDownAtk
 	jumpifstat BS_ATTACKER, CMP_GREATER_THAN, STAT_SPEED, MIN_STAT_STAGE, BattleScript_DurinBerryAllStatsDownAtk
@@ -13184,20 +13196,8 @@ BattleScript_EffectPoisonFang::
 	goto BattleScript_EffectHit
 
 BattleScript_EffectOverheat::
-	jumpifmove MOVE_DARK_TIDE, BattleScript_CheckOverheatDoubles
-BattleScript_DoOverheat::
-	call BattleScript_EffectHit_Ret
-	seteffectwithchance
-	tryfaintmon BS_TARGET
 	setmoveeffect MOVE_EFFECT_SP_ATK_MINUS_2 | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
-	seteffectprimary
-	goto BattleScript_MoveEnd
-BattleScript_CheckOverheatDoubles::
-	jumpifbattletype BATTLE_TYPE_DOUBLE, BattleScript_OverheatDoubles
-	goto BattleScript_DoOverheat
-BattleScript_OverheatDoubles::
-	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_NoMoveEffect
-	goto BattleScript_DoOverheat
+	goto BattleScript_EffectHit
 
 BattleScript_EffectHammerArm::
 	setmoveeffect MOVE_EFFECT_SPD_MINUS_1 | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
@@ -16171,6 +16171,7 @@ BattleScript_BloomOrb::
 	setbyte cMULTISTRING_CHOOSER, 0
 	copybyte gEffectBattler, gBattlerAttacker
 	call BattleScript_MoveEffectBlooming
+	removeitem BS_ATTACKER
 	end3
 
 BattleScript_PanicOrb::
@@ -17670,6 +17671,12 @@ BattleScript_StickyHoldActivates::
 BattleScript_ColorChangeActivates::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNCHANGEDTYPEWITH
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_ReformActivates::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNRESISTEDTYPEWITH
 	waitmessage B_WAIT_TIME_LONG
 	return
 

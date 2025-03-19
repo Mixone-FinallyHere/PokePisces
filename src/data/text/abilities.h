@@ -836,7 +836,8 @@ static const u8 sPixilateDescription[] = _(
 
 static const u8 sGooeyDescription[] = _(
     "Contact with the Pokémon lowers\n"
-    "the attacker's Speed stat.");
+    "the attacker's Speed stat and\n"
+    "disables the move they used.");
 
 static const u8 sAerilateDescription[] = _(
     "Normal-type moves become\n"
@@ -850,7 +851,7 @@ static const u8 sParentalBondDescription[] = _(
 static const u8 sDarkAuraDescription[] = _(
     "Increases the damage taken of\n"
     "all Pokémon except itself based\n"
-    "on the target's stat drops.");
+    "on their stat drops.");
 
 static const u8 sFairyAuraDescription[] = _(
     "Powers up the Fairy-type moves\n"
@@ -1722,6 +1723,11 @@ static const u8 sGravityWellDescription[] = _(
     "Pokémon enters battle. Levitates\n"
     "in intensified gravity.");
 
+static const u8 sReformDescription[] = _(
+    "When the Pokémon is hit by an\n"
+    "attacking move, becomes resisted\n"
+    "to that type afterwards.");
+
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
 {
@@ -1959,7 +1965,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_SHADOW_SHIELD] = _("Shadow Shield"),
     [ABILITY_PRISM_ARMOR] = _("Prism Armor"),
     [ABILITY_NEUROFORCE] = _("Neuroforce"),
-    [ABILITY_INTREPID_SWORD] = _("Intrepid Sword"),
+    [ABILITY_INTREPID_SWORD] = _("Resolute"),
     [ABILITY_DAUNTLESS_SHIELD] = _("Dauntless"),
     [ABILITY_LIBERO] = _("Libero"),
     [ABILITY_BALL_FETCH] = _("Ball Fetch"),
@@ -2111,6 +2117,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_PROVOKED] = _("Provoked"),
     [ABILITY_RUIN_WARD] = _("Ruin Ward"),
     [ABILITY_GRAVITY_WELL] = _("Gravity Well"),
+    [ABILITY_REFORM] = _("Reform"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -2349,7 +2356,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_SHADOW_SHIELD] = _("ShadowShield"),
     [ABILITY_PRISM_ARMOR] = _("Prism Armor"),
     [ABILITY_NEUROFORCE] = _("Neuroforce"),
-    [ABILITY_INTREPID_SWORD] = _("IntrepidSwrd"),
+    [ABILITY_INTREPID_SWORD] = _("Resolute"),
     [ABILITY_DAUNTLESS_SHIELD] = _("Dauntless"),
     [ABILITY_LIBERO] = _("Libero"),
     [ABILITY_BALL_FETCH] = _("Ball Fetch"),
@@ -2501,6 +2508,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_PROVOKED] = _("Provoked"),
     [ABILITY_RUIN_WARD] = _("Ruin Ward"),
     [ABILITY_GRAVITY_WELL] = _("Gravity Well"),
+    [ABILITY_REFORM] = _("Reform"),
 };
 #endif
 
@@ -2892,4 +2900,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_PROVOKED] = sNoneDescription,
     [ABILITY_RUIN_WARD] = sRuinWardDescription,
     [ABILITY_GRAVITY_WELL] = sGravityWellDescription,
+    [ABILITY_REFORM] = sReformDescription,
 };

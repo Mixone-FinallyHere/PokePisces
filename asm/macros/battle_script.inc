@@ -1937,6 +1937,10 @@
 	various \battler, VARIOUS_SET_AURORA_VEIL
 	.endm
 
+	.macro setbabyblues battler:req
+	various \battler, VARIOUS_SET_BABY_BLUES
+	.endm
+
 	.macro setsilence battler:req, failInstr:req
 	various \battler VARIOUS_SET_SILENCE
 	.4byte \failInstr
