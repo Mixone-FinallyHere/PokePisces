@@ -4767,10 +4767,10 @@ static const u8 sCrypticPlateDesc[] = _(
     "Boosts Sp. Atk.");
 
 static const u8 sChupacabraDesc[] = _(
-    "Makes moves with 70\n"
-    "or less BP do bonus\n"
-    "true damage. Does not\n"
-    "work with Technician.");
+    "A doll drained of life\n"
+    "that makes moves with\n"
+    "70 or less BP do bonus\n"
+    "true damage.");
 
 static const u8 sHeartGiftDesc[] = _(
     "A surprising gift that\n"

@@ -130,6 +130,25 @@ struct DisableStruct
     u8 purpleHazeOffense:1;
     u8 purpleHazeDefense:1;
     u8 magmaArmored:1;
+    u8 reformNormal:1;
+    u8 reformFighting:1;
+    u8 reformFlying:1;
+    u8 reformPoison:1;
+    u8 reformGround:1;
+    u8 reformRock:1;
+    u8 reformBug:1;
+    u8 reformGhost:1;
+    u8 reformSteel:1;
+    u8 reformFire:1;
+    u8 reformWater:1;
+    u8 reformGrass:1;
+    u8 reformElectric:1;
+    u8 reformPsychic:1;
+    u8 reformIce:1;
+    u8 reformDragon:1;
+    u8 reformDark:1;
+    u8 reformFairy:1;
+    u8 reformRelic:1;
 };
 
 struct ProtectStruct

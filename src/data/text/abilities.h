@@ -1726,7 +1726,7 @@ static const u8 sGravityWellDescription[] = _(
 static const u8 sReformDescription[] = _(
     "When the Pokémon is hit by an\n"
     "attacking move, becomes resisted\n"
-    "to that type.");
+    "to that type afterwards.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =

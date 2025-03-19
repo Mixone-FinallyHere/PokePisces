@@ -17680,6 +17680,12 @@ BattleScript_ColorChangeActivates::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
+BattleScript_ReformActivates::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNRESISTEDTYPEWITH
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_ProteanActivates::
 	pause B_WAIT_TIME_SHORTEST
 	call BattleScript_AbilityPopUp
