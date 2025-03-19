@@ -287,7 +287,13 @@ void HandleAction_UseMove(void)
     {
         gBattleStruct->moveTarget[gBattlerAttacker] = gBattlerTarget = gSideTimers[side].followmeTarget; // follow me moxie fix
     }
-    else if (gProtectStructs[gBattlerAttacker].overtakeRedirectActive == TRUE && moveTarget == MOVE_TARGET_SELECTED)
+    else if (gProtectStructs[gBattlerAttacker].overtakeRedirectActive == TRUE 
+        && moveTarget == MOVE_TARGET_SELECTED
+        && gBattleMoves[gCurrentMove].effect != EFFECT_SNIPE_SHOT
+        && gBattleMoves[gCurrentMove].effect != EFFECT_PSYSTRIKE
+        && gBattleMoves[gCurrentMove].effect != EFFECT_SKY_DROP
+        && GetBattlerAbility(gBattlerAttacker) != ABILITY_PROPELLER_TAIL
+        && GetBattlerAbility(gBattlerAttacker) != ABILITY_STALWART)
     {
         int battler;
         
