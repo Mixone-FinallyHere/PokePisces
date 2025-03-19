@@ -4450,10 +4450,13 @@ BattleScript_EffectDefenseDownHit2::
 
 BattleScript_EffectBrutalize::
 	call BattleScript_EffectHit_Ret
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_ATK_TWO_DOWN | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
 	seteffectprimary
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
 	argumentstatuseffect
-	tryfaintmon BS_TARGET
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectTickTack::

@@ -4283,7 +4283,7 @@ static const u8 sDragonPokerDescription[] = _(
 static const u8 sLoneSharkDescription[] = _(
     "Takes more damage before\n"
     "attacking. Boosted at low HP.\n"
-    "Absorbs half the damage dealt.");
+    "Absorbs all the damage dealt.");
 
 static const u8 sHeartStealDescription[] = _(
     "Sets 2 stacks of allure. Hitting\n"
