@@ -702,6 +702,19 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectFocusBlast              @ EFFECT_FOCUS_BLAST
 	.4byte BattleScript_EffectSpikeCannon             @ EFFECT_SPIKE_CANNON
 	.4byte BattleScript_EffectDig                     @ EFFECT_DIG
+	.4byte BattleScript_EffectBabyBlues               @ EFFECT_BABY_BLUES
+	.4byte BattleScript_EffectLethalChain             @ EFFECT_LETHAL_CHAIN
+
+BattleScript_EffectLethalChain::
+	setmoveeffect MOVE_EFFECT_LETHAL_CHAIN
+    goto BattleScript_EffectHit
+
+BattleScript_EffectBabyBlues::
+	attackcanceler
+	attackstring
+	ppreduce
+	setbabyblues BS_ATTACKER
+	goto BattleScript_PrintReflectLightScreenSafeguardString
 
 BattleScript_EffectSolarFlare::
 	jumpifholdeffect BS_ATTACKER, HOLD_EFFECT_SOLAR_SWORD, BattleScript_TrueSolarFlare

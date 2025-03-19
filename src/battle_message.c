@@ -150,6 +150,7 @@ static const u8 sText_PkmnRaisedSpDefALittle[] = _("{B_ATK_PREFIX2}'s {B_CURRENT
 static const u8 sText_PkmnRaisedDef[] = _("{B_ATK_PREFIX2}'s {B_CURRENT_MOVE}\nraised DEFENSE!");
 static const u8 sText_PkmnRaisedDefALittle[] = _("{B_ATK_PREFIX2}'s {B_CURRENT_MOVE}\nraised DEFENSE a little!");
 static const u8 sText_PkmnCoveredByVeil[] = _("{B_ATK_PREFIX2}'s party is covered\nby a veil!");
+static const u8 sText_PkmnCoveredByGoo[] = _("{B_ATK_PREFIX2}'s party is covered\nby goo!");
 static const u8 sText_PkmnUsedSafeguard[] = _("{B_DEF_NAME_WITH_PREFIX}'s party is protected\nby Safeguard!");
 static const u8 sText_PkmnSafeguardExpired[] = _("{B_ATK_PREFIX3}'s party is no longer\nprotected by Safeguard!");
 static const u8 sText_PkmnWentToSleep[] = _("{B_ATK_NAME_WITH_PREFIX} went\nto sleep!");
@@ -1878,6 +1879,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ABILITYINTENSIFIEDGRAVITY - BATTLESTRINGS_TABLE_START] = sText_AbilityIntensifiedGravity,
     [STRINGID_DURINBERRYREALLYSTINKS - BATTLESTRINGS_TABLE_START] = sText_DurinBerryReallyStinks,
     [STRINGID_PKMNRESISTEDTYPEWITH - BATTLESTRINGS_TABLE_START] = sText_PkmnResistedTypeWith,
+    [STRINGID_PKMNCOVEREDBYGOO - BATTLESTRINGS_TABLE_START] = sText_PkmnCoveredByGoo,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -2049,6 +2051,7 @@ const u16 gReflectLightScreenSafeguardStringIds[] =
     [B_MSG_SET_LIGHTSCREEN_SINGLE] = STRINGID_PKMNRAISEDSPDEF,
     [B_MSG_SET_LIGHTSCREEN_DOUBLE] = STRINGID_PKMNRAISEDSPDEFALITTLE,
     [B_MSG_SET_SAFEGUARD]          = STRINGID_PKMNCOVEREDBYVEIL,
+    [B_MSG_SET_BABYBLUES]          = STRINGID_PKMNCOVEREDBYGOO,
 };
 
 const u16 gLeechSeedStringIds[] =

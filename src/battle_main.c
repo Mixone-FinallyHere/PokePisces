@@ -5048,6 +5048,9 @@ s8 GetMovePriority(u32 battler, u16 move)
 
     if (gProtectStructs[battler].quash)
         priority = -8;
+    
+    if (gDisableStructs[battler].lethalChainTimer == 1)
+        priority = -8;
 
     return priority;
 }
@@ -5283,6 +5286,9 @@ static void TurnValuesCleanUp(bool8 var0)
             
             if (gDisableStructs[i].stormBrewCounter)
                 gDisableStructs[i].stormBrewCounter = 0;
+
+            if (gDisableStructs[i].lethalChainTimer)
+                gDisableStructs[i].lethalChainTimer--;
 
             if (gDisableStructs[i].rechargeTimer)
             {

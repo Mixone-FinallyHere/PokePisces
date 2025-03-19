@@ -3951,6 +3951,10 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     gBattlescriptCurrInstr = BattleScript_StatDown;
                 }
                 break;
+            case MOVE_EFFECT_LETHAL_CHAIN:
+                gDisableStructs[gEffectBattler].lethalChainTimer = 2;
+                gBattlescriptCurrInstr++;
+                break;
             case MOVE_EFFECT_RECHARGE:
                 gBattleMons[gEffectBattler].status2 |= STATUS2_RECHARGE;
                 gDisableStructs[gEffectBattler].rechargeTimer = 2;
@@ -9771,6 +9775,7 @@ static bool32 TryDefogClear(u32 battlerAtk, bool32 clear)
             DEFOG_CLEAR(SIDE_STATUS_LIGHTSCREEN, lightscreenTimer, BattleScript_SideStatusWoreOffReturn, MOVE_LIGHT_SCREEN);
             DEFOG_CLEAR(SIDE_STATUS_MIST, mistTimer, BattleScript_SideStatusWoreOffReturn, MOVE_MIST);
             DEFOG_CLEAR(SIDE_STATUS_AURORA_VEIL, auroraVeilTimer, BattleScript_SideStatusWoreOffReturn, MOVE_AURORA_VEIL);
+            DEFOG_CLEAR(SIDE_STATUS_GOOGOO_SCREEN, googooScreenTimer, BattleScript_SideStatusWoreOffReturn, MOVE_BABY_BLUES);
             DEFOG_CLEAR(SIDE_STATUS_SAFEGUARD, safeguardTimer, BattleScript_SideStatusWoreOffReturn, MOVE_SAFEGUARD);
             DEFOG_CLEAR(SIDE_STATUS_LUCKY_CHANT, luckyChantTimer, BattleScript_SideStatusWoreOffReturn, MOVE_LUCKY_CHANT);
         }
@@ -9844,6 +9849,7 @@ static bool32 TryHazeClear(u32 battlerAtk, bool32 clear)
         DEFOG_CLEAR(SIDE_STATUS_REFLECT, reflectTimer, BattleScript_SideStatusWoreOffReturn, MOVE_REFLECT);
         DEFOG_CLEAR(SIDE_STATUS_LIGHTSCREEN, lightscreenTimer, BattleScript_SideStatusWoreOffReturn, MOVE_LIGHT_SCREEN);
         DEFOG_CLEAR(SIDE_STATUS_AURORA_VEIL, auroraVeilTimer, BattleScript_SideStatusWoreOffReturn, MOVE_AURORA_VEIL);
+        DEFOG_CLEAR(SIDE_STATUS_GOOGOO_SCREEN, googooScreenTimer, BattleScript_SideStatusWoreOffReturn, MOVE_BABY_BLUES);
     }
 
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
@@ -10028,6 +10034,7 @@ static bool32 CourtChangeSwapSideStatuses(void)
     COURTCHANGE_SWAP(SIDE_STATUS_MIST, mistTimer, temp);
     COURTCHANGE_SWAP(SIDE_STATUS_SAFEGUARD, safeguardTimer, temp);
     COURTCHANGE_SWAP(SIDE_STATUS_AURORA_VEIL, auroraVeilTimer, temp);
+    COURTCHANGE_SWAP(SIDE_STATUS_GOOGOO_SCREEN, googooScreenTimer, temp);
     COURTCHANGE_SWAP(SIDE_STATUS_TAILWIND, tailwindTimer, temp);
     // Lucky Chant doesn't exist in gen 8, but seems like it should be affected by Court Change
     COURTCHANGE_SWAP(SIDE_STATUS_LUCKY_CHANT, luckyChantTimer, temp);
@@ -10043,6 +10050,7 @@ static bool32 CourtChangeSwapSideStatuses(void)
     UPDATE_COURTCHANGED_BATTLER(mistBattlerId);
     UPDATE_COURTCHANGED_BATTLER(safeguardBattlerId);
     UPDATE_COURTCHANGED_BATTLER(auroraVeilBattlerId);
+    UPDATE_COURTCHANGED_BATTLER(googooScreenBattlerId);
     UPDATE_COURTCHANGED_BATTLER(tailwindBattlerId);
     UPDATE_COURTCHANGED_BATTLER(luckyChantBattlerId);
     UPDATE_COURTCHANGED_BATTLER(stickyWebBattlerId);
@@ -12119,6 +12127,30 @@ static void Cmd_various(void)
                 gBattleCommunication[MULTISTRING_CHOOSER] = 5;
             else
                 gBattleCommunication[MULTISTRING_CHOOSER] = 5;
+        }
+        break;
+    }
+    case VARIOUS_SET_BABY_BLUES:
+    {
+        VARIOUS_ARGS();
+        if (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_GOOGOO_SCREEN)
+        {
+            gMoveResultFlags |= MOVE_RESULT_MISSED;
+            gBattleCommunication[MULTISTRING_CHOOSER] = 0;
+        }
+        else
+        {
+            gSideStatuses[GetBattlerSide(battler)] |= SIDE_STATUS_GOOGOO_SCREEN;
+            if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_LIGHT_CLAY || GetBattlerAbility(battler) == ABILITY_STAR_SCREEN)
+                gSideTimers[GetBattlerSide(battler)].googooScreenTimer = 8;
+            else
+                gSideTimers[GetBattlerSide(battler)].googooScreenTimer = 5;
+            gSideTimers[GetBattlerSide(battler)].googooScreenBattlerId = battler;
+
+            if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE && CountAliveMonsInBattle(BATTLE_ALIVE_SIDE, gBattlerAttacker) == 2)
+                gBattleCommunication[MULTISTRING_CHOOSER] = 6;
+            else
+                gBattleCommunication[MULTISTRING_CHOOSER] = 6;
         }
         break;
     }
@@ -18809,9 +18841,11 @@ static inline void ClearScreens(u32 side)
     gSideStatuses[side] &= ~SIDE_STATUS_REFLECT;
     gSideStatuses[side] &= ~SIDE_STATUS_LIGHTSCREEN;
     gSideStatuses[side] &= ~SIDE_STATUS_AURORA_VEIL;
+    gSideStatuses[side] &= ~SIDE_STATUS_GOOGOO_SCREEN;
     gSideTimers[side].reflectTimer = 0;
     gSideTimers[side].lightscreenTimer = 0;
     gSideTimers[side].auroraVeilTimer = 0;
+    gSideTimers[side].googooScreenTimer = 0;
 }
 
 static void Cmd_removelightscreenreflect(void)

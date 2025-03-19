@@ -4087,9 +4087,9 @@ static const u8 sUpperHandDescription[] = _(
     "This move always goes first.");
 
 static const u8 sMalignantChainDescription[] = _(
-    "The user pours toxins into the\n"
-    "foe by wrapping them in chains.\n"
-    "This may badly poison the foe.");
+    "Wraps the foe with toxic chains.\n"
+    "This deals bonus true damage and\n"
+    "makes them move last next turn.");
 
 static const u8 sSpookDescription[] = _(
     "The target is spooked and\n"

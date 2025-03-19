@@ -94,6 +94,7 @@ struct DisableStruct
     u8 truantSwitchInHack:1;
     u8 mimickedMoves:4;
     u8 rechargeTimer;
+    u8 lethalChainTimer;
     u8 watcherTimer;
     u8 autotomizeCount;
     u8 slowStartTimer;
@@ -281,6 +282,8 @@ struct SideTimer
     u8 stickyWebBattlerSide; // Used for Court Change
     u8 auroraVeilTimer;
     u8 auroraVeilBattlerId;
+    u8 googooScreenTimer;
+    u8 googooScreenBattlerId;
     u8 tailwindTimer;
     u8 tailwindBattlerId;
     u8 luckyChantTimer;

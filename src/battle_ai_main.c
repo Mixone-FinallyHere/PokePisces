@@ -1903,6 +1903,11 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
               || !(weather & (B_WEATHER_HAIL | B_WEATHER_SNOW)))
                 score -= 10;
             break;
+        case EFFECT_BABY_BLUES:
+            if (gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_GOOGOO_SCREEN
+              || PartnerHasSameMoveEffectWithoutTarget(BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove))
+                score -= 10;
+            break;
         case EFFECT_OHKO:
         #if B_SHEER_COLD_IMMUNITY >= GEN_7
             if (move == MOVE_SHEER_COLD && IS_BATTLER_OF_TYPE(battlerDef, TYPE_ICE))
@@ -2806,7 +2811,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_DEFOG:
             if (gSideStatuses[GetBattlerSide(battlerDef)]
-             & (SIDE_STATUS_REFLECT | SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL | SIDE_STATUS_SAFEGUARD | SIDE_STATUS_MIST)
+             & (SIDE_STATUS_REFLECT | SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL | SIDE_STATUS_GOOGOO_SCREEN | SIDE_STATUS_SAFEGUARD | SIDE_STATUS_MIST)
               || gSideTimers[GetBattlerSide(battlerDef)].auroraVeilTimer != 0
               || gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_HAZARDS_ANY)
             {
@@ -4715,6 +4720,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             score++;
         if (gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_AURORA_VEIL)
             score += 2;
+        if (gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_GOOGOO_SCREEN)
+            score += 2;
         if (AnyStatIsRaised(BATTLE_PARTNER(battlerAtk))
           || PartnerHasSameMoveEffectWithoutTarget(BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove))
             score -= 3;
@@ -4855,6 +4862,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_LIGHT_SCREEN:
     case EFFECT_REFLECT:
     case EFFECT_AURORA_VEIL:
+    case EFFECT_BABY_BLUES:
         if (ShouldSetScreen(battlerAtk, battlerDef, moveEffect))
         {
             score += 5;
@@ -6304,6 +6312,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             score++;
         if (gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_AURORA_VEIL)
             score++;
+        if (gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_GOOGOO_SCREEN)
+            score++;
         break;
     case EFFECT_KNOCK_OFF:
     case EFFECT_PARTY_TRICK:
@@ -6753,6 +6763,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         if (gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_LIGHTSCREEN)
             score++;
         if (gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_AURORA_VEIL)
+            score++;
+        if (gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_GOOGOO_SCREEN)
             score++;
         if (gBattleMoves[predictedMove].effect == EFFECT_PROTECT)
             score += 3;
@@ -7616,6 +7628,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_REFLECT:
             case EFFECT_LIGHT_SCREEN:
             case EFFECT_AURORA_VEIL:
+            case EFFECT_BABY_BLUES:
             case EFFECT_MIST:
             case EFFECT_FOCUS_ENERGY:
             case EFFECT_RAGE:

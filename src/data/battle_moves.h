@@ -14087,12 +14087,12 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_MALIGNANT_CHAIN] =
     {
-        .effect = EFFECT_POISON_FANG,
-        .power = 100,
+        .effect = EFFECT_LETHAL_CHAIN,
+        .power = 80,
         .type = TYPE_POISON,
         .accuracy = 100,
         .pp = 5,
-        .secondaryEffectChance = 50,
+        .secondaryEffectChance = 100,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_SPECIAL,
@@ -17257,6 +17257,21 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
         .argument = STATUS1_BURN,
+    },
+
+    [MOVE_BABY_BLUES] =
+    {
+        .effect = EFFECT_BABY_BLUES,
+        .power = 0,
+        .type = TYPE_WATER,
+        .accuracy = 0,
+        .pp = 20,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_USER,
+        .priority = 0,
+        .split = SPLIT_STATUS,
+        .zMoveEffect = Z_EFFECT_SPD_UP_1,
+        .snatchAffected = TRUE,
     },
 
     // Z-Moves

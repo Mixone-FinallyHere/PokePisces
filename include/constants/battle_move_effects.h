@@ -679,7 +679,9 @@
 #define EFFECT_FOCUS_BLAST                  673
 #define EFFECT_SPIKE_CANNON                 674
 #define EFFECT_DIG                          675
+#define EFFECT_BABY_BLUES                   676
+#define EFFECT_LETHAL_CHAIN                 677
 
-#define NUM_BATTLE_MOVE_EFFECTS             676
+#define NUM_BATTLE_MOVE_EFFECTS             678
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

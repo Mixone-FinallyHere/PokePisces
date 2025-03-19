@@ -3601,6 +3601,11 @@ bool32 ShouldSetScreen(u32 battlerAtk, u32 battlerDef, u32 moveEffect)
             && !(gSideStatuses[atkSide] & (SIDE_STATUS_REFLECT | SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL)))
             return TRUE;
         break;
+    case EFFECT_BABY_BLUES:
+        // Use only if the player has a physical move and AI doesn't already have Reflect itself active.
+        if (!(gSideStatuses[atkSide] & SIDE_STATUS_GOOGOO_SCREEN))
+            return TRUE;
+        break;
     case EFFECT_REFLECT:
         // Use only if the player has a physical move and AI doesn't already have Reflect itself active.
         if (HasMoveWithSplit(battlerDef, SPLIT_PHYSICAL)

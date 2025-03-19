@@ -874,8 +874,9 @@
 #define STRINGID_ABILITYINTENSIFIEDGRAVITY            872
 #define STRINGID_DURINBERRYREALLYSTINKS               873
 #define STRINGID_PKMNRESISTEDTYPEWITH                 874
+#define STRINGID_PKMNCOVEREDBYGOO                     875
 
-#define BATTLESTRINGS_COUNT                           875
+#define BATTLESTRINGS_COUNT                           876
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -971,6 +972,7 @@
 #define B_MSG_SET_LIGHTSCREEN_SINGLE 3
 #define B_MSG_SET_LIGHTSCREEN_DOUBLE 4
 #define B_MSG_SET_SAFEGUARD          5
+#define B_MSG_SET_BABYBLUES          6
 
 // gProtectLikeUsedStringIds
 #define B_MSG_PROTECTED_ITSELF 0
