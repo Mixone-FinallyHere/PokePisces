@@ -9,6 +9,8 @@ PlaneInFlight_OnFrame:
 PlaneInFlight_EventScript_FlightTime::
 	lock
 	delay 32
+	setrespawn HEAL_LOCATION_EVER_GRANDE_REST_AREA
+	setflag FLAG_EGR_NO_FLY
 	speakername PlaneInFlight_Text_NameArchie
 	msgbox PlaneInFlight_Text_BeenAWhileSinceWeFlied, MSGBOX_DEFAULT
 	speakername PlaneInFlight_Text_NameMaxie
@@ -29,13 +31,33 @@ PlaneInFlight_Text_NameMaxie:
 	.string "Maxie$"
 
 PlaneInFlight_Text_BeenAWhileSinceWeFlied:
-	.string "$"
+	.string "It's been a while since we last\n"
+	.string "flied together, eh Maxie?$"
 
 PlaneInFlight_Text_NeverThoughtWedBeFriends:
-	.string "$"
+	.string "Quite.\p"
+	.string "...\p"
+	.string "...Predictability can be such\n"
+	.string "a fickle mistress, hmm...\p"
+	.string "I would have never predicted that\n"
+	.string "you and I would grow so\l"
+	.string "close, Archibald.\l"
+	.string "Yet, against all odds...\l"
+	.string "I find you an inseparable partner.\p"
+	.string "{PLAYER}. Do you have someone\n"
+	.string "who you value as a partner?\l"
+	.string "That sort of bond can change\l"
+	.string "your life.$"
 
 PlaneInFlight_Text_ICanSeeTheGoldCoast:
-	.string "$"
+	.string "Hah! Don't put the kid on the\n"
+	.string "spot like that! I'm sure\l"
+	.string "{PLAYER}'s got a massive story.\l"
+	.string "Too big to tell!\p"
+	.string "Ah...! There, I've spotted the\n"
+	.string "golden coasts of Ever Grande Road...\l"
+	.string "What a sight!$"
 
 PlaneInFlight_Text_PrepareToLand:
-	.string "$"
+	.string "Delectable.\n"
+	.string "Let us prepare to disembark...$"

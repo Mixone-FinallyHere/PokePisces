@@ -683,7 +683,7 @@ CosmossSpaceCenter_Text_HaveThisShinyMinior:
 	.string "Minior expert would know there's 7\l"
 	.string "variants.\p"
 	.string "…But those are only found in\n"
-	.string "Midneor Falls to the north.\p"
+	.string "Etheor Falls to the north.\p"
 	.string "In fact, I have a special indigo\n"
 	.string "colored Minior with your name on it.\p"
 	.string "On behalf of all of us at the space\n"

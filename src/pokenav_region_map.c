@@ -274,7 +274,7 @@ static u32 HandleRegionMapInput(struct Pokenav_RegionMapMenu *state)
         state->callback = GetExitRegionMapMenuId;
         return POKENAV_MAP_FUNC_EXIT;
     case MAP_INPUT_A_BUTTON:
-        if(regionMap->mapSecType == MAPSECTYPE_CITY_CANFLY && FlagGet(FLAG_BADGE04_GET)) {
+        if(regionMap->mapSecType == MAPSECTYPE_CITY_CANFLY && FlagGet(FLAG_BADGE04_GET) && !FlagGet(FLAG_EGR_NO_FLY)) {
             switch (regionMap->mapSecId)
             {
             case MAPSEC_SOUTHERN_ISLAND:
@@ -466,7 +466,7 @@ static u32 LoopedTask_UpdateInfoAfterCursorMove(s32 taskState)
     case 1:
         if (IsDma3ManagerBusyWithBgCopy_(state))
             return LT_PAUSE;
-        if (regionMap->mapSecType == MAPSECTYPE_CITY_CANFLY && FlagGet(FLAG_BADGE04_GET))
+        if (regionMap->mapSecType == MAPSECTYPE_CITY_CANFLY && FlagGet(FLAG_BADGE04_GET) && !FlagGet(FLAG_EGR_NO_FLY))
             PrintHelpBarText(HELPBAR_CAN_FLY);
         else
             PrintHelpBarText(HELPBAR_MAP_ZOOMED_OUT);        
@@ -489,7 +489,7 @@ static u32 LoopedTask_RegionMapZoomOut(s32 taskState)
     case 1:
         if (UpdateRegionMapZoom() || IsChangeBgYForZoomActive())
             return LT_PAUSE;
-        if (regionMap->mapSecType == MAPSECTYPE_CITY_CANFLY && FlagGet(FLAG_BADGE04_GET))
+        if (regionMap->mapSecType == MAPSECTYPE_CITY_CANFLY && FlagGet(FLAG_BADGE04_GET) && !FlagGet(FLAG_EGR_NO_FLY))
             PrintHelpBarText(HELPBAR_CAN_FLY);
         else
             PrintHelpBarText(HELPBAR_MAP_ZOOMED_OUT);         
@@ -525,7 +525,7 @@ static u32 LoopedTask_RegionMapZoomIn(s32 taskState)
     case 2:
         if (UpdateRegionMapZoom() || IsChangeBgYForZoomActive())
             return LT_PAUSE;
-        if (regionMap->mapSecType == MAPSECTYPE_CITY_CANFLY && FlagGet(FLAG_BADGE04_GET))
+        if (regionMap->mapSecType == MAPSECTYPE_CITY_CANFLY && FlagGet(FLAG_BADGE04_GET) && !FlagGet(FLAG_EGR_NO_FLY))
             PrintHelpBarText(HELPBAR_CAN_FLY);
         else
             PrintHelpBarText(HELPBAR_MAP_ZOOMED_IN);     
