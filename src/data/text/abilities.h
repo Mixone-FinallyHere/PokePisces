@@ -836,7 +836,8 @@ static const u8 sPixilateDescription[] = _(
 
 static const u8 sGooeyDescription[] = _(
     "Contact with the Pokémon lowers\n"
-    "the attacker's Speed stat.");
+    "the attacker's Speed stat and\n"
+    "disables the move they used.");
 
 static const u8 sAerilateDescription[] = _(
     "Normal-type moves become\n"

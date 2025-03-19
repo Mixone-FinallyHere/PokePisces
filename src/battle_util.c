@@ -6434,6 +6434,40 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_GOOEY:
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            && gBattleMons[gBattlerAttacker].hp != 0 
+            && (CompareStat(gBattlerAttacker, STAT_SPEED, MIN_STAT_STAGE, CMP_GREATER_THAN) 
+            || GetBattlerAbility(gBattlerAttacker) == ABILITY_MIRROR_ARMOR
+            || (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_MOON_MIRROR 
+            && gBattleMons[gBattlerAttacker].species == SPECIES_LUNATONE))
+            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
+            && TARGET_TURN_DAMAGED 
+            && IsMoveMakingContact(move, gBattlerAttacker))
+            {
+                SET_STATCHANGER(STAT_SPEED, 1, TRUE);
+                gBattleScripting.moveEffect = MOVE_EFFECT_SPD_MINUS_1;
+                PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_GooeyActivates;
+                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
+                effect++;
+            }
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+            && TARGET_TURN_DAMAGED 
+            && gDisableStructs[gBattlerAttacker].disabledMove == MOVE_NONE 
+            && IsBattlerAlive(gBattlerAttacker) 
+            && !IsAbilityOnSide(gBattlerAttacker, ABILITY_AROMA_VEIL) 
+            && gBattleMons[gBattlerAttacker].pp[gChosenMovePos] != 0 
+            && IsMoveMakingContact(move, gBattlerAttacker))
+            {
+                gDisableStructs[gBattlerAttacker].disabledMove = gChosenMove;
+                gDisableStructs[gBattlerAttacker].disableTimer = 4;
+                PREPARE_MOVE_BUFFER(gBattleTextBuff1, gChosenMove);
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_CursedBodyActivatesDisable;
+                effect++;
+            }
+            break;
         case ABILITY_TANGLING_HAIR:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
             && gBattleMons[gBattlerAttacker].hp != 0 
@@ -6441,7 +6475,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             || GetBattlerAbility(gBattlerAttacker) == ABILITY_MIRROR_ARMOR
             || (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_MOON_MIRROR 
             && gBattleMons[gBattlerAttacker].species == SPECIES_LUNATONE))
-            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg && TARGET_TURN_DAMAGED 
+            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
+            && TARGET_TURN_DAMAGED 
             && IsMoveMakingContact(move, gBattlerAttacker))
             {
                 SET_STATCHANGER(STAT_SPEED, 1, TRUE);
