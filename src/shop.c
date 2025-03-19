@@ -186,6 +186,7 @@ static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, s
 static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y);
 static void PrintMoneyLocal(u8 windowId, u8 y, u32 amount, u8 width, u8 colorIdx, bool32 copy);
 static void UpdateItemData(void);
+static void Task_ReturnToItemListWaitMsg(u8 taskId);
 
 static const u8 sGridPosX[] = { (120 + 16), (160 + 16), (200 + 16) };
 static const u8 sGridPosY[] = { (24 + 16), (64 + 16) };
@@ -1484,15 +1485,6 @@ static void UpdateCursorPosition(void)
     gSprites[sShopData->cursorSpriteId].y = y;
 }
 
-static void Task_WaitMessage(u8 taskId)
-{
-    if (JOY_NEW(A_BUTTON | B_BUTTON))
-    {
-        UpdateItemData();
-        gTasks[taskId].func = Task_BuyMenu;
-    }
-}
-
 static void BuyMenuDisplayMessage(u8 taskId, const u8 *str, TaskFunc nextFunc)
 {
     StringExpandPlaceholders(gStringVar4, str);
@@ -1515,7 +1507,7 @@ static void Task_BuyMenuTryBuyingItem(u8 taskId)
         if (ItemId_GetImportance(sShopData->currentItemId) && (CheckBagHasItem(sShopData->currentItemId, 1) || CheckPCHasItem(sShopData->currentItemId, 1)))
         {
             PlaySE(SE_BOO);
-            BuyMenuDisplayMessage(taskId, gText_ThatItemIsSoldOut, Task_WaitMessage);
+            BuyMenuDisplayMessage(taskId, gText_ThatItemIsSoldOut, Task_ReturnToItemListWaitMsg);
             return;
         }
     }
@@ -1523,7 +1515,7 @@ static void Task_BuyMenuTryBuyingItem(u8 taskId)
     if (!IsEnoughMoney(&gSaveBlock1Ptr->money, sShopData->totalCost))
     {
         PlaySE(SE_BOO);
-        BuyMenuDisplayMessage(taskId, gText_YouDontHaveMoney, Task_WaitMessage);
+        BuyMenuDisplayMessage(taskId, gText_YouDontHaveMoney, Task_ReturnToItemListWaitMsg);
     }
     else
     {
@@ -1672,7 +1664,8 @@ static void BuyMenuTryMakePurchase(u8 taskId)
         }
         else
         {
-            BuyMenuDisplayMessage(taskId, gText_NoMoreRoomForThis, BuyMenuReturnToItemList);
+            BuyMenuDisplayMessage(taskId, gText_NoMoreRoomForThis, Task_ReturnToItemListWaitMsg);
+            return;
         }
     }
     else
@@ -1686,7 +1679,8 @@ static void BuyMenuTryMakePurchase(u8 taskId)
         }
         else
         {
-            BuyMenuDisplayMessage(taskId, gText_SpaceForVar1Full, BuyMenuReturnToItemList);
+            BuyMenuDisplayMessage(taskId, gText_SpaceForVar1Full, Task_ReturnToItemListWaitMsg);
+            return;
         }
     }
 }
@@ -1707,9 +1701,16 @@ static void BuyMenuSubtractMoney(u8 taskId)
 
 static void Task_ReturnToItemListWaitMsg(u8 taskId)
 {
-    if (!RunTextPrintersRetIsActive(WIN_ITEM_DESCRIPTION) && JOY_NEW(A_BUTTON | B_BUTTON))
+    if (!IsTextPrinterActive(WIN_ITEM_DESCRIPTION))
     {
-        BuyMenuReturnToItemList(taskId);
+        if (JOY_NEW(A_BUTTON | B_BUTTON))
+        {
+            if (!IsSEPlaying())
+            {
+                PlaySE(SE_SELECT);
+            }
+            BuyMenuReturnToItemList(taskId);
+        }
     }
 }
 
