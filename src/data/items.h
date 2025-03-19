@@ -9811,7 +9811,7 @@ const struct Item gItems[] =
     [ITEM_CHEESE] =
     {
         .name = _("Cheese"),
-        .price = 3000,
+        .price = 5000,
         .holdEffect = HOLD_EFFECT_CHEESE,
         .description = sCheeseDesc,
         .pocket = POCKET_BATTLE_ITEMS,
