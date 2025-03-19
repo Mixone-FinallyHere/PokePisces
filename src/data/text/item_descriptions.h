@@ -3129,7 +3129,7 @@ static const u8 sRoseliBerryDesc[] = _(
     "If held by a Pokémon,\n"
     "it weakens a foe's\n"
     "super effective\n"
-    "Grass-type attack.");
+    "Fairy-type attack.");
 
 static const u8 sLiechiBerryDesc[] = _(
     "The holder's Attack\n"

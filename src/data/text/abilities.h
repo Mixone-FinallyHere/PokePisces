@@ -850,7 +850,7 @@ static const u8 sParentalBondDescription[] = _(
 static const u8 sDarkAuraDescription[] = _(
     "Increases the damage taken of\n"
     "all Pokémon except itself based\n"
-    "on the target's stat drops.");
+    "on their stat drops.");
 
 static const u8 sFairyAuraDescription[] = _(
     "Powers up the Fairy-type moves\n"

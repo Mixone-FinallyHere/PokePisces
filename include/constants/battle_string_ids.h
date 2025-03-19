@@ -872,8 +872,9 @@
 #define STRINGID_WEPEARHEALBLOCKPKMN                  870
 #define STRINGID_NANABMINIMIZE                        871
 #define STRINGID_ABILITYINTENSIFIEDGRAVITY            872
+#define STRINGID_DURINBERRYREALLYSTINKS               873
 
-#define BATTLESTRINGS_COUNT                           873
+#define BATTLESTRINGS_COUNT                           874
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

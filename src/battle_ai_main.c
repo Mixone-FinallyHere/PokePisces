@@ -933,10 +933,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 case EFFECT_LEECH_SEED:
                 case EFFECT_GLACIATE:
                 case EFFECT_SCORP_FANG:
-                case EFFECT_TERRORIZE:
-                case EFFECT_DEEP_GAZE:
                 case EFFECT_POISON_POWDER:
-                case EFFECT_WORRY_SEED:
                     score -= 5;
                     break;
                 case EFFECT_FROST_NOVA:
@@ -2286,12 +2283,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             }
             break;
         case EFFECT_TORMENT:
-            if (gBattleMons[battlerDef].status2 & STATUS2_TORMENT
-              || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
-            {
-                score -= 10;
-                break;
-            }
         #if B_MENTAL_HERB >= GEN_5
             if (aiData->holdEffects[battlerDef] == HOLD_EFFECT_MENTAL_HERB)
                 score -= 6;
@@ -6100,7 +6091,10 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             break;
         }
     case EFFECT_TORMENT:
+        break;
     case EFFECT_VEXING_KI:
+        if (gBattleMons[battlerDef].status2 & STATUS2_TORMENT)
+            IncreasePanicScore(battlerAtk, battlerDef, move, &score);
         break;
     case EFFECT_WILL_O_WISP:
         IncreaseBurnScore(battlerAtk, battlerDef, move, &score);

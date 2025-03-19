@@ -287,7 +287,7 @@ void HandleAction_UseMove(void)
     {
         gBattleStruct->moveTarget[gBattlerAttacker] = gBattlerTarget = gSideTimers[side].followmeTarget; // follow me moxie fix
     }
-    else if (gProtectStructs[gBattlerAttacker].overtakeRedirectActive == TRUE)
+    else if (gProtectStructs[gBattlerAttacker].overtakeRedirectActive == TRUE && moveTarget == MOVE_TARGET_SELECTED)
     {
         int battler;
         
@@ -9758,10 +9758,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && TARGET_TURN_DAMAGED 
                 && IsBattlerAlive(gBattlerTarget)
                 && (moveType ==  TYPE_BUG || moveType == TYPE_DARK)
-                && CompareStat(gBattlerTarget, STAT_ATK, MIN_STAT_STAGE, CMP_GREATER_THAN) 
-                && CompareStat(gBattlerTarget, STAT_SPATK, MIN_STAT_STAGE, CMP_GREATER_THAN)
-                && CompareStat(gBattlerTarget, STAT_ACC, MIN_STAT_STAGE, CMP_GREATER_THAN)
-                && CompareStat(gBattlerTarget, STAT_EVASION, MIN_STAT_STAGE, CMP_GREATER_THAN)
+                && (CompareStat(gBattlerTarget, STAT_ATK, MIN_STAT_STAGE, CMP_GREATER_THAN) 
+                || CompareStat(gBattlerTarget, STAT_SPATK, MIN_STAT_STAGE, CMP_GREATER_THAN)
+                || CompareStat(gBattlerTarget, STAT_ACC, MIN_STAT_STAGE, CMP_GREATER_THAN)
+                || CompareStat(gBattlerTarget, STAT_EVASION, MIN_STAT_STAGE, CMP_GREATER_THAN))
                 && gBattleMons[gBattlerAttacker].species == SPECIES_MOSKOPO)
             {
                 gBattleScripting.moveEffect = MOVE_EFFECT_LONG_NOSE;
@@ -9838,7 +9838,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     && IsBattlerAlive(gBattlerTarget)
                     && TARGET_TURN_DAMAGED
                     && !IS_MOVE_STATUS(gCurrentMove)
-                    && CompareStat(gBattlerTarget, STAT_ACC, 0, CMP_GREATER_THAN)
+                    && CompareStat(gBattlerTarget, STAT_ACC, MIN_STAT_STAGE, CMP_GREATER_THAN)
                     && RandomPercentage(RNG_HOLD_EFFECT_SOFT_SAND, 30))
             {
                 gEffectBattler = gBattlerTarget;
@@ -10180,11 +10180,17 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 if (IsBattlerAlive(gBattlerAttacker)
                 && TARGET_TURN_DAMAGED
                 && IsBattlerAlive(battler)
+                && (CompareStat(gBattlerAttacker, STAT_ATK, MIN_STAT_STAGE, CMP_GREATER_THAN)
+                || CompareStat(gBattlerAttacker, STAT_DEF, MIN_STAT_STAGE, CMP_GREATER_THAN)
+                || CompareStat(gBattlerAttacker, STAT_SPATK, MIN_STAT_STAGE, CMP_GREATER_THAN)
+                || CompareStat(gBattlerAttacker, STAT_SPDEF, MIN_STAT_STAGE, CMP_GREATER_THAN)
+                || CompareStat(gBattlerAttacker, STAT_ACC, MIN_STAT_STAGE, CMP_GREATER_THAN)
+                || CompareStat(gBattlerAttacker, STAT_EVASION, MIN_STAT_STAGE, CMP_GREATER_THAN))
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
                 && gBattleStruct->hpBefore[gBattlerTarget] > gBattleMons[gBattlerTarget].maxHP / 2
                 && gBattleMons[gBattlerTarget].hp < gBattleMons[gBattlerTarget].maxHP / 2)
                 {
-                    effect = ITEM_EFFECT_OTHER;
+                    effect = ITEM_STATS_CHANGE;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_DurinBerryAllStatsDown;
                     PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);

@@ -882,6 +882,7 @@ static const u8 sText_CurrentMoveCantSelect[] = _("{B_BUFF1} cannot be used!\p")
 static const u8 sText_TargetIsBeingSaltCured[] = _("{B_DEF_NAME_WITH_PREFIX} is being salt cured!");
 static const u8 sText_TargetIsHurtBySaltCure[] = _("{B_DEF_NAME_WITH_PREFIX} is hurt by {B_BUFF1}!");
 static const u8 sText_TargetIsBeingSaltCorned[] = _("{B_ATK_NAME_WITH_PREFIX} was salt\ncorned by {B_LAST_ITEM}!");
+static const u8 sText_DurinBerryReallyStinks[] = _("{B_ATK_NAME_WITH_PREFIX} was stupefied by\n{B_LAST_ITEM}!");
 static const u8 sText_WepearHealBlockPkmn[] = _("{B_DEF_NAME_WITH_PREFIX} was prevented\nfrom healing by {B_LAST_ITEM}!");
 static const u8 sText_NanabMinimize[] = _("{B_DEF_NAME_WITH_PREFIX} became minimized\nby {B_LAST_ITEM}!");
 static const u8 sText_AbilityWeakenedSurroundingMonsStats[] = _("A falling valley is present...");
@@ -1874,6 +1875,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ATKPKMNCONFUSED - BATTLESTRINGS_TABLE_START] = sText_AtkPkmnConfused,
     [STRINGID_PKMNSXINFATUATEDY3 - BATTLESTRINGS_TABLE_START] = sText_PkmnsXInfatuatedY3,
     [STRINGID_ABILITYINTENSIFIEDGRAVITY - BATTLESTRINGS_TABLE_START] = sText_AbilityIntensifiedGravity,
+    [STRINGID_DURINBERRYREALLYSTINKS - BATTLESTRINGS_TABLE_START] = sText_DurinBerryReallyStinks,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
