@@ -500,7 +500,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectHitEscape               @ EFFECT_MANEUVER
 	.4byte BattleScript_EffectScorpFang               @ EFFECT_SCORP_FANG
 	.4byte BattleScript_EffectHitSetEntryHazard       @ EFFECT_RECOIL_50_HAZARD
-	.4byte BattleScript_EffectWickedWinds             @ EFFECT_WICKED_WINDS
+	.4byte BattleScript_EffectFrostbiteHit            @ EFFECT_WICKED_WINDS
 	.4byte BattleScript_EffectSandTomb                @ EFFECT_SAND_TOMB
 	.4byte BattleScript_EffectConfuseHit              @ EFFECT_SONIC_BURST
 	.4byte BattleScript_EffectHit                     @ EFFECT_SOUL_CUTTER
@@ -4593,13 +4593,6 @@ BattleScript_EffectExecution::
 	applyexhaustioncounter BS_ATTACKER, BattleScript_MoveEnd
 	printstring STRINGID_USERHASEXHAUSTION
 	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
-
-BattleScript_EffectWickedWinds::
-	call BattleScript_EffectHit_Ret
-	seteffectwithchance
-	argumentstatuseffect
-	tryfaintmon BS_TARGET
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectLoveTap::
