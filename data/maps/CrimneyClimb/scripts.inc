@@ -1,5 +1,19 @@
+.set LOCALID_OZONE_BLOCKER1, 36
+.set LOCALID_OZONE_BLOCKER2, 37
+
 CrimneyClimb_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, CrimneyClimb_OnLoad
 	.byte 0
+
+CrimneyClimb_OnLoad:
+	call_if_ge VAR_NEW_COO_STATE, 6, CrimneyClimb_EventScript_RemoveOzoneBlockers
+	end
+
+CrimneyClimb_EventScript_RemoveOzoneBlockers::
+	removeobject LOCALID_OZONE_BLOCKER1
+	removeobject LOCALID_OZONE_BLOCKER2
+	setflag FLAG_TEMP_1B
+	return
 
 CrimneyClimb_EventScript_Lara::
     trainerbattle_single TRAINER_P_LARA, CrimneyClimb_Text_LaraIntro, CrimneyClimb_Text_LaraDefeated
@@ -70,6 +84,34 @@ CrimneyClimb_EventScript_AudreyII::
     trainerbattle_single TRAINER_P_AUDREY_II, CrimneyClimb_Text_AudreyIIIntro, CrimneyClimb_Text_AudreyIIDefeated
     msgbox CrimneyClimb_Text_AudreyIIPostBattle, MSGBOX_AUTOCLOSE
     end
+
+CrimneyClimb_EventScript_OzoneBlocker1::
+    msgbox CrimneyClimb_Text_OzoneBlocker1, MSGBOX_NPC
+    end
+
+CrimneyClimb_EventScript_OzoneBlocker2::
+    msgbox CrimneyClimb_Text_OzoneBlocker2, MSGBOX_NPC
+    end
+
+CrimneyClimb_Text_OzoneBlocker1:
+	.string "Whoa, hold it there, sport!\n"
+	.string "Can't be lettin' you into\l"
+	.string "this part of the Catacombs.\p"
+	.string "This tunnel leads straight\n"
+	.string "to the summit of Mt. Chimney.\l"
+	.string "Y'know, an active volcano?\l"
+	.string "Ain't no way I'm letting anyone\l"
+	.string "unauthorized up there.\l"
+	.string "You could get seriously hurt.$"
+
+CrimneyClimb_Text_OzoneBlocker2:
+	.string "Look, I know getting close\n"
+	.string "to lava SOUNDS cool on paper.\l"
+	.string "But if you aren't careful,\l"
+	.string "you'll go up in flames like\l"
+	.string "a human firework!\p"
+	.string "So no, you can't pass through\n"
+	.string "to the Caldera.$"
 
 CrimneyClimb_Text_LaraIntro:
 	.string "intro$"

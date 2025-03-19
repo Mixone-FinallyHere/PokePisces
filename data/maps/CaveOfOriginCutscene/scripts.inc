@@ -36,7 +36,7 @@ CaveOfOriginCutscene_Text_WereTooLate:
 	.string "Y-Yes, as you can see...\n"
 	.string "the lake no longer runs red...\p"
 	.string "It appears as though Groudon\n"
-	.string "and Kyogre's fighting distrubed\l"
+	.string "and Kyogre's fighting disturbed\l"
 	.string "the fish of the lake,\l"
 	.string "Luo-Shan and Sha-Yon, causing them\l"
 	.string "to depart for parts unknown...\p"

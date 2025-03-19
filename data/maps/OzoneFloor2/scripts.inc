@@ -127,7 +127,9 @@ OzoneFloor2_EventScript_Nurse::
 	msgbox gText_WouldYouLikeToRestYourPkmn, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, OzoneFloor2_EventScript_HealPkmn
 	message gText_WeHopeToSeeYouAgain
-	return
+	closemessage
+	release
+	end
 
 OzoneFloor2_EventScript_HealPkmn::
 	special HealPlayerParty
@@ -136,6 +138,7 @@ OzoneFloor2_EventScript_HealPkmn::
 	message gText_WeHopeToSeeYouAgain
 	waitmessage
 	waitbuttonpress
+	closemessage
 	release
 	end
 
@@ -143,6 +146,8 @@ OzoneFloor2_EventScript_EliteFourTrigger::
 	msgbox OzoneFloor2_Text_NoGoingBack, MSGBOX_YESNO
 	closemessage
 	goto_if_eq VAR_RESULT, YES, OzoneFloor2_EventScript_EnterEliteFour
+	applymovement OBJ_EVENT_ID_PLAYER, OzoneFloor2_Movement_WalkAway
+	waitmovement 0
 	release
 	end
 
@@ -156,6 +161,10 @@ OzoneFloor2_EventScript_EnterEliteFour::
 
 OzoneFloor2_Movement_EnterEliteFour:
 	walk_up
+	step_end
+
+OzoneFloor2_Movement_WalkAway:
+	walk_down
 	step_end
 
 OzoneFloor2_Text_NameRay:

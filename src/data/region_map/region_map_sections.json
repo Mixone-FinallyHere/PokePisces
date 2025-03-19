@@ -506,7 +506,7 @@
     },
     {
       "map_section": "MAPSEC_METEOR_FALLS",
-      "name": "MIDNEOR FALLS",
+      "name": "ETHEOR FALLS",
       "x": 1,
       "y": 4,
       "width": 2,
@@ -514,7 +514,7 @@
     },
     {
       "map_section": "MAPSEC_METEOR_FALLS2",
-      "name": "MIDNEOR FALLS",
+      "name": "ETHEOR FALLS",
       "x": 1,
       "y": 3,
       "width": 1,
@@ -546,7 +546,7 @@
     },
     {
       "map_section": "MAPSEC_SEAFLOOR_CAVERN",
-      "name": "MIDNEOR NADIR",
+      "name": "ETHEOR NADIR",
       "x": 1,
       "y": 4,
       "width": 1,
