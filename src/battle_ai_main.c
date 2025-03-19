@@ -6264,10 +6264,6 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_INGRAIN:
         if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_BIG_ROOT)
             score += 3;
-        else
-            score++;
-        if (!(gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING))
-            score += 2;
         break;
     case EFFECT_SUPERPOWER:
     case EFFECT_OVERHEAT:
@@ -7468,6 +7464,10 @@ static s32 AI_PreferBatonPass(u32 battlerAtk, u32 battlerDef, u32 move, s32 scor
     case EFFECT_INGRAIN:
         if (!(gStatuses3[battlerAtk] & STATUS3_ROOTED))
             score += 2;
+        else if (!(gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING))
+            score += 2;
+        else 
+            score -= 2;
         break;
     case EFFECT_AQUA_RING:
         if (!(gStatuses3[battlerAtk] & STATUS3_AQUA_RING))
