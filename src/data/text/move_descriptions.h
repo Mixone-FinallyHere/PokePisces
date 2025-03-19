@@ -4242,7 +4242,7 @@ static const u8 sPartingCurryDescription[] = _(
     "evasion. Then it switches out.");
 
 static const u8 sSerpentSurgeDescription[] = _(
-    "Damage category is based on which\n"
+    "Damage category is based on what\n"
     "would do more damage. Its effect\n"
     "is based on the user's Ability.");
 
