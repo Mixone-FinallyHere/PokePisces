@@ -10,3 +10,23 @@ EverGrandeRoadPC_EventScript_Nurse::
 	waitbuttonpress
 	release
 	end
+
+EverGrandeRoadPC_EventScript_Breadwinner::
+	lock
+	faceplayer
+	speakername EverGrandeRoadPC_Text_NamePandou
+    msgbox EverGrandeRoadPC_Text_Breadwinner, MSGBOX_NPC
+    release
+	end
+
+EverGrandeRoadPC_Text_NamePandou:
+	.string "Pandou$"
+
+EverGrandeRoadPC_Text_Breadwinner:
+	.string "I've been told by a few of\n"
+	.string "my girls that you've been challenging\l"
+	.string "them to battles.\l"
+	.string "They're all much more into\l"
+	.string "that kind of stuff than I am...\p"
+	.string "I just ask that you treat\n"
+	.string "them with a bevy of respect!$"

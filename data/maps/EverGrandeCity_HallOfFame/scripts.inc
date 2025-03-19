@@ -89,16 +89,14 @@ EverGrandeCity_HallOfFame_Text_NameWallace:
 	.string "Wallace$"
 
 EverGrandeCity_HallOfFame_Text_HereWeHonorLeagueChampions:
-	.string "WALLACE: This room…\p"
-	.string "This is where we keep records of\n"
-	.string "POKéMON that prevailed through\l"
-	.string "harsh battles.\p"
-	.string "It is here that the LEAGUE CHAMPIONS\n"
-	.string "are honored.$"
+	.string "Many a Champion-level trainer\n"
+	.string "is honored here.\p"
+	.string "Myself, Steven, your Rival...\n"
+	.string "and now, you as well.$"
 
 EverGrandeCity_HallOfFame_Text_LetsRecordYouAndYourPartnersNames:
-	.string "WALLACE: Come on, let's record your\n"
-	.string "name as a TRAINER who triumphed over\l"
-	.string "the POKéMON LEAGUE, and the names of\l"
-	.string "the partners who battled with you.$"
-
+	.string "Your Pokemon team... I can tell\n"
+	.string "they trust you entirely.\l"
+	.string "They deserve to be enshrined.\l"
+	.string "Set their Pokeballs into\l"
+	.string "the machine!$"

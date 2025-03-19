@@ -36,11 +36,13 @@ MeteorNadir_EventScript_LegendaryEncounter::
 	setflag FLAG_WILD_NO_RUNNING_FLAG
 	setflag FLAG_SMART_WILD_AI_FLAG
 	delay 4
+	setwildbattlemusic MUS_VS_FALLING_LEGEND
 	dowildbattle
 	delay 8
 	clearflag FLAG_WILD_NO_CATCHING_FLAG
 	clearflag FLAG_WILD_NO_RUNNING_FLAG
 	clearflag FLAG_SMART_WILD_AI_FLAG
+	setwildbattlemusic MUS_VS_WILD2
 	playmoncry SPECIES_LUOSHAN, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
@@ -56,16 +58,23 @@ MeteorNadir_EventScript_LegendaryEncounter::
 	setseenmon SPECIES_LUOSHAN
 	setcaughtmon SPECIES_LUOSHAN
 	setvar VAR_NEW_COO_STATE, 8
-	warp MAP_METEOR_NADIR, 26, 14
+	warp MAP_MIDNEOR_FALLS, 23, 30
 	waitstate
 	release
 	end
 
 MeteorNadir_Text_TheyreFighting:
-	.string "$"
+	.string "(It's Luo-Shan and Kyogre!\n"
+	.string "They're locked in combat...)$"
 
 MeteorNadir_Text_TimeToStepIn:
-	.string "$"
+	.string "(You strengthen your resolve,\n"
+	.string "and jump into the fray.)$"
 
 MeteorNadir_Text_BreakThemUp:
-	.string "$"
+	.string "(Through a tough battle,\n"
+	.string "you manage to split up and\l"
+	.string "weaken the two Legendary Pokemon!)\p"
+	.string "(Kyogre begins its retreat,\n"
+	.string "and Luo-Shan starts to glow a\l"
+	.string "bright white...)$"
