@@ -1722,6 +1722,11 @@ static const u8 sGravityWellDescription[] = _(
     "Pokémon enters battle. Levitates\n"
     "in intensified gravity.");
 
+static const u8 sReformDescription[] = _(
+    "When the Pokémon is hit by an\n"
+    "attacking move, becomes resisted\n"
+    "to that type.");
+
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
 {
@@ -2111,6 +2116,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_PROVOKED] = _("Provoked"),
     [ABILITY_RUIN_WARD] = _("Ruin Ward"),
     [ABILITY_GRAVITY_WELL] = _("Gravity Well"),
+    [ABILITY_REFORM] = _("Reform"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -2501,6 +2507,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_PROVOKED] = _("Provoked"),
     [ABILITY_RUIN_WARD] = _("Ruin Ward"),
     [ABILITY_GRAVITY_WELL] = _("Gravity Well"),
+    [ABILITY_REFORM] = _("Reform"),
 };
 #endif
 
@@ -2892,4 +2899,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_PROVOKED] = sNoneDescription,
     [ABILITY_RUIN_WARD] = sRuinWardDescription,
     [ABILITY_GRAVITY_WELL] = sGravityWellDescription,
+    [ABILITY_REFORM] = sReformDescription,
 };

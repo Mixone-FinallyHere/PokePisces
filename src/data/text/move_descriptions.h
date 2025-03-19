@@ -4960,6 +4960,11 @@ static const u8 sDearlyDepartDescription[] = _(
     "Lowers the next foe's Sp. Def.\n"
     "In the wild, the battle ends.");
 
+static const u8 sBabyBluesDescription[] = _(
+    "Crystallized newborn goo is put\n"
+    "up to reduce damage taken and\n"
+    "boost damage done for allies.");
+
 const u8 gNotDoneYetDescription[] = _(
     "This move can't be used. Its\n"
     "effect is in development.");
@@ -6004,4 +6009,5 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_DEARLY_DEPART - 1] = sDearlyDepartDescription,
     [MOVE_FIREBRAND - 1] = sTackleDescription,
     [MOVE_LIGHTNING - 1] = sTackleDescription,
+    [MOVE_BABY_BLUES - 1] = sBabyBluesDescription,
 };

@@ -4552,7 +4552,8 @@ static const u8 sSaltyTearDesc[] = _(
 
 static const u8 sBloomOrbDesc[] = _(
     "Blooms the holder on\n"
-    "switch-in. Removes it\n"
+    "switch-in and consumes\n"
+    "it. Removes blooming\n"
     "at the end of battle.");
 
 static const u8 sPanicOrbDesc[] = _(
@@ -4766,10 +4767,10 @@ static const u8 sCrypticPlateDesc[] = _(
     "Boosts Sp. Atk.");
 
 static const u8 sChupacabraDesc[] = _(
-    "A doll drained of\n"
-    "life. Moves with 70 or\n"
-    "less BP do bonus true\n"
-    "damage.");
+    "Makes moves with 70\n"
+    "or less BP do bonus\n"
+    "true damage. Does not\n"
+    "work with Technician.");
 
 static const u8 sHeartGiftDesc[] = _(
     "A surprising gift that\n"

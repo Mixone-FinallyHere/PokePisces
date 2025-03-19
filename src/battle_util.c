@@ -1910,7 +1910,7 @@ u8 DoFieldEndTurnEffects(void)
                 for (j = i + 1; j < gBattlersCount; j++)
                 {
                     if (!(gProtectStructs[i].quash && gProtectStructs[j].quash)
-                            && GetWhichBattlerFaster(gBattlerByTurnOrder[i], gBattlerByTurnOrder[j], FALSE) == -1)
+                            && GetWhichBattlerFaster(gBattlerByTurnOrder[i], gBattlerByTurnOrder[j], FALSE) == 0)
                         SwapTurnOrder(i, j);
                 }
             }
@@ -2586,10 +2586,10 @@ u8 DoBattlerEndTurnEffects(void)
             }
             gBattleStruct->turnEffectsTracker++;
             break;
-        case ENDTURN_DAYBREAK: // ingrain
+        case ENDTURN_DAYBREAK:
             if (gDisableStructs[battler].daybreakCounter != 0)
             {
-                gBattleMoveDamage = (gBattleMons[battler].maxHP * 7 / 100) * gDisableStructs[battler].daybreakCounter;
+                gBattleMoveDamage = (gBattleMons[battler].maxHP / 10) * gDisableStructs[battler].daybreakCounter;
                 PREPARE_STRING_BUFFER(gBattleTextBuff1, STRINGID_DAYBREAK);
                 BattleScriptExecute(BattleScript_DaybreakTurnDamage);
                 effect++;
@@ -9064,7 +9064,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 if (CanStartBlooming(battler))
                 {
                     effect = ITEM_STATUS_CHANGE;;
-                    gBattleMons[battler].status1 = STATUS1_BLOOMING_TURN(2);
+                    gBattleMons[battler].status1 = STATUS1_BLOOMING_TURN(1);
                     BattleScriptPushCursorAndCallback(BattleScript_BloomOrb);
                     RecordItemEffectBattle(battler, HOLD_EFFECT_BLOOM_ORB);
                 }
@@ -13268,11 +13268,11 @@ static inline uq4_12_t GetExhaustionAttackerModifier(u32 battlerAtk)
 static inline uq4_12_t GetDaybreakAttackerModifier(u32 battlerAtk)
 {
     if (gDisableStructs[battlerAtk].daybreakCounter > 2)
-        return UQ_4_12(1.6);
+        return UQ_4_12(1.45);
     else if (gDisableStructs[battlerAtk].daybreakCounter > 1)
-        return UQ_4_12(1.4);
+        return UQ_4_12(1.3);
     else if (gDisableStructs[battlerAtk].daybreakCounter > 0)
-        return UQ_4_12(1.2);
+        return UQ_4_12(1.15);
     return UQ_4_12(1.0);
 }
 
@@ -13729,9 +13729,12 @@ static inline s32 DoMoveDamageCalcVars(u32 move, u32 battlerAtk, u32 battlerDef,
         }
     }
 
-    if ((holdEffectAtk == HOLD_EFFECT_POISON_BARB 
-    && gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY 
-    && gBattleMoves[move].type == TYPE_POISON
+    if ((((holdEffectAtk == HOLD_EFFECT_POISON_BARB 
+    && gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY
+    && gBattleMoves[move].type == TYPE_POISON)
+    || (holdEffectAtk == HOLD_EFFECT_CHUPACABRA 
+    && (gBattleMoves[move].power <= 70 || fixedBasePower <= 70) 
+    && GetBattlerAbility(battlerAtk) != ABILITY_TECHNICIAN))
     && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
     || move == MOVE_SPIRIT_DANCE)
     {
@@ -13753,7 +13756,6 @@ static inline s32 DoMoveDamageCalcVars(u32 move, u32 battlerAtk, u32 battlerDef,
     else if (move == MOVE_NEEDLE_ARM
     || (move == MOVE_SHADOW_CLAW && gIsCriticalHit)
     || (move == MOVE_ASTONISH && gBattleMons[battlerDef].status1 & STATUS1_PANIC)
-    || (holdEffectAtk == HOLD_EFFECT_CHUPACABRA && (gBattleMoves[move].power <= 70 || fixedBasePower <= 70) && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
     || move == MOVE_SOUL_CUTTER
     || (move == MOVE_ZING_ZAP && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN))
     {

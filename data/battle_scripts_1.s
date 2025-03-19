@@ -16177,6 +16177,7 @@ BattleScript_BloomOrb::
 	setbyte cMULTISTRING_CHOOSER, 0
 	copybyte gEffectBattler, gBattlerAttacker
 	call BattleScript_MoveEffectBlooming
+	removeitem BS_ATTACKER
 	end3
 
 BattleScript_PanicOrb::

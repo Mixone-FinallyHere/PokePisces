@@ -1063,6 +1063,7 @@ gBattleAnims_Moves::
     .4byte Move_DEARLY_DEPART
     .4byte Move_FIREBRAND
 	.4byte Move_LIGHTNING
+	.4byte Move_BABY_BLUES
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
 	.4byte Move_ALL_OUT_PUMMELING
@@ -27621,6 +27622,9 @@ Move_SUPERCELL_SLAM::
 
 Move_SWEET_WHISPERS::
 	goto Move_GROWL
+
+Move_BABY_BLUES::
+	goto Move_LIGHT_SCREEN
 
 Move_SYRUP_BOMB::
 	loadspritegfx ANIM_TAG_SYRUP_BLOB_RED

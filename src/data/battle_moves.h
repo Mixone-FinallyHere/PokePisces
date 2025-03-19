@@ -14760,7 +14760,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_RAZING_SUN] =
     {
         .effect = EFFECT_RAZING_SUN,
-        .power = 95,
+        .power = 80,
         .type = TYPE_FIRE,
         .accuracy = 100,
         .pp = 10,
@@ -16214,7 +16214,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_PLASMA_CUTTER] =
     {
-        .power = 60,
+        .power = 55,
         .effect = EFFECT_PLASMA_CUTTER,
         .type = TYPE_ELECTRIC,
         .accuracy = 100,

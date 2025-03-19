@@ -841,7 +841,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_TEMPER_FLARE] = _("Temper Flare"),
     [MOVE_PSYCHIC_NOISE] = _("Psycholarm"),
     [MOVE_UPPER_HAND] = _("Upper Hand"),
-    [MOVE_MALIGNANT_CHAIN] = _("Corrosive Chain"),
+    [MOVE_MALIGNANT_CHAIN] = _("Lethal Chain"),
     [MOVE_SPOOK] = _("Spook"),
     [MOVE_CHILLY_AIR] = _("Chilly Air"),
     [MOVE_BUG_SNACK] = _("Bug Snack"),
@@ -1037,6 +1037,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_DEARLY_DEPART] = _("Dearly Depart"),
     [MOVE_FIREBRAND] = _("Firebrand"),
     [MOVE_LIGHTNING] = _("Lightning"),
+    [MOVE_BABY_BLUES] = _("Baby Blues"),
 };
 #else
 // 12 letters
@@ -1881,7 +1882,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_TEMPER_FLARE] = _("Temper Flare"),
     [MOVE_PSYCHIC_NOISE] = _("Psycholarm"),
     [MOVE_UPPER_HAND] = _("Upper Hand"),
-    [MOVE_MALIGNANT_CHAIN] = _("CorosivChain"),
+    [MOVE_MALIGNANT_CHAIN] = _("Lethal Chain"),
     [MOVE_SPOOK] = _("Spook"),
     [MOVE_CHILLY_AIR] = _("Chilly Air"),
     [MOVE_BUG_SNACK] = _("Bug Snack"),
@@ -2077,6 +2078,7 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_DEARLY_DEPART] = _("Dearly Depart"),
     [MOVE_FIREBRAND] = _("Firebrand"),
     [MOVE_LIGHTNING] = _("Lightning"),
+    [MOVE_BABY_BLUES] = _("Baby Blues"),
 };
 #endif
 
