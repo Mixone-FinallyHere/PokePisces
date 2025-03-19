@@ -13196,20 +13196,8 @@ BattleScript_EffectPoisonFang::
 	goto BattleScript_EffectHit
 
 BattleScript_EffectOverheat::
-	jumpifmove MOVE_DARK_TIDE, BattleScript_CheckOverheatDoubles
-BattleScript_DoOverheat::
-	call BattleScript_EffectHit_Ret
-	seteffectwithchance
-	tryfaintmon BS_TARGET
 	setmoveeffect MOVE_EFFECT_SP_ATK_MINUS_2 | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
-	seteffectprimary
-	goto BattleScript_MoveEnd
-BattleScript_CheckOverheatDoubles::
-	jumpifbattletype BATTLE_TYPE_DOUBLE, BattleScript_OverheatDoubles
-	goto BattleScript_DoOverheat
-BattleScript_OverheatDoubles::
-	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_NoMoveEffect
-	goto BattleScript_DoOverheat
+	goto BattleScript_EffectHit
 
 BattleScript_EffectHammerArm::
 	setmoveeffect MOVE_EFFECT_SPD_MINUS_1 | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN

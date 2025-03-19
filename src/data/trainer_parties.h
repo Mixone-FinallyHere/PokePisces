@@ -4012,7 +4012,6 @@ static const struct TrainerMon sParty_PGabbyAndTy2[] = {
 static const struct TrainerMon sParty_PGabbyAndTy3[] = {
     {
     .species = SPECIES_BLABBU,
-    .ability = ABILITY_GOOEY,
     .heldItem = ITEM_LOST_MANTLE,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(84, 84, 84, 84, 84, 84),
@@ -8104,7 +8103,6 @@ static const struct TrainerMon sParty_PLynn[] = {
     },
     {
     .species = SPECIES_BLABBU,
-    .ability = ABILITY_GOOEY,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(72, 72, 72, 72, 72, 72),
     .lvl = 46,
@@ -14607,12 +14605,11 @@ static const struct TrainerMon sParty_PShelly1[] = {
     },
     {
     .species = SPECIES_BLABBU,
-    .ability = ABILITY_GOOEY,
     .heldItem = ITEM_MAGOST_BERRY,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(224, 0, 0, 0, 0, 224),
     .lvl = 54,
-    .moves = {MOVE_ACID, MOVE_LIFE_DEW, MOVE_HAIL, MOVE_AURORA_VEIL},
+    .moves = {MOVE_ACID, MOVE_LIFE_DEW, MOVE_NUZZLE, MOVE_BABY_BLUES},
     .nature = NATURE_CALM,
     },
     {

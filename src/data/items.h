@@ -8533,7 +8533,7 @@ const struct Item gItems[] =
 
     [ITEM_CATCHING_CHARM] =
     {
-        .name = _("CatchngCharm"),
+        .name = _("Catch Charm"),
         .price = 0,
         .importance = 1,
         .description = sCatchingCharmDesc,
