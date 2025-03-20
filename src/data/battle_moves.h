@@ -14944,7 +14944,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_MISERY_WAIL] =
     {
-        .effect = EFFECT_FLAIL,
+        .effect = EFFECT_MISERY_WAIL,
         .power = 1,
         .type = TYPE_DARK,
         .accuracy = 100,

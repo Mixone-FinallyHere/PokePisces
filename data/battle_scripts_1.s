@@ -11350,37 +11350,20 @@ BattleScript_EffectMiseryWail::
 	jumpifstatus BS_ATTACKER, STATUS1_ANY, BattleScript_EffectMiseryWailTorments
 	goto BattleScript_EffectHit
 BattleScript_EffectMiseryWailTorments::
-	attackcanceler
-    accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-    attackstring
-    ppreduce
-    critcalc
-    damagecalc
-    adjustdamage
-    attackanimation
-    waitanimation
-    effectivenesssound
-    hitanimation BS_TARGET
-    waitstate
-    healthbarupdate BS_TARGET
-    datahpupdate BS_TARGET
-    critmessage
-    waitmessage B_WAIT_TIME_LONG
-    resultmessage
-    waitmessage B_WAIT_TIME_LONG
-    tryfaintmon BS_TARGET
-    jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
-    jumpifmovehadnoeffect BattleScript_MoveEnd
-    jumpifbattleend BattleScript_MoveEnd
+    call BattleScript_EffectHit_Ret
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEnd
 	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_MoveEnd
 	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_MoveEnd
-    jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEnd
 	jumpifsafeguard BattleScript_MoveEnd
-    settorment BattleScript_MoveEnd
-    printstring STRINGID_PKMNSUBJECTEDTOTORMENT
-    waitmessage B_WAIT_TIME_LONG
-    call BattleScript_TryDestinyKnotTormentAttacker
-    goto BattleScript_MoveEnd
+	settorment BattleScript_MoveEnd
+	printstring STRINGID_PKMNSUBJECTEDTOTORMENT
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotTormentAttacker
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectEerieSpell::
     call BattleScript_EffectHit_Ret

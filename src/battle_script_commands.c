@@ -4711,15 +4711,15 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 break;
             case MOVE_EFFECT_DUAL_CHOP:
                 {
-                    if (Random() % 2 == 0)
+                    if (CompareStat(gBattlerTarget, STAT_ATK, MIN_STAT_STAGE, CMP_EQUAL) && CompareStat(gBattlerTarget, STAT_DEF, MIN_STAT_STAGE, CMP_EQUAL))
                     {
-                        BattleScriptPush(gBattlescriptCurrInstr + 1);
-                        gBattlescriptCurrInstr = BattleScript_DefDown;
+                        gBattlescriptCurrInstr++;
                     }
                     else
                     {
-                        BattleScriptPush(gBattlescriptCurrInstr + 1);
-                        gBattlescriptCurrInstr = BattleScript_SpDefDown;
+                        static const u8 sDualChopEffects[] = {MOVE_EFFECT_ATK_MINUS_1, MOVE_EFFECT_DEF_MINUS_1};
+                        gBattleScripting.moveEffect = RandomElement(RNG_TRI_ATTACK, sDualChopEffects);
+                        SetMoveEffect(FALSE, 0);
                     }
                 }
                 break;
@@ -4756,6 +4756,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     {
                         gBattlescriptCurrInstr++;
                     }
+                    else
                     {
                         static const u8 sTriAttackEffects[] = {MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FREEZE };
                         gBattleScripting.moveEffect = RandomElement(RNG_TRI_ATTACK, sTriAttackEffects);

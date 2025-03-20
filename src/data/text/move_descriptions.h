@@ -2639,7 +2639,7 @@ static const u8 sDrillRunDescription[] = _(
 static const u8 sDualChopDescription[] = _(
     "The user hits the foe with two\n"
     "brutal strikes in a row. May\n"
-    "lower the foe's Def or Sp. Def.");
+    "lower the foe's Atk or Def.");
 
 static const u8 sHeartStampDescription[] = _(
     "Sets a stack of allure. Hitting\n"
