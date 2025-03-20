@@ -11254,9 +11254,12 @@ u32 GetMoveTargetCount(u32 move, u32 battlerAtk, u32 battlerDef)
     switch (GetBattlerMoveTargetType(gBattlerAttacker, move))
     {
     case MOVE_TARGET_BOTH:
-        return IsBattlerAlive(battlerDef) + IsBattlerAlive(BATTLE_PARTNER(battlerDef));
+        return !(gAbsentBattlerFlags & gBitTable[battlerDef])
+             + !(gAbsentBattlerFlags & gBitTable[BATTLE_PARTNER(battlerDef)]);
     case MOVE_TARGET_FOES_AND_ALLY:
-        return IsBattlerAlive(battlerDef) + IsBattlerAlive(BATTLE_PARTNER(battlerDef)) + IsBattlerAlive(BATTLE_PARTNER(battlerAtk));
+        return !(gAbsentBattlerFlags & gBitTable[battlerDef])
+             + !(gAbsentBattlerFlags & gBitTable[BATTLE_PARTNER(battlerDef)])
+             + !(gAbsentBattlerFlags & gBitTable[BATTLE_PARTNER(battlerAtk)]);
     case MOVE_TARGET_OPPONENTS_FIELD:
         return 1;
     case MOVE_TARGET_DEPENDS:
@@ -13193,7 +13196,7 @@ static inline uq4_12_t GetTargetDamageModifier(u32 move, u32 battlerAtk, u32 bat
 {
     u32 holdEffectDef = GetBattlerHoldEffect(battlerDef, TRUE);
 
-    if (GetMoveTargetCount(move, battlerAtk, battlerDef) >= 2)
+    if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE && GetMoveTargetCount(move, battlerAtk, battlerDef) >= 2)
     {
         if ((holdEffectDef == HOLD_EFFECT_WIDE_ARMOR) && (GetBattlerAbility(battlerDef) == ABILITY_TELEPATHY && (GetBattlerAbility(battlerAtk) != ABILITY_MOLD_BREAKER || GetBattlerAbility(battlerAtk) != ABILITY_IGNORANT_BLISS)) && IsMoveMultipleTargetAndDamages(move, battlerAtk))
         {
