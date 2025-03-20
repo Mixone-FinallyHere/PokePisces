@@ -2295,6 +2295,7 @@ bool32 IsHealingMoveEffect(u32 effect)
     {
     case EFFECT_RESTORE_HP:
     case EFFECT_MORNING_SUN:
+    case EFFECT_HEAL_ORDER:
     case EFFECT_SYNTHESIS:
     case EFFECT_MOONLIGHT:
     case EFFECT_SOFTBOILED:

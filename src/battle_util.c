@@ -1380,6 +1380,7 @@ bool32 IsHealBlockPreventingMove(u32 battler, u32 move)
     case EFFECT_COLD_MEND:
     case EFFECT_MOONLIGHT:
     case EFFECT_RESTORE_HP:
+    case EFFECT_HEAL_ORDER:
     case EFFECT_BLAZING_SOUL:
     case EFFECT_CRITICAL_REPAIR:
     case EFFECT_REST:

@@ -2472,6 +2472,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 10;
             //fallthrough
         case EFFECT_RESTORE_HP:
+        case EFFECT_HEAL_ORDER:
         case EFFECT_SOFTBOILED:
         case EFFECT_ROOST:
         case EFFECT_CRITICAL_REPAIR:
@@ -4814,6 +4815,10 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             if (ShouldRecover(battlerAtk, battlerDef, move, healPercent))
                 score += 2;
         }
+        break;
+    case EFFECT_HEAL_ORDER:
+        if (ShouldRecover(battlerAtk, battlerDef, move, 66))
+            score += 3;
         break;
     case EFFECT_RESTORE_HP:
     case EFFECT_SOFTBOILED:
@@ -7542,6 +7547,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             {
             case EFFECT_EXPLOSION:
             case EFFECT_RESTORE_HP:
+            case EFFECT_HEAL_ORDER:
             case EFFECT_REST:
             case EFFECT_DESTINY_BOND:
             case EFFECT_FLAIL:
