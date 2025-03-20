@@ -1014,6 +1014,7 @@ static void InitMapBasedOnPlayerLocation(void)
     case MAP_TYPE_BLOSSOM_ROUTE:
     case MAP_TYPE_GOLD_ROUTE:
     case MAP_TYPE_WOODEN_ROUTE:
+    case MAP_TYPE_SHUNYONG_ARENA:
         sRegionMap->mapSecId = gMapHeader.regionMapSectionId;
         sRegionMap->playerIsInCave = FALSE;
         mapWidth = gMapHeader.mapLayout->width;

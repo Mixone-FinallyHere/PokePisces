@@ -748,6 +748,15 @@ const struct BattleBackground sBattleTerrainTable[] =
         .palette = gBattleTerrainPalette_Darkness,
     },
 
+    [BATTLE_TERRAIN_SHUNYONG] =
+    {
+        .tileset = gBattleTerrainTiles_Shunyong,
+        .tilemap = gBattleTerrainTilemap_Shunyong,
+        .entryTileset = gBattleTerrainAnimTiles_Shunyong,
+        .entryTilemap = gBattleTerrainAnimTilemap_Shunyong,
+        .palette = gBattleTerrainPalette_Shunyong,
+    },
+
     [BATTLE_TERRAIN_FRONTIER] =
     {
         .tileset = gBattleTerrainTiles_Building,
@@ -1380,6 +1389,18 @@ static u8 GetBattleTerrainOverride(void)
             return BATTLE_TERRAIN_LEADER;
         }
         else if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_CHAMPION)
+        {
+            return BATTLE_TERRAIN_SIDNEY;
+        }
+        else if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_ELITE_FOUR)
+        {
+            return BATTLE_TERRAIN_SIDNEY;
+        }
+        else if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_MAGMA_LEADER)
+        {
+            return BATTLE_TERRAIN_CHAMPION;
+        }
+        else if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_AQUA_LEADER)
         {
             return BATTLE_TERRAIN_CHAMPION;
         }

@@ -511,8 +511,9 @@
 #define BATTLE_TERRAIN_WOODEN_ROUTE     39
 #define BATTLE_TERRAIN_PATH             40
 #define BATTLE_TERRAIN_DARK_AREA        41
+#define BATTLE_TERRAIN_SHUNYONG         42
 
-#define BATTLE_TERRAIN_COUNT            42
+#define BATTLE_TERRAIN_COUNT            43
 
 #define B_WAIT_TIME_LONG        (B_WAIT_TIME_MULTIPLIER * 4)
 #define B_WAIT_TIME_MED         (B_WAIT_TIME_MULTIPLIER * 3)

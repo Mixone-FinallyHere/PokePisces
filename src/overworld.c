@@ -1400,6 +1400,14 @@ bool8 IsMapTypeOutdoors(u8 mapType)
         return FALSE;
 }
 
+bool8 IsMapTypeGolden(u8 mapType)
+{
+    if (mapType == MAP_TYPE_GOLD_ROUTE)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 Overworld_MapTypeAllowsTeleportAndFly(u8 mapType)
 {
     if (mapType == MAP_TYPE_ROUTE
