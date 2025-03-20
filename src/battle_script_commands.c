@@ -10196,6 +10196,15 @@ static void Cmd_various(void)
             gBattlescriptCurrInstr = cmd->nextInstr;
         return;
     }
+    case VARIOUS_JUMP_IF_DOUBLES_MOVE_SUCCEED:
+    {
+        VARIOUS_ARGS(const u8 *jumpInstr);
+        if (gProtectStructs[battler].doublesMoveSucceed)
+            gBattlescriptCurrInstr = cmd->jumpInstr;
+        else
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        return;
+    }
     case VARIOUS_JUMP_IF_SHIELDS_DOWN_PROTECTED:
     {
         VARIOUS_ARGS(const u8 *jumpInstr);
@@ -13791,6 +13800,12 @@ static void Cmd_various(void)
     {
         VARIOUS_ARGS();
         gProtectStructs[battler].beakBlastCharge = TRUE;
+        break;
+    }
+    case VARIOUS_SET_DOUBLES_MOVE_SUCCEED:
+    {
+        VARIOUS_ARGS();
+        gProtectStructs[battler].doublesMoveSucceed = TRUE;
         break;
     }
     case VARIOUS_SET_ACID_ARMOR:

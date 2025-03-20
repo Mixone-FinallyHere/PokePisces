@@ -2489,6 +2489,15 @@
 	various \battler, VARIOUS_SET_BEAK_BLAST
 	.endm
 
+	.macro setdoublesmovesucceed battler:req
+	various \battler, VARIOUS_SET_DOUBLES_MOVE_SUCCEED
+	.endm
+
+	.macro jumpifdoublesmovesucceed battler:req, jumpInstr:req
+	various \battler, VARIOUS_JUMP_IF_DOUBLES_MOVE_SUCCEED
+	.4byte \jumpInstr
+	.endm
+
 	.macro setacidarmor battler:req
 	various \battler, VARIOUS_SET_ACID_ARMOR
 	.endm

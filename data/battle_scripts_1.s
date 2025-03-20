@@ -4558,11 +4558,12 @@ BattleScript_AlreadyPanicking::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectRazingSun::
-	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_NoMoveEffect
+	jumpifdoublesmovesucceed BS_ATTACKER, BattleScript_NoMoveEffect
     call BattleScript_EffectHit_Ret
-	tryfaintmon BS_TARGET
-	jumpifmovehadnoeffect BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_DoublesSkipEffect
 	jumpifbattleend BattleScript_MoveEnd
+	tryfaintmon BS_TARGET
+	setdoublesmovesucceed BS_ATTACKER
 	checkdaybreakcounter 3, BattleScript_RazingSunWith3Daybreak
 	applydaybreakcounter BS_ATTACKER, BattleScript_MoveEnd
 	printstring STRINGID_USERGAINEDDAYBREAK
@@ -5292,7 +5293,7 @@ BattleScript_SpiderWebTurnDmgEnd:
 
 BattleScript_EffectRagePowder::
 	jumpifnotbattletype BATTLE_TYPE_DOUBLE, BattleScript_EffectTaunt
-	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_EffectRagePowderJustTaunt
+	jumpifdoublesmovesucceed BS_ATTACKER, BattleScript_EffectRagePowderJustTaunt
 	attackcanceler
 	attackstring
 	ppreduce
@@ -5304,6 +5305,7 @@ BattleScript_EffectRagePowder::
 	settaunt BattleScript_EffectRagePowderJustFollowMe
 	attackanimation
 	waitanimation
+	setdoublesmovesucceed BS_ATTACKER
 	printstring STRINGID_PKMNCENTERATTENTION
 	waitmessage B_WAIT_TIME_LONG
 	printstring STRINGID_PKMNFELLFORTAUNT
@@ -5313,6 +5315,7 @@ BattleScript_EffectRagePowder::
 BattleScript_EffectRagePowderJustFollowMe::
 	attackanimation
 	waitanimation
+	setdoublesmovesucceed BS_ATTACKER
 	printstring STRINGID_PKMNCENTERATTENTION
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
@@ -5943,19 +5946,16 @@ BattleScript_CorrosiveGasFail:
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectMakeItRain:
-	jumpifbattletype BATTLE_TYPE_DOUBLE, BattleScript_MakeItRainDoubles
-BattleScript_MakeItRainContinuous:
+	jumpifdoublesmovesucceed BS_ATTACKER, BattleScript_NoMoveEffect
 	setmoveeffect MOVE_EFFECT_PAYDAY
-	call BattleScript_EffectHit_Ret
+    call BattleScript_EffectHit_Ret
+	jumpifmovehadnoeffect BattleScript_DoublesSkipEffect
+	setdoublesmovesucceed BS_ATTACKER
 	seteffectwithchance
-	tryfaintmon BS_TARGET
-	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_SP_ATK_MINUS_2 | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
 	seteffectprimary
+	tryfaintmon BS_TARGET
 	goto BattleScript_MoveEnd
-BattleScript_MakeItRainDoubles:
-	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_NoMoveEffect
-	goto BattleScript_MakeItRainContinuous
 
 BattleScript_EffectSpinOut::
 	setmoveeffect MOVE_EFFECT_SPD_MINUS_2 | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
@@ -6815,10 +6815,15 @@ BattleScript_JungleHealingTryRestoreAlly:
 	setallytonexttarget JungleHealing_RestoreTargetHealth
 	goto BattleScript_MoveEnd
 
-BattleScript_EffectAttackerDefenseDownHit:
-	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_NoMoveEffect
+BattleScript_EffectAttackerDefenseDownHit::
+	jumpifdoublesmovesucceed BS_ATTACKER, BattleScript_NoMoveEffect
 	setmoveeffect MOVE_EFFECT_DEF_MINUS_1 | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
-	goto BattleScript_EffectHit
+    call BattleScript_EffectHit_Ret
+	jumpifmovehadnoeffect BattleScript_DoublesSkipEffect
+	setdoublesmovesucceed BS_ATTACKER
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	goto BattleScript_MoveEnd
 BattleScript_NoMoveEffect:
 	setmoveeffect 0
 	goto BattleScript_EffectHit
@@ -13180,9 +13185,17 @@ BattleScript_EffectPoisonFang::
 	goto BattleScript_EffectHit
 
 BattleScript_EffectOverheat::
-	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING | HITMARKER_NO_PPDEDUCT, BattleScript_NoMoveEffect
+	jumpifdoublesmovesucceed BS_ATTACKER, BattleScript_NoMoveEffect
 	setmoveeffect MOVE_EFFECT_SP_ATK_MINUS_2 | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
-	goto BattleScript_EffectHit
+    call BattleScript_EffectHit_Ret
+	jumpifmovehadnoeffect BattleScript_DoublesSkipEffect
+	setdoublesmovesucceed BS_ATTACKER
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	goto BattleScript_MoveEnd
+BattleScript_DoublesSkipEffect:
+	tryfaintmon BS_TARGET
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectHammerArm::
 	setmoveeffect MOVE_EFFECT_SPD_MINUS_1 | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
