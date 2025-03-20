@@ -70,12 +70,14 @@ DewfordInteriors_EventScript_SpitfaxLikerEnterCode::
 	end
 
 DewfordInteriors_EventScript_CodeEntrySuccess::
+	lock
 	setvar VAR_SPITFAX_QUEST_STATE, 2
 	msgbox DewfordInteriors_Text_CodeEntrySuccess, MSGBOX_AUTOCLOSE
 	release
 	end
 
 DewfordInteriors_EventScript_CodeEntryFail::
+	lock
 	msgbox DewfordInteriors_Text_CodeEntryFail, MSGBOX_AUTOCLOSE
 	release
 	end
@@ -164,7 +166,9 @@ DewfordInteriors_Text_CodeEntrySuccess:
 
 DewfordInteriors_Text_CodeEntryFail:
 	.string "Nope! That's not it. Sorry!\n"
-	.string "Keep on huntin'!$"
+	.string "Keep on huntin'!\p"
+	.string "Your only hint is that you\n"
+	.string "may need to DIVE deep to find it!$"
 
 DewfordInteriors_Text_SpitfaxDirections:
 	.string "Here's all the information we\n"
