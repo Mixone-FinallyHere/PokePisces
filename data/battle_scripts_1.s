@@ -12184,10 +12184,10 @@ BattleScript_SolarBeamDecideTurn::
 	call BattleScript_PowerHerbActivation
 	goto BattleScript_TwoTurnMovesSecondTurn
 BattleScript_SolarBeamOnFirstTurn::
+	ppreduce
 	orword gHitMarker, HITMARKER_CHARGING
 	setmoveeffect MOVE_EFFECT_CHARGING | MOVE_EFFECT_AFFECTS_USER
 	seteffectprimary
-	ppreduce
 	goto BattleScript_TwoTurnMovesSecondTurn
 
 BattleScript_EffectThunder:
