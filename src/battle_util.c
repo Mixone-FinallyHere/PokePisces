@@ -3241,27 +3241,25 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_BLOOMING:
-            if ((gBattleMons[battler].status1 & STATUS1_BLOOMING) && IsBattlerAlive(battler))
+            if ((gBattleMons[battler].status1 & STATUS1_BLOOMING) && IsBattlerAlive(battler) && !gStatuses3[battler] & STATUS3_HEAL_BLOCK)
             {
                 if ((gBattleMons[battler].status1 & STATUS1_BLOOMING) != STATUS1_BLOOMING_TURN(1))
                 {
                     gBattleMoveDamage = -1 * gBattleMons[battler].maxHP / 10;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = -1;
-                    if ((gBattleMons[battler].status1 & STATUS1_BLOOMING) != STATUS1_BLOOMING_TURN(1))
-                        gBattleMons[battler].status1 -= STATUS1_BLOOMING_TURN(1);
                     BattleScriptExecute(BattleScript_BloomingHpGain);
                     effect++;
                 }
-                else if ((gBattleMons[battler].status1 & STATUS1_BLOOMING) == STATUS1_BLOOMING_TURN(1))
+                else if ((gBattleMons[battler].status1 & STATUS1_BLOOMING) == STATUS1_BLOOMING_TURN(1) && IsBattlerAlive(battler) && !gStatuses3[battler] & STATUS3_HEAL_BLOCK)
                 {
-                    gBattleMons[gBattlerAttacker].status1 -= STATUS1_BLOOMING_TURN(1);
                     gBattleMoveDamage = -1 * gBattleMons[battler].maxHP / 10;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = -1;
                     BattleScriptExecute(BattleScript_BloomingHpGainEnd);
                     effect++;
                 }
+                gBattleMons[battler].status1 -= STATUS1_BLOOMING_TURN(1);
             }
             gBattleStruct->turnEffectsTracker++;
             break;
@@ -9778,19 +9776,22 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
                 && TARGET_TURN_DAMAGED
                 && CanStartBlooming(gBattlerTarget)
-                && gBattleMons[gBattlerTarget].hp && RandomPercentage(RNG_HOLD_EFFECT_BLACK_SALAD, atkHoldEffectParam))
+                && gBattleMons[gBattlerTarget].hp 
+                && RandomPercentage(RNG_HOLD_EFFECT_BLACK_SALAD, atkHoldEffectParam))
             {
+                gBattleScripting.battler = gEffectBattler = gBattlerTarget;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUSED_BY_ITEM;
                 gBattleScripting.moveEffect = MOVE_EFFECT_BLOOMING;
                 BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_ItemBloomingEffect;
+                gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
                 effect++;
-                SetMoveEffect(TRUE, 0);
             }
             else if (gBattleMoveDamage != 0 // Need to have done damage
                 && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
                 && TARGET_TURN_DAMAGED
                 && gBattleMons[gBattlerTarget].hp 
-                && gBattleMons[gBattlerTarget].status1 & STATUS1_BLOOMING)
+                && gBattleMons[gBattlerTarget].status1 & STATUS1_BLOOMING
+                && !(gStatuses3[gBattlerTarget] & STATUS3_HEAL_BLOCK))
             {
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_ItemHealBlockEffect;
@@ -9862,8 +9863,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
         break;
         case HOLD_EFFECT_PESKY_PLUSH:
         {
-            u16 ability = GetBattlerAbility(gBattlerAttacker);
-
             if (gBattleMoveDamage != 0 // Need to have done damage
                 && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
                 && TARGET_TURN_DAMAGED 
