@@ -1025,6 +1025,7 @@ static const u16 sNaturePowerMoves[BATTLE_TERRAIN_COUNT] =
     [BATTLE_TERRAIN_BLOSSOM_ROUTE]    = MOVE_PETAL_DANCE,
     [BATTLE_TERRAIN_CHIMNEY_ROUTE]    = MOVE_LAVA_PLUME,
     [BATTLE_TERRAIN_GOLD_ROUTE]       = MOVE_PAY_DAY,
+    [BATTLE_TERRAIN_SHUNYONG]         = MOVE_MAKE_IT_RAIN,
     [BATTLE_TERRAIN_WOODEN_ROUTE]     = MOVE_WOOD_HAMMER,
     [BATTLE_TERRAIN_PATH]             = MOVE_DEMOLISHER,
     [BATTLE_TERRAIN_DARK_AREA]        = MOVE_DARK_PULSE,
@@ -18502,6 +18503,9 @@ u16 GetSecretPowerMoveEffect(void)
             moveEffect = MOVE_EFFECT_BLOOMING | MOVE_EFFECT_AFFECTS_USER;
             break;
         case BATTLE_TERRAIN_GOLD_ROUTE:
+            moveEffect = MOVE_EFFECT_PAYDAY;
+            break;
+        case BATTLE_TERRAIN_SHUNYONG:
             moveEffect = MOVE_EFFECT_PAYDAY;
             break;
         case BATTLE_TERRAIN_WOODEN_ROUTE:

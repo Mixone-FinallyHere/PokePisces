@@ -748,6 +748,15 @@ const struct BattleBackground sBattleTerrainTable[] =
         .palette = gBattleTerrainPalette_Darkness,
     },
 
+    [BATTLE_TERRAIN_SHUNYONG] =
+    {
+        .tileset = gBattleTerrainTiles_Shunyong,
+        .tilemap = gBattleTerrainTilemap_Shunyong,
+        .entryTileset = gBattleTerrainAnimTiles_Shunyong,
+        .entryTilemap = gBattleTerrainAnimTilemap_Shunyong,
+        .palette = gBattleTerrainPalette_Shunyong,
+    },
+
     [BATTLE_TERRAIN_FRONTIER] =
     {
         .tileset = gBattleTerrainTiles_Building,
