@@ -1381,6 +1381,18 @@ static u8 GetBattleTerrainOverride(void)
         }
         else if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_CHAMPION)
         {
+            return BATTLE_TERRAIN_SIDNEY;
+        }
+        else if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_ELITE_FOUR)
+        {
+            return BATTLE_TERRAIN_SIDNEY;
+        }
+        else if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_MAGMA_LEADER)
+        {
+            return BATTLE_TERRAIN_CHAMPION;
+        }
+        else if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_AQUA_LEADER)
+        {
             return BATTLE_TERRAIN_CHAMPION;
         }
     }

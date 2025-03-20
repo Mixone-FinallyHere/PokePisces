@@ -5600,8 +5600,6 @@ static void HandleEndTurn_BattleWon(void)
         case TRAINER_CLASS_TOPAZ_ACOLYTE:
         case TRAINER_CLASS_GILDED_MONK:
             break;
-        case TRAINER_CLASS_TEAM_AQUA:
-        case TRAINER_CLASS_TEAM_MAGMA:
         case TRAINER_CLASS_AQUA_ADMIN:
         case TRAINER_CLASS_AQUA_LEADER:
         case TRAINER_CLASS_MAGMA_ADMIN:

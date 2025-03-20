@@ -96,6 +96,7 @@ NewMauville_Inside_EventScript_SetBarrierStateBlueButton::
 	setmetatile 30, 38, METATILE_BikeShop_Button_Pressed, FALSE
 	setmetatile 2, 11, METATILE_BikeShop_Button_Green, FALSE
 	setmetatile 17, 10, METATILE_BikeShop_Button_Green, FALSE
+	setmetatile 25, 6, METATILE_BikeShop_Button_Green, FALSE
 	setmetatile 25, 18, METATILE_BikeShop_Button_Green, FALSE
 	setmetatile 18, 36, METATILE_BikeShop_Button_Green, FALSE
 	return
@@ -131,6 +132,7 @@ NewMauville_Inside_EventScript_SetBarrierStateGreenButton::
 	setmetatile 21, 5, METATILE_BikeShop_Wall_Edge_Top, FALSE
 	setmetatile 2, 11, METATILE_BikeShop_Button_Pressed, FALSE
 	setmetatile 17, 10, METATILE_BikeShop_Button_Pressed, FALSE
+	setmetatile 25, 6, METATILE_BikeShop_Button_Pressed, FALSE
 	setmetatile 25, 18, METATILE_BikeShop_Button_Pressed, FALSE
 	setmetatile 18, 36, METATILE_BikeShop_Button_Pressed, FALSE
 	setmetatile 6, 11, METATILE_BikeShop_Button_Blue, FALSE

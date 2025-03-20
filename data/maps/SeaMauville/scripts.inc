@@ -342,10 +342,10 @@ SeaMauville_EventScript_KizunaIdle2::
 SeaMauville_EventScript_SuitcaseInterceptor::
 	lock
 	faceplayer
+	goto_if_set FLAG_GOT_ILLEGAL_TEACHY_TV, SeaMauville_EventScript_ThanksForSuitcase
 	goto_if_eq VAR_OLD_GUYS_STATE, 13, SeaMauville_EventScript_GoGetThatSuitcase
 	goto_if_eq VAR_OLD_GUYS_STATE, 14, SeaMauville_EventScript_SuitcaseInstructions
 	goto_if_eq VAR_OLD_GUYS_STATE, 15, SeaMauville_EventScript_TradeSuitcaseForTeachyTV
-	goto_if_gt VAR_OLD_GUYS_STATE, 15, SeaMauville_EventScript_ThanksForSuitcase
 	msgbox SeaMauville_Text_ImUpToNoGood, MSGBOX_AUTOCLOSE
 	release
 	end
@@ -365,6 +365,7 @@ SeaMauville_EventScript_TradeSuitcaseForTeachyTV::
 	msgbox SeaMauville_Text_YouGotTheStuff, MSGBOX_DEFAULT
 	removeitem ITEM_DEVON_PARTS, 1
 	giveitem ITEM_TEACHY_TV
+	setflag FLAG_GOT_ILLEGAL_TEACHY_TV
 	msgbox SeaMauville_Text_ThanksForSuitcase, MSGBOX_AUTOCLOSE
 	release
 	end
