@@ -564,98 +564,200 @@ Route125_EventScript_Joan::
     msgbox Route125_Text_JoanPostBattle, MSGBOX_AUTOCLOSE
     end
 
+Route125_EventScript_EggHusband::
+	msgbox Route125_B1F_Text_EggHusband, MSGBOX_NPC
+	end
+
+Route125_EventScript_EggWife::
+	msgbox Route125_B1F_Text_EggWife, MSGBOX_NPC
+	end
+
+Route125_EventScript_PrecipikeSign::
+	msgbox Route125_B1F_Text_PrecipikeSign, MSGBOX_SIGN
+	end
+
+Route125_EventScript_EggEnthusiastHouse::
+	msgbox Route125_B1F_Text_EggEnthusiastHouse, MSGBOX_SIGN
+	end
+
+Route125_EventScript_IcipikeSign::
+	msgbox Route125_B1F_Text_IcipikeSign, MSGBOX_SIGN
+	end
+
+Route125_B1F_Text_EggHusband:
+	.string "Go ahead and lure that Eggneggma\n"
+	.string "over to this bridge.\p"
+	.string "Then, you and I will run\n"
+	.string "at it from this direction,\l"
+	.string "right into my wife!\l"
+	.string "She'll nab the thing!$"
+
+Route125_B1F_Text_EggWife:
+	.string "We'll catch that dastardly thief!\n"
+	.string "Get it to come over here,\l"
+	.string "and we'll have it cornered!$"
+
+Route125_B1F_Text_PrecipikeSign:
+	.string "PRECIPIKE BLUFF\n"
+	.string "Watch your step!\l"
+	.string "Steep cliffs ahead!$"
+
+Route125_B1F_Text_EggEnthusiastHouse:
+	.string "Egg Enthusiast's House\n"
+	.string "Please report all Egg Thief\l"
+	.string "findings to us!$"
+
+Route125_B1F_Text_IcipikeSign:
+	.string "ICIPIKE CAVE\n"
+	.string "Interior is iced over!\l"
+	.string "Wear safety gear when entering!$"
+
 Route125_Text_VanIntro:
-	.string "intro$"
+	.string "My parents really wanted to live\n"
+	.string "in a van their whole lives.\l"
+	.string "So much so that they named\l"
+	.string "me after a van. A VAN.\p"
+	.string "So yeah, I'm a grumpy kid!\n"
+	.string "And I gotta take it out on SOMEBODY!$"
 
 Route125_Text_VanDefeated:
-	.string "defeat$"
+	.string "My brother Winnebago may have\n"
+	.string "held his own better...$"
 
 Route125_Text_VanPostBattle:
-	.string "post$"
+	.string "Man am I SICK of traveling.\n"
+	.string "Just let me stay in one school!$"
 
 Route125_Text_AprilMaeIntro:
-	.string "intro$"
+	.string "APRIL: Try and guess what month\n"
+	.string "       my sister and I were born in!\l"
+	.string "MAE: Yeah, guess!\p"
+	.string "(This has to be a trick question.)$"
 
 Route125_Text_AprilMaeDefeated:
-	.string "defeat$"
+	.string "That's right! August!$"
 
 Route125_Text_AprilMaeNeedTwoMons:
-	.string "need 2 dood$"
+	.string "We won't give you the time of\n"
+	.string "day unless you have more than\l"
+	.string "one Pokemon with you!$"
 
 Route125_Text_AprilMaePostBattle:
-	.string "post$"
+	.string "APRIL: We were supposed to be\n"
+	.string "      triplets until the last second!\l"
+	.string "MAE: Poor June got absorbed\l"
+	.string "     in Mom's belly...$"
 
 Route125_Text_WrenIntro:
-	.string "intro$"
+	.string "I'm keeping an eye out\n"
+	.string "for Egg Thieves!\p"
+	.string "You better not be thinking\n"
+	.string "anything underhanded!$"
 
 Route125_Text_WrenDefeated:
-	.string "defeat$"
+	.string "Cracked and scrambled...$"
 
 Route125_Text_WrenPostBattle:
-	.string "post$"
+	.string "My mom's been looking for Egg\n"
+	.string "Thieves too. She's in that house\l"
+	.string "by the cliff. If you wanna help,\l"
+	.string "that is!$"
 
 Route125_Text_RaineIntro:
-	.string "intro$"
+	.string "The high seas call my name!$"
 
 Route125_Text_RaineDefeated:
-	.string "defeat$"
+	.string "I feel like I got wrecked\n"
+	.string "by a massive wave!$"
 
 Route125_Text_RainePostBattle:
-	.string "post$"
+	.string "There's nothing better than\n"
+	.string "a journey on the water!$"
 
 Route125_Text_SkyeIntro:
-	.string "intro$"
+	.string "Huh? A battle?\n"
+	.string "Uhh... oookay!$"
 
 Route125_Text_SkyeDefeated:
-	.string "defeat$"
+	.string "Checkmate, I guess.\n$"
 
 Route125_Text_SkyePostBattle:
-	.string "post$"
+	.string "I tried playing chess with\n"
+	.string "my Pidium the other day and\l"
+	.string "I just COULDN'T win!\p"
+	.string "It's like he knows every move\n"
+	.string "I'm 'bout to make before I\l"
+	.string "even do it...$"
 
 Route125_Text_GuuntherIntro:
-	.string "intro$"
+	.string "You can't beat me!\n"
+	.string "I have studied and learned the\l"
+	.string "best styles of Pokemon battling\l"
+	.string "from only the GREATEST Unovan\l"
+	.string "films ever made!\p"
+	.string "Feel my wrath!!$"
 
 Route125_Text_GuuntherDefeated:
-	.string "defeat$"
+	.string "How could my movie knowledge fail me?\n"
+	.string "This...\l"
+	.string "This can't be happening...!$"
 
 Route125_Text_GuuntherPostBattle:
-	.string "post$"
+	.string "Once I save up enough moolah, I'm\n"
+	.string "gonna take a trip to Unova\l"
+	.string "to experience the grandiosity\l"
+	.string "of PokeStar Studios firsthand!$"
 
 Route125_Text_AvaIntro:
-	.string "intro$"
+	.string "Don't you...\n"
+	.string "d-don't you know about the birds?$"
 
 Route125_Text_AvaDefeated:
-	.string "defeat$"
+	.string "Well.\p"
+	.string "Everybody knows!\n"
+	.string "'cept me, I guess...$"
 
 Route125_Text_AvaPostBattle:
-	.string "post$"
+	.string "I wish birds were real...$"
 
 Route125_Text_JunichiIntro:
-	.string "intro$"
+	.string "Wanna hear a cool bug fact!?$"
 
 Route125_Text_JunichiDefeated:
-	.string "defeat$"
+	.string "Too bad!\n"
+	.string "I'm tellin' you anyways!$"
 
 Route125_Text_JunichiPostBattle:
-	.string "post$"
+	.string "When a Maggorde evolves into Flague,\n"
+	.string "all of its siblings evolve too!\p"
+	.string "That's your daily bug fact!$"
 
 Route125_Text_NellyIntro:
-	.string "intro$"
+	.string "Oh, I'm going STRAIGHT to detention\n"
+	.string "when I walk in THIS late to class...$"
 
 Route125_Text_NellyDefeated:
-	.string "defeat$"
+	.string "Might as well stop and\n"
+	.string "smell the roses!$"
 
 Route125_Text_NellyPostBattle:
-	.string "post$"
+	.string "I'm late almost every day...\n"
+	.string "I'm just really unlucky in\l"
+	.string "the mornings, I guess.$"
 
 Route125_Text_JoanIntro:
-	.string "intro$"
+	.string "The acoustics in between the two\n"
+	.string "cliff faces here are KILLER!$"
 
 Route125_Text_JoanDefeated:
-	.string "defeat$"
+	.string "Oof... Gotta work on\n"
+	.string "my feedback.$"
 
 Route125_Text_JoanPostBattle:
-	.string "post$"
+	.string "My practice scares the Pokemon\n"
+	.string "away sometimes.\p"
+	.string "At least the Gravelito\n"
+	.string "seem to enjoy it!$"
 
 Route125_Text_ShellRiddle1:
 	.string "In shores along the mossy deep\n"
