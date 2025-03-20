@@ -2670,20 +2670,24 @@ u8 DoBattlerEndTurnEffects(void)
                 effect++;
             gBattleStruct->turnEffectsTracker++;
             break;
-        case ENDTURN_LEECH_SEED: // leech seed
-            if ((gStatuses3[battler] & STATUS3_LEECHSEED) && gBattleMons[gStatuses3[battler] & STATUS3_LEECHSEED_BATTLER].hp != 0 && gBattleMons[battler].hp != 0)
+        case ENDTURN_LEECH_SEED:  // leech seed
+            if ((gStatuses3[battler] & STATUS3_LEECHSEED)
+             && IsBattlerAlive(gStatuses3[battler] & STATUS3_LEECHSEED_BATTLER)
+             && IsBattlerAlive(battler))
             {
                 MAGIC_GUARD_CHECK;
                 TERU_CHARM_CHECK;
 
                 gBattlerTarget = gStatuses3[battler] & STATUS3_LEECHSEED_BATTLER; // Notice gBattlerTarget is actually the HP receiver.
+                gBattlerAttacker = battler;
+                gBattleScripting.animArg1 = gBattlerTarget;
+                gBattleScripting.animArg2 = gBattlerAttacker;
                 gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
                     gBattleMoveDamage = 50;
-                gBattleScripting.animArg1 = gBattlerTarget;
-                gBattleScripting.animArg2 = gBattlerAttacker;
+                gHitMarker |= HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE;
                 BattleScriptExecute(BattleScript_LeechSeedTurnDrain);
                 effect++;
             }
@@ -3206,13 +3210,17 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_TICKED:
-            if ((gStatuses4[battler] & STATUS4_TICKED) && gBattleMons[gStatuses4[battler] & STATUS4_TICKED_BATTLER].hp != 0 && gBattleMons[battler].hp != 0)
+            if ((gStatuses4[battler] & STATUS4_TICKED)
+             && IsBattlerAlive(gStatuses4[battler] & STATUS4_TICKED_BATTLER)
+             && IsBattlerAlive(battler))
             {
                 MAGIC_GUARD_CHECK;
                 TERU_CHARM_CHECK;
 
                 gBattlerTarget = gStatuses4[battler] & STATUS4_TICKED_BATTLER; // Notice gBattlerTarget is actually the HP receiver.
-                
+                gBattlerAttacker = battler;
+                gBattleScripting.animArg1 = gBattlerTarget;
+                gBattleScripting.animArg2 = gBattlerAttacker;
                 if (IS_BATTLER_OF_TYPE(battler, TYPE_GRASS) || IS_BATTLER_OF_TYPE(battler, TYPE_DARK) || IS_BATTLER_OF_TYPE(battler, TYPE_PSYCHIC))
                     gBattleMoveDamage = gBattleMons[battler].maxHP / 4;
                 else
@@ -3221,8 +3229,7 @@ u8 DoBattlerEndTurnEffects(void)
                     gBattleMoveDamage = 1;
                 if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
                     gBattleMoveDamage = 50;
-                gBattleScripting.animArg1 = gBattlerTarget;
-                gBattleScripting.animArg2 = gBattlerAttacker;
+                gHitMarker |= HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE;
                 BattleScriptExecute(BattleScript_TickedTurnDrain);
                 effect++;
             }

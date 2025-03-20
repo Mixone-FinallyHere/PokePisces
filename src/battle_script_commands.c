@@ -7651,17 +7651,17 @@ static void Cmd_moveend(void)
             gBattleStruct->distortedTypeMatchups = 0;
             gBattleStruct->redCardActivates = FALSE;
             gBattleStruct->fickleBeamBoosted = FALSE;
-            if (!IS_MOVE_STATUS(gCurrentMove) && moveType == TYPE_ELECTRIC && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            if ((!(IS_MOVE_STATUS(gCurrentMove))) && moveType == TYPE_ELECTRIC && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)))
                 gStatuses3[gBattlerAttacker] &= ~(STATUS3_CHARGED_UP);
-            if (!IS_MOVE_STATUS(gCurrentMove) && moveType == TYPE_WATER && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            if ((!(IS_MOVE_STATUS(gCurrentMove))) && moveType == TYPE_WATER && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)))
                 gStatuses4[gBattlerAttacker] &= ~(STATUS4_PUMPED_UP);
-            if (IS_MOVE_PHYSICAL(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            if (IS_MOVE_PHYSICAL(gCurrentMove) && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)))
                 gDisableStructs[gBattlerAttacker].purpleHazeOffense = FALSE;
-            if (!IS_MOVE_STATUS(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            if ((!(IS_MOVE_STATUS(gCurrentMove))) && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)))
                 gDisableStructs[gBattlerTarget].purpleHazeDefense = FALSE;
-            if (!IS_MOVE_STATUS(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            if ((!(IS_MOVE_STATUS(gCurrentMove))) && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)))
                 gStatuses4[gBattlerAttacker] &= ~(STATUS4_PHANTOM);
-            if (!IS_MOVE_STATUS(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            if ((!(IS_MOVE_STATUS(gCurrentMove))) && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)))
                 gStatuses4[gBattlerTarget] &= ~(STATUS4_CRAFTY_SHIELD);
             memset(gQueuedStatBoosts, 0, sizeof(gQueuedStatBoosts));
             gBattleScripting.moveendState++;
@@ -13380,7 +13380,7 @@ static void Cmd_various(void)
         if (gDisableStructs[battler].disabledMove == MOVE_NONE
             && i != MAX_MON_MOVES 
             && gBattleMons[battler].pp[i] != 0
-            && !gBattleMons[battler].status2 & STATUS2_MULTIPLETURNS)
+            && (!(gBattleMons[battler].status2 & STATUS2_MULTIPLETURNS)))
         {
             PREPARE_MOVE_BUFFER(gBattleTextBuff1, gChosenMoveByBattler[battler])
     
