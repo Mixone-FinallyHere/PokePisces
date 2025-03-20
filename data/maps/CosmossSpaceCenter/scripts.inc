@@ -405,6 +405,112 @@ CosmossSpaceCenter_EventScript_CheckSweltorn::
 	release
 	end
 
+CosmossSpaceCenter_EventScript_AboutHera::
+	msgbox CosmossSpaceCenter_B1F_Text_AboutHera, MSGBOX_NPC
+	end
+
+CosmossSpaceCenter_EventScript_AboutKepler::
+	msgbox CosmossSpaceCenter_B1F_Text_AboutKepler, MSGBOX_NPC
+	end
+
+CosmossSpaceCenter_EventScript_AboutGravity::
+	msgbox CosmossSpaceCenter_B1F_Text_AboutGravity, MSGBOX_NPC
+	end
+
+CosmossSpaceCenter_EventScript_AboutTerrains::
+	msgbox CosmossSpaceCenter_B1F_Text_AboutTerrains, MSGBOX_NPC
+	end
+
+CosmossSpaceCenter_EventScript_AboutMinkowski::
+	msgbox CosmossSpaceCenter_B1F_Text_AboutMinkowski, MSGBOX_NPC
+	end
+
+CosmossSpaceCenter_EventScript_AboutOrbitBalls::
+	msgbox CosmossSpaceCenter_B1F_Text_AboutOrbitBalls, MSGBOX_NPC
+	end
+
+CosmossSpaceCenter_B1F_Text_AboutHera:
+	.string "About 6 months ago, command\n"
+	.string "installed a complex AI to manage\l"
+	.string "the Space Center.\p"
+	.string "You can hear her yell at you\n"
+	.string "sometimes. We call her Hera.\p"
+	.string "Though she isn't human, we've\n"
+	.string "gotten so used to her presence\l"
+	.string "and personality that we kinda\l"
+	.string "treat her as one.\p"
+	.string "Modern tech, man...\n$"
+
+CosmossSpaceCenter_B1F_Text_AboutKepler:
+	.string "That man in the black suit\n"
+	.string "over there? That's Colonel Kepler...\l"
+	.string "He's in charge of the center.\p"
+	.string "He's outwardly polite, but I have\n"
+	.string "to warn you, he is THE scariest\l"
+	.string "person I have ever interacted with.\l"
+	.string "When he wants something done,\l"
+	.string "it gets done.\p"
+	.string "You don't want to get on his\n"
+	.string "bad side, trust me...$"
+
+CosmossSpaceCenter_B1F_Text_AboutGravity:
+	.string "Have you ever tried utilizing\n"
+	.string "the field effect, Gravity?\l"
+	.string "It's a bit niche, but it has\l"
+	.string "some fun uses.\p"
+	.string "During Gravity, the accuracy of\n"
+	.string "all moves are raised, so you can\l"
+	.string "try and use some moves that were\l"
+	.string "too risky prior. Psychic type Pokemon,\l"
+	.string "though, are smart enough to dodge\l"
+	.string "attacks regularly in Gravity.\p"
+	.string "This also obviously grounds all\n"
+	.string "Pokemon on the field, so Flying type\l"
+	.string "and Levitating ones can be hit by\l"
+	.string "Ground type moves. In addition,\l"
+	.string "they can't use moves like Fly that\l"
+	.string "involve the user leaving the ground.\p"
+	.string "Gravity can synergize with other\n"
+	.string "moves too! Think, moves that have\l"
+	.string "to do with weight, like Low Kick.\l"
+	.string "They will do more damage!\p"
+	.string "Give Gravity a spin the next time\n"
+	.string "you're able to.$"
+
+CosmossSpaceCenter_B1F_Text_AboutTerrains:
+	.string "I like to use Terrains in battle\n"
+	.string "to shake things up! There's a few\l"
+	.string "of them, but they all have\l"
+	.string "one thing in common: they only\l"
+	.string "affect grounded Pokemon.\p"
+	.string "So, if your Pokemon is a Flying type\n"
+	.string "or has an ability like Levitate,\l"
+	.string "well, Terrains don't matter to them!$"
+
+CosmossSpaceCenter_B1F_Text_AboutMinkowski:
+	.string "Lieutenant Minkowski used\n"
+	.string "to be in charge around here before\l"
+	.string "the Colonel stepped in and took\l"
+	.string "the reins. She's been pretty\l"
+	.string "angry about it, but she still\l"
+	.string "does her job.\p"
+	.string "If it came down to it, I'd defect\n"
+	.string "to her over the Colonel. But I'd\l"
+	.string "never tell either that.$"
+
+CosmossSpaceCenter_B1F_Text_AboutOrbitBalls:
+	.string "I've been cooperating with\n"
+	.string "Devon... err, well, Greater\l"
+	.string "Mauville Holdings, to work a bit\l"
+	.string "on the Orbit Balls!\p"
+	.string "They're a type of Pokeball that\n"
+	.string "has a higher catch rate on\l"
+	.string "Pokemon that come from, or are\l"
+	.string "heavily associated with, outer space.\p"
+	.string "Stomaway and Cryplin are a few\n"
+	.string "examples. Try Orbit Balls out\l"
+	.string "if you can get your hands on any!$"
+
 CosmossSpaceCenter_Text_EnterCodeText:
 	.string "Oi. I've been put in charge\n"
 	.string "of the Space Center's\l"

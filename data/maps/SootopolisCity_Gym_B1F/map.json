@@ -37,7 +37,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "SootopolisCity_Gym_B1F_EventScript_NiceDrinks",
       "flag": "0"
     },
     {
@@ -102,7 +102,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "SootopolisCity_Gym_B1F_EventScript_AwaitingThePerformance",
       "flag": "0"
     },
     {
@@ -128,7 +128,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "SootopolisCity_Gym_B1F_EventScript_SebastianIsPolite",
       "flag": "0"
     },
     {
@@ -206,7 +206,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "SootopolisCity_Gym_B1F_EventScript_EnjoyYourself",
       "flag": "0"
     },
     {
@@ -345,6 +345,29 @@
     }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 10,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "SootopolisCity_Gym_B1F_EventScript_AuthorizedOnly"
+    },
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 16,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "SootopolisCity_Gym_B1F_EventScript_ExitSign"
+    },
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 22,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "SootopolisCity_Gym_B1F_EventScript_AuthorizedOnly"
+    }
   ]
 }
