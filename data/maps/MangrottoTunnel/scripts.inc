@@ -520,58 +520,58 @@ MangrottoTunnel_Movement_BreadEsc2:
 	step_end
 
 MangrottoTunnel_EventScript_Dundee::
-    trainerbattle_single TRAINER_P_DUNDEE, MangrottoTunnel_Text_GugumbirIntro, MangrottoTunnel_Text_GugumbirDefeated
-    msgbox MangrottoTunnel_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_single TRAINER_P_DUNDEE, MangrottoTunnel_Text_DundeeIntro, MangrottoTunnel_Text_DundeeDefeated
+    msgbox MangrottoTunnel_Text_DundeePostBattle, MSGBOX_AUTOCLOSE
     end
 
 MangrottoTunnel_EventScript_Moka::
-    trainerbattle_single TRAINER_P_MOKA, MangrottoTunnel_Text_GugumbirIntro, MangrottoTunnel_Text_GugumbirDefeated
-    msgbox MangrottoTunnel_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_single TRAINER_P_MOKA, MangrottoTunnel_Text_MokaIntro, MangrottoTunnel_Text_MokaDefeated
+    msgbox MangrottoTunnel_Text_MokaPostBattle, MSGBOX_AUTOCLOSE
     end
 
 MangrottoTunnel_EventScript_Woods::
-    trainerbattle_single TRAINER_P_WOODS, MangrottoTunnel_Text_GugumbirIntro, MangrottoTunnel_Text_GugumbirDefeated
-    msgbox MangrottoTunnel_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_single TRAINER_P_WOODS, MangrottoTunnel_Text_WoodsIntro, MangrottoTunnel_Text_WoodsDefeated
+    msgbox MangrottoTunnel_Text_WoodsPostBattle, MSGBOX_AUTOCLOSE
     end
 
 MangrottoTunnel_EventScript_Fauna::
-    trainerbattle_single TRAINER_P_FAUNA, MangrottoTunnel_Text_GugumbirIntro, MangrottoTunnel_Text_GugumbirDefeated
-    msgbox MangrottoTunnel_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_single TRAINER_P_FAUNA, MangrottoTunnel_Text_FaunaIntro, MangrottoTunnel_Text_FaunaDefeated
+    msgbox MangrottoTunnel_Text_FaunaPostBattle, MSGBOX_AUTOCLOSE
     end
 
 MangrottoTunnel_EventScript_Declan::
-    trainerbattle_single TRAINER_P_DECLAN, MangrottoTunnel_Text_GugumbirIntro, MangrottoTunnel_Text_GugumbirDefeated
-    msgbox MangrottoTunnel_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_single TRAINER_P_DECLAN, MangrottoTunnel_Text_DeclanIntro, MangrottoTunnel_Text_DeclanDefeated
+    msgbox MangrottoTunnel_Text_DeclanPostBattle, MSGBOX_AUTOCLOSE
     end
 
 MangrottoTunnel_EventScript_Shinji::
-    trainerbattle_single TRAINER_P_SHINJI, MangrottoTunnel_Text_GugumbirIntro, MangrottoTunnel_Text_GugumbirDefeated
-    msgbox MangrottoTunnel_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_single TRAINER_P_SHINJI, MangrottoTunnel_Text_ShinjiIntro, MangrottoTunnel_Text_ShinjiDefeated
+    msgbox MangrottoTunnel_Text_ShinjiPostBattle, MSGBOX_AUTOCLOSE
     end
 
 MangrottoTunnel_EventScript_Skeeter::
-    trainerbattle_single TRAINER_P_SKEETER, MangrottoTunnel_Text_GugumbirIntro, MangrottoTunnel_Text_GugumbirDefeated
-    msgbox MangrottoTunnel_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_single TRAINER_P_SKEETER, MangrottoTunnel_Text_SkeeterIntro, MangrottoTunnel_Text_SkeeterDefeated
+    msgbox MangrottoTunnel_Text_SkeeterPostBattle, MSGBOX_AUTOCLOSE
     end
 
 MangrottoTunnel_EventScript_Jaja::
-    trainerbattle_single TRAINER_P_JAJA, MangrottoTunnel_Text_GugumbirIntro, MangrottoTunnel_Text_GugumbirDefeated
-    msgbox MangrottoTunnel_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_single TRAINER_P_JAJA, MangrottoTunnel_Text_JajaIntro, MangrottoTunnel_Text_JajaDefeated
+    msgbox MangrottoTunnel_Text_JajaPostBattle, MSGBOX_AUTOCLOSE
     end
 
 MangrottoTunnel_EventScript_Jane::
-    trainerbattle_single TRAINER_P_JANE, MangrottoTunnel_Text_GugumbirIntro, MangrottoTunnel_Text_GugumbirDefeated
-    msgbox MangrottoTunnel_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_single TRAINER_P_JANE, MangrottoTunnel_Text_JaneIntro, MangrottoTunnel_Text_JaneDefeated
+    msgbox MangrottoTunnel_Text_JanePostBattle, MSGBOX_AUTOCLOSE
     end
 
 MangrottoTunnel_EventScript_Layton::
-    trainerbattle_single TRAINER_P_LAYTON, MangrottoTunnel_Text_GugumbirIntro, MangrottoTunnel_Text_GugumbirDefeated
-    msgbox MangrottoTunnel_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_single TRAINER_P_LAYTON, MangrottoTunnel_Text_LaytonIntro, MangrottoTunnel_Text_LaytonDefeated
+    msgbox MangrottoTunnel_Text_LaytonPostBattle, MSGBOX_AUTOCLOSE
     end
 
 MangrottoTunnel_EventScript_Jo_And_Jo::
-    trainerbattle_double TRAINER_P_JO_AND_JO, MangrottoTunnel_Text_GugumbirIntro, MangrottoTunnel_Text_GugumbirDefeated, MangrottoTunnel_Text_GugumbirNeedTwoMons
-    msgbox MangrottoTunnel_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_double TRAINER_P_JO_AND_JO, MangrottoTunnel_Text_JoAndJoIntro, MangrottoTunnel_Text_JoAndJoDefeated, MangrottoTunnel_Text_JoAndJoNeedTwoMons
+    msgbox MangrottoTunnel_Text_JoAndJoPostBattle, MSGBOX_AUTOCLOSE
     end
 
 MangrottoTunnel_EventScript_Infestation::
@@ -698,14 +698,158 @@ MangrottoTunnel_Text_BreadwinnerRunAway:
 	.string "now I am ever more minutes late!!\p"
 	.string "Excuse me…$"
 
-MangrottoTunnel_Text_GugumbirIntro:
-	.string "intro$"
+MangrottoTunnel_Text_DundeeIntro:
+	.string "How 'bout a battle? You dig?$"
 
-MangrottoTunnel_Text_GugumbirDefeated:
-	.string "defeat$"
+MangrottoTunnel_Text_DundeeDefeated:
+	.string "Write something nice on\n"
+	.string "my tombstone...$"
 
-MangrottoTunnel_Text_GugumbirPostBattle:
-	.string "post$"
+MangrottoTunnel_Text_DundeePostBattle:
+	.string "I feel embarassed enough to dig\n"
+	.string "myself outta this cave...$"
 
-MangrottoTunnel_Text_GugumbirNeedTwoMons:
-	.string "need 2 doods$"
+MangrottoTunnel_Text_MokaIntro:
+	.string "Oh, no... first, my shoes\n"
+	.string "get all wet, and now, I have\l"
+	.string "to battle somebody...!$"
+
+MangrottoTunnel_Text_MokaDefeated:
+	.string "That battle just served to get me\n"
+	.string "more disheveled...!$"
+
+MangrottoTunnel_Text_MokaPostBattle:
+	.string "My dad keeps warning me not to\n"
+	.string "absentmindedly wander through\l"
+	.string "my day... I can't help that life\l"
+	.string "is so distracting!$"
+
+MangrottoTunnel_Text_WoodsIntro:
+	.string "My Pokemon love to eat Oran Berries!\n"
+	.string "What about yours?$"
+
+MangrottoTunnel_Text_WoodsDefeated:
+	.string "Oran't you glad that\n"
+	.string "you didn't get beat?$"
+
+MangrottoTunnel_Text_WoodsPostBattle:
+	.string "Oran Berries are really useful when\n"
+	.string "your Pokemon are low in level,\l"
+	.string "since they don't have much health.\p"
+	.string "But when they get bigger and stronger,\n"
+	.string "Sitrus Berries are the way to go.$"
+
+MangrottoTunnel_Text_FaunaIntro:
+	.string "Have you seen my sister, Flora?\n"
+	.string "Or did... YOU take her away!?$"
+
+MangrottoTunnel_Text_FaunaDefeated:
+	.string "Don't make me disappear too!!$"
+
+MangrottoTunnel_Text_FaunaPostBattle:
+	.string "S-Sorry for being aggressive...\p"
+	.string "My sister is not very smart.\n"
+	.string "She likes to wander.\p"
+	.string "I think she said she was going\n"
+	.string "to look into tree trunks for\l"
+	.string "bugs earlier. I hope that she\l"
+	.string "turns up before dinnertime...$"
+
+MangrottoTunnel_Text_DeclanIntro:
+	.string "Ho-ho-HO! I'M king of the playground!\n"
+	.string "BOW DOWN before me!$"
+
+MangrottoTunnel_Text_DeclanDefeated:
+	.string "NO! You can't overthrow the king!$"
+
+MangrottoTunnel_Text_DeclanPostBattle:
+	.string "This isn't fair! My rule isn't\n"
+	.string "supposed to be over yet!$"
+
+MangrottoTunnel_Text_ShinjiIntro:
+	.string "Get your head in the game, Shinji...\n"
+	.string "your evolved Bug Pokemon can\l"
+	.string "easily handle this...!$"
+
+MangrottoTunnel_Text_ShinjiDefeated:
+	.string "BUZZ OFF!$"
+
+MangrottoTunnel_Text_ShinjiPostBattle:
+	.string "My swarm needs to be built\n"
+	.string "up more before I stand a chance...$"
+
+MangrottoTunnel_Text_SkeeterIntro:
+	.string "Ay-YO! Imma take you out\n"
+	.string "faster'n a Kitikiti on five\l"
+	.string "cups'a coffee!$"
+
+MangrottoTunnel_Text_SkeeterDefeated:
+	.string "Dealt with cleaner'n a plate'a\n"
+	.string "fried chicken in front of a\l"
+	.string "starvin' Zigzagoon...$"
+
+MangrottoTunnel_Text_SkeeterPostBattle:
+	.string "Paw lets me play with them\n"
+	.string "bugs under the trailer!\l"
+	.string "They're my pals!$"
+
+MangrottoTunnel_Text_JajaIntro:
+	.string "(The odd creature seems to be\n"
+	.string "under command of this small child.)\p"
+	.string "Hey! Let me show you how cool\n"
+	.string "my Dragon Pokemon is!$"
+
+MangrottoTunnel_Text_JajaDefeated:
+	.string "No way!$"
+
+MangrottoTunnel_Text_JajaPostBattle:
+	.string "Mommy only lets me play in\n"
+	.string "the tunnel if Gargar is with me!$"
+
+MangrottoTunnel_Text_JaneIntro:
+	.string "Do you keep your first partner\n"
+	.string "Pokemon? Or do you try and use\l"
+	.string "other ones you find on the way?$"
+
+MangrottoTunnel_Text_JaneDefeated:
+	.string "My partners...!$"
+
+MangrottoTunnel_Text_JanePostBattle:
+	.string "Toxexot was given to me by\n"
+	.string "my big sis! I'm not really into\l"
+	.string "Tidpit all that much.$"
+
+MangrottoTunnel_Text_LaytonIntro:
+	.string "Let's do a puzzle together!$"
+
+MangrottoTunnel_Text_LaytonDefeated:
+	.string "The puzzle was supposed to be how\n"
+	.string "you could get past my indestructable\l"
+	.string "Pokemon, but...\p"
+	.string "It, uhm, turns out they were\n"
+	.string "very destructable...$"
+
+MangrottoTunnel_Text_LaytonPostBattle:
+	.string "Jigsaws are my favorite!\n"
+	.string "Though, my Harace likes to run\l"
+	.string "off with my corner pieces.$"
+
+MangrottoTunnel_Text_JoAndJoIntro:
+	.string "Can you tell us twins apart?\n"
+	.string "I bet you can't!$"
+
+MangrottoTunnel_Text_JoAndJoDefeated:
+	.string "JO: So, how do our battle\n"
+	.string "    styles hold up?\p"
+	.string "JO?: I don't battle like\n"
+	.string "     SHE does, do I!?$"
+
+MangrottoTunnel_Text_JoAndJoPostBattle:
+	.string "JO: We look so alike, no one\n"
+	.string "can tell us apart.\p"
+	.string "JO?: It drives me CRAZY!$"
+
+MangrottoTunnel_Text_JoAndJoNeedTwoMons:
+	.string "No, you're not seeing double.\n"
+	.string "But you need two Pokemon with you\l"
+	.string "to take us on!$"

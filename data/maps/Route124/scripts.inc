@@ -472,7 +472,9 @@ Route124_EventScript_RichGuyGunpoint::
 	end
 
 Route124_Text_WantThoseBrellas:
-	.string "gimme your brellas$"
+	.string "(You tell the group of\n"
+	.string "Parasol Ladies that the researcher\l"
+	.string "is asking for the umbrellas back.)$"
 
 Route124_Text_ScaredOfUmbrellas:
 	.string "(There is a group of Parasol Ladies\n"
@@ -530,40 +532,47 @@ Route124_Text_ArielNeedTwoMons:
 	.string "need 2 dood$"
 
 Route124_Text_ArielIntro:
-	.string "intro$"
+	.string "I want to be a mermaid so bad...\n"
+	.string "but, no matter how hard I try...$"
 
 Route124_Text_ArielDefeated:
-	.string "defeat$"
+	.string "I remain landlocked...$"
 
 Route124_Text_ArielPostBattle:
-	.string "post$"
+	.string "Perhaps my Lepucyte will take me\n"
+	.string "on a journey someday...$"
 
 Route124_Text_DollyIntro:
-	.string "intro$"
+	.string "This beach is Tube Gang territory!\n"
+	.string "SCRAM!$"
 
 Route124_Text_DollyDefeated:
-	.string "defeat$"
+	.string "Tsk!$"
 
 Route124_Text_DollyPostBattle:
-	.string "post$"
+	.string "Don't say I didn't warn you!$"
 
 Route124_Text_SinjinIntro:
-	.string "intro$"
+	.string "Hi... my name is Sinjin...\p"
+	.string "Do you want to play clam puppets?$"
 
 Route124_Text_SinjinDefeated:
-	.string "defeat$"
+	.string "(Sinjin is making a clam's mouth\n"
+	.string "move as if it's talking.)\p"
+	.string "Ohhhh no! You beat us!$"
 
 Route124_Text_SinjinPostBattle:
-	.string "post$"
+	.string "I'll just keep going by myself...$"
 
 Route124_Text_JosukeIntro:
-	.string "intro$"
+	.string "Bang! Bang! BANG!$"
 
 Route124_Text_JosukeDefeated:
-	.string "defeat$"
+	.string "AAARRRRGGGHHH!!!\p"
+	.string "(Josuke flops over, playing dead.)$"
 
 Route124_Text_JosukePostBattle:
-	.string "post$"
+	.string "Bleh. I'm dead. Bleh.$"
 
 Route124_Text_TobyIntro:
 	.string "(The dog appears to be\n"
@@ -577,7 +586,7 @@ Route124_Text_TobyPostBattle:
 	.string "at you, before taking their leave.)$"
 
 Route124_Text_ArbuckleIntro:
-	.string "Garjira, you lazy Pokémon!\p"
+	.string "Garzilla, you lazy Pokémon!\p"
 	.string "You are so big and fat!\n"
 	.string "Why are you so fat?$"
 
@@ -588,8 +597,8 @@ Route124_Text_ArbucklePostBattle:
 	.string "Now, where could my pipe be?$"
 
 Route124_Text_NaomiIntro:
-	.string "Well well well, look what washed\n"
-	.string "ashore.$"
+	.string "Well, well, well. Look what\n"
+	.string "washed ashore!$"
 
 Route124_Text_NaomiDefeated:
 	.string "H-hey! You splashed me!$"
@@ -599,13 +608,17 @@ Route124_Text_NaomiPostBattle:
 	.string "as you don't mind getting wet a little.$"
 
 Route124_Text_BethaIntro:
-	.string "intro$"
+	.string "Those loud kids are scarin'\n"
+	.string "away all the good fish...\p"
+	.string "Are you with 'em?$"
 
 Route124_Text_BethaDefeated:
-	.string "defeat$"
+	.string "Aw, shucks. Our battle went and\n"
+	.string "scared 'em off even more...$"
 
 Route124_Text_BethaPostBattle:
-	.string "post$"
+	.string "Can you tell those youngins\n"
+	.string "to shut their pie-holes?$"
 
 Route124_Text_EbbIntro:
 	.string "Kehehehe!\p"
@@ -663,13 +676,15 @@ Route124_Text_HomerPostBattle:
 	.string "(Annoyed Grunt)$"
 
 Route124_Text_MargeIntro:
-	.string "intro$"
+	.string "Where did Homie and the kids\n"
+	.string "run off to...$"
 
 Route124_Text_MargeDefeated:
-	.string "defeat$"
+	.string "That was pretty neat!$"
 
 Route124_Text_MargePostBattle:
-	.string "post$"
+	.string "I have a lot to keep up with\n"
+	.string "today, as usual...$"
 
 Route124_Text_ShalaIntro:
 	.string "MyÄHeartÄGoes…!$"

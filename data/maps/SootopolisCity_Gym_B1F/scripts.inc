@@ -213,6 +213,62 @@ SootopolisCity_Gym_B1F_EventScript_Roland::
 	msgbox SootopolisCity_Gym_B1F_Text_Roland, MSGBOX_NPC
 	end
 
+SootopolisCity_Gym_B1F_EventScript_NiceDrinks::
+	msgbox SootopolisCity_Gym_B1F_B1F_Text_NiceDrinks, MSGBOX_NPC
+	end
+
+SootopolisCity_Gym_B1F_EventScript_SebastianIsPolite::
+	msgbox SootopolisCity_Gym_B1F_B1F_Text_SebastianIsPolite, MSGBOX_NPC
+	end
+
+SootopolisCity_Gym_B1F_EventScript_AwaitingThePerformance::
+	msgbox SootopolisCity_Gym_B1F_B1F_Text_AwaitingThePerformance, MSGBOX_NPC
+	end
+
+SootopolisCity_Gym_B1F_EventScript_EnjoyYourself::
+	msgbox SootopolisCity_Gym_B1F_B1F_Text_EnjoyYourself, MSGBOX_NPC
+	end
+
+SootopolisCity_Gym_B1F_EventScript_AuthorizedOnly::
+	msgbox SootopolisCity_Gym_B1F_B1F_Text_AuthorizedOnly, MSGBOX_SIGN
+	end
+
+SootopolisCity_Gym_B1F_EventScript_ExitSign::
+	msgbox SootopolisCity_Gym_B1F_B1F_Text_ExitSign, MSGBOX_SIGN
+	end
+
+SootopolisCity_Gym_B1F_B1F_Text_NiceDrinks:
+	.string "If there's anyone in life that\n"
+	.string "I know has my back...\l"
+	.string "it's the bartender.$"
+
+SootopolisCity_Gym_B1F_B1F_Text_SebastianIsPolite:
+	.string "Sebastian is such a polite\n"
+	.string "and courteous man!\p"
+	.string "I must say, I fancy him\n"
+	.string "much more than that Juan fellow...$"
+
+SootopolisCity_Gym_B1F_B1F_Text_AwaitingThePerformance:
+	.string "I've been patiently awaiting\n"
+	.string "the big performance!\p"
+	.string "It would suck to be a gym challenger\n"
+	.string "right now. I'd wager Juan would\l"
+	.string "just ignore all that 'till his\l"
+	.string "set is over with...\p"
+	.string "Unless, they manage to get his\n"
+	.string "attention. That's real hard though!$"
+
+SootopolisCity_Gym_B1F_B1F_Text_EnjoyYourself:
+	.string "We hope you enjoy the show!$"
+
+SootopolisCity_Gym_B1F_B1F_Text_AuthorizedOnly:
+	.string "Stairwell To Attic\n"
+	.string "Above Glass Ceiling\p"
+	.string "!AUTHORIZED PERSONNEL ONLY!$"
+
+SootopolisCity_Gym_B1F_B1F_Text_ExitSign:
+	.string "EXIT to Sootopolis City$"
+
 SootopolisCity_Gym_B1F_Text_Roland:
 	.string "Hey there again, challenger!\n"
 	.string "Remember to always talk to\l"

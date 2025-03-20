@@ -191,6 +191,22 @@ Route120_EventScript_CutPathTutorial::
     msgbox Route120_Text_CutPathTutorial, MSGBOX_NPC
     end
 
+Route120_EventScript_ColdMinesNorthSign::
+	msgbox Route120_B1F_Text_ColdMinesNorthSign, MSGBOX_SIGN
+	end
+
+Route120_EventScript_PrettyPetalsSign::
+	msgbox Route120_B1F_Text_PrettyPetalsSign, MSGBOX_SIGN
+	end
+
+Route120_B1F_Text_ColdMinesNorthSign:
+	.string "Northern Entrance to\n"
+	.string "THE COLD MINES$"
+
+Route120_B1F_Text_PrettyPetalsSign:
+	.string "Ä Pretty Petals Flower Shop Ä\n"
+	.string "We also sell Berries!$"
+
 Route120_Text_ColbyIntro:
 	.string "I bet you can't beat my full team of 6!$"
 

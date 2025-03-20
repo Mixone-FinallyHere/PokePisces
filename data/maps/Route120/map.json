@@ -669,6 +669,22 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route120_EventScript_TreePath4"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 95,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route120_EventScript_ColdMinesNorthSign"
+    },
+    {
+      "type": "sign",
+      "x": 33,
+      "y": 83,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route120_EventScript_PrettyPetalsSign"
     }
   ]
 }

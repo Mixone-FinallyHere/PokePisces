@@ -259,6 +259,53 @@
     }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 66,
+      "y": 15,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LilycoveCity_EventScript_OLBHQSign"
+    },
+    {
+      "type": "sign",
+      "x": 54,
+      "y": 7,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LilycoveCity_EventScript_LilycoveMuseumSign"
+    },
+    {
+      "type": "sign",
+      "x": 18,
+      "y": 13,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LilycoveCity_EventScript_BattleStudioSign"
+    },
+    {
+      "type": "sign",
+      "x": 8,
+      "y": 23,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LilycoveCity_EventScript_ColdMinesSouthSign"
+    },
+    {
+      "type": "sign",
+      "x": 36,
+      "y": 25,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LilycoveCity_EventScript_LilycoveCitySign"
+    },
+    {
+      "type": "sign",
+      "x": 43,
+      "y": 28,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LilycoveCity_EventScript_BrineysHouseSign"
+    }
   ]
 }

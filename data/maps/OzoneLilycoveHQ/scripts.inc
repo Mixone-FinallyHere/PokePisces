@@ -635,34 +635,51 @@ OzoneLilycoveHQ_Text_BrellaAbout:
 	.string "Thanks a bundle!$"
 
 OzoneLilycoveHQ_Text_BrellaNoMore:
-	.string "no mas$"
+	.string "Hope you're enjoying the new\n"
+	.string "Umbrella prototype!$"
 
 OzoneLilycoveHQ_Text_LandonIntro:
-	.string "intro$"
+	.string "The sun's always shining at\n"
+	.string "Ol' Bihq!$"
 
 OzoneLilycoveHQ_Text_LandonDefeated:
-	.string "defeat$"
+	.string "Burnt like a pasty guy\n"
+	.string "in the summer!$"
 
 OzoneLilycoveHQ_Text_LandonPostBattle:
-	.string "post$"
+	.string "I much prefer working with\n"
+	.string "Tabitha than Matt! I guess it's\l"
+	.string "because I used to be a Magma Grunt.$"
 
 OzoneLilycoveHQ_Text_TerraIntro:
-	.string "intro$"
+	.string "Landon and I are in-sync!\n"
+	.string "You won't be able to muscle\l"
+	.string "through this sun team!$"
 
 OzoneLilycoveHQ_Text_TerraDefeated:
-	.string "defeat$"
+	.string "Lights out...!$"
 
 OzoneLilycoveHQ_Text_TerraPostBattle:
-	.string "post$"
+	.string "I used to originally work for\n"
+	.string "Team Aqua. But for some reason,\l"
+	.string "I find myself preferring Tabitha\l"
+	.string "as a manager over Matt.\p"
+	.string "I feel like the former knows what\n"
+	.string "he's doing more, even though he\l"
+	.string "can be cold.$"
 
 OzoneLilycoveHQ_Text_SeanIntro:
-	.string "intro$"
+	.string "Hope you're used to fighting\n"
+	.string "in the rain, kid!$"
 
 OzoneLilycoveHQ_Text_SeanDefeated:
-	.string "defeat$"
+	.string "Doused and tossed aside...!$"
 
 OzoneLilycoveHQ_Text_SeanPostBattle:
-	.string "post$"
+	.string "Back in the day, I would run\n"
+	.string "sun-using teams. But I've decided\l"
+	.string "to try and branch out with rain!\p"
+	.string "Didn't go so well that time...\n$"
 
 OzoneLilycoveHQ_Text_MarinaIntro:
 	.string "You remind me of me when I was your age.$"
