@@ -64,7 +64,7 @@ MtPyre_2F_EventScript_Misty::
     end
 
 MtPyre_2F_EventScript_GiveCleanseTag::
-	msgbox MtPyre_2F_Text_MistyPostBattle, MSGBOX_DEFAULT
+	msgbox MtPyre_2F_Text_HaveSpectralIdol, MSGBOX_DEFAULT
 	giveitem ITEM_SPECTRAL_IDOL
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	release
@@ -90,10 +90,15 @@ MtPyre_2F_EventScript_WarpToCave::
 	end
 
 MtPyre_2F_Text_WouldYouLikeToWarp:
-	.string "wanna warp$"
+	.string "My elder sibling is currently\n"
+	.string "snooping about a hidden passage\l"
+	.string "in the Cold Mines...\p"
+	.string "If you would like to visit her,\n"
+	.string "I have the ability to warp\l"
+	.string "you across space...$"
 
 MtPyre_2F_Text_MaybeAnotherTime:
-	.string "maybe nexttime$"
+	.string "Not everyone can handle warping...$"
 
 MtPyre_2F_Text_DeaconIntro:
 	.string "I can sense your aura.$"
@@ -105,49 +110,76 @@ MtPyre_2F_Text_DeaconPostBattle:
 	.string "I will need to meditate on this loss.$"
 
 MtPyre_2F_Text_AlodiaIntro:
-	.string "I dance, I call! Each step shakes my\n"
-	.string "very soul!$"
+	.string "I dance, I call! Each step\n"
+	.string "shakes my very soul!$"
 
 MtPyre_2F_Text_AlodiaDefeated:
-	.string "We who sing and dance the language of\n"
-	.string "dragons!$"
+	.string "We who sing and dance\n"
+	.string "the language of dragons!$"
 
 MtPyre_2F_Text_AlodiaPostBattle:
-	.string "I dance, I call! Each step quakes my\n"
-	.string "body whole!$"
+	.string "I dance, I call! Each step\n"
+	.string "quakes my body whole!$"
 
 MtPyre_2F_Text_RaelianaIntro:
-	.string "intro$"
+	.string "Zotpyre Shrine... elegant,\n"
+	.string "yet bearing malevolent energy...\p"
+	.string "Oh-ho-ho... it reminds me of\n"
+	.string "yours truly...$"
 
 MtPyre_2F_Text_RaelianaDefeated:
-	.string "defeat$"
+	.string "I take my defeat\n"
+	.string "with honor and grace.$"
 
 MtPyre_2F_Text_RaelianaPostBattle:
-	.string "post$"
+	.string "Compose yourself, trainer.\n"
+	.string "Lest you stick around in the\l"
+	.string "afterlife...$"
 
 MtPyre_2F_Text_MorganIntro:
-	.string "... Get out ... Get out!...$"
+	.string "GET...\n"
+	.string "                ...OUT!$"
 
 MtPyre_2F_Text_MorganDefeated:
-	.string "...Or keep going. I'm not a cop...$"
-
+	.string "...Or keep going.\n"
+	.string "I'm not a cop.$"
 
 MtPyre_2F_Text_MorganPostBattle:
 	.string "...$"
 
 MtPyre_2F_Text_MistyIntro:
-	.string "... The spirits call my name...$"
+	.string "Ah... you have placated them...\n"
+	.string "my beloved family...\p"
+	.string "It will not be long before the\n"
+	.string "malevolent spirits leave their\l"
+	.string "bodies... thank you.\p"
+	.string "I simply must test the meddle\n"
+	.string "of a trainer of your caliber...\l"
+	.string "If you could handle the others\l"
+	.string "of the Fey Family, surely\l"
+	.string "you can withstand my onslaught?$"
 
 MtPyre_2F_Text_MistyDefeated:
-
-	.string "... They call for you as well...$"
+	.string "Your soul remains pure...$"
 
 MtPyre_2F_Text_MistyPostBattle:
 	.string "...$"
 
 MtPyre_2F_Text_MistyNotAllMediumsBeaten:
-	.string "You must conquer each of us\n"
-	.string "to continue...$"
+	.string "They are suffering. I sense that\n"
+	.string "Mia, Maya, Pearl, and Morgan have\l"
+	.string "all been terribly possessed...\p"
+	.string "Please, seek them out...\n"
+	.string "they will be aggressive, no doubt...\l"
+	.string "but their souls must be placated.$"
 
 MtPyre_2F_Text_MistyGreetings:
-	.string "hello there$"
+	.string "The various spirit mediums that\n"
+	.string "you have no doubt run into\l"
+	.string "in your travels up to this point...$"
+
+MtPyre_2F_Text_HaveSpectralIdol:
+	.string "Please, trainer... you must\n"
+	.string "take this totem with you...\p"
+	.string "It has likewise been possessed...\n"
+	.string "but, mayhaps, it can be of use...$"

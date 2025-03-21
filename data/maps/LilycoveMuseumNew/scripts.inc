@@ -273,8 +273,19 @@ LilycoveMuseumNew_EventScript_Phillipe::
 	lock
 	faceplayer
 	goto_if_lt VAR_BALL_QUEST_STATE, 1, LilycoveMuseumNew_EventScript_PhillipePreQuest
-	goto_if_lt VAR_BALL_QUEST_STATE, 8, LilycoveMuseumNew_EventScript_PhillipeFirstHalfQuest
-	goto_if_lt VAR_BALL_QUEST_STATE, 14, LilycoveMuseumNew_EventScript_PhillipeSecondHalfQuest
+	goto_if_eq VAR_BALL_QUEST_STATE, 1, LilycoveMuseumNew_EventScript_PhillipeInCosmoss
+	goto_if_eq VAR_BALL_QUEST_STATE, 2, LilycoveMuseumNew_EventScript_PhillipeInSunbeach
+	goto_if_eq VAR_BALL_QUEST_STATE, 3, LilycoveMuseumNew_EventScript_PhillipeInBrumist
+	goto_if_eq VAR_BALL_QUEST_STATE, 4, LilycoveMuseumNew_EventScript_PhillipeInScuttill
+	goto_if_eq VAR_BALL_QUEST_STATE, 5, LilycoveMuseumNew_EventScript_PhillipeInPerplume
+	goto_if_eq VAR_BALL_QUEST_STATE, 6, LilycoveMuseumNew_EventScript_PhillipeInAshlands
+	goto_if_eq VAR_BALL_QUEST_STATE, 7, LilycoveMuseumNew_EventScript_PhillipeInCrimney
+	goto_if_eq VAR_BALL_QUEST_STATE, 8, LilycoveMuseumNew_EventScript_PhillipeInJaggro
+	goto_if_eq VAR_BALL_QUEST_STATE, 9, LilycoveMuseumNew_EventScript_PhillipeInSweltorn
+	goto_if_eq VAR_BALL_QUEST_STATE, 10, LilycoveMuseumNew_EventScript_PhillipeInCyclingRoad
+	goto_if_eq VAR_BALL_QUEST_STATE, 11, LilycoveMuseumNew_EventScript_PhillipeInStrae
+	goto_if_eq VAR_BALL_QUEST_STATE, 12, LilycoveMuseumNew_EventScript_PhillipeInGranipline
+	goto_if_eq VAR_BALL_QUEST_STATE, 13, LilycoveMuseumNew_EventScript_PhillipeInLittleroot
 	goto_if_ge VAR_BALL_QUEST_STATE, 14, LilycoveMuseumNew_EventScript_PhillipeQuestComplete
 	release
 	end
@@ -285,15 +296,81 @@ LilycoveMuseumNew_EventScript_PhillipePreQuest::
 	release
 	end
 
-LilycoveMuseumNew_EventScript_PhillipeFirstHalfQuest::
+LilycoveMuseumNew_EventScript_PhillipeInCosmoss::
 	speakername LilycoveMuseumNew_Text_NamePhillipe
-	msgbox LilycoveMuseumNew_Text_PhillipeFirstHalfQuest, MSGBOX_AUTOCLOSE
+	msgbox LilycoveMuseumNew_Text_PhillipeInCosmoss, MSGBOX_AUTOCLOSE
 	release
 	end
 
-LilycoveMuseumNew_EventScript_PhillipeSecondHalfQuest::
+LilycoveMuseumNew_EventScript_PhillipeInSunbeach::
 	speakername LilycoveMuseumNew_Text_NamePhillipe
-	msgbox LilycoveMuseumNew_Text_PhillipeSecondHalfQuest, MSGBOX_AUTOCLOSE
+	msgbox LilycoveMuseumNew_Text_PhillipeInSunbeach, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PhillipeInBrumist::
+	speakername LilycoveMuseumNew_Text_NamePhillipe
+	msgbox LilycoveMuseumNew_Text_PhillipeInBrumist, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PhillipeInScuttill::
+	speakername LilycoveMuseumNew_Text_NamePhillipe
+	msgbox LilycoveMuseumNew_Text_PhillipeInScuttill, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PhillipeInPerplume::
+	speakername LilycoveMuseumNew_Text_NamePhillipe
+	msgbox LilycoveMuseumNew_Text_PhillipeInPerplume, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PhillipeInAshlands::
+	speakername LilycoveMuseumNew_Text_NamePhillipe
+	msgbox LilycoveMuseumNew_Text_PhillipeInAshlands, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PhillipeInCrimney::
+	speakername LilycoveMuseumNew_Text_NamePhillipe
+	msgbox LilycoveMuseumNew_Text_PhillipeInCrimney, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PhillipeInJaggro::
+	speakername LilycoveMuseumNew_Text_NamePhillipe
+	msgbox LilycoveMuseumNew_Text_PhillipeInJaggro, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PhillipeInSweltorn::
+	speakername LilycoveMuseumNew_Text_NamePhillipe
+	msgbox LilycoveMuseumNew_Text_PhillipeInSweltorn, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PhillipeInCyclingRoad::
+	speakername LilycoveMuseumNew_Text_NamePhillipe
+	msgbox LilycoveMuseumNew_Text_PhillipeInCyclingRoad, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PhillipeInStrae::
+	speakername LilycoveMuseumNew_Text_NamePhillipe
+	msgbox LilycoveMuseumNew_Text_PhillipeInStrae, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PhillipeInGranipline::
+	speakername LilycoveMuseumNew_Text_NamePhillipe
+	msgbox LilycoveMuseumNew_Text_PhillipeInGranipline, MSGBOX_AUTOCLOSE
+	release
+	end
+
+LilycoveMuseumNew_EventScript_PhillipeInLittleroot::
+	speakername LilycoveMuseumNew_Text_NamePhillipe
+	msgbox LilycoveMuseumNew_Text_PhillipeInLittleroot, MSGBOX_AUTOCLOSE
 	release
 	end
 
@@ -342,6 +419,16 @@ LilycoveMuseumNew_EventScript_WarpToSanctum::
 LilycoveMuseumNew_Movement_JumpIntoPainting:
 	jump_up
 	step_end
+
+LilycoveMuseumNew_EventScript_UpstairsGuard::
+	msgbox LilycoveMuseumNew_Text_UpstairsGuard, MSGBOX_NPC
+	end
+
+LilycoveMuseumNew_Text_UpstairsGuard:
+	.string "The second floor is off limits!\n"
+	.string "We're currently workshopping a\l"
+	.string "new dinosaur exhibit.\l"
+	.string "No peeking!$"
 
 LilycoveMuseumNew_Text_PaintingOfMuseum:
 	.string "(It's a painting of a museum,\n"
@@ -439,16 +526,222 @@ LilycoveMuseumNew_Text_NamePhillipe:
 	.string "Phillipe$"
 
 LilycoveMuseumNew_Text_PhillipePreQuest:
-	.string "who are you again$"
+	.string "Mmm? Mon étrangére, I do not\n"
+	.string "recognize you. My deepest thanks\l"
+	.string "for coming to mon exposition!\l"
+	.string "As of this moment, I have not\l"
+	.string "put up any paintings yet...\l"
+	.string "But n'aie pas peur! I am\l"
+	.string "gathering inspiration as we speak.\p"
+	.string "If you would like to help me\n"
+	.string "kindle my artistic mind, come to\l"
+	.string "the Basalin Coast Pokemon Center.\l"
+	.string "Until then, étrangére...\l"
+	.string "I bid you adieu!$"
 
-LilycoveMuseumNew_Text_PhillipeFirstHalfQuest:
-	.string "go catch what i want$"
+LilycoveMuseumNew_Text_PhillipeInCosmoss:
+	.string "Amie! It is good to see you\n"
+	.string "here at mon exposition!\p"
+	.string "I have been putting up paintings\n"
+	.string "slowly, but surely.\p"
+	.string "Honh-honh! I see un sparkle in\n"
+	.string "your eye, amie! You wish to help\l"
+	.string "me paint more!\p"
+	.string "If that is the case, we shall\n"
+	.string "rendezvous at the Pokemon Center\l"
+	.string "in Cosmoss Bridge.\p"
+	.string "Until then, au revoir!$"
 
-LilycoveMuseumNew_Text_PhillipeSecondHalfQuest:
-	.string "getting close w paintings$"
+LilycoveMuseumNew_Text_PhillipeInSunbeach:
+	.string "Amie! It is good to see you\n"
+	.string "here at mon exposition!\p"
+	.string "I have been putting up paintings\n"
+	.string "slowly, but surely.\p"
+	.string "Honh-honh! I see un sparkle in\n"
+	.string "your eye, amie! You wish to help\l"
+	.string "me paint more!\p"
+	.string "If that is the case, we shall\n"
+	.string "rendezvous at the Pokemon Center\l"
+	.string "in Sunbeach Strait.\p"
+	.string "Until then, au revoir!$"
+
+LilycoveMuseumNew_Text_PhillipeInBrumist:
+	.string "Amie! It is good to see you\n"
+	.string "here at mon exposition!\p"
+	.string "I have been putting up paintings\n"
+	.string "slowly, but surely.\p"
+	.string "Honh-honh! I see un sparkle in\n"
+	.string "your eye, amie! You wish to help\l"
+	.string "me paint more!\p"
+	.string "If that is the case, we shall\n"
+	.string "rendezvous at the Pokemon Center\l"
+	.string "in Brumist Cliffs.\p"
+	.string "Until then, au revoir!$"
+
+LilycoveMuseumNew_Text_PhillipeInScuttill:
+	.string "Amie! It is good to see you\n"
+	.string "here at mon exposition!\p"
+	.string "I have been putting up paintings\n"
+	.string "slowly, but surely.\p"
+	.string "Honh-honh! I see un sparkle in\n"
+	.string "your eye, amie! You wish to help\l"
+	.string "me paint more!\p"
+	.string "If that is the case, we shall\n"
+	.string "rendezvous at the Pokemon Center\l"
+	.string "in Scuttill Way.\p"
+	.string "Until then, au revoir!$"
+
+LilycoveMuseumNew_Text_PhillipeInPerplume:
+	.string "Amie! It is good to see you\n"
+	.string "here at mon exposition!\p"
+	.string "I have been putting up paintings\n"
+	.string "slowly, but surely.\p"
+	.string "Honh-honh! I see un sparkle in\n"
+	.string "your eye, amie! You wish to help\l"
+	.string "me paint more!\p"
+	.string "If that is the case, we shall\n"
+	.string "rendezvous at the Pokemon Center\l"
+	.string "in Perplume Maze.\p"
+	.string "Until then, au revoir!$"
+
+LilycoveMuseumNew_Text_PhillipeInAshlands:
+	.string "Amie! It is good to see you\n"
+	.string "here at mon exposition!\p"
+	.string "I have been putting up paintings\n"
+	.string "slowly, but surely.\p"
+	.string "Honh-honh! I see un sparkle in\n"
+	.string "your eye, amie! You wish to help\l"
+	.string "me paint more!\p"
+	.string "If that is the case, we shall\n"
+	.string "rendezvous at the Pokemon Center\l"
+	.string "in The Ashlands.\p"
+	.string "Until then, au revoir!$"
+
+LilycoveMuseumNew_Text_PhillipeInCrimney:
+	.string "Amie! It is good to see you\n"
+	.string "here at mon exposition!\p"
+	.string "I have been putting up paintings\n"
+	.string "slowly, but surely.\p"
+	.string "Honh-honh! I see un sparkle in\n"
+	.string "your eye, amie! You wish to help\l"
+	.string "me paint more!\p"
+	.string "If that is the case, we shall\n"
+	.string "rendezvous at the Pokemon Center\l"
+	.string "in Crimney Climb.\p"
+	.string "Until then, au revoir!$"
+
+LilycoveMuseumNew_Text_PhillipeInJaggro:
+	.string "Amie! It is good to see you\n"
+	.string "here at mon exposition!\p"
+	.string "I have been putting up paintings\n"
+	.string "slowly, but surely.\p"
+	.string "Honh-honh! I see un sparkle in\n"
+	.string "your eye, amie! You wish to help\l"
+	.string "me paint more!\p"
+	.string "If that is the case, we shall\n"
+	.string "rendezvous at the Pokemon Center\l"
+	.string "in Jaggro Pass.\p"
+	.string "Until then, au revoir!$"
+
+LilycoveMuseumNew_Text_PhillipeInSweltorn:
+	.string "Amie! It is good to see you\n"
+	.string "here at mon exposition!\p"
+	.string "I have been putting up paintings\n"
+	.string "slowly, but surely.\p"
+	.string "Honh-honh! I see un sparkle in\n"
+	.string "your eye, amie! You wish to help\l"
+	.string "me paint more!\p"
+	.string "If that is the case, we shall\n"
+	.string "rendezvous at the Pokemon Center\l"
+	.string "in Sweltorn Desert.\p"
+	.string "Until then, au revoir!$"
+
+LilycoveMuseumNew_Text_PhillipeInCyclingRoad:
+	.string "Amie! It is good to see you\n"
+	.string "here at mon exposition!\p"
+	.string "I have been putting up paintings\n"
+	.string "slowly, but surely.\p"
+	.string "Honh-honh! I see un sparkle in\n"
+	.string "your eye, amie! You wish to help\l"
+	.string "me paint more!\p"
+	.string "If that is the case, we shall\n"
+	.string "rendezvous at the Pokemon Center\l"
+	.string "in Cycling Road.\p"
+	.string "Until then, au revoir!$"
+
+LilycoveMuseumNew_Text_PhillipeInStrae:
+	.string "Amie! It is good to see you\n"
+	.string "here at mon exposition!\p"
+	.string "I have been putting up paintings\n"
+	.string "slowly, but surely.\p"
+	.string "Honh-honh! I see un sparkle in\n"
+	.string "your eye, amie! You wish to help\l"
+	.string "me paint more!\p"
+	.string "If that is the case, we shall\n"
+	.string "rendezvous at the Pokemon Center\l"
+	.string "in Strae Seapath.\p"
+	.string "Until then, au revoir!$"
+
+LilycoveMuseumNew_Text_PhillipeInGranipline:
+	.string "Amie! It is good to see you\n"
+	.string "here at mon exposition!\p"
+	.string "I have been putting up paintings\n"
+	.string "slowly, but surely.\p"
+	.string "Honh-honh! I see un sparkle in\n"
+	.string "your eye, amie! You wish to help\l"
+	.string "me paint more!\p"
+	.string "If that is the case, we shall\n"
+	.string "rendezvous at the Pokemon Center\l"
+	.string "in Granipline Beach.\p"
+	.string "Until then, au revoir!$"
+
+LilycoveMuseumNew_Text_PhillipeInLittleroot:
+	.string "Amie! It is good to see you\n"
+	.string "here at mon exposition!\p"
+	.string "I have been putting up paintings\n"
+	.string "slowly, but surely.\p"
+	.string "Honh-honh! I see un sparkle in\n"
+	.string "your eye, amie! You wish to help\l"
+	.string "me paint more!\p"
+	.string "If that is the case, we shall\n"
+	.string "rendezvous at the Pokemon Center\l"
+	.string "in Littleroot Town.\p"
+	.string "Until then, au revoir!$"
 
 LilycoveMuseumNew_Text_MyTravelsInKalos:
-	.string "in kalos i found this$"
+	.string "Ah, mon meilleur ami.\n"
+	.string "Because of your help, I have\l"
+	.string "filled the entire museum!\l"
+	.string "I cannot thank you enough!\p"
+	.string "...Will you allow me to\n"
+	.string "open up to you a little?\l"
+	.string "I feel we have gotten close.\p"
+	.string "As you may know, I hail from\n"
+	.string "Kalos. Though, that is only\l"
+	.string "partially true. The truth is,\l"
+	.string "my dialect has been me faking\l"
+	.string "it for some time now. What can\l"
+	.string "I say? Patrons love it!\l"
+	.string "Art reaches more eyes if\l"
+	.string "its creator seems foreign.\p"
+	.string "I was originally born here\n"
+	.string "in Hoenn, but moved to Kalos\l"
+	.string "at 18. There, I became a\l"
+	.string "professional photographer.\l"
+	.string "I earned the name, Phil the\l"
+	.string "Photo Guy!\p"
+	.string "Naturally this led to an interest\n"
+	.string "in making my own landscapes.\l"
+	.string "So, I packed my bags, came back\l"
+	.string "to my homeland, and got to work.\p"
+	.string "I'm very proud to call this\n"
+	.string "exhibit complete!\p"
+	.string "To show my appreciation, you can\n"
+	.string "have this item I picked up during\l"
+	.string "my time in Kalos. It is\l"
+	.string "quite the fascinating statue.$"
 
 LilycoveMuseumNew_Text_PhillipeQuestPost:
-	.string "un artiste supreme$"
+	.string "Tu es un artiste supreme!\n"
+	.string "Well, by association.\l"
+	.string "Enjoy the paintings!$"

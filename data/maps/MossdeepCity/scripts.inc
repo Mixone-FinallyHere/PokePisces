@@ -738,36 +738,36 @@ MossdeepCity_EventScript_HintMonk::
 	end
 
 MossdeepCity_EventScript_WestEntrance::
-	msgbox MossdeepCity_B1F_Text_WestEntrance, MSGBOX_SIGN
+	msgbox MossdeepCity_Text_WestEntrance, MSGBOX_SIGN
 	end
 
 MossdeepCity_EventScript_EastEntrance::
-	msgbox MossdeepCity_B1F_Text_EastEntrance, MSGBOX_SIGN
+	msgbox MossdeepCity_Text_EastEntrance, MSGBOX_SIGN
 	end
 
 MossdeepCity_EventScript_MossdeepCitySign::
-	msgbox MossdeepCity_B1F_Text_MossdeepCitySign, MSGBOX_SIGN
+	msgbox MossdeepCity_Text_MossdeepCitySign, MSGBOX_SIGN
 	end
 
 MossdeepCity_EventScript_StevenHouseSign::
-	msgbox MossdeepCity_B1F_Text_StevenHouseSign, MSGBOX_SIGN
+	msgbox MossdeepCity_Text_StevenHouseSign, MSGBOX_SIGN
 	end
 
-MossdeepCity_B1F_Text_WestEntrance:
+MossdeepCity_Text_WestEntrance:
 	.string "MOSSDEEP CITY - West Entrance\n"
 	.string "Continue West for Cosmoss Bridge$"
 
-MossdeepCity_B1F_Text_EastEntrance:
+MossdeepCity_Text_EastEntrance:
 	.string "MOSSDEEP CITY - East Entrance\n"
 	.string "Continue Northeast for\l"
 	.string "Precipike Bluff$"
 
-MossdeepCity_B1F_Text_MossdeepCitySign:
+MossdeepCity_Text_MossdeepCitySign:
 	.string "Mossdeep City is a PROUD sponsor\n"
 	.string "of Hoenn's Space Program!\l"
 	.string "One day, we will reach the moon!$"
 
-MossdeepCity_B1F_Text_StevenHouseSign:
+MossdeepCity_Text_StevenHouseSign:
 	.string "Steven Stone's Residence$"
 
 MossdeepCity_Text_HintMonk:

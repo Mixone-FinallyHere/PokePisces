@@ -565,26 +565,26 @@ Route125_EventScript_Joan::
     end
 
 Route125_EventScript_EggHusband::
-	msgbox Route125_B1F_Text_EggHusband, MSGBOX_NPC
+	msgbox Route125_Text_EggHusband, MSGBOX_NPC
 	end
 
 Route125_EventScript_EggWife::
-	msgbox Route125_B1F_Text_EggWife, MSGBOX_NPC
+	msgbox Route125_Text_EggWife, MSGBOX_NPC
 	end
 
 Route125_EventScript_PrecipikeSign::
-	msgbox Route125_B1F_Text_PrecipikeSign, MSGBOX_SIGN
+	msgbox Route125_Text_PrecipikeSign, MSGBOX_SIGN
 	end
 
 Route125_EventScript_EggEnthusiastHouse::
-	msgbox Route125_B1F_Text_EggEnthusiastHouse, MSGBOX_SIGN
+	msgbox Route125_Text_EggEnthusiastHouse, MSGBOX_SIGN
 	end
 
 Route125_EventScript_IcipikeSign::
-	msgbox Route125_B1F_Text_IcipikeSign, MSGBOX_SIGN
+	msgbox Route125_Text_IcipikeSign, MSGBOX_SIGN
 	end
 
-Route125_B1F_Text_EggHusband:
+Route125_Text_EggHusband:
 	.string "Go ahead and lure that Eggneggma\n"
 	.string "over to this bridge.\p"
 	.string "Then, you and I will run\n"
@@ -592,22 +592,22 @@ Route125_B1F_Text_EggHusband:
 	.string "right into my wife!\l"
 	.string "She'll nab the thing!$"
 
-Route125_B1F_Text_EggWife:
+Route125_Text_EggWife:
 	.string "We'll catch that dastardly thief!\n"
 	.string "Get it to come over here,\l"
 	.string "and we'll have it cornered!$"
 
-Route125_B1F_Text_PrecipikeSign:
+Route125_Text_PrecipikeSign:
 	.string "PRECIPIKE BLUFF\n"
 	.string "Watch your step!\l"
 	.string "Steep cliffs ahead!$"
 
-Route125_B1F_Text_EggEnthusiastHouse:
+Route125_Text_EggEnthusiastHouse:
 	.string "Egg Enthusiast's House\n"
 	.string "Please report all Egg Thief\l"
 	.string "findings to us!$"
 
-Route125_B1F_Text_IcipikeSign:
+Route125_Text_IcipikeSign:
 	.string "ICIPIKE CAVE\n"
 	.string "Interior is iced over!\l"
 	.string "Wear safety gear when entering!$"

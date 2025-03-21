@@ -406,30 +406,30 @@ CosmossSpaceCenter_EventScript_CheckSweltorn::
 	end
 
 CosmossSpaceCenter_EventScript_AboutHera::
-	msgbox CosmossSpaceCenter_B1F_Text_AboutHera, MSGBOX_NPC
+	msgbox CosmossSpaceCenter_Text_AboutHera, MSGBOX_NPC
 	end
 
 CosmossSpaceCenter_EventScript_AboutKepler::
-	msgbox CosmossSpaceCenter_B1F_Text_AboutKepler, MSGBOX_NPC
+	msgbox CosmossSpaceCenter_Text_AboutKepler, MSGBOX_NPC
 	end
 
 CosmossSpaceCenter_EventScript_AboutGravity::
-	msgbox CosmossSpaceCenter_B1F_Text_AboutGravity, MSGBOX_NPC
+	msgbox CosmossSpaceCenter_Text_AboutGravity, MSGBOX_NPC
 	end
 
 CosmossSpaceCenter_EventScript_AboutTerrains::
-	msgbox CosmossSpaceCenter_B1F_Text_AboutTerrains, MSGBOX_NPC
+	msgbox CosmossSpaceCenter_Text_AboutTerrains, MSGBOX_NPC
 	end
 
 CosmossSpaceCenter_EventScript_AboutMinkowski::
-	msgbox CosmossSpaceCenter_B1F_Text_AboutMinkowski, MSGBOX_NPC
+	msgbox CosmossSpaceCenter_Text_AboutMinkowski, MSGBOX_NPC
 	end
 
 CosmossSpaceCenter_EventScript_AboutOrbitBalls::
-	msgbox CosmossSpaceCenter_B1F_Text_AboutOrbitBalls, MSGBOX_NPC
+	msgbox CosmossSpaceCenter_Text_AboutOrbitBalls, MSGBOX_NPC
 	end
 
-CosmossSpaceCenter_B1F_Text_AboutHera:
+CosmossSpaceCenter_Text_AboutHera:
 	.string "About 6 months ago, command\n"
 	.string "installed a complex AI to manage\l"
 	.string "the Space Center.\p"
@@ -441,7 +441,7 @@ CosmossSpaceCenter_B1F_Text_AboutHera:
 	.string "treat her as one.\p"
 	.string "Modern tech, man...\n$"
 
-CosmossSpaceCenter_B1F_Text_AboutKepler:
+CosmossSpaceCenter_Text_AboutKepler:
 	.string "That man in the black suit\n"
 	.string "over there? That's Colonel Kepler...\l"
 	.string "He's in charge of the center.\p"
@@ -453,7 +453,7 @@ CosmossSpaceCenter_B1F_Text_AboutKepler:
 	.string "You don't want to get on his\n"
 	.string "bad side, trust me...$"
 
-CosmossSpaceCenter_B1F_Text_AboutGravity:
+CosmossSpaceCenter_Text_AboutGravity:
 	.string "Have you ever tried utilizing\n"
 	.string "the field effect, Gravity?\l"
 	.string "It's a bit niche, but it has\l"
@@ -477,7 +477,7 @@ CosmossSpaceCenter_B1F_Text_AboutGravity:
 	.string "Give Gravity a spin the next time\n"
 	.string "you're able to.$"
 
-CosmossSpaceCenter_B1F_Text_AboutTerrains:
+CosmossSpaceCenter_Text_AboutTerrains:
 	.string "I like to use Terrains in battle\n"
 	.string "to shake things up! There's a few\l"
 	.string "of them, but they all have\l"
@@ -487,7 +487,7 @@ CosmossSpaceCenter_B1F_Text_AboutTerrains:
 	.string "or has an ability like Levitate,\l"
 	.string "well, Terrains don't matter to them!$"
 
-CosmossSpaceCenter_B1F_Text_AboutMinkowski:
+CosmossSpaceCenter_Text_AboutMinkowski:
 	.string "Lieutenant Minkowski used\n"
 	.string "to be in charge around here before\l"
 	.string "the Colonel stepped in and took\l"
@@ -498,7 +498,7 @@ CosmossSpaceCenter_B1F_Text_AboutMinkowski:
 	.string "to her over the Colonel. But I'd\l"
 	.string "never tell either that.$"
 
-CosmossSpaceCenter_B1F_Text_AboutOrbitBalls:
+CosmossSpaceCenter_Text_AboutOrbitBalls:
 	.string "I've been cooperating with\n"
 	.string "Devon... err, well, Greater\l"
 	.string "Mauville Holdings, to work a bit\l"

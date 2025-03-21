@@ -31,6 +31,17 @@ BattleStudioLobby_EventScript_GuardPostOrb::
 	release
 	end
 
+BattleStudioLobby_EventScript_LobbyAttendant::
+	msgbox BattleStudioLobby_Text_LobbyAttendant, MSGBOX_NPC
+	end
+
+BattleStudioLobby_Text_LobbyAttendant:
+	.string "Through here is where you can\n"
+	.string "take the Battle Swap Challenge!\l"
+	.string "It is rental Pokemon only.\l"
+	.string "The attendant should explain\l"
+	.string "the rules to you. Have fun!$"
+
 BattleStudioLobby_Text_CantLetYouIn:
 	.string "Hey, bub. Can't let any people,\n"
 	.string "fighter or not, into here.\l"
