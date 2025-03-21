@@ -4346,9 +4346,9 @@ static const u8 sDineNDashDescription[] = _(
     "held Berry, the user eats it.");
 
 static const u8 sWickedWindsDescription[] = _(
-    "This move is Dark and\n"
-    "Flying-type. May frostbite the\n"
-    "foe. Boosts chances in Tailwind.");
+    "Dark and Flying-type and may\n"
+    "frostbite foes. Boosts chances\n"
+    "if foes have Tailwind up.");
 
 static const u8 sSonicBurstDescription[] = _(
     "Uses the Speed stat, may confuse\n"

@@ -15587,12 +15587,8 @@ u32 CalcSecondaryEffectChance(u32 battler, u8 secondaryEffectChance)
         secondaryEffectChance = 30 + (10 * gBattleStruct->sameMoveTurns[gBattlerAttacker]);
     else if (CountBattlerSpeedDecreases(gBattlerTarget) > 0 && gCurrentMove == MOVE_FREEZING_GLARE)
         secondaryEffectChance *= CountBattlerSpeedDecreases(gBattlerTarget) + 1;
-    else if (gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_TAILWIND && gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_TAILWIND && gCurrentMove == MOVE_WICKED_WINDS)
-        secondaryEffectChance *= 4;
-    else if (gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_TAILWIND && gCurrentMove == MOVE_WICKED_WINDS)
-        secondaryEffectChance *= 2;
     else if (gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_TAILWIND && gCurrentMove == MOVE_WICKED_WINDS)
-        secondaryEffectChance *= 2;
+        secondaryEffectChance = 100;
     else if (CountBattlerStatDecreases(gBattlerTarget, TRUE) > 0 && gCurrentMove == MOVE_LICK)
         secondaryEffectChance *= CountBattlerStatDecreases(gBattlerTarget, TRUE) + 1;
     else if (CountBattlerDefenseIncreases(gBattlerAttacker) > 0 && gCurrentMove == MOVE_METAL_CLAW)
