@@ -731,6 +731,7 @@ extern const u8 BattleScript_MoveEffectBlooming[];
 extern const u8 BattleScript_MoveEffectExposed[];
 extern const u8 BattleScript_BloomingHpGain[];
 extern const u8 BattleScript_BloomingHpGainEnd[];
+extern const u8 BattleScript_BloomingEnd[];
 extern const u8 BattleScript_GemstoneEvasion[];
 extern const u8 BattleScript_GemstoneRet[];
 extern const u8 BattleScript_CrypticPlateEntryEffect[];

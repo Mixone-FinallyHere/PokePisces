@@ -3897,6 +3897,7 @@ BattleScript_EffectFlorescence:
 	attackcanceler
 	attackstring
 	ppreduce
+	florescencecheck BS_ATTACKER, BattleScript_ButItFailed
 	attackanimation
 	waitanimation
 BattleScript_EffectFlorescenceSkipAnim:
@@ -20087,7 +20088,12 @@ BattleScript_PanicTurn::
 BattleScript_BloomingHpGain::
 	printstring STRINGID_PKMNSISBLOOMING
     waitmessage B_WAIT_TIME_LONG
-    goto BattleScript_DoStatusTurnDmg
+	statusanimation BS_ATTACKER
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	tryfaintmon BS_ATTACKER
+	end2
 
 BattleScript_BloomingHpGainEnd::
 	playanimation BS_ATTACKER, B_ANIM_BLOOMING
@@ -20096,8 +20102,8 @@ BattleScript_BloomingHpGainEnd::
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
 	tryfaintmon BS_ATTACKER
-	checkteamslost BattleScript_DoTurnDmgEnd
 	waitstate
+BattleScript_BloomingEnd::
 	clearstatus BS_ATTACKER
 	updatestatusicon BS_ATTACKER
 	printstring STRINGID_PKMNSISNOLONGERBLOOMING

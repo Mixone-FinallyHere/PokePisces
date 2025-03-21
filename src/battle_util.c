@@ -3249,7 +3249,7 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_BLOOMING:
-            if ((gBattleMons[battler].status1 & STATUS1_BLOOMING) && IsBattlerAlive(battler) && !gStatuses3[battler] & STATUS3_HEAL_BLOCK)
+            if (gBattleMons[battler].status1 & STATUS1_BLOOMING)
             {
                 if (((gBattleMons[battler].status1 & STATUS1_BLOOMING) != STATUS1_BLOOMING_TURN(1))
                 && IsBattlerAlive(battler) 
@@ -3276,6 +3276,8 @@ u8 DoBattlerEndTurnEffects(void)
                 else
                 {
                     gBattleMons[battler].status1 -= STATUS1_BLOOMING_TURN(1);
+                    BattleScriptExecute(BattleScript_BloomingEnd);
+                    effect++;
                 }
             }
             gBattleStruct->turnEffectsTracker++;

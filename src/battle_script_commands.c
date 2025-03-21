@@ -12484,6 +12484,26 @@ static void Cmd_various(void)
         }
         return;
     }
+    case VARIOUS_FLORESCENCE_CHECK:
+    {
+        VARIOUS_ARGS(const u8 *jumpInstr);
+        if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && IsBattlerAlive(BATTLE_PARTNER(battler)))
+        {
+            u8 partner = BATTLE_PARTNER(battler);
+            if (gBattleMons[battler].status1 & STATUS1_BLOOMING && gBattleMons[partner].status1 & STATUS1_BLOOMING)
+                gBattlescriptCurrInstr = cmd->jumpInstr;
+            else
+                gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        else // single battle
+        {
+            if (gBattleMons[battler].status1 & STATUS1_BLOOMING)
+                gBattlescriptCurrInstr = cmd->jumpInstr;
+            else
+                gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
     case VARIOUS_TRY_HEAL_QUARTER_HP:
     {
         VARIOUS_ARGS(const u8 *failInstr);

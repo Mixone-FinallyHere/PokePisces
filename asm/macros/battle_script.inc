@@ -2248,6 +2248,11 @@
 	.4byte \jumpInstr
 	.endm
 
+	.macro florescencecheck battler:req, jumpInstr:req
+	various \battler, VARIOUS_FLORESCENCE_CHECK
+	.4byte \jumpInstr
+	.endm
+
 	.macro tryhealquarterhealth battler:req, failInstr:req
 	various \battler, VARIOUS_TRY_HEAL_QUARTER_HP
 	.4byte \failInstr
