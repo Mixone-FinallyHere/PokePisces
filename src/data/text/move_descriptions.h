@@ -2291,7 +2291,7 @@ static const u8 sMagmaStormDescription[] = _(
 static const u8 sDarkVoidDescription[] = _(
     "Opposing Pokémon are put to\n"
     "sleep. Boosts accuracy based on\n"
-    "user and foe's stat drops.");
+    "the user's stat drops.");
 
 static const u8 sSeedFlareDescription[] = _(
     "May harshly lower the foe's\n"
