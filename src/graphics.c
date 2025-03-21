@@ -589,6 +589,9 @@ const u32 gBattleAnimSpritePal_MusicNotes[] = INCBIN_U32("graphics/battle_anims/
 const u32 gBattleAnimSpriteGfx_Duck[] = INCBIN_U32("graphics/battle_anims/sprites/duck.4bpp.lz");
 const u32 gBattleAnimSpritePal_Duck[] = INCBIN_U32("graphics/battle_anims/sprites/duck.gbapal.lz");
 
+const u32 gBattleAnimSpriteGfx_Shrimp[] = INCBIN_U32("graphics/battle_anims/sprites/shrimp.4bpp.lz");
+const u32 gBattleAnimSpritePal_Shrimp[] = INCBIN_U32("graphics/battle_anims/sprites/shrimp.gbapal.lz");
+
 const u32 gBattleAnimSpriteGfx_Alert[] = INCBIN_U32("graphics/battle_anims/sprites/alert.4bpp.lz");
 const u32 gBattleAnimSpritePal_Alert[] = INCBIN_U32("graphics/battle_anims/sprites/alert.gbapal.lz");
 

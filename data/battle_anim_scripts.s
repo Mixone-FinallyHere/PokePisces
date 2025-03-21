@@ -19246,7 +19246,7 @@ PopulationBombOnContinue:
 	end
 
 Move_ORDER_UP::
-	loadspritegfx ANIM_TAG_DUCK
+	loadspritegfx ANIM_TAG_SHRIMP
 	loadspritegfx ANIM_TAG_IMPACT
 	loadspritegfx ANIM_TAG_ITEM_BAG
 	monbg ANIM_TARGET
@@ -19263,12 +19263,12 @@ Move_ORDER_UP::
 	waitforvisualfinish
 	createsprite gBasicHitSplatSpriteTemplate, ANIM_TARGET, 4, 0, 0, ANIM_TARGET, 1
 	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
-	createsprite gDizzyPunchDuckSpriteTemplate, ANIM_TARGET, 3, 0, 0, 160, -32
-	createsprite gDizzyPunchDuckSpriteTemplate, ANIM_TARGET, 3, 0, 0, -256, -40
-	createsprite gDizzyPunchDuckSpriteTemplate, ANIM_TARGET, 3, 0, 0, 128, -16
-	createsprite gDizzyPunchDuckSpriteTemplate, ANIM_TARGET, 3, 0, 0, 416, -38
-	createsprite gDizzyPunchDuckSpriteTemplate, ANIM_TARGET, 3, 0, 0, -128, -22
-	createsprite gDizzyPunchDuckSpriteTemplate, ANIM_TARGET, 3, 0, 0, -384, -31
+	createsprite gShrimpSpriteTemplate, ANIM_TARGET, 3, 0, 0, 160, -32
+	createsprite gShrimpSpriteTemplate, ANIM_TARGET, 3, 0, 0, -256, -40
+	createsprite gShrimpSpriteTemplate, ANIM_TARGET, 3, 0, 0, 128, -16
+	createsprite gShrimpSpriteTemplate, ANIM_TARGET, 3, 0, 0, 416, -38
+	createsprite gShrimpSpriteTemplate, ANIM_TARGET, 3, 0, 0, -128, -22
+	createsprite gShrimpSpriteTemplate, ANIM_TARGET, 3, 0, 0, -384, -31
 	waitforvisualfinish
 	clearmonbg ANIM_TARGET
 	blendoff

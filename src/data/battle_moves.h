@@ -7215,7 +7215,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_SHADOW_CLAW] =
     {
         .effect = EFFECT_HIT,
-        .power = 80,
+        .power = 70,
         .type = TYPE_GHOST,
         .accuracy = 100,
         .pp = 15,
