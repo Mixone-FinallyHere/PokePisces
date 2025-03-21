@@ -1189,9 +1189,9 @@ static const u8 sFireStoneDesc[] = _(
     "evolve.");
 
 static const u8 sWaterStoneDesc[] = _(
-    "Makes certain\n"
-    "species of Pokémon\n"
-    "evolve.");
+    "Could evolve a Pokémon.\n"
+    "Or, you could choose\n"
+    "to sell this item.");
 
 static const u8 sThunderStoneDesc[] = _(
     "An elemental stone\n"
