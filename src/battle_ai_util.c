@@ -1876,6 +1876,8 @@ bool32 ShouldSetSun(u32 battlerAtk, u32 atkAbility, u32 holdEffect)
       || HasMoveEffect(battlerAtk, EFFECT_SOLAR_BEAM)
       || HasMoveEffect(battlerAtk, EFFECT_MORNING_SUN)
       || HasMoveEffect(battlerAtk, EFFECT_SYNTHESIS)
+      || HasMoveEffect(battlerAtk, EFFECT_GROWTH)
+      || HasMoveEffect(battlerAtk, EFFECT_SUN_BASK)
       || HasMoveEffect(battlerAtk, EFFECT_MOONLIGHT)
       || HasMoveEffect(battlerAtk, EFFECT_WEATHER_BALL)
       || HasMoveWithType(battlerAtk, TYPE_FIRE)))
@@ -2295,6 +2297,7 @@ bool32 IsHealingMoveEffect(u32 effect)
     {
     case EFFECT_RESTORE_HP:
     case EFFECT_MORNING_SUN:
+    case EFFECT_HEAL_ORDER:
     case EFFECT_SYNTHESIS:
     case EFFECT_MOONLIGHT:
     case EFFECT_SOFTBOILED:

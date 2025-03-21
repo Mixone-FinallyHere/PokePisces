@@ -2291,7 +2291,7 @@ static const u8 sMagmaStormDescription[] = _(
 static const u8 sDarkVoidDescription[] = _(
     "Opposing Pokémon are put to\n"
     "sleep. Boosts accuracy based on\n"
-    "user and foe's stat drops.");
+    "the user's stat drops.");
 
 static const u8 sSeedFlareDescription[] = _(
     "May harshly lower the foe's\n"
@@ -2639,7 +2639,7 @@ static const u8 sDrillRunDescription[] = _(
 static const u8 sDualChopDescription[] = _(
     "The user hits the foe with two\n"
     "brutal strikes in a row. May\n"
-    "lower the foe's Def or Sp. Def.");
+    "lower the foe's Atk or Def.");
 
 static const u8 sHeartStampDescription[] = _(
     "Sets a stack of allure. Hitting\n"
@@ -4242,7 +4242,7 @@ static const u8 sPartingCurryDescription[] = _(
     "evasion. Then it switches out.");
 
 static const u8 sSerpentSurgeDescription[] = _(
-    "Damage category is based on which\n"
+    "Damage category is based on what\n"
     "would do more damage. Its effect\n"
     "is based on the user's Ability.");
 
@@ -4346,9 +4346,9 @@ static const u8 sDineNDashDescription[] = _(
     "held Berry, the user eats it.");
 
 static const u8 sWickedWindsDescription[] = _(
-    "This move is Dark and\n"
-    "Flying-type at once and may\n"
-    "leave the target with frostbite.");
+    "Dark and Flying-type and may\n"
+    "frostbite foes. Boosts chances\n"
+    "if foes have Tailwind up.");
 
 static const u8 sSonicBurstDescription[] = _(
     "Uses the Speed stat, may confuse\n"

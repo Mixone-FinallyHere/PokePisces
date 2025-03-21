@@ -2248,6 +2248,11 @@
 	.4byte \jumpInstr
 	.endm
 
+	.macro florescencecheck battler:req, jumpInstr:req
+	various \battler, VARIOUS_FLORESCENCE_CHECK
+	.4byte \jumpInstr
+	.endm
+
 	.macro tryhealquarterhealth battler:req, failInstr:req
 	various \battler, VARIOUS_TRY_HEAL_QUARTER_HP
 	.4byte \failInstr
@@ -2487,6 +2492,15 @@
 
 	.macro setbeakblast battler:req
 	various \battler, VARIOUS_SET_BEAK_BLAST
+	.endm
+
+	.macro setdoublesmovesucceed battler:req
+	various \battler, VARIOUS_SET_DOUBLES_MOVE_SUCCEED
+	.endm
+
+	.macro jumpifdoublesmovesucceed battler:req, jumpInstr:req
+	various \battler, VARIOUS_JUMP_IF_DOUBLES_MOVE_SUCCEED
+	.4byte \jumpInstr
 	.endm
 
 	.macro setacidarmor battler:req
