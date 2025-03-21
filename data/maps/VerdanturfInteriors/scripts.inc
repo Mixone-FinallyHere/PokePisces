@@ -313,7 +313,7 @@ VerdanturfInteriors_Text_YouMayNowLeave:
 	.string "Field Move Surf outside of battle.\l"
 	.string "Lots of places to go now, surely?\p"
 	.string "That is all the time I have\n"
-	.string "allotted for this meaning, kid.\l"
+	.string "allotted for this meeting, kid.\l"
 	.string "You may now leave us be.\l"
 	.string "Go on with your adventure.$"
 

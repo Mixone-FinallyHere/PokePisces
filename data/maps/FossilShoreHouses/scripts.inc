@@ -14,16 +14,19 @@ FossilShoreHouses_EventScript_Drake::
 	end
 
 FossilShoreHouses_EventScript_DrakePreDock::
+	speakername FossilShoreHouses_Text_NameDrake
 	msgbox FossilShoreHouses_Text_DrakePreDock, MSGBOX_AUTOCLOSE
 	release
 	end
 
 FossilShoreHouses_EventScript_DrakePostDock::
+	speakername FossilShoreHouses_Text_NameDrake
 	msgbox FossilShoreHouses_Text_DrakePostDock, MSGBOX_AUTOCLOSE
 	release
 	end
 
 FossilShoreHouses_EventScript_DrakeGatherOthers::
+	speakername FossilShoreHouses_Text_NameDrake
 	msgbox FossilShoreHouses_Text_DrakeGatherOthers, MSGBOX_AUTOCLOSE
 	release
 	end
