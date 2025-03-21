@@ -179,6 +179,15 @@ Route122_EventScript_YandemicAddVar::
 	addvar VAR_NOTICED_BY_YANDEMIC, 1
 	return
 
+Route122_EventScript_ZotpyreSign::
+	msgbox Route122_Text_ZotpyreSign, MSGBOX_SIGN
+	end
+
+Route122_Text_ZotpyreSign:
+	.string "ZOTPYRE VILLAGE\n"
+	.string "A site of repose for\l"
+	.string "the living and dead.$"
+
 Route122_Text_YouFeelWatched:
 	.string "(You begin to notice that\n"
 	.string "you are being intently watched...)$"
@@ -238,7 +247,9 @@ Route122_Text_YouHelpedHerFindPeace:
 	.string "Please accept… this.$"
 
 Route122_Text_ThankYou:
-	.string "thank you!$"
+	.string "You have my gratitude.\n"
+	.string "May your soul find peace when you,\l"
+	.string "too, pass on someday.$"
 
 Route122_Text_NameRay:
 	.string "Ray$"

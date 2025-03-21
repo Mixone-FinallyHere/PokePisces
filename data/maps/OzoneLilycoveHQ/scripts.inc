@@ -371,6 +371,161 @@ OzoneLilycoveHQ_Movement_MaxieGiveNav:
 	face_up
 	step_end
 
+OzoneLilycoveHQ_EventScript_Receptionist::
+	msgbox OzoneLilycoveHQ_Text_Receptionist, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_EventScript_NeedOzonesHelp1::
+	msgbox OzoneLilycoveHQ_Text_NeedOzonesHelp1, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_EventScript_NeedOzonesHelp2::
+	msgbox OzoneLilycoveHQ_Text_NeedOzonesHelp2, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_EventScript_NeedOzonesHelp3::
+	msgbox OzoneLilycoveHQ_Text_NeedOzonesHelp3, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_EventScript_AboutSun::
+	msgbox OzoneLilycoveHQ_Text_AboutSun, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_EventScript_AboutRain::
+	msgbox OzoneLilycoveHQ_Text_AboutRain, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_EventScript_AboutHail::
+	msgbox OzoneLilycoveHQ_Text_AboutHail, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_EventScript_AboutSandstorm::
+	msgbox OzoneLilycoveHQ_Text_AboutSandstorm, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_EventScript_SteadfastGuard::
+	msgbox OzoneLilycoveHQ_Text_SteadfastGuard, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_EventScript_ExasperatedGuard::
+	msgbox OzoneLilycoveHQ_Text_ExasperatedGuard, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_Text_Receptionist:
+	.string "Our workers are always looking\n"
+	.string "for a fun battle to pass time!\p"
+	.string "...Hopefully not TOO much of\n"
+	.string "their time, but hey, I'm\l"
+	.string "not their manager.$"
+
+OzoneLilycoveHQ_Text_NeedOzonesHelp1:
+	.string "The harsh sunlight in Masonried Hike\n"
+	.string "is making it difficult to grow\l"
+	.string "my crops there...\l"
+	.string "I was hoping Team Ozone could\l"
+	.string "assist me.$"
+
+OzoneLilycoveHQ_Text_NeedOzonesHelp2:
+	.string "I tell ya hwat, Canopour Wilds\n"
+	.string "gets absolutely inundated with\l"
+	.string "heavy rain durin' this season!\p"
+	.string "It makes growin' berry trees real\n"
+	.string "difficult sometimes!$"
+
+OzoneLilycoveHQ_Text_NeedOzonesHelp3:
+	.string "My appointment should be soon...\p"
+	.string "I'm from Fallarbor Town. The ash\n"
+	.string "falling from Mt. Chimney nearby\l"
+	.string "has really taken a toll on my\l"
+	.string "lungs' health...\p"
+	.string "Team Ozone offers relocation\n"
+	.string "assistance for these types\l"
+	.string "of problems... it is very kind.$"
+
+OzoneLilycoveHQ_Text_AboutSun:
+	.string "You like summer days, bud?\n"
+	.string "Well, then Sun may be the weather\l"
+	.string "for you!\p"
+	.string "When Harsh Sunlight is summoned,\n"
+	.string "Fire type moves get slightly boosted,\l"
+	.string "and Water moves, conversely,\l"
+	.string "get slightly weakened.\p"
+	.string "If the Pokemon using the Fire type\n"
+	.string "move is a Fire type itself, that\l"
+	.string "boost increases a little bit!\p"
+	.string "Plus, there's moves like Solar Beam\n"
+	.string "and abilities like Chlorophyll\l"
+	.string "that synergize with the weather.\p"
+	.string "Sun really can benefit your team\n"
+	.string "if you invest building your\l"
+	.string "party around it!$"
+
+OzoneLilycoveHQ_Text_AboutRain:
+	.string "In a bit of an erratic mood?\n"
+	.string "One thing that always calms me\l"
+	.string "down is the pitter-patter of Rain.\p"
+	.string "Rain can be summoned in Pokemon\n"
+	.string "battles by certain moves\l"
+	.string "and abilities. It will strengthen\l"
+	.string "Water type moves and weaken\l"
+	.string "Fire type moves each by about\l"
+	.string "a third of their normal damage.\p"
+	.string "Water type Pokemon get to enjoy\n"
+	.string "a bit more of a boost. And, they\l"
+	.string "also tend to learn more moves\l"
+	.string "that benefit from Rain,\l"
+	.string "like Aquascade.\p"
+	.string "Get good at utilizing Rain,\n"
+	.string "and opponents can find themselves\l"
+	.string "getting washed away...$"
+
+OzoneLilycoveHQ_Text_AboutHail:
+	.string "It may be the rarest weather\n"
+	.string "here in Hoenn, but Hail is\l"
+	.string "my personal favorite.\p"
+	.string "It heightens the Defense stat\n"
+	.string "of Ice type Pokemon, and hurts\l"
+	.string "all other typed Pokemon on the\l"
+	.string "field every turn.\p"
+	.string "Plus, if your Pokemon get access\n"
+	.string "to stuff like Blizzard or\l"
+	.string "Slush Rush, they can turn Hail\l"
+	.string "into a deadly cold sweep!\p"
+	.string "Hail is a good weather to try\n"
+	.string "out if you're using a bunch\l"
+	.string "of Ice Pokemon. They can\l"
+	.string "be pretty frail otherwise!$"
+
+OzoneLilycoveHQ_Text_AboutSandstorm:
+	.string "Ah, the Sandstorm... the harshest\n"
+	.string "of the four weathers in battle.\p"
+	.string "All Pokemon that are not Rock,\n"
+	.string "Ground, or Steel types get hit\l"
+	.string "for chip damage every turn.\l"
+	.string "It isn't so bad if you have one\l"
+	.string "of those types ready, especially\l"
+	.string "Rock Pokemon, as they receive\l"
+	.string "a boost to their Special Defense.\p"
+	.string "Moves like Dune Slicer and those\n"
+	.string "with abilities like Sand Rush\l"
+	.string "get ever deadlier in Sandstorm...\l"
+	.string "Maybe that'd be something up\l"
+	.string "your alley. Or maybe not...$"
+
+OzoneLilycoveHQ_Text_SteadfastGuard:
+	.string "The meeting room is currently\n"
+	.string "closed, visitor.\l"
+	.string "I can't let you through.$"
+
+OzoneLilycoveHQ_Text_ExasperatedGuard:
+	.string "On my lunch break right now.\n"
+	.string "Have to listen to the managers\l"
+	.string "argue on and on in the next room.\l"
+	.string "Rather tiring.\p"
+	.string "Uhhh.... you're a visitor, right?\n"
+	.string "I guess you can listen in too...\l"
+	.string "just, please don't disturb them.$"
+
 OzoneLilycoveHQ_Text_NameMatt:
 	.string "Matt$"
 

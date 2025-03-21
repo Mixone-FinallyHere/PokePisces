@@ -167,6 +167,13 @@
     }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 26,
+      "y": 19,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route122_EventScript_ZotpyreSign"
+    }
   ]
 }

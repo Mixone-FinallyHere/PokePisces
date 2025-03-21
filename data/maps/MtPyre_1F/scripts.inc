@@ -153,10 +153,10 @@ MtPyre_1F_Text_IReuniteWithMyKin:
 	.string "psychic connection activate$"
 
 MtPyre_1F_Text_PearlIntro:
-	.string "... Leave this place...$"
+	.string "...Leave this place...$"
 
 MtPyre_1F_Text_PearlDefeated:
-	.string "... You do not belong...$"
+	.string "You do not belong...!$"
 
 MtPyre_1F_Text_PearlPostBattle:
 	.string "...$"
@@ -165,8 +165,8 @@ MtPyre_1F_Text_NekoIntro:
 	.string "I'll exorcise you!$"
 
 MtPyre_1F_Text_NekoDefeated:
-	.string "Ah, there are no spirits within you,\n"
-	.string "child.$"
+	.string "Ah, there are no spirits\n"
+	.string "within you, child.$"
 
 MtPyre_1F_Text_NekoPostBattle:
 	.string "Beware the possessed Mediums...$"
@@ -175,8 +175,8 @@ MtPyre_1F_Text_AyumuIntro:
 	.string "I shall cleanse you of miasma!$"
 
 MtPyre_1F_Text_AyumuDefeated:
-	.string "Oh, it seems you've been blessed\n"
-	.string "already.$"
+	.string "Oh, it seems you've\n"
+	.string "been blessed already.$"
 
 MtPyre_1F_Text_AyumuPostBattle:
 	.string "A purifying spell has been placed on\n"
@@ -210,12 +210,12 @@ MtPyre_1F_Text_MikoPostBattle:
 	.string "the time they'll be fine... eventually.$"
 
 MtPyre_1F_Text_TakeThisForYourOwnGood:
-	.string "All sorts of beings wander the slopes\n"
-	.string "of MT. PYRE…\p"
+	.string "All sorts of beings wander the\n"
+	.string "slopes of Zotpyre…\p"
 	.string "There is no telling what may happen.\n"
 	.string "Take this. It's for your own good.$"
 
 MtPyre_1F_Text_ExplainCleanseTag:
-	.string "Have a POKéMON hold that\n"
-	.string "CLEANSE TAG.\p"
-	.string "It will help ward off wild POKéMON.$"
+	.string "Have a Pokémon hold that\n"
+	.string "Cleanse Tag.\p"
+	.string "It will help ward off evil.$"

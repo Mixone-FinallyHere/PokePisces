@@ -2378,6 +2378,67 @@ TheColdMines_EventScript_OzoneBlocker::
     msgbox TheColdMines_Text_OzoneBlocker, MSGBOX_NPC
     end
 
+TheColdMines_EventScript_OzoneWorkerF::
+    msgbox TheColdMines_Text_OzoneWorkerF, MSGBOX_NPC
+    end
+
+TheColdMines_EventScript_TarnationElectrician::
+    msgbox TheColdMines_Text_TarnationElectrician, MSGBOX_NPC
+    end
+
+TheColdMines_EventScript_LilycoveExit::
+	msgbox TheColdMines_Text_LilycoveExit, MSGBOX_SIGN
+	end
+
+TheColdMines_EventScript_ScuttillExit::
+	msgbox TheColdMines_Text_ScuttillExit, MSGBOX_SIGN
+	end
+
+TheColdMines_EventScript_ArctaigaSEExit::
+	msgbox TheColdMines_Text_ArctaigaSEExit, MSGBOX_SIGN
+	end
+
+TheColdMines_EventScript_ArctaigaSWExit::
+	msgbox TheColdMines_Text_ArctaigaSWExit, MSGBOX_SIGN
+	end
+
+TheColdMines_EventScript_ArctaigaNEExit::
+	msgbox TheColdMines_Text_ArctaigaNEExit, MSGBOX_SIGN
+	end
+
+TheColdMines_EventScript_OzoneExit::
+	msgbox TheColdMines_Text_OzoneExit, MSGBOX_SIGN
+	end
+
+TheColdMines_Text_LilycoveExit:
+	.string "Lilycove City Exit$"
+
+TheColdMines_Text_ScuttillExit:
+	.string "Scuttill Way Exit$"
+
+TheColdMines_Text_ArctaigaSEExit:
+	.string "Southeast Arctaiga Road Exit$"
+
+TheColdMines_Text_ArctaigaSWExit:
+	.string "Southwest Arctaiga Road Exit$"
+
+TheColdMines_Text_ArctaigaNEExit:
+	.string "Northeast Arctaiga Road Exit$"
+
+TheColdMines_Text_OzoneExit:
+	.string "Ozone Institute Exit$"
+
+TheColdMines_Text_OzoneWorkerF:
+	.string "I've been trying to get the higher\n"
+	.string "ups at Team Ozone to help\l"
+	.string "get this avalanche taken\l"
+	.string "care of... but they just\l"
+	.string "keep in-fighting!$"
+
+TheColdMines_Text_TarnationElectrician:
+	.string "Hooooo-WEE! My hair's really\n"
+	.string "standin' up now!$"
+
 TheColdMines_Text_OzoneBlocker:
 	.string "This passage is currently\n"
 	.string "under heavy construction, trainer!\p"
@@ -2463,37 +2524,46 @@ TheColdMines_Text_MustContinueTraining:
 	.string "be reached...$"
 
 TheColdMines_Text_WouldYouLikeToWarp:
-	.string "wanna warp$"
+	.string "Do you desire to warp back\n"
+	.string "to Zotpyre Shrine?$"
 
 TheColdMines_Text_MaybeAnotherTime:
-	.string "maybe nexttime$"
+	.string "That is alright.$"
 
 TheColdMines_Text_FelixIntro:
-	.string "intro$"
+	.string "Anything broken? I can fix it!$"
 
 TheColdMines_Text_FelixDefeated:
-	.string "defeat$"
+	.string "Broken beyond repair...!$"
 
 TheColdMines_Text_FelixPostBattle:
-	.string "post$"
+	.string "My co-worker Ralph can't seem to\n"
+	.string "help but wreck things.\l"
+	.string "I'm always the one that has\l"
+	.string "to clean up his messes.$"
 
 TheColdMines_Text_RanIntro:
-	.string "intro$"
+	.string "Takes dirty hands to really\n"
+	.string "get a project done!$"
 
 TheColdMines_Text_RanDefeated:
-	.string "defeat$"
+	.string "I may get dirty,\n"
+	.string "but I don't fight dirty!$"
 
 TheColdMines_Text_RanPostBattle:
-	.string "post$"
+	.string "You need a maintenance gal?\n"
+	.string "You know who to phone.$"
 
 TheColdMines_Text_BigHertzIntro:
-	.string "intro$"
+	.string "Let's have at it! I could\n"
+	.string "use the adrenaline boost!$"
 
 TheColdMines_Text_BigHertzDefeated:
-	.string "defeat$"
+	.string "You're shockingly strong!$"
 
 TheColdMines_Text_BigHertzPostBattle:
-	.string "post$"
+	.string "Woooo! That match really\n"
+	.string "charged me up!$"
 
 TheColdMines_Text_GotouIntro:
 	.string "Prepare, then, to take on the might of\na glacier!$"
@@ -2521,7 +2591,10 @@ TheColdMines_Text_NeedHelpClearingSnow:
 	.string "allowed to leave my post.$"
 
 TheColdMines_Text_NeverGetCold:
-	.string "never get cold tbh$"
+	.string "The bosses are lucky that I don't\n"
+	.string "tend to get real cold.\l"
+	.string "I'll keep shovelin' till\l"
+	.string "my fingers turn pink!$"
 
 TheColdMines_Text_LottaSnowToShovel:
 	.string "Sigh…\p"
@@ -2529,7 +2602,11 @@ TheColdMines_Text_LottaSnowToShovel:
 	.string "Boss… please give us mercy…!$"
 
 TheColdMines_Text_HurtFromShoveling:
-	.string "i be hurtin$"
+	.string "Ugh, carving through this\n"
+	.string "avalanche is really gonna\l"
+	.string "throw my back out.\p"
+	.string "Maybe... I can claim\n"
+	.string "workman's comp...$"
 
 TheColdMines_Text_NameTabitha:
 	.string "Tabitha$"
@@ -2563,8 +2640,8 @@ TheColdMines_Text_OnceWasMeralcore:
 	.string "this position...)$"
 
 TheColdMines_Text_WhatIsThisThing:
-	.string "What in tarnation was that\n"
-	.string "just now!?$"
+	.string "What in tarnation is this\n"
+	.string "blasted thing!?$"
 
 TheColdMines_Text_ThereIsTape:
 	.string "(This caution tape is blocking\n"
