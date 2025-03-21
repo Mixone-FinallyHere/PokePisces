@@ -4489,7 +4489,7 @@ static inline uq4_12_t GetSharpnessModifier(u32 battler)
 
 static inline uq4_12_t GetOwnTempoModifier(u32 battler)
 {
-    return UQ_4_12(1.0) + (PercentToUQ4_12(gBattleStruct->dancingMoveTurns[battler] * 10));
+    return UQ_4_12(1.0) + (PercentToUQ4_12(gBattleStruct->dancingMoveTurns[battler] * 20));
 }
 
 static inline uq4_12_t GetCleanseTagModifier(u32 battler)

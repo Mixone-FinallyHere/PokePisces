@@ -7480,14 +7480,12 @@ static void Cmd_moveend(void)
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_DANCING_MOVE_TURNS:
-            if (((gCurrentMove == gLastResultingMoves[gBattlerAttacker] 
-            && gBattleMoves[gCurrentMove].danceMove)
-            || !gBattleMoves[gCurrentMove].danceMove)
-            && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
-            && (!(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)))
+            if (gCurrentMove == gLastResultingMoves[gBattlerAttacker]
+            || (!(gBattleMoves[gCurrentMove].danceMove))
+            || (gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            || (gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE))
                 gBattleStruct->dancingMoveTurns[gBattlerAttacker] = 0;
             else if (gBattleMoves[gCurrentMove].danceMove 
-            && gBattleStruct->slicingMoveTurns[gBattlerAttacker] != 5
             && gCurrentMove != gLastResultingMoves[gBattlerAttacker] 
             && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT)
                 gBattleStruct->dancingMoveTurns[gBattlerAttacker]++;
