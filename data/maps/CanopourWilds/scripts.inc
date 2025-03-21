@@ -271,26 +271,32 @@ CanopourWilds_Text_JuonoDefeated:
 	.string "Roasted as black as charcoal...$"
 
 CanopourWilds_Text_JuonoPostBattle:
-	.string "You should come eat some at my stall\n"
-	.string "sometime.$"
+	.string "You should come eat some\n"
+	.string "at my stall sometime.$"
 
 CanopourWilds_Text_WallpressIntro:
-	.string "intro$"
+	.string "I'm dancin' in the rain...\n"
+	.string "I'm daaaaancin' in the rain...!$"
 
 CanopourWilds_Text_WallpressDefeated:
-	.string "defeat$"
+	.string "What is a good dance if you're\n"
+	.string "not soaking wet at the end?$"
 
 CanopourWilds_Text_WallpressPostBattle:
-	.string "post$"
+	.string "This tuxedo? I purchased it cheap.\n"
+	.string "It was going to get wet anyway!$"
 
 CanopourWilds_Text_TawnyIntro:
-	.string "intro$"
+	.string "Sometimes the best of birds\n"
+	.string "are ones that can't leave the ground!$"
 
 CanopourWilds_Text_TawnyDefeated:
-	.string "defeat$"
+	.string "I couldn't keep up with\n"
+	.string "your flights of fancy!$"
 
 CanopourWilds_Text_TawnyPostBattle:
-	.string "post$"
+	.string "I prefer to stay grounded.\n"
+	.string "No planes for me.$"
 
 CanopourWilds_Text_JaidenIntro:
 	.string "Remember! All Pokémon require one thing\n"
@@ -317,54 +323,76 @@ CanopourWilds_Text_GriseldisPostBattle:
 	.string "recieved your battle.$"
 
 CanopourWilds_Text_CameronIntro:
-	.string "intro$"
+	.string "It takes a good team to navigate\n"
+	.string "the jungle! Is your party\l"
+	.string "up to snuff?$"
 
 CanopourWilds_Text_CameronDefeated:
-	.string "defeat$"
+	.string "Looks like they were!$"
 
 CanopourWilds_Text_CameronPostBattle:
-	.string "post$"
+	.string "Keep your Pokemon healthy on\n"
+	.string "long journeys, trainer.\p"
+	.string "Before you realize it, your\n"
+	.string "team can find themselves\l"
+	.string "whittled down over time.$"
 
 CanopourWilds_Text_FlaitineIntro:
-	.string "intro$"
+	.string "When the trees have thorns that\n"
+	.string "pierce your skin, you become\l"
+	.string "hard as seqouia to withstand them!$"
 
 CanopourWilds_Text_FlaitineDefeated:
-	.string "defeat$"
+	.string "Not a scratch on you...!$"
 
 CanopourWilds_Text_FlaitinePostBattle:
-	.string "post$"
+	.string "The more cuts I get? The harder\n"
+	.string "the skin grows back.$"
 
 CanopourWilds_Text_JamperIntro:
-	.string "intro$"
+	.string "You wanna get nuts!?\n"
+	.string "Let's get nuts!!$"
 
 CanopourWilds_Text_JamperDefeated:
-	.string "defeat$"
+	.string "Aw, nuts...$"
 
 CanopourWilds_Text_JamperPostBattle:
-	.string "post$"
+	.string "I've gone and busted\n"
+	.string "that whole battle!\l"
+	.string "I've got lots to learn still.$"
 
 CanopourWilds_Text_EnglatereIntro:
-	.string "intro$"
+	.string "Grass-type Pokemon are at their\n"
+	.string "best when surrounded by greenery.\l"
+	.string "Think you can beat them\l"
+	.string "in their natural territory?$"
 
 CanopourWilds_Text_EnglatereDefeated:
-	.string "defeat$"
+	.string "Timberrrr!$"
 
 CanopourWilds_Text_EnglaterePostBattle:
-	.string "post$"
+	.string "This grassy terrain makes me\n"
+	.string "think I should start using, well...\l"
+	.string "Grassy Terrain. On the field.$"
 
 CanopourWilds_Text_KoizumiIntro:
-	.string "intro$"
+	.string "Poison represents an inevitability.\n"
+	.string "An inevitable, slow, painful demise.\l"
+	.string "Are you sure you wish\l"
+	.string "to challenge a Poison specialist?$"
 
 CanopourWilds_Text_KoizumiDefeated:
-	.string "defeat$"
+	.string "They were not potent enough...!$"
 
 CanopourWilds_Text_KoizumiPostBattle:
-	.string "post$"
+	.string "Lucy is one of my idols.\n"
+	.string "She uses Poison type Pokemon\l"
+	.string "to the best of their abilities.$"
 
 CanopourWilds_Text_CharliIntro:
 	.string "A battle?\l"
-	.string "I haven't had my coffee yet, but sure,\n"
-	.string "why not?$"
+	.string "I haven't had my coffee yet,\n"
+	.string "but sure, why not?$"
 
 CanopourWilds_Text_CharliDefeated:
 	.string "Hmph, now I just want to go back to\n"
@@ -376,22 +404,30 @@ CanopourWilds_Text_CharliPostBattle:
 	.string "Lots of sleepless nights. What a drag.$"
 
 CanopourWilds_Text_ShamooIntro:
-	.string "intro$"
+	.string "I'm on the hunt for the\n"
+	.string "most dangerous game...\p"
+	.string "Strong Trainers!$"
 
 CanopourWilds_Text_ShamooDefeated:
-	.string "defeat$"
+	.string "The hunter becomes the hunted.$"
 
 CanopourWilds_Text_ShamooPostBattle:
-	.string "post$"
+	.string "I need to get my camouflage\n"
+	.string "ready to ambush trainers\l"
+	.string "a bit more effectively...$"
 
 CanopourWilds_Text_MarisaIntro:
-	.string "intro$"
+	.string "Ew! Did you just look at me?$"
 
 CanopourWilds_Text_MarisaDefeated:
-	.string "defeat$"
+	.string "N-No, not you!$"
 
 CanopourWilds_Text_MarisaPostBattle:
-	.string "post$"
+	.string "I was talking about that guy\n"
+	.string "across from me... what a weirdo!\p"
+	.string "I can't believe he just\n"
+	.string "battled alongside me! Like, give\l"
+	.string "a girl her space!$"
 
 CanopourWilds_Text_GunnessIntro:
 	.string "... Do you wanna see my super rare\n"
@@ -407,8 +443,8 @@ CanopourWilds_Text_GunnessPostBattle:
 	.string "It would mean the world to me.$"
 
 CanopourWilds_Text_JasonIntro:
-	.string "D'you know how to start a fire with\n"
-	.string "sticks?$"
+	.string "D'you know how to start\n"
+	.string "a fire with sticks?$"
 
 CanopourWilds_Text_JasonDefeated:
 	.string "N-not like that...$"
@@ -433,20 +469,22 @@ CanopourWilds_Text_LeleIntro:
 
 CanopourWilds_Text_LeleDefeated:
 	.string "Huh?! How could you beat my super\n"
-	.string "awesome Dragons?!$"
+	.string "awesome Garzilla?!$"
 
 CanopourWilds_Text_LelePostBattle:
 	.string "Hmph! You're a big ol' meanie!\n"
 	.string "Y'know that?!$"
 
 CanopourWilds_Text_PickleLouIntro:
-	.string "intro$"
+	.string "I will take out whoever\n"
+	.string "dares invade my space...!$"
 
 CanopourWilds_Text_PickleLouDefeated:
-	.string "defeat$"
+	.string "I just want to be left alone!$"
 
 CanopourWilds_Text_PickleLouPostBattle:
-	.string "post$"
+	.string "Do not come back, if you\n"
+	.string "know what's good for you...$"
 
 CanopourWilds_Text_PathThroughBush:
 	.string "(There appears to be a path into\n"

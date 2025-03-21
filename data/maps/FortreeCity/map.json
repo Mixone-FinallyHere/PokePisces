@@ -184,6 +184,29 @@
 
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "FortreeCity_EventScript_TerrainHouseSign"
+    },
+    {
+      "type": "sign",
+      "x": 34,
+      "y": 11,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "FortreeCity_EventScript_FortreeSign"
+    },
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 7,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "FortreeCity_EventScript_WestToGymSign"
+    }
   ]
 }

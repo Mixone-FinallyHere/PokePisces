@@ -192,27 +192,75 @@ Route120_EventScript_CutPathTutorial::
     end
 
 Route120_EventScript_ColdMinesNorthSign::
-	msgbox Route120_B1F_Text_ColdMinesNorthSign, MSGBOX_SIGN
+	msgbox Route120_Text_ColdMinesNorthSign, MSGBOX_SIGN
 	end
 
 Route120_EventScript_PrettyPetalsSign::
-	msgbox Route120_B1F_Text_PrettyPetalsSign, MSGBOX_SIGN
+	msgbox Route120_Text_PrettyPetalsSign, MSGBOX_SIGN
 	end
 
-Route120_B1F_Text_ColdMinesNorthSign:
+Route120_EventScript_HutsSign::
+	msgbox Route120_Text_HutsSign, MSGBOX_SIGN
+	end
+
+Route120_EventScript_ScuttillSettlementSign::
+	msgbox Route120_Text_ScuttillSettlementSign, MSGBOX_SIGN
+	end
+
+Route120_EventScript_NoAliensSign::
+	msgbox Route120_Text_NoAliensSign, MSGBOX_SIGN
+	end
+
+Route120_EventScript_ClearingSign::
+	msgbox Route120_Text_ClearingSign, MSGBOX_SIGN
+	end
+
+Route120_EventScript_CharcoalArtistSign::
+	msgbox Route120_Text_CharcoalArtistSign, MSGBOX_SIGN
+	end
+
+Route120_Text_ColdMinesNorthSign:
 	.string "Northern Entrance to\n"
 	.string "THE COLD MINES$"
 
-Route120_B1F_Text_PrettyPetalsSign:
+Route120_Text_PrettyPetalsSign:
 	.string "Ä Pretty Petals Flower Shop Ä\n"
 	.string "We also sell Berries!$"
+
+Route120_Text_HutsSign:
+	.string "If you have access to Cut,\n"
+	.string "Scuttill Huts continues\l"
+	.string "beyond this point.$"
+
+Route120_Text_ScuttillSettlementSign:
+	.string "SCUTTILL SETTLEMENT$"
+
+Route120_Text_NoAliensSign:
+	.string "NO ALIENS ALLOWED\p"
+	.string "P.S. - If you are a human,\n"
+	.string "disregard this message.\l"
+	.string "I'm just writing this in case\l"
+	.string "it works.$"
+
+Route120_Text_ClearingSign:
+	.string "Notice:\n"
+	.string "Taking one or two flowers from\l"
+	.string "this clearing is fine! However,\l"
+	.string "please make sure to water them!\l"
+	.string "This public patch can only be\l"
+	.string "maintained with the community's\l"
+	.string "full cooperation!\p"
+	.string "Signed, Pretty Petals Flower Shop$"
+
+Route120_Text_CharcoalArtistSign:
+	.string "Charcoal art for commission!$"
 
 Route120_Text_ColbyIntro:
 	.string "I bet you can't beat my full team of 6!$"
 
 Route120_Text_ColbyDefeated:
-	.string "Huh? What about my strength in\n"
-	.string "numbers...?$"
+	.string "Huh? What about my\n"
+	.string "strength in numbers...?$"
 
 Route120_Text_ColbyPostBattle:
 	.string "A team with more Pokémon should have a\n"
@@ -220,9 +268,9 @@ Route120_Text_ColbyPostBattle:
 	.string "Or is there more to it than that...?$"
 
 Route120_Text_KatAndAnaIntro:
-	.string "KAT: We're so in sync, we finish each\n"
-	.string "other's...\p"
-	.string "ANA: ...sandwiches!$"
+	.string "KAT: We're so in sync, we finish\n"
+	.string "     each other's...\p"
+	.string "ANA: ...Sandwiches!$"
 
 Route120_Text_KatAndAnaDefeated:
 	.string "KAT: We're finished! You...\n"
@@ -230,7 +278,7 @@ Route120_Text_KatAndAnaDefeated:
 
 Route120_Text_KatAndAnaPostBattle:
 	.string "KAT: We battle everyone together, and...\n"
-	.string "ANA: ...we always lose together too!$"
+	.string "ANA: ...We always lose together too!$"
 
 Route120_Text_KatAndAnaNeedTwoMons:
 	.string "KAT: Two! Two! You need...\n"
@@ -256,8 +304,8 @@ Route120_Text_CheriePostBattle:
 	.string "We're not going on a trainer hunt again.$"
 
 Route120_Text_FinnIntro:
-	.string "Hey there, kid. Wanna battle my cute\n"
-	.string "Pokémon?$"
+	.string "Hey there! Wanna battle my\n"
+	.string "cute Pokémon?$"
 
 Route120_Text_FinnDefeated:
 	.string "Oops! ...Did I trick you?$"
@@ -266,30 +314,40 @@ Route120_Text_FinnPostBattle:
 	.string "Looks can be decieving, my friend.$"
 
 Route120_Text_JunieIntro:
-	.string "intro$"
+	.string "Hey, stop rustling the grass!\n"
+	.string "My little one is allergic!$"
 
 Route120_Text_JunieDefeated:
-	.string "defeat$"
+	.string "I guess you didn't mean\n"
+	.string "to rustle it that much.$"
 
 Route120_Text_JuniePostBattle:
-	.string "post$"
+	.string "Make sure to cover your legs\n"
+	.string "and arms when going through the\l"
+	.string "thickets... you could get\l"
+	.string "scraped up.$"
 
 Route120_Text_KiwiIntro:
-	.string "intro$"
+	.string "I'm supposed to be a bird watcher,\n"
+	.string "but I like other Flying type Pokemon\l"
+	.string "much better!\p"
+	.string "Let me show you some!$"
 
 Route120_Text_KiwiDefeated:
-	.string "defeat$"
+	.string "Oh no! My fliers!$"
 
 Route120_Text_KiwiPostBattle:
-	.string "post$"
+	.string "Most of Hoenn's strongest birds\n"
+	.string "are in Petalburg Woods.\l"
+	.string "Can I go there someday?$"
 
 Route120_Text_JimBobIntro:
 	.string "My mom says I'll be an entomologist\n"
 	.string "when I grow up! How cool is that?!$"
 
 Route120_Text_JimBobDefeated:
-	.string "Just have to learn what that means\n"
-	.string "first...$"
+	.string "Just have to learn\n"
+	.string "what that word means first...$"
 
 Route120_Text_JimBobPostBattle:
 	.string "Hopefully it has something to do with\n"
@@ -306,13 +364,13 @@ Route120_Text_MaddyAndCrossDefeated:
 Route120_Text_MaddyAndCrossPostBattle:
 	.string "MADDY: You totally screwed me up!\n"
 	.string "CROSS: No way! You're the one who ruined\l"
-	.string "my perfect strategy...$"
+	.string "       my perfect strategy...$"
 
 Route120_Text_MaddyAndCrossNeedTwoMons:
-	.string "MADDY: Are you even good enough for\n"
-	.string "us?\l"
-	.string "CROSS: Let's not even bother with this\l"
-	.string "one.$"
+	.string "MADDY: Are you even good enough\n"
+	.string "       for us?\l"
+	.string "CROSS: Let's not even bother\l"
+	.string "       with this one.$"
 
 Route120_Text_HectorIntro:
 	.string "Let me show you my finest specimens...\n"
@@ -328,31 +386,42 @@ Route120_Text_HectorPostBattle:
 	.string "never know what to expect! Hee hee.$"
 
 Route120_Text_PatrascheIntro:
-	.string "intro$"
+	.string "Trainer, I must ask for a battle...\n"
+	.string "My Linoone and I are rather low\l"
+	.string "on money, and selling papers\l"
+	.string "is not bringing in enough...$"
 
 Route120_Text_PatrascheDefeated:
-	.string "defeat$"
+	.string "That's more money leaving\n"
+	.string "my pockets... sigh...$"
 
 Route120_Text_PatraschePostBattle:
-	.string "post$"
+	.string "Flanders and I are inseperable.\n"
+	.string "I'd rescued him from almost\l"
+	.string "starving after being abandoned...\p"
+	.string "Don't worry, we'll find a way\n"
+	.string "to make some money.$"
 
 Route120_Text_AmiraIntro:
-	.string "intro$"
+	.string "Would you like to become a fairy?$"
 
 Route120_Text_AmiraDefeated:
-	.string "defeat$"
+	.string "Not everyone can handle it...$"
 
 Route120_Text_AmiraPostBattle:
-	.string "post$"
+	.string "Faefolk are the final step\n"
+	.string "in human evolution...$"
 
 Route120_Text_LeileiIntro:
-	.string "intro$"
+	.string "I've got a RAGE that can\n"
+	.string "only be soothed on the BATTLEFIELD!$"
 
 Route120_Text_LeileiDefeated:
-	.string "defeat$"
+	.string "Ah... much calmer...$"
 
 Route120_Text_LeileiPostBattle:
-	.string "post$"
+	.string "Breathe in...\n"
+	.string "Breathe out...$"
 
 Route120_Text_PathThroughTree:
 	.string "(There appears to be a path into\n"
