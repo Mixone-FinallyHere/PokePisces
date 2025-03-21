@@ -371,6 +371,66 @@ OzoneLilycoveHQ_Movement_MaxieGiveNav:
 	face_up
 	step_end
 
+OzoneLilycoveHQ_EventScript_Receptionist::
+	msgbox OzoneLilycoveHQ_B1F_Text_Receptionist, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_EventScript_NeedOzonesHelp1::
+	msgbox OzoneLilycoveHQ_B1F_Text_NeedOzonesHelp1, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_EventScript_NeedOzonesHelp2::
+	msgbox OzoneLilycoveHQ_B1F_Text_NeedOzonesHelp2, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_EventScript_NeedOzonesHelp3::
+	msgbox OzoneLilycoveHQ_B1F_Text_NeedOzonesHelp3, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_EventScript_AboutSun::
+	msgbox OzoneLilycoveHQ_B1F_Text_AboutSun, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_EventScript_AboutRain::
+	msgbox OzoneLilycoveHQ_B1F_Text_AboutRain, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_EventScript_AboutHail::
+	msgbox OzoneLilycoveHQ_B1F_Text_AboutHail, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_EventScript_AboutSandstorm::
+	msgbox OzoneLilycoveHQ_B1F_Text_AboutSandstorm, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_EventScript_SteadfastGuard::
+	msgbox OzoneLilycoveHQ_B1F_Text_SteadfastGuard, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_EventScript_ExasperatedGuard::
+	msgbox OzoneLilycoveHQ_B1F_Text_ExasperatedGuard, MSGBOX_NPC
+	end
+
+OzoneLilycoveHQ_B1F_Text_Receptionist:
+
+OzoneLilycoveHQ_B1F_Text_NeedOzonesHelp1:
+
+OzoneLilycoveHQ_B1F_Text_NeedOzonesHelp2:
+
+OzoneLilycoveHQ_B1F_Text_NeedOzonesHelp3:
+
+OzoneLilycoveHQ_B1F_Text_AboutSun:
+
+OzoneLilycoveHQ_B1F_Text_AboutRain:
+
+OzoneLilycoveHQ_B1F_Text_AboutHail:
+
+OzoneLilycoveHQ_B1F_Text_AboutSandstorm:
+
+OzoneLilycoveHQ_B1F_Text_SteadfastGuard:
+
+OzoneLilycoveHQ_B1F_Text_ExasperatedGuard:
+
 OzoneLilycoveHQ_Text_NameMatt:
 	.string "Matt$"
 
