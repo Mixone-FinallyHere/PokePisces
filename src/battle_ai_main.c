@@ -1233,10 +1233,10 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_DARK_VOID:
             if (!AI_CanPutToSleep(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, aiData->partnerMove))
                 score -= 10;
-            if (CountBattlerStatDecreases(battlerDef, TRUE) < 1 && CountBattlerStatDecreases(battlerAtk, TRUE) < 1)
+            if (CountBattlerStatDecreases(battlerAtk, TRUE) < 1)
                 score -= 10;
             else
-                score += CountBattlerStatDecreases(battlerDef, TRUE) + CountBattlerStatDecreases(battlerAtk, TRUE);
+                score += CountBattlerStatDecreases(battlerAtk, TRUE);
             break;
         case EFFECT_SLEEP_POWDER:
             if (!AI_CanPutToSleep(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, aiData->partnerMove))
@@ -1320,10 +1320,17 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 score -= 5;
             break;
         case EFFECT_SUN_BASK:
-            if (ShouldBloomSelf(battlerAtk, aiData->abilities[battlerAtk]))
-                score += 2;
-            else if (!AI_CanBloom(battlerAtk, battlerDef, move))
-                score -= 2;
+            if (weather & B_WEATHER_SUN)
+            {
+                if (ShouldBloomSelf(battlerAtk, aiData->abilities[battlerAtk]))
+                {
+                    score += 2;
+                }
+                else if (!AI_CanBloom(battlerAtk, battlerDef, move))
+                {
+                    score -= 2;
+                }
+            }
         case EFFECT_COSMIC_POWER:
             if (!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_DEF))
                 score -= 10;
@@ -1529,10 +1536,17 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             IncreaseTidyUpScore(battlerAtk, battlerDef, move, &score);
             break;
         case EFFECT_GROWTH:
-            if (ShouldBloomSelf(battlerAtk, aiData->abilities[battlerAtk]))
-                score += 2;
-            else if (!AI_CanBloom(battlerAtk, battlerDef, move))
-                score -= 2;
+            if (weather & B_WEATHER_SUN)
+            {
+                if (ShouldBloomSelf(battlerAtk, aiData->abilities[battlerAtk]))
+                {
+                    score += 2;
+                }
+                else if (!AI_CanBloom(battlerAtk, battlerDef, move))
+                {
+                    score -= 2;
+                }
+            }
         case EFFECT_ATTACK_SPATK_UP:    // work up
             if ((!BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_ATK) && !BattlerStatCanRise(battlerAtk, aiData->abilities[battlerAtk], STAT_SPATK))
              || (!HasDamagingMove(battlerAtk)))
