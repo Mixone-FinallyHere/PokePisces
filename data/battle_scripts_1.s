@@ -5618,49 +5618,36 @@ BattleScript_EffectDragonCheer:
 	attackcanceler
 	attackstring
 	ppreduce
-	jumpifstatus2 BS_TARGET, STATUS2_FOCUS_ENERGY_ANY, BattleScript_DragonCheerFocusEnergyFailedTryStatRaise
+	jumpifnoally BS_ATTACKER, BattleScript_ButItFailed
+	copybyte gBattlerTarget, gBattlerAttacker
+	setallytonexttarget EffectDragonCheer_CheckAllyStats
+	goto BattleScript_ButItFailed
+EffectDragonCheer_CheckAllyStats:
+	accuracycheck BattleScript_ButItFailed, NO_ACC_CALC_CHECK_LOCK_ON
+	jumpifstat BS_TARGET, CMP_NOT_EQUAL, STAT_ACC, MAX_STAT_STAGE, BattleScript_DragonCheerWorks
+	jumpifstatus2 BS_TARGET, STATUS2_FOCUS_ENERGY_ANY, BattleScript_ButItFailed
+	goto Battlescript_DragonCheerTryFocusEnergy 
+BattleScript_DragonCheerWorks:
+	attackanimation
+	waitanimation
+	setbyte sSTAT_ANIM_PLAYED, FALSE
+	playstatchangeanimation BS_TARGET, BIT_ACC, 0x0
+	setstatchanger STAT_ACC, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR | STAT_CHANGE_NOT_PROTECT_AFFECTED, BattleScript_DragonCheerEnd
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, 0x2, BattleScript_DragonCheerEnd
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_DragonCheerEnd:
+	jumpifstatus2 BS_TARGET, STATUS2_FOCUS_ENERGY_ANY, BattleScript_MoveEnd
+	setfocusenergy BS_TARGET
+	printfromtable gFocusEnergyUsedStringIds
+	goto BattleScript_MoveEnd
+Battlescript_DragonCheerTryFocusEnergy::
 	setfocusenergy BS_TARGET
 	attackanimation
 	waitanimation
 	printfromtable gFocusEnergyUsedStringIds
-	waitmessage B_WAIT_TIME_SHORTEST
-	goto BattleScript_DragonCheerFocusEnergySucceededTryStatRaise
-BattleScript_DragonCheerFocusEnergySucceededTryStatRaise:
-	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_MoveEnd
-	jumpiftargetally BattleScript_EffectDragonCheerWorks
-	goto BattleScript_MoveEnd
-BattleScript_EffectDragonCheerWorks2:
-	setstatchanger STAT_ACC, 1, FALSE
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_EffectDragonCheerEnd
-	jumpifbyte CMP_NOT_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_DragonCheerAnim2
-	pause B_WAIT_TIME_SHORTEST
-	printstring STRINGID_TARGETSTATWONTGOHIGHER
 	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_EffectDragonCheerEnd
-BattleScript_DragonCheerAnim2:
-	setgraphicalstatchangevalues
-	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-	printfromtable gStatUpStringIds
-	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
-BattleScript_DragonCheerFocusEnergyFailedTryStatRaise:
-	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_ButItFailed
-	jumpiftargetally BattleScript_EffectDragonCheerWorks
-	goto BattleScript_ButItFailed
-BattleScript_EffectDragonCheerWorks:
-	setstatchanger STAT_ACC, 1, FALSE
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_EffectDragonCheerEnd
-	jumpifbyte CMP_NOT_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_DragonCheerAnim
-	pause B_WAIT_TIME_SHORTEST
-	printstring STRINGID_TARGETSTATWONTGOHIGHER
-	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_EffectDragonCheerEnd
-BattleScript_DragonCheerAnim:
-	setgraphicalstatchangevalues
-	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-	printfromtable gStatUpStringIds
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_EffectDragonCheerEnd:
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectFickleBeam:
@@ -6738,7 +6725,7 @@ BattleScript_CoachingWorks:
 	attackanimation
 	waitanimation
 	setbyte sSTAT_ANIM_PLAYED, FALSE
-	playstatchangeanimation BS_TARGET, BIT_ATK | BIT_DEF, 0x0
+	playstatchangeanimation BS_TARGET, BIT_ATK | BIT_DEF | BIT_ACC, 0x0
 	setstatchanger STAT_ATK, 1, FALSE
 	statbuffchange STAT_CHANGE_ALLOW_PTR | STAT_CHANGE_NOT_PROTECT_AFFECTED, BattleScript_CoachingBoostDef
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, 0x2, BattleScript_CoachingBoostDef
@@ -6751,7 +6738,7 @@ BattleScript_CoachingBoostDef:
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_CoachingBoostAcc:
-	setstatchanger STAT_DEF, 1, FALSE
+	setstatchanger STAT_ACC, 1, FALSE
 	statbuffchange STAT_CHANGE_ALLOW_PTR | STAT_CHANGE_NOT_PROTECT_AFFECTED, BattleScript_CoachingEnd
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, 0x2, BattleScript_CoachingEnd
 	printfromtable gStatUpStringIds
