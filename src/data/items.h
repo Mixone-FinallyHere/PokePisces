@@ -7426,6 +7426,18 @@ const struct Item gItems[] =
         .secondaryId = MOVE_FEAR_FACTOR,
     },
 
+    [ITEM_TM_FALSE_SWIPE] =
+    {
+        .name = _("TM19"),
+        .price = 2000,
+        .description = sTM30Desc,
+        .importance = I_REUSABLE_TMS,
+        .pocket = POCKET_TM_HM,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
+        .secondaryId = MOVE_FALSE_SWIPE,
+    },
+
     [ITEM_TM_GYRO_BALL] =
     {
         .name = _("TM20"),
@@ -7558,16 +7570,17 @@ const struct Item gItems[] =
         .secondaryId = MOVE_BREAKING_SWIPE,
     },
 
-    [ITEM_TM_FALSE_SWIPE] =
+
+    [ITEM_TM_COVET] =
     {
-        .name = _("TM19"),
-        .price = 2000,
-        .description = sTM30Desc,
+        .name = _("TM31"),
+        .price = 3000,
+        .description = sTM32Desc,
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_FALSE_SWIPE,
+        .secondaryId = MOVE_COVET,
     },
 
     [ITEM_TM_DRAGON_TAIL] =
@@ -7580,18 +7593,6 @@ const struct Item gItems[] =
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
         .secondaryId = MOVE_DRAGON_TAIL,
-    },
-
-    [ITEM_TM_COVET] =
-    {
-        .name = _("TM31"),
-        .price = 3000,
-        .description = sTM32Desc,
-        .importance = I_REUSABLE_TMS,
-        .pocket = POCKET_TM_HM,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_COVET,
     },
 
     [ITEM_TM_MAGICAL_LEAF] =
@@ -7870,18 +7871,6 @@ const struct Item gItems[] =
         .secondaryId = MOVE_PSYSHOCK, // Todo
     },
 
-    [ITEM_TM_GEO_PULSE] =
-    {
-        .name = _("TM74"),
-        .price = 3000,
-        .description = sTM74Desc,
-        .importance = I_REUSABLE_TMS,
-        .pocket = POCKET_TM_HM,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_GEO_PULSE, // Todo
-    },
-
     [ITEM_TM_DAZZLING_GLEAM] =
     {
         .name = _("TM56"),
@@ -8096,6 +8085,18 @@ const struct Item gItems[] =
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
         .secondaryId = MOVE_ICICLE_CRASH, // Todo
+    },
+
+    [ITEM_TM_GEO_PULSE] =
+    {
+        .name = _("TM74"),
+        .price = 3000,
+        .description = sTM74Desc,
+        .importance = I_REUSABLE_TMS,
+        .pocket = POCKET_TM_HM,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
+        .secondaryId = MOVE_GEO_PULSE, // Todo
     },
 
     [ITEM_TM_BODY_SLAM] =
