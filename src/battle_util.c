@@ -3251,23 +3251,32 @@ u8 DoBattlerEndTurnEffects(void)
         case ENDTURN_BLOOMING:
             if ((gBattleMons[battler].status1 & STATUS1_BLOOMING) && IsBattlerAlive(battler) && !gStatuses3[battler] & STATUS3_HEAL_BLOCK)
             {
-                if ((gBattleMons[battler].status1 & STATUS1_BLOOMING) != STATUS1_BLOOMING_TURN(1))
+                if (((gBattleMons[battler].status1 & STATUS1_BLOOMING) != STATUS1_BLOOMING_TURN(1))
+                && IsBattlerAlive(battler) 
+                && (!(gStatuses3[battler] & STATUS3_HEAL_BLOCK)))
                 {
+                    gBattleMons[battler].status1 -= STATUS1_BLOOMING_TURN(1);
                     gBattleMoveDamage = -1 * gBattleMons[battler].maxHP / 10;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = -1;
                     BattleScriptExecute(BattleScript_BloomingHpGain);
                     effect++;
                 }
-                else if ((gBattleMons[battler].status1 & STATUS1_BLOOMING) == STATUS1_BLOOMING_TURN(1) && IsBattlerAlive(battler) && !gStatuses3[battler] & STATUS3_HEAL_BLOCK)
+                else if ((gBattleMons[battler].status1 & STATUS1_BLOOMING) == STATUS1_BLOOMING_TURN(1) 
+                && IsBattlerAlive(battler) 
+                && (!(gStatuses3[battler] & STATUS3_HEAL_BLOCK)))
                 {
+                    gBattleMons[battler].status1 -= STATUS1_BLOOMING_TURN(1);
                     gBattleMoveDamage = -1 * gBattleMons[battler].maxHP / 10;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = -1;
                     BattleScriptExecute(BattleScript_BloomingHpGainEnd);
                     effect++;
                 }
-                gBattleMons[battler].status1 -= STATUS1_BLOOMING_TURN(1);
+                else
+                {
+                    gBattleMons[battler].status1 -= STATUS1_BLOOMING_TURN(1);
+                }
             }
             gBattleStruct->turnEffectsTracker++;
             break;
