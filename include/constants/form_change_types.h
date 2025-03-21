@@ -101,4 +101,9 @@
 // param1: item to hold.
 #define FORM_CHANGE_BATTLE_ULTRA_BURST          16
 
+// Form change that activates before using a specific move category.
+// param1: move category to check
+// param2: ability to check, optional
+#define FORM_CHANGE_BATTLE_BEFORE_MOVE_CATEGORY 17
+
 #endif // GUARD_CONSTANTS_FORM_CHANGE_TYPES_H

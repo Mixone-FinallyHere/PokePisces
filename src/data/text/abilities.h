@@ -1441,9 +1441,9 @@ static const u8 sShamblesDescription[] = _(
     "in rooms.");
 
 static const u8 sStellarBodyDescription[] = _(
-    "The Pokémon transforms\n"
-    "depending on the damage category\n"
-    "of the move it uses.");
+    "The Pokémon transforms based\n"
+    "on the damage category of the\n"
+    "move it uses.");
 
 static const u8 sSugarCoatDescription[] = _(
     "Reduces the amount of damage\n"

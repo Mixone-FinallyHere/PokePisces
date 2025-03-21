@@ -1211,48 +1211,6 @@ static bool32 NoTargetPresent(u8 battler, u32 move)
     return FALSE;
 }
 
-static bool32 TryAegiFormChange(void)
-{
-    // Only Aegislash with Stance Change can transform, transformed mons cannot.
-    if (GetBattlerAbility(gBattlerAttacker) != ABILITY_STELLAR_BODY
-        || gBattleMons[gBattlerAttacker].status2 & STATUS2_TRANSFORMED)
-        return FALSE;
-
-    switch (gBattleMons[gBattlerAttacker].species)
-    {
-    default:
-        return FALSE;
-    case SPECIES_GAOTERRA: // Shield -> Blade
-        if (IS_MOVE_STATUS(gCurrentMove))
-            return FALSE;
-        else if (IS_MOVE_PHYSICAL(gCurrentMove))
-            gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA_SOLAR;
-        else if (IS_MOVE_SPECIAL(gCurrentMove))
-            gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA_LUNAR;
-        break;
-    case SPECIES_GAOTERRA_SOLAR: // Shield -> Blade
-        if (IS_MOVE_PHYSICAL(gCurrentMove))
-            return FALSE;
-        else if (IS_MOVE_STATUS(gCurrentMove))
-            gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA;
-        else if (IS_MOVE_SPECIAL(gCurrentMove))
-            gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA_LUNAR;
-        break;
-    case SPECIES_GAOTERRA_LUNAR: // Shield -> Blade
-        if (IS_MOVE_SPECIAL(gCurrentMove))
-            return FALSE;
-        else if (IS_MOVE_STATUS(gCurrentMove))
-            gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA;
-        else if (IS_MOVE_PHYSICAL(gCurrentMove))
-            gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA_SOLAR;
-        break;
-    }
-
-    BattleScriptPushCursor();
-    gBattlescriptCurrInstr = BattleScript_AttackerFormChange;
-    return TRUE;
-}
-
 bool32 ProteanTryChangeType(u32 battler, u32 ability, u32 move, u32 moveType)
 {
       if ((ability == ABILITY_PROTEAN || ability == ABILITY_LIBERO)
@@ -1304,10 +1262,7 @@ static void Cmd_attackcanceler(void)
         gBattlescriptCurrInstr = BattleScript_MoveEnd;
         return;
     }
-#if B_STANCE_CHANGE_FAIL <= GEN_6
-    if (TryAegiFormChange())
-        return;
-#endif
+
     if (AtkCanceller_UnableToUseMove(moveType))
         return;
 
@@ -1366,10 +1321,6 @@ static void Cmd_attackcanceler(void)
         gMoveResultFlags |= MOVE_RESULT_MISSED;
         return;
     }
-#if B_STANCE_CHANGE_FAIL >= GEN_7
-    if (TryAegiFormChange())
-        return;
-#endif
 
     gHitMarker &= ~HITMARKER_ALLOW_NO_PP;
 
@@ -1983,7 +1934,7 @@ static void Cmd_accuracycheck(void)
         && (abilityAtk == ABILITY_SKILL_LINK || holdEffectAtk == HOLD_EFFECT_LOADED_DICE
         || !(gBattleMoves[move].effect == EFFECT_TRIPLE_KICK || gBattleMoves[move].effect == EFFECT_POPULATION_BOMB || gBattleMoves[move].effect == EFFECT_GATTLING_PINS))))
     {
-        // No acc checks for second hit of Parental Bond or multi hit moves, except Triple Kick/Triple Axel/Population Bomb
+        // No acc checks for second hit of Parental Bond or multi hit moves, except Triple Kick/Triple Axel/Mass Attack
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
     else
