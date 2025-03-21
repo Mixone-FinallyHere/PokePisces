@@ -711,7 +711,6 @@ extern const u8 BattleScript_TauntString[];
 extern const u8 BattleScript_TormentString[];
 extern const u8 BattleScript_TormentTauntString[];
 extern const u8 BattleScript_SpeedDown[];
-extern const u8 BattleScript_AtkUp[];
 extern const u8 BattleScript_HeartStampDefDown2[];
 extern const u8 BattleScript_EffectAttackUpHit[];
 extern const u8 BattleScript_UltraBurst[];
