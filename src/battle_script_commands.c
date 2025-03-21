@@ -12771,8 +12771,8 @@ static void Cmd_various(void)
     case VARIOUS_REMOVE_TAILWIND:
     {
         VARIOUS_ARGS(const u8 *failInstr);
-
-        u8 side = GetBattlerSide(cmd->battler);
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+        u8 side = GetBattlerSide(battler);
     
         if (gSideStatuses[side] & SIDE_STATUS_TAILWIND)
         {

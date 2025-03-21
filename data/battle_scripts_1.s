@@ -1362,28 +1362,11 @@ BattleScript_HoldHandsTryHeal::
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectAirCutter::
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	jumpifmovehadnoeffect BattleScript_HitFromCritCalc
-	removetailwind BS_TARGET, BattleScript_HitFromCritCalc
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
+    call BattleScript_EffectHit_Ret
 	tryfaintmon BS_TARGET
 	jumpifbattleend BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	removetailwind BS_TARGET, BattleScript_MoveEnd
 	printstring STRINGID_FOETAILWINDENDS
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd

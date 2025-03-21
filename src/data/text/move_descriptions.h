@@ -4347,8 +4347,8 @@ static const u8 sDineNDashDescription[] = _(
 
 static const u8 sWickedWindsDescription[] = _(
     "This move is Dark and\n"
-    "Flying-type at once and may\n"
-    "leave the target with frostbite.");
+    "Flying-type. May frostbite the\n"
+    "foe. Boosts chances in Tailwind.");
 
 static const u8 sSonicBurstDescription[] = _(
     "Uses the Speed stat, may confuse\n"
