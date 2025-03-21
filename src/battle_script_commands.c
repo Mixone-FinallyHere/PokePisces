@@ -1839,14 +1839,16 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
     // Check Wonder Skin.
     if (defAbility == ABILITY_WONDER_SKIN && IS_MOVE_STATUS(move) && moveAcc > 50)
         moveAcc = 50;
+    if (defAbility == ABILITY_ANTICIPATION && gDisableStructs[battlerDef].anticipated && moveAcc > 50)
+        moveAcc = 50;
     if ((gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING) && gCurrentMove == MOVE_GRASS_WHISTLE)
         moveAcc = moveAcc + 10;
     if ((gBattleMons[gBattlerAttacker].status2 & STATUS2_FOCUS_ENERGY) && gCurrentMove == MOVE_FOCUS_BLAST)
         moveAcc = moveAcc + 10;
     if ((gBattleMons[gBattlerTarget].status1 & STATUS1_SLEEP_ANY) && gCurrentMove == MOVE_NIGHTMARE)
         moveAcc = moveAcc * 2;
-    if (gCurrentMove == MOVE_DARK_VOID)
-        moveAcc = moveAcc + (5 * (CountBattlerStatDecreases(gBattlerAttacker, TRUE) + CountBattlerStatDecreases(gBattlerTarget, TRUE)));
+    if (gBattleMoves[move].effect == EFFECT_DARK_VOID && CountBattlerStatDecreases(gBattlerAttacker, TRUE) > 0)
+        moveAcc += 10 * CountBattlerStatDecreases(gBattlerAttacker, TRUE);
     if (gCurrentMove == MOVE_ZAP_CANNON && gStatuses4[gBattlerAttacker] & STATUS4_GEARED_UP)
         moveAcc = moveAcc + 20;
     if (gCurrentMove == MOVE_ZAP_CANNON && gStatuses4[gBattlerAttacker] & STATUS4_GEARED_UP && gStatuses4[gBattlerAttacker] & STATUS4_SUPERCHARGED)
@@ -1889,10 +1891,6 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
         break;
     case ABILITY_LIMBER:
         calc = (calc * 90) / 100; // 10% evasion increase
-        break;
-    case ABILITY_ANTICIPATION:
-        if (gDisableStructs[battlerDef].anticipated)
-            calc = min(calc, 50); // max accuracy of move is 50%
         break;
     }
 
@@ -4712,15 +4710,15 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 break;
             case MOVE_EFFECT_DUAL_CHOP:
                 {
-                    if (Random() % 2 == 0)
+                    if (CompareStat(gBattlerTarget, STAT_ATK, MIN_STAT_STAGE, CMP_EQUAL) && CompareStat(gBattlerTarget, STAT_DEF, MIN_STAT_STAGE, CMP_EQUAL))
                     {
-                        BattleScriptPush(gBattlescriptCurrInstr + 1);
-                        gBattlescriptCurrInstr = BattleScript_DefDown;
+                        gBattlescriptCurrInstr++;
                     }
                     else
                     {
-                        BattleScriptPush(gBattlescriptCurrInstr + 1);
-                        gBattlescriptCurrInstr = BattleScript_SpDefDown;
+                        static const u8 sDualChopEffects[] = {MOVE_EFFECT_ATK_MINUS_1, MOVE_EFFECT_DEF_MINUS_1};
+                        gBattleScripting.moveEffect = RandomElement(RNG_TRI_ATTACK, sDualChopEffects);
+                        SetMoveEffect(FALSE, 0);
                     }
                 }
                 break;
@@ -4757,6 +4755,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     {
                         gBattlescriptCurrInstr++;
                     }
+                    else
                     {
                         static const u8 sTriAttackEffects[] = {MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FROSTBITE, MOVE_EFFECT_FREEZE };
                         gBattleScripting.moveEffect = RandomElement(RNG_TRI_ATTACK, sTriAttackEffects);
@@ -7652,17 +7651,17 @@ static void Cmd_moveend(void)
             gBattleStruct->distortedTypeMatchups = 0;
             gBattleStruct->redCardActivates = FALSE;
             gBattleStruct->fickleBeamBoosted = FALSE;
-            if (!IS_MOVE_STATUS(gCurrentMove) && moveType == TYPE_ELECTRIC && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            if ((!(IS_MOVE_STATUS(gCurrentMove))) && moveType == TYPE_ELECTRIC && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)))
                 gStatuses3[gBattlerAttacker] &= ~(STATUS3_CHARGED_UP);
-            if (!IS_MOVE_STATUS(gCurrentMove) && moveType == TYPE_WATER && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            if ((!(IS_MOVE_STATUS(gCurrentMove))) && moveType == TYPE_WATER && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)))
                 gStatuses4[gBattlerAttacker] &= ~(STATUS4_PUMPED_UP);
-            if (IS_MOVE_PHYSICAL(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            if (IS_MOVE_PHYSICAL(gCurrentMove) && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)))
                 gDisableStructs[gBattlerAttacker].purpleHazeOffense = FALSE;
-            if (!IS_MOVE_STATUS(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            if ((!(IS_MOVE_STATUS(gCurrentMove))) && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)))
                 gDisableStructs[gBattlerTarget].purpleHazeDefense = FALSE;
-            if (!IS_MOVE_STATUS(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            if ((!(IS_MOVE_STATUS(gCurrentMove))) && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)))
                 gStatuses4[gBattlerAttacker] &= ~(STATUS4_PHANTOM);
-            if (!IS_MOVE_STATUS(gCurrentMove) && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            if ((!(IS_MOVE_STATUS(gCurrentMove))) && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)))
                 gStatuses4[gBattlerTarget] &= ~(STATUS4_CRAFTY_SHIELD);
             memset(gQueuedStatBoosts, 0, sizeof(gQueuedStatBoosts));
             gBattleScripting.moveendState++;
@@ -8877,7 +8876,7 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
 
     if (trainerId == TRAINER_SECRET_BASE)
     {
-        moneyReward = 15 * gBattleResources->secretBase->party.levels[0] * gBattleStruct->moneyMultiplier;
+        moneyReward = 20 * gBattleResources->secretBase->party.levels[0] * gBattleStruct->moneyMultiplier;
     }
     else
     {
@@ -10190,6 +10189,15 @@ static void Cmd_various(void)
     {
         VARIOUS_ARGS(const u8 *jumpInstr);
         if (!IsBattlerAlive(battler))
+            gBattlescriptCurrInstr = cmd->jumpInstr;
+        else
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        return;
+    }
+    case VARIOUS_JUMP_IF_DOUBLES_MOVE_SUCCEED:
+    {
+        VARIOUS_ARGS(const u8 *jumpInstr);
+        if (gProtectStructs[battler].doublesMoveSucceed)
             gBattlescriptCurrInstr = cmd->jumpInstr;
         else
             gBattlescriptCurrInstr = cmd->nextInstr;
@@ -12474,6 +12482,26 @@ static void Cmd_various(void)
         }
         return;
     }
+    case VARIOUS_FLORESCENCE_CHECK:
+    {
+        VARIOUS_ARGS(const u8 *jumpInstr);
+        if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && IsBattlerAlive(BATTLE_PARTNER(battler)))
+        {
+            u8 partner = BATTLE_PARTNER(battler);
+            if (gBattleMons[battler].status1 & STATUS1_BLOOMING && gBattleMons[partner].status1 & STATUS1_BLOOMING)
+                gBattlescriptCurrInstr = cmd->jumpInstr;
+            else
+                gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        else // single battle
+        {
+            if (gBattleMons[battler].status1 & STATUS1_BLOOMING)
+                gBattlescriptCurrInstr = cmd->jumpInstr;
+            else
+                gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
     case VARIOUS_TRY_HEAL_QUARTER_HP:
     {
         VARIOUS_ARGS(const u8 *failInstr);
@@ -12761,8 +12789,8 @@ static void Cmd_various(void)
     case VARIOUS_REMOVE_TAILWIND:
     {
         VARIOUS_ARGS(const u8 *failInstr);
-
-        u8 side = GetBattlerSide(cmd->battler);
+        u32 battler = GetBattlerForBattleScript(cmd->battler);
+        u8 side = GetBattlerSide(battler);
     
         if (gSideStatuses[side] & SIDE_STATUS_TAILWIND)
         {
@@ -13381,7 +13409,7 @@ static void Cmd_various(void)
         if (gDisableStructs[battler].disabledMove == MOVE_NONE
             && i != MAX_MON_MOVES 
             && gBattleMons[battler].pp[i] != 0
-            && !gBattleMons[battler].status2 & STATUS2_MULTIPLETURNS)
+            && (!(gBattleMons[battler].status2 & STATUS2_MULTIPLETURNS)))
         {
             PREPARE_MOVE_BUFFER(gBattleTextBuff1, gChosenMoveByBattler[battler])
     
@@ -13790,6 +13818,12 @@ static void Cmd_various(void)
     {
         VARIOUS_ARGS();
         gProtectStructs[battler].beakBlastCharge = TRUE;
+        break;
+    }
+    case VARIOUS_SET_DOUBLES_MOVE_SUCCEED:
+    {
+        VARIOUS_ARGS();
+        gProtectStructs[battler].doublesMoveSucceed = TRUE;
         break;
     }
     case VARIOUS_SET_ACID_ARMOR:
