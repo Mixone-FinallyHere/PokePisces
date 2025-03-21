@@ -11757,7 +11757,7 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         if (gBattleMons[battlerAtk].item == ITEM_NONE
             // Edge case, because removal of items happens after damage calculation.
             || (gSpecialStatuses[battlerAtk].gemBoost && GetBattlerHoldEffect(battlerAtk, FALSE) == HOLD_EFFECT_GEMS))
-            basePower *= uq4_12_multiply(basePower, UQ_4_12(1.5));
+            basePower *= 1.5;
         break;
     case EFFECT_LOW_KICK:
         weight = GetBattlerWeight(battlerDef);
