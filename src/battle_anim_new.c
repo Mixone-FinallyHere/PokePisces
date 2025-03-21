@@ -7617,6 +7617,9 @@ static void AnimBlastBurnTargetPlume(struct Sprite *sprite)
         sprite->data[2] = gBattleAnimArgs[4];
     }
 
+    if (gAnimMoveIndex == MOVE_DRAGON_RUIN && IsDoubleBattle())
+        SetAverageBattlerPositions(gBattleAnimTarget, FALSE, &sprite->x, &sprite->y);
+    
     sprite->data[1] = gBattleAnimArgs[2];
     sprite->data[4] = gBattleAnimArgs[3];
     sprite->data[3] = gBattleAnimArgs[5];

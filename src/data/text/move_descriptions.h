@@ -4187,9 +4187,9 @@ static const u8 sArcanePowerDescription[] = _(
     "user's stats at once.");
 
 static const u8 sDragonRuinDescription[] = _(
-    "Boosts defenses on the first\n"
-    "turn, attacks on the second, but\n"
-    "recharges on the third.");
+    "Boosts defenses on the 1st turn,\n"
+    "attacks on the 2nd, but on the\n"
+    "3rd, recharged. Never misses.");
 
 static const u8 sCinderTwirlDescription[] = _(
     "Removes moves like Bind and\n"

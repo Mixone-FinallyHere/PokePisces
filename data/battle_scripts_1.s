@@ -5100,16 +5100,14 @@ BattleScript_EffectCinderTwirlEnd::
 
 BattleScript_EffectDragonRuin::
 	@ DecideTurn
+	jumpifdoublesmovesucceed BS_ATTACKER, BattleScript_DragonRuinSecondTurn
 	jumpifstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS, BattleScript_DragonRuinSecondTurn
 	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING, BattleScript_DragonRuinSecondTurn
 	setbyte sTWOTURN_STRINGID, B_MSG_TURN1_DRAGON_RUIN
-	goto BattleScript_TryDragonRuinCharging
 BattleScript_TryDragonRuinCharging:
 	call BattleScript_FirstChargingTurnDragonRuin
 	jumpifnoholdeffect BS_ATTACKER, HOLD_EFFECT_POWER_HERB, BattleScript_MoveEnd
 	call BattleScript_PowerHerbActivation
-	goto BattleScript_DragonRuinSecondTurn
-
 BattleScript_DragonRuinSecondTurn::
 	attackcanceler
 	setmoveeffect MOVE_EFFECT_CHARGING
@@ -5118,8 +5116,29 @@ BattleScript_DragonRuinSecondTurn::
 	orword gHitMarker, HITMARKER_NO_PPDEDUCT
 	argumenttomoveeffect
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
+	jumpifmovehadnoeffect BattleScript_MoveEnd
 	setmoveeffect MOVE_EFFECT_RECHARGE | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
-	goto BattleScript_HitFromAtkString
+	seteffectsecondary
+	setdoublesmovesucceed BS_ATTACKER
+	goto BattleScript_MoveEnd
 
 BattleScript_FirstChargingTurnDragonRuin::
 	attackcanceler

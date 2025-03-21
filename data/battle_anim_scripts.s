@@ -20273,12 +20273,12 @@ DRAGON_RUIN_BLAST:
 	loopsewithpan SE_M_STRENGTH, SOUND_PAN_TARGET, 8, 10
 	panse SE_M_SOLAR_BEAM, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, 0x2, 0x0
 	createvisualtask AnimTask_BlendBattleAnimPal, 0xa, F_PAL_TARGET, 0x6, 0x0, 0x10, 0x43FF @;Light yellow
-	call PhotonGeyserBeam
-	call LightThatBurnsTheSkyGeyser
+	call DragonRuinBeam
+	call DragonRuinGeyser
 	call LightThatBurnsTheSkyBlast_1
-	call LightThatBurnsTheSkyGeyser
+	call DragonRuinGeyser
 	call LightThatBurnsTheSkyBlast_2
-	call LightThatBurnsTheSkyGeyser
+	call DragonRuinGeyser
 	createvisualtask AnimTask_BlendBattleAnimPal, 0x2, (F_PAL_BG | F_PAL_ALL_BUT_DEF), 0x4, 0x0, 0x10, 0x43FF
 	call LightThatBurnsTheSkyBlast_3
 	clearmonbg ANIM_TARGET
@@ -20288,6 +20288,79 @@ DRAGON_RUIN_BLAST:
 	createvisualtask AnimTask_BlendBattleAnimPal, 0x2, (F_PAL_BG | F_PAL_BATTLERS_2), 0x0, 0x10, 0x0, 0x43FF
 	waitforvisualfinish
 	end
+DragonRuinBeam:
+	createsprite gPhotonGeyserBeam, ANIM_TARGET, 3, 0,  19, ANIM_TARGET, 180, 2, 6
+	createsprite gPhotonGeyserBeam, ANIM_DEF_PARTNER, 3, 0,  19, ANIM_DEF_PARTNER, 180, 2, 6
+	delay 0x1
+	createsprite gPhotonGeyserBeam, ANIM_TARGET, 3, 0,   3, ANIM_TARGET, 180, 2, 5
+	createsprite gPhotonGeyserBeam, ANIM_DEF_PARTNER, 3, 0,   3, ANIM_DEF_PARTNER, 180, 2, 5
+	delay 0x1
+	createsprite gPhotonGeyserBeam, ANIM_TARGET, 3, 0, -13, ANIM_TARGET, 180, 2, 4
+	createsprite gPhotonGeyserBeam, ANIM_DEF_PARTNER, 3, 0, -13, ANIM_DEF_PARTNER, 180, 2, 4
+	delay 0x1
+	createsprite gPhotonGeyserBeam, ANIM_TARGET, 3, 0, -29, ANIM_TARGET, 180, 2, 3
+	createsprite gPhotonGeyserBeam, ANIM_DEF_PARTNER, 3, 0, -29, ANIM_DEF_PARTNER, 180, 2, 3
+	delay 0x1
+	createsprite gPhotonGeyserBeam, ANIM_TARGET, 3, 0, -45, ANIM_TARGET, 180, 2, 2
+	createsprite gPhotonGeyserBeam, ANIM_DEF_PARTNER, 3, 0, -45, ANIM_DEF_PARTNER, 180, 2, 2
+	delay 0x1
+	createsprite gPhotonGeyserBeam, ANIM_TARGET, 3, 0, -61, ANIM_TARGET, 180, 2, 1
+	createsprite gPhotonGeyserBeam, ANIM_DEF_PARTNER, 3, 0, -61, ANIM_DEF_PARTNER, 180, 2, 1
+	delay 0x1
+	createsprite gPhotonGeyserBeam, ANIM_TARGET, 3, 0, -77, ANIM_TARGET, 180, 2, 0
+	createsprite gPhotonGeyserBeam, ANIM_DEF_PARTNER, 3, 0, -77, ANIM_DEF_PARTNER, 180, 2, 0
+	return
+DragonRuinGeyser:
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0x0003, 0x0005, 3, 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0x0003, 0x0005, 1, 0x0
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	delay 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0xfff5, 0xfff1, 3, 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0xfff5, 0xfff1, 1, 0x0
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	delay 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0x0008, 0xfffb, 3, 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0x0008, 0xfffb, 1, 0x0
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	delay 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0xfffa, 0x0012, 3, 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0xfffa, 0x0012, 1, 0x0
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	delay 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0x0000, 0x0005, 3, 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0x0000, 0x0005, 1, 0x0
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0x0003, 0xfff5, 3, 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0x0003, 0xfff5, 1, 0x0
+	delay 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0xfff5, 0xffe1, 3, 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0xfff5, 0xffe1, 1, 0x0
+	delay 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0x0008, 0xffeb, 3, 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0x0008, 0xffeb, 1, 0x0
+	delay 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0xfffa, 0x0002, 3, 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0xfffa, 0x0002, 1, 0x0
+	delay 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0x0000, 0xfff5, 3, 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0x0000, 0xfff5, 1, 0x0
+	delay 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0x0003, 0xffe5, 3, 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0x0003, 0xffe5, 1, 0x0
+	delay 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0xfff5, 0xffd1, 3, 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0xfff5, 0xffd1, 1, 0x0
+	delay 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0x0008, 0xffdb, 3, 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0x0008, 0xffdb, 1, 0x0
+	delay 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0xfffa, 0xfff2, 3, 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0xfffa, 0xfff2, 1, 0x0
+	delay 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0x0000, 0xffe5, 3, 0x0
+	createsprite gLightThatBurnsTheSkyExplosionSpriteTemplate, ANIM_TARGET, 4, 0x0000, 0xffe5, 1, 0x0
+	delay 0x0
+	return
 
 Move_CINDER_TWIRL::
 	loadspritegfx ANIM_TAG_IMPACT
