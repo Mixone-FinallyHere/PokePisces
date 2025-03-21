@@ -4276,9 +4276,9 @@ static const u8 sRazingSunDescription[] = _(
     "At 3, uses all to heal.");
 
 static const u8 sDragonPokerDescription[] = _(
-    "Damage category is based on which\n"
-    "would do more damage. Earns money\n"
-    "after the fight. Its power varies.");
+    "Damage category is based on what\n"
+    "would do more damage. Earns\n"
+    "money after. Its power varies.");
 
 static const u8 sLoneSharkDescription[] = _(
     "Takes more damage before\n"
