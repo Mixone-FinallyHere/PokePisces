@@ -51,6 +51,18 @@ MidneorFallsCave_EventScript_Iwan::
     msgbox MidneorFallsCave_Text_IwanPostBattle, MSGBOX_AUTOCLOSE
     end
 
+MidneorFallsCave_EventScript_WarningSign::
+	msgbox MidneorFallsCave_Text_WarningSign, MSGBOX_SIGN
+	end
+
+MidneorFallsCave_Text_WarningSign:
+	.string "WARNING TO ALL WHO\n"
+	.string "MAY ENTER SCORCHED SLAB\p"
+	.string "This is the turf of the\n"
+	.string "Demo Divas! If we spot you,\l"
+	.string "we'll blow you up!\l"
+	.string "That's our creed!$"
+
 MidneorFallsCave_Text_KrayIntro:
 	.string "Ahahahahaha!$"
 

@@ -2599,62 +2599,62 @@
             "encounter_rate": 10,
             "mons": [
               {
-                "min_level": 32,
-                "max_level": 34,
+                "min_level": 31,
+                "max_level": 33,
                 "species": "SPECIES_COBBTLE"
               },
               {
-                "min_level": 32,
-                "max_level": 34,
+                "min_level": 31,
+                "max_level": 33,
                 "species": "SPECIES_CORISP"
               },
               {
-                "min_level": 32,
-                "max_level": 35,
+                "min_level": 31,
+                "max_level": 33,
                 "species": "SPECIES_CORISP"
               },
               {
-                "min_level": 32,
-                "max_level": 35,
+                "min_level": 31,
+                "max_level": 33,
                 "species": "SPECIES_BONFEU"
               },
               {
-                "min_level": 33,
-                "max_level": 34,
+                "min_level": 31,
+                "max_level": 33,
                 "species": "SPECIES_CATTUCLID"
               },
               {
-                "min_level": 32,
-                "max_level": 34,
+                "min_level": 31,
+                "max_level": 33,
                 "species": "SPECIES_SPRYTE"
               },
               {
-                "min_level": 32,
-                "max_level": 34,
+                "min_level": 31,
+                "max_level": 33,
                 "species": "SPECIES_SNOTLOUD"
               },
               {
-                "min_level": 34,
-                "max_level": 36,
+                "min_level": 31,
+                "max_level": 33,
                 "species": "SPECIES_BOLTEROCK"
               },
               {
-                "min_level": 32,
-                "max_level": 34,
+                "min_level": 31,
+                "max_level": 33,
                 "species": "SPECIES_MATCHLIT"
               },
               {
-                "min_level": 33,
-                "max_level": 35,
+                "min_level": 31,
+                "max_level": 33,
                 "species": "SPECIES_GOLDEROCK"
               },
               {
-                "min_level": 32,
-                "max_level": 34,
+                "min_level": 31,
+                "max_level": 33,
                 "species": "SPECIES_COBBTLE"
               },
               {
-                "min_level": 32,
+                "min_level": 31,
                 "max_level": 32,
                 "species": "SPECIES_RETROROACH"
               }
@@ -2664,29 +2664,29 @@
             "encounter_rate": 30,
             "mons": [
               {
-                "min_level": 34,
-                "max_level": 34,
+                "min_level": 32,
+                "max_level": 33,
                 "species": "SPECIES_MANDIMYTE"
               },
               {
-                "min_level": 34,
-                "max_level": 34,
+                "min_level": 32,
+                "max_level": 33,
                 "species": "SPECIES_MANDIMYTE"
               },
               {
-                "min_level": 34,
-                "max_level": 34,
+                "min_level": 32,
+                "max_level": 33,
                 "species": "SPECIES_MANDIMYTE"
               },
               {
-                "min_level": 34,
-                "max_level": 34,
+                "min_level": 32,
+                "max_level": 33,
                 "species": "SPECIES_MANDIMYTE"
               },
               {
-                "min_level": 34,
-                "max_level": 34,
-                "species": "SPECIES_MANDIMYTE"
+                "min_level": 33,
+                "max_level": 33,
+                "species": "SPECIES_BOLTEROCK"
               }
             ]
           }

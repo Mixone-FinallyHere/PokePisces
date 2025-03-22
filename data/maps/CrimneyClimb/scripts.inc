@@ -93,6 +93,14 @@ CrimneyClimb_EventScript_OzoneBlocker2::
     msgbox CrimneyClimb_Text_OzoneBlocker2, MSGBOX_NPC
     end
 
+CrimneyClimb_EventScript_CableCarSign::
+	msgbox CrimneyClimb_Text_CableCarSign, MSGBOX_SIGN
+	end
+
+CrimneyClimb_Text_CableCarSign:
+	.string "MT. CHIMNEY CABLE CAR\n"
+	.string "CRIMNEY CLIMB STATION$"
+
 CrimneyClimb_Text_OzoneBlocker1:
 	.string "Whoa, hold it there, sport!\n"
 	.string "Can't be lettin' you into\l"
@@ -114,130 +122,189 @@ CrimneyClimb_Text_OzoneBlocker2:
 	.string "to the Caldera.$"
 
 CrimneyClimb_Text_LaraIntro:
-	.string "intro$"
+	.string "I used to be a legendary tomb\n"
+	.string "raider when I was young!\l"
+	.string "But I've still got it!$"
 
 CrimneyClimb_Text_LaraDefeated:
-	.string "defeat$"
+	.string "You're a crofty, err, I mean,\n"
+	.string "crafty sort of trainer!$"
 
 CrimneyClimb_Text_LaraPostBattle:
-	.string "post$"
+	.string "If you ever find the Sweltorn\n"
+	.string "Palace, just know that I took\l"
+	.string "the best treasures out of there\l"
+	.string "ages ago!$"
 
 CrimneyClimb_Text_EricaIntro:
-	.string "intro$"
+	.string "Watch me juggle!$"
 
 CrimneyClimb_Text_EricaDefeated:
-	.string "defeat$"
+	.string "Ashes, ashes...\n"
+	.string "they all fall down!$"
 
 CrimneyClimb_Text_EricaPostBattle:
-	.string "post$"
+	.string "You have to use both\n"
+	.string "hands to juggle, silly!$"
 
 CrimneyClimb_Text_JinIntro:
-	.string "intro$"
+	.string "The heat and smoke fuels\n"
+	.string "me like a raging fire!!$"
 
 CrimneyClimb_Text_JinDefeated:
-	.string "defeat$"
+	.string "My fury cannot be tempered!!$"
 
 CrimneyClimb_Text_JinPostBattle:
-	.string "post$"
+	.string "Don't mess with us Martial Artists,\n"
+	.string "if you know what's good for you.$"
 
 CrimneyClimb_Text_AkiAndMitsuIntro:
-	.string "intro$"
+	.string "AKI: You have to make your Pokemon\n"
+	.string "     really EARN their evolution!\l"
+	.string "MITSU: This will be the battle\l"
+	.string "       that proves their worth!$"
 
 CrimneyClimb_Text_AkiAndMitsuDefeated:
-	.string "defeat$"
+	.string "AKI: They really didn't hit\n"
+	.string "     their mark...\l"
+	.string "MITSU: No honor in that.$"
 
 CrimneyClimb_Text_AkiAndMitsuPostBattle:
-	.string "post$"
+	.string "AKI: It's important to make sure\n"
+	.string "    your Pokemon stay humble.\l"
+	.string "MITSU: Don't let them evolve\l"
+	.string "   until they've proved themselves!$"
 
 CrimneyClimb_Text_AkiAndMitsuNeedTwoMons:
-	.string "need 2 dood$"
+	.string "MISTU: Aki, I don't think there'd\n"
+	.string "       be any honor in challenging\l"
+	.string "       someone with one Pokemon...\l"
+	.string "AKI: That, you are right!$"
 
 CrimneyClimb_Text_DaisyIntro:
-	.string "intro$"
+	.string "HI, I'M DAISY!!!$"
 
 CrimneyClimb_Text_DaisyDefeated:
-	.string "defeat$"
+	.string "Sorry, I uh, came on too strong...$"
 
 CrimneyClimb_Text_DaisyPostBattle:
-	.string "post$"
+	.string "How did I get all three\n"
+	.string "Spryte evolutions?\p"
+	.string "Oh, well Spryte evolves based\n"
+	.string "on the last move it was hit by.\l"
+	.string "Slashing, piercing, and blunt\l"
+	.string "moves each produce a different\l"
+	.string "evolution.$"
 
 CrimneyClimb_Text_GwunivereIntro:
-	.string "intro$"
+	.string "Take it easy on me...!\n"
+	.string "I'm just a baby!\l"
+	.string "A 31 year old baby!$"
 
 CrimneyClimb_Text_GwunivereDefeated:
-	.string "defeat$"
+	.string "MY BLABBU...!$"
 
 CrimneyClimb_Text_GwuniverePostBattle:
-	.string "post$"
+	.string "Blabbu and I are so alike.\n"
+	.string "We're both babycore.\p"
+	.string "(You express immense disgust\n"
+	.string "at that word.)$"
 
 CrimneyClimb_Text_YisanIntro:
-	.string "intro$"
+	.string "Let my wings strike\n"
+	.string "down my foes!$"
 
 CrimneyClimb_Text_YisanDefeated:
-	.string "defeat$"
+	.string "My wings are beaten\n"
+	.string "and broken...$"
 
 CrimneyClimb_Text_YisanPostBattle:
-	.string "post$"
+	.string "Fly...\n"
+	.string "Fly, my broken wings...!$"
 
 CrimneyClimb_Text_HammIntro:
-	.string "intro$"
+	.string "Ehhh!? No, I ain't stealin' nuttin'!\n"
+	.string "No sir!$"
 
 CrimneyClimb_Text_HammDefeated:
-	.string "defeat$"
+	.string "Oh, this eh, bag I got?\p"
+	.string "I found it... on the uh,\n"
+	.string "side'a the road...?$"
 
 CrimneyClimb_Text_HammPostBattle:
-	.string "post$"
+	.string "Just don't rat on me\n"
+	.string "to dem coppers.$"
 
 CrimneyClimb_Text_FrankIntro:
-	.string "intro$"
+	.string "Allow me to be frank with you...\n"
+	.string "I'm out of beef franks.\p"
+	.string "But I'm hankerin' for\n"
+	.string "a good battle!$"
 
 CrimneyClimb_Text_FrankDefeated:
-	.string "defeat$"
+	.string "Frankly, my dear...\n"
+	.string "I didn't give it my all.$"
 
 CrimneyClimb_Text_FrankPostBattle:
-	.string "post$"
+	.string "My partner here kind of has\n"
+	.string "a stick up his... uh, popsicle.$"
 
 CrimneyClimb_Text_WeinerIntro:
-	.string "intro$"
+	.string "We're supposed to be\n"
+	.string "vending snacks, here,\l"
+	.string "not getting into fights!$"
 
 CrimneyClimb_Text_WeinerDefeated:
-	.string "defeat$"
+	.string "Alright, the battle's over,\n"
+	.string "whoopdie-doo.\p"
+	.string "Now, will ya browse our selection?$"
 
 CrimneyClimb_Text_WeinerPostBattle:
-	.string "post$"
+	.string "Business is business,\n"
+	.string "whether it's real estate or\l"
+	.string "ice cold treats.$"
 
 CrimneyClimb_Text_EvelynnIntro:
-	.string "intro$"
+	.string "The sunlight's real bad around here.\n"
+	.string "Got on sunblock?$"
 
 CrimneyClimb_Text_EvelynnDefeated:
-	.string "defeat$"
+	.string "Mess with the sun, get burned...$"
 
 CrimneyClimb_Text_EvelynnPostBattle:
-	.string "post$"
+	.string "Keep your skin protected!\n"
+	.string "You'll thank me later.$"
 
 CrimneyClimb_Text_DynaIntro:
-	.string "intro$"
+	.string "I lost a bomb...\n"
+	.string "could you have nabbed it?$"
 
 CrimneyClimb_Text_DynaDefeated:
-	.string "defeat$"
+	.string "Don't play with matches.$"
 
 CrimneyClimb_Text_DynaPostBattle:
-	.string "post$"
+	.string "Wait, is it over there?$"
 
 CrimneyClimb_Text_AudreyIntro:
-	.string "intro$"
+	.string "That girl over there has the\n"
+	.string "same name as me.\l"
+	.string "But I'm the better Audrey!$"
 
 CrimneyClimb_Text_AudreyDefeated:
-	.string "defeat$"
+	.string "Can't you see?$"
 
 CrimneyClimb_Text_AudreyPostBattle:
-	.string "post$"
+	.string "Don't you have a stake\n"
+	.string "in this conflict?$"
 
 CrimneyClimb_Text_AudreyIIIntro:
-	.string "intro$"
+	.string "That girl over there has the\n"
+	.string "same name as me.\l"
+	.string "But I'm the better Aüdrey!$"
 
 CrimneyClimb_Text_AudreyIIDefeated:
-	.string "defeat$"
+	.string "See! See!$"
 
 CrimneyClimb_Text_AudreyIIPostBattle:
-	.string "post$"
+	.string "I TOLD you!\n"
+	.string "I'm the better of the two!$"
