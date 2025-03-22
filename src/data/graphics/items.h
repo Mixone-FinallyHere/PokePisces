@@ -2256,3 +2256,6 @@ const u32 gItemIconPalette_CrypticPlate[] = INCBIN_U32("graphics/items/icon_pale
 
 const u32 gItemIcon_Chupacabra[] = INCBIN_U32("graphics/items/icons/chupacabra.4bpp.lz");
 const u32 gItemIconPalette_Chupacabra[] = INCBIN_U32("graphics/items/icon_palettes/chupacabra.gbapal.lz");
+
+const u32 gItemIcon_WintamelTea[] = INCBIN_U32("graphics/items/icons/tea.4bpp.lz");
+const u32 gItemIconPalette_WintamelTea[] = INCBIN_U32("graphics/items/icon_palettes/tea.gbapal.lz");

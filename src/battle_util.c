@@ -5938,7 +5938,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         u16 battlerAbility = GetBattlerAbility(battler);
         u16 targetAbility = GetBattlerAbility(gBattlerTarget);
 
-        if ((gLastUsedAbility == ABILITY_SOUNDPROOF && gBattleMoves[move].soundMove && !(moveTarget & MOVE_TARGET_USER)) || (gLastUsedAbility == ABILITY_BULLETPROOF && gBattleMoves[move].ballisticMove))
+        if ((gLastUsedAbility == ABILITY_SOUNDPROOF && gBattleMoves[move].soundMove && !(moveTarget & MOVE_TARGET_USER)) 
+        || (gLastUsedAbility == ABILITY_BULLETPROOF && gBattleMoves[move].ballisticMove) 
+        || (gLastUsedAbility == ABILITY_BALL_FETCH && gBattleMoves[move].ballisticMove && GetBattlerHoldEffect(gBattlerTarget, TRUE) == HOLD_EFFECT_WINTAMEL_TEA && gBattleMons[gBattlerTarget].species == SPECIES_POMELONIAN))
         {
             if (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)
                 gHitMarker |= HITMARKER_NO_PPDEDUCT;
@@ -12726,6 +12728,8 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
     // pokemon with unaware ignore attack stat changes while taking damage
     if (defAbility == ABILITY_UNAWARE || defAbility == ABILITY_IGNORANT_BLISS)
         atkStage = DEFAULT_STAT_STAGE;
+    if (GetBattlerHoldEffect(battlerDef, TRUE) == HOLD_EFFECT_WINTAMEL_TEA && gBattleMons[battlerDef].species == SPECIES_POMELONIAN)
+        atkStage = DEFAULT_STAT_STAGE;
     if (atkStage < DEFAULT_STAT_STAGE && atkAbility == ABILITY_AQUA_HEART && moveType == TYPE_WATER && gBattleStruct->ateBoost[battlerAtk])
         atkStage = DEFAULT_STAT_STAGE;
     if (atkStage < DEFAULT_STAT_STAGE && gCurrentMove == MOVE_AURA_SPHERE)
@@ -12927,6 +12931,10 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
         if (atkBaseSpeciesId == SPECIES_PIKACHU)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         break;
+    case HOLD_EFFECT_WINTAMEL_TEA:
+        if (atkBaseSpeciesId == SPECIES_POMELONIAN)
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.5));
+        break;
     case HOLD_EFFECT_CLEANSE_TAG:
         if ((CountBattlerStatDecreases(battlerDef, TRUE)) > 0)
             modifier = uq4_12_multiply_half_down(modifier, GetCleanseTagModifier(battlerDef));
@@ -13049,6 +13057,8 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
     // pokemon with unaware ignore defense stat changes while dealing damage
     if (atkAbility == ABILITY_UNAWARE || atkAbility == ABILITY_IGNORANT_BLISS)
         defStage = DEFAULT_STAT_STAGE;
+    if (GetBattlerHoldEffect(battlerAtk, TRUE) == HOLD_EFFECT_WINTAMEL_TEA && gBattleMons[battlerAtk].species == SPECIES_POMELONIAN)
+        defStage = DEFAULT_STAT_STAGE;
     //draco force make normal moves ignore stat changes
     if (defStage > DEFAULT_STAT_STAGE && atkAbility == ABILITY_DRACO_FORCE && moveType == TYPE_DRAGON && gBattleStruct->ateBoost[battlerAtk])
         defStage = DEFAULT_STAT_STAGE;
@@ -13158,6 +13168,10 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
         break;
     case HOLD_EFFECT_SHELL_POLISH:
         if (gBattleMons[battlerDef].species == SPECIES_SNELFREND)
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.5));
+        break;
+    case HOLD_EFFECT_WINTAMEL_TEA:
+        if (gBattleMons[battlerDef].species == SPECIES_POMELONIAN)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.5));
         break;
     case HOLD_EFFECT_SALTY_TEAR:

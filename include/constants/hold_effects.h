@@ -258,6 +258,7 @@
 #define HOLD_EFFECT_FAIRY_FEATHER   273  // fairy power +20% and secondary effect chance -> 100%
 #define HOLD_EFFECT_POMEG_BERRY     274
 #define HOLD_EFFECT_SILVER_CROWN    275
+#define HOLD_EFFECT_WINTAMEL_TEA    276
 
 #define HOLD_EFFECT_CHOICE(holdEffect)((holdEffect == HOLD_EFFECT_CHOICE_BAND || holdEffect == HOLD_EFFECT_CHOICE_SCARF || holdEffect == HOLD_EFFECT_CHOICE_SPECS))
 

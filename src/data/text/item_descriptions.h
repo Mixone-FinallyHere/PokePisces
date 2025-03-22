@@ -4777,3 +4777,9 @@ static const u8 sHeartGiftDesc[] = _(
     "hurts the holder and\n"
     "infests them after 2\n"
     "turns.");
+
+static const u8 sWintamelTeaDesc[] = _(
+    "Boosts offenses and\n"
+    "defenses. Ignores stat\n"
+    "changes. Fetches ball\n"
+    "moves. For Pomelonian.");

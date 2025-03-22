@@ -10721,6 +10721,8 @@ extern const u32 gItemIcon_CrypticPlate[];
 extern const u32 gItemIconPalette_CrypticPlate[];
 extern const u32 gItemIcon_Chupacabra[];
 extern const u32 gItemIconPalette_Chupacabra[];
+extern const u32 gItemIcon_WintamelTea[];
+extern const u32 gItemIconPalette_WintamelTea[];
 
 extern const u32 gItemIcon_ReturnToFieldArrow[];
 extern const u32 gItemIconPalette_ReturnToFieldArrow[];

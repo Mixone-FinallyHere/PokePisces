@@ -10553,4 +10553,15 @@ const struct Item gItems[] =
         .flingPower = 20,
     },
 
+    [ITEM_WINTAMEL_TEA] =
+    {
+        .name = _("Wintamel Tea"),
+        .price = 1000,
+        .holdEffect = HOLD_EFFECT_WINTAMEL_TEA,
+        .description = sWintamelTeaDesc,
+        .pocket = POCKET_BATTLE_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 20,
+    },
 };
