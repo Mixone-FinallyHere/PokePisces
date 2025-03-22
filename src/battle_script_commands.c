@@ -17861,6 +17861,7 @@ static void Cmd_tryswapitems(void)
 
     // opponent can't swap items with player in regular battles
     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL
+        || (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
         || (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT
             && !(gBattleTypeFlags & (BATTLE_TYPE_LINK
                                   | BATTLE_TYPE_EREADER_TRAINER
@@ -19717,6 +19718,7 @@ static void Cmd_tryswapitemsmagician(void)
 
     // opponent can't swap items with player in regular battles
     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL
+        || (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
         || (GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT
             && !(gBattleTypeFlags & (BATTLE_TYPE_LINK
                                   | BATTLE_TYPE_EREADER_TRAINER
@@ -19762,8 +19764,9 @@ static void Cmd_tryswapitemsmagician(void)
         // check if ability prevents swapping
         else if (GetBattlerAbility(gBattlerTarget) == ABILITY_STICKY_HOLD)
         {
-            gBattlescriptCurrInstr = BattleScript_StickyHoldActivates;
+            gBattlescriptCurrInstr = BattleScript_StickyHoldActivatesMagician;
             gLastUsedAbility = gBattleMons[gBattlerTarget].ability;
+            PREPARE_ABILITY_BUFFER(gBattleTextBuff1, ABILITY_MAGICIAN)
             RecordAbilityBattle(gBattlerTarget, gLastUsedAbility);
         }
         // took a while, but all checks passed and items can be safely swapped
