@@ -212,7 +212,7 @@ FortreeGymNew_Text_FujiDefeated:
 
 FortreeGymNew_Text_FujiPostBattle:
 	.string "Winona and Aarune are real different,\n"
-	.string "but they both love climbing mountains!$"
+	.string "but they both love adventures!$"
 
 FortreeGymNew_Text_AreYouReady:
 	.string "Welcome to the\n"

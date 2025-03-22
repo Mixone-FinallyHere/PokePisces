@@ -723,7 +723,7 @@ MossdeepCity_EventScript_WallyBlackout::
 
 MossdeepCity_EventScript_YandemicNoticed::
 	lock
-	setvar VAR_TEMP_4, 1
+	setvar VAR_TEMP_9, 1
 	call_if_lt VAR_NOTICED_BY_YANDEMIC, 4, MossdeepCity_EventScript_YandemicAddVar
 	msgbox MossdeepCity_Text_YouFeelWatched, MSGBOX_AUTOCLOSE
 	release

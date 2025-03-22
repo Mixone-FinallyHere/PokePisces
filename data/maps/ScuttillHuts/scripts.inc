@@ -12,19 +12,25 @@ ScuttillHuts_EventScript_Crabro::
     end
 
 ScuttillHuts_Text_VespaIntro:
-	.string "intro$"
+	.string "Fear the power of my Bugs!$"
 
 ScuttillHuts_Text_VespaDefeated:
-	.string "defeat$"
+	.string "No... they failed me!?$"
 
 ScuttillHuts_Text_VespaPostBattle:
-	.string "post$"
+	.string "Didja know that Bug type Pokemon\n"
+	.string "can infiltrate through\l"
+	.string "screens and Substitutes?\l"
+	.string "They have a way of getting\l"
+	.string "into places you don't want 'em to!$"
 
 ScuttillHuts_Text_CrabroIntro:
-	.string "intro$"
+	.string "BUG POWER BEATS ALL!$"
 
 ScuttillHuts_Text_CrabroDefeated:
-	.string "defeat$"
+	.string "All but... you?$"
 
 ScuttillHuts_Text_CrabroPostBattle:
-	.string "post$"
+	.string "Hmph, it won't take much longer\n"
+	.string "for my Bugs to become unstoppable,\l"
+	.string "even by the likes of you!$"

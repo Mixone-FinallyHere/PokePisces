@@ -40,6 +40,33 @@ FortreeCity_EventScript_Ozoner2::
     msgbox FortreeCity_Text_Ozoner2, MSGBOX_NPC
     end
 
+FortreeCity_EventScript_FortreeSign::
+	msgbox FortreeCity_Text_FortreeSign, MSGBOX_SIGN
+	end
+
+FortreeCity_EventScript_TerrainHouseSign::
+	msgbox FortreeCity_Text_TerrainHouseSign, MSGBOX_SIGN
+	end
+
+FortreeCity_EventScript_WestToGymSign::
+	msgbox FortreeCity_Text_WestToGymSign, MSGBOX_SIGN
+	end
+
+FortreeCity_Text_FortreeSign:
+	.string "FORTREE CITY\n"
+	.string "Atop the trees, bathed with nature.$"
+
+FortreeCity_Text_TerrainHouseSign:
+	.string "All visitors welcome\n"
+	.string "to the Fortree City Terrain House!\p"
+	.string "Want moves to help your\n"
+	.string "Pokemon in various terrains?\l"
+	.string "We are happy to help!$"
+
+FortreeCity_Text_WestToGymSign:
+	.string "Head West to reach the\n"
+	.string "Fortree City Gym!$"
+
 FortreeCity_Text_Ozoner1:
 	.string "Yo. Do you mind?\n"
 	.string "Team Ozone's doing a bit\l"

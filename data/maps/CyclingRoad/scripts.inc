@@ -149,7 +149,7 @@ CyclingRoad_Text_CruzPostBattle:
 	.string "So long as you don't hit anything...$"
 
 CyclingRoad_Text_MonaIntro:
-	.string " Hey, you're blocking the way!\n"
+	.string "Hey, you're blocking the way!\n"
 	.string "No matter what, I'll push through!$"
 
 CyclingRoad_Text_MonaDefeated:
