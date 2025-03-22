@@ -30841,10 +30841,13 @@ Move_TORMENT:
 	createvisualtask AnimTask_TormentAttacker, 2
 	waitforvisualfinish
 	createvisualtask AnimTask_BlendMonInAndOut, 2, ANIM_TARGET, RGB_RED, 10, 1, 1
+	createvisualtask AnimTask_BlendMonInAndOut, 2, ANIM_DEF_PARTNER, RGB_RED, 10, 1, 1
 	createsprite gAngerMarkSpriteTemplate, ANIM_TARGET, 2, 1, -20, -28
+	createsprite gAngerMarkSpriteTemplate, ANIM_DEF_PARTNER, 2, 2, -20, -28
 	playsewithpan SE_M_SWAGGER2, SOUND_PAN_TARGET
 	delay 20
 	createsprite gAngerMarkSpriteTemplate, ANIM_TARGET, 2, 1, 20, -28
+	createsprite gAngerMarkSpriteTemplate, ANIM_DEF_PARTNER, 2, 2, 20, -28
 	playsewithpan SE_M_SWAGGER2, SOUND_PAN_TARGET
 	end
 
