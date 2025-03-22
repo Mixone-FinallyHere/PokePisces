@@ -15707,7 +15707,6 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_STORM_CHASE] =
     {
-        .priority = 2,
         .effect = EFFECT_STORM_CHASE,
         .power = 100,
         .type = TYPE_ELECTRIC,
@@ -15715,6 +15714,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .pp = 5,
         .secondaryEffectChance = 25,
         .target = MOVE_TARGET_SELECTED,
+        .priority = 2,
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,

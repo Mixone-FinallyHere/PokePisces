@@ -4531,9 +4531,9 @@ static const u8 sPowerJamDescription[] = _(
     "the foe's stats at once.");
 
 static const u8 sStormChaseDescription[] = _(
-    "The user tackles the foe with\n"
-    "overwhelming excitement. This\n"
-    "move always goes first.");
+    "The user crashes into the foe.\n"
+    "This move always goes first. It\n"
+    "may paralyze the foe in rain.");
 
 static const u8 sDrakenGuardDescription[] = _(
     "Protects from moves and boosts\n"
