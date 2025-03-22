@@ -5653,6 +5653,7 @@ BattleScript_DragonCheerEnd:
 	jumpifstatus2 BS_TARGET, STATUS2_FOCUS_ENERGY_ANY, BattleScript_MoveEnd
 	setfocusenergy BS_TARGET
 	printfromtable gFocusEnergyUsedStringIds
+	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 Battlescript_DragonCheerTryFocusEnergy::
 	setfocusenergy BS_TARGET
