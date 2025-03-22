@@ -19749,6 +19749,8 @@ static void Cmd_tryswapitemsmagician(void)
                  || !CanBattlerGetOrLoseItem(gBattlerAttacker, gBattleMons[gBattlerTarget].item)
                  || !CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerTarget].item)
                  || !CanBattlerGetOrLoseItem(gBattlerTarget, gBattleMons[gBattlerAttacker].item)
+                 || !IsBattlerAlive(gBattlerAttacker)
+                 || !IsBattlerAlive(gBattlerTarget)
                  || IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_FAIRY))
         {
             gBattlescriptCurrInstr = cmd->failInstr;
