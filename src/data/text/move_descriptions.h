@@ -407,9 +407,9 @@ static const u8 sStringShotDescription[] = _(
     "lowers their Speed stats.");
 
 static const u8 sDragonRageDescription[] = _(
-    "Deals damage equal to more than\n"
-    "the user's level. Boosted at less\n"
-    "HP. Spreads to foes. Goes last.");
+    "Deals damage equal to the user's\n"
+    "level. Boosted at lower HP.\n"
+    "Spreads like Flame Burst.");
 
 static const u8 sFireSpinDescription[] = _(
     "The user traps the target inside\n"
@@ -1816,7 +1816,7 @@ static const u8 sTailwindDescription[] = _(
 static const u8 sAcupressureDescription[] = _(
     "The user applies pressure to\n"
     "stress points, sharply boosting\n"
-    "one of its or its allies' stats.");
+    "one of its or its ally's stats.");
 
 static const u8 sMetalBurstDescription[] = _(
     "The user retaliates with much\n"
@@ -4062,7 +4062,7 @@ static const u8 sHardPressDescription[] = _(
     "left, the greater move's power.");
 
 static const u8 sDragonCheerDescription[] = _(
-    "The user boosts its allies'\n"
+    "The user boosts its ally's\n"
     "accuracy and critical hit ratio.\n"
     "This rouses Dragon-types more.");
 
