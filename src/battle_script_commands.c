@@ -1211,48 +1211,6 @@ static bool32 NoTargetPresent(u8 battler, u32 move)
     return FALSE;
 }
 
-static bool32 TryAegiFormChange(void)
-{
-    // Only Aegislash with Stance Change can transform, transformed mons cannot.
-    if (GetBattlerAbility(gBattlerAttacker) != ABILITY_STELLAR_BODY
-        || gBattleMons[gBattlerAttacker].status2 & STATUS2_TRANSFORMED)
-        return FALSE;
-
-    switch (gBattleMons[gBattlerAttacker].species)
-    {
-    default:
-        return FALSE;
-    case SPECIES_GAOTERRA: // Shield -> Blade
-        if (IS_MOVE_STATUS(gCurrentMove))
-            return FALSE;
-        else if (IS_MOVE_PHYSICAL(gCurrentMove))
-            gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA_SOLAR;
-        else if (IS_MOVE_SPECIAL(gCurrentMove))
-            gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA_LUNAR;
-        break;
-    case SPECIES_GAOTERRA_SOLAR: // Shield -> Blade
-        if (IS_MOVE_PHYSICAL(gCurrentMove))
-            return FALSE;
-        else if (IS_MOVE_STATUS(gCurrentMove))
-            gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA;
-        else if (IS_MOVE_SPECIAL(gCurrentMove))
-            gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA_LUNAR;
-        break;
-    case SPECIES_GAOTERRA_LUNAR: // Shield -> Blade
-        if (IS_MOVE_SPECIAL(gCurrentMove))
-            return FALSE;
-        else if (IS_MOVE_STATUS(gCurrentMove))
-            gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA;
-        else if (IS_MOVE_PHYSICAL(gCurrentMove))
-            gBattleMons[gBattlerAttacker].species = SPECIES_GAOTERRA_SOLAR;
-        break;
-    }
-
-    BattleScriptPushCursor();
-    gBattlescriptCurrInstr = BattleScript_AttackerFormChange;
-    return TRUE;
-}
-
 bool32 ProteanTryChangeType(u32 battler, u32 ability, u32 move, u32 moveType)
 {
       if ((ability == ABILITY_PROTEAN || ability == ABILITY_LIBERO)
@@ -1304,10 +1262,7 @@ static void Cmd_attackcanceler(void)
         gBattlescriptCurrInstr = BattleScript_MoveEnd;
         return;
     }
-#if B_STANCE_CHANGE_FAIL <= GEN_6
-    if (TryAegiFormChange())
-        return;
-#endif
+
     if (AtkCanceller_UnableToUseMove(moveType))
         return;
 
@@ -1366,10 +1321,6 @@ static void Cmd_attackcanceler(void)
         gMoveResultFlags |= MOVE_RESULT_MISSED;
         return;
     }
-#if B_STANCE_CHANGE_FAIL >= GEN_7
-    if (TryAegiFormChange())
-        return;
-#endif
 
     gHitMarker &= ~HITMARKER_ALLOW_NO_PP;
 
@@ -1983,7 +1934,7 @@ static void Cmd_accuracycheck(void)
         && (abilityAtk == ABILITY_SKILL_LINK || holdEffectAtk == HOLD_EFFECT_LOADED_DICE
         || !(gBattleMoves[move].effect == EFFECT_TRIPLE_KICK || gBattleMoves[move].effect == EFFECT_POPULATION_BOMB || gBattleMoves[move].effect == EFFECT_GATTLING_PINS))))
     {
-        // No acc checks for second hit of Parental Bond or multi hit moves, except Triple Kick/Triple Axel/Population Bomb
+        // No acc checks for second hit of Parental Bond or multi hit moves, except Triple Kick/Triple Axel/Mass Attack
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
     else
@@ -2151,6 +2102,7 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
              || gBattleMoves[move].effect == EFFECT_VITAL_THROW
              || (gBattleMoves[move].effect == EFFECT_LASH_OUT && gBattleStruct->lastMoveFailed & gBitTable[battlerAtk])
              || gCurrentMove == MOVE_SHARPSHOOT
+             || (CountBattlerStatDecreases(battlerAtk, TRUE) != 0 && gCurrentMove == MOVE_EXTRASENSORY)
              || (gCurrentMove == MOVE_FRUSTRATION && CountBattlerStatDecreases(battlerAtk, TRUE) > 0)
              || (gBattleMoves[move].effect == EFFECT_SNOWFADE && gBattleWeather & B_WEATHER_HAIL)
              || (gBattleMoves[move].effect == EFFECT_LOW_KICK && gFieldStatuses & STATUS_FIELD_GRAVITY)
@@ -2181,7 +2133,7 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
     else
     {
         critChance  = 2 * ((gBattleMons[battlerAtk].status2 & STATUS2_FOCUS_ENERGY) != 0)
-                    + 1 * ((gBattleMons[battlerAtk].status2 & STATUS2_DRAGON_CHEER) != 0)
+                    + ((gBattleMons[battlerAtk].status2 & STATUS2_DRAGON_CHEER) != 0)
                     + (gBattleMoves[gCurrentMove].highCritRatio)
                     + (gCurrentMove == MOVE_RETURN && gBattleMons[battlerAtk].hp == gBattleMons[battlerAtk].maxHP)
                     + (gCurrentMove == MOVE_MYTH_BUSTER && GetBattlerHeight(battlerDef) > GetBattlerHeight(battlerAtk))
@@ -2363,7 +2315,7 @@ static void Cmd_adjustdamage(void)
             RecordItemEffectBattle(gBattlerTarget, holdEffect);
             gSpecialStatuses[gBattlerTarget].focusBanded = TRUE;
         }
-        else if (rand < 20)
+        if (rand < 20)
         {
             RecordItemEffectBattle(gBattlerTarget, holdEffect);
             gSpecialStatuses[gBattlerTarget].focusBandEndured = TRUE;
@@ -2384,6 +2336,12 @@ static void Cmd_adjustdamage(void)
     else if (holdEffect == HOLD_EFFECT_FOCUS_SASH && BATTLER_MAX_HP(gBattlerTarget))
     {
         RecordItemEffectBattle(gBattlerTarget, holdEffect);
+        gSpecialStatuses[gBattlerTarget].focusSashed = TRUE;
+    }
+    else if (holdEffect == HOLD_EFFECT_LONG_NOSE && gBattleMoveDamage >= gBattleMons[gBattlerTarget].hp && (!(gDisableStructs[gBattlerTarget].longNoseActivatedAlready)))
+    {
+        RecordItemEffectBattle(gBattlerTarget, holdEffect);
+        gDisableStructs[gBattlerTarget].longNoseActivatedAlready = TRUE;
         gSpecialStatuses[gBattlerTarget].focusSashed = TRUE;
     }
 #if B_AFFECTION_MECHANICS == TRUE
@@ -7480,14 +7438,12 @@ static void Cmd_moveend(void)
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_DANCING_MOVE_TURNS:
-            if (((gCurrentMove == gLastResultingMoves[gBattlerAttacker] 
-            && gBattleMoves[gCurrentMove].danceMove)
-            || !gBattleMoves[gCurrentMove].danceMove)
-            && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
-            && (!(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)))
+            if (gCurrentMove == gLastResultingMoves[gBattlerAttacker]
+            || (!(gBattleMoves[gCurrentMove].danceMove))
+            || (gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            || (gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE))
                 gBattleStruct->dancingMoveTurns[gBattlerAttacker] = 0;
             else if (gBattleMoves[gCurrentMove].danceMove 
-            && gBattleStruct->slicingMoveTurns[gBattlerAttacker] != 5
             && gCurrentMove != gLastResultingMoves[gBattlerAttacker] 
             && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT)
                 gBattleStruct->dancingMoveTurns[gBattlerAttacker]++;
@@ -8890,11 +8846,11 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
         }
 
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
-            moneyReward = 5 * lastMonLevel * gBattleStruct->moneyMultiplier * gTrainerMoneyTable[i].value;
+            moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * gTrainerMoneyTable[i].value;
         else if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
-            moneyReward = 5 * lastMonLevel * gBattleStruct->moneyMultiplier * 2 * gTrainerMoneyTable[i].value;
+            moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * 2 * gTrainerMoneyTable[i].value;
         else
-            moneyReward = 5 * lastMonLevel * gBattleStruct->moneyMultiplier * gTrainerMoneyTable[i].value;
+            moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * gTrainerMoneyTable[i].value;
     }
 
     return moneyReward;
@@ -17765,15 +17721,25 @@ static void Cmd_curestatuswithmove(void)
     CMD_ARGS(u8 battler, const u8 *failInstr);
     u8 battler = GetBattlerForBattleScript(cmd->battler);
     u32 shouldHeal;
+    u32 shouldHeal2;
 
     if (gBattleMoves[gCurrentMove].effect == EFFECT_AMNESIA)
         shouldHeal = gBattleMons[battler].status1 & STATUS1_PANIC;
     else if (gBattleMoves[gCurrentMove].effect == EFFECT_FLEUR_CANNON || gBattleMoves[gCurrentMove].effect == EFFECT_THIRD_TYPE || gBattleMoves[gCurrentMove].effect == EFFECT_WOOD_HAMMER)
         shouldHeal = gBattleMons[battler].status1 & STATUS1_BLOOMING;
+    else if (gBattleMoves[gCurrentMove].effect == EFFECT_ZEN_HEADBUTT)
+        shouldHeal2 = gBattleMons[battler].status2 & STATUS2_TORMENT || gBattleMons[battler].status2 & STATUS2_CONFUSION || gDisableStructs[battler].tauntTimer != 0;
     else
         shouldHeal = gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE;
 
-    if (shouldHeal)
+    if (shouldHeal2)
+    {
+        gDisableStructs[battler].tauntTimer = 0;
+        gBattleMons[battler].status2 &= ~STATUS2_TORMENT;
+        gBattleMons[battler].status2 &= ~(STATUS2_CONFUSION);
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+    else if (shouldHeal)
     {
         gBattleMons[battler].status1 = 0;
         gBattlescriptCurrInstr = cmd->nextInstr;

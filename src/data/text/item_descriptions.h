@@ -203,8 +203,8 @@ static const u8 sReviveDesc[] = _(
 static const u8 sMaxReviveDesc[] = _(
     "A medicine that\n"
     "revives a fainted\n"
-    "Pokémon, restoring its\n"
-    "HP fully.");
+    "Pokémon, restoring\n"
+    "its HP fully.");
 
 static const u8 sFreshWaterDesc[] = _(
     "Water with high\n"
@@ -2330,7 +2330,7 @@ static const u8 sPoisonBarbDesc[] = _(
     "A poisonous barb that\n"
     "boosts Poison-type\n"
     "moves. Poisoned foes\n"
-    "take bonus true damage.");
+    "take bonus damage.");
 
 static const u8 sSoftSandDesc[] = _(
     "Some pocket sand that\n"
@@ -2445,7 +2445,7 @@ static const u8 sIcyRockDesc[] = _(
 // Terrain Seeds
 static const u8 sElectricSeedDesc[] = _(
     "An electrified seed\n"
-    "that boosts Defense on\n"
+    "that boosts Def on\n"
     "Electric Terrain. It\n"
     "can only be used once.");
 
@@ -2524,9 +2524,9 @@ static const u8 sSootheBellDesc[] = _(
     "friendly.");
 
 static const u8 sMentalHerbDesc[] = _(
-    "The holder will be able\n"
-    "to shake off move-\n"
-    "binding effects to move\n"
+    "The holder can shake\n"
+    "shake off move-binding\n"
+    "effects to move\n"
     "freely-but only once.");
 
 static const u8 sKingsRockDesc[] = _(
@@ -2584,9 +2584,9 @@ static const u8 sShellBellDesc[] = _(
     "attacking the foe.");
 
 static const u8 sWideLensDesc[] = _(
-    "A magnifying lens that\n"
-    "boosts the accuracy of\n"
-    "moves and prevents\n"
+    "A special lens that\n"
+    "boosts the accuracy\n"
+    "of moves and prevents\n"
     "accuracy drops.");
 
 static const u8 sMuscleBandDesc[] = _(
@@ -2672,10 +2672,10 @@ static const u8 sGripClawDesc[] = _(
     "go on for 7 turns.");
 
 static const u8 sStickyBarbDesc[] = _(
-    "A sticky barb that\n"
-    "damages the holder\n"
-    "and drops its evasion\n"
-    "and Speed every turn.");
+    "A barb that damages\n"
+    "the holder each turn,\n"
+    "but also sets spikes\n"
+    "on the foe's side.");
 
 static const u8 sShedShellDesc[] = _(
     "A discarded carapace\n"
@@ -2731,9 +2731,9 @@ static const u8 sRedCardDesc[] = _(
 
 static const u8 sRingTargetDesc[] = _(
     "A target that negates\n"
-    "the holder's immunities\n"
-    "and increases the\n"
-    "damage it takes.");
+    "the holder's\n"
+    "immunities and lowers\n"
+    "its defenses.");
 
 static const u8 sBindingBandDesc[] = _(
     "A rubber band that\n"
@@ -2762,8 +2762,8 @@ static const u8 sAssaultVestDesc[] = _(
 static const u8 sSafetyGogglesDesc[] = _(
     "Goggles that protect\n"
     "the holder from\n"
-    "weather damage and the \n"
-    "effects of powders.");
+    "weather damage and\n"
+    "powder effects.");
 
 static const u8 sAdrenalineOrbDesc[] = _(
     "An orb that boosts Spd\n"
@@ -2772,10 +2772,10 @@ static const u8 sAdrenalineOrbDesc[] = _(
     "mocked, or panicked.");
 
 static const u8 sTerrainExtenderDesc[] = _(
-    "A special coating that\n"
+    "A coating that ext\n"
     "extends the duration\n"
-    "of any terrain created\n"
-    "by the holder.");
+    "of terrain created by\n"
+    "the holder.");
 
 static const u8 sProtectivePadsDesc[] = _(
     "Some pads that reduce\n"
@@ -3186,10 +3186,10 @@ static const u8 sMicleBerryDesc[] = _(
     "pinch.");
 
 static const u8 sCustapBerryDesc[] = _(
-    "The holder will be able\n"
-    "to move first just\n"
-    "once should it find\n"
-    "itself in a pinch."); 
+    "The holder can move\n"
+    "first just once\n"
+    "should it find itself\n"
+    "in a pinch."); 
 
 static const u8 sJabocaBerryDesc[] = _(
     "If the holder is hit\n"
@@ -4552,7 +4552,7 @@ static const u8 sSaltyTearDesc[] = _(
 
 static const u8 sBloomOrbDesc[] = _(
     "Blooms the holder on\n"
-    "switch-in and consumes\n"
+    "switch-in and uses\n"
     "it. Removes blooming\n"
     "at the end of battle.");
 
@@ -4661,10 +4661,10 @@ static const u8 sSilverCrownDesc[] = _(
     "the holder is hit.");
 
 static const u8 sLongNoseDesc[] = _(
-    "A spear for a\n"
-    "Moskopo. Bug and\n"
-    "Dark moves go first\n"
-    "and drop offenses.");
+    "Bug and Dark-type\n"
+    "moves go first and\n"
+    "drop stats. Lives a\n"
+    "KO once. For Moskopo.");
 
 static const u8 sKamenScarfDesc[] = _(
     "A scarf that drops SE\n"

@@ -11152,6 +11152,8 @@ extern const u32 gBattleAnimSpriteGfx_Sparkle3[];
 extern const u32 gBattleAnimSpriteGfx_Sparkle4[];
 extern const u32 gBattleAnimSpriteGfx_MusicNotes[];
 extern const u32 gBattleAnimSpriteGfx_Duck[];
+extern const u32 gBattleAnimSpriteGfx_Shrimp[];
+extern const u32 gBattleAnimSpritePal_Shrimp[];
 extern const u32 gBattleAnimSpriteGfx_MudSand[];
 extern const u32 gBattleAnimSpriteGfx_Alert[];
 extern const u32 gBattleAnimSpriteGfx_BlueFlames[];

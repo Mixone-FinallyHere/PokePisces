@@ -217,6 +217,17 @@ const struct SpriteTemplate gDizzyPunchDuckSpriteTemplate =
     .callback = AnimDizzyPunchDuck,
 };
 
+const struct SpriteTemplate gShrimpSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_SHRIMP,
+    .paletteTag = ANIM_TAG_SHRIMP,
+    .oam = &gOamData_AffineOff_ObjNormal_16x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimDizzyPunchDuck,
+};
+
 const struct SpriteTemplate gBariBariBeamStarSpriteTemplate =
 {
     .tileTag = ANIM_TAG_STAR,
