@@ -1392,6 +1392,7 @@ static const struct TrainerMon sParty_PToby[] = {
     .ev = TRAINER_PARTY_EVS(32, 32, 32, 32, 32, 32),
     .species = SPECIES_POMELONIAN,
     .nickname = COMPOUND_STRING("DOG"),
+    .heldItem = ITEM_WINTAMEL_TEA,
     }
 };
 
@@ -7769,6 +7770,7 @@ static const struct TrainerMon sParty_PMandalore[] = {
     },
     {
     .species = SPECIES_POMELONIAN,
+    .heldItem = ITEM_WINTAMEL_TEA,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(72, 72, 72, 72, 72, 72),
     .lvl = 46,
@@ -7798,6 +7800,7 @@ static const struct TrainerMon sParty_PBeast[] = {
     },
     {
     .species = SPECIES_POMELONIAN,
+    .heldItem = ITEM_WINTAMEL_TEA,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(72, 72, 72, 72, 72, 72),
     .lvl = 47,
