@@ -3680,7 +3680,11 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER && gSpecialStatuses[gBattlerAttacker].parentalBondState!= PARENTAL_BOND_2ND_HIT)
                 {
                     u16 payday = gPaydayMoney;
-                    gPaydayMoney += (gBattleMons[gBattlerAttacker].level * (gBattleMoves[gCurrentMove].power / 2));
+                    if (gCurrentMove == MOVE_DRAGON_POKER)
+                        gPaydayMoney += (gBattleMons[gBattlerAttacker].level * (gBattleStruct->dragonpokerBasePower / 2));
+                    else
+                        gPaydayMoney += (gBattleMons[gBattlerAttacker].level * (gBattleMoves[gCurrentMove].power / 2));
+
                     if (payday > gPaydayMoney)
                         gPaydayMoney = 0xFFFF;
 
