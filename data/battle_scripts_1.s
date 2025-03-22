@@ -406,7 +406,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectHit                     @ EFFECT_RISING_VOLTAGE
 	.4byte BattleScript_EffectHit                     @ EFFECT_BEAK_BLAST
 	.4byte BattleScript_EffectCourtChange             @ EFFECT_COURT_CHANGE
-	.4byte BattleScript_EffectChloroblast               @ EFFECT_CHLOROBLAST
+	.4byte BattleScript_EffectChloroblast             @ EFFECT_CHLOROBLAST
 	.4byte BattleScript_EffectExtremeEvoboost         @ EFFECT_EXTREME_EVOBOOST
 	.4byte BattleScript_EffectHitSetRemoveTerrain     @ EFFECT_HIT_SET_REMOVE_TERRAIN
 	.4byte BattleScript_EffectDarkVoid                @ EFFECT_DARK_VOID
@@ -6880,26 +6880,42 @@ BattleScript_BurnUpRemoveType::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
-BattleScript_EffectDoubleShock:
+BattleScript_EffectDoubleShock::
+	jumpifdoublesmovesucceed BS_ATTACKER, BattleScript_NoMoveEffect
+	jumpifstatus4 BS_ATTACKER, STATUS4_SUPERCHARGED, BattleScript_DoubleShockCheckGearedUp
+	jumpifstatus4 BS_ATTACKER, STATUS4_GEARED_UP, BattleScript_EffectHit
 	attackcanceler
 	attackstring
 	ppreduce
 	jumpiftype BS_ATTACKER, TYPE_ELECTRIC, BattleScript_DoubleShockWorks
 	goto BattleScript_ButItFailed
-
 BattleScript_DoubleShockWorks:
-	jumpifstatus4 BS_ATTACKER, STATUS4_SUPERCHARGED, BattleScript_DoubleShockCheckGearedUp
-	jumpifstatus4 BS_ATTACKER, STATUS4_GEARED_UP, BattleScript_EffectHit
 	setmoveeffect MOVE_EFFECT_DOUBLE_SHOCK | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	goto BattleScript_HitFromCritCalc
-
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	jumpifmovehadnoeffect BattleScript_DoublesSkipEffect
+	setdoublesmovesucceed BS_ATTACKER
+	tryfaintmon BS_TARGET
+	goto BattleScript_MoveEnd
 BattleScript_DoubleShockRemoveType::
 	losetype BS_ATTACKER, TYPE_ELECTRIC
 	printstring STRINGID_ATTACKERLOSTELECTRICTYPE
 	waitmessage B_WAIT_TIME_LONG
 	return
-
 BattleScript_DoubleShockCheckGearedUp:
 	jumpifstatus4 BS_ATTACKER, STATUS4_GEARED_UP, BattleScript_EffectExplosion
 	goto BattleScript_EffectHit

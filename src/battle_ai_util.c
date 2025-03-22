@@ -1558,7 +1558,7 @@ u32 AI_GetBattlerMoveTargetType(u32 battlerId, u32 move)
         return MOVE_TARGET_BOTH;
     else if (gCurrentMove == MOVE_LEAF_STORM && (gBattleMons[battlerId].status1 & STATUS1_BLOOMING))
         return MOVE_TARGET_BOTH;
-    else if (gCurrentMove == MOVE_DOUBLE_SHOCK && (gStatuses4[battlerId] & STATUS4_SUPERCHARGED) && (gStatuses4[battlerId] & STATUS4_GEARED_UP))
+    else if (gCurrentMove == MOVE_DOUBLE_SHOCK && gStatuses4[battlerId] & STATUS4_SUPERCHARGED && gStatuses4[battlerId] & STATUS4_GEARED_UP)
         return MOVE_TARGET_FOES_AND_ALLY;
     else if ((gBattleMoves[gCurrentMove].effect == EFFECT_CANNONADE) && (gBattleMons[battlerId].hp <= (gBattleMons[battlerId].maxHP / 4)))
         return MOVE_TARGET_FOES_AND_ALLY;

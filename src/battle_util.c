@@ -4000,6 +4000,8 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
         case CANCELLER_EXPLODING_DAMP:
             if (dampBattler 
             && (gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION
+            || (gBattleMoves[gCurrentMove].effect == EFFECT_DOUBLE_SHOCK && (gStatuses4[gBattlerAttacker] & STATUS4_SUPERCHARGED) && (gStatuses4[gBattlerAttacker] & STATUS4_GEARED_UP))
+            || (gBattleMoves[gCurrentMove].effect == EFFECT_CANNONADE && gBattleMons[gBattlerAttacker].hp <= (gBattleMons[gBattlerAttacker].maxHP / 4))
             || gBattleMoves[gCurrentMove].effect == EFFECT_MIND_BLOWN
             || gBattleMoves[gCurrentMove].effect == EFFECT_STALAG_BLAST)
             && gCurrentMove != MOVE_FINAL_SHRIEK)
@@ -15489,7 +15491,7 @@ u32 GetBattlerMoveTargetType(u32 battler, u32 move)
         return MOVE_TARGET_BOTH;
     else if (gCurrentMove == MOVE_LEAF_STORM && (gBattleMons[battler].status1 & STATUS1_BLOOMING))
         return MOVE_TARGET_BOTH;
-    else if (gCurrentMove == MOVE_DOUBLE_SHOCK && (gStatuses4[battler] & STATUS4_SUPERCHARGED) && (gStatuses4[battler] & STATUS4_GEARED_UP))
+    else if (gCurrentMove == MOVE_DOUBLE_SHOCK && gStatuses4[battler] & STATUS4_SUPERCHARGED && gStatuses4[battler] & STATUS4_GEARED_UP)
         return MOVE_TARGET_FOES_AND_ALLY;
     else if ((gBattleMoves[gCurrentMove].effect == EFFECT_CANNONADE) && (gBattleMons[battler].hp <= (gBattleMons[battler].maxHP / 4)))
         return MOVE_TARGET_FOES_AND_ALLY;

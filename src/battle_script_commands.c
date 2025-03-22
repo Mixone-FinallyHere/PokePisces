@@ -1256,7 +1256,12 @@ static void Cmd_attackcanceler(void)
         gCurrentActionFuncId = B_ACTION_FINISHED;
         return;
     }
-    if (gBattleMons[gBattlerAttacker].hp == 0 && gBattleMoves[gCurrentMove].effect != EFFECT_EXPLOSION && !gProtectStructs[gBattlerAttacker].aftermathBlowUp && !(gHitMarker & HITMARKER_NO_ATTACKSTRING))
+    if (gBattleMons[gBattlerAttacker].hp == 0 
+    && gBattleMoves[gCurrentMove].effect != EFFECT_EXPLOSION
+    && (!(gBattleMoves[gCurrentMove].effect == EFFECT_CANNONADE && gBattleMons[gBattlerAttacker].hp <= gBattleMons[gBattlerAttacker].maxHP / 4))
+    && (!(gBattleMoves[gCurrentMove].effect == EFFECT_DOUBLE_SHOCK && gStatuses4[gBattlerAttacker] & STATUS4_SUPERCHARGED && gStatuses4[gBattlerAttacker] & STATUS4_GEARED_UP))
+    && !gProtectStructs[gBattlerAttacker].aftermathBlowUp
+    && !(gHitMarker & HITMARKER_NO_ATTACKSTRING))
     {
         gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
         gBattlescriptCurrInstr = BattleScript_MoveEnd;
@@ -6673,7 +6678,9 @@ static void Cmd_moveend(void)
                 }
             }
             if (!(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE) 
-            && gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION
+            && (gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION
+            || (gBattleMoves[gCurrentMove].effect == EFFECT_CANNONADE && gBattleMons[gBattlerAttacker].hp <= (gBattleMons[gBattlerAttacker].maxHP / 4))
+            || (gBattleMoves[gCurrentMove].effect == EFFECT_DOUBLE_SHOCK && gStatuses4[gBattlerAttacker] & STATUS4_SUPERCHARGED && gStatuses4[gBattlerAttacker] & STATUS4_GEARED_UP))
             && gCurrentMove != MOVE_FINAL_SHRIEK
             && !IsAbilityOnField(ABILITY_DAMP))
             {
@@ -7095,7 +7102,9 @@ static void Cmd_moveend(void)
                         gBattleScripting.moveendState = 0;
                         MoveValuesCleanUp();
                         gBattleScripting.moveEffect = gBattleScripting.savedMoveEffect;
-                        if (gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION)
+                        if (gBattleMoves[gCurrentMove].effect == EFFECT_EXPLOSION
+                        || (gBattleMoves[gCurrentMove].effect == EFFECT_CANNONADE && gBattleMons[gBattlerAttacker].hp <= gBattleMons[gBattlerAttacker].maxHP / 4)
+                        || (gBattleMoves[gCurrentMove].effect == EFFECT_DOUBLE_SHOCK && gStatuses4[gBattlerAttacker] & STATUS4_SUPERCHARGED && (gStatuses4[gBattlerAttacker] & STATUS4_GEARED_UP)))
                             BattleScriptPush(gBattleScriptsForMoveEffects[EFFECT_HIT]); // Edge case for Explosion not changing targets
                         else
                             BattleScriptPush(gBattleScriptsForMoveEffects[gBattleMoves[gCurrentMove].effect]);
@@ -20135,6 +20144,7 @@ static const u16 sParentalBondBannedEffects[] =
     EFFECT_BIDE, // Note: Bide should work with Parental Bond. This will be addressed in future.
     EFFECT_ENDEAVOR,
     EFFECT_EXPLOSION,
+    EFFECT_DOUBLE_SHOCK,
     EFFECT_CANNONADE,
     EFFECT_FINAL_GAMBIT,
     EFFECT_FLING,

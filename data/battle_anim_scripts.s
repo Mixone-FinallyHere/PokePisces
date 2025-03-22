@@ -17534,7 +17534,7 @@ Move_DOUBLE_SHOCK::
 	delay 1
 	waitforvisualfinish
 	playsewithpan SE_M_TRI_ATTACK2, SOUND_PAN_TARGET
-	createvisualtask AnimTask_InvertScreenColor, 2, 0x1 | 0x2 | 0x4
+	createvisualtask AnimTask_InvertScreenColor, 2, 0x1 | 0x2 | 0x4 | 0x8
 	delay 1
 	createsprite gLightningSpriteTemplate, ANIM_TARGET, 6, -16, -32
 	createsprite gLightningSpriteTemplate, ANIM_TARGET, 2, 24, -32
@@ -17546,10 +17546,12 @@ Move_DOUBLE_SHOCK::
 	createsprite gLightningSpriteTemplate, ANIM_TARGET, 2, 24, 16
 	delay 1
 	playsewithpan SE_M_TRI_ATTACK2, SOUND_PAN_TARGET
-	createvisualtask AnimTask_InvertScreenColor, 2, 0x1 | 0x2 | 0x4
+	createvisualtask AnimTask_InvertScreenColor, 2, 0x1 | 0x2 | 0x4 | 0x8
 	delay 2
 	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 0, 3, 15, 1
+	createvisualtask AnimTask_ShakeMon, 2, ANIM_DEF_PARTNER, 0, 3, 15, 1
 	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, ANIM_TARGET, 2
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, ANIM_DEF_PARTNER, 2
 	delay 1
 	waitforvisualfinish
 	clearmonbg ANIM_TARGET
