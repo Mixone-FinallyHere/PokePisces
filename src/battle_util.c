@@ -10499,18 +10499,41 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             }
             break;
         case HOLD_EFFECT_STICKY_BARB: // Not an orb per se, but similar effect, and needs to NOT activate with pickpocket
-            if (battlerAbility != ABILITY_MAGIC_GUARD && battlerAbility != ABILITY_SUGAR_COAT)
+            if (gSideTimers[GetBattlerSide(BATTLE_OPPOSITE(battler))].spikesAmount < 3 && battlerAbility != ABILITY_MAGIC_GUARD && battlerAbility != ABILITY_SUGAR_COAT)
             {
+                gSideStatuses[GetBattlerSide(BATTLE_OPPOSITE(battler))] |= SIDE_STATUS_SPIKES;
+                gSideTimers[GetBattlerSide(BATTLE_OPPOSITE(battler))].spikesAmount++;
                 gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
                     gBattleMoveDamage = 50;
                 BattleScriptExecute(BattleScript_StickyBarb);
-                effect = ITEM_HP_CHANGE;
+                effect = ITEM_EFFECT_OTHER;
                 RecordItemEffectBattle(battler, battlerHoldEffect);
                 PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
             }
+            else if (gSideTimers[GetBattlerSide(BATTLE_OPPOSITE(battler))].spikesAmount < 3)
+            {
+                gSideStatuses[GetBattlerSide(BATTLE_OPPOSITE(battler))] |= SIDE_STATUS_SPIKES;
+                gSideTimers[GetBattlerSide(BATTLE_OPPOSITE(battler))].spikesAmount++;
+                BattleScriptExecute(BattleScript_StickyBarbJustSpikes);
+                effect = ITEM_EFFECT_OTHER;
+                RecordItemEffectBattle(battler, battlerHoldEffect);
+                PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
+            }
+            else if (battlerAbility != ABILITY_MAGIC_GUARD && battlerAbility != ABILITY_SUGAR_COAT)
+            {
+                gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
+                if (gBattleMoveDamage == 0)
+                    gBattleMoveDamage = 1;
+                if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                    gBattleMoveDamage = 50;
+                BattleScriptExecute(BattleScript_ItemHurtEnd2);
+                effect = ITEM_HP_CHANGE;
+                RecordItemEffectBattle(battler, battlerHoldEffect);
+                PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
+            }    
             break;
         }
 

@@ -18759,24 +18759,21 @@ BattleScript_ItemHurtEnd2::
 BattleScript_StickyBarb::
 	playanimation BS_ATTACKER, B_ANIM_MON_HIT
 	waitanimation
-	call BattleScript_ItemHurtRet
-	jumpiffainted BS_ATTACKER, TRUE, BattleScript_StickyBarbEnd2
-	setbyte sSTAT_ANIM_PLAYED, FALSE
-	playstatchangeanimation BS_ATTACKER, BIT_SPEED | BIT_EVASION, STAT_CHANGE_CANT_PREVENT | STAT_CHANGE_NEGATIVE | STAT_CHANGE_MULTIPLE_STATS
-	playstatchangeanimation BS_ATTACKER, BIT_SPEED, STAT_CHANGE_CANT_PREVENT | STAT_CHANGE_NEGATIVE
-	setstatchanger STAT_SPEED, 1, TRUE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN | STAT_CHANGE_ALLOW_PTR, BattleScript_StickyBarbTryEvasion
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_StickyBarbTryEvasion
-	printfromtable gStatDownStringIds
+	printstring STRINGID_SPELONSPIKESSCATTERED
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_StickyBarbTryEvasion:
-	playstatchangeanimation BS_ATTACKER, BIT_EVASION, STAT_CHANGE_CANT_PREVENT | STAT_CHANGE_NEGATIVE
-	setstatchanger STAT_EVASION, 1, TRUE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN | STAT_CHANGE_ALLOW_PTR, BattleScript_StickyBarbEnd2
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_StickyBarbEnd2
-	printfromtable gStatDownStringIds
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE | HITMARKER_IGNORE_DISGUISE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	printstring STRINGID_HURTBYITEM
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_StickyBarbEnd2:
+	tryfaintmon BS_ATTACKER
+	end2
+
+BattleScript_StickyBarbJustSpikes::
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
+	printstring STRINGID_SPELONSPIKESSCATTERED
+	waitmessage B_WAIT_TIME_LONG
 	end2
 
 BattleScript_HeartGiftSurpriseCount::
@@ -19439,13 +19436,6 @@ BattleScript_PickpocketPrevented:
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_ITEMCANNOTBEREMOVED
 	waitmessage B_WAIT_TIME_LONG
-	return
-
-BattleScript_StickyBarbTransfer::
-	playanimation BS_TARGET, B_ANIM_ITEM_STEAL
-	printstring STRINGID_STICKYBARBTRANSFER
-	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_TARGET
 	return
 
 BattleScript_RedCardActivates::

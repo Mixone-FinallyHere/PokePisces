@@ -2672,10 +2672,10 @@ static const u8 sGripClawDesc[] = _(
     "go on for 7 turns.");
 
 static const u8 sStickyBarbDesc[] = _(
-    "A sticky barb that\n"
-    "damages the holder\n"
-    "and drops its evasion\n"
-    "and Speed every turn.");
+    "A barb that damages\n"
+    "the holder each turn,\n"
+    "but also sets spikes\n"
+    "on the foe's side.");
 
 static const u8 sShedShellDesc[] = _(
     "A discarded carapace\n"
