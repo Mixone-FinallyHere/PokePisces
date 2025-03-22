@@ -13647,7 +13647,7 @@ static const struct TrainerMon sParty_POphelia[] = {
     {
     .species = SPECIES_GOURDOUG,
     .ability = ABILITY_GUARD_DOG,
-    .heldItem = ITEM_BURNT_BRANCH,
+    .heldItem = ITEM_HONDEW_BERRY,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 240, 0, 0, 0, 0),
     .lvl = 76,
