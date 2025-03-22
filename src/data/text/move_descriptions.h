@@ -408,8 +408,8 @@ static const u8 sStringShotDescription[] = _(
 
 static const u8 sDragonRageDescription[] = _(
     "Deals damage equal to the user's\n"
-    "level. Boosted at lower HP.\n"
-    "Spreads like Flame Burst.");
+    "level. Boosted at less HP. Hurts\n"
+    "the Pokémon next to the foe.");
 
 static const u8 sFireSpinDescription[] = _(
     "The user traps the target inside\n"
