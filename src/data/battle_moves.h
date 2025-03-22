@@ -5638,16 +5638,15 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         #else
             .pp = 30,
         #endif
-        .effect = EFFECT_FLINCH_HIT,
-        .power = 80,
+        .effect = EFFECT_HIT,
+        .power = 75,
         .type = TYPE_PSYCHIC,
-        .accuracy = 100,
-        .secondaryEffectChance = 10,
+        .accuracy = 0,
+        .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
-        .sheerForceBoost = TRUE,
     },
 
     [MOVE_SKY_UPPERCUT] =

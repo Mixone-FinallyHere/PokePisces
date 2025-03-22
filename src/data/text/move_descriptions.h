@@ -1614,9 +1614,9 @@ static const u8 sShadowPunchDescription[] = _(
     "misses.");
 
 static const u8 sExtrasensoryDescription[] = _(
-    "The user attacks with an odd,\n"
-    "unseeable power. This may also\n"
-    "make the target flinch.");
+    "Attacks with an odd power that\n"
+    "never misses. Always critical\n"
+    "hits if the user has a stat drop.");
 
 static const u8 sSkyUppercutDescription[] = _(
     "The user attacks the target with\n"

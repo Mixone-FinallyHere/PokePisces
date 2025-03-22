@@ -2102,6 +2102,7 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
              || gBattleMoves[move].effect == EFFECT_VITAL_THROW
              || (gBattleMoves[move].effect == EFFECT_LASH_OUT && gBattleStruct->lastMoveFailed & gBitTable[battlerAtk])
              || gCurrentMove == MOVE_SHARPSHOOT
+             || (CountBattlerStatDecreases(battlerAtk, TRUE) != 0 && gCurrentMove == MOVE_EXTRASENSORY)
              || (gCurrentMove == MOVE_FRUSTRATION && CountBattlerStatDecreases(battlerAtk, TRUE) > 0)
              || (gBattleMoves[move].effect == EFFECT_SNOWFADE && gBattleWeather & B_WEATHER_HAIL)
              || (gBattleMoves[move].effect == EFFECT_LOW_KICK && gFieldStatuses & STATUS_FIELD_GRAVITY)
