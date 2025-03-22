@@ -4661,10 +4661,10 @@ static const u8 sSilverCrownDesc[] = _(
     "the holder is hit.");
 
 static const u8 sLongNoseDesc[] = _(
-    "A spear for a\n"
-    "Moskopo. Bug and\n"
-    "Dark moves go first\n"
-    "and drop offenses.");
+    "Bug and Dark-type\n"
+    "moves go first and\n"
+    "drop stats. Lives a\n"
+    "KO once. For Moskopo.");
 
 static const u8 sKamenScarfDesc[] = _(
     "A scarf that drops SE\n"

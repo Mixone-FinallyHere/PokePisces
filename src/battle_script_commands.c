@@ -2315,7 +2315,7 @@ static void Cmd_adjustdamage(void)
             RecordItemEffectBattle(gBattlerTarget, holdEffect);
             gSpecialStatuses[gBattlerTarget].focusBanded = TRUE;
         }
-        else if (rand < 20)
+        if (rand < 20)
         {
             RecordItemEffectBattle(gBattlerTarget, holdEffect);
             gSpecialStatuses[gBattlerTarget].focusBandEndured = TRUE;
@@ -2336,6 +2336,12 @@ static void Cmd_adjustdamage(void)
     else if (holdEffect == HOLD_EFFECT_FOCUS_SASH && BATTLER_MAX_HP(gBattlerTarget))
     {
         RecordItemEffectBattle(gBattlerTarget, holdEffect);
+        gSpecialStatuses[gBattlerTarget].focusSashed = TRUE;
+    }
+    else if (holdEffect == HOLD_EFFECT_LONG_NOSE && gBattleMoveDamage >= gBattleMons[gBattlerTarget].hp && (!(gDisableStructs[gBattlerTarget].longNoseActivatedAlready)))
+    {
+        RecordItemEffectBattle(gBattlerTarget, holdEffect);
+        gDisableStructs[gBattlerTarget].longNoseActivatedAlready = TRUE;
         gSpecialStatuses[gBattlerTarget].focusSashed = TRUE;
     }
 #if B_AFFECTION_MECHANICS == TRUE
