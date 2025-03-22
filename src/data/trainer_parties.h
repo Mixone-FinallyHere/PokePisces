@@ -13678,7 +13678,7 @@ static const struct TrainerMon sParty_PKumqot[] = {
     .heldItem = ITEM_RABUTA_BERRY,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 120, 0, 240, 120, 0),
-    .lvl = 80,
+    .lvl = 74,
     .moves = {MOVE_FAKE_TEARS, MOVE_BELCH, MOVE_TORMENT, MOVE_HIT_N_RUN},
     },
     {
@@ -13687,7 +13687,7 @@ static const struct TrainerMon sParty_PKumqot[] = {
     .heldItem = ITEM_BRIGHT_POWDER,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 0, 0, 240, 240, 0),
-    .lvl = 80,
+    .lvl = 74,
     .moves = {MOVE_FREEZING_GLARE, MOVE_OMINOUS_WIND, MOVE_CONFUSE_RAY, MOVE_TOXIC},
     },
     {
@@ -13696,7 +13696,7 @@ static const struct TrainerMon sParty_PKumqot[] = {
     .heldItem = ITEM_LOST_MANTLE,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 0, 120, 0, 0, 120),
-    .lvl = 81,
+    .lvl = 74,
     .moves = {MOVE_ATTACK_ORDER, MOVE_DEFEND_ORDER, MOVE_HEAL_ORDER, MOVE_FOLLOW_ME},
     }
 };
@@ -13708,7 +13708,7 @@ static const struct TrainerMon sParty_PDorian[] = {
     .heldItem = ITEM_COVERT_CLOAK,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 240, 0, 0, 0, 0),
-    .lvl = 80,
+    .lvl = 74,
     .moves = {MOVE_METAL_CLAW, MOVE_ZEN_HEADBUTT, MOVE_NO_RETREAT, MOVE_ICE_FANG},
     },
     {
@@ -13717,7 +13717,7 @@ static const struct TrainerMon sParty_PDorian[] = {
     .heldItem = ITEM_KELPSY_BERRY,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 0, 0, 240, 240, 0),
-    .lvl = 80,
+    .lvl = 74,
     .moves = {MOVE_GEO_PULSE, MOVE_ICE_BEAM, MOVE_DARK_PULSE, MOVE_TERRAIN_PULSE},
     },
     {
@@ -13726,7 +13726,7 @@ static const struct TrainerMon sParty_PDorian[] = {
     .heldItem = ITEM_CHOICE_SPECS,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 0, 0, 240, 240, 0),
-    .lvl = 81,
+    .lvl = 74,
     .moves = {MOVE_BLEAKWIND_STORM, MOVE_NONE, MOVE_NONE, MOVE_NONE},
     }
 };
@@ -13738,7 +13738,7 @@ static const struct TrainerMon sParty_PLytxi[] = {
     .heldItem = ITEM_COVERT_CLOAK,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 240, 0, 0, 240, 0),
-    .lvl = 80,
+    .lvl = 74,
     .moves = {MOVE_SANDSTORM, MOVE_RAZOR_BEAM, MOVE_DUNE_SLICER, MOVE_STONE_AXE},
     },
     {
@@ -13746,7 +13746,7 @@ static const struct TrainerMon sParty_PLytxi[] = {
     .heldItem = ITEM_CLEAR_AMULET,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 240, 0, 240, 0, 0),
-    .lvl = 80,
+    .lvl = 74,
     .moves = {MOVE_CINDER_DRILL, MOVE_SHIFT_GEAR, MOVE_DRILL_PECK, MOVE_BOLT_BEAK},
     },
     {
@@ -13756,7 +13756,7 @@ static const struct TrainerMon sParty_PLytxi[] = {
     .heldItem = ITEM_CORNN_BERRY,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 240, 0, 240, 0, 0),
-    .lvl = 81,
+    .lvl = 74,
     .moves = {MOVE_ODOR_SLEUTH, MOVE_BODY_SLAM, MOVE_BLOOD_MOON, MOVE_STRENGTH},
     }
 };
@@ -13768,7 +13768,7 @@ static const struct TrainerMon sParty_PSherimoya[] = {
     .heldItem = ITEM_BRIGHT_POWDER,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 0, 0, 240, 240, 0),
-    .lvl = 80,
+    .lvl = 74,
     .moves = {MOVE_PSYCHIC_NOISE, MOVE_IMPRISON, MOVE_SIGNAL_BEAM, MOVE_DARK_VOID},
     },
     {
@@ -13777,7 +13777,7 @@ static const struct TrainerMon sParty_PSherimoya[] = {
     .heldItem = ITEM_CHOICE_SPECS,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 0, 0, 0, 240, 0),
-    .lvl = 80,
+    .lvl = 74,
     .moves = {MOVE_SHADOW_BALL, MOVE_THUNDERBOLT, MOVE_FLAMETHROWER, MOVE_EARTH_POWER},
     },
     {
@@ -13785,7 +13785,7 @@ static const struct TrainerMon sParty_PSherimoya[] = {
     .heldItem = ITEM_HONDEW_BERRY,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 0, 0, 0, 240, 0),
-    .lvl = 81,
+    .lvl = 74,
     .moves = {MOVE_FLATTER, MOVE_FEAR_FACTOR, MOVE_MIND_BREAK, MOVE_DETECT},
     },
 };

@@ -4549,8 +4549,8 @@ BattleScript_EffectRazingSun::
 	jumpifdoublesmovesucceed BS_ATTACKER, BattleScript_NoMoveEffect
     call BattleScript_EffectHit_Ret
 	jumpifmovehadnoeffect BattleScript_DoublesSkipEffect
-	jumpifbattleend BattleScript_MoveEnd
 	tryfaintmon BS_TARGET
+	jumpifbattleend BattleScript_MoveEnd
 	setdoublesmovesucceed BS_ATTACKER
 	checkdaybreakcounter 3, BattleScript_RazingSunWith3Daybreak
 	applydaybreakcounter BS_ATTACKER, BattleScript_MoveEnd
