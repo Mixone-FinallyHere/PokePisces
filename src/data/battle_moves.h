@@ -7334,12 +7334,12 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_ZEN_HEADBUTT] =
     {
-        .effect = EFFECT_FLINCH_HIT,
+        .effect = EFFECT_ZEN_HEADBUTT,
         .power = 80,
         .type = TYPE_PSYCHIC,
-        .accuracy = 90,
-        .pp = 15,
-        .secondaryEffectChance = 20,
+        .accuracy = 100,
+        .pp = 10,
+        .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_PHYSICAL,

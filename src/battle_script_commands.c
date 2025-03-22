@@ -17715,15 +17715,25 @@ static void Cmd_curestatuswithmove(void)
     CMD_ARGS(u8 battler, const u8 *failInstr);
     u8 battler = GetBattlerForBattleScript(cmd->battler);
     u32 shouldHeal;
+    u32 shouldHeal2;
 
     if (gBattleMoves[gCurrentMove].effect == EFFECT_AMNESIA)
         shouldHeal = gBattleMons[battler].status1 & STATUS1_PANIC;
     else if (gBattleMoves[gCurrentMove].effect == EFFECT_FLEUR_CANNON || gBattleMoves[gCurrentMove].effect == EFFECT_THIRD_TYPE || gBattleMoves[gCurrentMove].effect == EFFECT_WOOD_HAMMER)
         shouldHeal = gBattleMons[battler].status1 & STATUS1_BLOOMING;
+    else if (gBattleMoves[gCurrentMove].effect == EFFECT_ZEN_HEADBUTT)
+        shouldHeal2 = gBattleMons[battler].status2 & STATUS2_TORMENT || gBattleMons[battler].status2 & STATUS2_CONFUSION || gDisableStructs[battler].tauntTimer != 0;
     else
         shouldHeal = gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE;
 
-    if (shouldHeal)
+    if (shouldHeal2)
+    {
+        gDisableStructs[battler].tauntTimer = 0;
+        gBattleMons[battler].status2 &= ~STATUS2_TORMENT;
+        gBattleMons[battler].status2 &= ~(STATUS2_CONFUSION);
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+    else if (shouldHeal)
     {
         gBattleMons[battler].status1 = 0;
         gBattlescriptCurrInstr = cmd->nextInstr;

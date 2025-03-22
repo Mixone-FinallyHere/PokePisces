@@ -2114,9 +2114,9 @@ static const u8 sPsychoCutDescription[] = _(
     "instead of Def and lowers it.");
 
 static const u8 sZenHeadbuttDescription[] = _(
-    "The user focuses its willpower\n"
-    "to its head and attacks the foe.\n"
-    "This may make the foe flinch.");
+    "This move is boosted if the user\n"
+    "is confused, tormented, or\n"
+    "taunted and removes them after.");
 
 static const u8 sMirrorShotDescription[] = _(
     "Lets loose a flash of energy at\n"

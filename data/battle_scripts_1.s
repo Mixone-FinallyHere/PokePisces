@@ -704,6 +704,17 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectDig                     @ EFFECT_DIG
 	.4byte BattleScript_EffectBabyBlues               @ EFFECT_BABY_BLUES
 	.4byte BattleScript_EffectLethalChain             @ EFFECT_LETHAL_CHAIN
+	.4byte BattleScript_EffectZenHeadbutt             @ EFFECT_ZEN_HEADBUTT
+
+BattleScript_EffectZenHeadbutt::
+	jumpifholdeffect BS_ATTACKER, HOLD_EFFECT_MOON_MIRROR, BattleScript_TrueMoonBeam
+    call BattleScript_EffectHit_Ret
+	tryfaintmon BS_TARGET
+	jumpifmovehadnoeffect BattleScript_MoveEnd
+	curestatuswithmove BS_ATTACKER, BattleScript_MoveEnd
+	printstring STRINGID_PKMNSTATUSNORMAL
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectLethalChain::
 	setmoveeffect MOVE_EFFECT_LETHAL_CHAIN
