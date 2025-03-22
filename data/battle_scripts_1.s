@@ -19298,7 +19298,7 @@ BattleScript_NanabBerryActivatesRet::
 
 BattleScript_HondewBerryActivatesRet::
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
-	printstring STRINGID_PKMNSURROUNDEDWITHVEILOFWATER
+	printstring STRINGID_PKMNSURROUNDEDWITHVEILS
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_SCRIPTING
 BattleScript_HondewBerryEnd::
