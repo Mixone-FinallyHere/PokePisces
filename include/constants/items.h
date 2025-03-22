@@ -991,8 +991,9 @@
 #define ITEM_POKER_CARD 873
 #define ITEM_CRYPTIC_PLATE 874
 #define ITEM_CHUPACABRA 875
+#define ITEM_WINTAMEL_TEA 876
 
-#define ITEMS_COUNT 876
+#define ITEMS_COUNT 877
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // need to add yellow soda and rizz berry to berry list
