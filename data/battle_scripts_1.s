@@ -1979,7 +1979,6 @@ BattleScript_EffectStormFury::
 	jumpifweatheraffected BS_ATTACKER, B_WEATHER_RAIN, BattleScript_StormFurySpread
 	goto BattleScript_EffectRampage
 BattleScript_StormFurySpread::
-	setmoveeffect MOVE_EFFECT_WILD_CHARGE | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
 	attackcanceler
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
@@ -1987,7 +1986,25 @@ BattleScript_StormFurySpread::
 	ppreduce
 BattleScript_StormFurySpread2:
 	confuseifrepeatingattackends
-	goto BattleScript_HitFromCritCalc
+	critcalc
+	damagecalc
+	adjustdamage
+	attackanimation
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	setmoveeffect MOVE_EFFECT_WILD_CHARGE | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectWildCharge::
 	setmoveeffect MOVE_EFFECT_WILD_CHARGE | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
