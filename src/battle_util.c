@@ -5593,43 +5593,29 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 }
                 break;
             case ABILITY_RESET:
-                if (gBattleMons[battler].hp < gBattleMons[battler].maxHP && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK && !(gBattleMons[battler].status1 & STATUS1_ANY)))
+                if (!BATTLER_MAX_HP(battler) 
+                && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK) 
+                && IsBattlerAlive(battler))
                 {
                     gBattleMoveDamage = gBattleMons[battler].maxHP;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     gBattleMoveDamage *= -1;
-                    BattleScriptPushCursorAndCallback(BattleScript_ResetActivates);
+                    BattleScriptPushCursorAndCallback(BattleScript_RainDishActivates);
                     effect++;
                 }
-                else if (gBattleMons[battler].status1 & STATUS1_ANY && ((!(gBattleMons[battler].hp < gBattleMons[battler].maxHP)) || !(gStatuses3[battler] & STATUS3_HEAL_BLOCK)))
+                if (gBattleMons[battler].status1 & STATUS1_ANY)
                 {
                     BufferStatusCondition(battler, FALSE);
                     gBattleMons[battler].status1 = 0;
                     gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
                     gBattleScripting.battler = battler;
-                    BattleScriptPushCursorAndCallback(BattleScript_ResetActivates2);
+                    BattleScriptPushCursorAndCallback(BattleScript_ShedSkinActivates);
                     BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[battler].status1);
                     MarkBattlerForControllerExec(battler);
                     effect++;
                 }
-                else if (gBattleMons[battler].hp < gBattleMons[battler].maxHP && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK && gBattleMons[battler].status1 & STATUS1_ANY))
-                {
-                    gBattleMoveDamage = gBattleMons[battler].maxHP;
-                    if (gBattleMoveDamage == 0)
-                        gBattleMoveDamage = 1;
-                    gBattleMoveDamage *= -1;
-
-                    BufferStatusCondition(battler, FALSE);
-                    gBattleMons[battler].status1 = 0;
-                    gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
-                    gBattleScripting.battler = battler;
-                    BattleScriptPushCursorAndCallback(BattleScript_ResetActivates3);
-                    BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[battler].status1);
-                    MarkBattlerForControllerExec(battler);
-                    effect++;
-                }
-                else
+                if (CountBattlerStatIncreases(battler, TRUE) > 0 || CountBattlerStatDecreases(battler, TRUE) > 0)
                 {
                     BattleScriptPushCursorAndCallback(BattleScript_NormaliseBuffs);
                     effect++;

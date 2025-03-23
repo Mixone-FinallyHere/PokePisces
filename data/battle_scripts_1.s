@@ -18696,33 +18696,8 @@ BattleScript_AbilityHealHP_End2::
 	call BattleScript_AbilityHealHP_Ret
 	end2
 
-BattleScript_ResetActivates::
-	call BattleScript_AbilityHealHP_Ret
-	tryresetstatstages BS_ATTACKER
-	printstring STRINGID_USERSTATCHANGESGONE
-	waitmessage B_WAIT_TIME_LONG
-	end3
-
-BattleScript_ResetActivates2::
-	printstring STRINGID_PKMNSXCUREDYPROBLEM
-	waitmessage B_WAIT_TIME_LONG
-	updatestatusicon BS_ATTACKER
-	tryresetstatstages BS_ATTACKER
-	printstring STRINGID_USERSTATCHANGESGONE
-	waitmessage B_WAIT_TIME_LONG
-	end3
-
-BattleScript_ResetActivates3::
-	call BattleScript_AbilityHealHP_Ret
-	printstring STRINGID_PKMNSXCUREDYPROBLEM
-	waitmessage B_WAIT_TIME_LONG
-	updatestatusicon BS_ATTACKER
-	tryresetstatstages BS_ATTACKER
-	printstring STRINGID_USERSTATCHANGESGONE
-	waitmessage B_WAIT_TIME_LONG
-	end3
-
 BattleScript_NormaliseBuffs::
+	call BattleScript_AbilityPopUp
 	tryresetstatstages BS_ATTACKER
 	printstring STRINGID_USERSTATCHANGESGONE
 	waitmessage B_WAIT_TIME_LONG
