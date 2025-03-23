@@ -111,7 +111,7 @@ static const u8 sFriendBallDesc[] = _(
 
 static const u8 sLoveBallDesc[] = _(
     "A lovely Poké Ball\n"
-    "that is more effective\n"
+    "that is more\n"
     "effective on\n"
     "infatuated Pokémon.");
 
