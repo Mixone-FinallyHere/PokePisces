@@ -7226,7 +7226,7 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_LEVEL_FEMALE_BERSERK_GENE:
-                if (gEvolutionTable[species][i].param <= level && GetMonGender(mon) == MON_FEMALE && evolutionItem == ITEM_BERSERK_GENE)
+                if (gEvolutionTable[species][i].param <= level && GetMonGender(mon) == MON_FEMALE && heldItem == ITEM_BERSERK_GENE)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_LEVEL_MALE_KINGS_ROCK:
