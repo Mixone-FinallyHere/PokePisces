@@ -13346,22 +13346,22 @@ static uq4_12_t GetWeatherDamageModifier(u32 battlerAtk, u32 move, u32 moveType,
     if (weather & B_WEATHER_RAIN)
     {
         if (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_WATER) && moveType == TYPE_WATER)
-            return UQ_4_12(1.5);
+            return UQ_4_12(1.35);
         else if (moveType == TYPE_WATER)
-            return UQ_4_12(1.3);
+            return UQ_4_12(1.2);
         else if (moveType == TYPE_FIRE)
-            return UQ_4_12(0.7);
+            return UQ_4_12(0.5);
     }
     if (weather & B_WEATHER_SUN)
     {
         if (moveType == TYPE_GRASS && GetBattlerAbility(battlerAtk) == ABILITY_CHLOROPHYLL)
             return UQ_4_12(1.5);
         else if (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_FIRE) && moveType == TYPE_FIRE)
-            return UQ_4_12(1.5);
+            return UQ_4_12(1.35);
         else if (moveType == TYPE_FIRE)
-            return UQ_4_12(1.3);
+            return UQ_4_12(1.2);
         else if (moveType == TYPE_WATER)
-            return UQ_4_12(0.7);
+            return UQ_4_12(0.5);
     }
     return UQ_4_12(1.0);
 }
