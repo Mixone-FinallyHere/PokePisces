@@ -9432,28 +9432,26 @@ BattleScript_EffectToxicSpikes:
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectMagnetRise:
-	setstatchanger STAT_SPEED, 2, FALSE
+	setstatchanger STAT_SPEED, 1, FALSE
 	attackcanceler
 	attackstring
-	setuserstatus3 STATUS3_MAGNET_RISE, BattleScript_EffectStatUpAfterAtkCanceler
+	ppreduce
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_MagnetRiseRising
+	jumpifbyte CMP_NOT_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_MagnetRiseAttackAnim
+	pause B_WAIT_TIME_SHORT
+	goto BattleScript_MagnetRisePrintString
+BattleScript_MagnetRiseAttackAnim::
 	attackanimation
 	waitanimation
-	printstring STRINGID_PKMNLEVITATEDONELECTROMAGNETISM
-	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MagnetRiseEffectStatUpAfterAtkCanceler
-BattleScript_MagnetRiseEffectStatUpAfterAtkCanceler::
-	ppreduce
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_MagnetRiseStatUpEnd
-	jumpifbyte CMP_NOT_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_MagnetRiseStatUpDoAnim
-	pause B_WAIT_TIME_SHORT
-	goto BattleScript_MagnetRiseStatUpPrintString
-BattleScript_MagnetRiseStatUpDoAnim::
 	setgraphicalstatchangevalues
 	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-BattleScript_MagnetRiseStatUpPrintString::
+BattleScript_MagnetRisePrintString::
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_MagnetRiseStatUpEnd::
+BattleScript_MagnetRiseRising::
+	setuserstatus3 STATUS3_MAGNET_RISE, BattleScript_MoveEnd
+	printstring STRINGID_PKMNLEVITATEDONELECTROMAGNETISM
+	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectTrickRoom::

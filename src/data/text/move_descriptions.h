@@ -1951,7 +1951,7 @@ static const u8 sAquaRingDescription[] = _(
 static const u8 sMagnetRiseDescription[] = _(
     "The user levitates using\n"
     "electrically generated magnetism\n"
-    "for 5 turns. Sharply boosts Spd.");
+    "for 5 turns. Boosts Speed.");
 
 static const u8 sFlareBlitzDescription[] = _(
     "A blazing charge that damages\n"
