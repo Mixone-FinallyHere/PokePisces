@@ -2878,8 +2878,8 @@ static const u8 sPlayRoughDescription[] = _(
 
 static const u8 sFairyWindDescription[] = _(
     "The user attacks by stirring up\n"
-    "a fairy wind to strike the\n"
-    "target and minimize it.");
+    "a fairy wind to strike targets\n"
+    "and minimize it.");
 
 static const u8 sMoonblastDescription[] = _(
     "Borrowing the power of the moon,\n"
@@ -4386,9 +4386,9 @@ static const u8 sExorcismDescription[] = _(
     "effective on Ghost-types.");
 
 static const u8 sLoveTapDescription[] = _(
-    "Confuses and infatuates the foe.\n"
-    "This move goes first, but works\n"
-    "only on the first turn.");
+    "An attack that confuses and\n"
+    "infatuates the foe. This move\n"
+    "works only on the first turn.");
 
 static const u8 sHeatSinkDescription[] = _(
     "The user dissipates the body\n"

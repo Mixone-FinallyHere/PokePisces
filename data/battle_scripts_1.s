@@ -4605,12 +4605,9 @@ BattleScript_EffectLoveTap::
 	setmoveeffect MOVE_EFFECT_CONFUSION
 	attackcanceler
 	jumpifnotfirstturn BattleScript_FailedFromAtkString
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
 	ppreduce
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_HitFromCritCalc
-	jumpifsafeguard BattleScript_HitFromCritCalc
-	tryinfatuating BattleScript_HitFromCritCalc
 	critcalc
 	damagecalc
 	adjustdamage
@@ -4627,6 +4624,9 @@ BattleScript_EffectLoveTap::
 	waitmessage B_WAIT_TIME_LONG
 	seteffectwithchance
 	tryfaintmon BS_TARGET
+	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_MoveEnd
+	jumpifsafeguard BattleScript_MoveEnd
+	tryinfatuating BattleScript_MoveEnd
 	printstring STRINGID_PKMNFELLINLOVE
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryDestinyKnotInfatuateAttacker
@@ -10028,7 +10028,6 @@ BattleScript_HornLeechLowerDefense::
 	goto BattleScript_Absorb
 BattleScript_DrainingKissAbsorb::
 	setmoveeffect MOVE_EFFECT_ATK_MINUS_1
-	goto BattleScript_Absorb
 BattleScript_Absorb::
 	call BattleScript_EffectHit_Ret
 	seteffectwithchance
