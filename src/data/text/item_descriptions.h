@@ -3606,10 +3606,10 @@ static const u8 sTM64Desc[] = _(
     "frostbitten.");
 
 static const u8 sTM65Desc[] = _(
-    "The user slashes with\n"
-    "a sharp claw made\n"
-    "from shadows. Critical\n"
-    "hits land more easily.");
+    "Slashes with a shadowy\n"
+    "claw. Crits more often.\n"
+    "If it is a crit, deals\n"
+    "bonus true damage.");
 
 static const u8 sTM66Desc[] = _(
     "The user focuses its\n"
