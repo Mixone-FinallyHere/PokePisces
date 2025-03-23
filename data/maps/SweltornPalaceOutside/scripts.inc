@@ -74,25 +74,43 @@ SweltornPalaceOutside_Text_MustContinueTraining:
 	.string "be reached...$"
 
 SweltornPalaceOutside_Text_CyIntro:
-	.string "intro$"
+	.string "Hey, wait a second.\n"
+	.string "Aren't you, uh...\l"
+	.string "Professor Birch's child...?$"
 
 SweltornPalaceOutside_Text_CyDefeated:
-	.string "defeat$"
+	.string "Whoa! You're stronger than\n"
+	.string "I thought! Figured you would\l"
+	.string "be more of a bookworm.$"
 
 SweltornPalaceOutside_Text_CyPostBattle:
-	.string "post$"
+	.string "Now, this makes me wonder.\n"
+	.string "Is the Professor himself hiding\l"
+	.string "some sort of battling talent?\l"
+	.string "Hmm. Maybe I should go pay\l"
+	.string "him a visit.$"
 
 SweltornPalaceOutside_Text_WendyAndGaleIntro:
-	.string "intro$"
+	.string "WENDY: Fascinating! High winds,\n"
+	.string "yet no sandstorm unlike below!\l"
+	.string "GALE: Let's take advantage of\l"
+	.string "the opportunity, mmmyes!$"
 
 SweltornPalaceOutside_Text_WendyAndGaleDefeated:
-	.string "defeat$"
+	.string "WENDY: We got blown over like\n"
+	.string "a sheet of paper!\l"
+	.string "GALE: My mistake... I thought\l"
+	.string "the wind would carry us...$"
 
 SweltornPalaceOutside_Text_WendyAndGalePostBattle:
-	.string "post$"
+	.string "WENDY: Try not to lose anything\n"
+	.string "lightweight to the wind!\l"
+	.string "GALE: My calculations say that\l"
+	.string "it will not stay for long...$"
 
 SweltornPalaceOutside_Text_WendyAndGaleNeedTwoMons:
-	.string "need 2 dood$"
+	.string "(They're busy testing the\n"
+	.string "winds' velocity...)$"
 
 SweltornPalaceOutside_Text_KakuIntro:
 	.string "This shall be one for\n"

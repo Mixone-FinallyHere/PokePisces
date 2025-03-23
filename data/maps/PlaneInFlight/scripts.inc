@@ -9,6 +9,7 @@ PlaneInFlight_OnFrame:
 PlaneInFlight_EventScript_FlightTime::
 	lock
 	delay 32
+	setvar VAR_NEW_COO_STATE, 10
 	setrespawn HEAL_LOCATION_EVER_GRANDE_REST_AREA
 	setflag FLAG_EGR_NO_FLY
 	speakername PlaneInFlight_Text_NameArchie

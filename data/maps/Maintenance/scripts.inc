@@ -79,6 +79,17 @@ Maintenance_EventScript_AlreadyGaveBerserkGene::
 	release
 	end
 
+Maintenance_EventScript_FloorPlan::
+	msgbox Maintenance_Text_FloorPlan, MSGBOX_SIGN
+	end
+
+Maintenance_Text_FloorPlan:
+	.string "(It's a rough floor plan\n"
+	.string "of the Maintenance area...)\p"
+	.string "(The break lounge is at the\n"
+	.string "north end. Maybe that's where\l"
+	.string "one could find the Storyteller...)$"
+
 Maintenance_Text_ResearchBreakthrough:
 	.string "I have been doing intense research\n"
 	.string "into the Pokemon genome...\l"
@@ -113,109 +124,142 @@ Maintenance_Text_AlreadyGaveBerserkGene:
 	.string "other species...$"
 
 Maintenance_Text_FigliosiIntro:
-	.string "intro$"
+	.string "Stinks I can't bike in here...\n"
+	.string "you wouldn't know it, maybe, but\l"
+	.string "I'm a BMX Superstar! WAHOO!$"
 
 Maintenance_Text_FigliosiDefeated:
-	.string "defeat$"
+	.string "Mama mia... that was spicy!$"
 
 Maintenance_Text_FigliosiPostBattle:
-	.string "post$"
+	.string "Have you met my bruddah, Lane,\n"
+	.string "somewhere out there?\l"
+	.string "He likes jokin' around!$"
 
 Maintenance_Text_OllyIntro:
-	.string "intro$"
+	.string "GET RRRRRRREADY...\n"
+	.string "FOR A SHOCKING...! BATTLE!!!$"
 
 Maintenance_Text_OllyDefeated:
-	.string "defeat$"
+	.string "GZZZRT! SHORT-CIRCUITED!$"
 
 Maintenance_Text_OllyPostBattle:
-	.string "post$"
+	.string "THAT BLEW UP IN MY FACE!\n$"
 
 Maintenance_Text_PollyIntro:
-	.string "intro$"
+	.string "Don't go touching anything\n"
+	.string "you're not supposed to!$"
 
 Maintenance_Text_PollyDefeated:
-	.string "defeat$"
+	.string "You made me look like a tool!$"
 
 Maintenance_Text_PollyPostBattle:
-	.string "post$"
+	.string "Olly keeps breaking anything\n"
+	.string "electrical that he touches. It's\l"
+	.string "like he has a high voltage current\l"
+	.string "running through him at all times!$"
 
 Maintenance_Text_EdwardIntro:
-	.string "intro$"
+	.string "20 long years of crankin' gears...\n"
+	.string "dum dee dum dee doo...$"
 
 Maintenance_Text_EdwardDefeated:
-	.string "defeat$"
+	.string "Singin' is how I keep my mind\n"
+	.string "occupied on the job!$"
 
 Maintenance_Text_EdwardPostBattle:
-	.string "post$"
+	.string "20 long years of crankin' gears...\n"
+	.string "dum dee dum dee doo...$"
 
 Maintenance_Text_YancyIntro:
-	.string "intro$"
+	.string "To battle? It takes two, it takes\n"
+	.string "two, me-n-you!$"
 
 Maintenance_Text_YancyDefeated:
-	.string "defeat$"
+	.string "Ah! I see now!\p"
+	.string "It also takes two to beat me;\n"
+	.string "you, AND, your Pokemon!$"
 
 Maintenance_Text_YancyPostBattle:
-	.string "post$"
+	.string "The tango has always been hard\n"
+	.string "for me to master...$"
 
 Maintenance_Text_ErnestIntro:
-	.string "intro$"
+	.string "A Hardhatter's job is never done!$"
 
 Maintenance_Text_ErnestDefeated:
-	.string "defeat$"
+	.string "It ain't much, but it's honest work.$"
 
 Maintenance_Text_ErnestPostBattle:
-	.string "post$"
+	.string "Maybe I should try runnin'\n"
+	.string "for mayor.$"
 
 Maintenance_Text_LattyIntro:
-	.string "intro$"
+	.string "I'm about to mop the floor\n"
+	.string "with you!$"
 
 Maintenance_Text_LattyDefeated:
-	.string "defeat$"
+	.string "Huh!\p"
+	.string "...Maybe I n-need to work\n"
+	.string "on my trash talk?$"
 
 Maintenance_Text_LattyPostBattle:
-	.string "post$"
+	.string "Hey, I thought the little\n"
+	.string "pun was humorous...$"
 
 Maintenance_Text_AliceIntro:
-	.string "intro$"
+	.string "C'mon, let's mosh!$"
 
 Maintenance_Text_AliceDefeated:
-	.string "defeat$"
+	.string "Ow! Ow!\n"
+	.string "Owww!$"
 
 Maintenance_Text_AlicePostBattle:
-	.string "post$"
+	.string "Don't get too rough in the pit!\n"
+	.string "We're all just here to have fun.$"
 
 Maintenance_Text_AnonIntro:
-	.string "intro$"
+	.string "Your package has arrived\n"
+	.string "at the warehouse.\p"
+	.string "Please confirm your address.$"
 
 Maintenance_Text_AnonDefeated:
-	.string "defeat$"
+	.string "Delivery failed!$"
 
 Maintenance_Text_AnonPostBattle:
-	.string "post$"
+	.string "Abort! Abort!\n"
+	.string "Abandon ship! AAAGGHH!$"
 
 Maintenance_Text_RobinIntro:
-	.string "intro$"
+	.string "You're no match for these\n"
+	.string "Pokemon I “acquired”!$"
 
 Maintenance_Text_RobinDefeated:
-	.string "defeat$"
+	.string "Oops, ehhh... may have\n"
+	.string "mixed up my Balls...$"
 
 Maintenance_Text_RobinPostBattle:
-	.string "post$"
+	.string "Eyy, that waddn't a fair fight!\n"
+	.string "What gives? You didn't “give”\l"
+	.string "me one'a your dudes first!$"
 
 Maintenance_Text_CharityIntro:
-	.string "intro$"
+	.string "Hmmm....? Oh! Is it a trainer?$"
 
 Maintenance_Text_CharityDefeated:
-	.string "defeat$"
+	.string "Ah, it was!$"
 
 Maintenance_Text_CharityPostBattle:
-	.string "post$"
+	.string "Sorry... I can't see very well,\n"
+	.string "so I rely on scents to\l"
+	.string "identify others.$"
 
 Maintenance_Text_SinIntro:
-	.string "intro$"
+	.string "Do you think you're a star?\n"
+	.string "We'll see about that...$"
 
 Maintenance_Text_SinDefeated:
-	.string "defeat$"
+	.string "You may be a star after all!$"
 
 Maintenance_Text_SinPostBattle:
-	.string "post$"
+	.string "What star sign are you? Pisces?$"

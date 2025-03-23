@@ -377,6 +377,29 @@ FallarborNew_EventScript_Pig2::
 	msgbox FallarborNew_Text_Pig2, MSGBOX_NPC
 	end
 
+FallarborNew_EventScript_FallarborSign::
+	msgbox FallarborNew_Text_FallarborSign, MSGBOX_SIGN
+	end
+
+FallarborNew_EventScript_JaggroSign::
+	msgbox FallarborNew_Text_JaggroSign, MSGBOX_SIGN
+	end
+
+FallarborNew_EventScript_CozmosHouseSign::
+	msgbox FallarborNew_Text_CozmosHouseSign, MSGBOX_SIGN
+	end
+
+FallarborNew_Text_FallarborSign:
+	.string "FALLARBOR TOWN\n"
+	.string "A land humble and refined.$"
+
+FallarborNew_Text_JaggroSign:
+	.string "Continue West to\n"
+	.string "reach Jaggro Pass$"
+
+FallarborNew_Text_CozmosHouseSign:
+	.string "Professor Cozmo's House$"
+
 FallarborNew_Text_NameTabitha:
 	.string "Tabitha$"
 

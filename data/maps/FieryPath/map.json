@@ -534,21 +534,21 @@
     },
     {
       "x": 46,
-      "y": 7,
+      "y": 9,
       "elevation": 0,
       "dest_map": "MAP_CRIMNEY_CALDERA",
       "dest_warp_id": "0"
     },
     {
       "x": 47,
-      "y": 7,
+      "y": 9,
       "elevation": 0,
       "dest_map": "MAP_CRIMNEY_CALDERA",
       "dest_warp_id": "0"
     },
     {
       "x": 48,
-      "y": 7,
+      "y": 9,
       "elevation": 0,
       "dest_map": "MAP_CRIMNEY_CALDERA",
       "dest_warp_id": "0"
@@ -565,6 +565,29 @@
 
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 14,
+      "y": 6,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "FieryPath_EventScript_FallarborSign"
+    },
+    {
+      "type": "sign",
+      "x": 81,
+      "y": 49,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "FieryPath_EventScript_MasonriedSign"
+    },
+    {
+      "type": "sign",
+      "x": 72,
+      "y": 28,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "FieryPath_EventScript_LavaridgeSign"
+    }
   ]
 }

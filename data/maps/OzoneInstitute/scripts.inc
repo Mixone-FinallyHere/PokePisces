@@ -186,35 +186,93 @@ OzoneInstitute_EventScript_DessAndEmber::
     msgbox OzoneInstitute_Text_DessAndEmberPostBattle, MSGBOX_AUTOCLOSE
     end
 
+OzoneInstitute_EventScript_OzoneSign::
+	msgbox OzoneInstitute_Text_OzoneSign, MSGBOX_SIGN
+	end
+
+OzoneInstitute_EventScript_FortreeSign::
+	msgbox OzoneInstitute_Text_FortreeSign, MSGBOX_SIGN
+	end
+
+OzoneInstitute_EventScript_ArctaigaSign::
+	msgbox OzoneInstitute_Text_ArctaigaSign, MSGBOX_SIGN
+	end
+
+OzoneInstitute_EventScript_SweltornSign::
+	msgbox OzoneInstitute_Text_SweltornSign, MSGBOX_SIGN
+	end
+
+OzoneInstitute_EventScript_MasonriedSign::
+	msgbox OzoneInstitute_Text_MasonriedSign, MSGBOX_SIGN
+	end
+
+OzoneInstitute_Text_OzoneSign:
+	.string "OZONE INSTITUTE\n"
+	.string "The epicenter of all things weather!$"
+
+OzoneInstitute_Text_FortreeSign:
+	.string "NORTH - FORTREE CITY\n"
+	.string "A biome beset with heavy rain.$"
+
+OzoneInstitute_Text_ArctaigaSign:
+	.string "EAST - ARCTAIGA ROAD\n"
+	.string "A biome beset with snow and hail.$"
+
+OzoneInstitute_Text_SweltornSign:
+	.string "SOUTH - SWELTORN DESERT\n"
+	.string "A biome beset with sandstorms.$"
+
+OzoneInstitute_Text_MasonriedSign:
+	.string "WEST - MASONRIED HIKE\n"
+	.string "A biome beset with harsh sunlight.$"
+
 OzoneInstitute_Text_GaleIntro:
-	.string "intro$"
+	.string "You're in the eye of the storm\n"
+	.string "right now! That means things\l"
+	.string "can only get worse!$"
 
 OzoneInstitute_Text_GaleDefeated:
-	.string "defeat$"
+	.string "My storm dissipated...$"
 
 OzoneInstitute_Text_GalePostBattle:
-	.string "post$"
+	.string "Ozone Institute is smack dab\n"
+	.string "in the middle of four types of\l"
+	.string "weather. It's why we set up\l"
+	.string "shop here to begin with!$"
 
 OzoneInstitute_Text_SmokeyIntro:
-	.string "intro$"
+	.string "Why is it that every time\n"
+	.string "I try and get some calm me-time,\l"
+	.string "some half-wit comes over?$"
 
 OzoneInstitute_Text_SmokeyDefeated:
-	.string "defeat$"
+	.string "That's 5 minutes of my break I'm\n"
+	.string "not taking now...$"
 
 OzoneInstitute_Text_SmokeyPostBattle:
-	.string "post$"
+	.string "What, you want to be healed?\n"
+	.string "I got... mmm, 30 more minutes\l"
+	.string "of off-the-clock time. Uh-uh.$"
 
 OzoneInstitute_Text_DessAndEmberIntro:
-	.string "intro$"
+	.string "DESS: Honey, you've got a\n"
+	.string "      big storm comin'!\l"
+	.string "EMBER: Oh, it's gonna be COLD.$"
 
 OzoneInstitute_Text_DessAndEmberDefeated:
-	.string "defeat$"
+	.string "DESS: My forecast was correct!\n"
+	.string "EMBER: ...But you braved that storm!$"
 
 OzoneInstitute_Text_DessAndEmberPostBattle:
-	.string "post$"
+	.string "EMBER: Maybe I should have worn\n"
+	.string "       more layers...\p"
+	.string "DESS: Um, Ember? You train\n"
+	.string "      Ice type Pokemon.$"
 
 OzoneInstitute_Text_DessAndEmberNeedTwoMons:
-	.string "need 2 dood$"
+	.string "DESS: You're not ready to hear\n"
+	.string "      my forecast.\l"
+	.string "EMBER: Maybe bring a friend with you?$"
 
 OzoneInstitute_Text_NameRay:
 	.string "Ray$"

@@ -484,7 +484,7 @@
       "y": 16,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "NewMauvilleFloor1_EventScript_RoofElevatorSign"
     },
     {
       "type": "sign",
@@ -492,7 +492,7 @@
       "y": 16,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "NewMauvilleFloor1_EventScript_RoofElevatorSign"
     },
     {
       "type": "sign",
@@ -500,7 +500,7 @@
       "y": 45,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-      "script": "NULL"
+      "script": "NewMauvilleFloor1_EventScript_RoofElevatorSign"
     },
     {
       "type": "sign",
@@ -508,7 +508,7 @@
       "y": 45,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-      "script": "NULL"
+      "script": "NewMauvilleFloor1_EventScript_RoofElevatorSign"
     },
     {
       "type": "sign",
@@ -516,7 +516,7 @@
       "y": 52,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "NewMauvilleFloor1_EventScript_RydelCyclesSign"
     },
     {
       "type": "sign",
@@ -524,7 +524,7 @@
       "y": 2,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "NewMauvilleFloor1_EventScript_2F3FElevatorSign"
     },
     {
       "type": "sign",
@@ -532,7 +532,7 @@
       "y": 2,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "NewMauvilleFloor1_EventScript_MaintenanceElevatorSign"
     },
     {
       "type": "sign",
@@ -540,7 +540,7 @@
       "y": 22,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "NewMauvilleFloor1_EventScript_FoodMenu1"
     },
     {
       "type": "sign",
@@ -548,7 +548,7 @@
       "y": 22,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "NewMauvilleFloor1_EventScript_FoodMenu3"
     },
     {
       "type": "sign",
@@ -556,7 +556,7 @@
       "y": 22,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "NewMauvilleFloor1_EventScript_FoodMenu2"
     },
     {
       "type": "sign",
@@ -564,7 +564,7 @@
       "y": 22,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "NewMauvilleFloor1_EventScript_FoodMenu4"
     },
     {
       "type": "sign",
@@ -572,7 +572,15 @@
       "y": 49,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "NewMauvilleFloor1_EventScript_GoldToothSign"
+    },
+    {
+      "type": "sign",
+      "x": 32,
+      "y": 8,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "NewMauvilleFloor1_EventScript_GoldToothSign"
     }
   ]
 }

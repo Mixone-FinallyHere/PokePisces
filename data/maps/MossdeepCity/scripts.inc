@@ -753,6 +753,13 @@ MossdeepCity_EventScript_StevenHouseSign::
 	msgbox MossdeepCity_Text_StevenHouseSign, MSGBOX_SIGN
 	end
 
+MossdeepCity_EventScript_MangrottoSign::
+	msgbox MossdeepCity_Text_MangrottoSign, MSGBOX_SIGN
+	end
+
+MossdeepCity_Text_MangrottoSign:
+	.string "ENTRANCE TO MANGROTTO TUNNEL$"
+
 MossdeepCity_Text_WestEntrance:
 	.string "MOSSDEEP CITY - West Entrance\n"
 	.string "Continue West for Cosmoss Bridge$"

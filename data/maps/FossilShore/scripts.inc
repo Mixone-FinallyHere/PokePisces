@@ -47,6 +47,13 @@ FossilShore_EventScript_GaveBigPearl::
 	release
 	end
 
+FossilShore_EventScript_DrakeSign::
+	msgbox FossilShore_Text_DrakeSign, MSGBOX_SIGN
+	end
+
+FossilShore_Text_DrakeSign:
+	.string "The Abode of the Great Drake$"
+
 FossilShore_Text_GaveBigPearl:
 	.string "We have a fondness for you\n"
 	.string "for always helping Shellylouh!$"
