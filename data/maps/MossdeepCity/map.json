@@ -862,6 +862,14 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "MossdeepCity_EventScript_StevenHouseSign"
+    },
+    {
+      "type": "sign",
+      "x": 9,
+      "y": 32,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MossdeepCity_EventScript_MangrottoSign"
     }
   ]
 }

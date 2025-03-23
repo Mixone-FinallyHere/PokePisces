@@ -429,6 +429,14 @@ SweltornDesert_EventScript_ReleaseOut::
 	release
 	end
 
+SweltornDesert_EventScript_OzoneSign::
+	msgbox SweltornDesert_Text_OzoneSign, MSGBOX_SIGN
+	end
+
+SweltornDesert_Text_OzoneSign:
+	.string "This tunnel leads to the\n"
+	.string "Ozone Institute.$"
+
 SweltornDesert_Text_TakePebblerite:
 	.string "(It's a giant meteor!\n"
 	.string "It is glowing green with\l"
@@ -441,7 +449,7 @@ SweltornDesert_Text_PebbleriteGotten:
 	.string "(You've already taken the gem.)$"
 
 SweltornDesert_Text_SantoIntro:
-	.string "Hold it kid! Sweltorn Desert is\n"
+	.string "Hold it, kid! Sweltorn Desert is\n"
 	.string "experiencing a pretty severe\l"
 	.string "sandstorm right now.\p"
 	.string "Do you have a pair of Go-Goggles?$"
@@ -450,52 +458,63 @@ SweltornDesert_Text_SantoDefeated:
 	.string "Good, it seems you're prepared...$"
 
 SweltornDesert_Text_SantoPostBattle:
-	.string "Sandstorms around this area used to be \n"
-	.string "pretty minor, but now they're out of\l"
-	.string "control...\p"
+	.string "Sandstorms around this area used to\n"
+	.string "be pretty minor, but now they're\l"
+	.string "out of control...\p"
 	.string "...But don't worry, kid!\n"
 	.string "Team Ozone will have everything\l"
 	.string "under control in no time!$"
 
 SweltornDesert_Text_DorothyIntro:
-	.string "intro$"
+	.string "Do you have the grace and serenity\n"
+	.string "to withstand my Pokemon?$"
 
 SweltornDesert_Text_DorothyDefeated:
-	.string "defeat$"
+	.string "Even with my myriad of\n"
+	.string "added effects...?$"
 
 SweltornDesert_Text_DorothyPostBattle:
-	.string "post$"
+	.string "If you happen upon a Pokemon\n"
+	.string "with Serene Grace, you shalt not\l"
+	.string "find yourself dissapointed...$"
 
 SweltornDesert_Text_ErinIntro:
-	.string "Who do you think these big ol' bones\n"
-	.string "belong to?$"
+	.string "Who do you think these\n"
+	.string "big ol' bones belong to?$"
 
 SweltornDesert_Text_ErinDefeated:
 	.string "I wasn't talking about myself!$"
 
 SweltornDesert_Text_ErinPostBattle:
 	.string "I'm trying to find out what sort of \n"
-	.string "colossal Pokémon these bones once \n"
-	.string "were...\n"
+	.string "colossal Pokémon these bones\n"
+	.string "once were...\n"
 	.string "Or maybe it wasn't a Pokémon at all...?$"
 
 SweltornDesert_Text_AaronIntro:
-	.string "intro$"
+	.string "Dust is nothin' to a guy\n"
+	.string "without sight!$"
 
 SweltornDesert_Text_AaronDefeated:
-	.string "defeat$"
+	.string "Yes, I heard that defeat.\n"
+	.string "Loud and clear.$"
 
 SweltornDesert_Text_AaronPostBattle:
-	.string "post$"
+	.string "Craverave is a great Pokemon to\n"
+	.string "have as a partner, as a blind guy.\l"
+	.string "They're great at communicating.$"
 
 SweltornDesert_Text_ThadIntro:
-	.string "intro$"
+	.string "There are some wicked creatures\n"
+	.string "lying just below the sand!$"
 
 SweltornDesert_Text_ThadDefeated:
-	.string "defeat$"
+	.string "I've been buried!$"
 
 SweltornDesert_Text_ThadPostBattle:
-	.string "post$"
+	.string "If something gets dragged too\n"
+	.string "deep into the sea of sand,\l"
+	.string "you may never see it again.$"
 
 SweltornDesert_Text_LeelaIntro:
 	.string "Is this the right address?\n"
@@ -507,7 +526,7 @@ SweltornDesert_Text_LeelaDefeated:
 
 SweltornDesert_Text_LeelaPostBattle:
 	.string "Hmm, this isn't right...\n"
-	.string "I'm trying to find ''Yes Town''.\p"
+	.string "I'm trying to find “Yes Town”.\p"
 	.string "You don't suppose someone's punking\n"
 	.string "me, do you?$"
 
@@ -529,22 +548,28 @@ SweltornDesert_Text_StaphDefeated:
 SweltornDesert_Text_StaphPostBattle:
 	.string "Have you been drinking water?\n"
 	.string "Yeah, I bet you haven't, you're sweating\l"
-	.string "like a Sadsod. Take some of mine.$"
+	.string "like a Sadsod. Stock up.$"
 
 SweltornDesert_Text_HwarangIntro:
-	.string "intro$"
+	.string "Spend enough time in dust devils,\n"
+	.string "and the irritants stop irritating.\p"
+	.string "I feel more rock than man!\n"
+	.string "Let's test out my strength...\l"
+	.string "on YOU!$"
 
 SweltornDesert_Text_HwarangDefeated:
-	.string "defeat$"
+	.string "Ah, another master of the\n"
+	.string "Majadijunn style...$"
 
 SweltornDesert_Text_HwarangPostBattle:
-	.string "post$"
+	.string "The desert certainly isn't\n"
+	.string "for any Martial Artist.$"
 
 SweltornDesert_Text_TakeshiIntro:
 	.string "Those eyes... You hold a love for battle,\n"
 	.string "don't you?\p"
-	.string "Very well then, show me your passion in\n"
-	.string "combat!$"
+	.string "Very well then, show me your\n"
+	.string "passion combat!$"
 
 SweltornDesert_Text_TakeshiDefeated:
 	.string "Hmph, as to be expected!$"
@@ -554,22 +579,28 @@ SweltornDesert_Text_TakeshiPostBattle:
 	.string "Do not squander such a gift!$"
 
 SweltornDesert_Text_BeatIntro:
-	.string "intro$"
+	.string "You really wanna take on\n"
+	.string "our challenge?$"
 
 SweltornDesert_Text_BeatDefeated:
-	.string "defeat$"
+	.string "The solution is always violence!$"
 
 SweltornDesert_Text_BeatPostBattle:
-	.string "post$"
+	.string "If someone tries to give you\n"
+	.string "a treasure map, my advice is\l"
+	.string "to beat the daylights out of 'em!$"
 
 SweltornDesert_Text_DottyIntro:
-	.string "intro$"
+	.string "Ah, I have been searching for an\n"
+	.string "oasis... but this desert\l"
+	.string "is particularly dry!$"
 
 SweltornDesert_Text_DottyDefeated:
-	.string "defeat$"
+	.string "I'm too parched to continue!$"
 
 SweltornDesert_Text_DottyPostBattle:
-	.string "post$"
+	.string "At this point, I'll believe\n"
+	.string "any mirage I see...$"
 
 SweltornDesert_Text_NameMatt:
 	.string "Matt$"

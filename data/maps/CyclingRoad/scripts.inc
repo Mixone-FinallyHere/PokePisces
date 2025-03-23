@@ -125,6 +125,15 @@ CyclingRoad_EventScript_Phillip::
     msgbox CyclingRoad_Text_PhillipPostBattle, MSGBOX_AUTOCLOSE
     end
 
+CyclingRoad_EventScript_CyclingRoadSign::
+	msgbox CyclingRoad_Text_CyclingRoadSign, MSGBOX_SIGN
+	end
+
+CyclingRoad_Text_CyclingRoadSign:
+	.string "HAVE YOU WHAT IT TAKES TO\n"
+	.string "BIKE THE WHOLE ROAD!?\l"
+	.string "TRY IF YOU DARE....$"
+
 CyclingRoad_Text_RhodeIntro:
 	.string "Cycling Road isn't for newbs!\n"
 	.string "Show me what you got!$"
@@ -247,32 +256,41 @@ CyclingRoad_Text_KairaPostBattle:
 	.string "matter how difficult the process may be..$"
 
 CyclingRoad_Text_WoodyIntro:
-	.string "Be kind to me, I'm just a little\n"
-	.string "acoustic.$"
+	.string "My acoustics are all out of\n"
+	.string "whack. I've decided it's your fault.$"
 
 CyclingRoad_Text_WoodyDefeated:
 	.string "That resonated with me.$"
 
 CyclingRoad_Text_WoodyPostBattle:
-	.string "This Poké Ball kills fascists.$"
+	.string "I've decided that I want you\n"
+	.string "to go somewhere else.$"
 
 CyclingRoad_Text_AnaIntro:
-	.string "intro$"
+	.string "I'm, um, supposed to, like,\n"
+	.string "have a partner, but...\l"
+	.string "They TOTES no-showed.\l"
+	.string "Like, I GUESS I'll go it alone.$"
 
 CyclingRoad_Text_AnaDefeated:
-	.string "defeat$"
+	.string "That's like, TOTALLY terrible.$"
 
 CyclingRoad_Text_AnaPostBattle:
-	.string "post$"
+	.string "Would you, like, want to\n"
+	.string "be my partner instead?$"
 
 CyclingRoad_Text_YokoIntro:
-	.string "intro$"
+	.string "I'm frustrated! People keep\n"
+	.string "saying I ruined the band!\l"
+	.string "Am I that tone-deaf!?$"
 
 CyclingRoad_Text_YokoDefeated:
-	.string "defeat$"
+	.string "Oh no!$"
 
 CyclingRoad_Text_YokoPostBattle:
-	.string "post$"
+	.string "I'll still find a way to keep\n"
+	.string "making my music, even if\l"
+	.string "the masses don't like it.$"
 
 CyclingRoad_Text_FlatsIntro:
 	.string "Oh, I'll fix you up REAL good.$"

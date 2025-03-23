@@ -361,15 +361,21 @@ SootopolisCity_Gym_B1F_Text_LisaPostBattle:
 	.string "you can get through anything.$"
 
 SootopolisCity_Gym_B1F_Text_MiikachanIntro:
-	.string "When I'm with my POKéMON, the time\n"
-	.string "flies by before you can say, “Oops!”$"
+	.string "Hiii! Hiii! ÄÄMiika-ChanÄÄ\n"
+	.string "here!! Performing live-\l"
+	.string "just for you!!$"
 
 SootopolisCity_Gym_B1F_Text_MiikachanDefeat:
-	.string "Oops!$"
+	.string "Hope you adored that\n"
+	.string "special performance!!$"
 
 SootopolisCity_Gym_B1F_Text_MiikachanPostBattle:
-	.string "I wish I could forget about lost causes\n"
-	.string "before I can manage an “Oops!”$"
+	.string "ÄÄMiika-ChanÄÄ will rise the\n"
+	.string "ranks of stardom and become the\l"
+	.string "brightest of them all!!\p"
+	.string "But don't worry-\n"
+	.string "ÄÄMiika-ChanÄÄ will never forget\l"
+	.string "YOU, her number one supporter!$"
 
 SootopolisCity_Gym_B1F_Text_JuanIntro:
 	.string "Hmph. You weathered my harsh winter…$"
