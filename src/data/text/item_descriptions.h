@@ -2382,8 +2382,8 @@ static const u8 sBlackGlassesDesc[] = _(
 
     static const u8 sMetalCoatDesc[] = _(
     "A film that boosts\n"
-    "Steel-type moves. Less\n"
-    "likely to be affected\n"
+    "Steel-type moves.\n"
+    "Less likely to be hit\n"
     "by secondary effects.");
 
 // Choice Items
@@ -4604,8 +4604,8 @@ static const u8 sWeirdStickDesc[] = _(
     "Don't try to eat it.");
 
 static const u8 sFairyFeatherDesc[] = _(
-    "A mystical feather\n"
-    "that boosts Fairy-type\n"
+    "A cute feather that\n"
+    "boosts Fairy-type\n"
     "moves, and may make\n"
     "them confuse the foe.");
 
