@@ -4682,7 +4682,7 @@ static const u8 sPartyTrickDescription[] = _(
 
 static const u8 sMythBusterDescription[] = _(
     "If this move misses, the user is\n"
-    "hurt instead. Critical hits land\n"
+    "hurt instead. Lands critical hits\n"
     "more easily against larger foes.");
 
 static const u8 sDanceManiaDescription[] = _(
