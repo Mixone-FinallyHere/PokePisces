@@ -12006,10 +12006,12 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         break;
     case EFFECT_ZAP_CANNON:
         if (gStatuses4[battlerAtk] & STATUS4_SUPERCHARGED)
+        {
             if (gStatuses4[battlerAtk] & STATUS4_GEARED_UP)
                 basePower = 200;
-                break;
-            basePower = 150;
+            else
+                basePower = 150;
+        }
         break;
     case EFFECT_MAGNET_BOMB:
         if (gStatuses4[battlerAtk] & STATUS4_GEARED_UP)
