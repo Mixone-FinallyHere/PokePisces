@@ -1728,6 +1728,16 @@ static const u8 sReformDescription[] = _(
     "attacking move, becomes resisted\n"
     "to that type afterwards.");
 
+static const u8 sSunriseDescription[] = _(
+    "At 1/3 HP or less, turns the\n"
+    "sunlight harsh. Boosts the\n"
+    "Pokémon's Speed in it.");
+
+static const u8 sDelugeDescription[] = _(
+    "At 1/3 HP or less, makes it\n"
+    "rain. Traps opposing Pokémon and\n"
+    "damages them in rain.");
+
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
 {
@@ -2118,6 +2128,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_RUIN_WARD] = _("Ruin Ward"),
     [ABILITY_GRAVITY_WELL] = _("Gravity Well"),
     [ABILITY_REFORM] = _("Reform"),
+    [ABILITY_SUNRISE] = _("Sunrise"),
+    [ABILITY_DELUGE] = _("Deluge"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -2509,6 +2521,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_RUIN_WARD] = _("Ruin Ward"),
     [ABILITY_GRAVITY_WELL] = _("Gravity Well"),
     [ABILITY_REFORM] = _("Reform"),
+    [ABILITY_SUNRISE] = _("Sunrise"),
+    [ABILITY_DELUGE] = _("Deluge"),
 };
 #endif
 
@@ -2901,4 +2915,6 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_RUIN_WARD] = sRuinWardDescription,
     [ABILITY_GRAVITY_WELL] = sGravityWellDescription,
     [ABILITY_REFORM] = sReformDescription,
+    [ABILITY_SUNRISE] = sSunriseDescription,
+    [ABILITY_DELUGE] = sDelugeDescription,
 };

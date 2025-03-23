@@ -16564,6 +16564,24 @@ BattleScript_SandSpitActivates::
 	call BattleScript_ActivateWeatherAbilities
 	return
 
+BattleScript_SunriseActivatesRet::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNMADEITRAIN
+	waitstate
+	playanimation BS_BATTLER_0, B_ANIM_RAIN_CONTINUES
+	call BattleScript_ActivateWeatherAbilities
+	return
+
+BattleScript_DelugeActivatesRet::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNSXINTENSIFIEDSUN
+	waitstate
+	playanimation BS_BATTLER_0, B_ANIM_SUN_CONTINUES
+	call BattleScript_ActivateWeatherAbilities
+	return
+
 BattleScript_ShedSkinActivates::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNSXCUREDYPROBLEM
@@ -16949,6 +16967,39 @@ BattleScript_SolarPowerActivatesEveryone_HidePopUp:
 	destroyabilitypopup
 	tryfaintmon BS_TARGET
 	goto BattleScript_SolarPowerActivatesEveryoneIncrement
+
+BattleScript_DelugeHurts::
+	setbyte gBattlerTarget, 0
+BattleScript_DelugeHurtsLoop:
+	jumpifability BS_TARGET, ABILITY_MAGIC_GUARD, BattleScript_DelugeHurtsIncrement
+	jumpifability BS_TARGET, ABILITY_SUGAR_COAT, BattleScript_DelugeHurtsIncrement
+	jumpifterucharmprotected BS_TARGET, BattleScript_DelugeHurtsIncrement
+	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_DelugeHurts_ShowPopUp
+BattleScript_DelugeHurts_DmgAfterPopUp:
+	printstring STRINGID_PKMNCUTSHPWITH
+	waitmessage B_WAIT_TIME_LONG
+	dmg_1_10_targethp
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	jumpifhasnohp BS_TARGET, BattleScript_DelugeHurts_HidePopUp
+BattleScript_DelugeHurtsIncrement:
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_DelugeHurtsLoop
+	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_DelugeHurtsEnd
+	destroyabilitypopup
+	pause 15
+BattleScript_DelugeHurtsEnd:
+	end3
+BattleScript_DelugeHurts_ShowPopUp:
+	copybyte gBattlerAbility, gBattlerAttacker
+	call BattleScript_AbilityPopUp
+	setbyte sFIXED_ABILITY_POPUP, TRUE
+	goto BattleScript_DelugeHurts_DmgAfterPopUp
+BattleScript_DelugeHurts_HidePopUp:
+	destroyabilitypopup
+	tryfaintmon BS_TARGET
+	goto BattleScript_DelugeHurtsIncrement
 
 BattleScript_DroughtActivates::
 	pause B_WAIT_TIME_SHORT
