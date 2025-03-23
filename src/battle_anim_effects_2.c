@@ -2471,8 +2471,10 @@ void AnimAngerMark(struct Sprite *sprite)
     u8 battler;
     if (!gBattleAnimArgs[0])
         battler = gBattleAnimAttacker;
-    else
+    else if (gBattleAnimArgs[0] == 1)
         battler = gBattleAnimTarget;
+    else if (gBattleAnimArgs[0] == 2 && IsDoubleBattle() && IsBattlerSpriteVisible(BATTLE_PARTNER(gBattleAnimTarget)))
+        battler = BATTLE_PARTNER(gBattleAnimTarget);
 
     if (GetBattlerSide(battler) == B_SIDE_OPPONENT)
         gBattleAnimArgs[1] *= -1;
