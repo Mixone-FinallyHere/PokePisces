@@ -433,9 +433,9 @@ static const u8 sHydrationDescription[] = _(
     "conditions cured in rain.");
 
 static const u8 sSolarPowerDescription[] = _(
-    "In harsh sunlight, deals more\n"
-    "and takes less damage based on\n"
-    "HP lost. Loses HP every turn.");
+    "In harsh sunlight, gains\n"
+    "daybreak. Also hurts every other\n"
+    "Pokémon per daybreak gained.");
 
 static const u8 sQuickFeetDescription[] = _(
     "Boosts the Speed stat if the\n"
