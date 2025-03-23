@@ -5273,9 +5273,18 @@ static void Cmd_getexp(void)
                     && !IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT))
                     && !gBattleStruct->wildVictorySong)
                 {
-                    BattleStopLowHpSound();
-                    PlayBGM(MUS_VICTORY_WILD);
-                    gBattleStruct->wildVictorySong++;
+                    if (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG)
+                    {
+                        BattleStopLowHpSound();
+                        PlayBGM(MUS_VICTORY_LEAGUE);
+                        gBattleStruct->wildVictorySong++;
+                    }
+                    else
+                    {
+                        BattleStopLowHpSound();
+                        PlayBGM(MUS_VICTORY_WILD);
+                        gBattleStruct->wildVictorySong++;
+                    }
                 }
 
                 if (IsValidForBattle(&gPlayerParty[*expMonId]))
