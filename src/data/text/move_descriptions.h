@@ -1563,6 +1563,11 @@ static const u8 sOverheatDescription[] = _(
     "power. The attack's recoil\n"
     "harshly drops the user's Sp. Atk.");
 
+static const u8 sDarkTideDescription[] = _(
+    "The user attacks foes at full\n"
+    "power. The attack's recoil\n"
+    "harshly drops the user's Sp. Atk.");
+
 static const u8 sOdorSleuthDescription[] = _(
     "Ignores foe's evasion and Ghost-\n"
     "type immunities. Sharply boosts\n"
@@ -5886,7 +5891,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_HEAT_SINK - 1] = sHeatSinkDescription,
     [MOVE_FROST_NOVA - 1] = sFrostNovaDescription,
     [MOVE_GEM_BLASTER - 1] = sGemBlasterDescription,
-    [MOVE_DARK_TIDE - 1] = sOverheatDescription,
+    [MOVE_DARK_TIDE - 1] = sDarkTideDescription,
     [MOVE_SOLAR_FLARE - 1] = sSolarFlareDescription,
     [MOVE_ODD_STEP - 1] = sOddStepDescription,
     [MOVE_CREEPY_CRAWL - 1] = sCreepyCrawlDescription,
