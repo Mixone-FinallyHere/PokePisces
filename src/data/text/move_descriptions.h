@@ -2968,8 +2968,8 @@ static const u8 sPowderDescription[] = _(
 
 static const u8 sGeomancyDescription[] = _(
     "The user absorbs energy and\n"
-    "sharply raises its Sp. Atk, Sp.\n"
-    "Def, and Spd on the next turn.");
+    "sharply raises its Sp. Atk and\n"
+    "Sp. Def on the next turn.");
 
 static const u8 sMagneticFluxDescription[] = _(
     "The user and ally become super-\n"
