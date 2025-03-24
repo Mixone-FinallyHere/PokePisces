@@ -6,7 +6,7 @@ MauvilleCity_PokemonCenter_2F_MapScripts::
 	.byte 0
 
 MauvilleCity_PokemonCenter_2F_OnTransition:
-	setrespawn HEAL_LOCATION_SEA_MAUVILLE
+	setrespawn HEAL_LOCATION_CYCLING_ROAD
 	call_if_lt VAR_BALL_QUEST_STATE, 10, MauvilleCity_PokemonCenter_2F_EventScript_RemovePhillipe
 	call_if_gt VAR_BALL_QUEST_STATE, 10, MauvilleCity_PokemonCenter_2F_EventScript_RemovePhillipe
 	end

@@ -5,7 +5,7 @@ MossdeepCity_PokemonCenter_2F_MapScripts::
 	.byte 0
 
 MossdeepCity_PokemonCenter_2F_OnTransition:
-	setrespawn HEAL_LOCATION_MOSSDEEP_CITY
+	setrespawn HEAL_LOCATION_NEW_SUNBEACH
 	call_if_lt VAR_BALL_QUEST_STATE, 2, MossdeepCity_PokemonCenter_2F_EventScript_RemovePhillipe
 	call_if_gt VAR_BALL_QUEST_STATE, 2, MossdeepCity_PokemonCenter_2F_EventScript_RemovePhillipe
 	end
