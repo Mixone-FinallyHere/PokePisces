@@ -6,7 +6,7 @@ LilycoveCity_PokemonCenter_2F_MapScripts::
 	.byte 0
 
 LilycoveCity_PokemonCenter_2F_OnTransition:
-	setrespawn HEAL_LOCATION_LILYCOVE_CITY
+	setrespawn HEAL_LOCATION_BRUMIST
 	call_if_lt VAR_BALL_QUEST_STATE, 3, LilycoveCity_PokemonCenter_2F_EventScript_RemovePhillipe
 	call_if_gt VAR_BALL_QUEST_STATE, 3, LilycoveCity_PokemonCenter_2F_EventScript_RemovePhillipe
 	end

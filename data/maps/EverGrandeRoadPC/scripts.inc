@@ -1,7 +1,12 @@
 .set LOCALID_NURSE, 1
 
 EverGrandeRoadPC_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, EverGrandeRoadPC_OnTransition
 	.byte 0
+
+EverGrandeRoadPC_OnTransition:
+	setrespawn HEAL_LOCATION_EVER_GRANDE_ROAD
+	end
 
 EverGrandeRoadPC_EventScript_Nurse::
 	setvar VAR_0x800B, LOCALID_NURSE

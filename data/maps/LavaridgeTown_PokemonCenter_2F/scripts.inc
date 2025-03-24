@@ -6,7 +6,7 @@ LavaridgeTown_PokemonCenter_2F_MapScripts::
 	.byte 0
 
 LavaridgeTown_PokemonCenter_2F_OnTransition:
-	setrespawn HEAL_LOCATION_OZONE_INSTITUTE
+	setrespawn HEAL_LOCATION_SWELTORN_DESERT
 	call_if_lt VAR_BALL_QUEST_STATE, 9, LavaridgeTown_PokemonCenter_2F_EventScript_RemovePhillipe
 	call_if_gt VAR_BALL_QUEST_STATE, 9, LavaridgeTown_PokemonCenter_2F_EventScript_RemovePhillipe
 	end

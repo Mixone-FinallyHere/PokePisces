@@ -6,7 +6,7 @@ SootopolisCity_Mart_MapScripts::
 	.byte 0
 
 SootopolisCity_Mart_OnTransition:
-	setrespawn HEAL_LOCATION_FALLARBOR_TOWN
+	setrespawn HEAL_LOCATION_JAGGRO_PASS
 	call_if_lt VAR_BALL_QUEST_STATE, 8, SootopolisCity_Mart_EventScript_RemovePhillipe
 	call_if_gt VAR_BALL_QUEST_STATE, 8, SootopolisCity_Mart_EventScript_RemovePhillipe
 	end

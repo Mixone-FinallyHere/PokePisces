@@ -5,7 +5,7 @@ PacifidlogTown_PokemonCenter_2F_MapScripts::
 	.byte 0
 
 PacifidlogTown_PokemonCenter_2F_OnTransition:
-	setrespawn HEAL_LOCATION_PACIFIDLOG_TOWN
+	setrespawn HEAL_LOCATION_BASALIN_COAST
 	call_if_gt VAR_BALL_QUEST_STATE, 0, PacifidlogTown_PokemonCenter_2F_EventScript_RemovePhillipe
 	end
 

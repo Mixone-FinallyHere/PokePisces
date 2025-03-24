@@ -6,7 +6,7 @@ FortreeCity_Mart_MapScripts::
 	.byte 0
 
 FortreeCity_Mart_OnTransition:
-	setrespawn HEAL_LOCATION_OZONE_INSTITUTE
+	setrespawn HEAL_LOCATION_CRIMNEY_CLIMB
 	call_if_lt VAR_BALL_QUEST_STATE, 7, FortreeCity_Mart_EventScript_RemovePhillipe
 	call_if_gt VAR_BALL_QUEST_STATE, 7, FortreeCity_Mart_EventScript_RemovePhillipe
 	end

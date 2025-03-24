@@ -5769,7 +5769,7 @@ static void HandleEndTurn_FinishBattle(void)
         if (gTestRunnerEnabled)
             TestRunner_Battle_AfterLastTurn();
         BeginFastPaletteFade(3);
-        if (gTrainers[gTrainerBattleOpponent_A].trainerClass != TRAINER_CLASS_TOPAZ_ACOLYTE)
+        if (!ShouldSkipBattleMusic())
             FadeOutMapMusic(5);
     #if B_TRAINERS_KNOCK_OFF_ITEMS == TRUE || B_RESTORE_HELD_BATTLE_ITEMS == TRUE
             TryRestoreHeldItems();
@@ -6247,4 +6247,18 @@ bool32 IsShunyongBattle(void)
     if (IsSpeciesOneOf(GetMonData(&gEnemyParty[0], MON_DATA_SPECIES), gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG))
         return TRUE;
     return FALSE;
+}
+
+bool32 ShouldSkipTrainerClassMusic(u16 trainerId)
+{
+    if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_TOPAZ_ACOLYTE)
+        return TRUE;
+    return FALSE;
+}
+
+bool32 ShouldSkipBattleMusic(void)
+{
+    return gMapHeader.regionMapSectionId == MAPSEC_VICTORY_ROAD
+        || ((gBattleTypeFlags & BATTLE_TYPE_TRAINER) 
+        && ShouldSkipTrainerClassMusic(gTrainerBattleOpponent_A));
 }

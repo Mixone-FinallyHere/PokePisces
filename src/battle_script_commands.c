@@ -5289,7 +5289,8 @@ static void Cmd_getexp(void)
                     && (gBattleMons[0].hp || (gBattleTypeFlags & BATTLE_TYPE_DOUBLE && gBattleMons[2].hp))
                     && !IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT))
                     && !IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT))
-                    && !gBattleStruct->wildVictorySong)
+                    && !gBattleStruct->wildVictorySong
+                    && !ShouldSkipBattleMusic())
                 {
                     if (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG)
                     {
@@ -21157,4 +21158,14 @@ void BS_RestoreSavedMove(void)
     gCurrentMove = gBattleStruct->savedMove;
     gBattleStruct->savedMove = MOVE_NONE;
     gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
+void BS_JumpIfInMapSec(void)
+{
+    NATIVE_ARGS(u8 mapSec, const u8 *jumpInstr);
+
+    if (gMapHeader.regionMapSectionId == cmd->mapSec)
+        gBattlescriptCurrInstr = cmd->jumpInstr;
+    else
+        gBattlescriptCurrInstr = cmd->nextInstr;
 }
