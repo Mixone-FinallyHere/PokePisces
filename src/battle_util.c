@@ -148,6 +148,13 @@ static const u16 sUnchangeableAbilities[] =
     ABILITY_FULL_METAL_BODY,
     ABILITY_KLUTZ,
     ABILITY_FIREBRAND,
+    ABILITY_PURE_POWER,
+    ABILITY_MYSTIC_ONE,
+    ABILITY_SUNRISE,
+    ABILITY_DELUGE,
+    ABILITY_REFORM,
+    ABILITY_RUIN_WARD,
+    ABILITY_RAPID_FIRE,
 };
 
 static u8 CalcBeatUpPower(void)
@@ -4517,10 +4524,7 @@ static inline uq4_12_t GetCleanseTagModifier(u32 battler)
 
 static inline uq4_12_t GetDarkAuraModifier(u32 battler)
 {
-    if (CountBattlerStatDecreases(battler, TRUE) > 9)
-        CountBattlerStatDecreases(battler, TRUE) == 9;
-
-    return UQ_4_12(1.0) - (PercentToUQ4_12(CountBattlerStatDecreases(battler, TRUE) * 10));
+    return UQ_4_12(1.0) + (PercentToUQ4_12(CountBattlerStatDecreases(battler, TRUE) * 10));
 }
 
 static inline bool32 IsMoveDraining(u32 move)
@@ -11615,7 +11619,7 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
             basePower = 25;
         break;
     case EFFECT_RETURN:
-        if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT)
+        if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT || GetBattlerHoldEffect(battlerAtk, FALSE) == HOLD_EFFECT_FAVOR_SCARF)
         {
             gBattleMons[battlerAtk].friendship = 255;
         }
@@ -11626,7 +11630,7 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         basePower = (basePower > 75) ? 75 : basePower;
         break;
     case EFFECT_STRENGTH:
-        if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT)
+        if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT || GetBattlerHoldEffect(battlerAtk, FALSE) == HOLD_EFFECT_FAVOR_SCARF)
         {
             gBattleMons[battlerAtk].friendship = 255;
         }
@@ -11634,7 +11638,7 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         break;
     case EFFECT_CUT:
     case EFFECT_ROCK_SMASH:
-        if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT)
+        if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT || GetBattlerHoldEffect(battlerAtk, FALSE) == HOLD_EFFECT_FAVOR_SCARF)
         {
             gBattleMons[battlerAtk].friendship = 255;
         }
@@ -11643,7 +11647,7 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_WATERFALL:
     case EFFECT_ROCK_CLIMB:
     case EFFECT_SURF:
-        if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT)
+        if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT || GetBattlerHoldEffect(battlerAtk, FALSE) == HOLD_EFFECT_FAVOR_SCARF)
         {
             gBattleMons[battlerAtk].friendship = 255;
         }
@@ -11652,13 +11656,17 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
     case EFFECT_DIVE:
     case EFFECT_FLY:
     case EFFECT_WHIRLPOOL:
-        if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT)
+        if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT || GetBattlerHoldEffect(battlerAtk, FALSE) == HOLD_EFFECT_FAVOR_SCARF)
         {
             gBattleMons[battlerAtk].friendship = 255;
         }
         basePower = 8 * (gBattleMons[battlerAtk].friendship) / 17;
         break;
     case EFFECT_FRUSTRATION:
+        if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT || GetBattlerHoldEffect(battlerAtk, FALSE) == HOLD_EFFECT_FAVOR_SCARF)
+        {
+            gBattleMons[battlerAtk].friendship = 255;
+        }
         if (GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT)
         {
             gBattleMons[battlerAtk].friendship = 0;
@@ -12975,6 +12983,9 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
         break;
     }
 
+    if (IsAbilityOnField(ABILITY_DARK_AURA) && defAbility != ABILITY_DARK_AURA)
+        modifier = uq4_12_multiply_half_down(modifier, GetDarkAuraModifier(battlerDef));
+
     // The offensive stats of a Player's Pok?mon are boosted by x1.1 (+10%) if they have the 1st badge and 7th badges.
     // Having the 1st badge boosts physical attack while having the 7th badge boosts special attack.
     if (ShouldGetStatBadgeBoost(FLAG_BADGE01_GET, battlerAtk) && IS_MOVE_PHYSICAL(move))
@@ -13173,9 +13184,6 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
 
     if (IsAbilityOnField(ABILITY_BEADS_OF_RUIN) && defAbility != ABILITY_BEADS_OF_RUIN && !usesDefStat)
         modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.75));
-
-    if (IsAbilityOnField(ABILITY_DARK_AURA) && defAbility != ABILITY_DARK_AURA)
-        modifier = uq4_12_multiply_half_down(modifier, GetDarkAuraModifier(battlerDef));
 
     // target's hold effects
     switch (holdEffectDef)

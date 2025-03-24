@@ -16091,7 +16091,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_SNAPBLOSSOM] =
     {
         .effect = EFFECT_SNAPBLOSSOM,
-        .power = 85,
+        .power = 75,
         .type = TYPE_GRASS,
         .accuracy = 100,
         .pp = 10,
@@ -16102,7 +16102,6 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
         .bitingMove = TRUE,
-        .argument = 30,
     },
 
     [MOVE_GRASS_CANNON] =
