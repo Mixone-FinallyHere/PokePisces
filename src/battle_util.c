@@ -5371,8 +5371,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_RUIN_WARD:
-            if (!gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_SAFEGUARD
-            && !gSpecialStatuses[battler].switchInAbilityDone)
+            if ((!(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_SAFEGUARD))
+            && (!(gSpecialStatuses[battler].switchInAbilityDone)))
             {
                 u8 side = GetBattlerSide(gBattlerAttacker);
                 gBattlerAttacker = battler;
@@ -15616,7 +15616,7 @@ void RemoveConfusionStatus(u32 battler)
 
 static bool32 CanBeInfinitelyConfused(u32 battler)
 {
-    if (gBattleMons[battler].ability == ABILITY_OWN_TEMPO || gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SAFEGUARD)
+    if (gBattleMons[battler].ability == ABILITY_OWN_TEMPO)
     {
         return FALSE;
     }
