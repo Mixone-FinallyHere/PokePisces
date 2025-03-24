@@ -14025,7 +14025,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_ALLURING_VOICE] =
     {
         .effect = EFFECT_ALLURING_VOICE,
-        .power = 80,
+        .power = 85,
         .type = TYPE_FAIRY,
         .accuracy = 100,
         .pp = 10,
@@ -15124,7 +15124,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .accuracy = 100,
         .pp = 15,
         .secondaryEffectChance = 50,
-        .target = MOVE_TARGET_FOES_AND_ALLY,
+        .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,

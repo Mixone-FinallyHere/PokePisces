@@ -4917,8 +4917,8 @@ static const u8 sBloodMoonDescription[] = _(
 
 static const u8 sCheeseStealDescription[] = _(
     "The user leaves the first turn,\n"
-    "becoming invulnerable. Comes back\n"
-    "the next with a random cheese.");
+    "becoming invulnerable. Comes\n"
+    "back the next with some cheese.");
 
 static const u8 sDrainPunchDescription[] = _(
     "An energy-draining punch. The\n"

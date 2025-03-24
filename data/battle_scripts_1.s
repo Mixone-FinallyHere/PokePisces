@@ -16973,6 +16973,8 @@ BattleScript_DelugeHurtsLoop:
 	jumpifterucharmprotected BS_TARGET, BattleScript_DelugeHurtsIncrement
 	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_DelugeHurts_ShowPopUp
 BattleScript_DelugeHurts_DmgAfterPopUp:
+	playanimation BS_TARGET, B_ANIM_LUCKY_CHANT
+	waitanimation
 	printstring STRINGID_PKMNCUTSHPWITH
 	waitmessage B_WAIT_TIME_LONG
 	dmg_1_10_targethp

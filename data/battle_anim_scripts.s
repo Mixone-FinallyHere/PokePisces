@@ -1182,6 +1182,9 @@ gBattleAnims_General::
 	.4byte Move_GROWL                       @ B_ANIM_GUARD_DOG
 	.4byte Move_SWEET_SCENT                 @ B_ANIM_SWEET_VEIL
 	.4byte Move_TAILWIND                    @ B_ANIM_TAILWIND
+	.4byte Status_Whirlpool                 @ B_ANIM_WHIRLPOOL
+
+Status_Whirlpool
 
 	.align 2
 gBattleAnims_Special::
