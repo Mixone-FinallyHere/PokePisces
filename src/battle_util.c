@@ -13929,6 +13929,7 @@ static inline s32 DoMoveDamageCalcVars(u32 move, u32 battlerAtk, u32 battlerDef,
     u32 defCompare = gBattleMons[battlerAtk].attack - gBattleMons[battlerDef].defense;
     u32 atkCompare = gBattleMons[battlerAtk].attack - gBattleMons[battlerDef].attack;
     u32 uniqueDamage;
+    u32 defAbility = GetBattlerAbility(battlerDef);
 
     if (fixedBasePower)
         gBattleMovePower = fixedBasePower;
@@ -13980,13 +13981,13 @@ static inline s32 DoMoveDamageCalcVars(u32 move, u32 battlerAtk, u32 battlerDef,
         }
     }
 
-    if ((((holdEffectAtk == HOLD_EFFECT_POISON_BARB 
+    if ((holdEffectAtk == HOLD_EFFECT_POISON_BARB 
     && gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY
     && gBattleMoves[move].type == TYPE_POISON)
     || (holdEffectAtk == HOLD_EFFECT_CHUPACABRA 
-    && (gBattleMoves[move].power <= 70 || fixedBasePower <= 70) 
-    && GetBattlerAbility(battlerAtk) != ABILITY_TECHNICIAN))
-    && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
+    && CalcMoveBasePower(move, battlerAtk, battlerDef, defAbility, weather) <= 70 
+    && (gMultiHitCounter == 1 || gMultiHitCounter == 0)
+    && GetBattlerAbility(battlerAtk) != ABILITY_TECHNICIAN)
     || move == MOVE_SPIRIT_DANCE)
     {
         uniqueDamage = gBattleMons[battlerDef].maxHP * 15 / 100;
