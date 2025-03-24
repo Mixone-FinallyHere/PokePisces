@@ -3568,11 +3568,9 @@ void SetMoveEffect(bool32 primary, u32 certain)
             switch (gBattleScripting.moveEffect)
             {
             case MOVE_EFFECT_CONFUSION:
-                if (!CanBeConfused(gEffectBattler))
-                {
-                    gBattlescriptCurrInstr++;
-                }
-                else
+                if (CanBeConfused(gEffectBattler) 
+                || (gStatuses4[gEffectBattler] & STATUS4_INFINITE_CONFUSION 
+                && CanBeInfinitelyConfused(gEffectBattler)))
                 {
                     gBattleMons[gEffectBattler].status2 |= STATUS2_CONFUSION_TURN(((Random()) % 4) + 2); // 2-5 turns
 
@@ -3590,6 +3588,10 @@ void SetMoveEffect(bool32 primary, u32 certain)
                         BattleScriptPush(gBattlescriptCurrInstr + 1);
                         gBattlescriptCurrInstr = sMoveEffectBS_Ptrs[gBattleScripting.moveEffect];
                     }
+                }
+                else
+                {
+                    gBattlescriptCurrInstr++;
                 }
                 break;
             case MOVE_EFFECT_FLINCH:

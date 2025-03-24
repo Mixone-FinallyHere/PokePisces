@@ -64,7 +64,6 @@ static void SetRandomMultiHitCounter();
 static void SetRandomMultiHitCounter3To5();
 static u32 GetBattlerItemHoldEffectParam(u32 battler, u32 item);
 static uq4_12_t GetInverseTypeMultiplier(uq4_12_t multiplier);
-static bool32 CanBeInfinitelyConfused(u32 battler);
 static u32 BufferStatusCondition(u32 battler, bool32 checkStatus2);
 NOINLINE static uq4_12_t PercentToUQ4_12(u32 percent);
 NOINLINE static uq4_12_t PercentToUQ4_12_Floored(u32 percent);
@@ -15614,12 +15613,8 @@ void RemoveConfusionStatus(u32 battler)
     gStatuses4[battler] &= ~STATUS4_INFINITE_CONFUSION;
 }
 
-static bool32 CanBeInfinitelyConfused(u32 battler)
+bool32 CanBeInfinitelyConfused(u32 battler)
 {
-    if (gBattleMons[battler].ability == ABILITY_OWN_TEMPO)
-    {
-        return FALSE;
-    }
     return TRUE;
 }
 

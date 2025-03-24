@@ -255,6 +255,7 @@ bool32 CanBeFrozen(u32 battler);
 bool32 CanBeFrozenFrostbiteAbilityEdition(u32 battler);
 bool32 CanGetFrostbite(u32 battler);
 bool32 CanBeConfused(u32 battler);
+bool32 CanBeInfinitelyConfused(u32 battler);
 bool32 CanGetPanicked(u32 battler);
 bool32 CanStartBlooming(u32 battler);
 bool32 CanBeExposed(u32 battler);
