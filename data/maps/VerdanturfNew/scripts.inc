@@ -117,6 +117,32 @@ VerdanturfNew_Movement_Surprise:
 	emote_exclamation_mark
 	step_end
 
+VerdanturfNew_EventScript_VerdanturfSign::
+	msgbox VerdanturfNew_Text_VerdanturfSign, MSGBOX_SIGN
+	end
+
+VerdanturfNew_EventScript_WattsonSign::
+	msgbox VerdanturfNew_Text_WattsonSign, MSGBOX_SIGN
+	end
+
+VerdanturfNew_EventScript_WallySign::
+	msgbox VerdanturfNew_Text_WallySign, MSGBOX_SIGN
+	end
+
+VerdanturfNew_Text_VerdanturfSign:
+	.string "VERDANTURF TOWN\n"
+	.string "The place of plain green prosperity!$"
+
+VerdanturfNew_Text_WattsonSign:
+	.string "Ahead Is Property Under Ownership\n"
+	.string "Of WATTSON, President Of\l"
+	.string "Greater Mauville Holdings.\p"
+	.string "You Are Not Welcome To Loiter\n"
+	.string "Without Invitation.$"
+
+VerdanturfNew_Text_WallySign:
+	.string "Wally's House$"
+
 VerdanturfNew_Text_NameWally:
 	.string "Wally$"
 

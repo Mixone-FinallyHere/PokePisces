@@ -225,28 +225,37 @@ TrickHouseLeverRooms_EventScript_PathBlocker::
     end
 
 TrickHouseLeverRooms_Text_PathBlocker:
-	.string "haha i be blockin u$$"	
+	.string "What's the matter? UNHAPPY\n"
+	.string "with the fact that I'm blocking\l"
+	.string "this pathway?$"
 
 TrickHouseLeverRooms_Text_AdamAndSteveIntro:
-	.string "intro$"
+	.string "ADAM: People keep denying our love!\n"
+	.string "STEVE: We'll show them all!$"
 
 TrickHouseLeverRooms_Text_AdamAndSteveDefeated:
-	.string "defeat$"
+	.string "ADAM: You sent us to heaven!\n"
+	.string "STEVE: In a bad way!$"
 
 TrickHouseLeverRooms_Text_AdamAndStevePostBattle:
-	.string "post$"
+	.string "ADAM: Don't let anyone tell you\n"
+	.string "who you can and can't love!\l"
+	.string "STEVE: Deny your fate!$"
 
 TrickHouseLeverRooms_Text_AdamAndSteveNeedTwoMons:
-	.string "need 2 dood$"
+	.string "(They're too busy making public\n"
+	.string "displays of affection to notice\l"
+	.string "you wanting to battle.)$"
 
 TrickHouseLeverRooms_Text_DavidIntro:
-	.string "intro$"
+	.string "Bzzz! Bzzz!\n"
+	.string "Skitter, skitter!$"
 
 TrickHouseLeverRooms_Text_DavidDefeated:
-	.string "defeat$"
+	.string "Bug, bug, BUG!$"
 
 TrickHouseLeverRooms_Text_DavidPostBattle:
-	.string "post$"
+	.string "Bzzzz.......$"
 
 TrickHouseLeverRooms_Text_YouFoundOil:
 	.string "(You found a can of oil!)$"

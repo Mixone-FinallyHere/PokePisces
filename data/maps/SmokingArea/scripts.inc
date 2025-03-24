@@ -157,6 +157,14 @@ SmokingArea_Movement_BondingWalkAway:
 	walk_up
 	step_end
 
+SmokingArea_EventScript_Nurse::
+	msgbox SmokingArea_Text_Nurse, MSGBOX_NPC
+	end
+
+SmokingArea_Text_Nurse:
+	.string "(She's on her smoke break.\n"
+	.string "May be wise to not bother her.)$"
+
 SmokingArea_Text_NameKizuna:
 	.string "Kizuna$"
 

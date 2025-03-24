@@ -84,19 +84,24 @@ OceanicMuseumNew_Text_SternPostDock:
 	.string "happy retirement.$"
 
 OceanicMuseumNew_Text_MoonIntro:
-	.string "intro$"
+	.string "By the power of the tides,\n"
+	.string "I shall defeat you!$"
 
 OceanicMuseumNew_Text_MoonDefeated:
-	.string "defeat$"
+	.string "This is lunacy!$"
 
 OceanicMuseumNew_Text_MoonPostBattle:
-	.string "post$"
+	.string "Now, where did the rest of\n"
+	.string "my sailor squad run off to...$"
 
 OceanicMuseumNew_Text_VenusIntro:
-	.string "intro$"
+	.string "I'll stick ya in a mean\n"
+	.string "greenhouse, stranger!$"
 
 OceanicMuseumNew_Text_VenusDefeated:
-	.string "defeat$"
+	.string "Did ya sweat somethin'\n"
+	.string "fierce, at least?$"
 
 OceanicMuseumNew_Text_VenusPostBattle:
-	.string "post$"
+	.string "The pH levels in this museum\n"
+	.string "need to be adjusted, I think.$"
