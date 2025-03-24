@@ -6885,7 +6885,7 @@ void AnimTask_MusicNotesClearRainbowBlend(u8 taskId)
 static void AnimWavyMusicNotes(struct Sprite *sprite)
 {
     u8 index;
-    u8 x, y;
+    s16 x, y;
     SetSpriteCoordsToAnimAttackerCoords(sprite);
     StartSpriteAnim(sprite, gBattleAnimArgs[0]);
     if ((index = IndexOfSpritePaletteTag(gParticlesColorBlendTable[gBattleAnimArgs[1]][0])) != 0xFF)
@@ -6898,6 +6898,10 @@ static void AnimWavyMusicNotes(struct Sprite *sprite)
     {
         x = 48;
         y = 40;
+    }
+    else if (IsDoubleBattle() && gAnimMoveIndex == MOVE_ALLURING_VOICE)
+    {
+        SetAverageBattlerPositions(gBattleAnimTarget, TRUE, &x, &y);
     }
     else
     {
