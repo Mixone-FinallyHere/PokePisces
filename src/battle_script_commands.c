@@ -2128,7 +2128,7 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
              || (gCurrentMove == MOVE_LEAFAGE && gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING)
              || (gCurrentMove == MOVE_X_SCISSOR && gBattleMons[battlerDef].hp <= (gBattleMons[battlerDef].maxHP / 2))
              || (gCurrentMove == MOVE_BRANCH_POKE && gBattleMons[battlerAtk].status1 & STATUS1_BLOOMING)
-             || (abilityAtk == ABILITY_DRIZZLE && gBattleMoves[move].effect == EFFECT_SERPENT_SURGE && (gBattleWeather & B_WEATHER_RAIN))
+             || (abilityAtk == ABILITY_DELUGE && gBattleMoves[move].effect == EFFECT_SERPENT_SURGE && (gBattleWeather & B_WEATHER_RAIN))
              || (gBattleMoves[move].effect == EFFECT_MANEUVER && gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_TAILWIND)
              || (gBattleMoves[move].effect == EFFECT_FLY && (gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_TAILWIND || gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_TAILWIND))
              || (abilityAtk == ABILITY_AMBUSHER && IS_MOVE_PHYSICAL(move) && (gDisableStructs[battlerAtk].isFirstTurn || IsTwoTurnsMove(move)))
