@@ -1151,7 +1151,7 @@ static const u8 sSweetScentDescription[] = _(
     "Pokémon's evasiveness.");
 
 static const u8 sIronTailDescription[] = _(
-    "This may boost the user's\n"
+    "This move may boost the user's\n"
     "Defense. Boosted for every\n"
     "Defense boost. Always goes last.");
 

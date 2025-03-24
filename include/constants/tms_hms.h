@@ -5,7 +5,6 @@
     F(REST) \
     F(WILL_O_WISP) \
     F(TOXIC) \
-    F(SPOOK) \
     F(GLACIATE) \
     F(THUNDER_WAVE) \
     F(TRICK_ROOM) \
@@ -21,6 +20,7 @@
     F(REFLECT) \
     F(FEAR_FACTOR) \
     F(FALSE_SWIPE) \
+    F(SPOOK) \
     F(GYRO_BALL) \
     F(NUZZLE) \
     F(ROLLOUT) \
