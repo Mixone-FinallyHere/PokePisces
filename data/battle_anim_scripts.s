@@ -1184,8 +1184,6 @@ gBattleAnims_General::
 	.4byte Move_TAILWIND                    @ B_ANIM_TAILWIND
 	.4byte Status_Whirlpool                 @ B_ANIM_WHIRLPOOL
 
-Status_Whirlpool
-
 	.align 2
 gBattleAnims_Special::
 	.4byte Special_LevelUp                  @ B_ANIM_LVL_UP

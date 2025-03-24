@@ -974,6 +974,7 @@ static const u8 sText_AbilityLetItUseMoveGuardDog[] = _("{B_DEF_NAME_WITH_PREFIX
 static const u8 sText_AbilityLetItUseMoveSweetVeil[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY} let it use\nSweet Scent!");
 static const u8 sText_WepearBerryHit[] = _("Wepear Berry allowed\nhitting through protection!");
 static const u8 sText_PkmnCutsHPWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\ncuts {B_DEF_NAME_WITH_PREFIX}'s HP!");
+static const u8 sText_PkmnCutsHPWith2[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY}\ncuts {B_DEF_NAME_WITH_PREFIX}'s HP!");
 static const u8 sText_HealerRestoration[] = _("{B_ATK_PARTNER_NAME} was healed\nby {B_ATK_NAME_WITH_PREFIX}!");
 static const u8 sText_TooBigToCare[] = _("{B_DEF_NAME_WITH_PREFIX} is too\nbig to be affected!");
 static const u8 sText_HighRollHitRoll[] = _("{B_ATK_NAME_WITH_PREFIX} rolled a {B_BUFF1}!");

@@ -1025,7 +1025,7 @@ static const struct TrainerMon sParty_PLiza[] = {
     .heldItem = ITEM_CURSED_AMULET,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(28, 0, 0, 0, 44, 48),
-    .moves = {MOVE_PUNISHMENT, MOVE_DREAM_EATER, MOVE_DARK_VOID, MOVE_CHILLY_AIR},
+    .moves = {MOVE_PUNISHMENT, MOVE_DREAM_EATER, MOVE_DARK_VOID, MOVE_ICE_SHARD},
     .nature = NATURE_QUIET,
     },
     {

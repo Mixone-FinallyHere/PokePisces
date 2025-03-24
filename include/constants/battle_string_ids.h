@@ -875,6 +875,7 @@
 #define STRINGID_DURINBERRYREALLYSTINKS               873
 #define STRINGID_PKMNRESISTEDTYPEWITH                 874
 #define STRINGID_PKMNCOVEREDBYGOO                     875
+#define STRINGID_PKMNCUTSHPWITH2                      876
 
 #define BATTLESTRINGS_COUNT                           876
 

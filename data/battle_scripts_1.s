@@ -16935,12 +16935,13 @@ BattleScript_WatcherLoopIncrement:
 BattleScript_SolarPowerActivatesEveryone::
 	setbyte gBattlerTarget, 0
 BattleScript_SolarPowerActivatesEveryoneLoop:
+	jumpiftargetally BattleScript_SolarPowerActivatesEveryoneIncrement
 	jumpifability BS_TARGET, ABILITY_MAGIC_GUARD, BattleScript_SolarPowerActivatesEveryoneIncrement
 	jumpifability BS_TARGET, ABILITY_SUGAR_COAT, BattleScript_SolarPowerActivatesEveryoneIncrement
 	jumpifterucharmprotected BS_TARGET, BattleScript_SolarPowerActivatesEveryoneIncrement
 	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_SolarPowerActivatesEveryone_ShowPopUp
 BattleScript_SolarPowerActivatesEveryone_DmgAfterPopUp:
-	printstring STRINGID_PKMNCUTSHPWITH
+	printstring STRINGID_PKMNCUTSHPWITH2
 	waitmessage B_WAIT_TIME_LONG
 	solarpowerdamage
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
@@ -16968,14 +16969,15 @@ BattleScript_SolarPowerActivatesEveryone_HidePopUp:
 BattleScript_DelugeHurts::
 	setbyte gBattlerTarget, 0
 BattleScript_DelugeHurtsLoop:
+	jumpiftargetally BattleScript_DelugeHurtsIncrement
 	jumpifability BS_TARGET, ABILITY_MAGIC_GUARD, BattleScript_DelugeHurtsIncrement
 	jumpifability BS_TARGET, ABILITY_SUGAR_COAT, BattleScript_DelugeHurtsIncrement
 	jumpifterucharmprotected BS_TARGET, BattleScript_DelugeHurtsIncrement
 	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_DelugeHurts_ShowPopUp
 BattleScript_DelugeHurts_DmgAfterPopUp:
-	playanimation BS_TARGET, B_ANIM_LUCKY_CHANT
+	playanimation BS_TARGET, B_ANIM_WHIRLPOOL
 	waitanimation
-	printstring STRINGID_PKMNCUTSHPWITH
+	printstring STRINGID_PKMNCUTSHPWITH2
 	waitmessage B_WAIT_TIME_LONG
 	dmg_1_10_targethp
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
