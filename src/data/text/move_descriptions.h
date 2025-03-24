@@ -4841,9 +4841,9 @@ static const u8 sMoonBeamDescription[] = _(
     "steals stat boosts.");
 
 static const u8 sHunkerDownDescription[] = _(
-    "The user drastically boosts its\n"
-    "Def and Sp. Def stats. The user\n"
-    "can't move on the next turn.");
+    "Boost Def and Sp. Def and needs\n"
+    "to recharge. On recharge,\n"
+    "sharply boosts Def and Sp. Def.");
 
 static const u8 sShieldsUpDescription[] = _(
     "The user heals HP, cures status\n"

@@ -217,6 +217,7 @@
 #define STATUS4_RECHARGE_BURN           (1 << 22)
 #define STATUS4_DOUBLE_TEAM             (1 << 23)
 #define STATUS4_IMPRISON                (1 << 24)
+#define STATUS4_RECHARGE_STATS          (1 << 25)
 
 #define HITMARKER_WAKE_UP_CLEAR         (1 << 4) // Cleared when waking up. Never set or checked.
 #define HITMARKER_SKIP_DMG_TRACK        (1 << 5)
@@ -460,8 +461,9 @@
 #define MOVE_EFFECT_SUPER_TROP_KICK     119
 #define MOVE_EFFECT_BANSHRIEK           120
 #define MOVE_EFFECT_LETHAL_CHAIN        121
+#define MOVE_EFFECT_RECHARGE_STATS      122
 
-#define NUM_MOVE_EFFECTS                122
+#define NUM_MOVE_EFFECTS                123
 
 #define MOVE_EFFECT_AFFECTS_USER        0x4000
 #define MOVE_EFFECT_CERTAIN             0x8000

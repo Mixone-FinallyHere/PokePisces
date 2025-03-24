@@ -231,7 +231,8 @@ void HandleAction_UseMove(void)
     }
     else if (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS 
         || gBattleMons[gBattlerAttacker].status2 & STATUS2_RECHARGE 
-        || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_REDUCE 
+        || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_REDUCE
+        || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_STATS
         || gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_BURN)
     {
         gCurrentMove = gChosenMove = gLockedMoves[gBattlerAttacker];
@@ -3755,6 +3756,15 @@ u8 AtkCanceller_UnableToUseMove(u32 moveType)
                 gDisableStructs[gBattlerAttacker].rechargeTimer = 0;
                 CancelMultiTurnMoves(gBattlerAttacker);
                 gBattlescriptCurrInstr = BattleScript_MoveUsedMustRecharge;
+                gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
+                effect = 1;
+            }
+            else if (gStatuses4[gBattlerAttacker] & STATUS4_RECHARGE_STATS)
+            {
+                gStatuses4[gBattlerAttacker] &= ~STATUS4_RECHARGE_STATS;
+                gDisableStructs[gBattlerAttacker].rechargeTimer = 0;
+                CancelMultiTurnMoves(gBattlerAttacker);
+                gBattlescriptCurrInstr = BattleScript_MoveUsedMustRechargeStats;
                 gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
                 effect = 1;
             }

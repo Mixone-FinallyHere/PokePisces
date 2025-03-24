@@ -43,6 +43,7 @@ extern const u8 BattleScript_DragonPokerFourOfAKind[];
 extern const u8 BattleScript_DragonPokerStraightFlush[];
 extern const u8 BattleScript_DragonPokerRoyalFlush[];
 extern const u8 BattleScript_MoveUsedMustRecharge[];
+extern const u8 BattleScript_MoveUsedMustRechargeStats[];
 extern const u8 BattleScript_FaintAttacker[];
 extern const u8 BattleScript_FaintTarget[];
 extern const u8 BattleScript_GiveExp[];
