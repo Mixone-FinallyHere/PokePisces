@@ -1,7 +1,7 @@
 #include "global.h"
 #include "test/battle.h"
 
-SINGLE_BATTLE_TEST("Population Bomb can hit ten times")
+SINGLE_BATTLE_TEST("Mass Attack can hit ten times")
 {
     GIVEN {
         ASSUME(gBattleMoves[MOVE_POPULATION_BOMB].strikeCount == 10);
@@ -24,6 +24,6 @@ SINGLE_BATTLE_TEST("Population Bomb can hit ten times")
     }
 }
 
-TO_DO_BATTLE_TEST("Accuracy for Population Bomb is checked independently for each hit")
-TO_DO_BATTLE_TEST("Accuracy for Population Bomb is only checked for the first hit with Skill Link")
-TO_DO_BATTLE_TEST("Accuracy for Population Bomb is only checked for the first hit with Loaded Dice")
+TO_DO_BATTLE_TEST("Accuracy for Mass Attack is checked independently for each hit")
+TO_DO_BATTLE_TEST("Accuracy for Mass Attack is only checked for the first hit with Skill Link")
+TO_DO_BATTLE_TEST("Accuracy for Mass Attack is only checked for the first hit with Loaded Dice")

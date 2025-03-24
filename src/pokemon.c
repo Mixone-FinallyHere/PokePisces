@@ -4081,11 +4081,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         else
 #endif
         {
-            u32 totalRerolls = 0;
-            if (CheckBagHasItem(ITEM_SHINY_CHARM, 1))
-                totalRerolls += I_SHINY_CHARM_ADDITIONAL_ROLLS;
-            if (LURE_STEP_COUNT != 0)
-                totalRerolls += 1;
+            u32 totalRerolls = 16;
 
             while (GET_SHINY_VALUE(value, personality) >= SHINY_ODDS && totalRerolls > 0)
             {
@@ -6490,9 +6486,9 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                 {
                     dataUnsigned = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES, NULL)].growthRate][GetMonData(mon, MON_DATA_LEVEL, NULL) + 1];
                 }
-                else if (param == 69) // Shelly Brew
+                else if (param == 10) // Shelly Brew
                 {
-                    dataUnsigned = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES, NULL)].growthRate][GetMonData(mon, MON_DATA_LEVEL, NULL) + 1];
+                    dataUnsigned = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES, NULL)].growthRate][GetMonData(mon, MON_DATA_LEVEL, NULL) + (GetPreviousLevelCap() - GetMonData(mon, MON_DATA_LEVEL, NULL))];
                 }
                 else if (param - 1 < ARRAY_COUNT(sExpCandyExperienceTable)) // EXP Candies
                 {
@@ -8478,7 +8474,7 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_LEADER:
             return MUS_VS_GYM_LEADER_2;
         case TRAINER_CLASS_CHAMPION:
-            return MUS_VS_CHAMPION;
+            return MUS_VS_RIVAL;
         case TRAINER_CLASS_RIVAL:
             if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
                 return MUS_VS_RAY;
@@ -8486,7 +8482,7 @@ u16 GetBattleBGM(void)
                 return MUS_VS_PTRAINER;
             return MUS_VS_RAY;
         case TRAINER_CLASS_ELITE_FOUR:
-            return MUS_VS_ELITE_FOUR;
+            return MUS_VS_CHAMPION;
         case TRAINER_CLASS_SALON_MAIDEN:
             return MUS_VS_WALLY;
         case TRAINER_CLASS_PALACE_MAVEN:
@@ -9194,20 +9190,24 @@ u8 GetCurrentLevelCap(void)
     else if (!FlagGet(FLAG_BADGE07_GET))
         return 54;
     else if (!FlagGet(FLAG_BADGE08_GET))
-        return 63;
+        return 62;
     else if (!FlagGet(FLAG_DEFEATED_EVIL_WALLY))
-        return 73;
+        return 69;
     else if (!FlagGet(FLAG_DEFEATED_OZONE_MAXIE_ARCHIE))
-        return 77;
+        return 73;
+    else if (!FlagGet(FLAG_DEFEATED_TWO_PISCES_LEGENDS))
+        return 75;
     else if (!FlagGet(FLAG_DEFEATED_GOLDEN_PLAINS_RIVAL))
-        return 84;
+        return 78;
     else
         return 100;
 }
 
 u8 GetPreviousLevelCap(void)
 {
-    if (!FlagGet(FLAG_BADGE02_GET))
+    if (!FlagGet(FLAG_BADGE01_GET))
+        return 1;
+    else if (!FlagGet(FLAG_BADGE02_GET))
         return 12;
     else if (!FlagGet(FLAG_DEFEATED_PANIC_EVENT))
         return 17;
@@ -9226,11 +9226,13 @@ u8 GetPreviousLevelCap(void)
     else if (!FlagGet(FLAG_BADGE08_GET))
         return 54;
     else if (!FlagGet(FLAG_DEFEATED_EVIL_WALLY))
-        return 63;
+        return 62;
     else if (!FlagGet(FLAG_DEFEATED_OZONE_MAXIE_ARCHIE))
+        return 69;
+    else if (!FlagGet(FLAG_DEFEATED_TWO_PISCES_LEGENDS))
         return 73;
     else if (!FlagGet(FLAG_DEFEATED_GOLDEN_PLAINS_RIVAL))
-        return 77;
+        return 75;
     else
         return 100;
 }

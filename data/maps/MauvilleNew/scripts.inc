@@ -315,41 +315,97 @@ MauvilleNew_EventScript_Miguel::
     msgbox MauvilleNew_Text_MiguelPostBattle, MSGBOX_AUTOCLOSE
     end
 
+MauvilleNew_EventScript_NewMauvilleNorthSign::
+	msgbox MauvilleNew_Text_NewMauvilleNorthSign, MSGBOX_SIGN
+	end
+
+MauvilleNew_EventScript_NewMauvilleEastSign::
+	msgbox MauvilleNew_Text_NewMauvilleEastSign, MSGBOX_SIGN
+	end
+
+MauvilleNew_EventScript_NewMauvilleSouthSign::
+	msgbox MauvilleNew_Text_NewMauvilleSouthSign, MSGBOX_SIGN
+	end
+
+MauvilleNew_EventScript_NewMauvilleWestSign::
+	msgbox MauvilleNew_Text_NewMauvilleWestSign, MSGBOX_SIGN
+	end
+
+MauvilleNew_EventScript_RydelSign::
+	msgbox MauvilleNew_Text_RydelSign, MSGBOX_SIGN
+	end
+
+MauvilleNew_EventScript_MaintenanceSign::
+	msgbox MauvilleNew_Text_MaintenanceSign, MSGBOX_SIGN
+	end
+
+MauvilleNew_Text_NewMauvilleNorthSign:
+	.string "NEW MAUVILLE - NORTH ENTRANCE$"
+
+MauvilleNew_Text_NewMauvilleEastSign:
+	.string "NEW MAUVILLE - EAST ENTRANCE$"
+
+MauvilleNew_Text_NewMauvilleSouthSign:
+	.string "NEW MAUVILLE - SOUTH ENTRANCE$"
+
+MauvilleNew_Text_NewMauvilleWestSign:
+	.string "NEW MAUVILLE - WEST ENTRANCE$"
+
+MauvilleNew_Text_RydelSign:
+	.string "RYDEL'S CYCLES!$"
+
+MauvilleNew_Text_MaintenanceSign:
+	.string "NOTICE:\n"
+	.string "This is the entrance to\l"
+	.string "New Mauville's Maintenance area.\l"
+	.string "Those without a specially given\l"
+	.string "key by GMH will be denied access.$"
+
 MauvilleNew_Text_KurtIntro:
-	.string "intro$"
+	.string "What else can I say?$"
 
 MauvilleNew_Text_KurtDefeated:
-	.string "defeat$"
+	.string "You hung me out to dry...$"
 
 MauvilleNew_Text_KurtPostBattle:
-	.string "post$"
+	.string "If you ever need something, don't\n"
+	.string "hesitate to ask someone else first.$"
 
 MauvilleNew_Text_KirstIntro:
-	.string "intro$"
+	.string "Maybe this'll change your tune...$"
 
 MauvilleNew_Text_KirstDefeated:
-	.string "defeat$"
+	.string "I played the wrong chord!$"
 
 MauvilleNew_Text_KirstPostBattle:
-	.string "post$"
+	.string "I can play this thing all day,\n"
+	.string "'till my fingers bleed!\l"
+	.string "That's my dedication!$"
 
 MauvilleNew_Text_MaiaIntro:
-	.string "intro$"
+	.string "Oh, I always dread eating at this\n"
+	.string "food court... always someone\l"
+	.string "looking for a battle!$"
 
 MauvilleNew_Text_MaiaDefeated:
-	.string "defeat$"
+	.string "You proved my point!$"
 
 MauvilleNew_Text_MaiaPostBattle:
-	.string "post$"
+	.string "I can only hope that someday,\n"
+	.string "my kids will broaden their diet\l"
+	.string "beyond chicken nuggets...$"
 
 MauvilleNew_Text_MiguelIntro:
-	.string "intro$"
+	.string "Are you here to bring us our\n"
+	.string "cheese plate?$"
 
 MauvilleNew_Text_MiguelDefeated:
-	.string "defeat$"
+	.string "That could've gone cheddar...$"
 
 MauvilleNew_Text_MiguelPostBattle:
-	.string "post$"
+	.string "Cheese is all my baby boy likes.\n"
+	.string "He's gonna get chubby, just\l"
+	.string "like his pops!$"
 
 MauvilleNew_Text_NameKizuna:
 	.string "Kizuna$"
@@ -550,4 +606,6 @@ MauvilleNew_Text_RayLeaves:
 	.string "(and likely fail).$"
 
 MauvilleNew_Text_DisturbMeralcore:
-	.string "disturb this mf?$"
+	.string "(It's an active Meralcore.)\p"
+	.string "(Do you want to engage it\n"
+	.string "in a battle?)$"

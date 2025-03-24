@@ -1590,6 +1590,17 @@ const struct SpriteTemplate gWaterShurikenRingTemplate =
     .callback = AnimWaterPulseRing
 };
 
+const struct SpriteTemplate gTorpedoSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_TORPEDO,
+    .paletteTag = ANIM_TAG_TORPEDO,
+    .oam = &gOamData_AffineDouble_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gWaterPulseRingAffineAnimTable,
+    .callback = AnimWaterPulseRing
+};
+
 const struct SpriteTemplate gWaterShurikenImpactTemplate =
 {
     .tileTag = ANIM_TAG_IMPACT,
@@ -5507,30 +5518,22 @@ const struct SpriteTemplate gGiantsSpearLaunchSpriteTemplate =
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimSuperpowerFireball
 };
-static const union AnimCmd sAnimCmdFlippedXY[] = {
-	ANIMCMD_FRAME(0, 1, .hFlip = TRUE),
-	ANIMCMD_FRAME(0, 1, .vFlip = TRUE),
-	ANIMCMD_END,
-};
-static const union AnimCmd *const sAnimCmdTable_FlippedXY[] = {
-	sAnimCmdFlippedXY,
-};
 const struct SpriteTemplate gGiantsSpearLaunchOpponentSpriteTemplate =
 {
-    .tileTag = ANIM_TAG_GIANTS_SPEAR,
-    .paletteTag = ANIM_TAG_GIANTS_SPEAR,
+    .tileTag = ANIM_TAG_GIANTS_SPEAR_OPPONENT,
+    .paletteTag = ANIM_TAG_GIANTS_SPEAR_OPPONENT,
     .oam = &gOamData_AffineNormal_ObjNormal_64x64,
-    .anims = sAnimCmdTable_FlippedXY,
+    .anims = gDummySpriteAnimTable,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimSuperpowerFireball
 };
 const struct SpriteTemplate gGiantsSpearChargingOpponentSpriteTemplate =
 {
-    .tileTag = ANIM_TAG_GIANTS_SPEAR,
-    .paletteTag = ANIM_TAG_GIANTS_SPEAR,
+    .tileTag = ANIM_TAG_GIANTS_SPEAR_OPPONENT,
+    .paletteTag = ANIM_TAG_GIANTS_SPEAR_OPPONENT,
     .oam = &gOamData_AffineNormal_ObjNormal_64x64,
-    .anims = sAnimCmdTable_FlippedXY,
+    .anims = gDummySpriteAnimTable,
     .images = NULL,
     .affineAnims = gAffineAnims_GrowingElectricOrb,
     .callback = AnimGrowingChargeOrb
@@ -7614,6 +7617,9 @@ static void AnimBlastBurnTargetPlume(struct Sprite *sprite)
         sprite->data[2] = gBattleAnimArgs[4];
     }
 
+    if (gAnimMoveIndex == MOVE_DRAGON_RUIN && IsDoubleBattle())
+        SetAverageBattlerPositions(gBattleAnimTarget, FALSE, &sprite->x, &sprite->y);
+    
     sprite->data[1] = gBattleAnimArgs[2];
     sprite->data[4] = gBattleAnimArgs[3];
     sprite->data[3] = gBattleAnimArgs[5];

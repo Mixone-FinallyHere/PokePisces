@@ -15,15 +15,36 @@ SailorsPause_EventScript_RemoveRay::
 
 SailorsPause_EventScript_RayEncounter::
 	lock
+	special SpawnCameraObject
+	delay 8
+	applymovement OBJ_EVENT_ID_CAMERA, SailorsPause_Movement_CameraPanDown
+	waitmovement 0
 	applymovement LOCALID_RAY, SailorsPause_Movement_RayEncounter
 	waitmovement 0
 	speakername SailorsPause_Text_NameRay
 	msgbox SailorsPause_Text_RayIntro, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_CAMERA, SailorsPause_Movement_CameraPanUp
+	waitmovement 0
+	special RemoveCameraObject
+	delay 4
 	trainerbattle_no_intro TRAINER_P_RAY_5, SailorsPause_Text_RayDefeat
 	goto SailorsPause_EventScript_RayLeaves
 	speakername NULL
 	release
 	end
+
+SailorsPause_Movement_CameraPanDown:
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+SailorsPause_Movement_CameraPanUp:
+	walk_up
+	walk_up
+	walk_up
+	step_end
 
 SailorsPause_Movement_RayEncounter:
 	emote_exclamation_mark

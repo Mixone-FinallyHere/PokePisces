@@ -1,5 +1,18 @@
 TrickHousePotRoom_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, TrickHousePotRoom_OnLoad
 	.byte 0
+
+TrickHousePotRoom_OnLoad:
+	call_if_set FLAG_POTTRICIA_DEFEATED, TrickHousePotRoom_EventScript_RemovePottricia
+	end
+
+TrickHousePotRoom_EventScript_RemovePottricia::
+	setmetatile 4, 1, METATILE_TrickHouseNew_TickHouseDoor, FALSE
+	setmetatile 4, 2, METATILE_TrickHouseNew_PottriciaDownLeft, FALSE
+	setmetatile 5, 2, METATILE_TrickHouseNew_PottriciaDownMiddle, FALSE
+	setmetatile 6, 2, METATILE_TrickHouseNew_PottriciaDownRight, FALSE
+	special DrawWholeMapView
+	return
 
 TrickHousePotRoom_EventScript_Pottricia::
 	lock
@@ -11,6 +24,7 @@ TrickHousePotRoom_EventScript_Pottricia::
 TrickHousePotRoom_EventScript_PottriciaBattle::
 	setwildbattle SPECIES_POTTRICIA, 100
 	msgbox TrickHousePotRoom_Text_ThisPotIsInYourWay, MSGBOX_DEFAULT
+	closemessage
 	setflag FLAG_WILD_NO_CATCHING_FLAG
 	setflag FLAG_WILD_NO_RUNNING_FLAG
 	setflag FLAG_SMART_WILD_AI_FLAG

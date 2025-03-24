@@ -787,6 +787,8 @@ u8 BattleSetup_GetTerrainId(void)
         if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
             return BATTLE_TERRAIN_WATER;
         return BATTLE_TERRAIN_DARK_AREA;
+    case MAP_TYPE_SHUNYONG_ARENA:
+        return BATTLE_TERRAIN_SHUNYONG;
     case MAP_TYPE_OCEAN_ROUTE:
         if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
             return BATTLE_TERRAIN_WATER;
@@ -804,6 +806,8 @@ u8 BattleSetup_GetTerrainId(void)
         return BATTLE_TERRAIN_WOODEN_ROUTE;
     if (MetatileBehavior_IsWhitePath(tileBehavior))
         return BATTLE_TERRAIN_PATH;
+    if (MetatileBehavior_IsShunyongTile(tileBehavior))
+        return BATTLE_TERRAIN_SHUNYONG;
     if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
     {
         // Is BRIDGE_TYPE_POND_*?
@@ -915,32 +919,6 @@ u8 GetTrainerBattleTransition(void)
 
     if (gTrainerBattleOpponent_A == TRAINER_SECRET_BASE)
         return B_TRANSITION_CHAMPION;
-
-    if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_ELITE_FOUR)
-    {
-        if (gTrainerBattleOpponent_A == TRAINER_DO_NOT_TOUCHIE)
-            return B_TRANSITION_SIDNEY;
-        if (gTrainerBattleOpponent_A == TRAINER_PHOEBE)
-            return B_TRANSITION_PHOEBE;
-        if (gTrainerBattleOpponent_A == TRAINER_GLACIA)
-            return B_TRANSITION_GLACIA;
-        if (gTrainerBattleOpponent_A == TRAINER_DRAKE)
-            return B_TRANSITION_DRAKE;
-        return B_TRANSITION_CHAMPION;
-    }
-
-    if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_CHAMPION)
-        return B_TRANSITION_CHAMPION;
-
-    if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_TEAM_MAGMA
-        || gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_MAGMA_LEADER
-        || gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_MAGMA_ADMIN)
-        return B_TRANSITION_MAGMA;
-
-    if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_TEAM_AQUA
-        || gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_AQUA_LEADER
-        || gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_AQUA_ADMIN)
-        return B_TRANSITION_AQUA;
 
     if (gTrainers[gTrainerBattleOpponent_A].doubleBattle == TRUE)
         minPartyCount = 2; // double battles always at least have 2 pokemon.

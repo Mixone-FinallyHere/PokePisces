@@ -324,6 +324,7 @@ static u8 StatUpOrDown(s8 natureMod);
 static void PrintEditEVs(void);
 static void SwitchToEvEditor(u8 taskId);
 static void Task_HandleEvEditorInput(u8);
+static void Task_WaitEvEditorInput(u8 taskId);
 static void Task_HandleChangeEV(u8 taskId);
 static void SaveMonEVs(u8 taskId);
 
@@ -4443,10 +4444,16 @@ static u8 StatUpOrDown(s8 natureMod)
 // EV EDITING
 #define NUM_EV_EDITOR_MOVE_SELECTOR_SPRITES     4
 
+enum EditEvStringCaseIds {
+    EV_EDITOR_SHOW,
+    EV_EDITOR_EDIT,
+    EV_EDITOR_BACK,
+};
+
 static const u8 sText_EditEVs[] = _("VIEW EVS");
 static const u8 sText_EditSingleEV[] = _("EDIT");
 static const u8 sText_EditEVsBack[] = _("BACK");
-static void PrintEditEVsOrViewStats(int caseId)
+static void PrintEditEVsOrViewStats(enum EditEvStringCaseIds caseId)
 {
     const u8 *str;
     bool32 bButton;
@@ -4456,15 +4463,15 @@ static void PrintEditEVsOrViewStats(int caseId)
     
     switch (caseId)
     {
-    case 0: // edit evs
+    case EV_EDITOR_SHOW: // edit evs
         str = sText_EditEVs;
         bButton = FALSE;
         break;
-    case 1:
+    case EV_EDITOR_EDIT:
         str = sText_EditSingleEV;
         bButton = FALSE;
         break;
-    case 2:
+    case EV_EDITOR_BACK:
     default:
         str = sText_EditEVsBack;
         bButton = TRUE;
@@ -4479,7 +4486,7 @@ static void PrintEditEVsOrViewStats(int caseId)
 
 static void PrintEditEVs(void)
 {
-    PrintEditEVsOrViewStats(0);
+    PrintEditEVsOrViewStats(EV_EDITOR_SHOW);
 }
 
 static void SpriteCB_StatSelector(struct Sprite *sprite)
@@ -4585,6 +4592,7 @@ static void SwitchToEvEditor(u8 taskId)
     u8 windows[2] = {windowL, windowR};
     s16 *data = gTasks[taskId].data;
     struct PokeSummary *sum = &sMonSummaryScreen->summary;
+    bool32 isStorage = (sMonSummaryScreen->mode == SUMMARY_MODE_BOX);
     
     // buffer current evs
     sum->evTotal = 0;
@@ -4596,7 +4604,7 @@ static void SwitchToEvEditor(u8 taskId)
     }
 
     // print view stats
-    PrintEditEVsOrViewStats(1);
+    PrintEditEVsOrViewStats((!isStorage) ? EV_EDITOR_EDIT : EV_EDITOR_BACK);
     
     // print evs
     for (j = 0; j < 2; j++) {
@@ -4605,26 +4613,41 @@ static void SwitchToEvEditor(u8 taskId)
     }
     
     // selectors
-    CreateMoveSelectorSpritesForEvEditing();
-    
-    gTasks[taskId].func = Task_HandleEvEditorInput;
+    if (!isStorage) {
+        CreateMoveSelectorSpritesForEvEditing();
+        gTasks[taskId].func = Task_HandleEvEditorInput;
+    } else {
+        gTasks[taskId].func = Task_WaitEvEditorInput;
+    }
+}
+
+static void EvEditorExit(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    PlaySE(SE_SELECT);
+    PrintEditEVs();
+    FillWindowPixelBuffer(data[14], PIXEL_FILL(0));
+    FillWindowPixelBuffer(data[15], PIXEL_FILL(0));
+    DestroyMoveSelectorSpritesForEvEditing();
+    BufferLeftColumnStats();
+    PrintLeftColumnStats();
+    BufferRightColumnStats();
+    PrintRightColumnStats();
+    gTasks[taskId].func = Task_HandleInput;
+}
+
+static void Task_WaitEvEditorInput(u8 taskId)
+{
+    if (JOY_NEW(A_BUTTON | B_BUTTON)) {
+        EvEditorExit(taskId);
+    }
 }
 
 static void Task_HandleEvEditorInput(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
     if (JOY_NEW(B_BUTTON)) {
-        PlaySE(SE_SELECT);
-        PrintEditEVs();
-        FillWindowPixelBuffer(data[14], PIXEL_FILL(0));
-        FillWindowPixelBuffer(data[15], PIXEL_FILL(0));
-        DestroyMoveSelectorSpritesForEvEditing();
-        BufferLeftColumnStats();
-        PrintLeftColumnStats();
-        BufferRightColumnStats();
-        PrintRightColumnStats();
-        CalculateMonStats(&sMonSummaryScreen->currentMon);
-        gTasks[taskId].func = Task_HandleInput;
+        EvEditorExit(taskId);
     } else if (JOY_NEW(DPAD_RIGHT | DPAD_LEFT)) {
         sMonSummaryScreen->firstMoveIndex ^= 1;
     } else if (JOY_NEW(DPAD_UP)) {
@@ -4643,7 +4666,7 @@ static void Task_HandleEvEditorInput(u8 taskId)
         // adjust EV values
         PlaySE(SE_SELECT);
         SetStatSelectorFixedState(TRUE);
-        PrintEditEVsOrViewStats(2);
+        PrintEditEVsOrViewStats(EV_EDITOR_BACK);
         gTasks[taskId].func = Task_HandleChangeEV;
     }
 }
@@ -4657,8 +4680,7 @@ static void Task_HandleChangeEV(u8 taskId)
         SaveMonEVs(taskId);        
         PlaySE(SE_SELECT);
         SetStatSelectorFixedState(FALSE);
-        PrintEditEVsOrViewStats(1);
-        CalculateMonStats(&sMonSummaryScreen->currentMon);
+        PrintEditEVsOrViewStats(EV_EDITOR_EDIT);
         gTasks[taskId].func = Task_HandleEvEditorInput;
     } else if (JOY_NEW(L_BUTTON | R_BUTTON)) {
         sMonSummaryScreen->firstMoveIndex ^= 1;

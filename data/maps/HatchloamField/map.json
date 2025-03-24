@@ -301,7 +301,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "HatchloamField_EventScript_ItemPCarrotHorn2",
-      "flag": "0"
+      "flag": "FLAG_P_ITEM_HATCHLOAM_FIELD_CARROT_HORN_2"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -500,6 +500,133 @@
 
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 60,
+      "y": 29,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "HatchloamField_EventScript_HatchloamSign"
+    },
+    {
+      "type": "sign",
+      "x": 50,
+      "y": 33,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "HatchloamField_EventScript_BerriesSign"
+    },
+    {
+      "type": "sign",
+      "x": 60,
+      "y": 21,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "HatchloamField_EventScript_ColumnarTreesSign"
+    },
+    {
+      "type": "sign",
+      "x": 45,
+      "y": 17,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "HatchloamField_EventScript_FirTreesSign"
+    },
+    {
+      "type": "sign",
+      "x": 26,
+      "y": 15,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "HatchloamField_EventScript_BerriesSign"
+    },
+    {
+      "type": "sign",
+      "x": 23,
+      "y": 15,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "HatchloamField_EventScript_BerriesSign"
+    },
+    {
+      "type": "sign",
+      "x": 18,
+      "y": 11,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "HatchloamField_EventScript_BerriesSign"
+    },
+    {
+      "type": "sign",
+      "x": 23,
+      "y": 7,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "HatchloamField_EventScript_BerriesSign"
+    },
+    {
+      "type": "sign",
+      "x": 35,
+      "y": 12,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "HatchloamField_EventScript_FlowersSign"
+    },
+    {
+      "type": "sign",
+      "x": 4,
+      "y": 21,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "HatchloamField_EventScript_ExcessSign"
+    },
+    {
+      "type": "sign",
+      "x": 14,
+      "y": 20,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "HatchloamField_EventScript_BerriesSign"
+    },
+    {
+      "type": "sign",
+      "x": 58,
+      "y": 4,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "HatchloamField_EventScript_TrickHouseSign"
+    },
+    {
+      "type": "sign",
+      "x": 32,
+      "y": 21,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "HatchloamField_EventScript_DayCareSign"
+    },
+    {
+      "type": "sign",
+      "x": 6,
+      "y": 32,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "HatchloamField_EventScript_OldaleSign"
+    },
+    {
+      "type": "sign",
+      "x": 1,
+      "y": 7,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "HatchloamField_EventScript_VerdanturfSign"
+    },
+    {
+      "type": "sign",
+      "x": 28,
+      "y": 26,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "HatchloamField_EventScript_PondSign"
+    }
   ]
 }

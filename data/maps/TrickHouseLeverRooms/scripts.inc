@@ -75,6 +75,7 @@ TrickHouseLeverRooms_EventScript_Oil::
 	lock
 	removeobject LOCALID_OIL
 	setflag FLAG_TEMP_11
+	playse SE_SUCCESS
 	msgbox TrickHouseLeverRooms_Text_YouFoundOil, MSGBOX_AUTOCLOSE
 	release
 	end

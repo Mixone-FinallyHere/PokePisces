@@ -17,6 +17,9 @@ static void AnimDefensiveWall_Step5(struct Sprite *);
 static void AnimWallSparkle(struct Sprite *);
 static void AnimBentSpoon(struct Sprite *);
 static void AnimQuestionMark(struct Sprite *);
+static void AnimQuestionMark2(struct Sprite *);
+static void AnimQuestionMark3(struct Sprite *);
+static void AnimQuestionMark4(struct Sprite *);
 static void AnimQuestionMark_Step1(struct Sprite *);
 static void AnimQuestionMark_Step2(struct Sprite *);
 static void AnimRedX(struct Sprite *);
@@ -279,6 +282,37 @@ const struct SpriteTemplate gQuestionMarkSpriteTemplate =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimQuestionMark,
+};
+
+const struct SpriteTemplate gQuestionMark2SpriteTemplate =
+{
+    .tileTag = ANIM_TAG_AMNESIA,
+    .paletteTag = ANIM_TAG_AMNESIA,
+    .oam = &gOamData_AffineOff_ObjNormal_32x32,
+    .anims = sAnims_QuestionMark,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimQuestionMark2,
+};
+const struct SpriteTemplate gQuestionMark3SpriteTemplate =
+{
+    .tileTag = ANIM_TAG_AMNESIA,
+    .paletteTag = ANIM_TAG_AMNESIA,
+    .oam = &gOamData_AffineOff_ObjNormal_32x32,
+    .anims = sAnims_QuestionMark,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimQuestionMark3,
+};
+const struct SpriteTemplate gQuestionMark4SpriteTemplate =
+{
+    .tileTag = ANIM_TAG_AMNESIA,
+    .paletteTag = ANIM_TAG_AMNESIA,
+    .oam = &gOamData_AffineOff_ObjNormal_32x32,
+    .anims = sAnims_QuestionMark,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimQuestionMark4,
 };
 
 static const union AffineAnimCmd sAffineAnim_MeditateStretchAttacker[] =
@@ -793,6 +827,60 @@ static void AnimQuestionMark(struct Sprite *sprite)
 
     sprite->x = GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_X_2) + x;
     sprite->y = GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_Y_PIC_OFFSET) + y;
+
+    if (sprite->y < 16)
+        sprite->y = 16;
+
+    StoreSpriteCallbackInData6(sprite, AnimQuestionMark_Step1);
+    sprite->callback = RunStoredCallbackWhenAnimEnds;
+}
+
+static void AnimQuestionMark2(struct Sprite *sprite)
+{
+    s16 x = GetBattlerSpriteCoordAttr(gBattleAnimTarget, BATTLER_COORD_ATTR_WIDTH) /  2;
+    s16 y = GetBattlerSpriteCoordAttr(gBattleAnimTarget, BATTLER_COORD_ATTR_HEIGHT) / -2;
+
+    if (GetBattlerSide(gBattleAnimTarget) == B_SIDE_OPPONENT)
+        x = -x;
+
+    sprite->x = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2) + x;
+    sprite->y = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET) + y;
+
+    if (sprite->y < 16)
+        sprite->y = 16;
+
+    StoreSpriteCallbackInData6(sprite, AnimQuestionMark_Step1);
+    sprite->callback = RunStoredCallbackWhenAnimEnds;
+}
+
+static void AnimQuestionMark3(struct Sprite *sprite)
+{
+    s16 x = GetBattlerSpriteCoordAttr(gBattleAnimTarget, BATTLER_COORD_ATTR_WIDTH) /  2 + 20;
+    s16 y = GetBattlerSpriteCoordAttr(gBattleAnimTarget, BATTLER_COORD_ATTR_HEIGHT) / -2 + 15;
+
+    if (GetBattlerSide(gBattleAnimTarget) == B_SIDE_OPPONENT)
+        x = -x;
+
+    sprite->x = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2) + x;
+    sprite->y = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET) + y;
+
+    if (sprite->y < 16)
+        sprite->y = 16;
+
+    StoreSpriteCallbackInData6(sprite, AnimQuestionMark_Step1);
+    sprite->callback = RunStoredCallbackWhenAnimEnds;
+}
+
+static void AnimQuestionMark4(struct Sprite *sprite)
+{
+    s16 x = GetBattlerSpriteCoordAttr(gBattleAnimTarget, BATTLER_COORD_ATTR_WIDTH) /  2 - 20;
+    s16 y = GetBattlerSpriteCoordAttr(gBattleAnimTarget, BATTLER_COORD_ATTR_HEIGHT) / -2 + 15;
+
+    if (GetBattlerSide(gBattleAnimTarget) == B_SIDE_OPPONENT)
+        x = -x;
+
+    sprite->x = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2) + x;
+    sprite->y = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET) + y;
 
     if (sprite->y < 16)
         sprite->y = 16;

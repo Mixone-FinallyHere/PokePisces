@@ -42,10 +42,24 @@ OzoneMattRoom_Text_NameMatt:
 	.string "Matt$"
 
 OzoneMattRoom_Text_MattIntro:
-	.string "intro$"
+	.string "Oh, hey! I didn't realize\n"
+	.string "YOU would be that trainer Archie\l"
+	.string "told me to get ready for!\p"
+	.string "You've sure come a long way,\n"
+	.string "not-so-small-fry! And here, I\l"
+	.string "thought you'd be fodder!\p"
+	.string "I'm more than happy to give\n"
+	.string "you a challenge. Ain't no way\l"
+	.string "you're getting by me with\l"
+	.string "your whole team intact!$"
 
 OzoneMattRoom_Text_MattDefeated:
-	.string "defeat$"
+	.string "Blast! I thought I had you!$"
 
 OzoneMattRoom_Text_MattPost:
-	.string "post$"
+	.string "That was a damn good showing!\n"
+	.string "You weathered my sandstorm like\l"
+	.string "you were born in the desert!\p"
+	.string "Ah, I can't keep ya forever.\n"
+	.string "Go show the others what's what!\l"
+	.string "I'll be cheerin' you on!$"

@@ -101,100 +101,44 @@ Route126_EventScript_LovelacePost::
 	end
 
 Route126_EventScript_Stella::
-    trainerbattle_single TRAINER_P_STELLA, Route126_Text_GugumbirIntro, Route126_Text_GugumbirDefeated
-    msgbox Route126_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_single TRAINER_P_STELLA, Route126_Text_StellaIntro, Route126_Text_StellaDefeated
+    msgbox Route126_Text_StellaPostBattle, MSGBOX_AUTOCLOSE
     end
 
 Route126_EventScript_Isaac::
-    trainerbattle_single TRAINER_P_ISAAC, Route126_Text_GugumbirIntro, Route126_Text_GugumbirDefeated
-    msgbox Route126_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_single TRAINER_P_ISAAC, Route126_Text_IsaacIntro, Route126_Text_IsaacDefeated
+    msgbox Route126_Text_IsaacPostBattle, MSGBOX_AUTOCLOSE
     end
 
 Route126_EventScript_Rise::
-    trainerbattle_single TRAINER_P_RISE, Route126_Text_GugumbirIntro, Route126_Text_GugumbirDefeated
-    msgbox Route126_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_single TRAINER_P_RISE, Route126_Text_RiseIntro, Route126_Text_RiseDefeated
+    msgbox Route126_Text_RisePostBattle, MSGBOX_AUTOCLOSE
     end
 
 Route126_EventScript_Yu::
-    trainerbattle_single TRAINER_P_YU, Route126_Text_GugumbirIntro, Route126_Text_GugumbirDefeated
-    msgbox Route126_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_single TRAINER_P_YU, Route126_Text_YuIntro, Route126_Text_YuDefeated
+    msgbox Route126_Text_YuPostBattle, MSGBOX_AUTOCLOSE
     end
 
 Route126_EventScript_Geiger::
-    trainerbattle_single TRAINER_P_GEIGER, Route126_Text_GugumbirIntro, Route126_Text_GugumbirDefeated
-    msgbox Route126_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_single TRAINER_P_GEIGER, Route126_Text_GeigerIntro, Route126_Text_GeigerDefeated
+    msgbox Route126_Text_GeigerPostBattle, MSGBOX_AUTOCLOSE
     end
 
 Route126_EventScript_York::
-    trainerbattle_single TRAINER_P_YORK, Route126_Text_GugumbirIntro, Route126_Text_GugumbirDefeated
-    msgbox Route126_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_single TRAINER_P_YORK, Route126_Text_YorkIntro, Route126_Text_YorkDefeated
+    msgbox Route126_Text_YorkPostBattle, MSGBOX_AUTOCLOSE
     end
 
 Route126_EventScript_Rika::
-    trainerbattle_single TRAINER_P_RIKA, Route126_Text_GugumbirIntro, Route126_Text_GugumbirDefeated
-    msgbox Route126_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_single TRAINER_P_RIKA, Route126_Text_RikaIntro, Route126_Text_RikaDefeated
+    msgbox Route126_Text_RikaPostBattle, MSGBOX_AUTOCLOSE
     end
 
 Route126_EventScript_Pete::
-    trainerbattle_single TRAINER_P_PETE, Route126_Text_GugumbirIntro, Route126_Text_GugumbirDefeated
-    msgbox Route126_Text_GugumbirPostBattle, MSGBOX_AUTOCLOSE
+    trainerbattle_single TRAINER_P_PETE, Route126_Text_PeteIntro, Route126_Text_PeteDefeated
+    msgbox Route126_Text_PetePostBattle, MSGBOX_AUTOCLOSE
     end
-
-Route126_EventScript_Barry::
-	trainerbattle_single TRAINER_P_MISAKI, Route126_Text_BarryIntro, Route126_Text_BarryDefeat
-	msgbox Route126_Text_BarryPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route126_EventScript_Dean::
-	trainerbattle_single TRAINER_P_YUINA, Route126_Text_DeanIntro, Route126_Text_DeanDefeat
-	msgbox Route126_Text_DeanPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route126_EventScript_Nikki::
-	trainerbattle_single TRAINER_P_ETNA, Route126_Text_NikkiIntro, Route126_Text_NikkiDefeat
-	msgbox Route126_Text_NikkiPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route126_EventScript_Brenda::
-	trainerbattle_single TRAINER_BRENDA, Route126_Text_BrendaIntro, Route126_Text_BrendaDefeat
-	msgbox Route126_Text_BrendaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route126_EventScript_Leonardo::
-	trainerbattle_single TRAINER_P_TAY, Route126_Text_LeonardoIntro, Route126_Text_LeonardoDefeat
-	msgbox Route126_Text_LeonardoPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route126_EventScript_Isobel::
-	trainerbattle_single TRAINER_P_RIN, Route126_Text_IsobelIntro, Route126_Text_IsobelDefeat
-	msgbox Route126_Text_IsobelPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route126_EventScript_Sienna::
-	trainerbattle_single TRAINER_P_PRINCE, Route126_Text_SiennaIntro, Route126_Text_SiennaDefeat
-	msgbox Route126_Text_SiennaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route126_EventScript_Pablo::
-	trainerbattle_single TRAINER_P_BIXBY, Route126_Text_PabloIntro, Route126_Text_PabloDefeat, Route126_EventScript_RegisterPablo
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route126_EventScript_RematchPablo
-	msgbox Route126_Text_PabloPostBattle, MSGBOX_DEFAULT
-	release
-	end
-
-Route126_EventScript_RegisterPablo::
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	msgbox Route126_Text_PabloRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_P_BIXBY
-	release
-	end
-
-Route126_EventScript_RematchPablo::
-	trainerbattle_rematch TRAINER_P_BIXBY, Route126_Text_PabloRematchIntro, Route126_Text_PabloRematchDefeat
-	msgbox Route126_Text_PabloPostRematch, MSGBOX_AUTOCLOSE
-	end
 
 Route126_EventScript_RayEncounterNorth::
 	lock
@@ -641,14 +585,115 @@ Route126_Text_LovelacePost:
 	.string "None of those barrels of bolts\l"
 	.string "are making it past me!$"
 
-Route126_Text_GugumbirIntro:
-	.string "intro$"
+Route126_Text_StellaIntro:
+	.string "Fixing up problems with the\n"
+	.string "launch pads is hard work!\l"
+	.string "How about I cool down with a battle?$"
 
-Route126_Text_GugumbirDefeated:
-	.string "defeat$"
+Route126_Text_StellaDefeated:
+	.string "You rocketted up the rankings!$"
 
-Route126_Text_GugumbirPostBattle:
-	.string "post$"
+Route126_Text_StellaPostBattle:
+	.string "As you could maybe imagine, a lot\n"
+	.string "of crap goes wrong on the bridge.\l"
+	.string "And of course, its with expensive\l"
+	.string "as heck equipment, too!$"
+
+Route126_Text_IsaacIntro:
+	.string "Did... did you throw an\n"
+	.string "apple at my head?$"
+
+Route126_Text_IsaacDefeated:
+	.string "Seems my hypothesis\n"
+	.string "was proven false.$"
+
+Route126_Text_IsaacPostBattle:
+	.string "Must have been gravity or something\n"
+	.string "that brought that apple down\l"
+	.string "on my noggin.\p"
+	.string "But, erm... I uh, don't see\n"
+	.string "any trees nearby...\p"
+	.string "Maybe someone DID throw\n"
+	.string "one at me!$"
+
+Route126_Text_RiseIntro:
+	.string "Well, well, well.\p"
+	.string "Look what we have here!\n"
+	.string "My new HUMAN WALLET!$"
+
+Route126_Text_RiseDefeated:
+	.string "You couldn't even spare\n"
+	.string "me a coin!?$"
+
+Route126_Text_RisePostBattle:
+	.string "I just wanted some ice cream...\n"
+	.string "waaahhhhh....!\p"
+	.string "(Those tears are definitely fake.)$"
+
+Route126_Text_YuIntro:
+	.string "Give me some money!\n"
+	.string "Or else... I shoot!$"
+
+Route126_Text_YuDefeated:
+	.string "ACK! I forgot to fill it!$"
+
+Route126_Text_YuPostBattle:
+	.string "Look, I didn't mean anything I said!\n"
+	.string "Please don't get me time-out!\l"
+	.string "PLEASE!$"
+
+Route126_Text_GeigerIntro:
+	.string "Daddy funded this specific rocket.\n"
+	.string "Isn't that impressive? Ah,\l"
+	.string "it feels SPLENDID to be rich!$"
+
+Route126_Text_GeigerDefeated:
+	.string "This loss is nothing.\n"
+	.string "I win by pure net worth alone!$"
+
+Route126_Text_GeigerPostBattle:
+	.string "Shoo-shoo now! I'll end up\n"
+	.string "catching your poverty.$"
+
+Route126_Text_YorkIntro:
+	.string "Batten down the hatches!\n"
+	.string "Trainer ahoy!$"
+
+Route126_Text_YorkDefeated:
+	.string "Left me high and dry!$"
+
+Route126_Text_YorkPostBattle:
+	.string "And here I thought besting you\n"
+	.string "would be smooth sailing.\l"
+	.string "Whelp. Guess I don't run as tight\l"
+	.string "of a ship as I first thought.$"
+
+Route126_Text_RikaIntro:
+	.string "A battle? Well, I suppose I have\n"
+	.string "the time until my crew sets sail.$"
+
+Route126_Text_RikaDefeated:
+	.string "Whoa! Rocked me like a hurricane!$"
+
+Route126_Text_RikaPostBattle:
+	.string "Hopefully the others don't mind if\n"
+	.string "I visit the Pokemon Center before\l"
+	.string "we set sail...$"
+
+Route126_Text_PeteIntro:
+	.string "Extree, extree! Read all about it!\p"
+	.string "(The Paper Boy hands you a sheet\n"
+	.string "of white paper with the words,\l"
+	.string "“You're About To Lose” on it.)$"
+
+Route126_Text_PeteDefeated:
+	.string "SHOCKING SCANDAL!\n"
+	.string "Paper Boy Pete LOSES in\l"
+	.string "landslide to {PLAYER}!$"
+
+Route126_Text_PetePostBattle:
+	.string "I am just going to embellish\n"
+	.string "the story some when I get a chance.$"
 
 Route126_Text_GugumbirNeedTwoMons:
 	.string "need 2 dood$"

@@ -42,10 +42,32 @@ OzoneCourtneyRoom_Text_NameCourtney:
 	.string "Courtney$"
 
 OzoneCourtneyRoom_Text_CourtneyIntro:
-	.string "intro$"
+	.string "Surprised to see me?\n"
+	.string "Yes, I know. Back with Team Ozone\l"
+	.string "after saying I wanted to\l"
+	.string "have some separation. And yes,\l"
+	.string "that is still true. I don't plan\l"
+	.string "on re-joining the team outside\l"
+	.string "of this special occasion.\p"
+	.string "But, when I heard you were here,\n"
+	.string "{PLAYER}? It made me really want\l"
+	.string "to go out and battle with all\l"
+	.string "my might, like the old times.\p"
+	.string "So now, I stand in your way.\n"
+	.string "I may be rusty, but I think\l"
+	.string "I've planned out my team well.\l"
+	.string "Here I come!$"
 
 OzoneCourtneyRoom_Text_CourtneyDefeated:
-	.string "defeat$"
+	.string "You're even brighter than\n"
+	.string "I could hope to be!$"
 
 OzoneCourtneyRoom_Text_CourtneyPost:
-	.string "post$"
+	.string "Deep within, I knew I couldn't\n"
+	.string "beat you, {PLAYER}.\p"
+	.string "But I had a good time regardless!\n"
+	.string "I'm glad I ended up attending\l"
+	.string "the challenge.\p"
+	.string "Go destroy the rest of my\n"
+	.string "old co-workers for me!\l"
+	.string "They won't stand a chance.$"

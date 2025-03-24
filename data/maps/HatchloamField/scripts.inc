@@ -115,9 +115,98 @@ HatchloamField_EventScript_LexAndTrish::
     msgbox HatchloamField_Text_LexAndTrishPostBattle, MSGBOX_AUTOCLOSE
     end
 
+HatchloamField_EventScript_DayCareSign::
+	msgbox HatchloamField_Text_DayCareSign, MSGBOX_SIGN
+	end
+
+HatchloamField_EventScript_HatchloamSign::
+	msgbox HatchloamField_Text_HatchloamSign, MSGBOX_SIGN
+	end
+
+HatchloamField_EventScript_TrickHouseSign::
+	msgbox HatchloamField_Text_TrickHouseSign, MSGBOX_SIGN
+	end
+
+HatchloamField_EventScript_VerdanturfSign::
+	msgbox HatchloamField_Text_VerdanturfSign, MSGBOX_SIGN
+	end
+
+HatchloamField_EventScript_OldaleSign::
+	msgbox HatchloamField_Text_OldaleSign, MSGBOX_SIGN
+	end
+
+HatchloamField_EventScript_BerriesSign::
+	msgbox HatchloamField_Text_BerriesSign, MSGBOX_SIGN
+	end
+
+HatchloamField_EventScript_FirTreesSign::
+	msgbox HatchloamField_Text_FirTreesSign, MSGBOX_SIGN
+	end
+
+HatchloamField_EventScript_ColumnarTreesSign::
+	msgbox HatchloamField_Text_ColumnarTreesSign, MSGBOX_SIGN
+	end
+
+HatchloamField_EventScript_FlowersSign::
+	msgbox HatchloamField_Text_FlowersSign, MSGBOX_SIGN
+	end
+
+HatchloamField_EventScript_PondSign::
+	msgbox HatchloamField_Text_PondSign, MSGBOX_SIGN
+	end
+
+HatchloamField_EventScript_ExcessSign::
+	msgbox HatchloamField_Text_ExcessSign, MSGBOX_SIGN
+	end
+
+HatchloamField_Text_DayCareSign:
+	.string "Everyone Is Welcome At The\n"
+	.string "Hatchloam Day Care!\l"
+	.string "We Sell Many Berries!$"
+
+HatchloamField_Text_HatchloamSign:
+	.string "Now Entering Hatchloam Field!\n"
+	.string "Please Treat The Crops Well!$"
+
+HatchloamField_Text_TrickHouseSign:
+	.string "COULD THIS BE???\n"
+	.string "THE TRICK HOUSE???$"
+
+HatchloamField_Text_VerdanturfSign:
+	.string "VERDANTURF TOWN CHECKPOINT\n"
+	.string "Only those with residency passes\l"
+	.string "will be allowed access.$"
+
+HatchloamField_Text_OldaleSign:
+	.string "SOUTH - OLDALE TOWN$"
+
+HatchloamField_Text_BerriesSign:
+	.string "The Soil In These Plots Is\n"
+	.string "Planned For Berries!\l"
+	.string "You Can Pick From Our Latest Harvest\l"
+	.string "In The Day Care!$"
+
+HatchloamField_Text_FirTreesSign:
+	.string "Fir Tree Grove$"
+
+HatchloamField_Text_ColumnarTreesSign:
+	.string "Columnar Tree Grove$"
+
+HatchloamField_Text_FlowersSign:
+	.string "Hatchloam Field's Renowned\n"
+	.string "Flower Patch$"
+
+HatchloamField_Text_PondSign:
+	.string "This Pond Is Being Used To\n"
+	.string "Grow Algae And Moss! Do Not\l"
+	.string "Disturb The Waters!$"
+
+HatchloamField_Text_ExcessSign:
+	.string "Excess Flower Storage$"
+
 HatchloamField_Text_DustinIntro:
-	.string "These here Pokémon are the finest I\n"
-	.string "have ever bred!$"
+	.string "These here Pokémon are the finest\n"
+	.string "I have ever bred!$"
 
 HatchloamField_Text_DustinDefeated:
 	.string "What?! No way!\n"
@@ -187,16 +276,29 @@ HatchloamField_Text_DelilahPostBattle:
 	.string "knows all.$"
 
 HatchloamField_Text_JiyuAndShirouIntro:
-	.string "intro$"
+	.string "JIYU: Ah, Shirou! This will be\n"
+	.string "      a worthy adversary!\l"
+	.string "SHIROU: To test the new sword\l"
+	.string "        technique? O-Okay...$"
 
 HatchloamField_Text_JiyuAndShirouDefeated:
-	.string "defeat$"
+	.string "SHIROU: Our Pokemon's blades\n"
+	.string "        were too dull...\l"
+	.string "JIYU: That is perfectly fine!\l"
+	.string "      They'll sharpen with time.$"
 
 HatchloamField_Text_JiyuAndShirouPostBattle:
-	.string "post$"
+	.string "JIYU: Shirou and I and our Pokemon\n"
+	.string "      train by dueling, blades drawn!\l"
+	.string "SHIROU: Pawniard and its evolutions\l"
+	.string "        are precise, if you train\l"
+	.string "        them well...$"
 
 HatchloamField_Text_JiyuAndShirouNeedTwoMons:
-	.string "need 2 dood$"
+	.string "JIYU: I don't think this\n"
+	.string "      adversary is quite worthy...\l"
+	.string "SHIROU: They're lacking in\l"
+	.string "        blade discipline.$"
 
 HatchloamField_Text_SamuelIntro:
 	.string "Back and forth... Back and forth...\n"
@@ -211,28 +313,50 @@ HatchloamField_Text_SamuelPostBattle:
 	.string "I'm hatching Pokémon eggs, of course!$"
 
 HatchloamField_Text_YerbaAndBuenaIntro:
-	.string "intro$"
+	.string "YERBA: Let us have a friendly\n"
+	.string "       match among the gorgeous\l"
+	.string "       greenery of the field!\p"
+	.string "BUENA: What could be more perfect?$"
 
 HatchloamField_Text_YerbaAndBuenaDefeated:
-	.string "defeat$"
+	.string "YERBA: I had a good time! It does\n"
+	.string "       a body good to smile.\l"
+	.string "BUENA: You always owe it to\l"
+	.string "       yourself to appreciate what's\l"
+	.string "       all around you.$"
 
 HatchloamField_Text_YerbaAndBuenaPostBattle:
-	.string "post$"
+	.string "YERBA: Plants need a lot of love and\n"
+	.string "       care. Well, actually,\l"
+	.string "       everything in life does.\l"
+	.string "BUENA: Practice kindness,\l"
+	.string "       and you will be rewarded.$"
 
 HatchloamField_Text_YerbaAndBuenaNeedTwoMons:
-	.string "need 2 dood$"
+	.string "(They're busy right now\n"
+	.string "preparing the soil...)$"
 
 HatchloamField_Text_LexAndTrishIntro:
-	.string "intro$"
+	.string "LEX: Oh, someone made it to us!\n"
+	.string "TRISH: You didn't trample the\l"
+	.string "       flowers, did you?$"
 
 HatchloamField_Text_LexAndTrishDefeated:
-	.string "defeat$"
+	.string "TRISH: We had to stop and\n"
+	.string "       smell the roses!\l"
+	.string "LEX: Yeah, we stopped paying\l"
+	.string "     attention to this battle\l"
+	.string "     long ago...$"
 
 HatchloamField_Text_LexAndTrishPostBattle:
-	.string "post$"
+	.string "LEX: Think they'll let us take\n"
+	.string "     some of the flowers home\l"
+	.string "     to plant?\l"
+	.string "TRISH: It can't hurt to ask!$"
 
 HatchloamField_Text_LexAndTrishNeedTwoMons:
-	.string "need 2 dood$"
+	.string "(They're busy right now\n"
+	.string "preparing the soil...)$"
 
 HatchloamField_Text_NameCourtney:
 	.string "Courtney$"

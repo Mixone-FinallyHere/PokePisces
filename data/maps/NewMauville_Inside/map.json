@@ -326,6 +326,15 @@
       "var": "VAR_NEW_MAUVILLE_STATE",
       "var_value": "1",
       "script": "NewMauville_Inside_EventScript_RedButton"
+    },
+    {
+      "type": "trigger",
+      "x": 25,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "0",
+      "script": "NewMauville_Inside_EventScript_GreenButton"
     }
   ],
   "bg_events": [

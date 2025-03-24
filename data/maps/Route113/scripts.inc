@@ -77,6 +77,21 @@ Route113_EventScript_Sakurai::
     msgbox Route113_Text_SakuraiPostBattle, MSGBOX_AUTOCLOSE
     end
 
+Route113_EventScript_AshlandsSign::
+	msgbox Route113_Text_AshlandsSign, MSGBOX_SIGN
+	end
+
+Route113_EventScript_CraftsmansSign::
+	msgbox Route113_Text_CraftsmansSign, MSGBOX_SIGN
+	end
+
+Route113_Text_AshlandsSign:
+	.string "Welcome to the Ashlands!\n"
+	.string "Watch your lungs!$"
+
+Route113_Text_CraftsmansSign:
+	.string "Home of the Ashlands Craftsman$"
+
 Route113_Text_AsheIntro:
 	.string "What, you didn't bring an umbrella?$"
 
@@ -93,15 +108,15 @@ Route113_Text_SaraDefeated:
 	.string "Soooo... Heavy....$"
 
 Route113_Text_SaraPostBattle:
-	.string "I shouldn't have packed my folding\n"
-	.string "bicycle.$"
+	.string "I shouldn't have packed\n"
+	.string "my folding bicycle.$"
 
 Route113_Text_TogedemaruIntro:
 	.string "Prepare to be Ninja'd!$"
 
 Route113_Text_TogedemaruDefeated:
-	.string "Hey! I'll be the one doin' the Ninja-ing\n"
-	.string "around here!$"
+	.string "Hey! I'll be the one doin' the\n"
+	.string "Ninja-ing around here!$"
 
 Route113_Text_TogedemaruPostBattle:
 	.string "...Do ya mind?...\n"
@@ -124,25 +139,37 @@ Route113_Text_NarutoDefeated:
 	.string "Doryaaaah!!$"
 
 Route113_Text_NarutoPostBattle:
-	.string "Im an assassin nin nin...$"
+	.string "Im an assassin! Nin, nin...$"
 
 Route113_Text_KushinaIntro:
-	.string "intro$"
+	.string "Don't mind my son...\n"
+	.string "he really thinks he's some\l"
+	.string "sort of chosen one.\p"
+	.string "Could you humor us with a battle?\n$"
 
 Route113_Text_KushinaDefeated:
-	.string "defeat$"
+	.string "He thinks he won.\n"
+	.string "Play along, please...?$"
 
 Route113_Text_KushinaPostBattle:
-	.string "post$"
+	.string "He loves to ramble about\n"
+	.string "how he'll be the Hokage some day.\p"
+	.string "At least he's aiming high!$"
 
 Route113_Text_CallumIntro:
-	.string "intro$"
+	.string "Hey. My name's Callum.\n"
+	.string "Some may call me a Hoodlum.\l"
+	.string "You don't think that, do you?$"
 
 Route113_Text_CallumDefeated:
-	.string "defeat$"
+	.string "If only Pantney was a lizard...$"
 
 Route113_Text_CallumPostBattle:
-	.string "post$"
+	.string "There's these people that keep\n"
+	.string "trying to get me to read weird\l"
+	.string "paragraphs about Mustybane.\l"
+	.string "I think they get a kick out\l"
+	.string "of the nonsense.$"
 
 Route113_Text_KusuoIntro:
 	.string "These powers are a curse.$"
@@ -154,28 +181,40 @@ Route113_Text_KusuoPostBattle:
 	.string "You truly are remarkable.$"
 
 Route113_Text_MiraiIntro:
-	.string "intro$"
+	.string "Hai-YAH!$"
 
 Route113_Text_MiraiDefeated:
-	.string "defeat$"
+	.string "I'm out of chakra!$"
 
 Route113_Text_MiraiPostBattle:
-	.string "post$"
+	.string "Dangit... my plan to summon\n"
+	.string "the King Orrowhelm, jump inside\l"
+	.string "his mouth, and teleport away,\l"
+	.string "despite having no chakra left...\l"
+	.string "it didn't work!\p"
+	.string "It would be pretty silly if it did.$"
 
 Route113_Text_KurenaiIntro:
-	.string "intro$"
+	.string "My son is my future!\n"
+	.string "For him, I will fight every day!$"
 
 Route113_Text_KurenaiDefeated:
-	.string "defeat$"
+	.string "Your future... it appears\n"
+	.string "to be very promising!$"
 
 Route113_Text_KurenaiPostBattle:
-	.string "post$"
+	.string "My son's father had passed away\n"
+	.string "before he was born. If only\l"
+	.string "he could see his little boy now...$"
 
 Route113_Text_SakuraiIntro:
-	.string "intro$"
+	.string "This ultimate brawl will be no\n"
+	.string "doubt super! A melee with\l"
+	.string "64 thousand potential outcomes...$"
 
 Route113_Text_SakuraiDefeated:
-	.string "defeat$"
+	.string "I need to take a long vacation...$"
 
 Route113_Text_SakuraiPostBattle:
-	.string "post$"
+	.string "Do not ask me for anything\n"
+	.string "ever again.$"

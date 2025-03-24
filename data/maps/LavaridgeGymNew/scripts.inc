@@ -353,6 +353,7 @@ LavaridgeGymNew_EventScript_InterrogationPart5::
 	delay 8
 	applymovement OBJ_EVENT_ID_CAMERA, LavaridgeGymNew_Movement_CameraPanDown
 	waitmovement 0
+	speakername LavaridgeGymNew_Text_NameMoore
 	msgbox LavaridgeGymNew_Text_WeWillTakeCareOfThis, MSGBOX_DEFAULT
 	applymovement LOCALID_GOJIRA, LavaridgeGymNew_Movement_GojiraRunAway
 	applymovement LOCALID_GAMERA, LavaridgeGymNew_Movement_GameraRunAway
@@ -364,14 +365,17 @@ LavaridgeGymNew_EventScript_InterrogationPart5::
 	applymovement LOCALID_FLANNERY, LavaridgeGymNew_Movement_FlanneryGoToTable
 	applymovement LOCALID_MOORE, LavaridgeGymNew_Movement_MooreGoToTable
 	waitmovement 0
+	speakername LavaridgeGymNew_Text_NameMoore
 	msgbox LavaridgeGymNew_Text_MooreFamilyHistory, MSGBOX_DEFAULT
 	applymovement LOCALID_MOORE, LavaridgeGymNew_Movement_MooreGiveLava
 	waitmovement 0
 	delay 16
 	setmetatile 7, 6, METATILE_LavaridgeGymNew_SoupOnTable, TRUE
 	special DrawWholeMapView
+	speakername LavaridgeGymNew_Text_NameMoore
 	msgbox LavaridgeGymNew_Text_HaveSomeSearingSpicySoup, MSGBOX_DEFAULT
 	goto_if_set FLAG_TEMP_2, LavaridgeGymNew_EventScript_SkipSoup
+	speakername NULL
 	msgbox LavaridgeGymNew_Text_CantRefuseSoup, MSGBOX_DEFAULT
 	pike_flashscreen
 	playse SE_M_EMBER
@@ -384,6 +388,7 @@ LavaridgeGymNew_EventScript_InterrogationPart5::
 	end
 
 LavaridgeGymNew_EventScript_SkipSoup::
+	speakername LavaridgeGymNew_Text_NameMoore
 	msgbox LavaridgeGymNew_Text_OhYouEatEnoughSoup, MSGBOX_DEFAULT
 	setmetatile 7, 6, METATILE_LavaridgeGymNew_TableTop, TRUE
 	special DrawWholeMapView
@@ -395,10 +400,12 @@ LavaridgeGymNew_EventScript_InterrogationPart6::
 	applymovement LOCALID_MOORE, LavaridgeGymNew_Movement_MooreSitBackDown
 	applymovement LOCALID_FLANNERY, LavaridgeGymNew_Movement_FlanneryGetUpWater
 	waitmovement 0
+	speakername LavaridgeGymNew_Text_NameFlannery
 	msgbox LavaridgeGymNew_Text_WouldYouLikeWater, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, LavaridgeGymNew_EventScript_HowDareYou
 	applymovement LOCALID_FLANNERY, LavaridgeGymNew_Movement_FaceDown
 	waitmovement 0
+	speakername LavaridgeGymNew_Text_NameFlannery
 	msgbox LavaridgeGymNew_Text_WouldYouLikeAirCon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, LavaridgeGymNew_EventScript_HowDareYou
 	applymovement LOCALID_FLANNERY, LavaridgeGymNew_Movement_FlanneryBackToSeat
@@ -407,6 +414,7 @@ LavaridgeGymNew_EventScript_InterrogationPart6::
 	waitmovement 0
 	special RemoveCameraObject
 	delay 4
+	speakername LavaridgeGymNew_Text_NameFlannery
 	msgbox LavaridgeGymNew_Text_ItsTimeForBattle, MSGBOX_DEFAULT
 	trainerbattle_two_trainers TRAINER_P_FLANNERY, LavaridgeGymNew_Text_FlanneryDefeat, TRAINER_P_MR_MOORE, LavaridgeGymNew_Text_MooreDefeat, LavaridgeGymNew_EventScript_GymBattleOver, NO_MUSIC
 	goto LavaridgeGymNew_EventScript_GymBattleOver
@@ -417,6 +425,7 @@ LavaridgeGymNew_EventScript_HowDareYou::
 	applymovement LOCALID_FLANNERY, LavaridgeGymNew_Movement_HowDareYou
 	waitmovement 0
 	playbgm MUS_RG_ENCOUNTER_GYM_LEADER, FALSE
+	speakername LavaridgeGymNew_Text_NameFlannery
 	msgbox LavaridgeGymNew_Text_WeLikeToSweat, MSGBOX_DEFAULT
 	delay 16
 	setweather WEATHER_DROUGHT
@@ -426,6 +435,7 @@ LavaridgeGymNew_EventScript_HowDareYou::
 	waitmovement 0
 	special RemoveCameraObject
 	delay 4
+	speakername LavaridgeGymNew_Text_NameFlannery
 	msgbox LavaridgeGymNew_Text_BattleUsInSwelteringHeat, MSGBOX_DEFAULT
 	trainerbattle_two_trainers TRAINER_P_FLANNERY, LavaridgeGymNew_Text_FlanneryDefeat, TRAINER_P_MR_MOORE, LavaridgeGymNew_Text_MooreDefeat, LavaridgeGymNew_EventScript_GymBattleOver, NO_MUSIC
 	goto LavaridgeGymNew_EventScript_GymBattleOver

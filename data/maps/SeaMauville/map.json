@@ -304,7 +304,7 @@
       "flag": "FLAG_P_ITEM_SEA_MAUVILLE_MAX_REPEL"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_GREEN_HAIR",
+      "graphics_id": "OBJ_EVENT_GFX_TEALA",
       "x": 33,
       "y": 15,
       "elevation": 0,
@@ -327,6 +327,58 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "FortreeInteriors_EventScript_ChoiceItems",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_1",
+      "x": 28,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_1",
+      "x": 17,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_1",
+      "x": 14,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_1",
+      "x": 15,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
       "flag": "0"
     }
   ],
@@ -468,6 +520,77 @@
     }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 26,
+      "y": 21,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SeaMauville_EventScript_MarketSign"
+    },
+    {
+      "type": "sign",
+      "x": 37,
+      "y": 16,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SeaMauville_EventScript_MarketSign"
+    },
+    {
+      "type": "sign",
+      "x": 46,
+      "y": 14,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SeaMauville_EventScript_SlateportSign"
+    },
+    {
+      "type": "sign",
+      "x": 17,
+      "y": 26,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SeaMauville_EventScript_FanClubSign"
+    },
+    {
+      "type": "sign",
+      "x": 44,
+      "y": 47,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SeaMauville_EventScript_SternsShipyardSign"
+    },
+    {
+      "type": "sign",
+      "x": 20,
+      "y": 57,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SeaMauville_EventScript_BeachSign"
+    },
+    {
+      "type": "sign",
+      "x": 26,
+      "y": 45,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SeaMauville_EventScript_SeasideCasinoSign"
+    },
+    {
+      "type": "sign",
+      "x": 42,
+      "y": 28,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SeaMauville_EventScript_OceanicMuseumSign"
+    },
+    {
+      "type": "sign",
+      "x": 22,
+      "y": 15,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SeaMauville_EventScript_MarketSign2"
+    }
   ]
 }

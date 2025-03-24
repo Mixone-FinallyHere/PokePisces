@@ -78,6 +78,54 @@ LilycoveCity_EventScript_AlreadyGaveKamenScarf::
 	release
 	end
 
+LilycoveCity_EventScript_LilycoveCitySign::
+	msgbox LilycoveCity_Text_LilycoveCitySign, MSGBOX_SIGN
+	end
+
+LilycoveCity_EventScript_OLBHQSign::
+	msgbox LilycoveCity_Text_OLBHQSign, MSGBOX_SIGN
+	end
+
+LilycoveCity_EventScript_BattleStudioSign::
+	msgbox LilycoveCity_Text_BattleStudioSign, MSGBOX_SIGN
+	end
+
+LilycoveCity_EventScript_BrineysHouseSign::
+	msgbox LilycoveCity_Text_BrineysHouseSign, MSGBOX_SIGN
+	end
+
+LilycoveCity_EventScript_LilycoveMuseumSign::
+	msgbox LilycoveCity_Text_LilycoveMuseumSign, MSGBOX_SIGN
+	end
+
+LilycoveCity_EventScript_ColdMinesSouthSign::
+	msgbox LilycoveCity_Text_ColdMinesSouthSign, MSGBOX_SIGN
+	end
+
+LilycoveCity_Text_LilycoveCitySign:
+	.string "LILYCOVE CITY\n"
+	.string "A lively hub by the ocean!$"
+
+LilycoveCity_Text_OLBHQSign:
+	.string "OZONE LILYCOVE BRANCH HEADQUARTERS\n"
+	.string "Meetings done by appointment!$"
+
+LilycoveCity_Text_BattleStudioSign:
+	.string "BATTLE STUDIO\n"
+	.string "Come take the Battle Swap Challenge!$"
+
+LilycoveCity_Text_BrineysHouseSign:
+	.string "Mr. Briney's Boathouse$"
+
+LilycoveCity_Text_LilycoveMuseumSign:
+	.string "LILYCOVE MUSEUM\n"
+	.string "Currently housing the paintings\l"
+	.string "of Kalosian Artist, Phillipe!$"
+
+LilycoveCity_Text_ColdMinesSouthSign:
+	.string "Southern Entrance to\n"
+	.string "THE COLD MINES$"
+
 LilycoveCity_Text_YouFeelWatched:
 	.string "(You begin to notice that\n"
 	.string "you are being intently watched...)$"

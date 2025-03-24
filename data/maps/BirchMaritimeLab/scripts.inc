@@ -168,6 +168,10 @@ BirchMaritimeLab_EventScript_ReceivePokedex::
 BirchMaritimeLab_EventScript_GivePokeBalls::
 	msgbox BirchMaritimeLab_Text_TakeBalls, MSGBOX_DEFAULT
 	giveitem ITEM_POKE_BALL, 10
+	giveitem ITEM_SODA_POP, 5
+	giveitem ITEM_ETHER, 3
+	giveitem ITEM_REVIVE, 1
+	giveitem ITEM_STAR_PIECE, 1
 	call_if_eq VAR_RESULT, FALSE, BirchMaritimeLab_EventScript_NoRoomForPokeBalls
 	msgbox BirchMaritimeLab_Text_GoFightTheRangers, MSGBOX_DEFAULT
 	setvar VAR_RESULT, 0
@@ -391,12 +395,15 @@ BirchMaritimeLab_Text_TakeBalls:
 	.string "to the north.\p"
 	.string "...Oh! And if you want to\n"
 	.string "catch any more POKéMON along the\l"
-	.string "way there, uhm... here...\p"
+	.string "way there, you'll need, uhm...\p"
+	.string "Oh, and you'd also maybe like...\n"
+	.string "some... hmm, some healing items...\l"
+	.string "Let's see here...\p"
 	.string "(Your dad shuffles through\n"
 	.string "his labcoat pockets haphazardly.)$"
 
 BirchMaritimeLab_Text_GoFightTheRangers:
-	.string "Ten should suffice!\p"
+	.string "That should suffice!\p"
 	.string "...Alrighty! That's about all\n"
 	.string "your pops has got to give.\p"
 	.string "Please stay safe out there,\n"

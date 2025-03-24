@@ -22,11 +22,6 @@
       "map": "MAP_CYCLING_ROAD",
       "offset": 26,
       "direction": "down"
-    },
-    {
-      "map": "MAP_SWELTORN_DESERT",
-      "offset": -1,
-      "direction": "up"
     }
   ],
   "object_events": [
@@ -150,7 +145,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_MERALCORE",
       "x": 12,
-      "y": 13,
+      "y": 15,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
       "movement_range_x": 0,
@@ -327,6 +322,19 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MauvilleNew_EventScript_Clue4",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
+      "x": 11,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
       "flag": "0"
     }
   ],
@@ -567,42 +575,42 @@
       "y": 25,
       "elevation": 0,
       "dest_map": "MAP_NEW_MAUVILLE_FLOOR2",
-      "dest_warp_id": "0"
+      "dest_warp_id": "1"
     },
     {
       "x": 29,
       "y": 25,
       "elevation": 0,
       "dest_map": "MAP_NEW_MAUVILLE_FLOOR2",
-      "dest_warp_id": "0"
+      "dest_warp_id": "1"
     },
     {
       "x": 38,
       "y": 25,
       "elevation": 0,
       "dest_map": "MAP_NEW_MAUVILLE_FLOOR2",
-      "dest_warp_id": "0"
+      "dest_warp_id": "2"
     },
     {
       "x": 39,
       "y": 25,
       "elevation": 0,
       "dest_map": "MAP_NEW_MAUVILLE_FLOOR2",
-      "dest_warp_id": "0"
+      "dest_warp_id": "2"
     },
     {
       "x": 42,
       "y": 25,
       "elevation": 0,
       "dest_map": "MAP_NEW_MAUVILLE_FLOOR2",
-      "dest_warp_id": "0"
+      "dest_warp_id": "3"
     },
     {
       "x": 43,
       "y": 25,
       "elevation": 0,
       "dest_map": "MAP_NEW_MAUVILLE_FLOOR2",
-      "dest_warp_id": "0"
+      "dest_warp_id": "3"
     },
     {
       "x": 42,
@@ -658,6 +666,53 @@
     }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 31,
+      "y": 6,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MauvilleNew_EventScript_NewMauvilleNorthSign"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 34,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MauvilleNew_EventScript_NewMauvilleWestSign"
+    },
+    {
+      "type": "sign",
+      "x": 60,
+      "y": 40,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MauvilleNew_EventScript_NewMauvilleEastSign"
+    },
+    {
+      "type": "sign",
+      "x": 19,
+      "y": 59,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MauvilleNew_EventScript_NewMauvilleSouthSign"
+    },
+    {
+      "type": "sign",
+      "x": 33,
+      "y": 59,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MauvilleNew_EventScript_RydelSign"
+    },
+    {
+      "type": "sign",
+      "x": 52,
+      "y": 61,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MauvilleNew_EventScript_MaintenanceSign"
+    }
   ]
 }

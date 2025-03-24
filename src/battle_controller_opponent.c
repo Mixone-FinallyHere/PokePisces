@@ -630,7 +630,7 @@ static inline bool32 IsDoubleAcePokemon(u32 chosenMonId, u32 pokemonInBattle, u3
         && (chosenMonId == CalculateEnemyPartyCountInSide(battler) - 1)
         && (chosenMonId == CalculateEnemyPartyCountInSide(battler) - 2)
         && CountAIAliveNonEggMonsExcept(PARTY_SIZE) != pokemonInBattle
-        && CountAIAliveNonEggMonsExcept(PARTY_SIZE-1) != pokemonInBattle;
+        && CountAIAliveNonEggMonsExcept(PARTY_SIZE - 1) != pokemonInBattle;
 }
 
 static void OpponentHandleChoosePokemon(u32 battler)

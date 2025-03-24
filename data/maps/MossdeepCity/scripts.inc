@@ -723,7 +723,7 @@ MossdeepCity_EventScript_WallyBlackout::
 
 MossdeepCity_EventScript_YandemicNoticed::
 	lock
-	setvar VAR_TEMP_4, 1
+	setvar VAR_TEMP_9, 1
 	call_if_lt VAR_NOTICED_BY_YANDEMIC, 4, MossdeepCity_EventScript_YandemicAddVar
 	msgbox MossdeepCity_Text_YouFeelWatched, MSGBOX_AUTOCLOSE
 	release
@@ -736,6 +736,46 @@ MossdeepCity_EventScript_YandemicAddVar::
 MossdeepCity_EventScript_HintMonk::
 	msgbox MossdeepCity_Text_HintMonk, MSGBOX_NPC
 	end
+
+MossdeepCity_EventScript_WestEntrance::
+	msgbox MossdeepCity_Text_WestEntrance, MSGBOX_SIGN
+	end
+
+MossdeepCity_EventScript_EastEntrance::
+	msgbox MossdeepCity_Text_EastEntrance, MSGBOX_SIGN
+	end
+
+MossdeepCity_EventScript_MossdeepCitySign::
+	msgbox MossdeepCity_Text_MossdeepCitySign, MSGBOX_SIGN
+	end
+
+MossdeepCity_EventScript_StevenHouseSign::
+	msgbox MossdeepCity_Text_StevenHouseSign, MSGBOX_SIGN
+	end
+
+MossdeepCity_EventScript_MangrottoSign::
+	msgbox MossdeepCity_Text_MangrottoSign, MSGBOX_SIGN
+	end
+
+MossdeepCity_Text_MangrottoSign:
+	.string "ENTRANCE TO MANGROTTO TUNNEL$"
+
+MossdeepCity_Text_WestEntrance:
+	.string "MOSSDEEP CITY - West Entrance\n"
+	.string "Continue West for Cosmoss Bridge$"
+
+MossdeepCity_Text_EastEntrance:
+	.string "MOSSDEEP CITY - East Entrance\n"
+	.string "Continue Northeast for\l"
+	.string "Precipike Bluff$"
+
+MossdeepCity_Text_MossdeepCitySign:
+	.string "Mossdeep City is a PROUD sponsor\n"
+	.string "of Hoenn's Space Program!\l"
+	.string "One day, we will reach the moon!$"
+
+MossdeepCity_Text_StevenHouseSign:
+	.string "Steven Stone's Residence$"
 
 MossdeepCity_Text_HintMonk:
 	.string "Greetings and Good Fortune.\n"

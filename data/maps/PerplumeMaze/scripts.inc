@@ -162,24 +162,37 @@ PerplumeMaze_Text_KrisPostBattle:
 	.string "<3$"
 
 PerplumeMaze_Text_SusieIntro:
-	.string "God dammit Kris!\n"
-	.string "Where the hell are we?$"
+	.string "Heh. You seem like a morose,\n"
+	.string "quiet person. Just like Kris.\p"
+	.string "You know...? Quiet people\n"
+	.string "PISS me off.$"
 
 PerplumeMaze_Text_SusieDefeated:
-	.string "i dont know what to write here$"
+	.string "I could've had my Pawniard use\n"
+	.string "Rude Buster on you, but\l"
+	.string "I was holdin' back.\p"
+	.string "If I weren't, you'd be dead meat!$"
 
 PerplumeMaze_Text_SusiePostBattle:
-	.string "My partner here is the\n"
-	.string "weak, silent type. Heh heh.$"
+	.string "Guess I should find Kris\n"
+	.string "and get the hell outta here.$"
 
 PerplumeMaze_Text_RalseiIntro:
-	.string "intro$"
+	.string "Oh, hello! It's a struggle\n"
+	.string "trying to keep my pals together\l"
+	.string "in this maze...\p"
+	.string "You... want to battle?\n"
+	.string "O-Okay...$"
 
 PerplumeMaze_Text_RalseiDefeated:
-	.string "defeat$"
+	.string "I didn't really expect to win\n"
+	.string "that one without Kris and Susie...$"
 
 PerplumeMaze_Text_RalseiPostBattle:
-	.string "post$"
+	.string "Maybe try practicing some Act\n"
+	.string "commands when you fight? Not\l"
+	.string "every encounter has to be dealt\l"
+	.string "with with violence.$"
 
 PerplumeMaze_Text_NamePandou:
 	.string "Pandou$"

@@ -6,7 +6,7 @@ SSTidalMidgame_EventScript_Briney::
 	faceplayer
 	speakername SSTidalMidgame_Text_NameBriney
 	goto_if_set FLAG_BRINEY_DEWFORD_VISIT, SSTidalMidgame_EventScript_BrineyPostDewford
-	goto_if_ge VAR_OLD_GUYS_STATE, 1, SSTidalMidgame_EventScript_BrineyPostSeaMauville
+	goto_if_ge VAR_OLD_GUYS_STATE, 10, SSTidalMidgame_EventScript_BrineyPostSeaMauville
 	msgbox SSTidalMidgame_Text_WantToGoSomewhere, MSGBOX_DEFAULT
 	multichoice 19, 0, MULTI_BRINEY_BOAT, TRUE
 	copyvar VAR_TEMP_1, VAR_RESULT

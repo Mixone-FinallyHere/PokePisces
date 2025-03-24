@@ -217,7 +217,7 @@ VerdanturfTransition_Text_IsThatAugustus:
 	.string "you from the higher-ups...$"
 
 VerdanturfTransition_Text_LetInPlayer:
-	.string "My reputation proceeds me.\n"
+	.string "My reputation precedes me.\n"
 	.string "Now, you will be letting in my\l"
 	.string "cherished friend {PLAYER}, yes?\p"
 	.string "I want them to be treated as\n"
@@ -240,4 +240,4 @@ VerdanturfTransition_Text_YouveGotThis:
 
 VerdanturfTransition_Text_WelcomeValuedCitizen:
 	.string "Welcome to Verdanturf Town,\n"
-	.string "valued resident!$"
+	.string "valued citizen!$"

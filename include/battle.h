@@ -18,7 +18,7 @@
 // Used to exclude moves learned temporarily by Transform or Mimic
 #define MOVE_IS_PERMANENT(battler, moveSlot)                        \
    (!(gBattleMons[battler].status2 & STATUS2_TRANSFORMED)           \
- && !(gDisableStructs[battler].mimickedMoves & gBitTable[moveSlot]))
+ && !(gDisableStructs[battler].mimickedMoves & (1u << moveSlot)))
 
 // Battle Actions
 // These determine what each battler will do in a turn
@@ -94,6 +94,7 @@ struct DisableStruct
     u8 truantSwitchInHack:1;
     u8 mimickedMoves:4;
     u8 rechargeTimer;
+    u8 lethalChainTimer;
     u8 watcherTimer;
     u8 autotomizeCount;
     u8 slowStartTimer;
@@ -108,6 +109,7 @@ struct DisableStruct
     u8 noRetreat:1;
     u8 tarShot:1;
     u8 octolock:1;
+    u8 longNoseActivatedAlready:1;
     u8 anticipated:1;
     u8 bounceMove:1;
     u8 cudChew:1;
@@ -130,6 +132,25 @@ struct DisableStruct
     u8 purpleHazeOffense:1;
     u8 purpleHazeDefense:1;
     u8 magmaArmored:1;
+    u8 reformNormal:1;
+    u8 reformFighting:1;
+    u8 reformFlying:1;
+    u8 reformPoison:1;
+    u8 reformGround:1;
+    u8 reformRock:1;
+    u8 reformBug:1;
+    u8 reformGhost:1;
+    u8 reformSteel:1;
+    u8 reformFire:1;
+    u8 reformWater:1;
+    u8 reformGrass:1;
+    u8 reformElectric:1;
+    u8 reformPsychic:1;
+    u8 reformIce:1;
+    u8 reformDragon:1;
+    u8 reformDark:1;
+    u8 reformFairy:1;
+    u8 reformRelic:1;
 };
 
 struct ProtectStruct
@@ -174,6 +195,7 @@ struct ProtectStruct
     u16 pranksterElevated:1;
     u16 quickDraw:1;
     u16 beakBlastCharge:1;
+    u16 doublesMoveSucceed:1;
     u16 acidArmorCharge:1;
     u16 quash:1;
     u16 shellTrap:1;
@@ -262,6 +284,8 @@ struct SideTimer
     u8 stickyWebBattlerSide; // Used for Court Change
     u8 auroraVeilTimer;
     u8 auroraVeilBattlerId;
+    u8 googooScreenTimer;
+    u8 googooScreenBattlerId;
     u8 tailwindTimer;
     u8 tailwindBattlerId;
     u8 luckyChantTimer;

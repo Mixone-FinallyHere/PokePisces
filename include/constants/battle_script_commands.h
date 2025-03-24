@@ -329,6 +329,10 @@
 #define VARIOUS_SET_SPOTLIGHT                        237
 #define VARIOUS_TRY_SET_IMPRISON                     238
 #define VARIOUS_INVERT_POSITIVE_STAT_STAGES          239
+#define VARIOUS_SET_BABY_BLUES                       240
+#define VARIOUS_SET_DOUBLES_MOVE_SUCCEED             241
+#define VARIOUS_JUMP_IF_DOUBLES_MOVE_SUCCEED         242
+#define VARIOUS_FLORESCENCE_CHECK                    243
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

@@ -150,14 +150,35 @@ JaggroPass_EventScript_Jelly::
     msgbox JaggroPass_Text_JellyPostBattle, MSGBOX_AUTOCLOSE
     end
 
+JaggroPass_EventScript_AreYouLostSign::
+	msgbox JaggroPass_Text_AreYouLostSign, MSGBOX_SIGN
+	end
+
+JaggroPass_Text_AreYouLostSign:
+	.string "Greetings, travelers!\n"
+	.string "Are you lost? This sign can\l"
+	.string "point you in the right direction.\p"
+	.string "NORTH is Jaggro Pass, which leads\n"
+	.string "into Fallarbor Town.\p"
+	.string "EAST is Crimney Climb, with access\n"
+	.string "to the Catacombs and Lavaridge Town.\p"
+	.string "SOUTH leads to Rustboro City,\n"
+	.string "through Whisper Cliff.\p"
+	.string "WEST leads to Etheor Falls,\n"
+	.string "if you are able to cross the water.$"
+
 JaggroPass_Text_EmmyIntro:
-	.string "intro$"
+	.string "Submarines, planes, I've\n"
+	.string "worked on every vessel!$"
 
 JaggroPass_Text_EmmyDefeated:
-	.string "defeat$"
+	.string "I sunk while you soared!$"
 
 JaggroPass_Text_EmmyPostBattle:
-	.string "post$"
+	.string "I only work on planes or subs\n"
+	.string "when they're on dry land.\l"
+	.string "I hate flying, and I\l"
+	.string "hate being underwater too!$"
 
 JaggroPass_Text_DaytonIntro:
 	.string "Let's soak up some Vitamin D!\n"
@@ -168,57 +189,71 @@ JaggroPass_Text_DaytonDefeated:
 	.string "Vitamin D-feat...$"
 
 JaggroPass_Text_DaytonPostBattle:
-	.string "All kinds of Pokémon like the desert\n"
+	.string "All kinds of Pokémon like the bright\n"
 	.string "sun. Berries like the sun, too!$"
 
 JaggroPass_Text_AntoIntro:
 	.string "Na-a-a! Wrong way.$"
 
 JaggroPass_Text_AntoDefeated:
-	.string "I said wrong way!!$"
+	.string "I SAID, wrong way!!$"
 
 JaggroPass_Text_AntoPostBattle:
-	.string "Fine, you can go, since you beat\n"
-	.string "grandpa.$"
+	.string "Fine, you can go, since you\n"
+	.string "took down my grandpa.$"
 
 JaggroPass_Text_BazeIntro:
-	.string "intro$"
+	.string "I must train the next\n"
+	.string "generation to surpass me!\l"
+	.string "Otherwise, my bloodline will end!\l"
+	.string "My granddaughter and I\l"
+	.string "will demolish you...!$"
 
 JaggroPass_Text_BazeDefeated:
-	.string "defeat$"
+	.string "And so doth the bloodline cease.$"
 
 JaggroPass_Text_BazePostBattle:
-	.string "post$"
+	.string "Young Anto still has\n"
+	.string "much, MUCH to learn...$"
 
 JaggroPass_Text_ChinzaoIntro:
-	.string "intro$"
+	.string "Oh, a customer? Splendid!\n"
+	.string "What would you like?$"
 
 JaggroPass_Text_ChinzaoDefeated:
-	.string "defeat$"
+	.string "That's one battle, charged\n"
+	.string "straight to your credit card!$"
 
 JaggroPass_Text_ChinzaoPostBattle:
-	.string "post$"
+	.string "Do you want something else?$"
 
 JaggroPass_Text_MarimarIntro:
-	.string "Hey doll, did it hurt when you fell from\n"
-	.string "heaven?$"
+	.string "Hey, dollface! Did it hurt\n"
+	.string "when you fell from heaven?$"
 
 JaggroPass_Text_MarimarDefeated:
-	.string "Ouchie... That hurt...$"
+	.string "Ouchie! That hurt...\n$"
 
 JaggroPass_Text_MarimarPostBattle:
-	.string "Did it hurt when you fell from heaven?\p"
-	.string "Because you have a tough outer shell\n"
-	.string "like a Minior does...$"
+	.string "Did it NOT hurt when you fell\n"
+	.string "from heaven?\p"
+	.string "Because you have a tough outer\n"
+	.string "shell, just like Minior...$"
 
 JaggroPass_Text_JellyIntro:
-	.string "intro$"
+	.string "It has come to my attention\n"
+	.string "that my surname is quite puerile.\l"
+	.string "I believe our family's reputation\l"
+	.string "precedes us, still!$"
 
 JaggroPass_Text_JellyDefeated:
-	.string "defeat$"
+	.string "I have been stuck in a jam!$"
 
 JaggroPass_Text_JellyPostBattle:
-	.string "post$"
+	.string "It is said that my family had once\n"
+	.string "made regular visits to the castle\l"
+	.string "in Sootopolis before it fell\l"
+	.string "into abandonment...$"
 
 JaggroPass_Text_ItsHumming:
 	.string "(This strange plant seems\n"

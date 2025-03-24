@@ -155,6 +155,7 @@ const u32 gBattleAnimSpriteGfx_GigavoltHavocSpear[] = INCBIN_U32("graphics/battl
 const u32 gBattleAnimSpritePal_GigavoltHavocSpear[] = INCBIN_U32("graphics/battle_anims/sprites/gigavolt_havoc_spear.gbapal.lz");
 
 const u32 gBattleAnimSpriteGfx_GiantsSpear[] = INCBIN_U32("graphics/battle_anims/sprites/giants_spear.4bpp.lz");
+const u32 gBattleAnimSpriteGfx_GiantsSpearOpponent[] = INCBIN_U32("graphics/battle_anims/sprites/giants_spear_opponent.4bpp.lz");
 const u32 gBattleAnimSpritePal_GiantsSpear[] = INCBIN_U32("graphics/battle_anims/sprites/giants_spear.gbapal.lz");
 
 const u32 gBattleAnimSpriteGfx_LightBall[] = INCBIN_U32("graphics/battle_anims/sprites/light_ball.4bpp.lz");
@@ -588,6 +589,9 @@ const u32 gBattleAnimSpritePal_MusicNotes[] = INCBIN_U32("graphics/battle_anims/
 const u32 gBattleAnimSpriteGfx_Duck[] = INCBIN_U32("graphics/battle_anims/sprites/duck.4bpp.lz");
 const u32 gBattleAnimSpritePal_Duck[] = INCBIN_U32("graphics/battle_anims/sprites/duck.gbapal.lz");
 
+const u32 gBattleAnimSpriteGfx_Shrimp[] = INCBIN_U32("graphics/battle_anims/sprites/shrimp.4bpp.lz");
+const u32 gBattleAnimSpritePal_Shrimp[] = INCBIN_U32("graphics/battle_anims/sprites/shrimp.gbapal.lz");
+
 const u32 gBattleAnimSpriteGfx_Alert[] = INCBIN_U32("graphics/battle_anims/sprites/alert.4bpp.lz");
 const u32 gBattleAnimSpritePal_Alert[] = INCBIN_U32("graphics/battle_anims/sprites/alert.gbapal.lz");
 
@@ -816,6 +820,9 @@ const u32 gBattleAnimSpritePal_Impact[] = INCBIN_U32("graphics/battle_anims/spri
 const u32 gBattleAnimSpriteGfx_GlassBreak1[] = INCBIN_U32("graphics/battle_anims/sprites/glass_break_1.4bpp.lz");
 const u32 gBattleAnimSpriteGfx_GlassBreak2[] = INCBIN_U32("graphics/battle_anims/sprites/glass_break_2.4bpp.lz");
 const u32 gBattleAnimSpritePal_GlassBreak[] = INCBIN_U32("graphics/battle_anims/sprites/glass_break.gbapal.lz");
+
+const u32 gBattleAnimSpriteGfx_Torpedo[] = INCBIN_U32("graphics/battle_anims/sprites/torpedo.4bpp.lz");
+const u32 gBattleAnimSpritePal_Torpedo[] = INCBIN_U32("graphics/battle_anims/sprites/torpedo.gbapal.lz");
 
 const u32 gBattleAnimSpriteGfx_Beam[] = INCBIN_U32("graphics/battle_anims/sprites/beam.4bpp.lz");
 const u32 gBattleAnimSpritePal_Beam[] = INCBIN_U32("graphics/battle_anims/sprites/beam.gbapal.lz");

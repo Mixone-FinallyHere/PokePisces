@@ -98,46 +98,71 @@ SweltornPalace_Text_CantTakeAnother:
 	.string "I believe that to be horsewash.$"
 
 SweltornPalace_Text_ReliIntro:
-	.string "intro$"
+	.string "We came here on special assignment\n"
+	.string "to investigate this Palace\l"
+	.string "for signs of Relic type Pokemon.\l"
+	.string "Have you seen any?$"
 
 SweltornPalace_Text_ReliDefeated:
-	.string "defeat$"
+	.string "I meant, other than ours!$"
 
 SweltornPalace_Text_ReliPostBattle:
-	.string "post$"
+	.string "Relic type Pokemon tend to guard\n"
+	.string "ancient places... though, I fear\l"
+	.string "that tomb raiders may have defeated\l"
+	.string "them all already...$"
 
 SweltornPalace_Text_CastleIntro:
-	.string "intro$"
+	.string "Tell us anything you know\n"
+	.string "about the Pokemon that reside here!$"
 
 SweltornPalace_Text_CastleDefeated:
-	.string "defeat$"
+	.string "Hmm, that didn't go as planned.$"
 
 SweltornPalace_Text_CastlePostBattle:
-	.string "post$"
+	.string "The Relic type is not\n"
+	.string "fully understood by science\l"
+	.string "as of yet.\p"
+	.string "We're trying our best to\n"
+	.string "change that.$"
 
 SweltornPalace_Text_KatrinaIntro:
-	.string "intro$"
+	.string "So you've sought shelter too, eh?\n"
+	.string "Don't think that people in here\l"
+	.string "don't want a battle!$"
 
 SweltornPalace_Text_KatrinaDefeated:
-	.string "defeat$"
+	.string "Pretty good showing!$"
 
 SweltornPalace_Text_KatrinaPostBattle:
-	.string "post$"
+	.string "The Palace provides some\n"
+	.string "well-needed shelter from\l"
+	.string "the constant sandstorms.\p"
+	.string "Us Ozone members like hanging\n"
+	.string "out in here whenever Matt lets us.$"
 
 SweltornPalace_Text_GertrudeIntro:
-	.string "intro$"
+	.string "I've been on the hunt for new\n"
+	.string "discoveries since you were\l"
+	.string "in diapers!$"
 
 SweltornPalace_Text_GertrudeDefeated:
-	.string "defeat$"
+	.string "Old wisdom just can't keep up\n"
+	.string "with new spunk, huh...$"
 
 SweltornPalace_Text_GertrudePostBattle:
-	.string "post$"
+	.string "I'm lucky enough to still have\n"
+	.string "two good legs to continue\l"
+	.string "travelling the world!\l"
+	.string "You'll understand, someday!$"
 
 SweltornPalace_Text_TootsieIntro:
-	.string "intro$"
+	.string "You're about to get rolled, mate!$"
 
 SweltornPalace_Text_TootsieDefeated:
-	.string "defeat$"
+	.string "Crikey...! I've been right popped!$"
 
 SweltornPalace_Text_TootsiePostBattle:
-	.string "post$"
+	.string "How many digs will it take\n"
+	.string "to get to the center of this\l"
+	.string "pyramid, I wonder...$"

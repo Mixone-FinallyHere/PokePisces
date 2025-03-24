@@ -1,11 +1,11 @@
-.set LOCALID_MONKBLOCK1, 2
-.set LOCALID_MONKBLOCK2, 3
-.set LOCALID_MONKBLOCK3, 4
-.set LOCALID_MONKBLOCK4, 5
-.set LOCALID_WALLACE, 6
-.set LOCALID_STEVEN, 7
-.set LOCALID_MAY, 8
-.set LOCALID_BRENDAN, 9
+.set LOCALID_MONKBLOCK1, 1
+.set LOCALID_MONKBLOCK2, 2
+.set LOCALID_MONKBLOCK3, 3
+.set LOCALID_MONKBLOCK4, 4
+.set LOCALID_WALLACE, 5
+.set LOCALID_STEVEN, 6
+.set LOCALID_MAY, 7
+.set LOCALID_BRENDAN, 8
 
 EverGrandePeak_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, EverGrandePeak_OnLoad
@@ -75,6 +75,7 @@ EverGrandePeak_EventScript_ToTheHallOfFame::
 	speakername EverGrandePeak_Text_NameWallace
 	msgbox EverGrandePeak_Text_GoToTheHallOfFame, MSGBOX_DEFAULT
 	closemessage
+	clearflag FLAG_EGR_NO_FLY
 	setvar VAR_PISCES_STORY_PROGRESS, 13
 	delay 4
 	warp MAP_EVER_GRANDE_CITY_HALL_OF_FAME, 7, 16
@@ -511,79 +512,195 @@ EverGrandePeak_EventScripts_ShunyongTest::
 	end
 
 EverGrandePeak_Text_NameWallace:
-	.string "$"
+	.string "Wallace$"
 
 EverGrandePeak_Text_NameSteven:
-	.string "$"
+	.string "Steven$"
 
 EverGrandePeak_Text_Welcome:
-	.string "$"
+	.string "Welcome to the Golden Plains.\p"
+	.string "This holy site has been protected\n"
+	.string "by the strongest in Hoenn for\l"
+	.string "generations, now...\p"
+	.string "Steven and I, former champions,\n"
+	.string "have been appointed as Deacons,\l"
+	.string "training the Monks and Acolytes\l"
+	.string "to protect this place from those\l"
+	.string "who would seek to defile it.$"
 
 EverGrandePeak_Text_YouveDoneWell:
-	.string "$"
+	.string "This used to be where the\n"
+	.string "Pokemon League challenge in\l"
+	.string "Ever Grande City was located...\l"
+	.string "before the decision was made\l"
+	.string "to do away with it.\p"
+	.string "You've done quite well to reach\n"
+	.string "us here, {PLAYER}.\l"
+	.string "It's no coincidence that many\l"
+	.string "an experienced trainer was\l"
+	.string "in your path... and you\l"
+	.string "vanquished all of our\l"
+	.string "disciples with ease.\l"
+	.string "Quite commendable.$"
 
 EverGrandePeak_Text_DoYouHaveTheOrbs:
-	.string "$"
+	.string "I have with me the two red orbs,\n"
+	.string "containing the dormant souls\l"
+	.string "of Sha-Yon and Luo-Shan.\l"
+	.string "With these, we should be able to\l"
+	.string "restore the two Legendary Pokemon\l"
+	.string "and hopefully reap the divine\l"
+	.string "rewards of their bond once more.$"
 
 EverGrandePeak_Text_OneLastTest:
-	.string "$"
+	.string "...But, we must task you\n"
+	.string "with one final trial.\p"
+	.string "{PLAYER}. Do you recall our\n"
+	.string "initial meeting in Mossdeep City?\l"
+	.string "I had, once, considered you to\l"
+	.string "be unimposing. Unexceptional.\l"
+	.string "Yet, within you undeniably\l"
+	.string "blossomed the greatest trainer\l"
+	.string "I have seen in generations.\p"
+	.string "It would not do well to start\n"
+	.string "this ritual without a battle.\l"
+	.string "Three champion level trainers,\l"
+	.string "dueling in lockstep...\l"
+	.string "It would be quite an honor.\p"
+	.string "Let us not delay!$"
 
 EverGrandePeak_Text_WallaceDefeat:
-	.string "$"
+	.string "Amen.$"
 
 EverGrandePeak_Text_StevenDefeat:
-	.string "$"
+	.string "I have been definitively\n"
+	.string "proven wrong, {PLAYER}.\p"
+	.string "Even at the start of this battle,\n"
+	.string "I was surmising that we could\l"
+	.string "handedly defeat you. That...\l"
+	.string "was not the case.$"
 
 EverGrandePeak_Text_YouAreWorthy:
-	.string "$"
+	.string "I would say {PLAYER} is\n"
+	.string "more than capable of leading\l"
+	.string "the ritual. Wallace?$"
 
 EverGrandePeak_Text_TakeTheOrbsToTheirShrines:
-	.string "$"
+	.string "I concur!\p"
+	.string "Take the two crimson orbs to\n"
+	.string "their respective shrines at\l"
+	.string "the lowest, and highest, points\l"
+	.string "of the Golden Plains.\p"
+	.string "Once they are both left in\n"
+	.string "said shrines, you may return\l"
+	.string "to the central fountain.$"
 
 EverGrandePeak_Text_WeWillBeWaiting:
-	.string "$"
+	.string "We will be waiting with bated breath.$"
 
 EverGrandePeak_Text_HighestPoint:
-	.string "$"
+	.string "(It's the highest point of\n"
+	.string "the Golden Plains...)\p"
+	.string "(You place Sha-Yon's orb.)$"
 
 EverGrandePeak_Text_ShayonShrineOrbSet:
-	.string "$"
+	.string "(Sha-Yon's orb has been placed.)$"
 
 EverGrandePeak_Text_LowestPoint:
-	.string "$"
+	.string "(It's the lowest point of\n"
+	.string "the Golden Plains...)\p"
+	.string "(You place Luo-Shan's orb.)$"
 
 EverGrandePeak_Text_LuoshanShrineOrbSet:
-	.string "$"
+	.string "(Luo-Shan's orb has been placed.)$"
 
 EverGrandePeak_Text_BothOrbsSet:
-	.string "$"
+	.string "(Both of the Legendary Pokemon's\n"
+	.string "red orbs have been placed correctly.)\p"
+	.string "(You should head back to\n"
+	.string "the central fountain...)$"
 
 EverGrandePeak_Text_IFeelTheOrbsPower:
-	.string "$"
+	.string "Both of the orbs have found repose?\n"
+	.string "That is great news...$"
 
 EverGrandePeak_Text_OneMoreThingToDo:
-	.string "$"
+	.string "There is but one thing left to do.\n"
+	.string "In order to complete this ritual\l"
+	.string "to restore Sha-Yon and Luo-Shan...\l"
+	.string "the central fountain must\l"
+	.string "bear witness to a showcase of a\l"
+	.string "true bond between two individuals.\p"
+	.string "You, {PLAYER}, are one of two.\p"
+	.string "The other...$"
 
 EverGrandePeak_Text_YouLockEyes:
-	.string "$"
+	.string "(...)\p"
+	.string "(...Somehow, you felt this\n"
+	.string "was coming.)\p"
+	.string "(You and your old rival...\n"
+	.string "the former champion...)\p"
+	.string "(The two of you lock eyes.\n"
+	.string "And, when two trainers lock eyes...)\p"
+	.string "(It's time for a Pokemon Battle.)$"
 
 EverGrandePeak_Text_MayDefeated:
-	.string "$"
+	.string "(May closes her eyes in defeat.)$"
 
 EverGrandePeak_Text_BrendanDefeated:
-	.string "$"
+	.string "(Brendan closes his eyes in defeat.)$"
 
 EverGrandePeak_Text_HardFoughtVictory:
-	.string "$"
+	.string "(Without words, you and your rival\n"
+	.string "understood each other like no one\l"
+	.string "else could hope to.)\p"
+	.string "(It was a hard fought victory.)\p"
+	.string "(Does that mean...\n"
+	.string "the ritual... was complete?)$"
 
 EverGrandePeak_Text_OurWorldsTruth:
-	.string "$"
+	.string "You've returned...!\n"
+	.string "{PLAYER}, you and the former\l"
+	.string "champion both disappeared...\l"
+	.string "While this is well within line\l"
+	.string "of the ritual, it did take\l"
+	.string "me aback just how long you\l"
+	.string "two were away...\p"
+	.string "...Shunyong battled...you?\n"
+	.string "That... I have never heard\l"
+	.string "of before. It must have been\l"
+	.string "an incredible honor!\p"
+	.string "But, I must ask...\n"
+	.string "where could your rival be?$"
 
 EverGrandePeak_Text_YoureAGreatTrainer:
-	.string "$"
+	.string "They may still be out there,\n"
+	.string "in the infinite sea, trying\l"
+	.string "to find some meaning that\l"
+	.string "you could not, {PLAYER}...\p"
+	.string "They had already a habit of\n"
+	.string "going on journeys away\l"
+	.string "from the rest of the world...\l"
+	.string "this, is no different.\p"
+	.string "Regardless. The ritual\n"
+	.string "is now completed in full.\l"
+	.string "Thank you tremendously\l"
+	.string "for your participation in this.\p"
+	.string "I will make sure that Hoenn\n"
+	.string "never forgets the name {PLAYER}!$"
 
 EverGrandePeak_Text_TheMeaningOfItAll:
-	.string "$"
+	.string "(Throughout this adventure,\n"
+	.string "you kept prying in your mind.)\p"
+	.string "(What is my purpose?\n"
+	.string "What is my legacy?)\p"
+	.string "(...The journey was what\n"
+	.string "gave meaning to your life.)$"
 
 EverGrandePeak_Text_GoToTheHallOfFame:
-	.string "$"
+	.string "Let us go enshrine your name\n"
+	.string "within the Hall of Fame.\l"
+	.string "While we lack the Pokemon League\l"
+	.string "these days, I still wish to\l"
+	.string "uphold that tradition.\p"
+	.string "Come, I will escort you.\n$"

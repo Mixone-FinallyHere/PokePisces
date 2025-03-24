@@ -88,6 +88,14 @@ PerplumeTreehouse_EventScript_ObtainBloomOrb::
 	release
 	end
 
+PerplumeTreehouse_EventScript_KitikitiIdle::
+	msgbox PerplumeTreehouse_Text_KitikitiIdle, MSGBOX_NPC
+	end
+
+PerplumeTreehouse_Text_KitikitiIdle:
+	.string "(Olimar's Kitikiti seem to be\n"
+	.string "about ready for dinner...)$"
+
 PerplumeTreehouse_Text_FindMyKitikiti:
 	.string "Ho-ho! Pleased to meet you.\n"
 	.string "This is my treehouse. My name\l"

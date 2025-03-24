@@ -1502,6 +1502,8 @@ bool32 AI_IsBattlerGrounded(u32 battlerId)
         return FALSE;
     else if (AI_DATA->abilities[battlerId] == ABILITY_LEVITATE)
         return FALSE;
+    else if (AI_DATA->abilities[battlerId] == ABILITY_GRAVITY_WELL && gFieldStatuses & STATUS_FIELD_GRAVITY)
+        return FALSE;
     else if (IS_BATTLER_OF_TYPE(battlerId, TYPE_FLYING))
         return FALSE;
     else
@@ -1874,9 +1876,10 @@ bool32 ShouldSetSun(u32 battlerAtk, u32 atkAbility, u32 holdEffect)
       || HasMoveEffect(battlerAtk, EFFECT_SOLAR_BEAM)
       || HasMoveEffect(battlerAtk, EFFECT_MORNING_SUN)
       || HasMoveEffect(battlerAtk, EFFECT_SYNTHESIS)
+      || HasMoveEffect(battlerAtk, EFFECT_GROWTH)
+      || HasMoveEffect(battlerAtk, EFFECT_SUN_BASK)
       || HasMoveEffect(battlerAtk, EFFECT_MOONLIGHT)
       || HasMoveEffect(battlerAtk, EFFECT_WEATHER_BALL)
-      || HasMoveEffect(battlerAtk, EFFECT_GROWTH)
       || HasMoveWithType(battlerAtk, TYPE_FIRE)))
     {
         return TRUE;
@@ -2294,6 +2297,7 @@ bool32 IsHealingMoveEffect(u32 effect)
     {
     case EFFECT_RESTORE_HP:
     case EFFECT_MORNING_SUN:
+    case EFFECT_HEAL_ORDER:
     case EFFECT_SYNTHESIS:
     case EFFECT_MOONLIGHT:
     case EFFECT_SOFTBOILED:
@@ -2828,7 +2832,8 @@ static bool32 PartyBattlerShouldAvoidHazards(u32 currBattler, u32 switchBattler)
         hazardDamage += GetStealthHazardDamageByTypesAndHP(gBattleMoves[MOVE_STEALTH_ROCK].type, type1, type2, maxHp);
 
     if (flags & SIDE_STATUS_SPIKES && ((type1 != TYPE_FLYING && type2 != TYPE_FLYING
-        && ability != ABILITY_LEVITATE && holdEffect != HOLD_EFFECT_AIR_BALLOON)
+        && ability != ABILITY_LEVITATE && holdEffect != HOLD_EFFECT_AIR_BALLOON
+        && (ability != ABILITY_GRAVITY_WELL && !gFieldStatuses & STATUS_FIELD_GRAVITY))
         || holdEffect == HOLD_EFFECT_IRON_BALL || gFieldStatuses & STATUS_FIELD_GRAVITY))
     {
         s32 spikesDmg = maxHp / ((5 - gSideTimers[GetBattlerSide(currBattler)].spikesAmount) * 2);
@@ -3137,8 +3142,6 @@ bool32 ShouldBloomSelf(u32 battler, u32 ability)
       || HasMoveEffect(battler, EFFECT_LEAF_TORNADO)
       || HasMoveEffect(battler, EFFECT_GRAV_APPLE)
       || HasMoveEffect(battler, EFFECT_SOLAR_BEAM)
-      || HasMoveEffect(battler, EFFECT_THIRD_TYPE)
-      || HasMoveEffect(battler, EFFECT_INGRAIN)
       || HasMoveEffect(battler, EFFECT_LEECH_SEED)
       || HasMoveEffect(battler, EFFECT_STRENGTH_SAP)
       || HasMoveEffect(battler, EFFECT_SYNTHESIS)
@@ -3599,6 +3602,11 @@ bool32 ShouldSetScreen(u32 battlerAtk, u32 battlerDef, u32 moveEffect)
         // Use only in Hail and only if AI doesn't already have Reflect, Light Screen or Aurora Veil itself active.
         if ((AI_GetWeather(AI_DATA) & (B_WEATHER_HAIL | B_WEATHER_SNOW))
             && !(gSideStatuses[atkSide] & (SIDE_STATUS_REFLECT | SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL)))
+            return TRUE;
+        break;
+    case EFFECT_BABY_BLUES:
+        // Use only if the player has a physical move and AI doesn't already have Reflect itself active.
+        if (!(gSideStatuses[atkSide] & SIDE_STATUS_GOOGOO_SCREEN))
             return TRUE;
         break;
     case EFFECT_REFLECT:

@@ -77,7 +77,7 @@
       "elevation": 0,
       "var": "VAR_TEMP_4",
       "var_value": "0",
-      "script": "NULL"
+      "script": "SecretMeadow_EventScript_YolkweenTrigger1"
     },
     {
       "type": "trigger",
@@ -86,7 +86,7 @@
       "elevation": 0,
       "var": "VAR_TEMP_4",
       "var_value": "0",
-      "script": "NULL"
+      "script": "SecretMeadow_EventScript_YolkweenTrigger2"
     },
     {
       "type": "trigger",
@@ -95,7 +95,7 @@
       "elevation": 0,
       "var": "VAR_TEMP_4",
       "var_value": "0",
-      "script": "NULL"
+      "script": "SecretMeadow_EventScript_YolkweenTrigger3"
     }
   ],
   "bg_events": [

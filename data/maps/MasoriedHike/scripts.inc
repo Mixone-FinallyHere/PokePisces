@@ -314,6 +314,48 @@ MasonriedHike_EventScript_AlreadyGaveRazorFang::
 	release
 	end
 
+MasonriedHike_EventScript_CableCarSign::
+	msgbox MasonriedHike_Text_CableCarSign, MSGBOX_SIGN
+	end
+
+MasonriedHike_EventScript_CatacombsSign::
+	msgbox MasonriedHike_Text_CatacombsSign, MSGBOX_SIGN
+	end
+
+MasonriedHike_EventScript_SweltornSign::
+	msgbox MasonriedHike_Text_SweltornSign, MSGBOX_SIGN
+	end
+
+MasonriedHike_EventScript_BorderHiker::
+	msgbox MasonriedHike_Text_BorderHiker, MSGBOX_NPC
+	end
+
+MasonriedHike_Text_BorderHiker:
+	.string "Oi. We're right about at the\n"
+	.string "border between Masonried Hike\l"
+	.string "and the Ashlands.\p"
+	.string "It's almost beautiful how the soot\n"
+	.string "slowly begins to fall as you\l"
+	.string "pass the threshold... almost.\l"
+	.string "That stuff can still kill you.$"
+
+MasonriedHike_Text_CableCarSign:
+	.string "MT. CHIMNEY CABLE CAR\n"
+	.string "MASONRIED HIKE STATION$"
+
+MasonriedHike_Text_CatacombsSign:
+	.string "NOTICE:\n"
+	.string "This is the entryway to\l"
+	.string "the Crimney Catacombs beneath\l"
+	.string "Mt. Chimney.\p"
+	.string "Practice EXTREME CAUTION when\n"
+	.string "travelling through the caves!\l"
+	.string "High temperatures and natural gas\l"
+	.string "are no laughing matter!$"
+
+MasonriedHike_Text_SweltornSign:
+	.string "Access to Sweltorn Desert ahead.$"
+
 MasonriedHike_Text_ImABiter:
 	.string "(This man is gnashing his teeth.)\p"
 	.string "I'm a BITER. I like to BITE!\n"
@@ -346,17 +388,18 @@ MasonriedHike_Text_MichaelDefeated:
 	.string "...$"
 
 MasonriedHike_Text_MichaelPostBattle:
-	.string "...Think I already said more than\n"
-	.string "enough.$"
+	.string "...Think I already said\n"
+	.string "more'n enough.$"
 
 MasonriedHike_Text_ChloeIntro:
-	.string "intro$"
+	.string "YODELLAY-HEE-HOO!$"
 
 MasonriedHike_Text_ChloeDefeated:
-	.string "defeat$"
+	.string "YYYYYYEOOOWCH!$"
 
 MasonriedHike_Text_ChloePostBattle:
-	.string "post$"
+	.string "I'm training to be an opera\n"
+	.string "singer by yodelling!$"
 
 MasonriedHike_Text_BichaelIntro:
 	.string "Boy, this terrain is tough to bike on!\n"
@@ -376,27 +419,26 @@ MasonriedHike_Text_FlowersIntro:
 	.string "Wanna be part of my journey?$"
 
 MasonriedHike_Text_FlowersDefeated:
-	.string "Oof! You used me like a stepping\n"
-	.string "stone...$"
+	.string "Oof! You used me like\n"
+	.string "a stepping stone...$"
 
 MasonriedHike_Text_FlowersPostBattle:
-	.string "I'll just head back to the Pokémon\n"
-	.string "Center now...$"
+	.string "I'll just head back to the\n"
+	.string "Pokémon Center now...$"
 
 MasonriedHike_Text_JayAndEmIntro:
 	.string "JAY: You're the Plus to my Minus!\n"
 	.string "EM: You're the Minus to my Plus!$"
-
 
 MasonriedHike_Text_JayAndEmDefeated:
 	.string "JAY: Whoa! Neutralized!\n"
 	.string "EM: We balance each other out, don't we?$"
 
 MasonriedHike_Text_JayAndEmPostBattle:
-	.string "JAY: I guess you could say we're a\n"
-	.string "''Power Couple''.\p"
+	.string "JAY: I guess you could say we're\n"
+	.string "     a “Power Couple”.\p"
 	.string "EM: Is that an electricity joke?\n"
-	.string "Ion' get it...$"
+	.string "    Ion' get it...$"
 
 MasonriedHike_Text_JayAndEmNeedTwoMons:
 	.string "JAY: Two plus one...\n"

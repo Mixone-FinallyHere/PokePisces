@@ -1775,7 +1775,7 @@ MoveTutor_EventScript_BeatUp::
 	goto_if_eq VAR_RESULT, FALSE, MoveTutor_EventScript_NoGoldTooth
 	msgbox MoveTutor_Text_WillTakeYourGoldTooth, MSGBOX_DEFAULT
 	msgbox MoveTutor_Text_WhoWillLearnTheMove, MSGBOX_DEFAULT
-	setvar VAR_0x8005, MOVE_SCALE_SHOT
+	setvar VAR_0x8005, MOVE_BEAT_UP
 	call MoveTutor_EventScript_OpenPartyMenu
 	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_ExitRules
 	goto MoveTutor_EventScript_MoveTaughtGoldTooth

@@ -886,6 +886,17 @@ const struct SpriteTemplate gHyperVoiceRingSpriteTemplate =
     .callback = AnimHyperVoiceRing,
 };
 
+const struct SpriteTemplate gDaBarrierSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_BLUE_LIGHT_WALL,
+    .paletteTag = ANIM_TAG_BLUE_LIGHT_WALL,
+    .oam = &gOamData_AffineDouble_ObjBlend_64x64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gHyperVoiceRingAffineAnimTable,
+    .callback = AnimHyperVoiceRing,
+};
+
 const struct SpriteTemplate gUproarRingSpriteTemplate =
 {
     .tileTag = ANIM_TAG_THIN_RING,
@@ -2460,8 +2471,10 @@ void AnimAngerMark(struct Sprite *sprite)
     u8 battler;
     if (!gBattleAnimArgs[0])
         battler = gBattleAnimAttacker;
-    else
+    else if (gBattleAnimArgs[0] == 1)
         battler = gBattleAnimTarget;
+    else if (gBattleAnimArgs[0] == 2 && IsDoubleBattle() && IsBattlerSpriteVisible(BATTLE_PARTNER(gBattleAnimTarget)))
+        battler = BATTLE_PARTNER(gBattleAnimTarget);
 
     if (GetBattlerSide(battler) == B_SIDE_OPPONENT)
         gBattleAnimArgs[1] *= -1;

@@ -191,22 +191,62 @@ OzoneInt_Text_ArchieGatherOthers:
 	.string "a Bolterock fly!$"
 
 OzoneInt_Text_CantLetYouUpstairs:
-	.string "$"
+	.string "Sorry, I can't let you upstairs\n"
+	.string "without explicit permission\l"
+	.string "from the higher-ups.$"
 
 OzoneInt_Text_ReadyForTheChallenge:
-	.string "$"
+	.string "{PLAYER}! Thanks for coming!\p"
+	.string "I'm assuming you're here for\n"
+	.string "the Ozone Challenge that\l"
+	.string "Maxie and Archie organized?\p"
+	.string "Great! Well, I hope you've\n"
+	.string "adequately prepared. When you're\l"
+	.string "good to go, come on in!$"
 
 OzoneInt_Text_GuardPostBattles:
-	.string "$"
+	.string "Hope you had a fun time\n"
+	.string "doing the Ozone Challenge!$"
 
 OzoneInt_Text_ThingsHaveGottenSerious:
-	.string "$"
+	.string "Hello, {PLAYER}. Deacon Wallace\n"
+	.string "has briefed me on recent events.\p"
+	.string "So, we are to be chauffeuring you\n"
+	.string "to the Golden Plains, mm?\l"
+	.string "It would be my pleasure.\p"
+	.string "However, I must warn you.\n"
+	.string "The only place for the plane to\l"
+	.string "safely land will be at the western\l"
+	.string "end of that island. The Plains\l"
+	.string "lie on the eastern end.\p"
+	.string "The Ever Grande Road, which spans\n"
+	.string "these two locations, is a place\l"
+	.string "for only the best of the best\l"
+	.string "trainers to battle with their\l"
+	.string "Pokemon. It will be a trek\l"
+	.string "most grueling.\p"
+	.string "I strongly suggest that you\n"
+	.string "tie up any loose ends that you\l"
+	.string "must before we embark.\l"
+	.string "Archibald and I will be able to\l"
+	.string "provide you basic necessities\l"
+	.string "such as healing, a PC, and\l"
+	.string "basic items. But that is all\l"
+	.string "that we can guarantee.\p"
+	.string "Knowing all this, do you\n"
+	.string "wish to leave now?$"
 
 OzoneInt_Text_PrepareAdequately:
-	.string "$"
+	.string "I do not blame you.\n"
+	.string "Please, go take care of anything\l"
+	.string "that you may need to.\l"
+	.string "Then, come see me when\l"
+	.string "you are truly prepared.$"
 
 OzoneInt_Text_NoGoingBack:
-	.string "$"
+	.string "Affirmative, {PLAYER}.\n"
+	.string "There will be no going back.\p"
+	.string "I will get the aeroplane ready.$"
 
 OzoneInt_Text_TabithaBolterockAdvice:
 	.string "It is nice to see you, {PLAYER}.\n"

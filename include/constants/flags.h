@@ -45,7 +45,7 @@
 #define FLAG_PARTY_MOVES     0x20 // Party Move Relearner Flag
 #define FLAG_LEVEL_1_TUTOR   0x21 // Flag For Secret Level 1 Moves Tutor
 #define FLAG_WITHIN_GYM    0x22 // Unused Flag
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
+#define FLAG_GOT_ILLEGAL_TEACHY_TV    0x23 // Unused Flag
 #define FLAG_UNUSED_0x024    0x24 // Unused Flag
 #define FLAG_UNUSED_0x025    0x25 // Unused Flag
 #define FLAG_UNUSED_0x026    0x26 // Unused Flag
@@ -479,7 +479,7 @@
 #define FLAG_DEFEATED_REGISTEEL              0x1BD
 #define FLAG_DEFEATED_KYOGRE                 0x1BE
 #define FLAG_DEFEATED_GROUDON                0x1BF
-#define FLAG_DEFEATED_RAYQUAZA               0x1C0
+#define FLAG_DEFEATED_TWO_PISCES_LEGENDS               0x1C0
 #define FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE 0x1C1
 #define FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE 0x1C2
 #define FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE 0x1C3
@@ -1386,7 +1386,7 @@
 #define FLAG_SUPPRESS_SPEAKER_NAME                  (SYSTEM_FLAGS + 0x21) // Unused Flag
 #define FLAG_VISITED_ZOTPYRE                           (SYSTEM_FLAGS + 0x22) // Unused Flag
 #define FLAG_VISITED_OZONE_INSTITUTE                           (SYSTEM_FLAGS + 0x23) // Unused Flag
-#define FLAG_UNUSED_0x884                           (SYSTEM_FLAGS + 0x24) // Unused Flag
+#define FLAG_EGR_NO_FLY                           (SYSTEM_FLAGS + 0x24) // Unused Flag
 #define FLAG_UNUSED_0x885                           (SYSTEM_FLAGS + 0x25) // Unused Flag
 #define FLAG_UNUSED_0x886                           (SYSTEM_FLAGS + 0x26) // Unused Flag
 #define FLAG_UNUSED_0x887                           (SYSTEM_FLAGS + 0x27) // Unused Flag

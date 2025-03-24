@@ -87,6 +87,7 @@ enum
     CANCELLER_IN_LOVE,
     CANCELLER_BIDE,
     CANCELLER_THAW,
+    CANCELLER_STANCE_CHANGE,
     CANCELLER_POWDER_MOVE,
     CANCELLER_POWDER_STATUS,
     CANCELLER_THROAT_CHOP,
@@ -174,6 +175,7 @@ u32 GetBattlerHoldEffectIgnoreAbility(u32 battler, bool32 checkNegating);
 u32 GetBattlerHoldEffectInternal(u32 battler, bool32 checkNegating, bool32 checkAbility);
 u32 GetBattlerHoldEffectParam(u32 battler);
 bool32 IsMoveMakingContact(u32 move, u32 battlerAtk);
+bool32 ShouldReform(u32 battlerDef, u32 move);
 bool32 IsBattlerGrounded(u32 battler);
 bool32 IsBattlerAlive(u32 battler);
 u32 GetMoveSlot(u16 *moves, u32 move);

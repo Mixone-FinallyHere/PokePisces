@@ -342,10 +342,10 @@ SeaMauville_EventScript_KizunaIdle2::
 SeaMauville_EventScript_SuitcaseInterceptor::
 	lock
 	faceplayer
+	goto_if_set FLAG_GOT_ILLEGAL_TEACHY_TV, SeaMauville_EventScript_ThanksForSuitcase
 	goto_if_eq VAR_OLD_GUYS_STATE, 13, SeaMauville_EventScript_GoGetThatSuitcase
 	goto_if_eq VAR_OLD_GUYS_STATE, 14, SeaMauville_EventScript_SuitcaseInstructions
 	goto_if_eq VAR_OLD_GUYS_STATE, 15, SeaMauville_EventScript_TradeSuitcaseForTeachyTV
-	goto_if_gt VAR_OLD_GUYS_STATE, 15, SeaMauville_EventScript_ThanksForSuitcase
 	msgbox SeaMauville_Text_ImUpToNoGood, MSGBOX_AUTOCLOSE
 	release
 	end
@@ -365,6 +365,7 @@ SeaMauville_EventScript_TradeSuitcaseForTeachyTV::
 	msgbox SeaMauville_Text_YouGotTheStuff, MSGBOX_DEFAULT
 	removeitem ITEM_DEVON_PARTS, 1
 	giveitem ITEM_TEACHY_TV
+	setflag FLAG_GOT_ILLEGAL_TEACHY_TV
 	msgbox SeaMauville_Text_ThanksForSuitcase, MSGBOX_AUTOCLOSE
 	release
 	end
@@ -596,6 +597,72 @@ SeaMauville_Mart_ShopMints:
 	.2byte ITEM_NONE
 	release
 	end	
+
+SeaMauville_EventScript_SlateportSign::
+	msgbox SeaMauville_Text_SlateportSign, MSGBOX_SIGN
+	end
+
+SeaMauville_EventScript_MarketSign::
+	msgbox SeaMauville_Text_MarketSign, MSGBOX_SIGN
+	end
+
+SeaMauville_EventScript_MarketSign2::
+	msgbox SeaMauville_Text_MarketSign2, MSGBOX_SIGN
+	end
+
+SeaMauville_EventScript_FanClubSign::
+	msgbox SeaMauville_Text_FanClubSign, MSGBOX_SIGN
+	end
+
+SeaMauville_EventScript_OceanicMuseumSign::
+	msgbox SeaMauville_Text_OceanicMuseumSign, MSGBOX_SIGN
+	end
+
+SeaMauville_EventScript_SternsShipyardSign::
+	msgbox SeaMauville_Text_SternsShipyardSign, MSGBOX_SIGN
+	end
+
+SeaMauville_EventScript_SeasideCasinoSign::
+	msgbox SeaMauville_Text_SeasideCasinoSign, MSGBOX_SIGN
+	end
+
+SeaMauville_EventScript_BeachSign::
+	msgbox SeaMauville_Text_BeachSign, MSGBOX_SIGN
+	end
+
+SeaMauville_Text_SlateportSign:
+	.string "SEA MAUVILLE\n"
+	.string "Formerly Slateport City\p"
+	.string "We thank Greater Mauville Holdings\n"
+	.string "for their continued generosity in\l"
+	.string "furthering the city's development!$"
+
+SeaMauville_Text_MarketSign:
+	.string "Sea Mauville Market\n"
+	.string "All Vendors Welcome!$"
+
+SeaMauville_Text_MarketSign2:
+	.string "(It's a big list of all the\n"
+	.string "vendors and traders here...\l"
+	.string "you don't recognize any names.)$"
+
+SeaMauville_Text_FanClubSign:
+	.string "The Pokemon Card Fan Club$"
+
+SeaMauville_Text_OceanicMuseumSign:
+	.string "OCEANIC MUSEUM$"
+
+SeaMauville_Text_SternsShipyardSign:
+	.string "STERN'S SHIPYARD$"
+
+SeaMauville_Text_SeasideCasinoSign:
+	.string "WELCOME TO THE SEASIDE CASINO!$"
+
+SeaMauville_Text_BeachSign:
+	.string "SOUTH - SLATEPORT SHORE\n"
+	.string "During high tide, the sands may\l"
+	.string "become engulfed in water.\l"
+	.string "Bring a Pokemon that can Surf!$"
 
 SeaMauville_Text_WelcomeToShopMints:
 	.string "Welcome to the Mint Shop!$"

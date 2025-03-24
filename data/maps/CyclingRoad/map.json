@@ -60,7 +60,7 @@
       "movement_range_x": 7,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "0",
+      "trainer_sight_or_berry_tree_id": "2",
       "script": "CyclingRoad_EventScript_Mona",
       "flag": "0"
     },
@@ -95,7 +95,7 @@
       "x": 9,
       "y": 43,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
@@ -368,21 +368,21 @@
     },
     {
       "x": 6,
-      "y": 47,
+      "y": 44,
       "elevation": 0,
       "dest_map": "MAP_ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE",
       "dest_warp_id": "0"
     },
     {
       "x": 7,
-      "y": 47,
+      "y": 44,
       "elevation": 0,
       "dest_map": "MAP_ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE",
       "dest_warp_id": "0"
     },
     {
       "x": 8,
-      "y": 47,
+      "y": 44,
       "elevation": 0,
       "dest_map": "MAP_ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE",
       "dest_warp_id": "0"
@@ -445,6 +445,13 @@
     }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 5,
+      "y": 51,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CyclingRoad_EventScript_CyclingRoadSign"
+    }
   ]
 }

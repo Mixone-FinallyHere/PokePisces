@@ -96,6 +96,15 @@ Route121_EventScript_WarpToLilycove::
 	release
 	end
 
+Route121_EventScript_ColdMinesSign::
+	msgbox Route121_Text_ColdMinesSign, MSGBOX_SIGN
+	end
+
+Route121_Text_ColdMinesSign:
+	.string "This tunnel provides access\n"
+	.string "to the Cold Mines.\l"
+	.string "Enter at own discretion.$"
+
 Route121_Text_WannaHaveSnowballFight:
 	.string "Hi! I wanna have a snowball fight!\p"
 	.string "C'mon, please…?\p"
@@ -132,16 +141,19 @@ Route121_Text_BarneyPostBattle:
 	.string "post$"
 
 Route121_Text_CharonIntro:
-	.string "Charon likes snow, it feels chilly\n"
-	.string "chilled...$"
+	.string "Charon likes the snow.\n"
+	.string "It feels... chilly-chilled.$"
 
 Route121_Text_CharonDefeated:
-	.string "So cold, brrr-brrr.$"
+	.string "So cold...\n"
+	.string "Brrr-brrr.$"
 
 Route121_Text_CharonPostBattle:
-	.string "I want to vroom vroom a snow mobile but\n"
-	.string "uncle Vergil is busy looking for uncle\l"
-	.string "Dante...$"
+	.string "Charon wishes to vroom-vroom...\n"
+	.string "in a snow mobile.\p"
+	.string "But... Uncle Vergil is busy\n"
+	.string "searching for Uncle Dante...\p"
+	.string "So Charon must not get lost...$"
 
 Route121_Text_GarnetIntro:
 	.string "I love the snow! Wanna know why?!$"
@@ -168,14 +180,20 @@ Route121_Text_LapizPostBattle:
 	.string "I don't see the fun in such a thing...$"
 
 Route121_Text_VergilIntro:
-	.string "Where is he...$"
+	.string "Where is he... he knows\n"
+	.string "he cannot escape my gaze,\l"
+	.string "and yet, he flees...\p"
+	.string "Hmm. An interruption...?\n$"
 
 Route121_Text_VergilDefeated:
-	.string "Cho lum kuh...$"
+	.string "I must guide you away from here,\n"
+	.string "child... my search continues.$"
 
 Route121_Text_VergilPostBattle:
-	.string "Dantuhhh... Where are you...\n"
-	.string "time to do dailies...$"
+	.string "Dante... you cannot escape\n"
+	.string "my gaze forever...\p"
+	.string "You must attend to your\n"
+	.string "daily tasks...$"
 
 Route121_Text_YoshIntro:
 	.string "I remain ambivalent about the snow.$"
@@ -198,22 +216,35 @@ Route121_Text_KaijiPostBattle:
 	.string "That's no fair!$"
 
 Route121_Text_LarsIntro:
-	.string "intro$"
+	.string "Oh, to be a henchman, or a goon...\n"
+	.string "I wish some crime ring would\l"
+	.string "pick me up and I could infiltrate\l"
+	.string "their ranks... I want CRIME to do!\p"
+	.string "I guess I'll start with\n"
+	.string "ASSAULT and BATTERY!$"
 
 Route121_Text_LarsDefeated:
-	.string "defeat$"
+	.string "It was MY ass that was -aulted!$"
 
 Route121_Text_LarsPostBattle:
-	.string "post$"
+	.string "You're saying there's a Burglar\n"
+	.string "trainer class? Well, that seems\l"
+	.string "like something more up my alley!$"
 
 Route121_Text_DarcieIntro:
-	.string "intro$"
+	.string "My partner really wants to\n"
+	.string "be a bad guy, but I don't think\l"
+	.string "he's really a BAD guy...$"
 
 Route121_Text_DarcieDefeated:
-	.string "defeat$"
+	.string "You're pretty bad yourself!\p"
+	.string "...Not bad, as in, you're\n"
+	.string "not good. Bad, as in, you're\l"
+	.string "cool, and stuff...$"
 
 Route121_Text_DarciePostBattle:
-	.string "post$"
+	.string "Jeepers... it seems the word\n"
+	.string "“bad” carries too many meanings...$"
 
 Route121_Text_WyntonIntro:
 	.string "Ski, free!$"

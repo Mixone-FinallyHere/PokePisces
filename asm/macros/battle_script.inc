@@ -1942,6 +1942,10 @@
 	various \battler, VARIOUS_SET_AURORA_VEIL
 	.endm
 
+	.macro setbabyblues battler:req
+	various \battler, VARIOUS_SET_BABY_BLUES
+	.endm
+
 	.macro setsilence battler:req, failInstr:req
 	various \battler VARIOUS_SET_SILENCE
 	.4byte \failInstr
@@ -2001,8 +2005,13 @@
 	various \battler, VARIOUS_SET_POWDER
 	.endm
 
+	.macro tryspectralthiefsteal jumpInstr:req
+	callnative BS_TrySpectralThiefSteal
+	.4byte \jumpInstr
+	.endm
+
 	.macro spectralthiefprintstats
-	various BS_ATTACKER, VARIOUS_SPECTRAL_THIEF
+	callnative BS_SpectralThiefPrintStats
 	.endm
 
 	.macro bringdownairbornebattler battler:req
@@ -2241,6 +2250,11 @@
 
 	.macro jumpifteamhealthy battler:req, jumpInstr:req
 	various \battler, VARIOUS_JUMP_IF_TEAM_HEALTHY
+	.4byte \jumpInstr
+	.endm
+
+	.macro florescencecheck battler:req, jumpInstr:req
+	various \battler, VARIOUS_FLORESCENCE_CHECK
 	.4byte \jumpInstr
 	.endm
 
@@ -2485,6 +2499,15 @@
 	various \battler, VARIOUS_SET_BEAK_BLAST
 	.endm
 
+	.macro setdoublesmovesucceed battler:req
+	various \battler, VARIOUS_SET_DOUBLES_MOVE_SUCCEED
+	.endm
+
+	.macro jumpifdoublesmovesucceed battler:req, jumpInstr:req
+	various \battler, VARIOUS_JUMP_IF_DOUBLES_MOVE_SUCCEED
+	.4byte \jumpInstr
+	.endm
+
 	.macro setacidarmor battler:req
 	various \battler, VARIOUS_SET_ACID_ARMOR
 	.endm
@@ -2714,7 +2737,7 @@
 
 	.macro jumpifsafeguard jumpInstr:req
 	jumpifability BS_ATTACKER, ABILITY_INFILTRATOR, 1f
-	jumpIfType BS_ATTACKER, TYPE_BUG, 1f
+	jumpiftype BS_ATTACKER, TYPE_BUG, 1f
 	jumpifsideaffecting BS_TARGET, SIDE_STATUS_SAFEGUARD, \jumpInstr
 	1:
 	.endm

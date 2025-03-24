@@ -249,6 +249,14 @@ ZotpyreGym_EventScript_LeadersDefeated::
 	release
 	end
 
+ZotpyreGym_EventScript_HintGiver3::
+	msgbox ZotpyreGym_Text_Hint3, MSGBOX_NPC
+	end
+
+ZotpyreGym_EventScript_TakeNotesOnRelic::
+	msgbox ZotpyreGym_Text_TakeNotesOnRelic, MSGBOX_NPC
+	end
+
 ZotpyreGym_Text_NamePhoebe:
 	.string "Phoebe$"
 
@@ -265,6 +273,21 @@ ZotpyreGym_Text_Hint2:
 	.string "knowledgeable about this peculiar\l"
 	.string "type of Pokémon!\p"
 	.string "I try to talk to as many as I can.$"
+
+ZotpyreGym_Text_Hint3:
+	.string "Those monks have some kind\n"
+	.string "of crazy power!\p"
+	.string "When I talked to one, he went\n"
+	.string "and changed a bunch of the\l"
+	.string "pillars' heights!\l"
+	.string "Maybe I can use that to\l"
+	.string "my advantage?$"
+
+ZotpyreGym_Text_TakeNotesOnRelic:
+	.string "It could serve you well to take\n"
+	.string "notes on what the Relic type\l"
+	.string "is all about before challenging\l"
+	.string "the Gym Leaders.$"
 
 ZotpyreGym_Text_JunjiIntro:
 	.string "Ho-ho-ho…\p"
@@ -325,13 +348,18 @@ ZotpyreGym_Text_ShuichiPostBattle:
 	.string "their weaknesses.$"
 
 ZotpyreGym_Text_TomieIntro:
-	.string "intro$"
+	.string "I remain wide awake,\n"
+	.string "despite the thick fog!$"
 
 ZotpyreGym_Text_TomieDefeated:
-	.string "defeat$"
+	.string "Though I am defeated,\n"
+	.string "tire I do not!$"
 
 ZotpyreGym_Text_TomiePostBattle:
-	.string "post$"
+	.string "I must say I am built like\n"
+	.string "a Relic-type Pokemon.\l"
+	.string "They're also immune to\l"
+	.string "falling asleep!$"
 
 ZotpyreGym_Text_AzamiIntro:
 	.string "I've got to get out of this place.$"
@@ -344,13 +372,18 @@ ZotpyreGym_Text_AzamiPostBattle:
 	.string "It's odd...$"
 
 ZotpyreGym_Text_MisakiIntro:
-	.string "intro$"
+	.string "Stay calm, Misaki... deep breaths...$"
 
 ZotpyreGym_Text_MisakiDefeated:
-	.string "defeat$"
+	.string "Gah! I panicked!$"
 
 ZotpyreGym_Text_MisakiPostBattle:
-	.string "post$"
+	.string "If only I could take some cues\n"
+	.string "from my Maeracholy and Froslass...\p"
+	.string "As Ghost type Pokemon, they are\n"
+	.string "not easily scared...\l"
+	.string "they can't be trapped,\l"
+	.string "or made to panic.$"
 
 ZotpyreGym_Text_YuinaIntro:
 	.string "Whether a ghost or a relic;\n"

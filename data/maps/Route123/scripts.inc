@@ -205,12 +205,6 @@ Route123_EventScript_Grave1Respects::
 	delay 60
 	delay 60
 	delay 60
-	delay 60
-	delay 60
-	delay 60
-	delay 60
-	delay 60
-	delay 60
 	fadeinbgm 1
 	addvar VAR_GRAVE_QUEST_STATE, 1
 	setflag FLAG_TEMP_13
@@ -260,12 +254,6 @@ Route123_EventScript_Grave2Respects::
 	delay 60
 	delay 60
 	delay 60
-	delay 60
-	delay 60
-	delay 60
-	delay 60
-	delay 60
-	delay 60
 	fadeinbgm 1
 	addvar VAR_GRAVE_QUEST_STATE, 1
 	setflag FLAG_TEMP_14
@@ -286,12 +274,6 @@ Route123_EventScript_Gravestone3::
 Route123_EventScript_Grave3Respects::
 	msgbox Route123_Text_YouFoldYourHands, MSGBOX_AUTOCLOSE
 	fadeoutbgm 1
-	delay 60
-	delay 60
-	delay 60
-	delay 60
-	delay 60
-	delay 60
 	delay 60
 	delay 60
 	delay 60
@@ -456,6 +438,22 @@ Route123_EventScript_SnowNinjaRelease::
 	release
 	end
 
+Route123_EventScript_ShrineSign::
+	msgbox Route123_Text_ShrineSign, MSGBOX_SIGN
+	end
+
+Route123_EventScript_ZotpyreSign::
+	msgbox Route123_Text_ZotpyreSign, MSGBOX_SIGN
+	end
+
+Route123_Text_ShrineSign:
+	.string "ZOTPYRE SHRINE\n"
+	.string "We ask that you practice respect\l"
+	.string "when in this spiritual place.$"
+
+Route123_Text_ZotpyreSign:
+	.string "Zotpyre-Brumist Bridge$"
+
 Route123_Text_BackToTheSnow:
 	.string "Even after plotting my revenge over a\n"
 	.string "painstaking 20 minutes…\l"
@@ -484,7 +482,9 @@ Route123_Text_MayTheyRestInPeace:
 	.string "(May they rest in peace.)$"
 
 Route123_Text_GottaKeepMoving:
-	.string "lets get goin$"
+	.string "(...It's best not to loiter\n"
+	.string "at the graves. Let them have\l"
+	.string "their eternal rest...)$"
 
 Route123_Text_TheresSomethingOnYourWrist:
 	.string "(After your prayer, you look down to\n"
@@ -527,24 +527,31 @@ Route123_Text_RamiPostBattle:
 	.string "with Pokémon! Don't you agree?!$"
 
 Route123_Text_TsunamiIntro:
-	.string "intro$"
+	.string "I always come crashin' down\n"
+	.string "the mountain! Nothing beats\l"
+	.string "that thrill!\p"
+	.string "Well, maybe an exhilerating\n"
+	.string "battle will!$"
 
 Route123_Text_TsunamiDefeated:
-	.string "defeat$"
+	.string "Cowabunga!!$"
 
 Route123_Text_TsunamiPostBattle:
-	.string "post$"
+	.string "People always tell me to\n"
+	.string "take up surfing.\l"
+	.string "But I HATE high temperatures, man!$"
 
 Route123_Text_JinxieIntro:
 	.string "Oooooh... Be afraid...$"
 
 Route123_Text_JinxieDefeated:
-	.string "... Be... uhh... More afraid... please...$"
+	.string "...Be, uh... more afraid...\p"
+	.string "...Please?\n$"
 
 Route123_Text_JinxiePostBattle:
 	.string "Haha, got you!\n"
-	.string "You totally thought I was possessed,\l"
-	.string "didn't you!$"
+	.string "You totally thought I was\l"
+	.string "possessed, didn't you!$"
 
 Route123_Text_CarolinaIntro:
 	.string "This big heavy backpack is stuffed\n"
@@ -557,8 +564,8 @@ Route123_Text_CarolinaDefeated:
 
 Route123_Text_CarolinaPostBattle:
 	.string "Carry a lighter load? No way!\n"
-	.string "You never know when you'll need 99\l"
-	.string "Elixrs!$"
+	.string "You never know when you'll need\l"
+	.string "99 Elixirs!$"
 
 Route123_Text_BettyIntro:
 	.string "I've broken so many bones doing this!$"
@@ -590,24 +597,24 @@ Route123_Text_MiaPostBattle:
 	.string "...$"
 
 Route123_Text_MayaIntro:
-	.string "... The soul is more malleable than one\n"
-	.string "may expect...$"
+	.string "...The soul is more malleable\n"
+	.string "than one may expect...$"
 
 Route123_Text_MayaDefeated:
-	.string "... Would you like a demonstration?...$"
+	.string "...Would you like a demonstration?...$"
 
 Route123_Text_MayaPostBattle:
 	.string "...$"
 
 Route123_Text_KumoriIntro:
-	.string "... Do you want to see my snow angel?$"
+	.string "Do you want to see my snow Froslass?$"
 
 Route123_Text_KumoriDefeated:
 	.string "It's really cool...$"
 
 Route123_Text_KumoriPostBattle:
-	.string "I love making snow angels, they're so\n"
-	.string "much fun...\p"
+	.string "I love making snow Froslass,\n"
+	.string "it's so much fun...\p"
 	.string "What do you think?$"
 
 Route123_Text_HothIntro:

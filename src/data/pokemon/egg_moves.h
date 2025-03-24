@@ -5644,7 +5644,7 @@ const u16 gEggMoves[] = {
         MOVE_STORM_FURY,
         MOVE_ERUPTION,
         MOVE_MOUNTAIN_GALE,
-        MOVE_ELECTRO_SHOT),
+        MOVE_MALIGNANT_CHAIN),
 
     egg_moves(SWELLOW,
         MOVE_CHATTER,

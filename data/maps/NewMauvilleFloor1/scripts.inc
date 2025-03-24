@@ -87,9 +87,15 @@ NewMauvilleFloor1_EventScript_PowerlessManEvent::
 	closemessage
 	applymovement LOCALID_P_MAN, NewMauvilleFloor1_Movement_PManGoToElevator
 	waitmovement 0
+	opendoor 26, 2
+	waitdooranim
+	applymovement LOCALID_P_MAN, NewMauvilleFloor1_Movement_PManEntersElevator
+	waitmovement 0
 	playse SE_EXIT
 	removeobject LOCALID_P_MAN
 	setflag FLAG_TEMP_11
+	closedoor 26, 2
+	waitdooranim
 	setflag FLAG_VISITED_MAUVILLE_CITY
 	setvar VAR_OLD_GUYS_STATE, 1
 	releaseall
@@ -125,6 +131,10 @@ NewMauvilleFloor1_Movement_PManJoinUp:
 
 NewMauvilleFloor1_Movement_PManGoToElevator:
 	walk_left
+	walk_up
+	step_end
+
+NewMauvilleFloor1_Movement_PManEntersElevator:
 	walk_up
 	step_end
 
@@ -374,9 +384,94 @@ NewMauvilleFloor1_EventScript_NotEnoughMoney::
 	release
 	end
 
+NewMauvilleFloor1_EventScript_2F3FElevatorSign::
+	msgbox NewMauvilleFloor1_Text_2F3FElevatorSign, MSGBOX_SIGN
+	end
+
+NewMauvilleFloor1_EventScript_MaintenanceElevatorSign::
+	msgbox NewMauvilleFloor1_Text_MaintenanceElevatorSign, MSGBOX_SIGN
+	end
+
+NewMauvilleFloor1_EventScript_RoofElevatorSign::
+	msgbox NewMauvilleFloor1_Text_RoofElevatorSign, MSGBOX_SIGN
+	end
+
+NewMauvilleFloor1_EventScript_RydelCyclesSign::
+	msgbox NewMauvilleFloor1_Text_RydelCyclesSign, MSGBOX_SIGN
+	end
+
+NewMauvilleFloor1_EventScript_GoldToothSign::
+	msgbox NewMauvilleFloor1_Text_GoldToothSign, MSGBOX_SIGN
+	end
+
+NewMauvilleFloor1_EventScript_FoodMenu1::
+	msgbox NewMauvilleFloor1_Text_FoodMenu1, MSGBOX_SIGN
+	end
+
+NewMauvilleFloor1_EventScript_FoodMenu2::
+	msgbox NewMauvilleFloor1_Text_FoodMenu2, MSGBOX_SIGN
+	end
+
+NewMauvilleFloor1_EventScript_FoodMenu3::
+	msgbox NewMauvilleFloor1_Text_FoodMenu3, MSGBOX_SIGN
+	end
+
+NewMauvilleFloor1_EventScript_FoodMenu4::
+	msgbox NewMauvilleFloor1_Text_FoodMenu4, MSGBOX_SIGN
+	end
+
 NewMauvilleFloor1_EventScript_RydelGuard::
 	msgbox NewMauvilleFloor1_Text_RydelGuard, MSGBOX_NPC
 	end
+
+NewMauvilleFloor1_Text_2F3FElevatorSign:
+	.string "The elevator labelled 2F\n"
+	.string "leads to the apartments.\p"
+	.string "The elevator labelled 3F\n"
+	.string "leads to a heightened segment\l"
+	.string "of the roof, only accessible\l"
+	.string "via said elevator.$"
+
+NewMauvilleFloor1_Text_MaintenanceElevatorSign:
+	.string "NOTICE:\n"
+	.string "This elevator descends to the\l"
+	.string "Maintenance floor underneath\l"
+	.string "the city proper.\p"
+	.string "Employees must clock in with\n"
+	.string "their keys at the main entrance\l"
+	.string "at the south side of New Mauville\l"
+	.string "in order to freely use this!$"
+
+NewMauvilleFloor1_Text_RoofElevatorSign:
+	.string "Green elevators lead to\n"
+	.string "the rooftop terraces.$"
+
+NewMauvilleFloor1_Text_RydelCyclesSign:
+	.string "RYDEL'S CYCLES!$"
+
+NewMauvilleFloor1_Text_GoldToothSign:
+	.string "There are many move tutors\n"
+	.string "in New Mauville! We pride\l"
+	.string "ourselves on our variety.\l"
+	.string "Tutors here have taken to using\l"
+	.string "a unique currency; Gold Teeth.\l"
+	.string "Take any you find to a tutor!$"
+
+NewMauvilleFloor1_Text_FoodMenu1:
+	.string "(It's a restaurant menu.\n"
+	.string "Ability Snacks are on the list.)$"
+
+NewMauvilleFloor1_Text_FoodMenu2:
+	.string "(It's a restaurant menu.\n"
+	.string "Black Salad is on the list.)$"
+
+NewMauvilleFloor1_Text_FoodMenu3:
+	.string "(It's a restaurant menu.\n"
+	.string "Lava Cookies are on the list.)$"
+
+NewMauvilleFloor1_Text_FoodMenu4:
+	.string "(It's a restaurant menu.\n"
+	.string "Ice Pops are on the list.)$"
 
 NewMauvilleFloor1_Text_IllTradeIfYouWant:
 	.string "I'll trade you my {STR_VAR_2} for\n"
@@ -399,31 +494,37 @@ NewMauvilleFloor1_Text_NameKizuna:
 	.string "Kizuna$"
 
 NewMauvilleFloor1_Text_RoyIntro:
-	.string "intro$"
+	.string "Do you love the color of the sky?$"
 
 NewMauvilleFloor1_Text_RoyDefeated:
-	.string "defeat$"
+	.string "...Which one?$"
 
 NewMauvilleFloor1_Text_RoyPostBattle:
-	.string "post$"
+	.string "The colors of my Spinda inspire\n"
+	.string "me to make fine art... yet,\l"
+	.string "here I am, spray-painting.$"
 
 NewMauvilleFloor1_Text_McKayleighIntro:
-	.string "intro$"
+	.string "Looooooook at how cuuuuuute\n"
+	.string "my team is!$"
 
 NewMauvilleFloor1_Text_McKayleighDefeated:
-	.string "defeat$"
+	.string "Cuteness is no match for, ugh...\n"
+	.string "UGLY brute strength. Ewww!$"
 
 NewMauvilleFloor1_Text_McKayleighPostBattle:
-	.string "post$"
+	.string "Leave my cute Pokemon alone,\n"
+	.string "you brutish buffoon!$"
 
 NewMauvilleFloor1_Text_AidenIntro:
-	.string "intro$"
+	.string "Who are YOU to bother ME!?$"
 
 NewMauvilleFloor1_Text_AidenDefeated:
-	.string "defeat$"
+	.string "How DARE you. Such disrespect!$"
 
 NewMauvilleFloor1_Text_AidenPostBattle:
-	.string "post$"
+	.string "I SPIT at you!\n"
+	.string "Ptooey!$"
 
 NewMauvilleFloor1_Text_ItsYouFromTheTidal:
 	.string "Oh! Hey, there!\p"
