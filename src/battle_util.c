@@ -4723,32 +4723,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         gBattleScripting.battler = battler;
         switch (gLastUsedAbility)
         {
-        case ABILITY_SUNRISE:
-            if (TryChangeBattleWeather(battler, ENUM_WEATHER_SUN, TRUE) && gBattleMons[battler].hp <= gBattleMons[battler].maxHP / 3)
-            {
-                BattleScriptPushCursorAndCallback(BattleScript_DroughtActivates);
-                effect++;
-            }
-            else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && WEATHER_HAS_EFFECT && !gSpecialStatuses[battler].switchInAbilityDone && gBattleMons[battler].hp <= gBattleMons[battler].maxHP / 3)
-            {
-                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
-                BattleScriptPushCursorAndCallback(BattleScript_BlockedByPrimalWeatherEnd3);
-                effect++;
-            }
-            break;
-        case ABILITY_DELUGE:
-            if (TryChangeBattleWeather(battler, ENUM_WEATHER_RAIN, TRUE) && gBattleMons[battler].hp <= gBattleMons[battler].maxHP / 3)
-            {
-                BattleScriptPushCursorAndCallback(BattleScript_DrizzleActivates);
-                effect++;
-            }
-            else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && WEATHER_HAS_EFFECT && !gSpecialStatuses[battler].switchInAbilityDone && gBattleMons[battler].hp <= gBattleMons[battler].maxHP / 3)
-            {
-                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
-                BattleScriptPushCursorAndCallback(BattleScript_BlockedByPrimalWeatherEnd3);
-                effect++;
-            }
-            break;
         case ABILITY_IMPOSTER:
             if (IsBattlerAlive(BATTLE_OPPOSITE(battler)) && !(gBattleMons[BATTLE_OPPOSITE(battler)].status2 & (STATUS2_TRANSFORMED | STATUS2_SUBSTITUTE)) && !(gBattleMons[battler].status2 & STATUS2_TRANSFORMED) && !(gBattleStruct->illusion[BATTLE_OPPOSITE(battler)].on) && !(gStatuses3[BATTLE_OPPOSITE(battler)] & STATUS3_SEMI_INVULNERABLE))
             {
@@ -5531,32 +5505,38 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             switch (gLastUsedAbility)
             {
             case ABILITY_SUNRISE:
-                if (TryChangeBattleWeather(battler, ENUM_WEATHER_SUN, TRUE) && gBattleMons[battler].hp <= gBattleMons[battler].maxHP / 3)
+                if (gBattleMons[battler].hp <= gBattleMons[battler].maxHP * 2 / 5)
                 {
-                    BattleScriptPushCursorAndCallback(BattleScript_DroughtActivates);
-                    effect++;
-                }
-                else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && WEATHER_HAS_EFFECT && gBattleMons[battler].hp <= gBattleMons[battler].maxHP / 3)
-                {
-                    BattleScriptPushCursorAndCallback(BattleScript_BlockedByPrimalWeatherEnd3);
-                    effect++;
+                    if (TryChangeBattleWeather(battler, ENUM_WEATHER_SUN, TRUE))
+                    {
+                        BattleScriptPushCursorAndCallback(BattleScript_SunriseActivates);
+                        effect++;
+                    }
+                    else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && WEATHER_HAS_EFFECT)
+                    {
+                        BattleScriptPushCursorAndCallback(BattleScript_BlockedByPrimalWeatherEnd3);
+                        effect++;
+                    }
                 }
                 break;
             case ABILITY_DELUGE:
-                if (TryChangeBattleWeather(battler, ENUM_WEATHER_RAIN, TRUE) && gBattleMons[battler].hp <= gBattleMons[battler].maxHP / 3)
-                {
-                    BattleScriptPushCursorAndCallback(BattleScript_DrizzleActivates);
-                    effect++;
-                }
-                else if (IsBattlerWeatherAffected(battler, B_WEATHER_RAIN))
+                if (IsBattlerWeatherAffected(battler, B_WEATHER_RAIN))
                 {
                     BattleScriptPushCursorAndCallback(BattleScript_DelugeHurts);
                     effect++;
-                }                
-                else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && WEATHER_HAS_EFFECT && gBattleMons[battler].hp <= gBattleMons[battler].maxHP / 3)
+                }
+                else if (gBattleMons[battler].hp <= gBattleMons[battler].maxHP * 2 / 5)
                 {
-                    BattleScriptPushCursorAndCallback(BattleScript_BlockedByPrimalWeatherEnd3);
-                    effect++;
+                    if (TryChangeBattleWeather(battler, ENUM_WEATHER_RAIN, TRUE))
+                    {
+                        BattleScriptPushCursorAndCallback(BattleScript_DelugeActivates);
+                        effect++;
+                    }
+                    else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && WEATHER_HAS_EFFECT)
+                    {
+                        BattleScriptPushCursorAndCallback(BattleScript_BlockedByPrimalWeatherEnd3);
+                        effect++;
+                    }
                 }
                 break;
             case ABILITY_HARVEST:
@@ -6215,69 +6195,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
     case ABILITYEFFECT_MOVE_END: // Think contact abilities.
         switch (gLastUsedAbility)
         {
-        case ABILITY_SUNRISE:
-            if (gBattleMons[gBattlerTarget].hp <= gBattleMons[gBattlerTarget].maxHP / 3
-            && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
-            && TARGET_TURN_DAMAGED 
-            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
-            && IsBattlerAlive(gBattlerTarget))
-            {
-                if (TryChangeBattleWeather(gBattlerTarget, ENUM_WEATHER_SUN, TRUE))
-                {
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_SunriseActivatesRet;
-                    effect++;
-                }
-                else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && WEATHER_HAS_EFFECT)
-                {
-                    gBattleScripting.battler = gBattlerTarget;
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_BlockedByPrimalWeatherRet;
-                    effect++;
-                }
-            }
-            break;
-        case ABILITY_DELUGE:
-            if (gBattleMons[gBattlerTarget].hp <= gBattleMons[gBattlerTarget].maxHP / 3
-            && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
-            && TARGET_TURN_DAMAGED 
-            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
-            && IsBattlerAlive(gBattlerTarget))
-            {
-                if (TryChangeBattleWeather(gBattlerTarget, ENUM_WEATHER_RAIN, TRUE))
-                {
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_DelugeActivatesRet;
-                    effect++;
-                }
-                else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && WEATHER_HAS_EFFECT)
-                {
-                    gBattleScripting.battler = gBattlerTarget;
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_BlockedByPrimalWeatherRet;
-                    effect++;
-                }
-            }
-            break;
-        case ABILITY_GHOULISH:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-            && TARGET_TURN_DAMAGED 
-            && IsBattlerAlive(battler) 
-            && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK) 
-            && !BATTLER_MAX_HP(battler) 
-            && gBattlerAttacker != gBattlerTarget)
-            {
-                gEffectBattler = battler;
-                gBattleMoveDamage = (gSpecialStatuses[gBattlerTarget].shellBellDmg / 3);
-                if (gBattleMoveDamage == 0)
-                    gBattleMoveDamage = 1;
-                gBattleMoveDamage *= -1;
-                PREPARE_ABILITY_BUFFER(gBattleTextBuff1, GetBattlerAbility(gBattlerTarget));
-                BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_AbilityHealHP_Ret;
-                effect++;
-            }
-            break;
         case ABILITY_JUSTIFIED:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && TARGET_TURN_DAMAGED && IsBattlerAlive(battler) && moveType == TYPE_DARK && CompareStat(battler, STAT_ATK, MAX_STAT_STAGE, CMP_LESS_THAN))
             {
@@ -6384,7 +6301,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         case ABILITY_BERSERK:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && TARGET_TURN_DAMAGED && IsBattlerAlive(battler)
                 // Had more than half of hp before, now has less
-                && gBattleStruct->hpBefore[battler] >= gBattleMons[battler].maxHP / 2 && gBattleMons[battler].hp < gBattleMons[battler].maxHP / 2 && (gMultiHitCounter == 0 || gMultiHitCounter == 1) && !(TestSheerForceFlag(gBattlerAttacker, gCurrentMove)) && CompareStat(battler, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN))
+                && gBattleStruct->hpBefore[battler] >= gBattleMons[battler].maxHP / 2 
+                && gBattleMons[battler].hp < gBattleMons[battler].maxHP / 2 
+                && (gMultiHitCounter == 0 || gMultiHitCounter == 1) && !(TestSheerForceFlag(gBattlerAttacker, gCurrentMove)) && CompareStat(battler, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN))
             {
                 gEffectBattler = battler;
                 SET_STATCHANGER(STAT_SPATK, 1, FALSE);
@@ -7231,50 +7150,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
     case ABILITYEFFECT_MOVE_END_ATTACKER: // Same as above, but for attacker
         switch (gLastUsedAbility)
         {
-        case ABILITY_SUNRISE:
-            if (gBattleMons[gBattlerAttacker].hp <= gBattleMons[gBattlerAttacker].maxHP / 3
-            && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
-            && TARGET_TURN_DAMAGED
-            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
-            && IsBattlerAlive(gBattlerAttacker))
-            {
-                if (TryChangeBattleWeather(gBattlerAttacker, ENUM_WEATHER_SUN, TRUE))
-                {
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_SunriseActivatesRet;
-                    effect++;
-                }
-                else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && WEATHER_HAS_EFFECT)
-                {
-                    gBattleScripting.battler = gBattlerAttacker;
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_BlockedByPrimalWeatherRet;
-                    effect++;
-                }
-            }
-            break;
-        case ABILITY_DELUGE:
-            if (gBattleMons[gBattlerAttacker].hp <= gBattleMons[gBattlerAttacker].maxHP / 3
-            && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
-            && TARGET_TURN_DAMAGED 
-            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
-            && IsBattlerAlive(gBattlerAttacker))
-            {
-                if (TryChangeBattleWeather(battler, ENUM_WEATHER_RAIN, TRUE))
-                {
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_DelugeActivatesRet;
-                    effect++;
-                }
-                else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && WEATHER_HAS_EFFECT)
-                {
-                    gBattleScripting.battler = gBattlerAttacker;
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_BlockedByPrimalWeatherRet;
-                    effect++;
-                }
-            }
-            break;
         case ABILITY_POISON_TOUCH:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
             && gBattleMons[gBattlerTarget].hp != 0 

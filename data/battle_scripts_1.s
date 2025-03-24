@@ -16356,6 +16356,24 @@ BattleScript_DrizzleActivates::
 	call BattleScript_ActivateWeatherAbilities
 	end3
 
+BattleScript_DelugeActivates::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNMADEITRAIN
+	waitstate
+	playanimation BS_ATTACKER, B_ANIM_RAIN_CONTINUES
+	call BattleScript_ActivateWeatherAbilities
+	end3
+
+BattleScript_SunriseActivates::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNSXINTENSIFIEDSUN
+	waitstate
+	playanimation BS_ATTACKER, B_ANIM_SUN_CONTINUES
+	call BattleScript_ActivateWeatherAbilities
+	end3
+
 BattleScript_AbilityRaisesDefenderStat::
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
@@ -16558,24 +16576,6 @@ BattleScript_SandSpitActivates::
 	printstring STRINGID_ASANDSTORMKICKEDUP
 	waitstate
 	playanimation BS_BATTLER_0, B_ANIM_SANDSTORM_CONTINUES
-	call BattleScript_ActivateWeatherAbilities
-	return
-
-BattleScript_SunriseActivatesRet::
-	pause B_WAIT_TIME_SHORT
-	call BattleScript_AbilityPopUp
-	printstring STRINGID_PKMNMADEITRAIN
-	waitstate
-	playanimation BS_BATTLER_0, B_ANIM_RAIN_CONTINUES
-	call BattleScript_ActivateWeatherAbilities
-	return
-
-BattleScript_DelugeActivatesRet::
-	pause B_WAIT_TIME_SHORT
-	call BattleScript_AbilityPopUp
-	printstring STRINGID_PKMNSXINTENSIFIEDSUN
-	waitstate
-	playanimation BS_BATTLER_0, B_ANIM_SUN_CONTINUES
 	call BattleScript_ActivateWeatherAbilities
 	return
 

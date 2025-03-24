@@ -1729,12 +1729,12 @@ static const u8 sReformDescription[] = _(
     "to that type afterwards.");
 
 static const u8 sSunriseDescription[] = _(
-    "At 1/3 HP or less, turns the\n"
+    "At 2/5 HP or less, turns the\n"
     "sunlight harsh. Boosts the\n"
     "Pokémon's Speed in it.");
 
 static const u8 sDelugeDescription[] = _(
-    "At 1/3 HP or less, makes it\n"
+    "At 2/5 HP or less, makes it\n"
     "rain. Traps opposing Pokémon and\n"
     "damages them in rain.");
 
