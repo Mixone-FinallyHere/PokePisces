@@ -33,8 +33,8 @@ static const u8 sPremierBallDesc[] = _(
 
 static const u8 sHealBallDesc[] = _(
     "A robust Poké Ball\n"
-    "that is more effective\n"
-    "the higher the player\n"
+    "that is better the\n"
+    "higher the player\n"
     "Pokémon's HP.");
 
 static const u8 sNetBallDesc[] = _(
@@ -57,9 +57,9 @@ static const u8 sCoolBallDesc[] = _(
 
 static const u8 sDuskBallDesc[] = _(
     "A spotty Poké Ball\n"
-    "that is more effective\n"
-    "at night or in dark\n"
-    "places, such as caves.");
+    "that is better at\n"
+    "night or in dark\n"
+    "places, like caves.");
 
 static const u8 sTimerBallDesc[] = _(
     "A fancy Poké Ball that\n"
@@ -69,9 +69,9 @@ static const u8 sTimerBallDesc[] = _(
 
 static const u8 sQuickBallDesc[] = _(
     "A Poké Ball with a\n"
-    "cross pattern that is\n"
-    "more effective when\n"
-    "used on the first turn.");
+    "cross pattern that\n"
+    "is better when used\n"
+    "on the first turn.");
 
 static const u8 sRepeatBallDesc[] = _(
     "An odd Poké Ball that\n"
@@ -87,8 +87,8 @@ static const u8 sLuxuryBallDesc[] = _(
 
 static const u8 sLevelBallDesc[] = _(
     "A veteran Poké Ball\n"
-    "that is more effective\n"
-    "the lower the level of\n"
+    "that is better the\n"
+    "lower the level of\n"
     "the Pokémon.");
 
 static const u8 sLureBallDesc[] = _(
@@ -128,8 +128,8 @@ static const u8 sHeavyBallDesc[] = _(
     "the Pokémon is.");
 
 static const u8 sDreamBallDesc[] = _(
-    "A mystifying Poké Ball\n"
-    "that is more effective\n"
+    "A mystifying Poké\n"
+    "Ball that is better\n"
     "on sleeping or\n"
     "comatose Pokémon.");
 
@@ -2590,16 +2590,16 @@ static const u8 sWideLensDesc[] = _(
     "accuracy drops.");
 
 static const u8 sMuscleBandDesc[] = _(
-    "A headband that boosts\n"
-    "the power of physical\n"
-    "moves and prevents\n"
-    "Attack drops.");
+    "A headband that\n"
+    "boosts physical moves\n"
+    "and prevents Attack\n"
+    "from being lowered.");
 
 static const u8 sWiseGlassesDesc[] = _(
     "Thick glasses that\n"
-    "boost the power of\n"
-    "special moves and\n"
-    "prevents Sp. Atk drops.");
+    "boost special moves\n"
+    "and prevents Sp. Atk\n"
+    "from being lowered.");
 
 static const u8 sExpertBeltDesc[] = _(
     "A well-worn belt that\n"
@@ -2638,7 +2638,7 @@ static const u8 sZoomLensDesc[] = _(
     "after its foe.");
 
 static const u8 sMetronomeDesc[] = _(
-    "A metronome that boosts\n"
+    "An item that boosts\n"
     "moves the holder uses\n"
     "consecutively until\n"
     "another move is used.");
