@@ -491,8 +491,6 @@ static const u8 sText_SpAttack[] = _("Sp. Atk");
 static const u8 sText_SpDefense[] = _("Sp. Def");
 static const u8 sText_Accuracy[] = _("accuracy");
 static const u8 sText_Evasiveness[] = _("evasiveness");
-static const u8 sText_Synchronize[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_LAST_ABILITY}\nis activating!");
-
 
 const u8 *const gStatNamesTable[NUM_BATTLE_STATS] =
 {
@@ -1504,7 +1502,6 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNSXPREVENTSYSZ - BATTLESTRINGS_TABLE_START] = sText_PkmnsXPreventsYsZ, 
     [STRINGID_PKMNSALLYXPREVENTSYSZ - BATTLESTRINGS_TABLE_START] = sText_PkmnsAllyXPreventsYsZ,
     [STRINGID_PKMNSXCUREDITSYPROBLEM - BATTLESTRINGS_TABLE_START] = sText_PkmnsXCuredItsYProblem,
-    [STRINGID_SYNCHRONIZESTARTS - BATTLESTRINGS_TABLE_START] = sText_Synchronize,
     [STRINGID_ATTACKERCANTESCAPE - BATTLESTRINGS_TABLE_START] = sText_AttackerCantEscape,
     [STRINGID_PKMNOBTAINEDX - BATTLESTRINGS_TABLE_START] = sText_PkmnObtainedX,
     [STRINGID_PKMNOBTAINEDX2 - BATTLESTRINGS_TABLE_START] = sText_PkmnObtainedX2,
