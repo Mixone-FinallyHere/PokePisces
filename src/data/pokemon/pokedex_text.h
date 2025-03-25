@@ -5907,8 +5907,8 @@ const u8 gPutregonPokedexText[] = _(
     "A Putregon's insides are putrid and rotten. They\n"
     "have an uncanny healing factor that counteracts\n"
     "the constant spoilage of their bodies. Their\n"
-    "rotten smell makes them unpopular, so people\n"
-    "rarely evolve Pitagon, making Putregon rare.");
+    "rotten smell makes them unpopular and scarce, as\n"
+    "people rarely want to evolve their Pitagon.");
 
 const u8 gGoltigatorPokedexText[] = _(
     "Goltigator only appear during thunderstorms,\n"
