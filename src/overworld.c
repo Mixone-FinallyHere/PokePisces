@@ -1180,7 +1180,7 @@ void Overworld_PlaySpecialMapMusic(void)
 {
     u16 music = GetCurrLocationDefaultMusic();
 
-    if (music != MUS_ABNORMAL_WEATHER && music != MUS_NONE)
+    if (music != MUS_ABNORMAL_WEATHER && music != MUS_NONE && music != MUS_EVER_GRANDE_ROAD)
     {
         if (gSaveBlock1Ptr->savedMusic)
             music = gSaveBlock1Ptr->savedMusic;
