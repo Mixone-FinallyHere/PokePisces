@@ -9966,10 +9966,11 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             && gBattleMoves[gCurrentMove].type == TYPE_FAIRY
             && RandomPercentage(RNG_HOLD_EFFECT_BLACK_GLASSES, 20))
             {
-                gBattleScripting.battler = gEffectBattler = gBattlerTarget;
+                gBattleScripting.moveEffect = MOVE_EFFECT_CONFUSION;
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUSED_BY_ITEM;
                 BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_MoveEffectConfusion;
+                gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
+                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
             }
             break;
