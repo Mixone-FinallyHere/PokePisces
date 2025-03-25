@@ -20285,7 +20285,7 @@ void BS_CheckDaybreakCounter(void)
 void BS_CheckAllureCounter(void)
 {
     NATIVE_ARGS(u8 counter, const u8 *jumpInstr);
-    if (gDisableStructs[gBattlerTarget].daybreakCounter == cmd->counter)
+    if (gDisableStructs[gBattlerTarget].allureCounter == cmd->counter)
         gBattlescriptCurrInstr = cmd->jumpInstr;
     else
         gBattlescriptCurrInstr = cmd->nextInstr;

@@ -1236,9 +1236,9 @@ static const u8 sFutureSightDescription[] = _(
     "Ignores half the foe's Sp. Def.");
 
 static const u8 sRockSmashDescription[] = _(
-    "Cuts the foe's Def. If the foe\n"
-    "is Rock-type, always sharply\n"
-    "cuts it. Boosted with friendship.");
+    "Lowers the foe's Def. If the foe\n"
+    "is Rock-type, sharply lowers it.\n"
+    "Boosted with friendship.");
 
 static const u8 sWhirlpoolDescription[] = _(
     "Traps the foe inside a whirlpool\n"

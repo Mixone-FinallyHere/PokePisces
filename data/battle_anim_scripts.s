@@ -11365,8 +11365,8 @@ Move_FLORAL_HEALING::
 	delay 0x8
 	createsprite gGrantingStarsSpriteTemplate, ANIM_ATTACKER, 16, 0xc, 0xfffb, 0x1, 0x0, 0x20, 0x3c, 0x1
 	waitforvisualfinish
-	clearmonbg ANIM_TARGET
 	clearmonbg ANIM_ATTACKER
+	clearmonbg ANIM_TARGET
 	end
 FloralHealingSpores:
 	createsprite gFloralHealingFlowerTemplate, ANIM_ATTACKER, 2, 0x0, 0xffec, 0x55, 0x50, 0x0
