@@ -267,6 +267,7 @@ DewfordGymNew_EventScript_LeadersDefeated::
 	call Common_EventScript_PlayGymBadgeFanfare
 	speakername DewfordGymNew_Text_NameBrawly
 	msgbox DewfordGymNew_Text_AndHeresTheTMs, MSGBOX_DEFAULT
+	speakername NULL
 	giveitem ITEM_TM_BODY_PRESS
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	giveitem ITEM_TM_SCALD

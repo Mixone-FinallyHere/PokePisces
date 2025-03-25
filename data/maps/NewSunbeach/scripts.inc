@@ -88,7 +88,7 @@ NewSunbeach_Text_BeautyOfBlades:
 	.string "Should you possess a Pokemon that\n"
 	.string "channels the knowledge of\l"
 	.string "those ancient executions...\l"
-	.string "I have a very important to bestow.$"
+	.string "I have a very important item to bestow.$"
 
 NewSunbeach_Text_NoExecution:
 	.string "...So you are just as naive\n"

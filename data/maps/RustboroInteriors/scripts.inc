@@ -35,8 +35,8 @@ RustboroInteriors_EventScript_GaveYouMyCard::
 
 RustboroInteriors_Text_WhatINeed:
 	.string "Heyo! Do you have a Pokemon\n"
-	.string "that you particularly have\l"
-	.string "a strong with? Your best buddy?\p"
+	.string "that you particularly have a\l"
+	.string "strong bond with? Your best buddy?\p"
 	.string "This here Garzilla is my trusted\n"
 	.string "pal through and through!\l"
 	.string "I've had her since childhood.\l"
@@ -51,8 +51,8 @@ RustboroInteriors_Text_WhatINeed:
 
 RustboroInteriors_Text_WillYouTradeCards:
 	.string "Heyo! Do you have a Pokemon\n"
-	.string "that you particularly have\l"
-	.string "a strong with? Your best buddy?\p"
+	.string "that you particularly have a\l"
+	.string "strong bond with? Your best buddy?\p"
 	.string "This here Garzilla is my trusted\n"
 	.string "pal through and through!\l"
 	.string "I've had her since childhood.\l"

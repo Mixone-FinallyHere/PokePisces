@@ -22,7 +22,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
       "script": "DetermaniteQuarB1F_EventScript_June",
       "flag": "0"
@@ -35,7 +35,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
       "script": "DetermaniteQuarB1F_EventScript_August",
       "flag": "0"
@@ -48,7 +48,7 @@
       "movement_type": "MOVEMENT_TYPE_ROTATE_COUNTERCLOCKWISE",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "DetermaniteQuarB1F_EventScript_Grey",
       "flag": "0"
@@ -61,7 +61,7 @@
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 3,
       "movement_range_y": 2,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
       "script": "DetermaniteQuarB1F_EventScript_Mildred",
       "flag": "0"
@@ -74,7 +74,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "DetermaniteQuarB1F_EventScript_Dahlia",
       "flag": "0"
@@ -87,7 +87,7 @@
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "DetermaniteQuarB1F_EventScript_Jiggles",
       "flag": "0"
@@ -223,28 +223,28 @@
       "y": 13,
       "elevation": 0,
       "dest_map": "MAP_DETERMANITE_QUARRY",
-      "dest_warp_id": "0"
+      "dest_warp_id": "1"
     },
     {
       "x": 7,
       "y": 22,
       "elevation": 0,
       "dest_map": "MAP_DETERMANITE_QUARRY",
-      "dest_warp_id": "0"
+      "dest_warp_id": "2"
     },
     {
       "x": 22,
       "y": 27,
       "elevation": 0,
       "dest_map": "MAP_DETERMANITE_QUARRY",
-      "dest_warp_id": "0"
+      "dest_warp_id": "3"
     },
     {
       "x": 31,
       "y": 36,
       "elevation": 0,
       "dest_map": "MAP_DETERMANITE_QUARRY",
-      "dest_warp_id": "0"
+      "dest_warp_id": "4"
     },
     {
       "x": 38,

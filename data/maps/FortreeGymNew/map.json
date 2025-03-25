@@ -138,8 +138,8 @@
       "x": 28,
       "y": 34,
       "elevation": 0,
-      "dest_map": "MAP_FORTREE_GYM_NEW",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_FORTREE_TRANSITION_AREA",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [
