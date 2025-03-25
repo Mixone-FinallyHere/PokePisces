@@ -7,10 +7,14 @@ SailorsPauseUnderwater_EventScript_Sandeep::
     end
 
 SailorsPauseUnderwater_Text_SandeepIntro:
-	.string "intro$"
+	.string "(It's a diver! Without words,\n"
+	.string "they reach out their Pokeball\l"
+	.string "to start a battle...)$"
 
 SailorsPauseUnderwater_Text_SandeepDefeated:
-	.string "defeat$"
+	.string "(The diver hangs their head\n"
+	.string "in defeat...)$"
 
 SailorsPauseUnderwater_Text_SandeepPostBattle:
-	.string "post$"
+	.string "(No real way to communicate\n"
+	.string "with them. Best to move on.)$"

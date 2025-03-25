@@ -66,6 +66,15 @@ SlateportShore_EventScript_CaseyNat::
     msgbox SlateportShore_Text_CaseyNatPostBattle, MSGBOX_AUTOCLOSE
     end
 
+SlateportShore_EventScript_SeashoreHouseSign::
+	msgbox SlateportShore_Text_SeashoreHouseSign, MSGBOX_SIGN
+	end
+
+SlateportShore_Text_SeashoreHouseSign:
+	.string "The Seashore House\n"
+	.string "Currently running a promotion!\l"
+	.string "Come inside for details.$"
+
 SlateportShore_Text_JelloIntro:
 	.string "Yo! You dig on multiverses?$"
 
@@ -101,16 +110,24 @@ SlateportShore_Text_RinPostBattle:
 	.string "Battle Gal instead.$"
 
 SlateportShore_Text_RoseAndThornIntro:
-	.string "intro$"
+	.string "ROSE: Every Rose has their Thorn!\n"
+	.string "THORN: Just like every Lucas...\l"
+	.string "       has their Dawn!$"
 
 SlateportShore_Text_RoseAndThornDefeated:
-	.string "defeat$"
+	.string "ROSE: YEAH! MESS WITH ROSE,\n"
+	.string "      YOU GET THE THORNS!\p"
+	.string "THORN: ...Rose? We lost.\n$"
 
 SlateportShore_Text_RoseAndThornPostBattle:
-	.string "post$"
+	.string "THORN: All that glitters\n"
+	.string "       is not gold!\l"
+	.string "ROSE: Stop talking in platitudes...$"
 
 SlateportShore_Text_RoseAndThornNeedTwoMons:
-	.string "need 2 dood$"
+	.string "ROSE: Aw, you only have one Pokemon?\n"
+	.string "THORN: You'll need the peanut butter\l"
+	.string "       to your jelly!$"
 
 SlateportShore_Text_TexIntro:
 	.string "Watch out, landlubber!\n"
@@ -125,58 +142,100 @@ SlateportShore_Text_TexPostBattle:
 	.string "you fallin' in the water now, do we?$"
 
 SlateportShore_Text_DawnIntro:
-	.string "intro$"
+	.string "I'm here until dusk! You won't\n"
+	.string "be tiring me out!$"
 
 SlateportShore_Text_DawnDefeated:
-	.string "defeat$"
+	.string "Fallen like the evening sun...$"
 
 SlateportShore_Text_DawnPostBattle:
-	.string "post$"
+	.string "Those people over there are\n"
+	.string "singing about SOMETHING...\l"
+	.string "and all I keep hearing is my name.\l"
+	.string "Isn't that suspicious?$"
 
 SlateportShore_Text_LouiseIntro:
-	.string "intro$"
+	.string "Jeez, do you mind? I've been having\n"
+	.string "one hell of a catching day!$"
 
 SlateportShore_Text_LouiseDefeated:
-	.string "defeat$"
+	.string "You took the bait and ripped\n"
+	.string "my line clean off!$"
 
 SlateportShore_Text_LouisePostBattle:
-	.string "post$"
+	.string "If you want to catch water-dwelling\n"
+	.string "Pokemon in big batches, I suggest\l"
+	.string "investing in Lure Balls.$"
 
 SlateportShore_Text_PragIntro:
-	.string "intro$"
+	.string "Hey guys, what's up and WELCOME\n"
+	.string "back to my channel. Today, we\l"
+	.string "are going to be ranking the\l"
+	.string "TOP THREE HOENN POKEMON.\p"
+	.string "Number three...!$"
 
 SlateportShore_Text_PragDefeated:
-	.string "defeat$"
+	.string "And that does it for the video!\n"
+	.string "Thank YOU for watching!$"
 
 SlateportShore_Text_PragPostBattle:
-	.string "post$"
+	.string "Hey, thanks for not talking\n"
+	.string "during that whole vid. I'll spruce\l"
+	.string "things up with editing magic\l"
+	.string "in post.$"
 
 SlateportShore_Text_MarkIntro:
-	.string "intro$"
+	.string "Hell-ooo everybody my name is Mark\n"
+	.string "and welcome to Five Days at\l"
+	.string "Slateport Shore, an indie tourist\l"
+	.string "destination that you guys suggested\l"
+	.string "en masse and I saw that Brawly went\l"
+	.string "here and he said it was really,\l"
+	.string "REALLY good. So I'm very eager to\l"
+	.string "see what is up!$"
 
 SlateportShore_Text_MarkDefeated:
-	.string "defeat$"
+	.string "And THAT was a very terrifying\n"
+	.string "random trainer!$"
 
 SlateportShore_Text_MarkPostBattle:
-	.string "post$"
+	.string "If you guys REALLY want me to\n"
+	.string "fight this person again and\l"
+	.string "try to BEAT them!?\l"
+	.string "LET me know in the comments below!\l"
+	.string "Thanks again everybody, and as\l"
+	.string "always, I will see YOU...\l"
+	.string "in the next video.\p"
+	.string "BYE-BYE!$"
 
 SlateportShore_Text_SacredIntro:
-	.string "intro$"
+	.string "What IS this? Nah bro,\n"
+	.string "you're playin'... a TRAINER?\l"
+	.string "ALREADY?$"
 
 SlateportShore_Text_SacredDefeated:
-	.string "defeat$"
+	.string "Bruh...$"
 
 SlateportShore_Text_SacredPostBattle:
-	.string "post$"
+	.string "Nah cuz like.\n"
+	.string "I wasn't ready for THAT.\l"
+	.string "Like, bro. Seriously.$"
 
 SlateportShore_Text_MandaloreIntro:
-	.string "intro$"
+	.string "Woah, guys... let's see if\n"
+	.string "we can get a reaction out of\l"
+	.string "this guy!\p"
+	.string "HEY! HEY YOU! Why're you here\n"
+	.string "today? Can I hang out? Huh?\p"
+	.string "(You attack him on impulse.)\n$"
 
 SlateportShore_Text_MandaloreDefeated:
-	.string "defeat$"
+	.string "H-Hey! You're making me look\n"
+	.string "bad on stream!$"
 
 SlateportShore_Text_MandalorePostBattle:
-	.string "post$"
+	.string "I didn't do anything wrong!\n"
+	.string "You're just a hater!$"
 
 SlateportShore_Text_BeastIntro:
 	.string "intro$"

@@ -122,31 +122,41 @@ SailorsPause_EventScript_Jess::
     end
 
 SailorsPause_Text_ValerieIntro:
-	.string "intro$"
+	.string "What, are you a chicken?\n"
+	.string "Want to get your head cut off?$"
 
 SailorsPause_Text_ValerieDefeated:
-	.string "defeat$"
+	.string "Ok, ok, I get it!\n"
+	.string "No slicing and dicing!$"
 
 SailorsPause_Text_ValeriePostBattle:
-	.string "post$"
+	.string "My friends say I battle more...\n"
+	.string "viscerally, than most...$"
 
 SailorsPause_Text_QueequegIntro:
-	.string "intro$"
+	.string "We hunt. To reach the end\n"
+	.string "of the voyage.$"
 
 SailorsPause_Text_QueequegDefeated:
-	.string "defeat$"
+	.string "The pale claims me...$"
 
 SailorsPause_Text_QueequegPostBattle:
-	.string "post$"
+	.string "I was too late. What was\n"
+	.string "right, and what was wrong. Too late\l"
+	.string "to think for myself. The sunset, I\l"
+	.string "wish to see it once more...$"
 
 SailorsPause_Text_JessIntro:
-	.string "intro$"
+	.string "Would you like to tour these\n"
+	.string "ships with me, hon?$"
 
 SailorsPause_Text_JessDefeated:
-	.string "defeat$"
+	.string "That's my first rejection\n"
+	.string "in years...$"
 
 SailorsPause_Text_JessPostBattle:
-	.string "post$"
+	.string "There is something romantic about\n"
+	.string "a shipwreck, is there not?$"
 
 SailorsPause_Text_NameRay:
 	.string "Ray$"

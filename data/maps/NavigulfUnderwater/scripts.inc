@@ -27,46 +27,66 @@ NavigulfUnderwater_EventScript_Scoob::
     end
 
 NavigulfUnderwater_Text_DaphneIntro:
-	.string "intro$"
+	.string "(It's a diver! Without words,\n"
+	.string "they reach out their Pokeball\l"
+	.string "to start a battle...)$"
 
 NavigulfUnderwater_Text_DaphneDefeated:
-	.string "defeat$"
+	.string "(The diver hangs their head\n"
+	.string "in defeat...)$"
 
 NavigulfUnderwater_Text_DaphnePostBattle:
-	.string "post$"
+	.string "(No real way to communicate\n"
+	.string "with them. Best to move on.)$"
 
 NavigulfUnderwater_Text_VelmaIntro:
-	.string "intro$"
+	.string "(It's a diver! Without words,\n"
+	.string "they reach out their Pokeball\l"
+	.string "to start a battle...)$"
 
 NavigulfUnderwater_Text_VelmaDefeated:
-	.string "defeat$"
+	.string "(The diver hangs their head\n"
+	.string "in defeat...)$"
 
 NavigulfUnderwater_Text_VelmaPostBattle:
-	.string "post$"
+	.string "(No real way to communicate\n"
+	.string "with them. Best to move on.)$"
 
 NavigulfUnderwater_Text_FredIntro:
-	.string "intro$"
+	.string "(It's a diver! Without words,\n"
+	.string "they reach out their Pokeball\l"
+	.string "to start a battle...)$"
 
 NavigulfUnderwater_Text_FredDefeated:
-	.string "defeat$"
+	.string "(The diver hangs their head\n"
+	.string "in defeat...)$"
 
 NavigulfUnderwater_Text_FredPostBattle:
-	.string "post$"
+	.string "(No real way to communicate\n"
+	.string "with them. Best to move on.)$"
 
 NavigulfUnderwater_Text_ShaggyIntro:
-	.string "intro$"
+	.string "(It's a diver! Without words,\n"
+	.string "they reach out their Pokeball\l"
+	.string "to start a battle...)$"
 
 NavigulfUnderwater_Text_ShaggyDefeated:
-	.string "defeat$"
+	.string "(The diver hangs their head\n"
+	.string "in defeat...)$"
 
 NavigulfUnderwater_Text_ShaggyPostBattle:
-	.string "post$"
+	.string "(No real way to communicate\n"
+	.string "with them. Best to move on.)$"
 
 NavigulfUnderwater_Text_ScoobIntro:
-	.string "intro$"
+	.string "(It's a diver! Without words,\n"
+	.string "they reach out their Pokeball\l"
+	.string "to start a battle...)$"
 
 NavigulfUnderwater_Text_ScoobDefeated:
-	.string "defeat$"
+	.string "(The diver hangs their head\n"
+	.string "in defeat...)$"
 
 NavigulfUnderwater_Text_ScoobPostBattle:
-	.string "post$"
+	.string "(No real way to communicate\n"
+	.string "with them. Best to move on.)$"

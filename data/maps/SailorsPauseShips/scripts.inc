@@ -80,85 +80,116 @@ SailorsPauseShips_EventScript_Rose::
     end
 
 SailorsPauseShips_Text_AmiIntro:
-	.string "intro$"
+	.string "There are MANY lost spirits\n"
+	.string "that roam this area...$"
 
 SailorsPauseShips_Text_AmiDefeated:
-	.string "defeat$"
+	.string "Have you become lost, too...?$"
 
 SailorsPauseShips_Text_AmiPostBattle:
-	.string "post$"
+	.string "Do not become chained to this\n"
+	.string "realm as I did...$"
 
 SailorsPauseShips_Text_MarcyIntro:
-	.string "intro$"
+	.string "Don't look at me like that!\n"
+	.string "I don't bite! ...Much.$"
 
 SailorsPauseShips_Text_MarcyDefeated:
-	.string "defeat$"
+	.string "Owwwwwch! No fair!$"
 
 SailorsPauseShips_Text_MarcyPostBattle:
-	.string "post$"
+	.string "Ghost type Pokemon feed on\n"
+	.string "human energy, don't they?\l"
+	.string "Hmm. Maybe that's why I'm all\l"
+	.string "worn out...$"
 
 SailorsPauseShips_Text_SpongeIntro:
-	.string "intro$"
+	.string "I'm not happy.$"
 
 SailorsPauseShips_Text_SpongeDefeated:
-	.string "defeat$"
+	.string "(He sobs so cartoonishly much,\n"
+	.string "that his mustache becomes a mop.)$"
 
 SailorsPauseShips_Text_SpongePostBattle:
-	.string "post$"
+	.string "It's ok... it's all in my\n"
+	.string "family's business...$"
 
 SailorsPauseShips_Text_WaltonIntro:
-	.string "intro$"
+	.string "It's time to do the Poke-box step!$"
 
 SailorsPauseShips_Text_WaltonDefeated:
-	.string "defeat$"
+	.string "Wait! Wait! Forget what I\n"
+	.string "just said!$"
 
 SailorsPauseShips_Text_WaltonPostBattle:
-	.string "post$"
+	.string "If my fellow Waltzers find out that\n"
+	.string "I never actually learned the waltz,\l"
+	.string "I'll lose my certification!$"
 
 SailorsPauseShips_Text_JoshuIntro:
-	.string "intro$"
+	.string "'Ey. Think you can just come\n"
+	.string "into this ship unannounced?$"
 
 SailorsPauseShips_Text_JoshuDefeated:
-	.string "defeat$"
+	.string "I respect someone that has the\n"
+	.string "cajones to stand up to someone\l"
+	.string "intimidatin'.$"
 
 SailorsPauseShips_Text_JoshuPostBattle:
-	.string "post$"
+	.string "I'll letcha go downstairs.\n"
+	.string "Just this once.$"
 
 SailorsPauseShips_Text_JanelleIntro:
-	.string "intro$"
+	.string "I'm WAY too tired to get much\n"
+	.string "of anything done today...\l"
+	.string "Maybe a battle could perk\l"
+	.string "me right up!$"
 
 SailorsPauseShips_Text_JanelleDefeated:
-	.string "defeat$"
+	.string "Oh, well... aw.\n"
+	.string "I just feel more sleepy...$"
 
 SailorsPauseShips_Text_JanellePostBattle:
-	.string "post$"
+	.string "Maybe I just need to woman\n"
+	.string "up and ask for time off...$"
 
 SailorsPauseShips_Text_NunyaIntro:
-	.string "intro$"
+	.string "What's my name, ya ask?\n"
+	.string "Fufufu... well...$"
 
 SailorsPauseShips_Text_NunyaDefeated:
-	.string "defeat$"
+	.string "NUNYA BIZNESS!$"
 
 SailorsPauseShips_Text_NunyaPostBattle:
-	.string "post$"
+	.string "Now BEAT IT, chump,\n"
+	.string "before things get ugly!$"
 
 SailorsPauseShips_Text_JackIntro:
-	.string "intro$"
+	.string "Oooooo! THOSE are some fine\n"
+	.string "specimens you possess.\l"
+	.string "How much? For the set of 6?$"
 
 SailorsPauseShips_Text_JackDefeated:
-	.string "defeat$"
+	.string "What do you mean, they\n"
+	.string "aren't for sale?$"
 
 SailorsPauseShips_Text_JackPostBattle:
-	.string "post$"
+	.string "Whatever! If your Pokemon are\n"
+	.string "anything like you, they'll\l"
+	.string "attract Flague in droves!$"
 
 SailorsPauseShips_Text_RoseIntro:
-	.string "intro$"
+	.string "Your metaphorical ship is\n"
+	.string "about to hit a metaphorical iceberg!\l"
+	.string "Metaphorically!$"
 
 SailorsPauseShips_Text_RoseDefeated:
-	.string "defeat$"
+	.string "We've been sunk!$"
 
 SailorsPauseShips_Text_RosePostBattle:
-	.string "post$"
+	.string "Jack and I took a trip on\n"
+	.string "this very ship, the day it crashed...\l"
+	.string "thankfully, we were saved.$"
 
 SailorsPauseShips_Text_ShellyGreeting:
 	.string "(This woman is asleep in\n"

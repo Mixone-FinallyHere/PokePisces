@@ -22,37 +22,53 @@ StraeSeapathUnderwater_EventScript_Mowgli::
     end
 
 StraeSeapathUnderwater_Text_MeenahIntro:
-	.string "intro$"
+	.string "(It's a diver! Without words,\n"
+	.string "they reach out their Pokeball\l"
+	.string "to start a battle...)$"
 
 StraeSeapathUnderwater_Text_MeenahDefeated:
-	.string "defeat$"
+	.string "(The diver hangs their head\n"
+	.string "in defeat...)$"
 
 StraeSeapathUnderwater_Text_MeenahPostBattle:
-	.string "post$"
+	.string "(No real way to communicate\n"
+	.string "with them. Best to move on.)$"
 
 StraeSeapathUnderwater_Text_FeferiIntro:
-	.string "intro$"
+	.string "(It's a diver! Without words,\n"
+	.string "they reach out their Pokeball\l"
+	.string "to start a battle...)$"
 
 StraeSeapathUnderwater_Text_FeferiDefeated:
-	.string "defeat$"
+	.string "(The diver hangs their head\n"
+	.string "in defeat...)$"
 
 StraeSeapathUnderwater_Text_FeferiPostBattle:
-	.string "post$"
+	.string "(No real way to communicate\n"
+	.string "with them. Best to move on.)$"
 
 StraeSeapathUnderwater_Text_HowleeIntro:
-	.string "intro$"
+	.string "(It's a diver! Without words,\n"
+	.string "they reach out their Pokeball\l"
+	.string "to start a battle...)$"
 
 StraeSeapathUnderwater_Text_HowleeDefeated:
-	.string "defeat$"
+	.string "(The diver hangs their head\n"
+	.string "in defeat...)$"
 
 StraeSeapathUnderwater_Text_HowleePostBattle:
-	.string "post$"
+	.string "(No real way to communicate\n"
+	.string "with them. Best to move on.)$"
 
 StraeSeapathUnderwater_Text_MowgliIntro:
-	.string "intro$"
+	.string "(It's a diver! Without words,\n"
+	.string "they reach out their Pokeball\l"
+	.string "to start a battle...)$"
 
 StraeSeapathUnderwater_Text_MowgliDefeated:
-	.string "defeat$"
+	.string "(The diver hangs their head\n"
+	.string "in defeat...)$"
 
 StraeSeapathUnderwater_Text_MowgliPostBattle:
-	.string "post$"
+	.string "(No real way to communicate\n"
+	.string "with them. Best to move on.)$"

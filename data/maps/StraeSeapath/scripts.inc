@@ -52,97 +52,142 @@ StraeSeapath_EventScript_Barnaby::
     end
 
 StraeSeapath_Text_MaryIntro:
-	.string "intro$"
+	.string "Into the briny depths with you!$"
 
 StraeSeapath_Text_MaryDefeated:
-	.string "defeat$"
+	.string "Into foam, I wash away...$"
 
 StraeSeapath_Text_MaryPostBattle:
-	.string "post$"
+	.string "The gilded rocks of the Seapath\n"
+	.string "shake me to my core.$"
 
 StraeSeapath_Text_JoseIntro:
-	.string "intro$"
+	.string "Chaw, man, someone's in my way!$"
 
 StraeSeapath_Text_JoseDefeated:
-	.string "defeat$"
+	.string "Crushed!$"
 
 StraeSeapath_Text_JosePostBattle:
-	.string "post$"
+	.string "Gotta go with the flow, man...$"
 
 StraeSeapath_Text_DariaIntro:
-	.string "intro$"
+	.string "Don't you try and take the gold\n"
+	.string "from these stones, sweet pea!$"
 
 StraeSeapath_Text_DariaDefeated:
-	.string "defeat$"
+	.string "You didn't let me finish\n"
+	.string "my advice.$"
 
 StraeSeapath_Text_DariaPostBattle:
-	.string "post$"
+	.string "I was going to tell you that\n"
+	.string "the golde you may see here is\l"
+	.string "actually mostly pyrite, sweet pea.\l"
+	.string "Fool's gold, they call it.\l"
+	.string "It's rather worthless.$"
 
 StraeSeapath_Text_JeanIntro:
-	.string "intro$"
+	.string "Hmph! I'd say there's a 50-50\n"
+	.string "chance you lose.\l"
+	.string "Wanna bet on it?$"
 
 StraeSeapath_Text_JeanDefeated:
-	.string "defeat$"
+	.string "You're lucky I'm a betting man.\n$"
 
 StraeSeapath_Text_JeanPostBattle:
-	.string "post$"
+	.string "Don't get too into gambling.\n"
+	.string "You may end up like, shudder...\l"
+	.string "a Choice Specs user...$"
 
 StraeSeapath_Text_LynnIntro:
-	.string "intro$"
+	.string "I raised these Pokemon from eggs!\n$"
 
 StraeSeapath_Text_LynnDefeated:
-	.string "defeat$"
+	.string "You crack me up...$"
 
 StraeSeapath_Text_LynnPostBattle:
-	.string "post$"
+	.string "Do you know how to tell Wannegg\n"
+	.string "apart from regular Eggs? They're\l"
+	.string "ever-so-slightly less round!$"
 
 StraeSeapath_Text_AiofeIntro:
-	.string "intro$"
+	.string "Some child asked me why I, a\n"
+	.string "Dragon Caller, lack a cellular\l"
+	.string "device. How crude! I am in\l"
+	.string "no need of such technology!$"
 
 StraeSeapath_Text_AiofeDefeated:
-	.string "defeat$"
+	.string "If you proclaim I\n"
+	.string "“phoned that one in”, I will\l"
+	.string "personally kick your shins.$"
 
 StraeSeapath_Text_AiofePostBattle:
-	.string "post$"
+	.string "Calling a Pokemon for assistance\n"
+	.string "by using a telephone...\l"
+	.string "it would be absurdly inconvenient.$"
 
 StraeSeapath_Text_DickAndJaneIntro:
-	.string "intro$"
+	.string "DICK: Let's get in sync for this!\n"
+	.string "JANE: Sure thing!$"
 
 StraeSeapath_Text_DickAndJaneDefeated:
-	.string "defeat$"
+	.string "DICK: Oh, I meant strategically,\n"
+	.string "      not emotionally!\l"
+	.string "JANE: My bad...$"
 
 StraeSeapath_Text_DickAndJanePostBattle:
-	.string "post$"
+	.string "DICK: There's an angry couple on\n"
+	.string "      the shores just north of here.\l"
+	.string "      Our love sensor SCREAMS that\l"
+	.string "      they really do care for each\l"
+	.string "      other deeply.\l"
+	.string "JANE: They may look like they hate\l"
+	.string "      each other, but they can't\l"
+	.string "      fool us! I can see the longing\l"
+	.string "      in their eyes...$"
 
 StraeSeapath_Text_DickAndJaneNeedTwoMons:
-	.string "need 2 dood$"
+	.string "(They're too busy being publicly\n"
+	.string "affectionate to notice you.)$"
 
 StraeSeapath_Text_RosieAndPalmsIntro:
-	.string "intro$"
+	.string "ROSIE: A date with YOU never\n"
+	.string "       ends well.\l"
+	.string "PALMS: Then just let me go it alone!$"
 
 StraeSeapath_Text_RosieAndPalmsDefeated:
-	.string "defeat$"
+	.string "ROSIE: My Helping Hand didn't help?\n"
+	.string "PALMS: Friggin' typical...$"
 
 StraeSeapath_Text_RosieAndPalmsPostBattle:
-	.string "post$"
+	.string "ROSIE: You fool! You need to\n"
+	.string "       go on the offensive!\l"
+	.string "PALMS: I find YOU offensive!$"
 
 StraeSeapath_Text_RosieAndPalmsNeedTwoMons:
-	.string "need 2 dood$"
+	.string "(They're too busy being publicly\n"
+	.string "non-affectionate to notice you.)$"
 
 StraeSeapath_Text_MaomaoIntro:
-	.string "intro$"
+	.string "There is naught a more elegant\n"
+	.string "Pokemon than Solasu...$"
 
 StraeSeapath_Text_MaomaoDefeated:
-	.string "defeat$"
+	.string "Perhaps I needed to show\n"
+	.string "more grit and fury...$"
 
 StraeSeapath_Text_MaomaoPostBattle:
-	.string "post$"
+	.string "I must go ask for another blessing\n"
+	.string "from the maidens of Zotpyre...$"
 
 StraeSeapath_Text_BarnabyIntro:
-	.string "intro$"
+	.string "There ain't a more tough sun\n"
+	.string "of a gun than Orrocast...$"
 
 StraeSeapath_Text_BarnabyDefeated:
-	.string "defeat$"
+	.string "Huh. Maybe I just gotta\n"
+	.string "show more composure...$"
 
 StraeSeapath_Text_BarnabyPostBattle:
-	.string "post$"
+	.string "Almost time for me to get on\n"
+	.string "back to Pacifidlog to cash in\l"
+	.string "my daily haul.$"
