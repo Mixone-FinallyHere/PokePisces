@@ -17022,7 +17022,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_BLOW_UP] =
     {
-        .effect = EFFECT_EXPLOSION,
+        .effect = EFFECT_HIT,
         .power = 60,
         .type = TYPE_FIRE,
         .accuracy = 100,
