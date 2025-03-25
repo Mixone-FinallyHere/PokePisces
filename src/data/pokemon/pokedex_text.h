@@ -5688,10 +5688,11 @@ const u8 gSpiritoastPokedexText[] = _(
     "the cause.");
 
 const u8 gHappeaPokedexText[] = _(
-    "Found in the coldest of places, their\n"
-    "smiles bring warmth to anyone near them.\n"
-    "They also like lobbing themselves at\n"
-    "others, therefore it's best to avoid them.");
+    "Found in the coldest of places, bringing the\n"
+    "warmest of smiles. Mountain folk appreciate the\n"
+    "puerile presence of Happea. They love getting\n"
+    "thrown around like snowballs. Don't throw too\n"
+    "hard, though, since they're as hard as bricks.");
 
 const u8 gDudunsparsPokedexText[] = _(
     "It was only discovered 2 years ago that\n"
@@ -5826,88 +5827,102 @@ const u8 gSackytwackPokedexText[] = _(
     "the curse and clip all its thorns.");
 
 const u8 gStrawngmanPokedexText[] = _(
-    "Sharp wooden barbs extend from its body\n"
-    "and are used to repel attacks. When\n"
-    "hurt, it retaliates with a blow twice as\n"
-    "strong as the force that injured it.");
+    "Sharp wooden barbs extend from their bodies,\n"
+    "repelling attacks. Hitting them strengthens\n"
+    "their fibers, enabling them to unleash powerful\n"
+    "counterattacks. There was a famous incident of a\n"
+    "truck hitting one, only to be left destroyed.");
 
 const u8 gLawpardPokedexText[] = _(
-    "Lawpard hunts up in the snow-capped\n"
-    "mountains, using its extraordinary\n"
-    "ability to apport objects, itself, and\n"
-    "others in an area around it.");
+    "Lawpard hunt up in the snow-capped mountains,\n"
+    "using their ability to apport themselves and\n"
+    "others in an area around them. Mountain villages\n"
+    "have had their rations raided by them, leading to\n"
+    "overhunting and making the species endangered.");
 
 const u8 gOohbaabaPokedexText[] = _(
-    "They create different types of incense\n"
-    "stick from herbs and trees which they\n"
-    "keep on their hair. Some types cause\n"
-    "hallucinations, others cause poisoning.");
+    "They craft various incense sticks from herbs and\n"
+    "trees, with which they adorn their hair. Based\n"
+    "on the composition, the smoke they produce cause\n"
+    "different effects. Some are therapeutic, some\n"
+    "are hallucinogenic, and some can cause doping.");
 
 const u8 gGolderockPokedexText[] = _(
-    "The rocks on Golderock's head never fall\n"
-    "off and each strike this Pokémon makes\n"
-    "is perfectly calculated to assure it\n"
-    "doesn't happen.");
+    "Masters of equilibrium, the rocks on the top of\n"
+    "their heads never fall off. Even in combat, when\n"
+    "attacking or defending, they move with fluidity,\n"
+    "ensuring the stones never lose balance. It is a\n"
+    "statistical impossibility to see one topple.");
 
 const u8 gMaynimoPokedexText[] = _(
-    "Maynimo comes in groups, ganging up on\n"
-    "Grass-type Pokémon and sipping their\n"
-    "fluids dry. The young also join in later\n"
-    "when the prey can no longer move.");
+    "Maynimo come in groups, ganging up on Grass-type\n"
+    "Pokémon and sipping their fluids dry. The young\n"
+    "join in later, when the prey can no longer move.\n"
+    "They are considered a delicacy, often sold by\n"
+    "street hawkers at night, deep-fried on a stick.");
 
 const u8 gButterweePokedexText[] = _(
-    "Swarms of them love taking care of\n"
-    "Pokémon and people alike. They sometimes\n"
-    "even offer food to villages near their\n"
-    "hive.");
+    "Butterwee are very kind and caring. Swarms of\n"
+    "them love taking care of Pokémon and people\n"
+    "alike. They even offer berries to villages near\n"
+    "their hive. Word of caution, however, as they do\n"
+    "such deeds with no goodwill.");
 
 const u8 gPetripaPokedexText[] = _(
-    "Only one Butterwee inevitably becomes a\n"
-    "Petripa in a hive. Their skin and wings\n"
-    "petrify into a thick rocky carapace that\n"
-    "constantly regenerates.");
+    "Only one Butterwee inevitably becomes a Petripa\n"
+    "in a hive. Their skin and wings wrap around them,\n"
+    "petrifying into a thick rocky carapace that\n"
+    "constantly regenerates. When in danger, they\n"
+    "regenerate faster, causing a rocky outburst.");
 
 const u8 gCattowyrmPokedexText[] = _(
-    "Once a Cattowyrm emerges from its\n"
-    "cocoon, Butterwee take all the Pokémon\n"
-    "and people they have been caring for to\n"
-    "feed the rampaging dragon.");
+    "When a Cattowyrm emerges from its cocoon, all\n"
+    "the Butterwee in the hive take all the Pokémon\n"
+    "and people they have been caring for as\n"
+    "offerings. If there isn't enough food, they\n"
+    "start rampaging, eating even their hive members.");
 
 const u8 gBramboozlePokedexText[] = _(
-    "This Pokémon is one of the leading cases\n"
-    "of getting lost in the woods. Travelers\n"
-    "who get scraped by its thorns hallucinate,\n"
-    "gradually losing themselves in the forest.");
+    "This Pokémon is one of the leading causes of\n"
+    "getting lost in the woods. Travelers who get\n"
+    "scraped by their thorns hallucinate, gradually\n"
+    "losing themselves in the forest. This is due to\n"
+    "the hallucinogenic chemical their thorns make.");
 
 const u8 gHoaxpocusPokedexText[] = _(
-    "Hoaxpocus was once feared for casting\n"
-    "magical spells. But actually its pollen \n"
-    "can hijack vision, creating illusions\n"
-    "so convincing that cause actual harm.");
+    "Hoaxpocus were once feared for casting magical\n"
+    "spells, but their pollen actually hijack\n"
+    "perception, creating illusions so convincing\n"
+    "that they cause harm. The brain is so convinced\n"
+    "of these illusions that it recreates any injury.");
 
 const u8 gPitagonPokedexText[] = _(
-    "They taste especially refreshing, making\n"
-    "them popular produce in the region.\n"
-    "However, farmers are cautious not to\n"
-    "allow one to get extremely sick.");
+    "Pitagon taste especially refreshing, making them\n"
+    "popular produce. They're known for their many\n"
+    "health benefits, like boosting immunity and\n"
+    "digestion, and promoting heart health. Farmers\n"
+    "are cautious not to allow one to get sick.");
 
 const u8 gPutregonPokedexText[] = _(
-    "The insides of Putregon are putrid.\n"
-    "Putregon can spit its juices at its\n"
-    "prey, causing it to be sick and\n"
-    "disoriented.");
+    "A Putregon's insides are putrid and rotten. They\n"
+    "have an uncanny healing factor that counteracts\n"
+    "the constant spoilage of their bodies. Their\n"
+    "rotten smell makes them unpopular, so people\n"
+    "rarely evolve Pitagon, making Putregon rare.");
 
 const u8 gGoltigatorPokedexText[] = _(
-    "Goltigator only appear during\n"
-    "thunderstorms, hunting in packs for\n"
-    "food. Once the thunderstorm ends, they\n"
-    "disappear without a trace.");
+    "Goltigator only appear during thunderstorms,\n"
+    "where they hunt for food in packs. The bite\n"
+    "force of a Goltigator can crush bones, ensuring\n"
+    "prey cannot escape. Once the thunderstorm ends,\n"
+    "they disappear without a trace.");
 
 const u8 gKaprikolaPokedexText[] = _(
-    "Kaprikola shoot intense electrical beams\n"
-    "from their horns and can walk on air.\n"
-    "Wherever they go, a lightning storm\n"
-    "follows.");
+    "Kaprikola shoot electrical beams from their\n"
+    "horns, and can walk on air. Wherever they go,\n"
+    "lightning storms and many Goltigator follow.\n"
+    "Their horns are prized as artifacts, holding the\n"
+    "power to let the ordinary wield lightning.");
 
 const u8 gBlottaPokedexText[] = _(
     "Blotta's malice oozes out like black ink\n"
@@ -6103,7 +6118,7 @@ const u8 gLepucytePokedexText[] = _(
     "carrots seems to calm them down, however.");
 
 const u8 gLeukunehoPokedexText[] = _(
-    "These Pokémon are unrecommended for children, as\n"
+    "These Pokémon are discouraged for children, as\n"
     "they attack them without warning. They despise\n"
     "children to the point of going on a rampage when\n"
     "in the prolonged presence of one, charging\n"
