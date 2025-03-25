@@ -5172,7 +5172,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
-                BattleScriptPushCursorAndCallback(BattleScript_AnnounceAirLockCloudNine);
+                BattleScriptPushCursorAndCallback(BattleScript_AnnounceCloudNine);
                 effect++;
             }
             break;
@@ -5180,9 +5180,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
-                BattleScriptPushCursorAndCallback(BattleScript_AnnounceAirLockCloudNine);
-                effect++;
                 TryChangeBattleWeather(battler, WEATHER_NONE, TRUE);
+                BattleScriptPushCursorAndCallback(BattleScript_AnnounceAirLock);
+                effect++;
             }
             break;
         case ABILITY_HUDDLE_UP:

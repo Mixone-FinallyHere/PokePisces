@@ -19203,11 +19203,18 @@ BattleScript_ApplyTotemVarBoost:
 	goto BattleScript_TotemVar_Ret  @loop until stats bitfield is empty
 
 
-BattleScript_AnnounceAirLockCloudNine::
+BattleScript_AnnounceCloudNine::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_CLOUDNINEACTIVATES
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_ActivateWeatherAbilities
+	end3
+
+BattleScript_AnnounceAirLock::
+	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_AIRLOCKACTIVATES
 	waitmessage B_WAIT_TIME_LONG
-	call BattleScript_ActivateWeatherAbilities
 	end3
 
 BattleScript_QuickClawActivation::
