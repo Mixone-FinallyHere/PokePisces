@@ -8758,6 +8758,7 @@ static const struct TrainerMon sParty_PHuron[] = {
     {
     .species = SPECIES_PRIMEAPE,
     .ability = ABILITY_VITAL_SPIRIT,
+    .heldItem = ITEM_PUNCHING_GLOVE,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(72, 72, 72, 72, 72, 72),
     .lvl = 50,
@@ -8822,7 +8823,7 @@ static const struct TrainerMon sParty_PAlbert[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(72, 72, 72, 72, 72, 72),
     .lvl = 50,
-    .moves = {MOVE_POISON_DART, MOVE_DRAIN_PUNCH, MOVE_PARTING_SHOT, MOVE_CLOSE_COMBAT},
+    .moves = {MOVE_POISON_DART, MOVE_DRAIN_PUNCH, MOVE_KNOCK_OFF, MOVE_CLOSE_COMBAT},
     },
     {
     .species = SPECIES_GHAERIAL,
