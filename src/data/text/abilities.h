@@ -1452,8 +1452,7 @@ static const u8 sSugarCoatDescription[] = _(
 
 static const u8 sTimeTurnDescription[] = _(
     "When the Pokémon enters battle,\n"
-    "it creates a bizarre area where\n"
-    "slower Pokémon move first.");
+    "summons Trick Room for 3 turns.");
 
 static const u8 sTitanicDescription[] = _(
     "The Pokémon is so humongous it\n"

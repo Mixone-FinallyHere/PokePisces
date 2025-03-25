@@ -5301,11 +5301,11 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
 
                     if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_ROOM_EXTENDER)
                     {
-                        gFieldTimers.trickRoomTimer = 8;
+                        gFieldTimers.trickRoomTimer = 4;
                     }
                     else
                     {
-                        gFieldTimers.trickRoomTimer = 5;
+                        gFieldTimers.trickRoomTimer = 3;
                     }
 
                     BattleScriptPushCursorAndCallback(BattleScript_TimeTurnActivated);
