@@ -78,22 +78,27 @@ SlateportShore_Text_JelloPostBattle:
 	.string "happened to me.$"
 
 SlateportShore_Text_LenIntro:
-	.string "intro$"
+	.string "Let's go girl! Let's go Rin!\n"
+	.string "If she's here, then we will win!$"
 
 SlateportShore_Text_LenDefeated:
-	.string "defeat$"
+	.string "R-Rin? You couldn't pull through?$"
 
 SlateportShore_Text_LenPostBattle:
-	.string "post$"
+	.string "Maybe cheerleaders aren't meant\n"
+	.string "to support each other...$"
 
 SlateportShore_Text_RinIntro:
-	.string "intro$"
+	.string "Let's go gal! Let's go Len!\n"
+	.string "If she can't triumph, no one can!$"
 
 SlateportShore_Text_RinDefeated:
-	.string "defeat$"
+	.string "Len, c'mon! I thought\n"
+	.string "you had this on lock!$"
 
 SlateportShore_Text_RinPostBattle:
-	.string "post$"
+	.string "Len should consider becoming a\n"
+	.string "Battle Gal instead.$"
 
 SlateportShore_Text_RoseAndThornIntro:
 	.string "intro$"
@@ -112,8 +117,8 @@ SlateportShore_Text_TexIntro:
 	.string "You're in deep waters now!$"
 
 SlateportShore_Text_TexDefeated:
-	.string "Guess I was the one who was in deep\n"
-	.string "water.$"
+	.string "Guess I was the one who was\n"
+	.string "in deep water.$"
 
 SlateportShore_Text_TexPostBattle:
 	.string "Watch your step, landlubber, don't want\n"
