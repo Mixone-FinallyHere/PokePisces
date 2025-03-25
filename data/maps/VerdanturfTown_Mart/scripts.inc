@@ -6,7 +6,7 @@ VerdanturfTown_Mart_MapScripts::
 	.byte 0
 
 VerdanturfTown_Mart_OnTransition:
-	setrespawn HEAL_LOCATION_LILYCOVE_CITY
+	setrespawn HEAL_LOCATION_PERPLUME_MAZE
 	call_if_lt VAR_BALL_QUEST_STATE, 5, VerdanturfTown_Mart_EventScript_RemovePhillipe
 	call_if_gt VAR_BALL_QUEST_STATE, 5, VerdanturfTown_Mart_EventScript_RemovePhillipe
 	end

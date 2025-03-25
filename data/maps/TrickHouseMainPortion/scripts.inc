@@ -159,8 +159,8 @@ TrickHouseMainPortion_Text_BillyBobDefeated:
 	.string "Oh, it got a little burnt...$"
 
 TrickHouseMainPortion_Text_BillyBobPostBattle:
-	.string "Maybe just a regular Explosion would do\n"
-	.string "next time.$"
+	.string "Maybe just a regular Explosion\n"
+	.string "would do next time.$"
 
 TrickHouseMainPortion_Text_PutInFirstNumber:
 	.string "(It's a stone door with\n"

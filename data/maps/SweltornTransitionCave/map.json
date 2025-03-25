@@ -239,6 +239,45 @@
 
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 26,
+      "y": 14,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SweltornTransitionCave_EventScript_OzoneSign"
+    },
+    {
+      "type": "sign",
+      "x": 1,
+      "y": 6,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SweltornTransitionCave_EventScript_LavaridgeSign"
+    },
+    {
+      "type": "sign",
+      "x": 20,
+      "y": 36,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SweltornTransitionCave_EventScript_DesertSign"
+    },
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 56,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SweltornTransitionCave_EventScript_NewMauvilleSign"
+    },
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 57,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SweltornTransitionCave_EventScript_NewMauvilleSign"
+    }
   ]
 }

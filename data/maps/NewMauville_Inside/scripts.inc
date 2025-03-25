@@ -288,76 +288,96 @@ NewMauville_Inside_EventScript_Bonzi::
     end
 
 NewMauville_Inside_Text_BobIntro:
-	.string "intro$"
+	.string "Can we fix it?$"
 
 NewMauville_Inside_Text_BobDefeated:
-	.string "defeat$"
+	.string "No, we can't!$"
 
 NewMauville_Inside_Text_BobPostBattle:
-	.string "post$"
+	.string "I need more machinery\n"
+	.string "for this one.$"
 
 NewMauville_Inside_Text_SamIntro:
-	.string "intro$"
+	.string "People say my voice is robotic.\n"
+	.string "I can not help this. I was\l"
+	.string "born with these vocal chords.$"
 
 NewMauville_Inside_Text_SamDefeated:
-	.string "defeat$"
+	.string "Oh no. I lost.$"
 
 NewMauville_Inside_Text_SamPostBattle:
-	.string "post$"
+	.string "To call me a robot is cruel.\n"
+	.string "I am as much living and breathing\l"
+	.string "as you.$"
 
 NewMauville_Inside_Text_VegetableIntro:
-	.string "intro$"
+	.string "Red, Green, and Blue!\n"
+	.string "That's all the colors you need!$"
 
 NewMauville_Inside_Text_VegetableDefeated:
-	.string "defeat$"
+	.string "More like Black and Blue...$"
 
 NewMauville_Inside_Text_VegetablePostBattle:
-	.string "post$"
+	.string "I guess Magenta, Cyan, and Yellow\n"
+	.string "are valid colors, too.$"
 
 NewMauville_Inside_Text_AlexaIntro:
-	.string "intro$"
+	.string "Starting “Pokemon Battle”, from\n"
+	.string "list of commands.$"
 
 NewMauville_Inside_Text_AlexaDefeated:
-	.string "defeat$"
+	.string "Sorry, I can't help you with that.$"
 
 NewMauville_Inside_Text_AlexaPostBattle:
-	.string "post$"
+	.string "I found this on the web for\n"
+	.string "“give that trainer a word lashin'”.\p"
+	.string "You cheated. You are worthless.\n"
+	.string "All things in life are handed to you.\l"
+	.string "No one will ever love you.\l"
+	.string "Neener neener neener.$"
 
 NewMauville_Inside_Text_BixbyIntro:
-	.string "intro$"
+	.string "Alexa, take out this greenhorn!$"
 
 NewMauville_Inside_Text_BixbyDefeated:
-	.string "defeat$"
+	.string "Alexa! We got beat!$"
 
 NewMauville_Inside_Text_BixbyPostBattle:
-	.string "post$"
+	.string "Alexa, give that trainer\n"
+	.string "a word lashin'!$"
 
 NewMauville_Inside_Text_RubyIntro:
-	.string "intro$"
+	.string "Ugh... I don't have the time\n"
+	.string "to deal with this tomfoolery...$"
 
 NewMauville_Inside_Text_RubyDefeated:
-	.string "defeat$"
+	.string "What the!?$"
 
 NewMauville_Inside_Text_RubyPostBattle:
-	.string "post$"
+	.string "Great... now, I'll have to\n"
+	.string "slot in a visit to the Nurse\l"
+	.string "into my already packed schedule...$"
 
 NewMauville_Inside_Text_PascalIntro:
-	.string "intro$"
+	.string "Time to test my hypothesis!$"
 
 NewMauville_Inside_Text_PascalDefeated:
-	.string "defeat$"
+	.string "Whoa! Couldn't have predicted that!$"
 
 NewMauville_Inside_Text_PascalPostBattle:
-	.string "post$"
+	.string "Ack, darn. That means my hypothesis\n"
+	.string "will never become a theory.$"
 
 NewMauville_Inside_Text_BonziIntro:
-	.string "intro$"
+	.string "Nice to meet you!$"
 
 NewMauville_Inside_Text_BonziDefeated:
-	.string "defeat$"
+	.string "Oops! My system crashed!$"
 
 NewMauville_Inside_Text_BonziPostBattle:
-	.string "post$"
+	.string "What did the Sharprey say to\n"
+	.string "the ship? It's been nice\l"
+	.string "gnawing you!$"
 
 NewMauville_Inside_Text_GeneratorRadiatingHeat:
 	.string "The generator is radiating heat that\n"
