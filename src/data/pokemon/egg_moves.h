@@ -4511,6 +4511,9 @@ const u16 gEggMoves[] = {
     egg_moves(FLAGUE,
         MOVE_PURIFICATION),
 
+    egg_moves(FLAGUE_PRINCE,
+        MOVE_PURIFICATION),
+
     egg_moves(CULTIPEX,
         MOVE_PURIFICATION,
         MOVE_CURSE,

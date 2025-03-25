@@ -7271,8 +7271,36 @@ void CursorCb_MoveItemCallback(u8 taskId)
         SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HELD_ITEM, &item2);
         SetMonData(&gPlayerParty[gPartyMenu.slotId2], MON_DATA_HELD_ITEM, &item1);
 
-        TryItemHoldFormChange(&gPlayerParty[gPartyMenu.slotId]);
-        TryItemHoldFormChange(&gPlayerParty[gPartyMenu.slotId2]);
+        if (GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES) == SPECIES_FLAGUE
+        || GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES) == SPECIES_FLAGUE_PRINCE)
+        {
+            u32 currentSpecies = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES);
+            u32 targetSpecies = GetFormChangeTargetSpecies(&gPlayerParty[gPartyMenu.slotId], FORM_CHANGE_ITEM_HOLD, 0);
+            if (targetSpecies != currentSpecies)
+            {
+                PlayCry_NormalNoDucking(targetSpecies, 0, CRY_VOLUME_RS, CRY_VOLUME_RS);
+                SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES, &targetSpecies);
+                FreeAndDestroyMonIconSprite(&gSprites[sPartyMenuBoxes[gPartyMenu.slotId].monSpriteId]);
+                CreatePartyMonIconSpriteParameterized(targetSpecies, GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_PERSONALITY, NULL), &sPartyMenuBoxes[gPartyMenu.slotId], 1);
+                CalculateMonStats(&gPlayerParty[gPartyMenu.slotId]);
+                UpdatePartyMonHeldItemSprite(&gPlayerParty[gPartyMenu.slotId], &sPartyMenuBoxes[gPartyMenu.slotId]);
+            }
+        }
+        if (GetMonData(&gPlayerParty[gPartyMenu.slotId2], MON_DATA_SPECIES) == SPECIES_FLAGUE
+        || GetMonData(&gPlayerParty[gPartyMenu.slotId2], MON_DATA_SPECIES) == SPECIES_FLAGUE_PRINCE)
+        {
+            u32 currentSpecies = GetMonData(&gPlayerParty[gPartyMenu.slotId2], MON_DATA_SPECIES);
+            u32 targetSpecies = GetFormChangeTargetSpecies(&gPlayerParty[gPartyMenu.slotId2], FORM_CHANGE_ITEM_HOLD, 0);
+            if (targetSpecies != currentSpecies)
+            {
+                PlayCry_NormalNoDucking(targetSpecies, 0, CRY_VOLUME_RS, CRY_VOLUME_RS);
+                SetMonData(&gPlayerParty[gPartyMenu.slotId2], MON_DATA_SPECIES, &targetSpecies);
+                FreeAndDestroyMonIconSprite(&gSprites[sPartyMenuBoxes[gPartyMenu.slotId2].monSpriteId]);
+                CreatePartyMonIconSpriteParameterized(targetSpecies, GetMonData(&gPlayerParty[gPartyMenu.slotId2], MON_DATA_PERSONALITY, NULL), &sPartyMenuBoxes[gPartyMenu.slotId2], 1);
+                CalculateMonStats(&gPlayerParty[gPartyMenu.slotId2]);
+                UpdatePartyMonHeldItemSprite(&gPlayerParty[gPartyMenu.slotId2], &sPartyMenuBoxes[gPartyMenu.slotId2]);
+            }
+        }
 
         // update the held item icons
         UpdatePartyMonHeldItemSprite(
