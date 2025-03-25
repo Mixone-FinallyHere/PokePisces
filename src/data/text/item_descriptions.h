@@ -2525,7 +2525,7 @@ static const u8 sSootheBellDesc[] = _(
 
 static const u8 sMentalHerbDesc[] = _(
     "The holder can shake\n"
-    "shake off move-binding\n"
+    "off move-binding\n"
     "effects to move\n"
     "freely-but only once.");
 
