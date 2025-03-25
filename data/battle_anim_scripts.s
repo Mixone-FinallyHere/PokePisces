@@ -20631,9 +20631,11 @@ Move_JUNGLE_RAGE::
 	playsewithpan SE_M_DETECT, SOUND_PAN_TARGET
 	createsprite gTwinkleTackleTwinkleSpriteTemplate, ANIM_TARGET, 13, 0x0, 0x0, ANIM_TARGET @detect star
 	waitforvisualfinish
-	blendoff
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 0, F_PAL_BG, 2, 5, 0, RGB_BLACK
+	waitforvisualfinish
 	visible ANIM_TARGET
 	waitforvisualfinish
+	blendoff
 	end
 
 Move_DECAY_BEAM::
