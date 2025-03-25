@@ -16432,6 +16432,7 @@ Move_FIERY_WRATH::
 	createvisualtask AnimTask_BlendBattleAnimPal, 0xa, F_PAL_BG, 0x1, 0xE, 0x0, 0x0
 	waitforvisualfinish
 	clearmonbg ANIM_DEF_PARTNER
+	blendoff
 	end
 
 FieryWrathGeyser:
