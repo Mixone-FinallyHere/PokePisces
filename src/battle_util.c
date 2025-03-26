@@ -14909,7 +14909,7 @@ bool32 TryBattleFormChange(u32 battler, u16 method)
     {
         bool32 restoreSpecies = FALSE;
 
-        // Mega Evolved and Ultra Bursted Pok?mon should always revert to normal upon fainting or ending the battle, so no need to add it to the form change tables.
+        // Mega Evolved and Ultra Bursted Pokémon should always revert to normal upon fainting or ending the battle, so no need to add it to the form change tables.
         if ((IsBattlerMegaEvolved(battler) || IsBattlerUltraBursted(battler)) && (method == FORM_CHANGE_FAINT || method == FORM_CHANGE_END_BATTLE))
             restoreSpecies = TRUE;
 
@@ -14919,10 +14919,14 @@ bool32 TryBattleFormChange(u32 battler, u16 method)
 
         if (restoreSpecies)
         {
+            u32 abilityForm = gBattleMons[battler].ability;
             // Reverts the original species
             TryToSetBattleFormChangeMoves(&party[monId], method);
             SetMonData(&party[monId], MON_DATA_SPECIES, &gBattleStruct->changedSpecies[side][monId]);
             RecalcBattlerStats(battler, &party[monId]);
+            // Battler data is not updated with regular form's ability, not doing so could cause wrong ability activation.
+            if (method == FORM_CHANGE_FAINT)
+                gBattleMons[battler].ability = abilityForm;
             return TRUE;
         }
     }
