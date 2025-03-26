@@ -18287,12 +18287,43 @@ BattleScript_CuteCharmAllureActivates2::
 	return
 
 BattleScript_LovesickActivates::
-	call BattleScript_AbilityPopUp
+	savetarget
+	showabilitypopup BS_ATTACKER
+	pause B_WAIT_TIME_LONG
+	destroyabilitypopup
+	setbyte gBattlerTarget, 0
+BattleScript_LovesickLoop:
+	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_LovesickLoopIncrement
+	jumpiftargetally BattleScript_LovesickLoopIncrement
+	jumpifabsent BS_ATTACKER, BattleScript_LovesickLoopIncrement
+	jumpifability BS_ATTACKER_SIDE, ABILITY_AROMA_VEIL, BattleScript_LovesickLoopIncrement
+	swapattackerwithtarget
+	jumpifsafeguard BattleScript_LovesickLoopIncrement2
+	swapattackerwithtarget
+	jumpifswitchinabilitysucceed BS_ATTACKER, BattleScript_LovesickLoopIncrement
+BattleScript_LovesickEffect:
+	copybyte sBATTLER, gBattlerAttacker
+	infatuatewithbattler BS_ATTACKER, BS_TARGET
 	status2animation BS_ATTACKER, STATUS2_INFATUATION
+	waitanimation
 	printstring STRINGID_PKMNSXINFATUATEDY3
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryDestinyKnotInfatuateTarget
+	setswitchinabilitysucceed BS_ATTACKER
+BattleScript_LovesickLoopIncrement:
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_LovesickLoop
+BattleScript_LovesickEnd::
+	copybyte sBATTLER, gBattlerAttacker
+	destroyabilitypopup
+	restoretarget
+	pause B_WAIT_TIME_MED
 	end3
+BattleScript_LovesickLoopIncrement2:
+	swapattackerwithtarget
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_LovesickLoop
+	goto BattleScript_LovesickEnd
 
 BattleScript_GooeyActivates::
 	waitstate
