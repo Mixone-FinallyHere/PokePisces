@@ -9040,7 +9040,7 @@ static bool8 ShouldSkipFriendshipChange(void)
 #define ALLOC_FAIL_BUFFER (1 << 0)
 #define ALLOC_FAIL_STRUCT (1 << 1)
 #define GFX_MANAGER_ACTIVE 0xA3 // Arbitrary value
-#define GFX_MANAGER_SPR_SIZE (MON_PIC_SIZE * 4) // * 4 is unnecessary, MON_PIC_SIZE is sufficient
+#define GFX_MANAGER_SPR_SIZE (MON_PIC_SIZE) // * 4 is unnecessary, MON_PIC_SIZE is sufficient
 #define GFX_MANAGER_NUM_FRAMES 2  // Only 2 frames are needed 
 
 static void InitMonSpritesGfx_Battle(struct MonSpritesGfxManager* gfx)
@@ -9076,7 +9076,7 @@ struct MonSpritesGfxManager *CreateMonSpritesGfxManager(void)
     u32 i;
     u8 failureFlags;
     struct MonSpritesGfxManager *gfx;
- 
+
     failureFlags = 0;
     gfx = AllocZeroed(sizeof(*gfx));
     if (gfx == NULL)

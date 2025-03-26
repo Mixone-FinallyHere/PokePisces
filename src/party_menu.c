@@ -506,7 +506,7 @@ static void InitPartyMenu(u8 menuType, u8 layout, u8 partyAction, bool8 keepCurs
     u16 i;
 
     ResetPartyMenu();
-    sPartyMenuInternal = Alloc(sizeof(struct PartyMenuInternal));
+    sPartyMenuInternal = AllocZeroed(sizeof(struct PartyMenuInternal));
     if (sPartyMenuInternal == NULL)
     {
         SetMainCallback2(callback);
@@ -724,11 +724,10 @@ static void ResetPartyMenu(void)
 
 static bool8 AllocPartyMenuBg(void)
 {
-    sPartyBgTilemapBuffer = Alloc(0x800);
+    sPartyBgTilemapBuffer = AllocZeroed(0x800);
     if (sPartyBgTilemapBuffer == NULL)
         return FALSE;
 
-    memset(sPartyBgTilemapBuffer, 0, 0x800);
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, sPartyMenuBgTemplates, ARRAY_COUNT(sPartyMenuBgTemplates));
     SetBgTilemapBuffer(1, sPartyBgTilemapBuffer);
@@ -800,14 +799,10 @@ static void PartyPaletteBufferCopy(u8 palNum)
 
 static void FreePartyPointers(void)
 {
-    if (sPartyMenuInternal)
-        Free(sPartyMenuInternal);
-    if (sPartyBgTilemapBuffer)
-        Free(sPartyBgTilemapBuffer);
-    if (sPartyBgGfxTilemap)
-        Free(sPartyBgGfxTilemap);
-    if (sPartyMenuBoxes)
-        Free(sPartyMenuBoxes);
+    TRY_FREE_AND_SET_NULL(sPartyMenuInternal);
+    TRY_FREE_AND_SET_NULL(sPartyBgTilemapBuffer);
+    TRY_FREE_AND_SET_NULL(sPartyBgGfxTilemap);
+    TRY_FREE_AND_SET_NULL(sPartyMenuBoxes);
     FreeAllWindowBuffers();
 }
 
@@ -815,7 +810,7 @@ static void InitPartyMenuBoxes(u8 layout)
 {
     u8 i;
 
-    sPartyMenuBoxes = Alloc(sizeof(struct PartyMenuBox[PARTY_SIZE]));
+    sPartyMenuBoxes = AllocZeroed(sizeof(struct PartyMenuBox[PARTY_SIZE]));
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
@@ -1228,7 +1223,7 @@ bool8 IsMultiBattle(void)
 
 static void SwapPartyPokemon(struct Pokemon *mon1, struct Pokemon *mon2)
 {
-    struct Pokemon *temp = Alloc(sizeof(struct Pokemon));
+    struct Pokemon *temp = AllocZeroed(sizeof(struct Pokemon));
 
     *temp = *mon1;
     *mon1 = *mon2;
@@ -2531,6 +2526,7 @@ void DisplayPartyMenuStdMessage(u32 stringId)
             else if (!ShouldUseChooseMonText())
                 stringId = PARTY_MSG_CHOOSE_MON_OR_CANCEL;
         }
+
         DrawStdFrameWithCustomTileAndPalette(*windowPtr, FALSE, 0x4F, 13);
         StringExpandPlaceholders(gStringVar4, sActionStringTable[stringId]);
         AddTextPrinterParameterized(*windowPtr, FONT_NORMAL, gStringVar4, 0, 1, 0, 0);
@@ -2826,10 +2822,10 @@ static void CursorCb_Summary(u8 taskId)
 static void CursorCb_Moves(u8 taskId)
 {
     PlaySE(SE_SELECT);
-	FlagSet(FLAG_PARTY_MOVES);
+    FlagSet(FLAG_PARTY_MOVES);
     gSpecialVar_0x8004 = gPartyMenu.slotId;
-	gSpecialVar_0x8005 = GetNumberOfRelearnableMoves(&gPlayerParty[gSpecialVar_0x8004]);
-	TeachMoveRelearnerMove();
+    gSpecialVar_0x8005 = GetNumberOfRelearnableMoves(&gPlayerParty[gSpecialVar_0x8004]);
+    TeachMoveRelearnerMove();
     sPartyMenuInternal->exitCallback = TeachMoveRelearnerMove;
     Task_ClosePartyMenu(taskId);
 }
@@ -2911,8 +2907,8 @@ static void SwitchSelectedMons(u8 taskId)
             tSlot2SlideDir = -1;
         else
             tSlot2SlideDir = 1;
-        sSlot1TilemapBuffer = Alloc(tSlot1Width * (tSlot1Height << 1));
-        sSlot2TilemapBuffer = Alloc(tSlot2Width * (tSlot2Height << 1));
+        sSlot1TilemapBuffer = AllocZeroed(tSlot1Width * (tSlot1Height << 1));
+        sSlot2TilemapBuffer = AllocZeroed(tSlot2Width * (tSlot2Height << 1));
         CopyToBufferFromBgTilemap(0, sSlot1TilemapBuffer, tSlot1Left, tSlot1Top, tSlot1Width, tSlot1Height);
         CopyToBufferFromBgTilemap(0, sSlot2TilemapBuffer, tSlot2Left, tSlot2Top, tSlot2Width, tSlot2Height);
         ClearWindowTilemap(windowIds[0]);
@@ -3036,8 +3032,8 @@ static void Task_SlideSelectedSlotsOnscreen(u8 taskId)
         PutWindowTilemap(sPartyMenuBoxes[gPartyMenu.slotId].windowId);
         PutWindowTilemap(sPartyMenuBoxes[gPartyMenu.slotId2].windowId);
         ScheduleBgCopyTilemapToVram(0);
-        Free(sSlot1TilemapBuffer);
-        Free(sSlot2TilemapBuffer);
+        TRY_FREE_AND_SET_NULL(sSlot1TilemapBuffer);
+        TRY_FREE_AND_SET_NULL(sSlot2TilemapBuffer);
         FinishTwoMonAction(taskId);
     }
     // Continue sliding
@@ -3083,7 +3079,7 @@ static void SwitchPartyMon(void)
     menuBoxes[1] = &sPartyMenuBoxes[gPartyMenu.slotId2];
     mon1 = &gPlayerParty[gPartyMenu.slotId];
     mon2 = &gPlayerParty[gPartyMenu.slotId2];
-    monBuffer = Alloc(sizeof(struct Pokemon));
+    monBuffer = AllocZeroed(sizeof(struct Pokemon));
     *monBuffer = *mon1;
     *mon1 = *mon2;
     *mon2 = *monBuffer;
@@ -4320,11 +4316,7 @@ void CB2_ShowPartyMenuForItemUse(void)
     }
     else
     {
-        if (GetPocketByItemId(gSpecialVar_ItemId) == POCKET_TM_HM)
-            msgId = PARTY_MSG_TEACH_WHICH_MON;
-        else
-            msgId = PARTY_MSG_USE_ON_WHICH_MON;
-
+        msgId = PARTY_MSG_USE_ON_WHICH_MON;
         task = Task_HandleChooseMonInput;
     }
 
@@ -4338,49 +4330,13 @@ static void CB2_OpenTMCaseOnField(void)
 
 void CB2_ShowPartyMenuForItemUseTMCase(void)
 {
-    MainCallback callback = CB2_OpenTMCaseOnField;
-    u8 partyLayout;
-    u8 menuType;
-    u8 i;
-    u8 msgId;
-    TaskFunc task;
-
-    if (gMain.inBattle)
-    {
-        menuType = PARTY_MENU_TYPE_IN_BATTLE;
-        partyLayout = GetPartyLayoutFromBattleType();
-    }
-    else
-    {
-        menuType = PARTY_MENU_TYPE_FIELD;
-        partyLayout = PARTY_LAYOUT_SINGLE;
-    }
-
-    if (GetItemEffectType(gSpecialVar_ItemId) == ITEM_EFFECT_SACRED_ASH)
-    {
-        gPartyMenu.slotId = 0;
-        for (i = 0; i < PARTY_SIZE; i++)
-        {
-            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE && GetMonData(&gPlayerParty[i], MON_DATA_HP) == 0)
-            {
-                gPartyMenu.slotId = i;
-                break;
-            }
-        }
-        task = Task_SetSacredAshCB;
-        msgId = PARTY_MSG_NONE;
-    }
-    else
-    {
-        if (GetPocketByItemId(gSpecialVar_ItemId) == POCKET_TM_HM)
-            msgId = PARTY_MSG_TEACH_WHICH_MON;
-        else
-            msgId = PARTY_MSG_USE_ON_WHICH_MON;
-
-        task = Task_HandleChooseMonInput;
-    }
-
-    InitPartyMenu(menuType, partyLayout, PARTY_ACTION_USE_ITEM, TRUE, msgId, task, callback);
+    InitPartyMenu(PARTY_MENU_TYPE_FIELD,
+                  PARTY_LAYOUT_SINGLE,
+                  PARTY_ACTION_USE_ITEM,
+                  TRUE,
+                  PARTY_MSG_TEACH_WHICH_MON,
+                  Task_HandleChooseMonInput,
+                  CB2_OpenTMCaseOnField);
 }
 
 static void CB2_ReturnToBagMenu(void)
@@ -5166,7 +5122,6 @@ static void DisplayLearnMoveMessageAndClose(u8 taskId, const u8 *str)
 }
 
 // move[1] doesn't use constants cause I don't know if it's actually a move ID storage
-
 void ItemUseCB_TMHM(u8 taskId, TaskFunc task)
 {
     struct Pokemon *mon;
@@ -6099,13 +6054,11 @@ u8 GetItemEffectType(u16 item)
 
 static void TryTutorSelectedMon(u8 taskId)
 {
-    struct Pokemon *mon;
-    s16 *move;
-
     if (!gPaletteFade.active)
     {
-        mon = &gPlayerParty[gPartyMenu.slotId];
-        move = &gPartyMenu.data1;
+        struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+        s16 *move = &gPartyMenu.data1;
+
         GetMonNickname(mon, gStringVar1);
         gPartyMenu.data1 = gSpecialVar_0x8005;
         StringCopy(gStringVar2, gMoveNames[gPartyMenu.data1]);
@@ -6126,6 +6079,7 @@ static void TryTutorSelectedMon(u8 taskId)
             }
             break;
         }
+
         DisplayLearnMoveMessage(gText_PkmnNeedsToReplaceMove);
         gTasks[taskId].func = Task_ReplaceMoveYesNo;
     }
@@ -6859,7 +6813,7 @@ u8 GetPartyIdFromBattlePartyId(u8 battlePartyId)
 
 static void UpdatePartyToBattleOrder(void)
 {
-    struct Pokemon *partyBuffer = Alloc(sizeof(gPlayerParty));
+    struct Pokemon *partyBuffer = AllocZeroed(sizeof(gPlayerParty));
     u8 i;
 
     memcpy(partyBuffer, gPlayerParty, sizeof(gPlayerParty));
@@ -6870,7 +6824,7 @@ static void UpdatePartyToBattleOrder(void)
 
 static void UpdatePartyToFieldOrder(void)
 {
-    struct Pokemon *partyBuffer = Alloc(sizeof(gPlayerParty));
+    struct Pokemon *partyBuffer = AllocZeroed(sizeof(gPlayerParty));
     u8 i;
 
     memcpy(partyBuffer, gPlayerParty, sizeof(gPlayerParty));
