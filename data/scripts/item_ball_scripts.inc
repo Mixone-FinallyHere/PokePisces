@@ -1884,7 +1884,7 @@ LavaridgeInt_EventScript_ItemPAbilityCookie::
 
 LavaridgeInt_EventScript_ItemPXSpDef::
 	finditem ITEM_X_SP_DEF
-	setflag FLAG_P_LAVARIDGE_INT_X_SPDEF
+	setflag FLAG_P_ITEM_DETERMANITE_BEACH_X_SP_DEF
 	end
 
 SootopolisCastle_EventScript_ItemPRareBone::

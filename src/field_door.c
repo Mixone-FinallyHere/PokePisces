@@ -147,6 +147,8 @@ static const u8 sDoorAnimTiles_SweltornCivilian[] = INCBIN_U8("graphics/door_ani
 static const u8 sDoorAnimTiles_CasinoGreen[] = INCBIN_U8("graphics/door_anims/casino_green.4bpp");
 static const u8 sDoorAnimTiles_CasinoRed[] = INCBIN_U8("graphics/door_anims/casino_red.4bpp");
 static const u8 sDoorAnimTiles_GymRustboro[] = INCBIN_U8("graphics/door_anims/gym_rustboro.4bpp");
+static const u8 sDoorAnimTiles_OzoneSandBuilding[] = INCBIN_U8("graphics/door_anims/ozone_sand_door.4bpp");
+static const u8 sDoorAnimTiles_MaintenanceDoors[] = INCBIN_U8("graphics/door_anims/maintenance.4bpp");
 
 static const struct DoorAnimFrame sDoorOpenAnimFrames[] =
 {
@@ -248,6 +250,9 @@ static const u8 sDoorAnimPalettes_CasinoGreen[] = {7, 7, 7, 7, 7, 7, 7, 7};
 static const u8 sDoorAnimPalettes_CasinoRed[] = {8, 8, 8, 8, 7, 7, 7, 7};
 static const u8 sDoorAnimPalettes_GymRustboro[] = {11, 11, 5, 5, 5, 5, 5, 5};
 static const u8 sDoorAnimPalettes_OzoneSandBuilding[] = {8, 8, 8, 8, 8, 8, 8, 8};
+static const u8 sDoorAnimPalettes_Maintenance[] = {7, 7, 5, 5, 5, 5, 5, 5};
+static const u8 sDoorAnimPalettes_StraeSeapathPokecenterYellow[] = {5, 5, 5, 5, 5, 5, 5, 5};
+static const u8 sDoorAnimPalettes_EverGrandePokecenter[] = {7, 7, 7, 7, 7, 7, 7, 7};
 
 static const struct DoorGraphics sDoorAnimGraphicsTable[] =
 {
@@ -324,7 +329,10 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_CasinoNew_doubledoors_red,                    DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_CasinoRed, sDoorAnimPalettes_CasinoRed},
     {METATILE_CasinoNew_doubledoors_green,                  DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_CasinoGreen, sDoorAnimPalettes_CasinoGreen},
     {METATILE_Rustboro_door_gym_entrance,                   DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_GymRustboro, sDoorAnimPalettes_GymRustboro},
-    {METATILE_ozoneinsitute_sand_building_door,             DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_SweltornCivilian, sDoorAnimPalettes_OzoneSandBuilding},
+    {METATILE_ozoneinsitute_sand_building_door,             DOOR_SOUND_NORMAL, 1, sDoorAnimTiles_OzoneSandBuilding, sDoorAnimPalettes_OzoneSandBuilding},
+    {METATILE_BikeShop_sliding_doors,                       DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_MaintenanceDoors, sDoorAnimPalettes_Maintenance},
+    {METATILE_Slateport_strae_seapath_pokecenter_yellow,    DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_PokeCenter, sDoorAnimPalettes_StraeSeapathPokecenterYellow},
+    {METATILE_Golden_ever_grande_pokecenter,                DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_PokeCenter, sDoorAnimPalettes_EverGrandePokecenter},
 };
 
 // NOTE: The tiles of a door's animation must be copied to VRAM because they are not already part of any given tileset.
