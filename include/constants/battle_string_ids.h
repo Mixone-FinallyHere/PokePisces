@@ -878,8 +878,9 @@
 #define STRINGID_PKMNCUTSHPWITH2                      876
 #define STRINGID_GOTCHAPKMNCAUGHTPLAYERNOMUSIC        877
 #define STRINGID_AIRLOCKACTIVATES                     878
+#define STRINGID_ABILITYLETITUSEMOVETARGET            879
 
-#define BATTLESTRINGS_COUNT                           879
+#define BATTLESTRINGS_COUNT                           880
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

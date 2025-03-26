@@ -972,6 +972,7 @@ static const u8 sText_ScarfWasChargedByBeingHit[] = _("Being hit by {B_CURRENT_M
 static const u8 sText_PkmnGemstoneMaxedEvasion[] = _("Gemstone maxed out\n{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s evasion!");
 static const u8 sText_UsingItemTheStatOfPkmnFell[] = _("Using {B_LAST_ITEM}, the {B_BUFF1}\nof {B_SCR_ACTIVE_NAME_WITH_PREFIX} {B_BUFF2}");
 static const u8 sText_AbilityLetItUseMove[] = _("{B_ATK_NAME_WITH_PREFIX}'s ability let it use\n{B_CURRENT_MOVE}!");
+static const u8 sText_AbilityLetItUseMoveTarget[] = _("{B_DEF_NAME_WITH_PREFIX}'s ability let it use\n{B_CURRENT_MOVE}!");
 static const u8 sText_AbilityLetItUseMoveGuardDog[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY} let it use\nGrowl!");
 static const u8 sText_AbilityLetItUseMoveSweetVeil[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY} let it use\nSweet Scent!");
 static const u8 sText_WepearBerryHit[] = _("Wepear Berry allowed\nhitting through protection!");
@@ -1886,6 +1887,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNCUTSHPWITH2 - BATTLESTRINGS_TABLE_START] = sText_PkmnCutsHPWith2,
     [STRINGID_GOTCHAPKMNCAUGHTPLAYERNOMUSIC - BATTLESTRINGS_TABLE_START] = sText_GotchaPkmnCaughtPlayerNoMusic,
     [STRINGID_AIRLOCKACTIVATES - BATTLESTRINGS_TABLE_START] = sText_AirLockActivates,
+    [STRINGID_ABILITYLETITUSEMOVETARGET - BATTLESTRINGS_TABLE_START] = sText_AbilityLetItUseMoveTarget,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

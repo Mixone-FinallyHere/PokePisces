@@ -2017,6 +2017,7 @@ BattleScript_MoveEffectWildCharge::
 	waitmessage B_WAIT_TIME_LONG
 	savetarget
 	copybyte gBattlerTarget, sSAVED_BATTLER
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_TARGET
 	datahpupdate BS_TARGET
 	tryfaintmon BS_TARGET
@@ -2047,13 +2048,12 @@ BattleScript_EffectHighRollHit::
 	goto BattleScript_HitFromCritCalc
 
 BattleScript_DefenderUsedAnExtraMove::
-	savetarget
 	copybyte sSAVED_BATTLER, gBattlerAttacker
-	copybyte gBattlerAttacker, gBattlerTarget
-	copybyte gBattlerTarget, sSAVED_BATTLER
-	call BattleScript_AbilityPopUp
-	printstring STRINGID_ABILITYLETITUSEMOVE
+	call BattleScript_AbilityPopUpTarget
+	printstring STRINGID_ABILITYLETITUSEMOVETARGET
 	waitmessage B_WAIT_TIME_LONG
+	copybyte gEffectBattler, gBattlerTarget
+	swapattackerwithtarget
 BattleScript_DefenderEffectExtraHit::
 BattleScript_DefenderExtraHitFromAtkCanceler::
 	attackcanceler
@@ -2079,11 +2079,45 @@ BattleScript_DefenderExtraHitFromAtkAnimation::
 	seteffectwithchance
 	tryfaintmon BS_TARGET
 BattleScript_DefenderExtraRestoreBattlers::
+	swapattackerwithtarget
 	copybyte gBattlerAttacker, sSAVED_BATTLER
-	restoretarget
 BattleScript_DefenderExtraMoveEnd::
 	moveendall
 	end
+
+BattleScript_DefenderUsedCinderWaltz::
+	copybyte sSAVED_BATTLER, gBattlerAttacker
+	call BattleScript_AbilityPopUpTarget
+	printstring STRINGID_ABILITYLETITUSEMOVETARGET
+	waitmessage B_WAIT_TIME_LONG
+	copybyte gEffectBattler, gBattlerTarget
+	swapattackerwithtarget
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	critcalc
+	damagecalc
+	adjustdamage
+	playmoveanimation BS_ATTACKER, MOVE_NONE
+	waitanimation
+	effectivenesssound
+	hitanimation BS_TARGET
+	waitstate
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	critmessage
+	waitmessage B_WAIT_TIME_LONG
+	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	seteffectwithchance
+	tryfaintmon BS_TARGET
+	jumpiffainted BS_TARGET, TRUE, BattleScript_MoveEnd
+	jumpifbattleend BattleScript_MoveEnd
+	setmoveeffect MOVE_EFFECT_FLAME_BURST | MOVE_EFFECT_AFFECTS_USER
+	seteffectprimary
+	swapattackerwithtarget
+	copybyte gBattlerAttacker, sSAVED_BATTLER
+	goto BattleScript_MoveEnd
 
 BattleScript_AttackerUsedAnExtraMove::
 	call BattleScript_AbilityPopUp
@@ -7914,12 +7948,13 @@ BattleScript_EffectFlameBurst:
 	goto BattleScript_EffectHit
 
 BattleScript_MoveEffectFlameBurst::
+	savetarget
 	tryfaintmon BS_TARGET
 	copybyte sBATTLER, sSAVED_BATTLER
 	printstring STRINGID_BURSTINGFLAMESHIT
 	waitmessage B_WAIT_TIME_LONG
-	savetarget
 	copybyte gBattlerTarget, sSAVED_BATTLER
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_TARGET
 	datahpupdate BS_TARGET
 	tryfaintmon BS_TARGET
