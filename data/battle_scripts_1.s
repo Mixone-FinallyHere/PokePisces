@@ -16956,6 +16956,7 @@ BattleScript_SolarPowerActivatesEveryoneLoop:
 	jumpifability BS_TARGET, ABILITY_MAGIC_GUARD, BattleScript_SolarPowerActivatesEveryoneIncrement
 	jumpifability BS_TARGET, ABILITY_SUGAR_COAT, BattleScript_SolarPowerActivatesEveryoneIncrement
 	jumpifterucharmprotected BS_TARGET, BattleScript_SolarPowerActivatesEveryoneIncrement
+	jumpifabsent BS_TARGET, BattleScript_SolarPowerActivatesEveryoneIncrement
 	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_SolarPowerActivatesEveryone_ShowPopUp
 BattleScript_SolarPowerActivatesEveryone_DmgAfterPopUp:
 	printstring STRINGID_PKMNCUTSHPWITH2
@@ -16990,6 +16991,7 @@ BattleScript_DelugeHurtsLoop:
 	jumpifability BS_TARGET, ABILITY_MAGIC_GUARD, BattleScript_DelugeHurtsIncrement
 	jumpifability BS_TARGET, ABILITY_SUGAR_COAT, BattleScript_DelugeHurtsIncrement
 	jumpifterucharmprotected BS_TARGET, BattleScript_DelugeHurtsIncrement
+	jumpifabsent BS_TARGET, BattleScript_ArbiterActivatesIncrement
 	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_DelugeHurts_ShowPopUp
 BattleScript_DelugeHurts_DmgAfterPopUp:
 	playanimation BS_TARGET, B_ANIM_WHIRLPOOL
