@@ -18832,7 +18832,7 @@ BattleScript_Cheese_End2Part2:
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_TARGET
 	removeitem BS_TARGET
-	return
+	end2
 
 BattleScript_YellowSodaActivatesRet::
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
@@ -18855,7 +18855,7 @@ BattleScript_YellowSodaActivatesRet3:
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_TARGET
 	removeitem BS_TARGET
-	return
+	end2
 
 BattleScript_FrothyCheese_End2::
 	tryaccupressure BS_ATTACKER, BattleScript_ButItFailed
@@ -18872,7 +18872,7 @@ BattleScript_FrothyCheese_End2Part2:
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_TARGET
 	removeitem BS_TARGET
-	return
+	end2
 
 BattleScript_A_Thing_Happened::
 	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
