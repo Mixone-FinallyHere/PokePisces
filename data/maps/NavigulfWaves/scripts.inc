@@ -61,28 +61,39 @@ NavigulfWaves_Text_BrodyPostBattle:
 	.string "I don't know where the surf went.$"
 
 NavigulfWaves_Text_DelaIntro:
-	.string "intro$"
+	.string "One thing about chess?\n"
+	.string "You always protect the queen!$"
 
 NavigulfWaves_Text_DelaDefeated:
-	.string "defeat$"
+	.string "I've been out-gambited!$"
 
 NavigulfWaves_Text_DelaPostBattle:
-	.string "post$"
+	.string "Always protect your Octohime,\n"
+	.string "if you have one. She deserves it!$"
 
 NavigulfWaves_Text_KieraIntro:
-	.string "intro$"
+	.string "I'm a bit lost right now!\n"
+	.string "I'll take out those frustrations...\l"
+	.string "on you!$"
 
 NavigulfWaves_Text_KieraDefeated:
-	.string "defeat$"
+	.string "I got turned around again!$"
 
 NavigulfWaves_Text_KieraPostBattle:
-	.string "post$"
+	.string "The ocean can sometimes feel\n"
+	.string "straight-up endless, huh?$"
 
 NavigulfWaves_Text_LibraIntro:
-	.string "I won't hurt your Pokemon... too much.$"
+	.string "Surprised, to see me floating\n"
+	.string "atop the water? It is only\l"
+	.string "natural for someone of my\l"
+	.string "psychic caliber.\p"
+	.string "Don't worry, I won't hurt\n"
+	.string "your Pokemon... too much...$"
 
 NavigulfWaves_Text_LibraDefeated:
-	.string "Make them STOP!!!$"
+	.string "Gh...! My levitation took\n"
+	.string "up too much of my power...!$"
 
 NavigulfWaves_Text_LibraPostBattle:
 	.string "I am not amused.$"

@@ -116,7 +116,7 @@
       "x": 9,
       "y": 21,
       "elevation": 0,
-      "var": "VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE",
+      "var": "VAR_SLATEPORT_MUSEUM_1F_STATE",
       "var_value": "0",
       "script": "SlateportCity_OceanicMuseum_1F_EventScript_PayEntranceFeeLeft"
     },
@@ -125,7 +125,7 @@
       "x": 10,
       "y": 21,
       "elevation": 0,
-      "var": "VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE",
+      "var": "VAR_SLATEPORT_MUSEUM_1F_STATE",
       "var_value": "0",
       "script": "SlateportCity_OceanicMuseum_1F_EventScript_PayEntranceFeeRight"
     }

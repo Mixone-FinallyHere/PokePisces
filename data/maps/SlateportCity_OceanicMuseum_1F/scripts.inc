@@ -33,10 +33,10 @@ SlateportCity_OceanicMuseum_1F_EventScript_PayEntranceFee::
 	end
 
 SlateportCity_OceanicMuseum_1F_EventScript_CheckMoneyForFee::
-	checkmoney 50
+	checkmoney 1000
 	goto_if_eq VAR_RESULT, FALSE, SlateportCity_OceanicMuseum_1F_EventScript_NotEnoughMoney
 	playse SE_SHOP
-	removemoney 50
+	removemoney 1000
 	updatemoneybox
 	msgbox SlateportCity_OceanicMuseum_1F_Text_PleaseEnjoyYourself, MSGBOX_DEFAULT
 	setvar VAR_SLATEPORT_MUSEUM_1F_STATE, 1
@@ -225,8 +225,8 @@ SlateportCity_OceanicMuseum_1F_Movement_FamiliarGruntExitNorth:
 	step_end
 
 SlateportCity_OceanicMuseum_1F_Text_WouldYouLikeToEnter:
-	.string "Welcome to the OCEANIC MUSEUM.\p"
-	.string "The entrance fee is ¥50.\n"
+	.string "Welcome to the Oceanic Museum.\p"
+	.string "The entrance fee is ¥1000.\n"
 	.string "Would you like to enter?$"
 
 SlateportCity_OceanicMuseum_1F_Text_PleaseEnjoyYourself:

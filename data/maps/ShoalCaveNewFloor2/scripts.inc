@@ -184,31 +184,39 @@ ShoalCaveNewFloor2_EventScript_Alaska::
     end
 
 ShoalCaveNewFloor2_Text_MagnusIntro:
-	.string "intro$"
+	.string "You must weild a titanic sword\n"
+	.string "to slay a titanic beast!\p"
+	.string "My Pokemon are my sword...\n"
+	.string "and you are the beast!$"
 
 ShoalCaveNewFloor2_Text_MagnusDefeated:
-	.string "defeat$"
+	.string "I can hear the angels\n"
+	.string "calling my name...!$"
 
 ShoalCaveNewFloor2_Text_MagnusPostBattle:
-	.string "post$"
+	.string "Try all you want, but Dragon\n"
+	.string "type Pokemon cannot be intimidated!$"
 
 ShoalCaveNewFloor2_Text_JuneauIntro:
-	.string "intro$"
+	.string "Lottabats... assemble...$"
 
 ShoalCaveNewFloor2_Text_JuneauDefeated:
-	.string "defeat$"
+	.string "I needed more bats...!$"
 
 ShoalCaveNewFloor2_Text_JuneauPostBattle:
-	.string "post$"
+	.string "I must go further into the cave...\n"
+	.string "to find more Lottabats...$"
 
 ShoalCaveNewFloor2_Text_AlaskaIntro:
-	.string "intro$"
+	.string "Hey, it's extra slippery in here!\n"
+	.string "Outta my way!$"
 
 ShoalCaveNewFloor2_Text_AlaskaDefeated:
-	.string "defeat$"
+	.string "Couldn't stay balanced!$"
 
 ShoalCaveNewFloor2_Text_AlaskaPostBattle:
-	.string "post$"
+	.string "Maybe if I go fast enough, I can\n"
+	.string "skate on the ceiling!$"
 
 ShoalCaveNewFloor2_Text_BrawlyGreeting:
 	.string "Hey there, trainer! Man, am I glad\n"

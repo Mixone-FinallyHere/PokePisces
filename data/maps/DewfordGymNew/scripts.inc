@@ -267,6 +267,7 @@ DewfordGymNew_EventScript_LeadersDefeated::
 	call Common_EventScript_PlayGymBadgeFanfare
 	speakername DewfordGymNew_Text_NameBrawly
 	msgbox DewfordGymNew_Text_AndHeresTheTMs, MSGBOX_DEFAULT
+	speakername NULL
 	giveitem ITEM_TM_BODY_PRESS
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	giveitem ITEM_TM_SCALD
@@ -314,68 +315,113 @@ DewfordGymNew_EventScript_Nessie::
     msgbox DewfordGymNew_Text_NessiePostBattle, MSGBOX_AUTOCLOSE
     end
 
+DewfordGymNew_EventScript_Roadblocker1::
+	msgbox DewfordGymNew_Text_Roadblocker1, MSGBOX_NPC
+	end
+
+DewfordGymNew_EventScript_Roadblocker2::
+	msgbox DewfordGymNew_Text_Roadblocker2, MSGBOX_NPC
+	end
+
+DewfordGymNew_Text_Roadblocker1:
+	.string "Sorry, not letting you past here!\n"
+	.string "I'm under orders!$"
+
+DewfordGymNew_Text_Roadblocker2:
+	.string "Brawly said that if people can\n"
+	.string "sneak around this way, they'll end\l"
+	.string "up breaking the gym.\l"
+	.string "I believe him!$"
+
 DewfordGymNew_Text_TahoeIntro:
-	.string "intro$"
+	.string "My Colfin are eager to help!$"
 
 DewfordGymNew_Text_TahoeDefeated:
-	.string "defeat$"
+	.string "The power of friendship\n"
+	.string "couldn't win us this one...$"
 
 DewfordGymNew_Text_TahoePostBattle:
-	.string "post$"
+	.string "Colfin are such kind Pokemon.\n"
+	.string "I recommend giving yours a\l"
+	.string "Friend Ribbon! I have a friend\l"
+	.string "who is giving them away\l"
+	.string "aboard the S.S. Tidal.$"
 
 DewfordGymNew_Text_HuronIntro:
-	.string "intro$"
+	.string "My Majadijunn and Primeape\n"
+	.string "are eager to HARM!$"
 
 DewfordGymNew_Text_HuronDefeated:
-	.string "defeat$"
+	.string "You parried everything I\n"
+	.string "threw at ya!$"
 
 DewfordGymNew_Text_HuronPostBattle:
-	.string "post$"
+	.string "Primeape can be just as deadly\n"
+	.string "as its evolution, y'know.\l"
+	.string "I didn't evolve mine 'cuz I\l"
+	.string "have a mad vendetta against ghosts.$"
 
 DewfordGymNew_Text_EyreIntro:
-	.string "intro$"
+	.string "I feel as salty as the sea.\n"
+	.string "Maybe this will cheer me up.$"
 
 DewfordGymNew_Text_EyreDefeated:
-	.string "defeat$"
+	.string "That just threw more\n"
+	.string "salt on the wounds...$"
 
 DewfordGymNew_Text_EyrePostBattle:
-	.string "post$"
+	.string "These currents keep splashing\n"
+	.string "RIGHT into my mouth... So, I can't\l"
+	.string "help but feel a little saline.$"
 
 DewfordGymNew_Text_VictoriaIntro:
-	.string "intro$"
+	.string "I, Victoria, will be the\n"
+	.string "victor of this match!$"
 
 DewfordGymNew_Text_VictoriaDefeated:
-	.string "defeat$"
+	.string "You ended up victorious!$"
 
 DewfordGymNew_Text_VictoriaPostBattle:
-	.string "post$"
+	.string "The current feels real good\n"
+	.string "to relax in sometimes!\l"
+	.string "I like me a good lazy river!$"
 
 DewfordGymNew_Text_AlbertIntro:
-	.string "intro$"
+	.string "I, Albert, will be the...\n"
+	.string "uhm, alber? Of this match?$"
 
 DewfordGymNew_Text_AlbertDefeated:
-	.string "defeat$"
+	.string "'Bert is hurtin'...$"
 
 DewfordGymNew_Text_AlbertPostBattle:
-	.string "post$"
+	.string "I need to think up better wordplay.$"
 
 DewfordGymNew_Text_MarcelIntro:
-	.string "intro$"
+	.string "(He's singing.)\p"
+	.string "Ooooo, Shelly, baby...\n"
+	.string "I'll take you out to dinner, maybe...$"
 
 DewfordGymNew_Text_MarcelDefeated:
-	.string "defeat$"
+	.string "Oooo, hey-hey, lady...\n"
+	.string "My name's n-not... Brady?$"
 
 DewfordGymNew_Text_MarcelPostBattle:
-	.string "post$"
+	.string "No, no, no. I'm not getting it right!\n"
+	.string "Shelly won't ever go out with\l"
+	.string "me at this rate!$"
 
 DewfordGymNew_Text_NessieIntro:
-	.string "intro$"
+	.string "(She's singing.)\p"
+	.string "You crashed into my sunken heart,\n"
+	.string "the pearl only my eyes can see...$"
 
 DewfordGymNew_Text_NessieDefeated:
-	.string "defeat$"
+	.string "You're the fresh breeze, the queen\n"
+	.string "of oceans, shores, and the sea...$"
 
 DewfordGymNew_Text_NessiePostBattle:
-	.string "post$"
+	.string "Unlike Marcel, I got to hang\n"
+	.string "out with Shelly already. Heh-heh!$"
 
 DewfordGymNew_Text_WantToStrength:
 	.string "It's a man. A Pokémon\n"
