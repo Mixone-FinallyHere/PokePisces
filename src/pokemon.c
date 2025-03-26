@@ -9271,6 +9271,84 @@ u32 GetFormChangeTargetSpecies(struct Pokemon *mon, u16 method, u32 arg)
 // Returns the current species if no form change is possible
 u32 GetFormChangeTargetSpeciesBoxMon(struct BoxPokemon *boxMon, u16 method, u32 arg)
 {
+    u32 i, j;
+    u16 targetSpecies = SPECIES_NONE;
+    u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
+    const struct FormChange *formChanges = gFormChangeTablePointers[species];
+    u16 heldItem;
+    u32 ability;
+
+    if (formChanges != NULL)
+    {
+        heldItem = GetBoxMonData(boxMon, MON_DATA_HELD_ITEM, NULL);
+        ability = GetAbilityBySpecies(species, GetBoxMonData(boxMon, MON_DATA_ABILITY_NUM, NULL));
+
+        for (i = 0; formChanges[i].method != FORM_CHANGE_TERMINATOR; i++)
+        {
+            if (method == formChanges[i].method && species != formChanges[i].targetSpecies)
+            {
+                switch (method)
+                {
+                case FORM_CHANGE_ITEM_HOLD:
+                    if ((heldItem == formChanges[i].param1 || formChanges[i].param1 == ITEM_NONE)
+                     && (ability == formChanges[i].param2 || formChanges[i].param2 == ABILITY_NONE))
+                        targetSpecies = formChanges[i].targetSpecies;
+                    break;
+                case FORM_CHANGE_ITEM_USE:
+                    if (arg == formChanges[i].param1)
+                    {
+                        switch (formChanges[i].param2)
+                        {
+                        case DAY:
+                            RtcCalcLocalTime();
+                            if (gLocalTime.hours >= 12 && gLocalTime.hours < 24)
+                                targetSpecies = formChanges[i].targetSpecies;
+                            break;
+                        case NIGHT:
+                            RtcCalcLocalTime();
+                            if (gLocalTime.hours >= 0 && gLocalTime.hours < 12)
+                                targetSpecies = formChanges[i].targetSpecies;
+                            break;
+                        default:
+                            targetSpecies = formChanges[i].targetSpecies;
+                            break;
+                        }
+                    }
+                    break;
+                case FORM_CHANGE_MOVE:
+                    if (BoxMonKnowsMove(boxMon, formChanges[i].param1) != formChanges[i].param2)
+                        targetSpecies = formChanges[i].targetSpecies;
+                    break;
+                case FORM_CHANGE_BEGIN_BATTLE:
+                case FORM_CHANGE_END_BATTLE:
+                    if (heldItem == formChanges[i].param1 || formChanges[i].param1 == ITEM_NONE)
+                        targetSpecies = formChanges[i].targetSpecies;
+                    break;
+                case FORM_CHANGE_END_BATTLE_TERRAIN:
+                    if (gBattleTerrain == formChanges[i].param1)
+                        targetSpecies = formChanges[i].targetSpecies;
+                    break;
+                case FORM_CHANGE_WITHDRAW:
+                case FORM_CHANGE_FAINT:
+                    targetSpecies = formChanges[i].targetSpecies;
+                    break;
+                }
+            }
+        }
+    }
+
+    return targetSpecies;
+}
+
+// Returns the current species if no form change is possible
+u32 GetFormChangeTargetSpeciesItemHold(struct Pokemon *mon, u16 method, u32 arg)
+{
+    return GetFormChangeTargetSpeciesItemHoldBoxMon(&mon->box, method, arg);
+}
+
+// Returns the current species if no form change is possible
+u32 GetFormChangeTargetSpeciesItemHoldBoxMon(struct BoxPokemon *boxMon, u16 method, u32 arg)
+{
     u32 i;
     u32 species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
     u32 targetSpecies = species;

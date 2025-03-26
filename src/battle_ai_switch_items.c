@@ -970,7 +970,8 @@ u8 GetMostSuitableMonToSwitchInto(u32 battler)
     s32 lastId = 0; // + 1
     struct Pokemon *party;
     s32 i, j, aliveCount = 0;
-    u32 invalidMons = 0, aceMonId = PARTY_SIZE, aceMonCount = 0;
+    u32 invalidMons = 0, aceMonId = PARTY_SIZE;
+    //, aceMonCount = 0;
 
     if (*(gBattleStruct->monToSwitchIntoId + battler) != PARTY_SIZE)
         return *(gBattleStruct->monToSwitchIntoId + battler);
@@ -1018,7 +1019,7 @@ u8 GetMostSuitableMonToSwitchInto(u32 battler)
         else if (IsAceMon(battler, i))// Save Ace Pokemon for last.
         {
             aceMonId = i;
-            aceMonCount++;
+            //aceMonCount++;
             invalidMons |= gBitTable[i];
         }
         else
@@ -1043,7 +1044,8 @@ u8 GetMostSuitableMonToSwitchInto(u32 battler)
         return bestMonId;
 
      // If ace mon is the last available Pokemon and U-Turn/Volt Switch or Eject Pack/Button was used - switch to the mon.
-    if (aceMonId != PARTY_SIZE && CountUsablePartyMons(battler) <= aceMonCount)
+    if (aceMonId != PARTY_SIZE)
+    //&& CountUsablePartyMons(battler) <= aceMonCount)
     //&& (IsSwitchOutEffect(GetMoveEffect(gLastUsedMove)) || AI_DATA->ejectButtonSwitch || AI_DATA->ejectPackSwitch))
         return aceMonId;
 

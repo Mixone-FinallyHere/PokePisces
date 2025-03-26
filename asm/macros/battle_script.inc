@@ -2514,6 +2514,15 @@
 	.4byte \jumpInstr
 	.endm
 
+	.macro setswitchinabilitysucceed battler:req
+	various \battler, VARIOUS_SET_SWITCH_IN_ABILITY_SUCCEED
+	.endm
+
+	.macro jumpifswitchinabilitysucceed battler:req, jumpInstr:req
+	various \battler, VARIOUS_JUMP_IF_SWITCH_IN_ABILITY_SUCCEED
+	.4byte \jumpInstr
+	.endm
+
 	.macro setacidarmor battler:req
 	various \battler, VARIOUS_SET_ACID_ARMOR
 	.endm
