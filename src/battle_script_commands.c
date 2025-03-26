@@ -10195,6 +10195,15 @@ static void Cmd_various(void)
             gBattlescriptCurrInstr = cmd->nextInstr;
         return;
     }
+    case VARIOUS_JUMP_IF_SWITCH_IN_ABILITY_SUCCEED:
+    {
+        VARIOUS_ARGS(const u8 *jumpInstr);
+        if (gProtectStructs[battler].switchinAbilitySucceed)
+            gBattlescriptCurrInstr = cmd->jumpInstr;
+        else
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        return;
+    }
     case VARIOUS_JUMP_IF_SHIELDS_DOWN_PROTECTED:
     {
         VARIOUS_ARGS(const u8 *jumpInstr);
@@ -13816,6 +13825,12 @@ static void Cmd_various(void)
     {
         VARIOUS_ARGS();
         gProtectStructs[battler].doublesMoveSucceed = TRUE;
+        break;
+    }
+    case VARIOUS_SET_SWITCH_IN_ABILITY_SUCCEED:
+    {
+        VARIOUS_ARGS();
+        gProtectStructs[battler].switchinAbilitySucceed = TRUE;
         break;
     }
     case VARIOUS_SET_ACID_ARMOR:
@@ -19742,9 +19757,6 @@ static void Cmd_tryswapitemsmagician(void)
 {
     CMD_ARGS(const u8 *failInstr);
 
-    gBattlerAttacker = gBattlerAbility;
-    gBattlerTarget = GetBattlerAtPosition(BATTLE_OPPOSITE(GetBattlerPosition(gBattlerAttacker)));
-
     // opponent can't swap items with player in regular battles
     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL
         || (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
@@ -19801,18 +19813,19 @@ static void Cmd_tryswapitemsmagician(void)
         // took a while, but all checks passed and items can be safely swapped
         else
         {
-            u16 oldItemAtk, newItemAtk;
+            u16 oldItemAtk, *newItemAtk;
 
+            newItemAtk = &gBattleStruct->changedItems[gBattlerAttacker];
             oldItemAtk = gBattleMons[gBattlerAttacker].item;
-            newItemAtk = gBattleMons[gBattlerTarget].item;
+            *newItemAtk = gBattleMons[gBattlerTarget].item;
 
-            gBattleMons[gBattlerAttacker].item = newItemAtk;
+            gBattleMons[gBattlerAttacker].item = ITEM_NONE;
             gBattleMons[gBattlerTarget].item = oldItemAtk;
 
-            RecordItemEffectBattle(gBattlerAttacker, ItemId_GetHoldEffect(newItemAtk));
+            RecordItemEffectBattle(gBattlerAttacker, 0);
             RecordItemEffectBattle(gBattlerTarget, ItemId_GetHoldEffect(oldItemAtk));
 
-            BtlController_EmitSetMonData(gBattlerAttacker, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[gBattlerAttacker].item), &gBattleMons[gBattlerAttacker].item);
+            BtlController_EmitSetMonData(gBattlerAttacker, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(*newItemAtk), newItemAtk);
             MarkBattlerForControllerExec(gBattlerAttacker);
 
             BtlController_EmitSetMonData(gBattlerTarget, BUFFER_A, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[gBattlerTarget].item), &gBattleMons[gBattlerTarget].item);
@@ -19823,7 +19836,7 @@ static void Cmd_tryswapitemsmagician(void)
 
             gBattlescriptCurrInstr = cmd->nextInstr;
 
-            PREPARE_ITEM_BUFFER(gBattleTextBuff1, newItemAtk)
+            PREPARE_ITEM_BUFFER(gBattleTextBuff1, *newItemAtk)
             PREPARE_ITEM_BUFFER(gBattleTextBuff2, oldItemAtk)
 
             if (!(sideAttacker == sideTarget && IsPartnerMonFromSameTrainer(gBattlerAttacker)))
@@ -19832,14 +19845,14 @@ static void Cmd_tryswapitemsmagician(void)
                 if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
                     TrySaveExchangedItem(gBattlerAttacker, oldItemAtk);
                 if (GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER)
-                    TrySaveExchangedItem(gBattlerTarget, newItemAtk);
+                    TrySaveExchangedItem(gBattlerTarget, *newItemAtk);
             }
 
-            if (oldItemAtk != ITEM_NONE && newItemAtk != ITEM_NONE)
+            if (oldItemAtk != ITEM_NONE && *newItemAtk != ITEM_NONE)
             {
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ITEM_SWAP_BOTH;  // attacker's item -> <- target's item
             }
-            else if (oldItemAtk == ITEM_NONE && newItemAtk != ITEM_NONE)
+            else if (oldItemAtk == ITEM_NONE && *newItemAtk != ITEM_NONE)
             {
                 if (GetBattlerAbility(gBattlerAttacker) == ABILITY_UNBURDEN && gBattleResources->flags->flags[gBattlerAttacker] & RESOURCE_FLAG_UNBURDEN)
                     gBattleResources->flags->flags[gBattlerAttacker] &= ~RESOURCE_FLAG_UNBURDEN;

@@ -16818,34 +16818,41 @@ BattleScript_SafeguardUnnervePrevented:
 	end3
 
 BattleScript_HeartstringsActivates::
-	saveattacker
 	savetarget
+	showabilitypopup BS_ATTACKER
+	pause B_WAIT_TIME_LONG
+	destroyabilitypopup
+	setbyte gBattlerTarget, 0
+BattleScript_HeartstringsLoop:
+	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_HeartstringsLoopIncrement
+	jumpiftargetally BattleScript_HeartstringsLoopIncrement
+	jumpifabsent BS_TARGET, BattleScript_HeartstringsLoopIncrement
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_AromaVeilHeartstringsPrevented
-	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_TitanicHeartstringsPrevented
 	jumpifsafeguard BattleScript_SafeguardHeartstringsPrevented
-	tryinfatuating BattleScript_HeartstringsEnd
-	call BattleScript_AbilityPopUp
-	status2animation BS_TARGET, STATUS2_INFATUATION
-	printstring STRINGID_PKMNSXINFATUATEDY2
+	jumpifswitchinabilitysucceed BS_ATTACKER, BattleScript_HeartstringsLoopIncrement
+BattleScript_HeartstringsEffect:
+	copybyte sBATTLER, gBattlerAttacker
+	tryinfatuating BattleScript_HeartstringsLoopIncrement
+	printstring STRINGID_PKMNFELLINLOVE
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryDestinyKnotInfatuateAttacker
+	setswitchinabilitysucceed BS_ATTACKER
+BattleScript_HeartstringsLoopIncrement:
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_HeartstringsLoop
 BattleScript_HeartstringsEnd::
-	restoreattacker
+	copybyte sBATTLER, gBattlerAttacker
+	destroyabilitypopup
 	restoretarget
+	pause B_WAIT_TIME_MED
 	end3
 
-BattleScript_AromaVeilHeartstringsPrevented:
+BattleScript_AromaVeilHeartstringsPrevented::
 	call BattleScript_AbilityPopUp
 	call BattleScript_AromaVeilProtectsRet
 	goto BattleScript_HeartstringsEnd
 
-BattleScript_TitanicHeartstringsPrevented:
-	call BattleScript_AbilityPopUp
-	printstring STRINGID_ITDOESNTAFFECT
-	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_HeartstringsEnd
-
-BattleScript_SafeguardHeartstringsPrevented:
+BattleScript_SafeguardHeartstringsPrevented::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_PKMNUSEDSAFEGUARD
 	waitmessage B_WAIT_TIME_LONG
@@ -17179,15 +17186,33 @@ BattleScript_EntrancingAbilityActivates::
 	end3
 
 BattleScript_MagicianAbilityActivates::	
-	jumpifsubstituteblocks BattleScript_MagicianAbilityActivates_End
-	tryswapitemsmagician BattleScript_MagicianAbilityActivates_End
-	call BattleScript_AbilityPopUp	
-	playanimation BS_ATTACKER, B_ANIM_SWITCH_ITEMS	
+	savetarget
+	showabilitypopup BS_ATTACKER
+	pause B_WAIT_TIME_LONG
+	destroyabilitypopup
+	setbyte gBattlerTarget, 0
+BattleScript_MagicianLoop:
+	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_MagicianLoopIncrement
+	jumpiftargetally BattleScript_MagicianLoopIncrement
+	jumpifabsent BS_TARGET, BattleScript_MagicianLoopIncrement
+	jumpifsubstituteblocks BattleScript_MagicianLoopIncrement
+	jumpifswitchinabilitysucceed BS_ATTACKER, BattleScript_MagicianLoopIncrement
+BattleScript_MagicianEffect:
+	copybyte sBATTLER, gBattlerAttacker
+	tryswapitemsmagician BattleScript_MagicianLoopIncrement
+	playanimation BS_ATTACKER, B_ANIM_SWITCH_ITEMS
+	waitanimation
 	printstring STRINGID_PKMNSWITCHEDITEMS
 	waitmessage B_WAIT_TIME_LONG
 	printfromtable gItemSwapStringIds
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_MagicianAbilityActivates_End:
+	setswitchinabilitysucceed BS_ATTACKER
+BattleScript_MagicianLoopIncrement:
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_MagicianLoop
+	copybyte sBATTLER, gBattlerAttacker
+	destroyabilitypopup
+	restoretarget
+	pause B_WAIT_TIME_MED
 	end3
 
 BattleScript_FallingAbilityActivates::
