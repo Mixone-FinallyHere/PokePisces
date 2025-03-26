@@ -15927,7 +15927,7 @@ BattleScript_DampPreventsAftermath::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_PKMNSABILITYPREVENTSABILITY
 	waitmessage B_WAIT_TIME_LONG
-	return
+	end2
 
 BattleScript_MoveUsedIsAsleep::
 	printstring STRINGID_PKMNFASTASLEEP

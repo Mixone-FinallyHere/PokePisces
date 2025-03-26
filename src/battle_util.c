@@ -6689,7 +6689,16 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 VarSet(VAR_TEMP_MOVEEFFECT_CHANCE, moveEffectPercentChance);
                 VarSet(VAR_TEMP_MOVEEFFECT,        extraMoveSecondaryEffect);
 
-                gBattlescriptCurrInstr = BattleScript_DefenderUsedAnExtraMove;
+                if ((battler = IsAbilityOnField(ABILITY_DAMP)))
+                {
+                    gBattleScripting.battler = battler - 1;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_DampPreventsAftermath;
+                }
+                else
+                {
+                    gBattlescriptCurrInstr = BattleScript_DefenderUsedAnExtraMove;
+                }
                 effect++;
             }
             break;
