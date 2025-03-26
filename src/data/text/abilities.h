@@ -1630,9 +1630,9 @@ static const u8 sPowerSpikeDescription[] = _(
     "at half or less.");
 
 static const u8 sArbiterDescription[] = _(
-    "Cuts the HP of all other Pokémon\n"
-    "by 1/5, increasing for each\n"
-    "stat boost on each Pokémon.");
+    "At the end of the turn, cuts the\n"
+    "HP of all other Pokémon based on\n"
+    "how many stat boosts they have.");
 
 static const u8 sSeafarerDescription[] = _(
     "Powers up Water-type moves.");

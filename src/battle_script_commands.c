@@ -1767,7 +1767,7 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
         evasionStage = DEFAULT_STAT_STAGE;
     if (gCurrentMove == MOVE_RAZING_SUN && gDisableStructs[battlerAtk].daybreakCounter > 0)
         evasionStage = DEFAULT_STAT_STAGE;
-    if (evasionStage > DEFAULT_STAT_STAGE && atkAbility == ABILITY_DRACO_FORCE && gBattleMoves[gCurrentMove].type == TYPE_DRAGON && gBattleStruct->ateBoost[battlerAtk])
+    if (evasionStage > DEFAULT_STAT_STAGE && atkAbility == ABILITY_DRACO_FORCE && gBattleStruct->dynamicMoveType == (TYPE_DRAGON | F_DYNAMIC_TYPE_2))
         evasionStage = DEFAULT_STAT_STAGE;
     if (gCurrentMove == MOVE_BULLET_SEED && gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
         evasionStage = DEFAULT_STAT_STAGE;
@@ -1777,7 +1777,7 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
         accStage = DEFAULT_STAT_STAGE;
     if (defHoldEffect == HOLD_EFFECT_WINTAMEL_TEA && gBattleMons[battlerDef].species == SPECIES_POMELONIAN)
         accStage = DEFAULT_STAT_STAGE;
-    if (accStage < DEFAULT_STAT_STAGE && atkAbility == ABILITY_AQUA_HEART && gBattleMoves[gCurrentMove].type == TYPE_WATER && gBattleStruct->ateBoost[battlerAtk])
+    if (accStage < DEFAULT_STAT_STAGE && atkAbility == ABILITY_AQUA_HEART && gBattleStruct->dynamicMoveType == (TYPE_WATER | F_DYNAMIC_TYPE_2))
         accStage = DEFAULT_STAT_STAGE;
     if (accStage < DEFAULT_STAT_STAGE && gCurrentMove == MOVE_AURA_SPHERE)
         accStage = DEFAULT_STAT_STAGE;

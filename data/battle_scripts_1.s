@@ -16885,16 +16885,15 @@ BattleScript_GlaringStaggerLoopIncrement:
 BattleScript_ArbiterActivates::
 	setbyte gBattlerTarget, 0
 BattleScript_ArbiterActivatesLoop:
-	jumpiftargetally BattleScript_ArbiterActivatesIncrement
 	jumpifability BS_TARGET, ABILITY_MAGIC_GUARD, BattleScript_ArbiterActivatesIncrement
 	jumpifability BS_TARGET, ABILITY_SUGAR_COAT, BattleScript_ArbiterActivatesIncrement
 	jumpifterucharmprotected BS_TARGET, BattleScript_ArbiterActivatesIncrement
-	checkstatboosts 1, BattleScript_ArbiterActivatesDmg
-	goto BattleScript_ArbiterActivatesIncrement
+	jumpifabsent BS_TARGET, BattleScript_ArbiterActivatesIncrement
+	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_ArbiterActivatesIncrement
 BattleScript_ArbiterActivatesDmg::
 	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_ArbiterActivates_ShowPopUp
 BattleScript_ArbiterActivates_DmgAfterPopUp:
-	printstring STRINGID_PKMNCUTSHPWITH
+	printstring STRINGID_PKMNCUTSHPWITH2
 	waitmessage B_WAIT_TIME_LONG
 	arbiterdamage
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
@@ -18734,13 +18733,13 @@ BattleScript_Cheese_End2::
 	printstring STRINGID_DEFENDERSSTATROSE
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_Cheese_End2Part2:
-	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE | HITMARKER_PASSIVE_DAMAGE
-	healthbarupdate BS_ATTACKER
-	datahpupdate BS_ATTACKER
 	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
 	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_ATTACKER
-	end2
+	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_TARGET
+	removeitem BS_TARGET
+	return
 
 BattleScript_YellowSodaActivatesRet::
 	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
@@ -18759,9 +18758,10 @@ BattleScript_YellowSodaActivatesRet2:
 BattleScript_YellowSodaActivatesRet3:
 	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
 	waitmessage B_WAIT_TIME_LONG
-	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE | HITMARKER_PASSIVE_DAMAGE
+	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_ATTACKER
-	datahpupdate BS_ATTACKER
+	datahpupdate BS_TARGET
+	removeitem BS_TARGET
 	return
 
 BattleScript_FrothyCheese_End2::
@@ -18775,11 +18775,11 @@ BattleScript_FrothyCheese_End2::
 BattleScript_FrothyCheese_End2Part2:
 	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
 	waitmessage B_WAIT_TIME_LONG
-	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_IGNORE_DISGUISE | HITMARKER_PASSIVE_DAMAGE
+	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_ATTACKER
-	datahpupdate BS_ATTACKER
-	removeitem BS_ATTACKER
-	end2
+	datahpupdate BS_TARGET
+	removeitem BS_TARGET
+	return
 
 BattleScript_A_Thing_Happened::
 	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT

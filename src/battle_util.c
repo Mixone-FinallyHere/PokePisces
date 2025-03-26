@@ -7910,10 +7910,13 @@ bool32 IsMoldBreakerTypeAbility(u32 battler, u32 ability)
     if (gStatuses3[battler] & STATUS3_GASTRO_ACID)
         return FALSE;
 
-    return (ability == ABILITY_MOLD_BREAKER || ability == ABILITY_TERAVOLT || ability == ABILITY_TURBOBLAZE || ability == ABILITY_IGNORANT_BLISS 
+    return (ability == ABILITY_MOLD_BREAKER 
+        || ability == ABILITY_TERAVOLT
+        || ability == ABILITY_TURBOBLAZE
+        || ability == ABILITY_IGNORANT_BLISS
         || (ability == ABILITY_MYCELIUM_MIGHT && gBattleMoves[gCurrentMove].powderMove)
-        || (ability == ABILITY_AQUA_HEART && (gBattleMoves[gCurrentMove].type == TYPE_WATER && gBattleStruct->ateBoost[battler]))
-        || (ability == ABILITY_DRACO_FORCE && (gBattleMoves[gCurrentMove].type == TYPE_DRAGON && gBattleStruct->ateBoost[battler])));
+        || (ability == ABILITY_AQUA_HEART && gBattleStruct->dynamicMoveType == (TYPE_WATER | F_DYNAMIC_TYPE_2))
+        || (ability == ABILITY_DRACO_FORCE && gBattleStruct->dynamicMoveType == (TYPE_DRAGON | F_DYNAMIC_TYPE_2)));
 }
 
 bool32 IsIgnorantBliss(u32 battler, u32 ability)
@@ -12767,7 +12770,7 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
         atkStage = DEFAULT_STAT_STAGE;
     if (GetBattlerHoldEffect(battlerDef, TRUE) == HOLD_EFFECT_WINTAMEL_TEA && gBattleMons[battlerDef].species == SPECIES_POMELONIAN)
         atkStage = DEFAULT_STAT_STAGE;
-    if (atkStage < DEFAULT_STAT_STAGE && atkAbility == ABILITY_AQUA_HEART && moveType == TYPE_WATER && gBattleStruct->ateBoost[battlerAtk])
+    if (atkStage < DEFAULT_STAT_STAGE && atkAbility == ABILITY_AQUA_HEART && gBattleStruct->dynamicMoveType == (TYPE_WATER | F_DYNAMIC_TYPE_2))
         atkStage = DEFAULT_STAT_STAGE;
     if (atkStage < DEFAULT_STAT_STAGE && gCurrentMove == MOVE_AURA_SPHERE)
         atkStage = DEFAULT_STAT_STAGE;
@@ -13100,7 +13103,7 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
     if (GetBattlerHoldEffect(battlerAtk, TRUE) == HOLD_EFFECT_WINTAMEL_TEA && gBattleMons[battlerAtk].species == SPECIES_POMELONIAN)
         defStage = DEFAULT_STAT_STAGE;
     //draco force make normal moves ignore stat changes
-    if (defStage > DEFAULT_STAT_STAGE && atkAbility == ABILITY_DRACO_FORCE && moveType == TYPE_DRAGON && gBattleStruct->ateBoost[battlerAtk])
+    if (defStage > DEFAULT_STAT_STAGE && atkAbility == ABILITY_DRACO_FORCE && gBattleStruct->dynamicMoveType == (TYPE_DRAGON | F_DYNAMIC_TYPE_2))
         defStage = DEFAULT_STAT_STAGE;
     // certain moves also ignore stat changes
     if (gCurrentMove == MOVE_RAZING_SUN && gDisableStructs[battlerAtk].daybreakCounter > 0)
@@ -13315,15 +13318,15 @@ static inline uq4_12_t GetTargetDamageModifier(u32 move, u32 battlerAtk, u32 bat
 
     if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE && GetMoveTargetCount(move, battlerAtk, battlerDef) >= 2)
     {
-        if ((holdEffectDef == HOLD_EFFECT_WIDE_ARMOR) && (GetBattlerAbility(battlerDef) == ABILITY_TELEPATHY && (GetBattlerAbility(battlerAtk) != ABILITY_MOLD_BREAKER || GetBattlerAbility(battlerAtk) != ABILITY_IGNORANT_BLISS)) && IsMoveMultipleTargetAndDamages(move, battlerAtk))
+        if (holdEffectDef == HOLD_EFFECT_WIDE_ARMOR
+        && GetBattlerAbility(battlerDef) == ABILITY_TELEPATHY
+        && IsMoveMultipleTargetAndDamages(move, battlerAtk))
         {
             return UQ_4_12(0.25);
         }
-        else if ((GetBattlerAbility(battlerDef) == ABILITY_TELEPATHY && (GetBattlerAbility(battlerAtk) != ABILITY_MOLD_BREAKER || GetBattlerAbility(battlerAtk) != ABILITY_IGNORANT_BLISS)) && IsMoveMultipleTargetAndDamages(move, battlerAtk))
-        {
-            return UQ_4_12(0.5);
-        }
-        else if (holdEffectDef == HOLD_EFFECT_WIDE_ARMOR && IsMoveMultipleTargetAndDamages(move, battlerAtk))
+        else if ((GetBattlerAbility(battlerDef) == ABILITY_TELEPATHY
+        || holdEffectDef == HOLD_EFFECT_WIDE_ARMOR)
+        && IsMoveMultipleTargetAndDamages(move, battlerAtk))
         {
             return UQ_4_12(0.5);
         }
