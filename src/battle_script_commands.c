@@ -19742,6 +19742,9 @@ static void Cmd_tryswapitemsmagician(void)
 {
     CMD_ARGS(const u8 *failInstr);
 
+    gBattlerAttacker = gBattlerAbility;
+    gBattlerTarget = GetBattlerAtPosition(BATTLE_OPPOSITE(GetBattlerPosition(gBattlerAttacker)));
+
     // opponent can't swap items with player in regular battles
     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL
         || (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))

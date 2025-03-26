@@ -1574,6 +1574,22 @@ u32 TrySetCantSelectMoveBattleScript(u32 battler)
         }
     }
 
+    if (gBattleMoves[move].cantUseTwicePsySwap && move == gLastMoves[battler])
+    {
+        gCurrentMove = move;
+        PREPARE_MOVE_BUFFER(gBattleTextBuff1, gCurrentMove);
+        if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
+        {
+            gPalaceSelectionBattleScripts[battler] = BattleScript_SelectingNotAllowedCurrentMoveInPalace;
+            gProtectStructs[battler].palaceUnableToUseMove = TRUE;
+        }
+        else
+        {
+            gSelectionBattleScripts[battler] = BattleScript_SelectingNotAllowedCurrentMove;
+            limitations++;
+        }
+    }
+
     if (gBattleMoves[move].cantUseTwiceBlooming && move == gLastResultingMoves[battler] && gBattleMons[battler].status1 & STATUS1_BLOOMING)
     {
         gCurrentMove = move;
@@ -1744,6 +1760,8 @@ u8 IsMoveUnusable(u32 battler, u16 move, u8 pp, u16 check)
     else if (check & MOVE_LIMITATION_CHOICE_ITEM && GetBattlerAbility(battler) == ABILITY_ONE_WAY_TRIP && *choicedMove != MOVE_NONE && *choicedMove != MOVE_UNAVAILABLE && *choicedMove != move)
         return TRUE;
     else if (check & MOVE_LIMITATION_CANT_USE_TWICE && gBattleMoves[move].cantUseTwice && move == gLastResultingMoves[battler])
+        return TRUE;
+    else if (check & MOVE_LIMITATION_CANT_USE_TWICE && gBattleMoves[move].cantUseTwicePsySwap && move == gLastMoves[battler])
         return TRUE;
     else if (check & MOVE_LIMITATION_BLOOMING && gBattleMoves[move].cantUseTwiceBlooming && move == gLastResultingMoves[battler] && gBattleMons[battler].status1 & STATUS1_BLOOMING)
         return TRUE;
@@ -5419,8 +5437,8 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         case ABILITY_MAGICIAN:
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
-                gBattlerAttacker = battler;
-                gBattlerTarget = GetBattlerAtPosition(BATTLE_OPPOSITE(GetBattlerPosition(gBattlerAttacker)));
+                gBattlerAbility = gBattlerAttacker = battler;
+                gBattlerTarget = GetBattlerAtPosition(BATTLE_OPPOSITE(GetBattlerPosition(battler)));
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 BattleScriptPushCursorAndCallback(BattleScript_MagicianAbilityActivates);
                 effect++;

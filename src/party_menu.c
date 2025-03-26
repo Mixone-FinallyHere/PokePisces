@@ -6004,7 +6004,7 @@ void ItemUseCB_FormChange_ConsumedOnUse(u8 taskId, TaskFunc task)
 void TryItemHoldFormChange(struct Pokemon *mon)
 {
     u32 currentSpecies = GetMonData(mon, MON_DATA_SPECIES);
-    u32 targetSpecies = GetFormChangeTargetSpecies(mon, FORM_CHANGE_ITEM_HOLD, 0);
+    u32 targetSpecies = GetFormChangeTargetSpeciesItemHold(mon, FORM_CHANGE_ITEM_HOLD, 0);
     if (targetSpecies != currentSpecies)
     {
         PlayCry_NormalNoDucking(targetSpecies, 0, CRY_VOLUME_RS, CRY_VOLUME_RS);
@@ -7275,7 +7275,7 @@ void CursorCb_MoveItemCallback(u8 taskId)
         || GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES) == SPECIES_FLAGUE_PRINCE)
         {
             u32 currentSpecies = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES);
-            u32 targetSpecies = GetFormChangeTargetSpecies(&gPlayerParty[gPartyMenu.slotId], FORM_CHANGE_ITEM_HOLD, 0);
+            u32 targetSpecies = GetFormChangeTargetSpeciesItemHold(&gPlayerParty[gPartyMenu.slotId], FORM_CHANGE_ITEM_HOLD, 0);
             if (targetSpecies != currentSpecies)
             {
                 PlayCry_NormalNoDucking(targetSpecies, 0, CRY_VOLUME_RS, CRY_VOLUME_RS);
@@ -7290,7 +7290,7 @@ void CursorCb_MoveItemCallback(u8 taskId)
         || GetMonData(&gPlayerParty[gPartyMenu.slotId2], MON_DATA_SPECIES) == SPECIES_FLAGUE_PRINCE)
         {
             u32 currentSpecies = GetMonData(&gPlayerParty[gPartyMenu.slotId2], MON_DATA_SPECIES);
-            u32 targetSpecies = GetFormChangeTargetSpecies(&gPlayerParty[gPartyMenu.slotId2], FORM_CHANGE_ITEM_HOLD, 0);
+            u32 targetSpecies = GetFormChangeTargetSpeciesItemHold(&gPlayerParty[gPartyMenu.slotId2], FORM_CHANGE_ITEM_HOLD, 0);
             if (targetSpecies != currentSpecies)
             {
                 PlayCry_NormalNoDucking(targetSpecies, 0, CRY_VOLUME_RS, CRY_VOLUME_RS);
