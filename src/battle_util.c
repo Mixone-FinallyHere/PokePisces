@@ -13697,7 +13697,7 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
             return UQ_4_12(0.5);
         break;
     case ABILITY_BULLETPROOF:
-        if (!IsMoveMakingContact(move, battlerAtk))
+        if (!(IsMoveMakingContact(move, battlerAtk)))
             return UQ_4_12(0.8);
         break;
     case ABILITY_MAGMA_ARMOR:
