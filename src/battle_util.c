@@ -5578,7 +5578,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 }
                 break;
             case ABILITY_VITAL_SPIRIT:
-                if ((gBattleMons[battler].hp <= gBattleMons[battler].maxHP / 2) && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
+                if ((gBattleMons[battler].hp <= gBattleMons[battler].maxHP / 2) && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK) && IsBattlerAlive(battler))
                 {
                     gBattleMoveDamage = gBattleMons[battler].maxHP / 8;
                     if (gBattleMoveDamage == 0)
@@ -5589,14 +5589,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 }
                 break;
             case ABILITY_LOVESICK:
-                if (IsBattlerAlive(battler)
-                && IsBattlerAlive(GetBattlerAtPosition(BATTLE_OPPOSITE(GetBattlerPosition(battler))))
-                && (!(gBattleMons[battler].status2 & STATUS2_INFATUATION))
-                && (!(IsAbilityOnSide(battler, ABILITY_AROMA_VEIL))))
+                if (IsBattlerAlive(battler))
                 {
                     gBattlerAttacker = battler;
-                    gBattlerTarget = GetBattlerAtPosition(BATTLE_OPPOSITE(GetBattlerPosition(battler)));
-                    gBattleMons[battler].status2 |= STATUS2_INFATUATED_WITH(gBattlerTarget);
                     BattleScriptPushCursorAndCallback(BattleScript_LovesickActivates);
                     effect++;
                 }

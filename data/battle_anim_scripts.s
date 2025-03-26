@@ -23808,7 +23808,7 @@ Move_GIANTS_SPEAR::
 	delay 20
 	createvisualtask AnimTask_IsTargetPlayerSide, 0x2
 	jumpargeq 0x7 ANIM_TARGET GiantsSpearOnPlayer
-GiantsSpearOnPlayer:
+GiantsSpearOnOpponent:
 	createsprite gShakeMonOrTerrainSpriteTemplate, ANIM_ATTACKER, 2, 4, 1, 180, 1
 	createvisualtask SoundTask_PlaySE2WithPanning, 5, SE_M_EARTHQUAKE, 0
 	createsprite gGiantsSpearChargingSpriteTemplate, ANIM_ATTACKER, 2, ANIM_ATTACKER
@@ -23868,7 +23868,7 @@ GiantsSpearOnPlayer:
 	blendoff
 	waitforvisualfinish
 	end
-GiantsSpearOnOpponent:
+GiantsSpearOnPlayer:
 	createsprite gShakeMonOrTerrainSpriteTemplate, ANIM_ATTACKER, 2, 4, 1, 180, 1
 	createvisualtask SoundTask_PlaySE2WithPanning, 5, SE_M_EARTHQUAKE, 0
 	createsprite gGiantsSpearChargingOpponentSpriteTemplate, ANIM_ATTACKER, 2, ANIM_ATTACKER

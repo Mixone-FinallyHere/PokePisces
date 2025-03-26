@@ -16412,7 +16412,7 @@ BattleScript_DrizzleActivates::
 BattleScript_DelugeActivates::
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
-	printstring STRINGID_PKMNMADEITRAIN
+	printstring STRINGID_PKMNMADEITRAIN2
 	waitstate
 	playanimation BS_ATTACKER, B_ANIM_RAIN_CONTINUES
 	call BattleScript_ActivateWeatherAbilities
@@ -16421,7 +16421,7 @@ BattleScript_DelugeActivates::
 BattleScript_SunriseActivates::
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
-	printstring STRINGID_PKMNSXINTENSIFIEDSUN
+	printstring STRINGID_PKMNSXINTENSIFIEDSUN2
 	waitstate
 	playanimation BS_ATTACKER, B_ANIM_SUN_CONTINUES
 	call BattleScript_ActivateWeatherAbilities

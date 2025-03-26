@@ -302,6 +302,8 @@ static const u8 sText_PkmnCantUseMoveTaunt[] = _("{B_ATK_NAME_WITH_PREFIX} can't
 static const u8 sText_PkmnCantUseMoveSealed[] = _("{B_ATK_NAME_WITH_PREFIX} can't use the\nsealed {B_CURRENT_MOVE}!\p");
 static const u8 sText_PkmnCantUseMoveThroatChop[] = _("{B_ATK_NAME_WITH_PREFIX} can't use\n{B_CURRENT_MOVE} due to Throat Chop!\p");
 static const u8 sText_PkmnMadeItRain[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nmade it rain!");
+static const u8 sText_PkmnMadeItRain2[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY}\nmade it rain!");
+static const u8 sText_PkmnsXIntensifiedSun2[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY}\nintensified the sun's rays!");
 static const u8 sText_PkmnRaisedSpeed[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nraised its SPEED!");
 static const u8 sText_PkmnProtectedBy[] = _("{B_DEF_NAME_WITH_PREFIX} was protected\nby {B_DEF_ABILITY}!");
 static const u8 sText_PkmnPreventsUsage[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY}\nprevents {B_ATK_NAME_WITH_PREFIX}\lfrom using {B_CURRENT_MOVE}!");
@@ -1888,6 +1890,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_GOTCHAPKMNCAUGHTPLAYERNOMUSIC - BATTLESTRINGS_TABLE_START] = sText_GotchaPkmnCaughtPlayerNoMusic,
     [STRINGID_AIRLOCKACTIVATES - BATTLESTRINGS_TABLE_START] = sText_AirLockActivates,
     [STRINGID_ABILITYLETITUSEMOVETARGET - BATTLESTRINGS_TABLE_START] = sText_AbilityLetItUseMoveTarget,
+    [STRINGID_PKMNMADEITRAIN2 - BATTLESTRINGS_TABLE_START] = sText_PkmnMadeItRain2,
+    [STRINGID_PKMNSXINTENSIFIEDSUN2 - BATTLESTRINGS_TABLE_START] = sText_PkmnsXIntensifiedSun2,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
