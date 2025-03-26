@@ -5410,7 +5410,7 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
     u8 holdEffectParam = ItemId_GetHoldEffectParam(*itemPtr);
 
     sInitialLevel = GetMonData(mon, MON_DATA_LEVEL);
-    if (sInitialLevel != MAX_LEVEL)
+    if (sInitialLevel != MAX_LEVEL && sInitialLevel < GetCurrentLevelCap())
     {
         BufferMonStatsToTaskData(mon, arrayPtr);
         cannotUseEffect = ExecuteTableBasedItemEffect(mon, *itemPtr, gPartyMenu.slotId, 0);
@@ -5510,7 +5510,7 @@ void ItemUseCB_ShellyBrew(u8 taskId, TaskFunc task)
     u8 holdEffectParam = ItemId_GetHoldEffectParam(*itemPtr);
 
     sInitialLevel = GetMonData(mon, MON_DATA_LEVEL);
-    if (sInitialLevel <= GetPreviousLevelCap())
+    if (sInitialLevel < GetPreviousLevelCap())
     {
         BufferMonStatsToTaskData(mon, arrayPtr);
         cannotUseEffect = ExecuteTableBasedItemEffect(mon, *itemPtr, gPartyMenu.slotId, 0);
@@ -5967,7 +5967,7 @@ static void Task_TryItemUseFormChange(u8 taskId)
 bool32 TryItemUseFormChange(u8 taskId, TaskFunc task)
 {
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
-    u16 targetSpecies = GetFormChangeTargetSpecies(mon, FORM_CHANGE_ITEM_USE, gSpecialVar_ItemId);
+    u32 targetSpecies = GetFormChangeTargetSpecies(mon, FORM_CHANGE_ITEM_USE, gSpecialVar_ItemId);
 
     if (targetSpecies != SPECIES_NONE)
     {
@@ -6000,10 +6000,12 @@ void ItemUseCB_FormChange_ConsumedOnUse(u8 taskId, TaskFunc task)
     if (TryItemUseFormChange(taskId, task))
         RemoveBagItem(gSpecialVar_ItemId, 1);
 }
+
 void TryItemHoldFormChange(struct Pokemon *mon)
 {
-    u16 targetSpecies = GetFormChangeTargetSpecies(mon, FORM_CHANGE_ITEM_HOLD, 0);
-    if (targetSpecies != SPECIES_NONE)
+    u32 currentSpecies = GetMonData(mon, MON_DATA_SPECIES);
+    u32 targetSpecies = GetFormChangeTargetSpecies(mon, FORM_CHANGE_ITEM_HOLD, 0);
+    if (targetSpecies != currentSpecies)
     {
         PlayCry_NormalNoDucking(targetSpecies, 0, CRY_VOLUME_RS, CRY_VOLUME_RS);
         SetMonData(mon, MON_DATA_SPECIES, &targetSpecies);
@@ -7268,6 +7270,37 @@ void CursorCb_MoveItemCallback(u8 taskId)
         // swap the held items
         SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HELD_ITEM, &item2);
         SetMonData(&gPlayerParty[gPartyMenu.slotId2], MON_DATA_HELD_ITEM, &item1);
+
+        if (GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES) == SPECIES_FLAGUE
+        || GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES) == SPECIES_FLAGUE_PRINCE)
+        {
+            u32 currentSpecies = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES);
+            u32 targetSpecies = GetFormChangeTargetSpecies(&gPlayerParty[gPartyMenu.slotId], FORM_CHANGE_ITEM_HOLD, 0);
+            if (targetSpecies != currentSpecies)
+            {
+                PlayCry_NormalNoDucking(targetSpecies, 0, CRY_VOLUME_RS, CRY_VOLUME_RS);
+                SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES, &targetSpecies);
+                FreeAndDestroyMonIconSprite(&gSprites[sPartyMenuBoxes[gPartyMenu.slotId].monSpriteId]);
+                CreatePartyMonIconSpriteParameterized(targetSpecies, GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_PERSONALITY, NULL), &sPartyMenuBoxes[gPartyMenu.slotId], 1);
+                CalculateMonStats(&gPlayerParty[gPartyMenu.slotId]);
+                UpdatePartyMonHeldItemSprite(&gPlayerParty[gPartyMenu.slotId], &sPartyMenuBoxes[gPartyMenu.slotId]);
+            }
+        }
+        if (GetMonData(&gPlayerParty[gPartyMenu.slotId2], MON_DATA_SPECIES) == SPECIES_FLAGUE
+        || GetMonData(&gPlayerParty[gPartyMenu.slotId2], MON_DATA_SPECIES) == SPECIES_FLAGUE_PRINCE)
+        {
+            u32 currentSpecies = GetMonData(&gPlayerParty[gPartyMenu.slotId2], MON_DATA_SPECIES);
+            u32 targetSpecies = GetFormChangeTargetSpecies(&gPlayerParty[gPartyMenu.slotId2], FORM_CHANGE_ITEM_HOLD, 0);
+            if (targetSpecies != currentSpecies)
+            {
+                PlayCry_NormalNoDucking(targetSpecies, 0, CRY_VOLUME_RS, CRY_VOLUME_RS);
+                SetMonData(&gPlayerParty[gPartyMenu.slotId2], MON_DATA_SPECIES, &targetSpecies);
+                FreeAndDestroyMonIconSprite(&gSprites[sPartyMenuBoxes[gPartyMenu.slotId2].monSpriteId]);
+                CreatePartyMonIconSpriteParameterized(targetSpecies, GetMonData(&gPlayerParty[gPartyMenu.slotId2], MON_DATA_PERSONALITY, NULL), &sPartyMenuBoxes[gPartyMenu.slotId2], 1);
+                CalculateMonStats(&gPlayerParty[gPartyMenu.slotId2]);
+                UpdatePartyMonHeldItemSprite(&gPlayerParty[gPartyMenu.slotId2], &sPartyMenuBoxes[gPartyMenu.slotId2]);
+            }
+        }
 
         // update the held item icons
         UpdatePartyMonHeldItemSprite(

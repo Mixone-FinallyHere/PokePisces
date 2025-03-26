@@ -5,7 +5,6 @@
     F(REST) \
     F(WILL_O_WISP) \
     F(TOXIC) \
-    F(SPOOK) \
     F(GLACIATE) \
     F(THUNDER_WAVE) \
     F(TRICK_ROOM) \
@@ -21,6 +20,7 @@
     F(REFLECT) \
     F(FEAR_FACTOR) \
     F(FALSE_SWIPE) \
+    F(SPOOK) \
     F(GYRO_BALL) \
     F(NUZZLE) \
     F(ROLLOUT) \
@@ -49,6 +49,7 @@
     F(VENOSHOCK) \
     F(TROP_KICK) \
     F(RETALIATE) \
+    F(SHADOW_CLAW) \
     F(AURORA_BEAM) \
     F(SPIRIT_BREAK) \
     F(BRICK_BREAK) \
@@ -66,7 +67,6 @@
     F(DIRE_CLAW) \
     F(THROAT_CHOP) \
     F(COOL_MIST) \
-    F(SHADOW_CLAW) \
     F(ZEN_HEADBUTT) \
     F(LUNGE) \
     F(FIRE_LASH) \

@@ -1025,7 +1025,7 @@ static const struct TrainerMon sParty_PLiza[] = {
     .heldItem = ITEM_CURSED_AMULET,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(28, 0, 0, 0, 44, 48),
-    .moves = {MOVE_PUNISHMENT, MOVE_DREAM_EATER, MOVE_DARK_VOID, MOVE_CHILLY_AIR},
+    .moves = {MOVE_PUNISHMENT, MOVE_DREAM_EATER, MOVE_DARK_VOID, MOVE_ICE_SHARD},
     .nature = NATURE_QUIET,
     },
     {
@@ -1392,6 +1392,7 @@ static const struct TrainerMon sParty_PToby[] = {
     .ev = TRAINER_PARTY_EVS(32, 32, 32, 32, 32, 32),
     .species = SPECIES_POMELONIAN,
     .nickname = COMPOUND_STRING("DOG"),
+    .heldItem = ITEM_WINTAMEL_TEA,
     }
 };
 
@@ -3826,7 +3827,7 @@ static const struct TrainerMon sParty_PDessAndEmber[] = {
     },
     {
     .species = SPECIES_ORROCAST,
-    .ability = ABILITY_DRIZZLE,
+    .ability = ABILITY_DELUGE,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(52, 52, 52, 52, 52, 52),
     .lvl = 32,
@@ -3853,7 +3854,7 @@ static const struct TrainerMon sParty_PDessAndEmber[] = {
 static const struct TrainerMon sParty_PSunny[] = {
     {
     .species = SPECIES_SOLASU,
-    .ability = ABILITY_DROUGHT,
+    .ability = ABILITY_SUNRISE,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(52, 52, 52, 52, 52, 52),
     .lvl = 33,
@@ -4421,7 +4422,7 @@ static const struct TrainerMon sParty_PSakurai[] = {
     },
     {
     .species = SPECIES_ORROCAST,
-    .ability = ABILITY_DRIZZLE,
+    .ability = ABILITY_DELUGE,
     .heldItem = ITEM_BATTLE_HELM,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(52, 52, 52, 52, 52, 52),
@@ -7769,6 +7770,7 @@ static const struct TrainerMon sParty_PMandalore[] = {
     },
     {
     .species = SPECIES_POMELONIAN,
+    .heldItem = ITEM_WINTAMEL_TEA,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(72, 72, 72, 72, 72, 72),
     .lvl = 46,
@@ -7798,6 +7800,7 @@ static const struct TrainerMon sParty_PBeast[] = {
     },
     {
     .species = SPECIES_POMELONIAN,
+    .heldItem = ITEM_WINTAMEL_TEA,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(72, 72, 72, 72, 72, 72),
     .lvl = 47,
@@ -8621,7 +8624,7 @@ static const struct TrainerMon sParty_PLuna[] = {
 static const struct TrainerMon sParty_PMagnus[] = {
     {
     .species = SPECIES_OROFLOW,
-    .ability = ABILITY_DRIZZLE,
+    .ability = ABILITY_DELUGE,
     .heldItem = ITEM_DAMP_ROCK,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(72, 72, 72, 72, 72, 72),
@@ -8755,6 +8758,7 @@ static const struct TrainerMon sParty_PHuron[] = {
     {
     .species = SPECIES_PRIMEAPE,
     .ability = ABILITY_VITAL_SPIRIT,
+    .heldItem = ITEM_PUNCHING_GLOVE,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(72, 72, 72, 72, 72, 72),
     .lvl = 50,
@@ -8819,7 +8823,7 @@ static const struct TrainerMon sParty_PAlbert[] = {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(72, 72, 72, 72, 72, 72),
     .lvl = 50,
-    .moves = {MOVE_POISON_DART, MOVE_DRAIN_PUNCH, MOVE_PARTING_SHOT, MOVE_CLOSE_COMBAT},
+    .moves = {MOVE_POISON_DART, MOVE_DRAIN_PUNCH, MOVE_KNOCK_OFF, MOVE_CLOSE_COMBAT},
     },
     {
     .species = SPECIES_GHAERIAL,
@@ -12409,7 +12413,7 @@ static const struct TrainerMon sParty_PIngrid[] = {
 static const struct TrainerMon sParty_PBlaiseAndMar[] = {
     {
     .species = SPECIES_SUMMERASU,
-    .ability = ABILITY_DROUGHT,
+    .ability = ABILITY_SUNRISE,
     .heldItem = ITEM_HEAT_ROCK,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(84, 84, 84, 84, 84, 84),
@@ -12418,7 +12422,7 @@ static const struct TrainerMon sParty_PBlaiseAndMar[] = {
     },
     {
     .species = SPECIES_ORROWHELM,
-    .ability = ABILITY_DRIZZLE,
+    .ability = ABILITY_DELUGE,
     .heldItem = ITEM_DAMP_ROCK,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(84, 84, 84, 84, 84, 84),
@@ -12625,7 +12629,7 @@ static const struct TrainerMon sParty_PErkinAndKaya[] = {
     },
     {
     .species = SPECIES_SUMMERASU,
-    .ability = ABILITY_DROUGHT,
+    .ability = ABILITY_SUNRISE,
     .heldItem = ITEM_SHELL_BELL,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 0, 0, 0, 240, 0),
@@ -13644,7 +13648,7 @@ static const struct TrainerMon sParty_POphelia[] = {
     {
     .species = SPECIES_GOURDOUG,
     .ability = ABILITY_GUARD_DOG,
-    .heldItem = ITEM_BURNT_BRANCH,
+    .heldItem = ITEM_HONDEW_BERRY,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 240, 0, 0, 0, 0),
     .lvl = 76,
@@ -13675,7 +13679,7 @@ static const struct TrainerMon sParty_PKumqot[] = {
     .heldItem = ITEM_RABUTA_BERRY,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 120, 0, 240, 120, 0),
-    .lvl = 80,
+    .lvl = 74,
     .moves = {MOVE_FAKE_TEARS, MOVE_BELCH, MOVE_TORMENT, MOVE_HIT_N_RUN},
     },
     {
@@ -13684,7 +13688,7 @@ static const struct TrainerMon sParty_PKumqot[] = {
     .heldItem = ITEM_BRIGHT_POWDER,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 0, 0, 240, 240, 0),
-    .lvl = 80,
+    .lvl = 74,
     .moves = {MOVE_FREEZING_GLARE, MOVE_OMINOUS_WIND, MOVE_CONFUSE_RAY, MOVE_TOXIC},
     },
     {
@@ -13693,7 +13697,7 @@ static const struct TrainerMon sParty_PKumqot[] = {
     .heldItem = ITEM_LOST_MANTLE,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 0, 120, 0, 0, 120),
-    .lvl = 81,
+    .lvl = 74,
     .moves = {MOVE_ATTACK_ORDER, MOVE_DEFEND_ORDER, MOVE_HEAL_ORDER, MOVE_FOLLOW_ME},
     }
 };
@@ -13705,7 +13709,7 @@ static const struct TrainerMon sParty_PDorian[] = {
     .heldItem = ITEM_COVERT_CLOAK,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 240, 0, 0, 0, 0),
-    .lvl = 80,
+    .lvl = 74,
     .moves = {MOVE_METAL_CLAW, MOVE_ZEN_HEADBUTT, MOVE_NO_RETREAT, MOVE_ICE_FANG},
     },
     {
@@ -13714,7 +13718,7 @@ static const struct TrainerMon sParty_PDorian[] = {
     .heldItem = ITEM_KELPSY_BERRY,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 0, 0, 240, 240, 0),
-    .lvl = 80,
+    .lvl = 74,
     .moves = {MOVE_GEO_PULSE, MOVE_ICE_BEAM, MOVE_DARK_PULSE, MOVE_TERRAIN_PULSE},
     },
     {
@@ -13723,7 +13727,7 @@ static const struct TrainerMon sParty_PDorian[] = {
     .heldItem = ITEM_CHOICE_SPECS,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 0, 0, 240, 240, 0),
-    .lvl = 81,
+    .lvl = 74,
     .moves = {MOVE_BLEAKWIND_STORM, MOVE_NONE, MOVE_NONE, MOVE_NONE},
     }
 };
@@ -13735,7 +13739,7 @@ static const struct TrainerMon sParty_PLytxi[] = {
     .heldItem = ITEM_COVERT_CLOAK,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 240, 0, 0, 240, 0),
-    .lvl = 80,
+    .lvl = 74,
     .moves = {MOVE_SANDSTORM, MOVE_RAZOR_BEAM, MOVE_DUNE_SLICER, MOVE_STONE_AXE},
     },
     {
@@ -13743,7 +13747,7 @@ static const struct TrainerMon sParty_PLytxi[] = {
     .heldItem = ITEM_CLEAR_AMULET,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 240, 0, 240, 0, 0),
-    .lvl = 80,
+    .lvl = 74,
     .moves = {MOVE_CINDER_DRILL, MOVE_SHIFT_GEAR, MOVE_DRILL_PECK, MOVE_BOLT_BEAK},
     },
     {
@@ -13753,7 +13757,7 @@ static const struct TrainerMon sParty_PLytxi[] = {
     .heldItem = ITEM_CORNN_BERRY,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 240, 0, 240, 0, 0),
-    .lvl = 81,
+    .lvl = 74,
     .moves = {MOVE_ODOR_SLEUTH, MOVE_BODY_SLAM, MOVE_BLOOD_MOON, MOVE_STRENGTH},
     }
 };
@@ -13765,7 +13769,7 @@ static const struct TrainerMon sParty_PSherimoya[] = {
     .heldItem = ITEM_BRIGHT_POWDER,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 0, 0, 240, 240, 0),
-    .lvl = 80,
+    .lvl = 74,
     .moves = {MOVE_PSYCHIC_NOISE, MOVE_IMPRISON, MOVE_SIGNAL_BEAM, MOVE_DARK_VOID},
     },
     {
@@ -13774,7 +13778,7 @@ static const struct TrainerMon sParty_PSherimoya[] = {
     .heldItem = ITEM_CHOICE_SPECS,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 0, 0, 0, 240, 0),
-    .lvl = 80,
+    .lvl = 74,
     .moves = {MOVE_SHADOW_BALL, MOVE_THUNDERBOLT, MOVE_FLAMETHROWER, MOVE_EARTH_POWER},
     },
     {
@@ -13782,7 +13786,7 @@ static const struct TrainerMon sParty_PSherimoya[] = {
     .heldItem = ITEM_HONDEW_BERRY,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(240, 0, 0, 0, 240, 0),
-    .lvl = 81,
+    .lvl = 74,
     .moves = {MOVE_FLATTER, MOVE_FEAR_FACTOR, MOVE_MIND_BREAK, MOVE_DETECT},
     },
 };
@@ -14332,7 +14336,7 @@ static const struct TrainerMon sParty_PFlannery[] = {
     },
     {
     .species = SPECIES_SOLASU,
-    .ability = ABILITY_DROUGHT,
+    .ability = ABILITY_SUNRISE,
     .heldItem = ITEM_FLOAT_STONE,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 0, 0, 168, 152, 0),
@@ -15363,7 +15367,7 @@ static const struct TrainerMon sParty_PCourtney2[] = {
 static const struct TrainerMon sParty_PShelly2[] = {
     {
     .species = SPECIES_ORROWHELM,
-    .ability = ABILITY_DRIZZLE,
+    .ability = ABILITY_DELUGE,
     .heldItem = ITEM_DAMP_ROCK,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(252, 252, 4, 0, 0, 0),

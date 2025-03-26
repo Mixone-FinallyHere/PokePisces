@@ -1558,7 +1558,7 @@ u32 AI_GetBattlerMoveTargetType(u32 battlerId, u32 move)
         return MOVE_TARGET_BOTH;
     else if (gCurrentMove == MOVE_LEAF_STORM && (gBattleMons[battlerId].status1 & STATUS1_BLOOMING))
         return MOVE_TARGET_BOTH;
-    else if (gCurrentMove == MOVE_DOUBLE_SHOCK && (gStatuses4[battlerId] & STATUS4_SUPERCHARGED) && (gStatuses4[battlerId] & STATUS4_GEARED_UP))
+    else if (gCurrentMove == MOVE_DOUBLE_SHOCK && gStatuses4[battlerId] & STATUS4_SUPERCHARGED && gStatuses4[battlerId] & STATUS4_GEARED_UP)
         return MOVE_TARGET_FOES_AND_ALLY;
     else if ((gBattleMoves[gCurrentMove].effect == EFFECT_CANNONADE) && (gBattleMons[battlerId].hp <= (gBattleMons[battlerId].maxHP / 4)))
         return MOVE_TARGET_FOES_AND_ALLY;
@@ -1846,6 +1846,7 @@ bool32 ShouldSetRain(u32 battlerAtk, u32 atkAbility, u32 holdEffect)
     if (holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA
      && (atkAbility == ABILITY_SWIFT_SWIM
       || atkAbility == ABILITY_FORECAST
+      || atkAbility == ABILITY_DELUGE
       || atkAbility == ABILITY_HYDRATION
       || atkAbility == ABILITY_RAIN_DISH
       || atkAbility == ABILITY_DRY_SKIN
@@ -1869,6 +1870,7 @@ bool32 ShouldSetSun(u32 battlerAtk, u32 atkAbility, u32 holdEffect)
     if (holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA
      && (atkAbility == ABILITY_CHLOROPHYLL
       || atkAbility == ABILITY_FLOWER_GIFT
+      || atkAbility == ABILITY_SUNRISE
       || atkAbility == ABILITY_FORECAST
       || atkAbility == ABILITY_LEAF_GUARD
       || atkAbility == ABILITY_SOLAR_POWER
@@ -3065,7 +3067,7 @@ bool32 IsBattlerIncapacitated(u32 battler, u32 ability)
     if (gBattleMons[battler].status1 & STATUS1_SLEEP_ANY)
         return TRUE;
 
-    if (gBattleMons[battler].status2 & STATUS2_RECHARGE || gStatuses4[battler] & STATUS4_RECHARGE_REDUCE || gStatuses4[battler] & STATUS4_RECHARGE_BURN || (ability == ABILITY_TRUANT && gDisableStructs[battler].truantCounter != 0))
+    if (gBattleMons[battler].status2 & STATUS2_RECHARGE || gStatuses4[battler] & STATUS4_RECHARGE_REDUCE || gStatuses4[battler] & STATUS4_RECHARGE_BURN || gStatuses4[battler] & STATUS4_RECHARGE_STATS || (ability == ABILITY_TRUANT && gDisableStructs[battler].truantCounter != 0))
         return TRUE;
 
     return FALSE;

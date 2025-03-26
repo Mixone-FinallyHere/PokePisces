@@ -4294,7 +4294,8 @@ static void HandleTurnActionSelectionState(void)
                     if (gBattleMons[battler].status2 & STATUS2_MULTIPLETURNS
                         || gBattleMons[battler].status2 & STATUS2_RECHARGE 
                         || gStatuses4[battler] & STATUS4_RECHARGE_REDUCE
-                        || gStatuses4[battler] & STATUS4_RECHARGE_BURN)
+                        || gStatuses4[battler] & STATUS4_RECHARGE_BURN
+                        || gStatuses4[battler] & STATUS4_RECHARGE_STATS)
                     {
                         gChosenActionByBattler[battler] = B_ACTION_USE_MOVE;
                         gBattleCommunication[battler] = STATE_WAIT_ACTION_CONFIRMED_STANDBY;
@@ -4443,6 +4444,7 @@ static void HandleTurnActionSelectionState(void)
                     if (gBattleMons[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))].status2 & STATUS2_MULTIPLETURNS
                         || gBattleMons[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))].status2 & STATUS2_RECHARGE
                         || gStatuses4[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))] & STATUS4_RECHARGE_REDUCE
+                        || gStatuses4[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))] & STATUS4_RECHARGE_STATS
                         || gStatuses4[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))] & STATUS4_RECHARGE_BURN)
                     {
                         BtlController_EmitEndBounceEffect(battler, BUFFER_A);
@@ -4807,6 +4809,8 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
             speed *= 2;
         else if (ability == ABILITY_CHLOROPHYLL && gBattleWeather & B_WEATHER_SUN)
             speed *= 2;
+        else if (ability == ABILITY_SUNRISE && gBattleWeather & B_WEATHER_RAIN)
+            speed *= 1.3;
         else if (ability == ABILITY_SAND_RUSH && gBattleWeather & B_WEATHER_SANDSTORM)
             speed *= 2;
         else if (ability == ABILITY_SLUSH_RUSH && (gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW)))
@@ -5306,6 +5310,7 @@ static void TurnValuesCleanUp(bool8 var0)
                     gBattleMons[i].status2 &= ~STATUS2_RECHARGE;
                     gStatuses4[i] &= ~STATUS4_RECHARGE_REDUCE;
                     gStatuses4[i] &= ~STATUS4_RECHARGE_BURN;
+                    gStatuses4[i] &= ~STATUS4_RECHARGE_STATS;
                 }
             }
         }

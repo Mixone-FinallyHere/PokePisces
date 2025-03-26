@@ -433,9 +433,9 @@ static const u8 sHydrationDescription[] = _(
     "conditions cured in rain.");
 
 static const u8 sSolarPowerDescription[] = _(
-    "In harsh sunlight, deals more\n"
-    "and takes less damage based on\n"
-    "HP lost. Loses HP every turn.");
+    "In harsh sunlight, gains\n"
+    "daybreak. Also hurts every other\n"
+    "Pokémon per daybreak gained.");
 
 static const u8 sQuickFeetDescription[] = _(
     "Boosts the Speed stat if the\n"
@@ -1452,8 +1452,7 @@ static const u8 sSugarCoatDescription[] = _(
 
 static const u8 sTimeTurnDescription[] = _(
     "When the Pokémon enters battle,\n"
-    "it creates a bizarre area where\n"
-    "slower Pokémon move first.");
+    "summons Trick Room for 3 turns.");
 
 static const u8 sTitanicDescription[] = _(
     "The Pokémon is so humongous it\n"
@@ -1631,9 +1630,9 @@ static const u8 sPowerSpikeDescription[] = _(
     "at half or less.");
 
 static const u8 sArbiterDescription[] = _(
-    "Cuts the HP of all other Pokémon\n"
-    "by 1/5, increasing for each\n"
-    "stat boost on each Pokémon.");
+    "At the end of the turn, cuts the\n"
+    "HP of all other Pokémon based on\n"
+    "how many stat boosts they have.");
 
 static const u8 sSeafarerDescription[] = _(
     "Powers up Water-type moves.");
@@ -1727,6 +1726,16 @@ static const u8 sReformDescription[] = _(
     "When the Pokémon is hit by an\n"
     "attacking move, becomes resisted\n"
     "to that type afterwards.");
+
+static const u8 sSunriseDescription[] = _(
+    "At 2/5 HP or less, turns the\n"
+    "sunlight harsh. Boosts the\n"
+    "Pokémon's Speed in it.");
+
+static const u8 sDelugeDescription[] = _(
+    "At 2/5 HP or less, makes it\n"
+    "rain. Traps opposing Pokémon and\n"
+    "damages them in rain.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -2118,6 +2127,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_RUIN_WARD] = _("Ruin Ward"),
     [ABILITY_GRAVITY_WELL] = _("Gravity Well"),
     [ABILITY_REFORM] = _("Reform"),
+    [ABILITY_SUNRISE] = _("Sunrise"),
+    [ABILITY_DELUGE] = _("Deluge"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -2509,6 +2520,8 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_RUIN_WARD] = _("Ruin Ward"),
     [ABILITY_GRAVITY_WELL] = _("Gravity Well"),
     [ABILITY_REFORM] = _("Reform"),
+    [ABILITY_SUNRISE] = _("Sunrise"),
+    [ABILITY_DELUGE] = _("Deluge"),
 };
 #endif
 
@@ -2901,4 +2914,6 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_RUIN_WARD] = sRuinWardDescription,
     [ABILITY_GRAVITY_WELL] = sGravityWellDescription,
     [ABILITY_REFORM] = sReformDescription,
+    [ABILITY_SUNRISE] = sSunriseDescription,
+    [ABILITY_DELUGE] = sDelugeDescription,
 };

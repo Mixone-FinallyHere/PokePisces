@@ -624,6 +624,9 @@ const struct SpriteTemplate gVoltSwitchSpriteTemplate =
 // functions
 static void AnimLightning(struct Sprite *sprite)
 {
+    if (gAnimMoveIndex == MOVE_DOUBLE_SHOCK && IsDoubleBattle()) 
+        SetAverageBattlerPositions(gBattleAnimTarget, FALSE, &sprite->x, &sprite->y);
+
     if (GetBattlerSide(gBattleAnimAttacker) != B_SIDE_PLAYER)
         sprite->x -= gBattleAnimArgs[0];
     else

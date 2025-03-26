@@ -4081,7 +4081,9 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         else
 #endif
         {
-            u32 totalRerolls = 16;
+            u32 totalRerolls = 15;
+            if (CheckBagHasItem(ITEM_SHINY_CHARM, 1))
+                totalRerolls += I_SHINY_CHARM_ADDITIONAL_ROLLS;
 
             while (GET_SHINY_VALUE(value, personality) >= SHINY_ODDS && totalRerolls > 0)
             {
@@ -7224,7 +7226,7 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_LEVEL_FEMALE_BERSERK_GENE:
-                if (gEvolutionTable[species][i].param <= level && GetMonGender(mon) == MON_FEMALE && evolutionItem == ITEM_BERSERK_GENE)
+                if (gEvolutionTable[species][i].param <= level && GetMonGender(mon) == MON_FEMALE && heldItem == ITEM_BERSERK_GENE)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_LEVEL_MALE_KINGS_ROCK:
@@ -9260,17 +9262,18 @@ u8 GetFormIdFromFormSpeciesId(u16 formSpeciesId)
     return targetFormId;
 }
 
-u16 GetFormChangeTargetSpecies(struct Pokemon *mon, u16 method, u32 arg)
+// Returns the current species if no form change is possible
+u32 GetFormChangeTargetSpecies(struct Pokemon *mon, u16 method, u32 arg)
 {
     return GetFormChangeTargetSpeciesBoxMon(&mon->box, method, arg);
 }
 
-// Returns SPECIES_NONE if no form change is possible
-u16 GetFormChangeTargetSpeciesBoxMon(struct BoxPokemon *boxMon, u16 method, u32 arg)
+// Returns the current species if no form change is possible
+u32 GetFormChangeTargetSpeciesBoxMon(struct BoxPokemon *boxMon, u16 method, u32 arg)
 {
-    u32 i, j;
-    u16 targetSpecies = SPECIES_NONE;
-    u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
+    u32 i;
+    u32 species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
+    u32 targetSpecies = species;
     const struct FormChange *formChanges = gFormChangeTablePointers[species];
     u16 heldItem;
     u32 ability;
@@ -9294,22 +9297,27 @@ u16 GetFormChangeTargetSpeciesBoxMon(struct BoxPokemon *boxMon, u16 method, u32 
                 case FORM_CHANGE_ITEM_USE:
                     if (arg == formChanges[i].param1)
                     {
+                        bool32 pass = TRUE;
                         switch (formChanges[i].param2)
                         {
                         case DAY:
-                            RtcCalcLocalTime();
-                            if (gLocalTime.hours >= 12 && gLocalTime.hours < 24)
-                                targetSpecies = formChanges[i].targetSpecies;
                             break;
                         case NIGHT:
-                            RtcCalcLocalTime();
-                            if (gLocalTime.hours >= 0 && gLocalTime.hours < 12)
-                                targetSpecies = formChanges[i].targetSpecies;
-                            break;
-                        default:
-                            targetSpecies = formChanges[i].targetSpecies;
                             break;
                         }
+
+                        if (formChanges[i].param3 != STATUS1_NONE && GetBoxMonData(boxMon, MON_DATA_STATUS, NULL) & formChanges[i].param3)
+                            pass = FALSE;
+
+                        if (pass)
+                            targetSpecies = formChanges[i].targetSpecies;
+                    }
+                    break;
+                case FORM_CHANGE_ITEM_USE_MULTICHOICE:
+                    if (arg == formChanges[i].param1)
+                    {
+                        if (formChanges[i].param2 == gSpecialVar_Result)
+                            targetSpecies = formChanges[i].targetSpecies;
                     }
                     break;
                 case FORM_CHANGE_MOVE:
@@ -9326,8 +9334,23 @@ u16 GetFormChangeTargetSpeciesBoxMon(struct BoxPokemon *boxMon, u16 method, u32 
                         targetSpecies = formChanges[i].targetSpecies;
                     break;
                 case FORM_CHANGE_WITHDRAW:
+                case FORM_CHANGE_DEPOSIT:
                 case FORM_CHANGE_FAINT:
+                case FORM_CHANGE_DAYS_PASSED:
                     targetSpecies = formChanges[i].targetSpecies;
+                    break;
+                case FORM_CHANGE_STATUS:
+                    if (GetBoxMonData(boxMon, MON_DATA_STATUS, NULL) & formChanges[i].param1)
+                        targetSpecies = formChanges[i].targetSpecies;
+                    break;
+                case FORM_CHANGE_TIME_OF_DAY:
+                    switch (formChanges[i].param1)
+                    {
+                    case DAY:
+                        break;
+                    case NIGHT:
+                        break;
+                    }
                     break;
                 }
             }

@@ -1151,7 +1151,7 @@ static const u8 sSweetScentDescription[] = _(
     "Pokémon's evasiveness.");
 
 static const u8 sIronTailDescription[] = _(
-    "This may boost the user's\n"
+    "This move may boost the user's\n"
     "Defense. Boosted for every\n"
     "Defense boost. Always goes last.");
 
@@ -1236,9 +1236,9 @@ static const u8 sFutureSightDescription[] = _(
     "Ignores half the foe's Sp. Def.");
 
 static const u8 sRockSmashDescription[] = _(
-    "Cuts the foe's Def. If the foe\n"
-    "is Rock-type, always sharply\n"
-    "cuts it. Boosted with friendship.");
+    "Lowers the foe's Def. If the foe\n"
+    "is Rock-type, sharply lowers it.\n"
+    "Boosted with friendship.");
 
 static const u8 sWhirlpoolDescription[] = _(
     "Traps the foe inside a whirlpool\n"
@@ -1560,6 +1560,11 @@ static const u8 sAirCutterDescription[] = _(
 
 static const u8 sOverheatDescription[] = _(
     "The user attacks the foe at full\n"
+    "power. The attack's recoil\n"
+    "harshly drops the user's Sp. Atk.");
+
+static const u8 sDarkTideDescription[] = _(
+    "The user attacks foes at full\n"
     "power. The attack's recoil\n"
     "harshly drops the user's Sp. Atk.");
 
@@ -1951,7 +1956,7 @@ static const u8 sAquaRingDescription[] = _(
 static const u8 sMagnetRiseDescription[] = _(
     "The user levitates using\n"
     "electrically generated magnetism\n"
-    "for 5 turns. Sharply boosts Spd.");
+    "for 5 turns. Boosts Speed.");
 
 static const u8 sFlareBlitzDescription[] = _(
     "A blazing charge that damages\n"
@@ -2878,8 +2883,8 @@ static const u8 sPlayRoughDescription[] = _(
 
 static const u8 sFairyWindDescription[] = _(
     "The user attacks by stirring up\n"
-    "a fairy wind to strike the\n"
-    "target and minimize it.");
+    "a fairy wind to strike targets\n"
+    "and minimize it.");
 
 static const u8 sMoonblastDescription[] = _(
     "Borrowing the power of the moon,\n"
@@ -2963,8 +2968,8 @@ static const u8 sPowderDescription[] = _(
 
 static const u8 sGeomancyDescription[] = _(
     "The user absorbs energy and\n"
-    "sharply raises its Sp. Atk, Sp.\n"
-    "Def, and Spd on the next turn.");
+    "sharply raises its Sp. Atk and\n"
+    "Sp. Def on the next turn.");
 
 static const u8 sMagneticFluxDescription[] = _(
     "The user and ally become super-\n"
@@ -4386,9 +4391,9 @@ static const u8 sExorcismDescription[] = _(
     "effective on Ghost-types.");
 
 static const u8 sLoveTapDescription[] = _(
-    "Confuses and infatuates the foe.\n"
-    "This move goes first, but works\n"
-    "only on the first turn.");
+    "An attack that confuses and\n"
+    "infatuates the foe. This move\n"
+    "works only on the first turn.");
 
 static const u8 sHeatSinkDescription[] = _(
     "The user dissipates the body\n"
@@ -4682,7 +4687,7 @@ static const u8 sPartyTrickDescription[] = _(
 
 static const u8 sMythBusterDescription[] = _(
     "If this move misses, the user is\n"
-    "hurt instead. Critical hits land\n"
+    "hurt instead. Lands critical hits\n"
     "more easily against larger foes.");
 
 static const u8 sDanceManiaDescription[] = _(
@@ -4836,9 +4841,9 @@ static const u8 sMoonBeamDescription[] = _(
     "steals stat boosts.");
 
 static const u8 sHunkerDownDescription[] = _(
-    "The user drastically boosts its\n"
-    "Def and Sp. Def stats. The user\n"
-    "can't move on the next turn.");
+    "Boost Def and Sp. Def and needs\n"
+    "to recharge. On recharge,\n"
+    "sharply boosts Def and Sp. Def.");
 
 static const u8 sShieldsUpDescription[] = _(
     "The user heals HP, cures status\n"
@@ -4917,8 +4922,8 @@ static const u8 sBloodMoonDescription[] = _(
 
 static const u8 sCheeseStealDescription[] = _(
     "The user leaves the first turn,\n"
-    "becoming invulnerable. Comes back\n"
-    "the next with a random cheese.");
+    "becoming invulnerable. Comes\n"
+    "back the next with some cheese.");
 
 static const u8 sDrainPunchDescription[] = _(
     "An energy-draining punch. The\n"
@@ -4942,8 +4947,8 @@ static const u8 sSupercellSlamDescription[] = _(
 
 static const u8 sMindGapDescription[] = _(
     "Goes first and disables the move\n"
-    "the foe is about to use. Fails\n"
-    "if the foe is already disabled.");
+    "the foe is about to use. This\n"
+    "works only on the first turn.");
 
 static const u8 sSweetWhispersDescription[] = _(
     "The user promises great things\n"
@@ -5886,7 +5891,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_HEAT_SINK - 1] = sHeatSinkDescription,
     [MOVE_FROST_NOVA - 1] = sFrostNovaDescription,
     [MOVE_GEM_BLASTER - 1] = sGemBlasterDescription,
-    [MOVE_DARK_TIDE - 1] = sOverheatDescription,
+    [MOVE_DARK_TIDE - 1] = sDarkTideDescription,
     [MOVE_SOLAR_FLARE - 1] = sSolarFlareDescription,
     [MOVE_ODD_STEP - 1] = sOddStepDescription,
     [MOVE_CREEPY_CRAWL - 1] = sCreepyCrawlDescription,
