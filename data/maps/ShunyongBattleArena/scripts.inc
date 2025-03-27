@@ -46,6 +46,8 @@ ShunyongBattleArena_EventScript_CantEscape::
 ShunyongBattleArena_EventScript_ShunyongVictory::
 	lock
 	delay 8
+	setseenmon SPECIES_SHUNYONG
+	setcaughtmon SPECIES_SHUNYONG
 	msgbox ShunyongBattleArena_Text_YouBeatShunyong, MSGBOX_DEFAULT
 	turnobject LOCALID_MAY, DIR_EAST
 	turnobject LOCALID_BRENDAN, DIR_WEST
