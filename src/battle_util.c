@@ -3329,7 +3329,7 @@ u8 DoBattlerEndTurnEffects(void)
                 else
                 {
                     gBattleMons[battler].status1 -= STATUS1_BLOOMING_TURN(1);
-                    BattleScriptExecute(BattleScript_BloomingEnd);
+                    BattleScriptExecute(BattleScript_BloomingHealBlockEnd);
                     effect++;
                 }
             }
@@ -9912,14 +9912,12 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
                 && TARGET_TURN_DAMAGED
                 && CanStartBlooming(gBattlerTarget)
-                && gBattleMons[gBattlerTarget].hp 
-                && RandomPercentage(RNG_HOLD_EFFECT_BLACK_SALAD, atkHoldEffectParam))
+                && gBattleMons[gBattlerTarget].hp)
             {
-                gBattleScripting.battler = gEffectBattler = gBattlerTarget;
-                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUSED_BY_ITEM;
                 gBattleScripting.moveEffect = MOVE_EFFECT_BLOOMING;
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUSED_BY_ITEM;
                 effect++;
             }
             else if (gBattleMoveDamage != 0 // Need to have done damage
@@ -9967,10 +9965,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && moveType == TYPE_GRASS
                 && RandomPercentage(RNG_HOLD_EFFECT_BLACK_GLASSES, 20))
             {
-                gBattleScripting.battler = gEffectBattler = gBattlerTarget;
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUSED_BY_ITEM;
+                gBattleScripting.moveEffect = MOVE_EFFECT_BURN;
                 BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_MoveEffectBurn;
+                gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
                 effect++;
             }
         }
@@ -9992,7 +9990,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 gBattleScripting.moveEffect = MOVE_EFFECT_LONG_NOSE;
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
-                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
             }
         }

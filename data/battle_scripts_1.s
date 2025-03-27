@@ -20300,7 +20300,6 @@ BattleScript_BloomingHpGain::
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
-	tryfaintmon BS_ATTACKER
 	end2
 
 BattleScript_BloomingHpGainEnd::
@@ -20311,11 +20310,16 @@ BattleScript_BloomingHpGainEnd::
 	datahpupdate BS_ATTACKER
 	tryfaintmon BS_ATTACKER
 	waitstate
-BattleScript_BloomingEnd::
 	clearstatus BS_ATTACKER
 	updatestatusicon BS_ATTACKER
 	printstring STRINGID_PKMNSISNOLONGERBLOOMING
     waitmessage B_WAIT_TIME_LONG
+	end2
+
+BattleScript_BloomingHealBlockEnd::
+	printstring STRINGID_PKMNSISBLOOMING
+    waitmessage B_WAIT_TIME_LONG
+	statusanimation BS_ATTACKER
 	end2
 
 @ SHUNYONG
