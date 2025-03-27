@@ -7461,9 +7461,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             break;
         case ABILITY_MADNESS:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-            && gBattleMons[gBattlerTarget].hp != 0 
+            && gBattleMons[gBattlerTarget].hp != 0
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
-            && CanBeConfused(gBattlerAttacker)
+            && CanBeConfused(gBattlerTarget)
             && TARGET_TURN_DAMAGED // Need to actually hit the target
             && RandomPercentage(RNG_POISON_POINT, 15))
             {
