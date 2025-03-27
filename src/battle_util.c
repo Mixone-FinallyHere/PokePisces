@@ -5678,7 +5678,28 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 }
                 break;
             case ABILITY_HYDRATION:
-                if (IsBattlerWeatherAffected(battler, B_WEATHER_RAIN) && !BATTLER_MAX_HP(battler) && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
+                if (IsBattlerWeatherAffected(battler, B_WEATHER_RAIN) 
+                && !BATTLER_MAX_HP(battler)
+                && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK)
+                && (gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE) 
+                && (Random() % 3) == 0)
+                {
+                    BufferStatusCondition(battler, FALSE);
+                    gBattleMons[battler].status1 = 0;
+                    gBattleMons[battler].status2 &= ~STATUS2_NIGHTMARE;
+                    gBattleScripting.battler = battler;
+                    BattleScriptPushCursorAndCallback(BattleScript_HydrationActivates);
+                    BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[battler].status1);
+                    MarkBattlerForControllerExec(battler);
+                    gBattleMoveDamage = gBattleMons[battler].maxHP / (gLastUsedAbility == ABILITY_HYDRATION ? 16 : 8);
+                    if (gBattleMoveDamage == 0)
+                        gBattleMoveDamage = 1;
+                    gBattleMoveDamage *= -1;
+                    effect++;
+                }
+                else if (IsBattlerWeatherAffected(battler, B_WEATHER_RAIN) 
+                && !BATTLER_MAX_HP(battler)
+                && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
                 {
                     BattleScriptPushCursorAndCallback(BattleScript_RainDishActivates);
                     gBattleMoveDamage = gBattleMons[battler].maxHP / (gLastUsedAbility == ABILITY_HYDRATION ? 16 : 8);
@@ -5687,7 +5708,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     gBattleMoveDamage *= -1;
                     effect++;
                 }
-                if (IsBattlerWeatherAffected(battler, B_WEATHER_RAIN) && (gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE) && (Random() % 3) == 0)
+                else if (IsBattlerWeatherAffected(battler, B_WEATHER_RAIN) 
+                && (gBattleMons[battler].status1 & STATUS1_ANY_NEGATIVE) 
+                && (Random() % 3) == 0)
                 {
                     goto ABILITY_HEAL_MON_STATUS;
                 }
@@ -6346,7 +6369,11 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_HARDBOILED:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && TARGET_TURN_DAMAGED && IsBattlerAlive(battler))
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+            && gBattlerAttacker != gBattlerTarget 
+            && TARGET_TURN_DAMAGED && IsBattlerAlive(battler)
+            && CompareStat(battler, STAT_DEF, MAX_STAT_STAGE, CMP_LESS_THAN)
+            && CompareStat(battler, STAT_SPDEF, MAX_STAT_STAGE, CMP_LESS_THAN))
             {
                 if (CalcTypeEffectivenessMultiplier(move, moveType, battler, gBattlerTarget, GetBattlerAbility(gBattlerTarget), FALSE) == UQ_4_12(2.0))
                 {
@@ -6988,10 +7015,10 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
             && gBattleMons[gBattlerAttacker].hp != 0
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
-            && (IsMoveMakingContact(move, gBattlerAttacker))
+            && IsMoveMakingContact(move, gBattlerAttacker)
             && TARGET_TURN_DAMAGED
             && CanGetFrostbite(gBattlerAttacker)
-            && RandomWeighted(RNG_FROZEN, 4, 1))
+            && RandomPercentage(RNG_POISON_POINT, 20))
             {
                 gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_FROSTBITE;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);

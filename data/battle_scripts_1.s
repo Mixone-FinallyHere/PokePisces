@@ -16544,6 +16544,13 @@ BattleScript_AbilityHpHeal:
 	datahpupdate BS_ATTACKER
 	return
 
+BattleScript_HydrationActivates::
+	call BattleScript_AbilityHpHeal
+	printstring STRINGID_PKMNSXCUREDYPROBLEM
+	waitmessage B_WAIT_TIME_LONG
+	updatestatusicon BS_ATTACKER
+	end3
+
 BattleScript_RainDishActivates::
 	call BattleScript_AbilityHpHeal
 	end3
