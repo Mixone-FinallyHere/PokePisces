@@ -16710,7 +16710,6 @@ BattleScript_IntimidateLoopIncrement:
 	end3
 
 BattleScript_IntimidatePreventedByDragon:
-	copybyte sBATTLER, gBattlerTarget
 	printstring STRINGID_PKMNPREVENTSSTATLOSSDRAGON
 	goto BattleScript_IntimidateEffect_WaitString
 
@@ -16862,11 +16861,14 @@ BattleScript_HeartstringsLoop:
 	jumpiftargetally BattleScript_HeartstringsLoopIncrement
 	jumpifabsent BS_TARGET, BattleScript_HeartstringsLoopIncrement
 	jumpifability BS_TARGET_SIDE, ABILITY_AROMA_VEIL, BattleScript_AromaVeilHeartstringsPrevented
+	jumpifability BS_TARGET, ABILITY_TITANIC, BattleScript_HeartstringsPreventedAbility
+	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_HeartstringsPreventedAbility
+	jumpifability BS_TARGET, ABILITY_OBLIVIOUS, BattleScript_HeartstringsPreventedAbility
 	jumpifsafeguard BattleScript_SafeguardHeartstringsPrevented
 	jumpifswitchinabilitysucceed BS_ATTACKER, BattleScript_HeartstringsLoopIncrement
 BattleScript_HeartstringsEffect:
 	copybyte sBATTLER, gBattlerAttacker
-	tryinfatuating BattleScript_HeartstringsLoopIncrement
+	tryinfatuating BattleScript_HeartstringsPrevented
 	printstring STRINGID_PKMNFELLINLOVE
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_TryDestinyKnotInfatuateAttacker
@@ -16891,6 +16893,18 @@ BattleScript_SafeguardHeartstringsPrevented::
 	printstring STRINGID_PKMNUSEDSAFEGUARD
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_HeartstringsEnd
+
+BattleScript_HeartstringsPrevented:
+	printstring STRINGID_ABILITYCANTINFATUATE
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_HeartstringsLoopIncrement
+
+BattleScript_HeartstringsPreventedAbility:
+	copybyte sBATTLER, gBattlerTarget
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNPREVENTSINFATUATIONWITH
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_HeartstringsLoopIncrement
 
 BattleScript_GlaringStaggerActivates::
 	savetarget
@@ -17193,6 +17207,7 @@ BattleScript_RuinWardSafeguardActivates::
 	playanimation BS_ATTACKER, B_ANIM_SAFEGUARD
 	waitanimation
 	printstring STRINGID_ABILITYCOVEREDVEIL
+	waitmessage B_WAIT_TIME_LONG
 	end3
 
 BattleScript_GravityWellActivates::
@@ -17233,7 +17248,7 @@ BattleScript_MagicianLoop:
 	jumpifswitchinabilitysucceed BS_ATTACKER, BattleScript_MagicianLoopIncrement
 BattleScript_MagicianEffect:
 	copybyte sBATTLER, gBattlerAttacker
-	tryswapitemsmagician BattleScript_MagicianLoopIncrement
+	tryswapitemsmagician BattleScript_MagicianPrevented
 	playanimation BS_ATTACKER, B_ANIM_SWITCH_ITEMS
 	waitanimation
 	printstring STRINGID_PKMNSWITCHEDITEMS
@@ -17248,6 +17263,11 @@ BattleScript_MagicianLoopIncrement:
 	restoretarget
 	pause B_WAIT_TIME_MED
 	end3
+
+BattleScript_MagicianPrevented:
+	printstring STRINGID_ABILITYCANTSWAPITEMS
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MagicianLoopIncrement
 
 BattleScript_FallingAbilityActivates::
 	call BattleScript_AbilityPopUp
@@ -20048,7 +20068,6 @@ BattleScript_DisturbLoopIncrement:
 	end3
 
 BattleScript_DisturbPreventedDragon:
-	copybyte sBATTLER, gBattlerTarget
 	printstring STRINGID_PKMNPREVENTSSTATLOSSDRAGON
 	goto BattleScript_DisturbEffect_WaitString
 
