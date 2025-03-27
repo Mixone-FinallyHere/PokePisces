@@ -5082,11 +5082,10 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_GUSTY:
-            if (!gSpecialStatuses[battler].switchInAbilityDone && (!(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_TAILWIND)))
+            if (!(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_TAILWIND))
             {
                 u8 side = GetBattlerSide(gBattlerAttacker);
                 gBattlerAttacker = battler;
-                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 gSideStatuses[side] |= SIDE_STATUS_TAILWIND;
                 gSideTimers[side].tailwindBattlerId = gBattlerAttacker;
                 gSideTimers[side].tailwindTimer = 4;
