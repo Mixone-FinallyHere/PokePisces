@@ -10133,7 +10133,11 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             }
             break;
         case HOLD_EFFECT_THROAT_SPRAY:                                                                                                                                                                                                                         // Does NOT need to be a damaging move
-            if (gProtectStructs[gBattlerAttacker].targetAffected && gBattleMons[gBattlerAttacker].hp != 0 && gBattleMoves[gCurrentMove].soundMove && CompareStat(gBattlerAttacker, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN) && !NoAliveMonsForEitherParty()) // Don't activate if battle will end
+            if (gProtectStructs[gBattlerAttacker].targetAffected 
+                && gBattleMons[gBattlerAttacker].hp != 0 
+                && gBattleMoves[gCurrentMove].soundMove 
+                && CompareStat(gBattlerAttacker, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN) 
+                && !NoAliveMonsForEitherParty()) // Don't activate if battle will end
             {
                 gLastUsedItem = atkItem;
                 gBattleScripting.battler = gBattlerAttacker;
@@ -10144,8 +10148,9 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             }
             break;
         case HOLD_EFFECT_FLIP_COIN:                                                                                                                                                                                                                         // Does NOT need to be a damaging move
-            if (gProtectStructs[gBattlerAttacker].targetAffected 
-                && gBattleMons[gBattlerAttacker].hp != 0 
+            if ((!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
+                && IsBattlerAlive(gBattlerTarget)
+                && TARGET_TURN_DAMAGED
                 && CountBattlerStatIncreases(gBattlerTarget, TRUE) > 0
                 && !NoAliveMonsForEitherParty()) // Don't activate if battle will end
             {
@@ -10158,15 +10163,18 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             break;
         case HOLD_EFFECT_HARD_STONE:    // if use rock type move, next attack on us does 20% less dmg (this turn only)
             if (IsBattlerAlive(gBattlerAttacker)
-                    && gBattleMoves[gCurrentMove].type == TYPE_ROCK
-                    && !gProtectStructs[gBattlerAttacker].hardStoneBoost)
+                && gBattleMoves[gCurrentMove].type == TYPE_ROCK
+                && TARGET_TURN_DAMAGED
+                && !gProtectStructs[gBattlerAttacker].hardStoneBoost)
                 gProtectStructs[gBattlerAttacker].hardStoneBoost = TRUE;
             break;
         case HOLD_EFFECT_MYSTIC_WATER:  // if using water move, 30% chance to undo negative stat changes
             if (IsBattlerAlive(gBattlerAttacker)
             && gBattleMoves[gCurrentMove].type == TYPE_WATER
-            && CountNegativeStatStages(gBattlerAttacker) > 0
-            && RandomPercentage(RNG_HOLD_EFFECT_MYSTIC_WATER, 30)) 
+            && CountBattlerStatDecreases(gBattlerAttacker) > 0
+            && TARGET_TURN_DAMAGED
+            && RandomPercentage(RNG_HOLD_EFFECT_MYSTIC_WATER, 30)
+            && !NoAliveMonsForEitherParty())
             {
                 gBattleScripting.battler = gBattlerAttacker;
                 BattleScriptPushCursor();
