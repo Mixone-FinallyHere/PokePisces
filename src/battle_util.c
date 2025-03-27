@@ -5440,11 +5440,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_GRAVITY_WELL:
-            if (!gFieldStatuses & STATUS_FIELD_GRAVITY
-            && !gSpecialStatuses[battler].switchInAbilityDone)
+            if (!(gFieldStatuses & STATUS_FIELD_GRAVITY))
             {
                 gBattlerAttacker = battler;
-                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 gFieldStatuses |= STATUS_FIELD_GRAVITY;
                 gFieldTimers.gravityTimer = 6;
                 BattleScriptPushCursorAndCallback(BattleScript_GravityWellActivates);
