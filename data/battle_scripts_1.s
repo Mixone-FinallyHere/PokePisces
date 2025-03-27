@@ -9672,23 +9672,25 @@ BattleScript_GravityLoopEnd:
 	jumpifnexttargetvalid BattleScript_GravityLoop
 	end
 
-BattleScript_MindGamesGravityActivated::
+BattleScript_GravityWellActivates::
+	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
-	playanimation BS_BATTLER_0, B_ANIM_GRAVITY
-	printstring STRINGID_GRAVITYINTENSIFIED
+	playanimation BS_ATTACKER, B_ANIM_GRAVITY
+	waitanimation
+	printstring STRINGID_ABILITYINTENSIFIEDGRAVITY
 	waitmessage B_WAIT_TIME_LONG
 	selectfirstvalidtarget
-BattleScript_mindGamesGravityLoop:
+BattleScript_GravityWellGravityLoop:
 	movevaluescleanup
-	jumpifstatus3 BS_TARGET, STATUS3_ON_AIR | STATUS3_MAGNET_RISE | STATUS3_TELEKINESIS, BattleScript_GravityLoopDrop
-	goto BattleScript_mindGamesGravityLoopEnd
-BattleScript_mindGamesGravityLoopDrop:
+	jumpifstatus3 BS_TARGET, STATUS3_ON_AIR | STATUS3_MAGNET_RISE | STATUS3_TELEKINESIS, BattleScript_GravityWellGravityLoopDrop
+	goto BattleScript_GravityWellGravityLoopEnd
+BattleScript_GravityWellGravityLoopDrop:
 	bringdownairbornebattler BS_TARGET
 	printstring STRINGID_GRAVITYGROUNDING
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_mindGamesGravityLoopEnd:
+BattleScript_GravityWellGravityLoopEnd:
 	moveendto MOVEEND_NEXT_TARGET
-	jumpifnexttargetvalid BattleScript_GravityLoop
+	jumpifnexttargetvalid BattleScript_GravityWellGravityLoop
 	end3
 
 BattleScript_EffectRoost:
@@ -17214,15 +17216,6 @@ BattleScript_RuinWardSafeguardActivates::
 	playanimation BS_ATTACKER, B_ANIM_SAFEGUARD
 	waitanimation
 	printstring STRINGID_ABILITYCOVEREDVEIL
-	waitmessage B_WAIT_TIME_LONG
-	end3
-
-BattleScript_GravityWellActivates::
-	pause B_WAIT_TIME_SHORT
-	call BattleScript_AbilityPopUp
-	playanimation BS_ATTACKER, B_ANIM_GRAVITY
-	waitanimation
-	printstring STRINGID_ABILITYINTENSIFIEDGRAVITY
 	waitmessage B_WAIT_TIME_LONG
 	end3
 
