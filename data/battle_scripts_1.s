@@ -675,7 +675,6 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectBlazingSoul             @ EFFECT_BLAZING_SOUL
 	.4byte BattleScript_EffectConfuseHit              @ EFFECT_BARRAGE
 	.4byte BattleScript_EffectRandomStatDropHit       @ EFFECT_PIN_MISSILE
-	.4byte BattleScript_EffectFirebrand               @ EFFECT_FIREBRAND
 	.4byte BattleScript_EffectDefenseDownHit          @ EFFECT_STELLAR_FIST
 	.4byte BattleScript_EffectRechargeBurn            @ EFFECT_RECHARGE_BURN
 	.4byte BattleScript_EffectAirCutter               @ EFFECT_AIR_CUTTER
@@ -1479,10 +1478,6 @@ BattleScript_EffectRechargeBurn::
 	setmoveeffect MOVE_EFFECT_RECHARGE_BURN | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
 	goto BattleScript_HitFromAtkString
 
-BattleScript_EffectFirebrand::
-	setmoveeffect MOVE_EFFECT_FIREBRAND
-	goto BattleScript_EffectHit
-
 BattleScript_EffectRandomStatDropHit::
 	setmoveeffect MOVE_EFFECT_RANDOM_STAT_DROP
 	goto BattleScript_EffectHit
@@ -2171,6 +2166,11 @@ BattleScript_AttackerUsedFirebrand::
 	waitmessage B_WAIT_TIME_LONG
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
+	jumpifsubstituteblocks BattleScript_FirebrandContinue
+	setmoveeffect MOVE_EFFECT_FIREBRAND | MOVE_EFFECT_AFFECTS_USER
+	seteffectwithchance
+BattleScript_FirebrandContinue::
+	setmoveeffect MOVE_EFFECT_FLAME_BURST
 	seteffectwithchance
 	tryfaintmon BS_TARGET
 	jumpiffainted BS_TARGET, TRUE, BattleScript_ExtraExtraMoveEnd

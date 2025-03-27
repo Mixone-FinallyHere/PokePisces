@@ -1359,9 +1359,9 @@ static const u8 sExtremoDescription[] = _(
     "condition.");
 
 static const u8 sFallingDescription[] = _(
-    "The Pokémon lowers the Def, Sp.\n"
-    "Def, and Speed stats of opposing\n"
-    "Pokémon.");
+    "The Pokémon lowers the Attack,\n"
+    "Special Attack, and Speed stats\n"
+    "of opposing Pokémon.");
 
 static const u8 sGoldenMeanDescription[] = _(
     "The Pokémon changes between\n"

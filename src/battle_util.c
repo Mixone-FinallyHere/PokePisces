@@ -7356,7 +7356,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 u16 extraMove = MOVE_FIREBRAND;  //The Extra Move to be used
                 u8 movePower = 0;                  //The Move power, leave at 0 if you want it to be the same as the normal move
                 u8 moveEffectPercentChance  = 100;  //The percent chance of the move effect happening
-                u8 extraMoveSecondaryEffect = MOVE_EFFECT_FIREBRAND;  //Leave at 0 to remove it's secondary effect
+                u8 extraMoveSecondaryEffect = 0;  //Leave at 0 to remove it's secondary effect
                 gTempMove = gCurrentMove;
                 gCurrentMove = extraMove;
                 gMultiHitCounter = 0;
@@ -13193,7 +13193,11 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
         break;
     case ABILITY_WATER_VEIL:
         if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_RAIN) && !usesDefStat)
+        {
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
+            if (updateFlags)
+                RecordAbilityBattle(battlerDef, ABILITY_WATER_VEIL);
+        }
         break;
     case ABILITY_EXTREMO:
         if (gBattleMons[battlerDef].status1 & STATUS1_ANY_NEGATIVE)
