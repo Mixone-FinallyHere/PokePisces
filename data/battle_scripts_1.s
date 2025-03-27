@@ -20276,11 +20276,6 @@ BattleScript_EvilEyeParalysisEffect:
 	setmoveeffect MOVE_EFFECT_PARALYSIS
 	seteffectprimary
 	waitmessage B_WAIT_TIME_LONG
-	saveattacker
-	savetarget
-	copybyte sBATTLER, gBattlerTarget
-	restoreattacker
-	restoretarget
 	goto BattleScript_EvilEyeLoopIncrement
 
 BattleScript_SafeguardEvilEyePrevented:

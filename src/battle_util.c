@@ -5184,6 +5184,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 SET_STATCHANGER(STAT_SPEED, 1, TRUE);
                 BattleScriptPushCursorAndCallback(BattleScript_EvilEyeActivates);
+                gHitMarker |= (HITMARKER_IGNORE_SAFEGUARD | HITMARKER_SYNCHRONIZE_SKIP);
                 effect++;
             }
             break;
@@ -10171,7 +10172,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
         case HOLD_EFFECT_MYSTIC_WATER:  // if using water move, 30% chance to undo negative stat changes
             if (IsBattlerAlive(gBattlerAttacker)
             && gBattleMoves[gCurrentMove].type == TYPE_WATER
-            && CountBattlerStatDecreases(gBattlerAttacker) > 0
+            && CountBattlerStatDecreases(gBattlerAttacker, TRUE) > 0
             && TARGET_TURN_DAMAGED
             && RandomPercentage(RNG_HOLD_EFFECT_MYSTIC_WATER, 30)
             && !NoAliveMonsForEitherParty())
