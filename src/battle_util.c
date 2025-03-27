@@ -5615,7 +5615,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 }
                 break;
             case ABILITY_LOVESICK:
-                if (IsBattlerAlive(battler))
+                if (IsBattlerAlive(battler) && (!(gBattleMons[battler].status2 & STATUS2_INFATUATION)))
                 {
                     gBattlerAttacker = battler;
                     BattleScriptPushCursorAndCallback(BattleScript_LovesickActivates);
@@ -7551,7 +7551,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
             && TARGET_TURN_DAMAGED
             && (IsMoveMakingContact(move, gBattlerAttacker)
-            || gBattleMoves[gCurrentMove].piercingMove))
+            || gBattleMoves[move].piercingMove))
             {
                 gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 16;
                 if (gBattleMoveDamage == 0)
