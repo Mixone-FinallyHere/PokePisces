@@ -123,6 +123,36 @@ PetalburgNew_Movement_BackUp:
 	walk_down
 	step_end
 
+PetalburgNew_EventScript_PetalburgSign::
+    msgbox PetalburgNew_Text_PetalburgSign, MSGBOX_SIGN
+    end
+
+PetalburgNew_EventScript_RustburgSign::
+    msgbox PetalburgNew_Text_RustburgSign, MSGBOX_SIGN
+    end
+
+PetalburgNew_EventScript_WoodsSign::
+    msgbox PetalburgNew_Text_WoodsSign, MSGBOX_SIGN
+    end
+
+PetalburgNew_Text_PetalburgSign:
+	.string "PETALBURG CITY\n"
+	.string "A Vibrant Land of Blossoming Flowers$"
+
+PetalburgNew_Text_RustburgSign:
+	.string "NORTH - RUSTBURG WHARF\n"
+	.string "Named after a fusion of the two\l"
+	.string "cities it connects, the Wharf\l"
+	.string "was a concerted effort to keep\l"
+	.string "travel between Rustboro and\l"
+	.string "Petalburg swift.$"
+
+PetalburgNew_Text_WoodsSign:
+	.string "PETALBURG WOODS AHEAD\n"
+	.string "CAUTION: Petalburg City is NOT\l"
+	.string "responsible for the violence\l"
+	.string "of the Pokemon in the forest.$"
+
 PetalburgNew_Text_NameSteven:
 	.string "Steven$"
 

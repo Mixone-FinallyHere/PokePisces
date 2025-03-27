@@ -58,6 +58,35 @@ OldaleNew_EventScript_MadeYourChoice::
 	release
 	end
 
+OldaleNew_EventScript_OldaleSign::
+    msgbox OldaleNew_Text_OldaleSign, MSGBOX_SIGN
+    end
+
+OldaleNew_EventScript_WoodsSign::
+    msgbox OldaleNew_Text_WoodsSign, MSGBOX_SIGN
+    end
+
+OldaleNew_EventScript_HatchloamSign::
+    msgbox OldaleNew_Text_HatchloamSign, MSGBOX_SIGN
+    end
+
+OldaleNew_EventScript_NovicesWalkSign::
+    msgbox OldaleNew_Text_NovicesWalkSign, MSGBOX_SIGN
+    end
+
+OldaleNew_Text_OldaleSign:
+	.string "OLDALE TOWN\n"
+	.string "Settle down into quiet mundanity.$"
+
+OldaleNew_Text_WoodsSign:
+	.string "PETALBURG WOODS AHEAD$"
+
+OldaleNew_Text_HatchloamSign:
+	.string "NORTH - HATCHLOAM FIELD$"
+
+OldaleNew_Text_NovicesWalkSign:
+	.string "SOUTH - NOVICE'S WALK$"
+
 OldaleNew_Text_PickAChoiceItem:
 	.string "Sometimes in life, you must make\n"
 	.string "hard choices! You cannot just\l"
@@ -81,10 +110,14 @@ OldaleNew_Text_MadeYourChoice:
 	.string "And you must live with that.$"
 
 OldaleNew_Text_NatashaIntro:
-	.string "intro$"
+	.string "Hello! I'm Natasha, an Oldale doctor.\n"
+	.string "Feeling sick?$"
 
 OldaleNew_Text_NatashaDefeated:
-	.string "defeat$"
+	.string "Sick... of trainers encountering\n"
+	.string "you when you want to go heal?$"
 
 OldaleNew_Text_NatashaPostBattle:
-	.string "post$"
+	.string "I know, that was a bit dirty.\n"
+	.string "I apologize. I just thought it\l"
+	.string "would be rather humorous.$"

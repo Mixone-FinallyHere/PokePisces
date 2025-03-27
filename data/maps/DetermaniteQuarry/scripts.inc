@@ -37,64 +37,90 @@ DetermaniteQuarry_EventScript_Michiko::
     end
 
 DetermaniteQuarry_Text_JoshuoneIntro:
-	.string "intro$"
+	.string "You may look like a rookie, but\n"
+	.string "I've never made the mistake\l"
+	.string "of underestimating my opponents.$"
 
 DetermaniteQuarry_Text_JoshuoneDefeated:
-	.string "defeat$"
+	.string "Even with myself being\n"
+	.string "completely prepared...?$"
 
 DetermaniteQuarry_Text_JoshuonePostBattle:
-	.string "post$"
+	.string "That was a good showing.\n"
+	.string "Not many can brag that they\l"
+	.string "bested a well-prepared foe\l"
+	.string "like me.$"
 
 DetermaniteQuarry_Text_AstolfoIntro:
-	.string "intro$"
+	.string "Let's skip the small talk,\n"
+	.string "and get right into the action!$"
 
 DetermaniteQuarry_Text_AstolfoDefeated:
-	.string "defeat$"
+	.string "Hmmm. Not bad!$"
 
 DetermaniteQuarry_Text_AstolfoPostBattle:
-	.string "post$"
+	.string "Have a good day, trainer.\n"
+	.string "It was a pleasure battling you!$"
 
 DetermaniteQuarry_Text_RobertsIntro:
-	.string "intro$"
+	.string "It is simply inconceivable for\n"
+	.string "me to lose this match.$"
 
 DetermaniteQuarry_Text_RobertsDefeated:
-	.string "defeat$"
+	.string "Inconceivable...!$"
 
 DetermaniteQuarry_Text_RobertsPostBattle:
-	.string "post$"
+	.string "Harrumph... the more I keep that\n"
+	.string "word in my lexicon, the less I\l"
+	.string "remember what it even means...$"
 
 DetermaniteQuarry_Text_ButtercupIntro:
-	.string "intro$"
+	.string "It doesn't matter where you run,\n"
+	.string "my Sworduc will track you down.$"
 
 DetermaniteQuarry_Text_ButtercupDefeated:
-	.string "defeat$"
+	.string "I didn't say it could beat you...$"
 
 DetermaniteQuarry_Text_ButtercupPostBattle:
-	.string "post$"
+	.string "Despite how intense it looks,\n"
+	.string "my Sworduc is quite the softie.\l"
+	.string "She's pretty laid back.$"
 
 DetermaniteQuarry_Text_GwunetteIntro:
-	.string "intro$"
+	.string "C-Can you please hold my\n"
+	.string "hand in this dark cave?$"
 
 DetermaniteQuarry_Text_GwunetteDefeated:
-	.string "defeat$"
+	.string "What!? I didn't h-have\n"
+	.string "any ulterior motive!$"
 
 DetermaniteQuarry_Text_GwunettePostBattle:
-	.string "post$"
+	.string "Do not worry, Armagatton...\n"
+	.string "I will get you those you seek...$"
 
 DetermaniteQuarry_Text_CodyIntro:
-	.string "intro$"
+	.string "Roight, bruv. I'm thinkin'\n"
+	.string "you need to go!$"
 
 DetermaniteQuarry_Text_CodyDefeated:
-	.string "defeat$"
+	.string "Thought I could have the\n"
+	.string "cave all to meself!$"
 
 DetermaniteQuarry_Text_CodyPostBattle:
-	.string "post$"
+	.string "Guess I'll letcha\n"
+	.string "poke your nose around.$"
 
 DetermaniteQuarry_Text_MichikoIntro:
-	.string "intro$"
+	.string "From the shadows, I appear!\n"
+	.string "And to the shadows, you will go!$"
 
 DetermaniteQuarry_Text_MichikoDefeated:
-	.string "defeat$"
+	.string "My team forgot the jutsu\n"
+	.string "I'd taught them...$"
 
 DetermaniteQuarry_Text_MichikoPostBattle:
-	.string "post$"
+	.string "I have been trying fruitlessly\n"
+	.string "to make my Pokemon learn a\l"
+	.string "fifth move. I have heard rumblings\l"
+	.string "that Abarbinash has some hidden\l"
+	.string "potential... could that be true?$"

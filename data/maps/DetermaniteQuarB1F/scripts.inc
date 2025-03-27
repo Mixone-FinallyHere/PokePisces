@@ -32,55 +32,72 @@ DetermaniteQuarB1F_EventScript_Grey::
     end
 
 DetermaniteQuarB1F_Text_JigglesIntro:
-	.string "intro$"
+	.string "Honk-honk!$"
 
 DetermaniteQuarB1F_Text_JigglesDefeated:
-	.string "defeat$"
+	.string "Aw, honk...$"
 
 DetermaniteQuarB1F_Text_JigglesPostBattle:
-	.string "post$"
+	.string "Honk!?$"
 
 DetermaniteQuarB1F_Text_DahliaIntro:
-	.string "intro$"
+	.string "Huff-puff...$"
 
 DetermaniteQuarB1F_Text_DahliaDefeated:
-	.string "defeat$"
+	.string "I can't stop panting...\n"
+	.string "I'm too... huff... exhausted...$"
 
 DetermaniteQuarB1F_Text_DahliaPostBattle:
-	.string "post$"
+	.string "I must muster the strength\n"
+	.string "to go a little bit further...!$"
 
 DetermaniteQuarB1F_Text_JuneIntro:
-	.string "intro$"
+	.string "Now presenting... the wonderful,\n"
+	.string "the beautiful... August!$"
 
 DetermaniteQuarB1F_Text_JuneDefeated:
-	.string "defeat$"
+	.string "I can tell August at least\n"
+	.string "tried her best!$"
 
 DetermaniteQuarB1F_Text_JunePostBattle:
-	.string "post$"
+	.string "My partner doesn't need words\n"
+	.string "if I hype her up! She can just\l"
+	.string "focus on her moves!$"
 
 DetermaniteQuarB1F_Text_AugustIntro:
-	.string "intro$"
+	.string "(This Dancer starts ABSOLUTELY\n"
+	.string "breakin' it down. Her moves are\l"
+	.string "so good, you forget that she's\l"
+	.string "about to fight you.)$"
 
 DetermaniteQuarB1F_Text_AugustDefeated:
-	.string "defeat$"
+	.string "(She's still dancing,\n"
+	.string "even in defeat.)$"
 
 DetermaniteQuarB1F_Text_AugustPostBattle:
-	.string "post$"
+	.string "(August is bowing to you.)$"
 
 DetermaniteQuarB1F_Text_MildredIntro:
-	.string "intro$"
+	.string "Awful lot of Relic type Pokemon\n"
+	.string "'round these parts, eh?$"
 
 DetermaniteQuarB1F_Text_MildredDefeated:
-	.string "defeat$"
+	.string "Now, don't go callin' me\n"
+	.string "a Relic, too, whippersnapper!$"
 
 DetermaniteQuarB1F_Text_MildredPostBattle:
-	.string "post$"
+	.string "I was there helpin' ol' Spenser\n"
+	.string "dig up the first evidence of\l"
+	.string "the Relic type. Our first live\l"
+	.string "specimens were here in Granipline\l"
+	.string "Quarry! Fascinating times.$"
 
 DetermaniteQuarB1F_Text_GreyIntro:
-	.string "intro$"
+	.string "What shape do you think\n"
+	.string "is the best of them all?$"
 
 DetermaniteQuarB1F_Text_GreyDefeated:
-	.string "defeat$"
+	.string "Because it should be Octagons.$"
 
 DetermaniteQuarB1F_Text_GreyPostBattle:
-	.string "post$"
+	.string "Octagons are the best-agons.$"

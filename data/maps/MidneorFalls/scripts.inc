@@ -275,31 +275,43 @@ MidneorFalls_Text_GriseldaPostBattle:
 	.string "post$"
 
 MidneorFalls_Text_MorganaIntro:
-	.string "intro$"
+	.string "It's a fruitless endeavor to\n"
+	.string "even try and survive an encounter\l"
+	.string "with me!$"
 
 MidneorFalls_Text_MorganaDefeated:
-	.string "defeat$"
+	.string "Ah, 'twas in fact, fruitful!$"
 
 MidneorFalls_Text_MorganaPostBattle:
-	.string "post$"
+	.string "I still have that Team Aqua\n"
+	.string "aggression in me...!$"
 
 MidneorFalls_Text_ZephyrIntro:
-	.string "intro$"
+	.string "If you're a truly great trainer,\n"
+	.string "you'll thrive no matter the\l"
+	.string "weather, room, or terrain!$"
 
 MidneorFalls_Text_ZephyrDefeated:
-	.string "defeat$"
+	.string "Maybe you have what it takes!$"
 
 MidneorFalls_Text_ZephyrPostBattle:
-	.string "post$"
+	.string "Watch out for Water type Pokemon\n"
+	.string "with Drizzle, and Fire type\l"
+	.string "Pokemon with Drought...\l"
+	.string "they can be particularly deadly.$"
 
 MidneorFalls_Text_AnthreenyIntro:
-	.string "intro$"
+	.string "Hello there, strong-lookin'!\n"
+	.string "Ever heard of “Power Creep”?$"
 
 MidneorFalls_Text_AnthreenyDefeated:
-	.string "defeat$"
+	.string "In that, you're a Creep,\n"
+	.string "with too much Power...$"
 
 MidneorFalls_Text_AnthreenyPostBattle:
-	.string "post$"
+	.string "I would bet that I'm way stronger\n"
+	.string "than the last guy you fought,\l"
+	.string "at least... right?$"
 
 MidneorFalls_Text_SchuliIntro:
 	.string "intro$"
@@ -311,22 +323,32 @@ MidneorFalls_Text_SchuliPostBattle:
 	.string "post$"
 
 MidneorFalls_Text_GerierIntro:
-	.string "intro$"
+	.string "Have you been paying proper\n"
+	.string "attention to your Pokemon's EVs?\l"
+	.string "I strive to have them be perfect!$"
 
 MidneorFalls_Text_GerierDefeated:
-	.string "defeat$"
+	.string "The value of your effort\n"
+	.string "paid off...!$"
 
 MidneorFalls_Text_GerierPostBattle:
-	.string "post$"
+	.string "Maybe you can get away with not\n"
+	.string "investing EVs, who knows.\l"
+	.string "I just know it makes me feel better.$"
 
 MidneorFalls_Text_GonzerosIntro:
-	.string "intro$"
+	.string "As trainers, we must give it\n"
+	.string "our all in every match we accept.$"
 
 MidneorFalls_Text_GonzerosDefeated:
-	.string "defeat$"
+	.string "To think, this battle would end\n"
+	.string "with my loss... it seems I need to\l"
+	.string "zero in on my flaws.$"
 
 MidneorFalls_Text_GonzerosPostBattle:
-	.string "post$"
+	.string "After battle, you must remember\n"
+	.string "that lazing and joking about\l"
+	.string "is natural, and should be encouraged.$"
 
 MidneorFalls_Text_OzoneDoingResearch:
 	.string "Sorry! Can't let you any\n"

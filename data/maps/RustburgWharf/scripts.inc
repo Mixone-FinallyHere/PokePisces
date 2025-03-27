@@ -91,170 +91,265 @@ RustburgWharf_EventScript_Patrick::
     msgbox RustburgWharf_Text_PatrickPostBattle, MSGBOX_AUTOCLOSE
     end
 
+RustburgWharf_EventScript_RustboroSign::
+    msgbox RustburgWharf_Text_RustboroSign, MSGBOX_SIGN
+    end
+
+RustburgWharf_Text_RustboroSign:
+	.string "RUSTBORO CITY GATE$"
+
 RustburgWharf_Text_BritneyIntro:
-	.string "intro$"
+	.string "I'm always eager to walk the piers!\n"
+	.string "No fears on this pier, hee-hee!$"
 
 RustburgWharf_Text_BritneyDefeated:
-	.string "defeat$"
+	.string "Well, that was a shock on this dock!$"
 
 RustburgWharf_Text_BritneyPostBattle:
-	.string "post$"
+	.string "If only I had brought my boat.\n"
+	.string "Then, I could be aghast by the mast!$"
 
 RustburgWharf_Text_CoraIntro:
-	.string "intro$"
+	.string "D'aagghhhh... I keep fishin' up\n"
+	.string "nothin' but trash.\l"
+	.string "Pollutin' punks...$"
 
 RustburgWharf_Text_CoraDefeated:
-	.string "defeat$"
+	.string "Hey, you're trash too.\n"
+	.string "For wastin' my time.\l"
+	.string "...Heh. Waste.$"
 
 RustburgWharf_Text_CoraPostBattle:
-	.string "post$"
+	.string "Please don't go throwin' crud\n"
+	.string "in the ocean. Unless, that is,\l"
+	.string "you wanna start eatin' Grimer\l"
+	.string "for supper...$"
 
 RustburgWharf_Text_MelIntro:
-	.string "intro$"
+	.string "Even lil' minnows can put\n"
+	.string "up a big fight.$"
 
 RustburgWharf_Text_MelDefeated:
-	.string "defeat$"
+	.string "Tryna make me look small?$"
 
 RustburgWharf_Text_MelPostBattle:
-	.string "post$"
+	.string "Some'a my competition always hyper-\n"
+	.string "focus on the big catches.\l"
+	.string "They're missin' the big picture, see.\l"
+	.string "In that time, I can catch\l"
+	.string "a hundred Minote. They'll end\l"
+	.string "up sellin' for more in bulk.$"
 
 RustburgWharf_Text_LineIntro:
-	.string "intro$"
+	.string "Last one I caught was THIS big.\n"
+	.string "Here, I'll show ya.$"
 
 RustburgWharf_Text_LineDefeated:
-	.string "defeat$"
+	.string "I swear, they looked bigger\n"
+	.string "when I reeled 'em in.$"
 
 RustburgWharf_Text_LinePostBattle:
-	.string "post$"
+	.string "Aim big when fishin', kid.\n"
+	.string "You may find yourself surprised.$"
 
 RustburgWharf_Text_HookIntro:
-	.string "intro$"
+	.string "Ah, you fell for my bait!\n"
+	.string "Hook, line, and...!$"
 
 RustburgWharf_Text_HookDefeated:
-	.string "defeat$"
+	.string "Hook... line... and, uhm...$"
 
 RustburgWharf_Text_HookPostBattle:
-	.string "post$"
+	.string "I keep forgetting how...\n"
+	.string "that phrase ends? Strange...$"
 
 RustburgWharf_Text_YukariIntro:
-	.string "intro$"
+	.string "I'm going to major as an actress\n"
+	.string "when I go to college! Let me\l"
+	.string "practice how I am going to look\l"
+	.string "when defeating a foe... on you!$"
 
 RustburgWharf_Text_YukariDefeated:
-	.string "defeat$"
+	.string "Oh, do I still look in character?\n"
+	.string "Did I take my loss well?$"
 
 RustburgWharf_Text_YukariPostBattle:
-	.string "post$"
+	.string "One of these days, I'll be\n"
+	.string "a huge starlet! Watch for me!$"
 
 RustburgWharf_Text_MakotoIntro:
-	.string "intro$"
+	.string "(This guy walks up to you silently,\n"
+	.string "and simply makes a “shooting gun\l"
+	.string "at his head” motion.)$"
 
 RustburgWharf_Text_MakotoDefeated:
-	.string "defeat$"
+	.string "(Makoto quiety accepted his loss.)$"
 
 RustburgWharf_Text_MakotoPostBattle:
-	.string "post$"
+	.string "...$"
 
 RustburgWharf_Text_InigoIntro:
-	.string "intro$"
+	.string "Hello. My name... is Inigo Montoya.\n"
+	.string "You defeated my father.\l"
+	.string "Prepare to lose.$"
 
 RustburgWharf_Text_InigoDefeated:
-	.string "defeat$"
+	.string "I-I was not prepared for\n"
+	.string "you to win.$"
 
 RustburgWharf_Text_InigoPostBattle:
-	.string "post$"
+	.string "Wait, you're saying you never\n"
+	.string "defeated my father?\l"
+	.string "...Then, who did...?$"
 
 RustburgWharf_Text_FezzikIntro:
-	.string "intro$"
+	.string "We face each other as intended. No\n"
+	.string "tricks, just skill, and skill alone.$"
 
 RustburgWharf_Text_FezzikDefeated:
-	.string "defeat$"
+	.string "I just want you to know,\n"
+	.string "you're doing very well.$"
 
 RustburgWharf_Text_FezzikPostBattle:
-	.string "post$"
+	.string "Did you know?\p"
+	.string "I can't swim. I can only do the\n"
+	.string "Pomelonian paddle.$"
 
 RustburgWharf_Text_JeanAndJackittIntro:
-	.string "intro$"
+	.string "JEAN: We're fit to fight at\n"
+	.string "      any time!\l"
+	.string "JACKITT: That's right!$"
 
 RustburgWharf_Text_JeanAndJackittDefeated:
-	.string "defeat$"
+	.string "JEAN: Did we exert too little?\n"
+	.string "      Or too much?\l"
+	.string "JACKITT: Maybe it was a separate\l"
+	.string "         issue...$"
 
 RustburgWharf_Text_JeanAndJackittPostBattle:
-	.string "post$"
+	.string "JEAN: Pokemon come in all shapes\n"
+	.string "      and sizes.\l"
+	.string "JACKITT: Big or small doesn't\l"
+	.string "         matter. What does is how\l"
+	.string "         you utilize them!$"
 
 RustburgWharf_Text_JeanAndJackittNeedTwoMons:
-	.string "need 2 dood$"
+	.string "JEAN: We're too big for you!\n"
+	.string "JACKITT: And you're too small for us!$"
 
 RustburgWharf_Text_LunaAndStarIntro:
-	.string "intro$"
+	.string "LUNA: We look towards the\n"
+	.string "      constellations for guidance!\l"
+	.string "STAR: And your horoscope...\l"
+	.string "      it is dire!$"
 
 RustburgWharf_Text_LunaAndStarDefeated:
-	.string "defeat$"
+	.string "LUNA: Could the meanings of the\n"
+	.string "      constellations led us astray?\l"
+	.string "STAR: Hmmm... perhaps, we\l"
+	.string "      interpreted them wrong.$"
 
 RustburgWharf_Text_LunaAndStarPostBattle:
-	.string "post$"
+	.string "STAR: To become truly connected\n"
+	.string "      with the cosmos, you should\l"
+	.string "      consider visiting Etheor Falls.\l"
+	.string "LUNA: We got our Minior from there.$"
 
 RustburgWharf_Text_LunaAndStarNeedTwoMons:
-	.string "need 2 dood$"
+	.string "LUNA: The stars do not align\n"
+	.string "      for us to fight you now!$"
 
 RustburgWharf_Text_LanceIntro:
-	.string "intro$"
+	.string "I'm the fastest Cyclist around!\n"
+	.string "Think you can keep up?$"
 
 RustburgWharf_Text_LanceDefeated:
-	.string "defeat$"
+	.string "You took me for a tour de force!$"
 
 RustburgWharf_Text_LancePostBattle:
-	.string "post$"
+	.string "W-What? You're saying I am\n"
+	.string "doping? By using a Choice Scarf?\l"
+	.string "Puh-lease! Everyone does that\l"
+	.string "these days.$"
 
 RustburgWharf_Text_MicycleIntro:
-	.string "intro$"
+	.string "I wonder where my real\n"
+	.string "family is today...$"
 
 RustburgWharf_Text_MicycleDefeated:
-	.string "defeat$"
+	.string "The mountains... they call me.$"
 
 RustburgWharf_Text_MicyclePostBattle:
-	.string "post$"
+	.string "I was separated from my birth family\n"
+	.string "at an early age, and adopted by\l"
+	.string "a family of prestiged bikers.\p"
+	.string "All I know about my birth family,\n"
+	.string "is that they were hikers...$"
 
 RustburgWharf_Text_SkipperIntro:
-	.string "intro$"
+	.string "Bugs may be teensy-tiny, but\n"
+	.string "they pack a punch FAR greater\l"
+	.string "than their stature! Let's ROLL!$"
 
 RustburgWharf_Text_SkipperDefeated:
-	.string "defeat$"
+	.string "You packed a punch even greater\n"
+	.string "than theirs!$"
 
 RustburgWharf_Text_SkipperPostBattle:
-	.string "post$"
+	.string "Some people believe the Bug type\n"
+	.string "to be the worst of them all...\l"
+	.string "I will vow to prove them wrong!$"
 
 RustburgWharf_Text_TwoffanyIntro:
-	.string "intro$"
+	.string "Aren't you excited about what\n"
+	.string "today's adventures could entail?$"
 
 RustburgWharf_Text_TwoffanyDefeated:
-	.string "defeat$"
+	.string "Even if I lose, that doesn't mean\n"
+	.string "I have to stop looking forward\l"
+	.string "to tomorrow.$"
 
 RustburgWharf_Text_TwoffanyPostBattle:
-	.string "post$"
+	.string "Every new day comes with something\n"
+	.string "to look forward to! So, keep\l"
+	.string "going forward!$"
 
 RustburgWharf_Text_OlivierIntro:
-	.string "intro$"
+	.string "Like this... like that.\n"
+	.string "Like this, like that...$"
 
 RustburgWharf_Text_OlivierDefeated:
-	.string "defeat$"
+	.string "I like it, I like it!$"
 
 RustburgWharf_Text_OlivierPostBattle:
-	.string "post$"
+	.string "This is this, that is that.$"
 
 RustburgWharf_Text_TiktaalikIntro:
-	.string "intro$"
+	.string "I just feel like having a\n"
+	.string "nice stroll!$"
 
 RustburgWharf_Text_TiktaalikDefeated:
-	.string "defeat$"
+	.string "A walk in the park!$"
 
 RustburgWharf_Text_TiktaalikPostBattle:
-	.string "post$"
+	.string "Nothing feels better than the\n"
+	.string "grass beneath my feet, am I right?$"
 
 RustburgWharf_Text_PatrickIntro:
-	.string "intro$"
+	.string "Oi, oi! You hear the news?\p"
+	.string "Rustboro's been seein' some gang\n"
+	.string "activity recently! So they may\l"
+	.string "close down the gate 'till they sort\l"
+	.string "out the problem.\p"
+	.string "You can read all about it in my\n"
+	.string "newspaper! ...And you'll ALSO\l"
+	.string "be reading about how I OWNED you!$"
 
 RustburgWharf_Text_PatrickDefeated:
-	.string "defeat$"
+	.string "Whelp, scratch that last topic...$"
 
 RustburgWharf_Text_PatrickPostBattle:
-	.string "post$"
+	.string "If the City does end up\n"
+	.string "temporarily closin', I hear there's\l"
+	.string "a secret way in not a lotta folks\l"
+	.string "try... in the tunnels.$"

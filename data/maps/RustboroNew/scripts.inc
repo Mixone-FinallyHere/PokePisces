@@ -168,6 +168,60 @@ RustboroNew_EventScript_DontBeLate::
 	release
 	end
 
+RustboroNew_EventScript_RustboroSign::
+    msgbox RustboroNew_Text_RustboroSign, MSGBOX_SIGN
+    end
+
+RustboroNew_EventScript_UnduraSign::
+    msgbox RustboroNew_Text_UnduraSign, MSGBOX_SIGN
+    end
+
+RustboroNew_EventScript_GymSign::
+    msgbox RustboroNew_Text_GymSign, MSGBOX_SIGN
+    end
+
+RustboroNew_EventScript_DevonSign::
+    msgbox RustboroNew_Text_DevonSign, MSGBOX_SIGN
+    end
+
+RustboroNew_EventScript_BridgeSign::
+    msgbox RustboroNew_Text_BridgeSign, MSGBOX_SIGN
+    end
+
+RustboroNew_EventScript_WhisperCliffSign::
+    msgbox RustboroNew_Text_WhisperCliffSign, MSGBOX_SIGN
+    end
+
+RustboroNew_Text_RustboroSign:
+	.string "RUSTBORO CITY\n"
+	.string "A Metropolis Where Education\l"
+	.string "Takes Center Stage.$"
+
+RustboroNew_Text_UnduraSign:
+	.string "TO UNDURA TUNNELS\n"
+	.string "Diving Gear Suggested!$"
+
+RustboroNew_Text_GymSign:
+	.string "RUSTBORO UNIVERSITY\n"
+	.string "AKA, RUSTBORO GYM$"
+
+RustboroNew_Text_DevonSign:
+	.string "Devon Corp. Headquarters$"
+
+RustboroNew_Text_BridgeSign:
+	.string "RUSTBORO BRIDGE\n"
+	.string "You are currently leaving\l"
+	.string "city limits! The bridge will\l"
+	.string "link you up with the Mt. Chimney\l"
+	.string "region to the north. Be sure\l"
+	.string "to bring a Pokemon who can take\l"
+	.string "you across the water!$"
+
+RustboroNew_Text_WhisperCliffSign:
+	.string "NORTH - WHISPER CLIFF\n"
+	.string "Connection to ETHEOR FALLS\l"
+	.string "to the EAST$"
+
 RustboroNew_Text_DevonNeedsYou:
 	.string "Greetings!\n"
 	.string "If I have the right information,\l"
