@@ -3864,8 +3864,13 @@ static void PrintMoveDetails(u16 move)
         {
             PrintTextOnWindow(windowId, gContestEffectDescriptionPointers[gContestMoves[move].effect], 6, 1, 0, 0);
         }
+        PutWindowTilemap(windowId);
     }
-    PutWindowTilemap(windowId);
+    else
+    {
+        ClearWindowTilemap(windowId);
+    }
+
     ScheduleBgCopyTilemapToVram(0);
 }
 
