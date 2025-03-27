@@ -313,7 +313,7 @@ FieryPath_Text_BlaiseAndMarDefeated:
 FieryPath_Text_BlaiseAndMarPostBattle:
 	.string "MAR: Well, now I'm all dried up...\n"
 	.string "BLAISE: You doused my chances\l"
-	.string "        chances of winning!$"
+	.string "        of winning!$"
 
 FieryPath_Text_BlaiseAndMarNeedTwoMons:
 	.string "BLAISE: We should double battle for\n"

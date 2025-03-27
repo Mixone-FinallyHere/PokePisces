@@ -540,6 +540,21 @@
     }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 16,
+      "y": 16,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "EverGrandeRoad_EventScript_EGRSign"
+    },
+    {
+      "type": "sign",
+      "x": 20,
+      "y": 16,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "EverGrandeRoad_EventScript_EGRSign"
+    }
   ]
 }

@@ -236,43 +236,88 @@ MidneorFalls_EventScript_BeatBothLegends::
 	end
 
 MidneorFalls_Text_CattIntro:
-	.string "intro$"
+	.string "Catt has a strong feeling that a\n"
+	.string "trainer of your presentation is\l"
+	.string "nothing but a pretender... a poser.\l"
+	.string "Someone who won't make it in the\l"
+	.string "real world, where you do not get\l"
+	.string "coddled from the truth.\l"
+	.string "Unlike Catt, you have not\l"
+	.string "experienced true adversity.\l"
+	.string "Mayhaps this will be your first time.$"
 
 MidneorFalls_Text_CattDefeated:
-	.string "defeat$"
+	.string "The world may only be\n"
+	.string "particularly cruel to Catt,\l"
+	.string "after all...$"
 
 MidneorFalls_Text_CattPostBattle:
-	.string "post$"
+	.string "You may have beaten Catt.\n"
+	.string "But there will come a day where\l"
+	.string "you fail, and fail hard.\p"
+	.string "What you do from then on\n"
+	.string "determines your true character.$"
 
 MidneorFalls_Text_TaiiIntro:
-	.string "intro$"
+	.string "Whoa, whoa, hold up! I can't\n"
+	.string "be letting you past this point!\l"
+	.string "The water will make this tough,\l"
+	.string "but I'll try my best...!$"
 
 MidneorFalls_Text_TaiiDefeated:
-	.string "defeat$"
+	.string "We may not have won, but\n"
+	.string "we gave it our all. That\l"
+	.string "should be what really matters!$"
 
 MidneorFalls_Text_TaiiPostBattle:
-	.string "post$"
+	.string "Since we lost our mutual friend,\n"
+	.string "Catt and I have always walked\l"
+	.string "side by side. I'll continue\l"
+	.string "to be supportive!$"
 
 MidneorFalls_Text_ErkinAndKayaIntro:
-	.string "intro$"
+	.string "ERKIN: Hello, trainer. How are you\n"
+	.string "       doing? Would you care to\l"
+	.string "       grace my beloved and I\l"
+	.string "       with a nice battle?\l"
+	.string "KAYA: ...Ah. This person...\l"
+	.string "      will not stand a chance.$"
 
 MidneorFalls_Text_ErkinAndKayaDefeated:
-	.string "defeat$"
+	.string "ERKIN: I could not channel any\n"
+	.string "       animosity towards you,\l"
+	.string "       trainer... maybe that's why\l"
+	.string "       I couldn't get us the win.\l"
+	.string "KAYA: It is more than fine, Erkin...\l"
+	.string "      to hate is to lose oneself...$"
 
 MidneorFalls_Text_ErkinAndKayaPostBattle:
-	.string "post$"
+	.string "ERKIN: You have a certain spark\n"
+	.string "       in your eye, trainer.\l"
+	.string "       I think you may be some kind\l"
+	.string "       of a prodigy.\l"
+	.string "KAYA: ...Keep a strong will.$"
 
 MidneorFalls_Text_ErkinAndKayaNeedTwoMons:
-	.string "need 2 dood$"
+	.string "ERKIN: I will reserve myself\n"
+	.string "       from this battle.\l"
+	.string "KAYA: ...One Pokemon is too little.$"
 
 MidneorFalls_Text_GriseldaIntro:
-	.string "intro$"
+	.string "Halt, stranger! I cannot allow\n"
+	.string "you to potentially harm someone\l"
+	.string "that resides here!$"
 
 MidneorFalls_Text_GriseldaDefeated:
-	.string "defeat$"
+	.string "Not another loss... this\n"
+	.string "is quite devastating...$"
 
 MidneorFalls_Text_GriseldaPostBattle:
-	.string "post$"
+	.string "Please, do not disturb Kaya...\n"
+	.string "I have sworn my loyalty to her.\l"
+	.string "She has received much undue\l"
+	.string "hatred in her time. Do not be\l"
+	.string "one that adds to the cycle.$"
 
 MidneorFalls_Text_MorganaIntro:
 	.string "It's a fruitless endeavor to\n"
@@ -314,13 +359,19 @@ MidneorFalls_Text_AnthreenyPostBattle:
 	.string "at least... right?$"
 
 MidneorFalls_Text_SchuliIntro:
-	.string "intro$"
+	.string "Hello... would you mind engaging\n"
+	.string "me in combat? My little ones are\l"
+	.string "itching to show off... why\l"
+	.string "not allow them?$"
 
 MidneorFalls_Text_SchuliDefeated:
-	.string "defeat$"
+	.string "Ah, the time flew by!$"
 
 MidneorFalls_Text_SchuliPostBattle:
-	.string "post$"
+	.string "Be kind to your family of Pokemon,\n"
+	.string "while on this journey. Sometimes\l"
+	.string "in life... you won't realize how\l"
+	.string "fast the good times will go on by.$"
 
 MidneorFalls_Text_GerierIntro:
 	.string "Have you been paying proper\n"

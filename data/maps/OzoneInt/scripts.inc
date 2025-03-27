@@ -138,6 +138,16 @@ OzoneInt_Movement_TabithaLeaveGoAroundPlayer:
 	walk_down
 	step_end
 
+OzoneInt_EventScript_OzoneChallengeSign::
+    msgbox OzoneInt_Text_OzoneChallengeSign, MSGBOX_SIGN
+    end
+
+OzoneInt_Text_OzoneChallengeSign:
+	.string "Upstairs is the seldom-used site\n"
+	.string "of the Ozone Challenge.\l"
+	.string "Said challenge may return when\l"
+	.string "we find a worthy enough trainer.$"
+
 OzoneInt_Text_NameMaxie:
 	.string "Maxie$"
 

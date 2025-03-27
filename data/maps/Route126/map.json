@@ -545,6 +545,14 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route126_EventScript_SpaceCenterSign"
+    },
+    {
+      "type": "sign",
+      "x": 28,
+      "y": 17,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route126_EventScript_CosmossSign"
     }
   ]
 }

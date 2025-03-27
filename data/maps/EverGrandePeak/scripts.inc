@@ -505,6 +505,55 @@ EverGrandePeak_Movement_CameraPanUp:
 	walk_up
 	step_end
 
+EverGrandePeak_EventScript_EGREndsSign::
+    msgbox EverGrandePeak_Text_EGREndsSign, MSGBOX_SIGN
+    end
+
+EverGrandePeak_EventScript_GoldenPlainsSign::
+    msgbox EverGrandePeak_Text_GoldenPlainsSign, MSGBOX_SIGN
+    end
+
+EverGrandePeak_EventScript_PathToLSSign::
+    msgbox EverGrandePeak_Text_PathToLSSign, MSGBOX_SIGN
+    end
+
+EverGrandePeak_EventScript_LuoShanSign::
+    msgbox EverGrandePeak_Text_LuoShanSign, MSGBOX_SIGN
+    end
+
+EverGrandePeak_EventScript_PathToSYSign::
+    msgbox EverGrandePeak_Text_PathToSYSign, MSGBOX_SIGN
+    end
+
+EverGrandePeak_EventScript_ShaYonSign::
+    msgbox EverGrandePeak_Text_ShaYonSign, MSGBOX_SIGN
+    end
+
+EverGrandePeak_Text_EGREndsSign:
+	.string "Ever Grande Road ends here.\n"
+	.string "Welcome to the Golden Plains.$"
+
+EverGrandePeak_Text_GoldenPlainsSign:
+	.string "Before you lies the center\n"
+	.string "of the Golden Plains.\l"
+	.string "A fountain, erected in honor\l"
+	.string "of the duality between\l"
+	.string "rising and falling.$"
+
+EverGrandePeak_Text_PathToLSSign:
+	.string "Continue along this path to reach\n"
+	.string "the shrine of Luo-Shan.$"
+
+EverGrandePeak_Text_LuoShanSign:
+	.string "SHRINE OF LUO-SHAN$"
+
+EverGrandePeak_Text_PathToSYSign:
+	.string "Continue along this path to reach\n"
+	.string "the shrine of Sha-Yon.$"
+
+EverGrandePeak_Text_ShaYonSign:
+	.string "SHRINE OF SHA-YON$"
+
 EverGrandePeak_EventScripts_ShunyongTest::
 	lock
 	doshunyongbattle

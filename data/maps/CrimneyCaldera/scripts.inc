@@ -130,22 +130,34 @@ CrimneyCaldera_EventScript_Centauri::
     end
 
 CrimneyCaldera_Text_MeiyuIntro:
-	.string "intro$"
+	.string "The smell of ash and brimstone\n"
+	.string "has always brought me calm.\l"
+	.string "With a clear head, I will be\l"
+	.string "taking you out!$"
 
 CrimneyCaldera_Text_MeiyuDefeated:
-	.string "defeat$"
+	.string "I mixed up too many weathers!$"
 
 CrimneyCaldera_Text_MeiyuPostBattle:
-	.string "post$"
+	.string "Looks like I wasn't as clear-minded\n"
+	.string "as I has assumed. Maybe I should\l"
+	.string "really hone in on one weather...$"
 
 CrimneyCaldera_Text_CentauriIntro:
-	.string "intro$"
+	.string "I call upon the power of the sun!\n"
+	.string "Come, bathe me in your bright light!\l"
+	.string "Burn this foe... to a crisp!$"
 
 CrimneyCaldera_Text_CentauriDefeated:
-	.string "defeat$"
+	.string "I was blinded by my faith\n"
+	.string "in the sun...$"
 
 CrimneyCaldera_Text_CentauriPostBattle:
-	.string "post$"
+	.string "Groudon is the true ruler of the\n"
+	.string "land, and the weather that is\l"
+	.string "harsh sunlight. In fact, the drought\l"
+	.string "it brings into battle is so blazing,\l"
+	.string "that Water type attacks evaporate.$"
 
 CrimneyCaldera_Text_TheyreFighting:
 	.string "(It's Groudon and Sha-Yon!\n"

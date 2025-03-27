@@ -397,6 +397,10 @@ Route126_EventScript_SpaceCenterSign::
 	msgbox Route126_Text_SpaceCenterSign, MSGBOX_SIGN
 	end
 
+Route126_EventScript_CosmossSign::
+	msgbox Route126_Text_CosmossSign, MSGBOX_SIGN
+	end
+
 Route126_EventScript_WereUnderSiege::
 	lock
 	faceplayer
@@ -406,6 +410,11 @@ Route126_EventScript_WereUnderSiege::
 	waitstate
 	release
 	end
+
+Route126_Text_CosmossSign:
+	.string "COSMOSS BRIDGE\n"
+	.string "The link between Sootopolis City\l"
+	.string "and Mossdeep City$"
 
 Route126_Text_Launchpad1:
 	.string "Rocket Launch Pad No. 01$"

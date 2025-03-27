@@ -15,8 +15,9 @@ EverGrandeRestArea_EventScript_Archie::
 EverGrandeRestArea_EventScript_HealPkmn::
 	special HealPlayerParty
 	speakername EverGrandeRestArea_Text_NameArchie
-	message EverGrandeRestArea_Text_IveRestoredThem
-	waitmessage
+	msgbox EverGrandeRestArea_Text_IveRestoredThem, MSGBOX_DEFAULT
+	closemessage
+	speakername EverGrandeRestArea_Text_NameArchie
 	message EverGrandeRestArea_Text_GoodLuck
 	waitmessage
 	waitbuttonpress
@@ -35,6 +36,13 @@ EverGrandeRestArea_EventScript_Maxie::
 	msgbox EverGrandeRestArea_Text_NoPCThen, MSGBOX_AUTOCLOSE
 	release
 	end
+
+EverGrandeRestArea_EventScript_EGRSign::
+    msgbox EverGrandeRestArea_Text_EGRSign, MSGBOX_SIGN
+    end
+
+EverGrandeRestArea_Text_EGRSign:
+	.string "EVER GRANDE ROAD IS AHEAD$"
 
 EverGrandeRestArea_Text_NameMaxie:
 	.string "Maxie$"
