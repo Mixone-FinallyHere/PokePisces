@@ -17229,7 +17229,6 @@ BattleScript_RuinWardLuckyChantActivates::
 
 BattleScript_EntrancingAbilityActivates::
 	call BattleScript_AbilityPopUp		
-	playanimation BS_ATTACKER, B_ANIM_ENTRANCING	
 	printstring STRINGID_ABILITYENTRANCED
 	waitmessage B_WAIT_TIME_SHORT
 	end3
