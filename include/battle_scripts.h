@@ -631,6 +631,7 @@ extern const u8 BattleScript_WanderingSpiritActivates[];
 extern const u8 BattleScript_MirrorArmorReflect[];
 extern const u8 BattleScript_MoonMirrorReflect[];
 extern const u8 BattleScript_GooeyActivates[];
+extern const u8 BattleScript_GooeyActivatesSpeedandDisable[];
 extern const u8 BattleScript_StrongJawActivates[];
 extern const u8 BattleScript_PastelVeilActivates[];
 extern const u8 BattleScript_WaterVeilActivates[];

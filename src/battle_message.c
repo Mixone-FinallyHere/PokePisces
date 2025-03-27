@@ -702,6 +702,7 @@ static const u8 sText_HealingWishCameTrue[] = _("The healing wish came true\nfor
 static const u8 sText_HealingWishHealed[] = _("{B_ATK_NAME_WITH_PREFIX} regained health!");
 static const u8 sText_LunarDanceCameTrue[] = _("{B_ATK_NAME_WITH_PREFIX} became cloaked\nin mystical moonlight!");
 static const u8 sText_CursedBodyDisabled[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_BUFF1} was\ndisabled by {B_DEF_NAME_WITH_PREFIX}'s\l{B_DEF_ABILITY}!");
+static const u8 sText_GooeyDisabled[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_BUFF3} was\ndisabled by {B_DEF_NAME_WITH_PREFIX}'s\l{B_DEF_ABILITY}!");
 static const u8 sText_CursedBodyTormented[] = _("{B_ATK_NAME_WITH_PREFIX} was tormented\nby {B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY}!");
 static const u8 sText_CursedBodyCursed[] = _("{B_ATK_NAME_WITH_PREFIX} was cursed\nby {B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY}!");
 static const u8 sText_CursedAmuletDisabled[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_BUFF1} was\ndisabled by {B_DEF_NAME_WITH_PREFIX}'s\l{B_BUFF2}!");
@@ -1898,6 +1899,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ABILITYCANTSWAPITEMS - BATTLESTRINGS_TABLE_START] = sText_AbilityCantSwapItems,
     [STRINGID_ABILITYCANTINFATUATE - BATTLESTRINGS_TABLE_START] = sText_AbilityCantInfatuate,
     [STRINGID_PKMNPREVENTSINFATUATIONWITH - BATTLESTRINGS_TABLE_START] = sText_PkmnPreventsInfatuationWith,
+    [STRINGID_GOOEYDISABLED - BATTLESTRINGS_TABLE_START] = sText_GooeyDisabled,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

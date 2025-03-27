@@ -18385,6 +18385,17 @@ BattleScript_GooeyActivates::
 	seteffectsecondary
 	return
 
+BattleScript_GooeyActivatesSpeedandDisable::
+	waitstate
+	call BattleScript_AbilityPopUp
+	swapattackerwithtarget  @ for defiant, mirror armor
+	seteffectsecondary
+	swapattackerwithtarget
+	printstring STRINGID_GOOEYDISABLED
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotDisabledAttacker
+	return
+
 BattleScript_StrongJawActivates::
 	waitstate
 	call BattleScript_AbilityPopUp

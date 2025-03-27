@@ -3050,6 +3050,11 @@ static const u8 sPrecipiceBladesDescription[] = _(
     "manifesting the power of the land\n"
     "in fearsome blades of stone.");
 
+static const u8 sDragonAscentDescription[] = _(
+    "The user attacks by dropping out\n"
+    "of the sky at high speed. This\n"
+    "also lowers the user's defenses.");
+
 static const u8 sShoreUpDescription[] = _(
     "The user restores its own HP by\n"
     "up to half its max HP. It\n"
@@ -3711,9 +3716,9 @@ static const u8 sPowerShiftDescription[] = _(
     "with its Sp. Def stat.");
 
 static const u8 sStoneAxeDescription[] = _(
-    "The user swings its stone axes\n"
-    "at the foe. Stone splinters left\n"
-    "behind float around the foe.");
+    "The user swings its blade at the\n"
+    "foe. Stone splinters left behind\n"
+    "float around the foe.");
 
 static const u8 sSpringtideStormDescription[] = _(
     "Sets a stack of allure. Hitting\n"
@@ -5598,7 +5603,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_LIGHT_OF_RUIN - 1] = sLightOfRuinDescription,
     [MOVE_ORIGIN_PULSE - 1] = sOriginPulseDescription,
     [MOVE_PRECIPICE_BLADES - 1] = sPrecipiceBladesDescription,
-    [MOVE_DRAGON_ASCENT - 1] = sCloseCombatDescription,
+    [MOVE_DRAGON_ASCENT - 1] = sDragonAscentDescription,
     [MOVE_HYPERSPACE_FURY - 1] = sHyperspaceHoleDescription,
     [MOVE_SHORE_UP - 1] = sShoreUpDescription,
     [MOVE_FIRST_IMPRESSION - 1] = sFirstImpressionDescription,
