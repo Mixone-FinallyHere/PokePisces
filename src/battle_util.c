@@ -7285,7 +7285,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && TARGET_TURN_DAMAGED
             && gIsCriticalHit
             && !BATTLER_MAX_HP(battler)
-            && gBattleMons[battler].status2 & STATUS2_FOCUS_ENERGY
+            && gDisableStructs[battler].focusEnergy
             && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK)
             && IsBattlerAlive(battler)
             && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
@@ -12045,7 +12045,7 @@ static inline u32 CalcMoveBasePower(u32 move, u32 battlerAtk, u32 battlerDef, u3
         }
         break;
     case EFFECT_FOCUS_PUNCH:
-        if (gBattleMons[battlerAtk].status2 & STATUS2_FOCUS_ENERGY)
+        if (gDisableStructs[battlerAtk].focusEnergy)
             basePower = 110;
         break;
     case EFFECT_PAYBACK:

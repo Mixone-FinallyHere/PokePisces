@@ -335,6 +335,7 @@
 #define VARIOUS_FLORESCENCE_CHECK                    243
 #define VARIOUS_SET_SWITCH_IN_ABILITY_SUCCEED        244
 #define VARIOUS_JUMP_IF_SWITCH_IN_ABILITY_SUCCEED    245
+#define VARIOUS_JUMP_IF_FOCUS_ENERGY                 246
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0
