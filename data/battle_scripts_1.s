@@ -18434,7 +18434,7 @@ BattleScript_AbilitySetPurpleHaze::
 
 BattleScript_AbilitySetMagmaArmored::
 	call BattleScript_AbilityPopUp
-	setmagmaarmored BS_ATTACKER
+	setmagmaarmored BS_TARGET
 	printstring STRINGID_MAGMAARMORED
 	waitmessage B_WAIT_TIME_LONG
 	return
