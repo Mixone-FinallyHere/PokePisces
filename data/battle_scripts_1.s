@@ -19928,11 +19928,11 @@ BattleScript_EffectSnow::
 	goto BattleScript_MoveWeatherChange
 
 BattleScript_IlluminateActivates::
+	savetarget
 	showabilitypopup BS_ATTACKER
 	pause B_WAIT_TIME_LONG
 	destroyabilitypopup
 	setbyte gBattlerTarget, 0
-	printstring STRINGID_PKMNINCREASEACCWITH
 BattleScript_IlluminateLoop:
 	jumpifabsent BS_TARGET, BattleScript_IlluminateLoopIncrement
 	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_IlluminateLoopIncrement
@@ -19942,20 +19942,17 @@ BattleScript_IlluminateEffect:
 	statbuffchange STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_IlluminateLoopIncrement
 	setgraphicalstatchangevalues
 	jumpifability BS_TARGET, ABILITY_CONTRARY, BattleScript_IlluminateContrary
-	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1	
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_IlluminateWontIncrease
+	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printstring STRINGID_PKMNINCREASEACCWITH
 BattleScript_IlluminateEffect_WaitString:
 	waitmessage B_WAIT_TIME_LONG
-	saveattacker
-	savetarget
-	copybyte sBATTLER, gBattlerTarget
-	restoreattacker
-	restoretarget
 BattleScript_IlluminateLoopIncrement:
 	addbyte gBattlerTarget, 1
 	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_IlluminateLoop
-BattleScript_IlluminateEnd:
 	copybyte sBATTLER, gBattlerAttacker
 	destroyabilitypopup
+	restoretarget
 	pause B_WAIT_TIME_MED
 	end3
 
@@ -19966,17 +19963,12 @@ BattleScript_IlluminateContrary:
 	printfromtable gStatDownStringIds
 	goto BattleScript_IlluminateEffect_WaitString
 BattleScript_IlluminateContrary_WontDecrease:
-	printstring STRINGID_STATSWONTDECREASE2
+	printstring STRINGID_TARGETSTATWONTGOLOWER
 	goto BattleScript_IlluminateEffect_WaitString
 
-BattleScript_IlluminatePrevented:
-	call BattleScript_AbilityPopUp
-	pause B_WAIT_TIME_LONG
-	setbyte gBattleCommunication STAT_ACC
-	stattextbuffer BS_TARGET
+BattleScript_IlluminateWontIncrease:
 	printstring STRINGID_STATSWONTINCREASE
-	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_IlluminateLoopIncrement
+	goto BattleScript_IlluminateEffect_WaitString
 
 BattleScript_HardboiledActivates::
 	call BattleScript_AbilityPopUp

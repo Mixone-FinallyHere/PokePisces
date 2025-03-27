@@ -322,7 +322,7 @@ static const u8 sText_PkmnCutsSpAttackWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX
 static const u8 sText_PkmnCutsDefenceWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\ncuts {B_DEF_NAME_WITH_PREFIX}'s defense!");
 static const u8 sText_PkmnCutsSpDefenceWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\ncuts {B_DEF_NAME_WITH_PREFIX}'s special defense!");
 static const u8 sText_PkmnCutsSpeedWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\ncuts {B_DEF_NAME_WITH_PREFIX}'s speed!");
-static const u8 sText_PkmnIncreasesAccWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nincreased everyone's accuracy!");
+static const u8 sText_PkmnIncreasesAccWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nraises {B_DEF_NAME_WITH_PREFIX}'s accuracy!");
 static const u8 sText_PkmnPreventsStatLossWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nprevents stat loss!");
 static const u8 sText_PkmnPreventsStatLossDragon[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s Dragon-typing\nprevents stat loss!");
 static const u8 sText_PkmnHurtsWith[] = _("{B_ATK_NAME_WITH_PREFIX} was hurt by\n{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1}!");
@@ -708,6 +708,7 @@ static const u8 sText_CursedBodyCursed[] = _("{B_ATK_NAME_WITH_PREFIX} was curse
 static const u8 sText_CursedAmuletDisabled[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_BUFF1} was\ndisabled by {B_DEF_NAME_WITH_PREFIX}'s\l{B_BUFF2}!");
 static const u8 sText_AttackerAquiredAbility[] = _("{B_ATK_NAME_WITH_PREFIX} acquired\n{B_LAST_ABILITY}!");
 static const u8 sText_TargetStatWontGoHigher[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1}\nwon't go higher!");
+static const u8 sText_TargetStatWontGoLower[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1}\nwon't go lower!");
 static const u8 sText_PkmnMoveBouncedViaAbility[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_CURRENT_MOVE} was\nbounced back by {B_DEF_NAME_WITH_PREFIX}'s\l{B_DEF_ABILITY}!");
 static const u8 sText_ImposterTransform[] = _("{B_ATK_NAME_WITH_PREFIX} transformed into\n{B_DEF_NAME_WITH_PREFIX} using {B_LAST_ABILITY}!");
 static const u8 sText_NotDoneYet[] = _("This move effect is not done yet!\p");
@@ -1900,6 +1901,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ABILITYCANTINFATUATE - BATTLESTRINGS_TABLE_START] = sText_AbilityCantInfatuate,
     [STRINGID_PKMNPREVENTSINFATUATIONWITH - BATTLESTRINGS_TABLE_START] = sText_PkmnPreventsInfatuationWith,
     [STRINGID_GOOEYDISABLED - BATTLESTRINGS_TABLE_START] = sText_GooeyDisabled,
+    [STRINGID_TARGETSTATWONTGOLOWER - BATTLESTRINGS_TABLE_START] = sText_TargetStatWontGoLower,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
