@@ -300,6 +300,7 @@ struct BattleMove
     u32 lazyMove:1;
     u32 cantUseTwice:1;
     u32 cantUseTwiceBlooming:1;
+    u32 cantUseTwicePsySwap:1;
 };
 #define SPINDA_SPOT_WIDTH 16
 #define SPINDA_SPOT_HEIGHT 16
@@ -532,6 +533,8 @@ u16 GetFormSpeciesId(u16 speciesId, u8 formId);
 u8 GetFormIdFromFormSpeciesId(u16 formSpeciesId);
 u32 GetFormChangeTargetSpecies(struct Pokemon *mon, u16 method, u32 arg);
 u32 GetFormChangeTargetSpeciesBoxMon(struct BoxPokemon *boxMon, u16 method, u32 arg);
+u32 GetFormChangeTargetSpeciesItemHold(struct Pokemon *mon, u16 method, u32 arg);
+u32 GetFormChangeTargetSpeciesItemHoldBoxMon(struct BoxPokemon *boxMon, u16 method, u32 arg);
 bool32 DoesSpeciesHaveFormChangeMethod(u16 species, u16 method);
 u16 MonTryLearningNewMoveEvolution(struct Pokemon *mon, bool8 firstMove);
 bool32 SpeciesHasGenderDifferences(u16 species);

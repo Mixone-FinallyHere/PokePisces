@@ -16731,7 +16731,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_NONE,
         .switchingMove = TRUE,
-        .cantUseTwice = TRUE,
+        .cantUseTwicePsySwap = TRUE,
     },
 
     [MOVE_STALAG_BLAST] =
