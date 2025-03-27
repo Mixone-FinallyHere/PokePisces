@@ -2714,7 +2714,21 @@ u8 DoBattlerEndTurnEffects(void)
                 if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
                     gBattleMoveDamage = 50;
                 gHitMarker |= HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE;
-                BattleScriptExecute(BattleScript_LeechSeedTurnDrain);
+                if (GetBattlerAbility(battler) == ABILITY_LIQUID_OOZE)
+                {
+                    gBattleMoveDamage = gBattleMoveDamage * -1;
+                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LEECH_SEED_OOZE;
+                    BattleScriptExecute(BattleScript_LeechSeedTurnDrainLiquidOoze);
+                }
+                else if (gStatuses3[gBattlerTarget] & STATUS3_HEAL_BLOCK)
+                {
+                    BattleScriptExecute(BattleScript_LeechSeedTurnDrainHealBlock);
+                }
+                else
+                {
+                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LEECH_SEED_DRAIN;
+                    BattleScriptExecute(BattleScript_LeechSeedTurnDrainRecovery);
+                }
                 effect++;
             }
             gBattleStruct->turnEffectsTracker++;
@@ -3256,7 +3270,21 @@ u8 DoBattlerEndTurnEffects(void)
                 if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
                     gBattleMoveDamage = 50;
                 gHitMarker |= HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE;
-                BattleScriptExecute(BattleScript_TickedTurnDrain);
+                if (GetBattlerAbility(battler) == ABILITY_LIQUID_OOZE)
+                {
+                    gBattleMoveDamage = gBattleMoveDamage * -1;
+                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LEECH_SEED_OOZE;
+                    BattleScriptExecute(BattleScript_TickedTurnDrainLiquidOoze);
+                }
+                else if (gStatuses3[gBattlerTarget] & STATUS3_HEAL_BLOCK)
+                {
+                    BattleScriptExecute(BattleScript_TickedTurnDrainHealBlock);
+                }
+                else
+                {
+                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LEECH_SEED_DRAIN;
+                    BattleScriptExecute(BattleScript_TickedTurnDrainRecovery);
+                }
                 effect++;
             }
             gBattleStruct->turnEffectsTracker++;

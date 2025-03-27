@@ -3818,16 +3818,13 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 }
                 break;
             case MOVE_EFFECT_TICKED:
-                //if (gBattleMons[gEffectBattler].status4 & STATUS4_TICKED)
-                //{
-                //    gBattlescriptCurrInstr++;
-                //}
-                //else
-                //{
+                if (!(gStatuses4[gBattlerTarget] & STATUS4_TICKED))
+                {
                     gStatuses4[gBattlerTarget] |= gBattlerAttacker;
                     gStatuses4[gBattlerTarget] |= STATUS4_TICKED;
-                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LEECH_SEED_SET;
-                //}
+                    BattleScriptPush(gBattlescriptCurrInstr + 1);
+                    gBattlescriptCurrInstr = BattleScript_MoveEffectTicked;
+                }
                 break;
             case MOVE_EFFECT_ATK_PLUS_1:
             case MOVE_EFFECT_DEF_PLUS_1:
@@ -14478,38 +14475,21 @@ static void Cmd_setseeded(void)
 {
     CMD_ARGS();
 
-    if (gCurrentMove == MOVE_TICK_TACK)
+    if (gMoveResultFlags & MOVE_RESULT_NO_EFFECT || gStatuses3[gBattlerTarget] & STATUS3_LEECHSEED)
     {
-        if (gMoveResultFlags & MOVE_RESULT_NO_EFFECT || gStatuses4[gBattlerTarget] & STATUS4_TICKED)
-        {
-            gMoveResultFlags |= MOVE_RESULT_MISSED;
-            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LEECH_SEED_MISS;
-        }
-        else
-        {
-            gStatuses4[gBattlerTarget] |= gBattlerAttacker;
-            gStatuses4[gBattlerTarget] |= STATUS4_TICKED;
-            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LEECH_SEED_SET;
-        }
+        gMoveResultFlags |= MOVE_RESULT_MISSED;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LEECH_SEED_MISS;
+    }
+    else if (IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_GRASS))
+    {
+        gMoveResultFlags |= MOVE_RESULT_MISSED;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LEECH_SEED_FAIL;
     }
     else
     {
-        if (gMoveResultFlags & MOVE_RESULT_NO_EFFECT || gStatuses3[gBattlerTarget] & STATUS3_LEECHSEED)
-        {
-            gMoveResultFlags |= MOVE_RESULT_MISSED;
-            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LEECH_SEED_MISS;
-        }
-        else if (IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_GRASS))
-        {
-            gMoveResultFlags |= MOVE_RESULT_MISSED;
-            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LEECH_SEED_FAIL;
-        }
-        else
-        {
-            gStatuses3[gBattlerTarget] |= gBattlerAttacker;
-            gStatuses3[gBattlerTarget] |= STATUS3_LEECHSEED;
-            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LEECH_SEED_SET;
-        }
+        gStatuses3[gBattlerTarget] |= gBattlerAttacker;
+        gStatuses3[gBattlerTarget] |= STATUS3_LEECHSEED;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LEECH_SEED_SET;
     }
 
     gBattlescriptCurrInstr = cmd->nextInstr;
