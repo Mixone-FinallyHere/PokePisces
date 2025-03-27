@@ -6812,7 +6812,14 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_EFFECT_SPORE:
-            if (!IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GRASS) && GetBattlerAbility(gBattlerAttacker) != ABILITY_OVERCOAT && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOGGLES)
+            if (!IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GRASS) 
+            && GetBattlerAbility(gBattlerAttacker) != ABILITY_OVERCOAT 
+            && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOGGLES
+            && !gMoveResultFlags & MOVE_RESULT_NO_EFFECT
+            && gBattleMons[gBattlerAttacker].hp != 0 
+            && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
+            && TARGET_TURN_DAMAGED
+            && (Random() % 3) == 0)
             {
                 i = Random() % 4;
                 if (i == 0)
@@ -6824,12 +6831,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 if (i == 3)
                     goto PANIC;
                 POISON:
-                if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-                && gBattleMons[gBattlerAttacker].hp != 0 
-                && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
-                && TARGET_TURN_DAMAGED 
-                && CanBePoisoned(gBattlerTarget, gBattlerAttacker)
-                && (Random() % 3) == 0)
+                if (CanBePoisoned(gBattlerTarget, gBattlerAttacker))
                 {
                     gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_POISON;
                     PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
@@ -6838,13 +6840,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                     effect++;
                 }
+                break;
                 PARALYSIS:
-                if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-                && gBattleMons[gBattlerAttacker].hp != 0 
-                && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
-                && TARGET_TURN_DAMAGED 
-                && CanBeParalyzed(gBattlerAttacker)
-                && (Random() % 3) == 0)
+                if (CanBeParalyzed(gBattlerAttacker))
                 {
                     gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_PARALYSIS;
                     PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
@@ -6853,13 +6851,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                     effect++;
                 }
+                break;
                 SLEEP:
-                if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-                && gBattleMons[gBattlerAttacker].hp != 0 
-                && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
-                && TARGET_TURN_DAMAGED 
-                && CanSleep(gBattlerAttacker) 
-                && (Random() % 3) == 0)
+                if (CanSleep(gBattlerAttacker))
                 {
                     gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_SLEEP;
                     PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
@@ -6868,13 +6862,9 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                     effect++;
                 }
+                break;
                 PANIC:
-                if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-                && gBattleMons[gBattlerAttacker].hp != 0 
-                && !gProtectStructs[gBattlerAttacker].confusionSelfDmg 
-                && TARGET_TURN_DAMAGED 
-                && CanGetPanicked(gBattlerAttacker) 
-                && (Random() % 3) == 0)
+                if (CanGetPanicked(gBattlerAttacker))
                 {
                     gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_PANIC;
                     PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
@@ -6883,6 +6873,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                     effect++;
                 }
+                break;
             }
             break;
         case ABILITY_POISON_POINT:
