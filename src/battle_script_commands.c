@@ -13381,9 +13381,10 @@ static void Cmd_various(void)
         u32 battler = GetBattlerForBattleScript(cmd->battler);
 
         if (gDisableStructs[battler].disabledMove == MOVE_NONE
+            && gChosenMoveByBattler[battler] != MOVE_NONE
+            && gChosenMoveByBattler[battler] != MOVE_STRUGGLE
             && i != MAX_MON_MOVES 
-            && gBattleMons[battler].pp[i] != 0
-            && (!(gBattleMons[battler].status2 & STATUS2_MULTIPLETURNS)))
+            && gBattleMons[battler].pp[i] != 0)
         {
             PREPARE_MOVE_BUFFER(gBattleTextBuff1, gChosenMoveByBattler[battler])
     
