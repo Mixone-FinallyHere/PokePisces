@@ -13127,7 +13127,8 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
         break;
     case HOLD_EFFECT_OBJECT_D_ARC:
-        if (gBattleMoves[move].type == TYPE_GHOST || gBattleMoves[move].type == TYPE_PSYCHIC || gBattleMoves[move].type == TYPE_DARK)
+        if (gBattleMons[battlerAtk].species == SPECIES_NYARLY 
+        && (gBattleMoves[move].type == TYPE_GHOST || gBattleMoves[move].type == TYPE_PSYCHIC || gBattleMoves[move].type == TYPE_DARK))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
         break;
     case HOLD_EFFECT_ZIG_SASH:
