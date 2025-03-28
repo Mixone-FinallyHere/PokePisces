@@ -19019,14 +19019,24 @@ BattleScript_A_Thing_HappenedFR::
 	end2
 
 BattleScript_CrypticPlateEntryEffect::
-	setgravity BattleScript_CrypticPlateFailed
+	setgravity BattleScript_CrypticPlateGravityFailed
+	jumpifsideaffecting BS_ATTACKER, SIDE_STATUS_SAFEGUARD, BattleScript_CrypticPlateFailed
 	setsafeguard
 	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
 	printstring STRINGID_GRAVITYINTENSIFIED
 	waitmessage B_WAIT_TIME_LONG
 	printstring STRINGID_PKMNCOVEREDBYVEIL
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_CrypticPlateFailed::
+	end3
+BattleScript_CrypticPlateGravityFailed::
+	jumpifsideaffecting BS_ATTACKER, SIDE_STATUS_SAFEGUARD, BattleScript_CrypticPlateFailed
+	setsafeguard
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
+	printstring STRINGID_PKMNCOVEREDBYVEIL
+	waitmessage B_WAIT_TIME_LONG
 	end3
 
 BattleScript_GemstoneEvasion::
