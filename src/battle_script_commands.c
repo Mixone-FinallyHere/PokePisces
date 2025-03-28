@@ -3227,7 +3227,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
             statusChanged = TRUE;
             break;
         case STATUS1_POISON:
-            if ((battlerAbility == ABILITY_IMMUNITY || IsAbilityOnSide(gBattlerTarget, ABILITY_PASTEL_VEIL))
+            if ((battlerAbility == ABILITY_IMMUNITY || battlerAbility == ABILITY_PASTEL_VEIL)
                 && (primary == TRUE || certain == MOVE_EFFECT_CERTAIN))
             {
                 gLastUsedAbility = battlerAbility;
@@ -3236,10 +3236,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 BattleScriptPush(gBattlescriptCurrInstr + 1);
                 gBattlescriptCurrInstr = BattleScript_PSNPrevention;
 
-                if (battlerAbility != ABILITY_PASTEL_VEIL && IsAbilityOnSide(gBattlerTarget, ABILITY_PASTEL_VEIL)) {
-                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ALLY_ABILITY_PREVENTS_ABILITY_STATUS;
-                }
-                else if (gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
+                if (gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
                 {
                     gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ABILITY_PREVENTS_ABILITY_STATUS;
                     gHitMarker &= ~HITMARKER_IGNORE_SAFEGUARD;
@@ -3266,7 +3263,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
             statusChanged = TRUE;
             break;
         case STATUS1_BURN:
-            if ((battlerAbility == ABILITY_WATER_VEIL || IsAbilityOnSide(gBattlerTarget, ABILITY_WATER_VEIL))
+            if ((battlerAbility == ABILITY_WATER_VEIL || battlerAbility == ABILITY_WATER_BUBBLE)
               && (primary == TRUE || certain == MOVE_EFFECT_CERTAIN))
             {
                 gLastUsedAbility = battlerAbility;
@@ -3274,10 +3271,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
 
                 BattleScriptPush(gBattlescriptCurrInstr + 1);
                 gBattlescriptCurrInstr = BattleScript_BRNPrevention;
-                if (battlerAbility != ABILITY_WATER_VEIL && IsAbilityOnSide(gBattlerTarget, ABILITY_WATER_VEIL)) {
-                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ALLY_ABILITY_PREVENTS_ABILITY_STATUS;
-                }
-                else if (gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
+                if (gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
                 {
                     gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ABILITY_PREVENTS_ABILITY_STATUS;
                     gHitMarker &= ~HITMARKER_IGNORE_SAFEGUARD;
@@ -3354,7 +3348,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
             statusChanged = TRUE;
             break;
         case STATUS1_TOXIC_POISON:
-            if ((battlerAbility == ABILITY_IMMUNITY || IsAbilityOnSide(gBattlerTarget, ABILITY_PASTEL_VEIL))
+            if ((battlerAbility == ABILITY_IMMUNITY || battlerAbility == ABILITY_PASTEL_VEIL)
              && (primary == TRUE || certain == MOVE_EFFECT_CERTAIN))
             {
                 gLastUsedAbility = battlerAbility;
@@ -3362,10 +3356,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
 
                 BattleScriptPush(gBattlescriptCurrInstr + 1);
                 gBattlescriptCurrInstr = BattleScript_PSNPrevention;
-                if (battlerAbility != ABILITY_PASTEL_VEIL && IsAbilityOnSide(gBattlerTarget, ABILITY_PASTEL_VEIL)) {
-                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ALLY_ABILITY_PREVENTS_ABILITY_STATUS;
-                }
-                else if (gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
+
+                if (gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
                 {
                     gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ABILITY_PREVENTS_ABILITY_STATUS;
                     gHitMarker &= ~HITMARKER_IGNORE_SAFEGUARD;
@@ -3402,7 +3394,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
             }
             break;
         case STATUS1_FROSTBITE:
-            if ((battlerAbility == ABILITY_WATER_VEIL || IsAbilityOnSide(gBattlerTarget, ABILITY_WATER_VEIL))
+            if ((battlerAbility == ABILITY_WATER_VEIL)
               && (primary == TRUE || certain == MOVE_EFFECT_CERTAIN))
             {
                 gLastUsedAbility = battlerAbility;
@@ -3410,10 +3402,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
 
                 BattleScriptPush(gBattlescriptCurrInstr + 1);
                 gBattlescriptCurrInstr = BattleScript_FSBPrevention;
-                if (battlerAbility != ABILITY_WATER_VEIL && IsAbilityOnSide(gBattlerTarget, ABILITY_WATER_VEIL)) {
-                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ALLY_ABILITY_PREVENTS_ABILITY_STATUS;
-                }
-                else if (gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
+                if (gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
                 {
                     gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ABILITY_PREVENTS_ABILITY_STATUS;
                     gHitMarker &= ~HITMARKER_IGNORE_SAFEGUARD;
@@ -3424,19 +3413,21 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 }
                 RESET_RETURN
             }
-            if (!CanGetFrostbite(gEffectBattler) 
+            if (IS_BATTLER_OF_TYPE(gEffectBattler, TYPE_ICE)
                 && (gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
-                && (primary == TRUE || certain == MOVE_EFFECT_CERTAIN)) {
-                    BattleScriptPush(gBattlescriptCurrInstr + 1);
-                    gBattlescriptCurrInstr = BattleScript_FSBPrevention;
+                && (primary == TRUE || certain == MOVE_EFFECT_CERTAIN))
+            {
+                BattleScriptPush(gBattlescriptCurrInstr + 1);
+                gBattlescriptCurrInstr = BattleScript_FSBPrevention;
 
-                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUS_HAD_NO_EFFECT;
-                    RESET_RETURN
-                }
-            if (gBattleMons[gEffectBattler].status1)
-                break;     
-            if (CanGetFrostbite(gEffectBattler))
-                statusChanged = TRUE;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STATUS_HAD_NO_EFFECT;
+                RESET_RETURN
+            }
+
+            if (!CanGetFrostbite(gEffectBattler))
+                break;
+
+            statusChanged = TRUE;
             break;
         case STATUS1_PANIC:
             if (battlerAbility == ABILITY_IGNORANT_BLISS)
