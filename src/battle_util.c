@@ -13636,6 +13636,13 @@ static inline uq4_12_t GetFrenzyAttackerModifier(u32 battlerAtk, bool32 isCrit)
     return UQ_4_12(1.0);
 }
 
+static inline uq4_12_t GetFocusEnergyAttackModifier(u32 battlerAtk, bool32 isCrit)
+{
+    if (isCrit && gDisableStructs[battlerAtk].focusEnergy)
+        return UQ_4_12(1.2);
+    return UQ_4_12(1.0);
+}
+
 static inline uq4_12_t GetFrenzyDefenderModifier(u32 battlerDef)
 {
     if (gDisableStructs[battlerDef].frenzyCounter > 2)
@@ -14022,6 +14029,7 @@ static inline uq4_12_t GetOtherModifiers(u32 move, u32 moveType, u32 battlerAtk,
     DAMAGE_MULTIPLY_MODIFIER(GetExhaustionAttackerModifier(battlerAtk));
     DAMAGE_MULTIPLY_MODIFIER(GetFrenzyDefenderModifier(battlerDef));
     DAMAGE_MULTIPLY_MODIFIER(GetFrenzyAttackerModifier(battlerAtk, isCrit));
+    DAMAGE_MULTIPLY_MODIFIER(GetFocusEnergyAttackModifier(battlerAtk, isCrit));
     DAMAGE_MULTIPLY_MODIFIER(GetDaybreakDefenderModifier(battlerDef));
     DAMAGE_MULTIPLY_MODIFIER(GetDaybreakAttackerModifier(battlerAtk));
     DAMAGE_MULTIPLY_MODIFIER(GetAirborneModifier(move, battlerDef));

@@ -579,7 +579,7 @@ static const u8 sReflectDescription[] = _(
 static const u8 sFocusEnergyDescription[] = _(
     "The user takes a deep breath and\n"
     "focuses so that critical hits\n"
-    "land more easily.");
+    "land more easily and are boosted.");
 
 static const u8 sBideDescription[] = _(
     "Boosts defenses, then endures\n"
