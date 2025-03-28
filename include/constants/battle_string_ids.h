@@ -890,8 +890,9 @@
 #define STRINGID_PKMNLAIDCURSEVIGORROOT               888
 #define STRINGID_TERUCHARMACTIVATES                   889
 #define STRINGID_SPELONSPIKESSCATTERED                890
+#define STRINGID_USINGITEMSTATOFTARGETPKMNROSE        891
 
-#define BATTLESTRINGS_COUNT                           891
+#define BATTLESTRINGS_COUNT                           892
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

@@ -8692,12 +8692,9 @@ static u8 TryEjectPack(u32 battler, bool32 execute)
 
 static u8 DamagedPomegBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
 {
-    u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
-    u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
-    gBattlerTarget = opposingBattler;
     if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId))
     {
-        gEffectBattler = battler;
+        gEffectBattler = gBattleScripting.battler = battler;
 
         if (end2)
         {
@@ -9067,12 +9064,12 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
     case HOLD_EFFECT_WATMEL_BERRY:
         if (gBattleMons[battler].status1 & STATUS1_BLOOMING && !UnnerveOn(battler, gLastUsedItem))
         {
-            gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 2;
+            gBattleMoveDamage = gBattleMons[battler].maxHP / 2;
             if (gBattleMoveDamage == 0)
                 gBattleMoveDamage = 1;
             if (GetBattlerAbility(battler) == ABILITY_RIPEN)
                 gBattleMoveDamage *= 2;
-            if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+            if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
                 gBattleMoveDamage = 50;
             gBattleMons[battler].status1 &= ~STATUS1_BLOOMING;
             BattleScriptPushCursor();
@@ -9320,12 +9317,12 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_WATMEL_BERRY:
                 if (gBattleMons[battler].status1 & STATUS1_BLOOMING && !UnnerveOn(battler, gLastUsedItem))
                 {
-                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 2;
+                    gBattleMoveDamage = gBattleMons[battler].maxHP / 2;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     if (GetBattlerAbility(battler) == ABILITY_RIPEN)
                         gBattleMoveDamage *= 2;
-                    if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                    if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
                         gBattleMoveDamage = 50;
                     gBattleMons[battler].status1 &= ~STATUS1_BLOOMING;
                     BattleScriptPushCursor();
@@ -9729,14 +9726,14 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_WATMEL_BERRY:
                 if (gBattleMons[battler].status1 & STATUS1_BLOOMING && !UnnerveOn(battler, gLastUsedItem))
                 {
-                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 2;
+                    gBattleMoveDamage = gBattleMons[battler].maxHP / 2;
                     if (gBattleMoveDamage == 0)
                         gBattleMoveDamage = 1;
                     if (GetBattlerAbility(battler) == ABILITY_RIPEN)
                         gBattleMoveDamage *= 2;
-                    if (IsSpeciesOneOf(gBattleMons[gBattlerAttacker].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
+                    if (IsSpeciesOneOf(gBattleMons[battler].species, gMegaBosses) && (gBattleTypeFlags & BATTLE_TYPE_SHUNYONG) && gBattleMoveDamage > 50)
                         gBattleMoveDamage = 50;
-                    gBattleMons[battler].status1 &= ~STATUS1_BLOOMING;
+                    gBattleMons[battler].status1 = 0;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_BerryCureBloomRet;
                     effect = ITEM_STATUS_CHANGE;
@@ -9911,32 +9908,31 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             if (gBattleMoveDamage != 0 // Need to have done damage
                 && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
                 && TARGET_TURN_DAMAGED 
+                && (!(IS_MOVE_STATUS(gCurrentMove)))
                 && gBattleMons[gBattlerTarget].hp 
-                && !gStatuses3[gBattlerTarget] & STATUS3_MINIMIZED)
+                && (!(gStatuses3[gBattlerTarget] & STATUS3_MINIMIZED)))
             {
                 gLastUsedItem = atkItem;
-                gPotentialItemEffectBattler = gBattlerAttacker;
-                gBattleScripting.battler = gBattlerAttacker;
                 gStatuses3[gBattlerTarget] |= STATUS3_MINIMIZED;
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_NanabBerryActivatesRet;    
-                effect = ITEM_EFFECT_OTHER;
+                effect++;
             }
             break;
         case HOLD_EFFECT_WEPEAR_BERRY:
             if (gBattleMoveDamage != 0 // Need to have done damage
                 && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
                 && TARGET_TURN_DAMAGED 
+                && (!(IS_MOVE_STATUS(gCurrentMove)))
                 && gBattleMons[gBattlerTarget].hp 
-                && !gStatuses3[gBattlerTarget] & STATUS3_HEAL_BLOCK)
+                && (!(gStatuses3[gBattlerTarget] & STATUS3_HEAL_BLOCK)))
             {
                 gLastUsedItem = atkItem;
-                gPotentialItemEffectBattler = gBattlerAttacker;
-                gBattleScripting.battler = gBattlerAttacker;
                 gStatuses3[gBattlerTarget] |= STATUS3_HEAL_BLOCK;
+                gDisableStructs[gBattlerTarget].healBlockTimer = 5;
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_WepearBerryActivatesRet;    
-                effect = ITEM_EFFECT_OTHER;
+                effect++;
             }
             break;
         case HOLD_EFFECT_FLINCH:
@@ -10016,7 +10012,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
                     effect++;
                 }
-                if (IS_MOVE_SPECIAL(gCurrentMove)
+                else if (IS_MOVE_SPECIAL(gCurrentMove)
                 && CompareStat(gBattlerTarget, STAT_SPDEF, MIN_STAT_STAGE, CMP_GREATER_THAN))
                 {
                     SET_STATCHANGER(STAT_SPDEF, 1, TRUE);
@@ -10071,7 +10067,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 gBattleScripting.moveEffect = MOVE_EFFECT_DEF_MINUS_2;
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
-                gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
                 effect++;
             }
         }
@@ -13973,7 +13968,7 @@ static inline uq4_12_t GetAttackerItemsModifier(u32 battlerAtk, uq4_12_t typeEff
         break;
     case HOLD_EFFECT_EXPERT_BELT:
         if (typeEffectivenessModifier >= UQ_4_12(2.0))
-            return UQ_4_12(1.2);
+            return UQ_4_12(1.3);
         break;
     case HOLD_EFFECT_DISTILL_MOD:
         if (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_RELIC) && typeEffectivenessModifier >= UQ_4_12(2.0))

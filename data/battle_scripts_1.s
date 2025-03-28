@@ -16376,7 +16376,7 @@ BattleScript_MoveEffectPanic::
 	playanimation BS_EFFECT_BATTLER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
 	copybyte sBATTLER, BS_EFFECT_BATTLER
 	setlastuseditem BS_EFFECT_BATTLER
-	printstring STRINGID_USINGITEMSTATOFPKMNROSE
+	printstring STRINGID_USINGITEMSTATOFTARGETPKMNROSE
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_EFFECT_BATTLER
 BattleScript_MoveEffectPanicRet::
@@ -18792,11 +18792,11 @@ BattleScript_WatmelBerryActivate_Dmg:
 
 BattleScript_WatmelHurtAttacker:
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
-	healthbarupdate BS_ATTACKER
-	datahpupdate BS_ATTACKER
+	healthbarupdate BS_SCRIPTING
+	datahpupdate BS_SCRIPTING
 	printstring STRINGID_WATMELBERRYEXPLODED
 	waitmessage B_WAIT_TIME_LONG
-	tryfaintmon BS_ATTACKER
+	tryfaintmon BS_SCRIPTING
 	return
 
 BattleScript_GemActivates::
