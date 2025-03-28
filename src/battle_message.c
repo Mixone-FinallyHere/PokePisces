@@ -234,7 +234,8 @@ static const u8 sText_PkmnLaidCurseGrippingNail[] = _("{B_ATK_NAME_WITH_PREFIX} 
 static const u8 sText_PkmnLaidCurseVigorRoot[] = _("{B_ATK_NAME_WITH_PREFIX} was CURSED\nwith power!");
 static const u8 sText_PkmnAfflictedByCurse[] = _("{B_ATK_NAME_WITH_PREFIX} is afflicted\nby the CURSE!");
 static const u8 sText_SpikesScattered[] = _("Spikes were scattered all around\n{B_DEF_TEAM2} team!");
-static const u8 sText_SpelonSpikesScattered[] = _("{B_LAST_ITEM} scattered Spikes all\naround {B_DEF_TEAM2} team!");
+static const u8 sText_SpelonSpikesScattered[] = _("{B_LAST_ITEM} scattered Spikes all\naround {B_ATK_TEAM2} team!");
+static const u8 sText_StickyBarbSpikesScattered[] = _("{B_LAST_ITEM} scattered Spikes all\naround {B_DEF_TEAM2} team!");
 static const u8 sText_PkmnHurtBySpikes[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is hurt\nby spikes!");
 static const u8 sText_PkmnIdentified[] = _("{B_ATK_NAME_WITH_PREFIX} identified\n{B_DEF_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnPerishCountFell[] = _("{B_ATK_NAME_WITH_PREFIX}'s PERISH count\nfell to {B_BUFF1}!");
@@ -1845,7 +1846,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_TARGETWASPURIFIEDANDCANTCHANGESTATS - BATTLESTRINGS_TABLE_START] = sText_TargetWasPurifiedAndCantChangeStats,
     [STRINGID_PKMNSXINFATUATEDYITEMEDITION - BATTLESTRINGS_TABLE_START] = sText_PkmnsXInfatuatedYItemEdition,
     [STRINGID_PKMNSURROUNDEDWITHVEILS - BATTLESTRINGS_TABLE_START] = sText_PkmnSurroundedWithVeils,
-    [STRINGID_SPELONSPIKESSCATTERED - BATTLESTRINGS_TABLE_START] = sText_SpelonSpikesScattered,
+    [STRINGID_STICKYBARBSPIKESSCATTERED - BATTLESTRINGS_TABLE_START] = sText_StickyBarbSpikesScattered,
     [STRINGID_USERHASEXHAUSTION - BATTLESTRINGS_TABLE_START] = sText_UserHasExhaustion,
     [STRINGID_TARGETISEXHAUSTED - BATTLESTRINGS_TABLE_START] = sText_TargetIsExhausted,
     [STRINGID_SUPERMAGNETNOSTATLOSS - BATTLESTRINGS_TABLE_START] = sText_SuperMagnetNoStatLoss,
@@ -1908,6 +1909,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNGEMSTONELOSTEVASION - BATTLESTRINGS_TABLE_START] = sText_PkmnGemstoneLostEvasion,
     [STRINGID_PKMNLAIDCURSEVIGORROOT - BATTLESTRINGS_TABLE_START] = sText_PkmnLaidCurseVigorRoot,
     [STRINGID_TERUCHARMACTIVATES - BATTLESTRINGS_TABLE_START] = sText_TeruCharmActivates,
+    [STRINGID_SPELONSPIKESSCATTERED - BATTLESTRINGS_TABLE_START] = sText_StickyBarbSpikesScattered,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

@@ -19082,7 +19082,7 @@ BattleScript_ItemHurtEnd2::
 BattleScript_StickyBarb::
 	playanimation BS_ATTACKER, B_ANIM_MON_HIT
 	waitanimation
-	printstring STRINGID_SPELONSPIKESSCATTERED
+	printstring STRINGID_STICKYBARBSPIKESSCATTERED
 	waitmessage B_WAIT_TIME_LONG
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE | HITMARKER_IGNORE_DISGUISE
 	healthbarupdate BS_ATTACKER
@@ -19095,7 +19095,7 @@ BattleScript_StickyBarb::
 BattleScript_StickyBarbJustSpikes::
 	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
 	waitanimation
-	printstring STRINGID_SPELONSPIKESSCATTERED
+	printstring STRINGID_STICKYBARBSPIKESSCATTERED
 	waitmessage B_WAIT_TIME_LONG
 	end2
 

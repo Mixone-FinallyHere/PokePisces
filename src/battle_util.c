@@ -10498,7 +10498,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && IsBattlerAlive(battler)
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
                 && !gStatuses4[gBattlerAttacker] & STATUS4_SALT_CURE
-                && gBattleStruct->hpBefore[gBattlerTarget] > gBattleMons[gBattlerTarget].maxHP / 4
                 && gBattleMons[gBattlerTarget].hp < gBattleMons[gBattlerTarget].maxHP / 4)
                 {
                     effect = ITEM_EFFECT_OTHER;
@@ -10519,7 +10518,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 || CompareStat(gBattlerAttacker, STAT_ACC, MIN_STAT_STAGE, CMP_GREATER_THAN)
                 || CompareStat(gBattlerAttacker, STAT_EVASION, MIN_STAT_STAGE, CMP_GREATER_THAN))
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
-                && gBattleStruct->hpBefore[gBattlerTarget] > gBattleMons[gBattlerTarget].maxHP / 2
                 && gBattleMons[gBattlerTarget].hp < gBattleMons[gBattlerTarget].maxHP / 2)
                 {
                     effect = ITEM_STATS_CHANGE;
@@ -10531,7 +10529,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 break;
             case HOLD_EFFECT_YELLOW_SODA:
                 if (gBattleMons[battler].species == SPECIES_VOREON
-                && gBattleStruct->hpBefore[battler] > gBattleMons[battler].maxHP / 2
                 && gBattleMons[battler].hp < gBattleMons[battler].maxHP / 2
                 && TARGET_TURN_DAMAGED
                 && IsBattlerAlive(battler)
@@ -10593,7 +10590,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 && TARGET_TURN_DAMAGED
                 && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
                 && CanBeConfused(gBattlerAttacker)
-                && gBattleStruct->hpBefore[gBattlerTarget] > gBattleMons[battler].maxHP / 2
                 && gBattleMons[gBattlerTarget].hp < gBattleMons[battler].maxHP / 2)
                 {
                     effect = ITEM_EFFECT_OTHER;
@@ -10643,8 +10639,7 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_PINAP_BERRY:
                 if (IsBattlerAlive(battler) 
                 && TARGET_TURN_DAMAGED 
-                && !DoesSubstituteBlockMove(gBattlerTarget, battler, gCurrentMove) 
-                && gBattleStruct->hpBefore[gBattlerTarget] > gBattleMons[battler].maxHP / 4
+                && !DoesSubstituteBlockMove(gBattlerTarget, battler, gCurrentMove)
                 && gBattleMons[gBattlerTarget].hp < gBattleMons[battler].maxHP / 4
                 && GetBattlerAbility(gBattlerTarget) != ABILITY_MAGIC_GUARD 
                 && GetBattlerAbility(gBattlerTarget) != ABILITY_SUGAR_COAT)
