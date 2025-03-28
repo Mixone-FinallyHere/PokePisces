@@ -2049,17 +2049,12 @@ BattleScript_DefenderUsedAnExtraMove::
 	waitmessage B_WAIT_TIME_LONG
 	copybyte gEffectBattler, gBattlerTarget
 	swapattackerwithtarget
-BattleScript_DefenderEffectExtraHit::
-BattleScript_DefenderExtraHitFromAtkCanceler::
 	attackcanceler
-BattleScript_DefenderExtraHitFromAtkString::
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 	attackstring
-BattleScript_DefenderExtraHitFromCritCalc::
 	critcalc
 	damagecalc
 	adjustdamage
-BattleScript_DefenderExtraHitFromAtkAnimation::
 	playmoveanimation BS_ATTACKER, MOVE_NONE
 	waitanimation
 	effectivenesssound
@@ -2073,12 +2068,9 @@ BattleScript_DefenderExtraHitFromAtkAnimation::
 	waitmessage B_WAIT_TIME_LONG
 	seteffectwithchance
 	tryfaintmon BS_TARGET
-BattleScript_DefenderExtraRestoreBattlers::
 	swapattackerwithtarget
 	copybyte gBattlerAttacker, sSAVED_BATTLER
-BattleScript_DefenderExtraMoveEnd::
-	moveendall
-	end
+	end2
 
 BattleScript_DefenderUsedCinderWaltz::
 	copybyte sSAVED_BATTLER, gBattlerAttacker
@@ -2112,7 +2104,7 @@ BattleScript_DefenderUsedCinderWaltz::
 	seteffectprimary
 	swapattackerwithtarget
 	copybyte gBattlerAttacker, sSAVED_BATTLER
-	goto BattleScript_MoveEnd
+	end2
 
 BattleScript_AttackerUsedAnExtraMove::
 	call BattleScript_AbilityPopUp
