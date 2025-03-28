@@ -3183,10 +3183,11 @@ void SetMoveEffect(bool32 primary, u32 certain)
     if (gBattleWeather & B_WEATHER_SANDSTORM 
         && battlerAbility == ABILITY_SAND_VEIL 
         && !(gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
-        && !primary) {
-            RecordAbilityBattle(gEffectBattler, battlerAbility);            
-            INCREMENT_RESET_RETURN
-        }
+        && !primary) 
+    {
+        RecordAbilityBattle(gEffectBattler, battlerAbility);            
+        INCREMENT_RESET_RETURN
+    }
 
     if (gSideStatuses[GetBattlerSide(gEffectBattler)] & SIDE_STATUS_SAFEGUARD && !(gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
         && !primary && gBattleScripting.moveEffect <= MOVE_EFFECT_CONFUSION)

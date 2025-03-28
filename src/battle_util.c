@@ -6622,14 +6622,52 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             break;
         case ABILITY_REFORM:
             if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+            && (!(gMoveResultFlags & MOVE_RESULT_NOT_VERY_EFFECTIVE))
             && move != MOVE_STRUGGLE 
             && gBattleMoves[move].power != 0 
             && TARGET_TURN_DAMAGED 
             && gBattleMons[battler].hp != 0
-            && ShouldReform(battler, gCurrentMove)
-            && CalcTypeEffectivenessMultiplier(move, moveType, battler, gBattlerTarget, GetBattlerAbility(gBattlerTarget), FALSE) >= UQ_4_12(1.0))
+            && ShouldReform(battler, gCurrentMove))
             {
                 PREPARE_TYPE_BUFFER(gBattleTextBuff1, moveType);
+                if (gBattleMoves[move].type == TYPE_NORMAL && !gDisableStructs[battler].reformNormal)
+                    gDisableStructs[battler].reformNormal = TRUE;
+                else if (gBattleMoves[move].type == TYPE_FIGHTING && !gDisableStructs[battler].reformFighting)
+                    gDisableStructs[battler].reformFighting = TRUE;
+                else if (gBattleMoves[move].type == TYPE_FLYING && !gDisableStructs[battler].reformFlying)
+                    gDisableStructs[battler].reformFlying = TRUE;
+                else if (gBattleMoves[move].type == TYPE_POISON && !gDisableStructs[battler].reformPoison)
+                    gDisableStructs[battler].reformPoison = TRUE;
+                else if (gBattleMoves[move].type == TYPE_GROUND && !gDisableStructs[battler].reformGround)
+                    gDisableStructs[battler].reformGround = TRUE;
+                else if (gBattleMoves[move].type == TYPE_ROCK && !gDisableStructs[battler].reformRock)
+                    gDisableStructs[battler].reformRock = TRUE;
+                else if (gBattleMoves[move].type == TYPE_BUG && !gDisableStructs[battler].reformBug)
+                    gDisableStructs[battler].reformBug = TRUE;
+                else if (gBattleMoves[move].type == TYPE_GHOST && !gDisableStructs[battler].reformGhost)
+                    gDisableStructs[battler].reformGhost = TRUE;
+                else if (gBattleMoves[move].type == TYPE_STEEL && !gDisableStructs[battler].reformSteel)
+                    gDisableStructs[battler].reformSteel = TRUE;
+                else if (gBattleMoves[move].type == TYPE_FIRE && !gDisableStructs[battler].reformFire)
+                    gDisableStructs[battler].reformFire = TRUE;
+                else if (gBattleMoves[move].type == TYPE_WATER && !gDisableStructs[battler].reformWater)
+                    gDisableStructs[battler].reformWater = TRUE;
+                else if (gBattleMoves[move].type == TYPE_GRASS && !gDisableStructs[battler].reformGrass)
+                    gDisableStructs[battler].reformGrass = TRUE;
+                else if (gBattleMoves[move].type == TYPE_ELECTRIC && !gDisableStructs[battler].reformElectric)
+                    gDisableStructs[battler].reformElectric = TRUE;
+                else if (gBattleMoves[move].type == TYPE_PSYCHIC && !gDisableStructs[battler].reformPsychic)
+                    gDisableStructs[battler].reformPsychic = TRUE;
+                else if (gBattleMoves[move].type == TYPE_ICE && !gDisableStructs[battler].reformIce)
+                    gDisableStructs[battler].reformIce = TRUE;
+                else if (gBattleMoves[move].type == TYPE_DRAGON && !gDisableStructs[battler].reformDragon)
+                    gDisableStructs[battler].reformDragon = TRUE;
+                else if (gBattleMoves[move].type == TYPE_DARK && !gDisableStructs[battler].reformDark)
+                    gDisableStructs[battler].reformDark = TRUE;
+                else if (gBattleMoves[move].type == TYPE_FAIRY && !gDisableStructs[battler].reformFairy)
+                    gDisableStructs[battler].reformFairy = TRUE;
+                else if (gBattleMoves[move].type == TYPE_RELIC && !gDisableStructs[battler].reformRelic)
+                    gDisableStructs[battler].reformRelic = TRUE;        
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_ReformActivates;
                 effect++;
@@ -11099,61 +11137,42 @@ bool32 IsMoveMakingContact(u32 move, u32 battlerAtk)
 bool32 ShouldReform(u32 battlerDef, u32 move)
 {
     if (gBattleMoves[move].type == TYPE_NORMAL && !gDisableStructs[battlerDef].reformNormal)
-        gDisableStructs[battlerDef].reformNormal = TRUE;
         return TRUE;
     if (gBattleMoves[move].type == TYPE_FIGHTING && !gDisableStructs[battlerDef].reformFighting)
-        gDisableStructs[battlerDef].reformFighting = TRUE;
         return TRUE;
     if (gBattleMoves[move].type == TYPE_FLYING && !gDisableStructs[battlerDef].reformFlying)
-        gDisableStructs[battlerDef].reformFlying = TRUE;
         return TRUE;
     if (gBattleMoves[move].type == TYPE_POISON && !gDisableStructs[battlerDef].reformPoison)
-        gDisableStructs[battlerDef].reformPoison = TRUE;
         return TRUE;
     if (gBattleMoves[move].type == TYPE_GROUND && !gDisableStructs[battlerDef].reformGround)
-        gDisableStructs[battlerDef].reformGround = TRUE;
         return TRUE;
     if (gBattleMoves[move].type == TYPE_ROCK && !gDisableStructs[battlerDef].reformRock)
-        gDisableStructs[battlerDef].reformRock = TRUE;
         return TRUE;
     if (gBattleMoves[move].type == TYPE_BUG && !gDisableStructs[battlerDef].reformBug)
-        gDisableStructs[battlerDef].reformBug = TRUE;
         return TRUE;
     if (gBattleMoves[move].type == TYPE_GHOST && !gDisableStructs[battlerDef].reformGhost)
-        gDisableStructs[battlerDef].reformGhost = TRUE;
         return TRUE;
     if (gBattleMoves[move].type == TYPE_STEEL && !gDisableStructs[battlerDef].reformSteel)
-        gDisableStructs[battlerDef].reformSteel = TRUE;
         return TRUE;
     if (gBattleMoves[move].type == TYPE_FIRE && !gDisableStructs[battlerDef].reformFire)
-        gDisableStructs[battlerDef].reformFire = TRUE;
         return TRUE;
     if (gBattleMoves[move].type == TYPE_WATER && !gDisableStructs[battlerDef].reformWater)
-        gDisableStructs[battlerDef].reformWater = TRUE;
         return TRUE;
     if (gBattleMoves[move].type == TYPE_GRASS && !gDisableStructs[battlerDef].reformGrass)
-        gDisableStructs[battlerDef].reformGrass = TRUE;
         return TRUE;
     if (gBattleMoves[move].type == TYPE_ELECTRIC && !gDisableStructs[battlerDef].reformElectric)
-        gDisableStructs[battlerDef].reformElectric = TRUE;
         return TRUE;
     if (gBattleMoves[move].type == TYPE_PSYCHIC && !gDisableStructs[battlerDef].reformPsychic)
-        gDisableStructs[battlerDef].reformPsychic = TRUE;
         return TRUE;
     if (gBattleMoves[move].type == TYPE_ICE && !gDisableStructs[battlerDef].reformIce)
-        gDisableStructs[battlerDef].reformIce = TRUE;
         return TRUE;
     if (gBattleMoves[move].type == TYPE_DRAGON && !gDisableStructs[battlerDef].reformDragon)
-        gDisableStructs[battlerDef].reformDragon = TRUE;
         return TRUE;
     if (gBattleMoves[move].type == TYPE_DARK && !gDisableStructs[battlerDef].reformDark)
-        gDisableStructs[battlerDef].reformDark = TRUE;
         return TRUE;
     if (gBattleMoves[move].type == TYPE_FAIRY && !gDisableStructs[battlerDef].reformFairy)
-        gDisableStructs[battlerDef].reformFairy = TRUE;
         return TRUE;
     if (gBattleMoves[move].type == TYPE_RELIC && !gDisableStructs[battlerDef].reformRelic)
-        gDisableStructs[battlerDef].reformRelic = TRUE;
         return TRUE;
     return FALSE;
 }
@@ -11163,9 +11182,9 @@ bool32 IsBattlerProtected(u32 battler, u32 move)
     // Decorate bypasses protect and detect, but not crafty shield
     if (move == MOVE_DECORATE)
     {
-        if (gStatuses4[battler] & STATUS4_CRAFTY_SHIELD)
+        if (gStatuses4[gBattlerTarget] & STATUS4_CRAFTY_SHIELD)
             return TRUE;
-        else if (gProtectStructs[battler].protected)
+        else if (gProtectStructs[gBattlerTarget].protected)
             return FALSE;
     }
 
@@ -11190,29 +11209,29 @@ bool32 IsBattlerProtected(u32 battler, u32 move)
         return FALSE;
     else if (gBattleMoves[move].effect == EFFECT_FEINT)
         return FALSE;
-    else if (gSpecialStatuses[battler].gemBoost == TRUE)
+    else if (gSpecialStatuses[gBattlerTarget].gemBoost == TRUE)
         return FALSE;
-    else if (gProtectStructs[battler].protected)
+    else if (gProtectStructs[gBattlerTarget].protected)
         return TRUE;
-    else if (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_WIDE_GUARD && GetBattlerMoveTargetType(gBattlerAttacker, move) & (MOVE_TARGET_BOTH | MOVE_TARGET_FOES_AND_ALLY))
+    else if (gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_WIDE_GUARD && GetBattlerMoveTargetType(gBattlerAttacker, move) & (MOVE_TARGET_BOTH | MOVE_TARGET_FOES_AND_ALLY))
         return TRUE;
-    else if (gProtectStructs[battler].banefulBunkered)
+    else if (gProtectStructs[gBattlerTarget].banefulBunkered)
         return TRUE;
-    else if (gProtectStructs[battler].burningBulwarked)
+    else if (gProtectStructs[gBattlerTarget].burningBulwarked)
         return TRUE;
-    else if (gProtectStructs[battler].drakenGuarded)
+    else if (gProtectStructs[gBattlerTarget].drakenGuarded)
         return TRUE;
-    else if ((gProtectStructs[battler].obstructed || gProtectStructs[battler].silkTrapped || gProtectStructs[battler].detectShielded || gProtectStructs[battler].shelltered) && (!(IS_MOVE_STATUS(move))))
+    else if ((gProtectStructs[gBattlerTarget].obstructed || gProtectStructs[gBattlerTarget].silkTrapped || gProtectStructs[gBattlerTarget].detectShielded || gProtectStructs[gBattlerTarget].shelltered) && (!(IS_MOVE_STATUS(move))))
         return TRUE;
-    else if (gProtectStructs[battler].spikyShielded)
+    else if (gProtectStructs[gBattlerTarget].spikyShielded)
         return TRUE;
-    else if (gProtectStructs[battler].kingsShielded && gBattleMoves[move].power != 0)
+    else if (gProtectStructs[gBattlerTarget].kingsShielded && gBattleMoves[move].power != 0)
         return TRUE;
-    else if (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_QUICK_GUARD && GetChosenMovePriority(gBattlerAttacker) > 0)
+    else if (gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_QUICK_GUARD && GetChosenMovePriority(gBattlerAttacker) > 0)
         return TRUE;
-    else if (gStatuses4[battler] & STATUS4_CRAFTY_SHIELD && IS_MOVE_STATUS(move))
+    else if (gStatuses4[gBattlerTarget] & STATUS4_CRAFTY_SHIELD && IS_MOVE_STATUS(move))
         return TRUE;
-    else if (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_MAT_BLOCK && (!(IS_MOVE_STATUS(move))))
+    else if (gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_MAT_BLOCK && (IS_MOVE_PHYSICAL(move) || IS_MOVE_SPECIAL(move)))
         return TRUE;
     else
         return FALSE;
@@ -15506,13 +15525,16 @@ bool32 IsBattlerAffectedByHazards(u32 battler, bool32 toxicSpikes)
 {
     bool32 ret = TRUE;
     u32 holdEffect = GetBattlerHoldEffect(battler, TRUE);
+    u32 ability = GetBattlerAbility(battler);
+
     if (IS_BATTLER_OF_TYPE(battler, TYPE_STEEL))
     {
         ret = FALSE;
     }
-    else if (GetBattlerAbility(battler) == ABILITY_SHIELD_DUST || GetBattlerAbility(battler) == ABILITY_TITANIC || GetBattlerAbility(battler) == ABILITY_IGNORANT_BLISS || GetBattlerAbility(battler) == ABILITY_STURDY || ((gBattleWeather & B_WEATHER_HAIL || gBattleWeather & B_WEATHER_SNOW) && GetBattlerAbility(battler) == ABILITY_SNOW_CLOAK))
+    else if (ability == ABILITY_SHIELD_DUST || ability == ABILITY_TITANIC || ability == ABILITY_IGNORANT_BLISS || ability == ABILITY_STURDY || (gBattleWeather & B_WEATHER_HAIL && ability == ABILITY_SNOW_CLOAK))
     {
         ret = FALSE;
+        RecordAbilityBattle(battler, ability);
     }
     else if (toxicSpikes && holdEffect == HOLD_EFFECT_HEAVY_DUTY_BOOTS && !IS_BATTLER_OF_TYPE(battler, TYPE_POISON))
     {
