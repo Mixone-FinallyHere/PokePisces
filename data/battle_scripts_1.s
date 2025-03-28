@@ -3882,7 +3882,7 @@ BattleScript_EffectGrippingNailContinue::
 	jumpiftype BS_TARGET, TYPE_GHOST, BattleScript_TryCursePortion
 	setmoveeffect MOVE_EFFECT_PREVENT_ESCAPE
 	seteffectprimary
-	printstring STRINGID_TARGETCANTESCAPEFORNOW
+	printstring STRINGID_TARGETCANTESCAPENOW
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_TryCursePortion::
 	cursetarget BattleScript_MoveEnd
@@ -3921,13 +3921,9 @@ BattleScript_GrippingNailBloomingEffect::
 	jumpiftype BS_TARGET, TYPE_GHOST, BattleScript_TryCursePortion2
 	setmoveeffect MOVE_EFFECT_PREVENT_ESCAPE
 	seteffectprimary
-	printstring STRINGID_TARGETCANTESCAPEFORNOW
+	printstring STRINGID_TARGETCANTESCAPENOW
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_TryCursePortion2::
-	setmoveeffect MOVE_EFFECT_PREVENT_ESCAPE
-	seteffectprimary
-	printstring STRINGID_TARGETCANTESCAPEFORNOW
-	waitmessage B_WAIT_TIME_LONG
 	cursetarget BattleScript_TryLeechSeedPortion
 	printstring STRINGID_PKMNLAIDCURSEGRIPPINGNAIL
 	waitmessage B_WAIT_TIME_LONG

@@ -163,6 +163,17 @@ const struct SpriteTemplate gLinearPinSpriteTemplate =
     .callback = AnimTranslateStinger,
 };
 
+const struct SpriteTemplate gGrippingNailSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_SHOOTING_NAIL,
+    .paletteTag = ANIM_TAG_SHOOTING_NAIL,
+    .oam = &gOamData_AffineNormal_ObjNormal_32x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimTranslateStinger,
+};
+
 const struct SpriteTemplate gPinMissileSpriteTemplate =
 {
     .tileTag = ANIM_TAG_NEEDLE,

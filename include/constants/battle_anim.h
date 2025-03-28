@@ -445,6 +445,7 @@
 #define ANIM_TAG_GIANTS_SPEAR_OPPONENT      (ANIM_SPRITES_START + 431)
 #define ANIM_TAG_TORPEDO                    (ANIM_SPRITES_START + 432)
 #define ANIM_TAG_SHRIMP                     (ANIM_SPRITES_START + 433)
+#define ANIM_TAG_SHOOTING_NAIL              (ANIM_SPRITES_START + 434)
 
 // battlers
 #define ANIM_ATTACKER         0

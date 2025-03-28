@@ -23248,7 +23248,6 @@ Move_GATTLING_PINS::
 	delay 1
 	waitforvisualfinish
 	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 2, 0, 5, 1
-	createvisualtask AnimTask_ShakeMon2, 2, ANIM_DEF_PARTNER, 2, 0, 5, 1
 	playsewithpan SE_M_HORN_ATTACK, SOUND_PAN_TARGET
 	waitforvisualfinish
 	clearmonbg ANIM_TARGET
@@ -24976,27 +24975,27 @@ Move_POWER_DRAIN::
 	end
 
 Move_GRIPPING_NAIL::
-	loadspritegfx ANIM_TAG_NAIL
+	loadspritegfx ANIM_TAG_SHOOTING_NAIL
 	loadspritegfx ANIM_TAG_GHOSTLY_SPIRIT
-	monbg ANIM_ATK_PARTNER
-	createvisualtask AnimTask_CurseStretchingBlackBg, 5
-	waitforvisualfinish
-	delay 20
-	createsprite gGrippingNailSpriteTemplate, ANIM_ATTACKER, 2
-	delay 60
-	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 4, 0, 10, 0
+	monbg ANIM_TARGET
+	splitbgprio ANIM_TARGET
+	setalpha 12, 8
 	playsewithpan SE_M_BIND, SOUND_PAN_ATTACKER
-	delay 41
-	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 4, 0, 10, 0
+	createsprite gGrippingNailSpriteTemplate, 2, ANIM_TARGET, 20, 0, -8, 0, 10, 1
+	delay 1
 	playsewithpan SE_M_BIND, SOUND_PAN_ATTACKER
-	delay 41
-	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 4, 0, 10, 0
+	createsprite gGrippingNailSpriteTemplate, 2, ANIM_TARGET, 20, 0, -8, 0, 10, 1
+	delay 1
 	playsewithpan SE_M_BIND, SOUND_PAN_ATTACKER
+	createsprite gGrippingNailSpriteTemplate, 2, ANIM_TARGET, 20, 0, -8, 0, 10, 1
+	delay 1
 	waitforvisualfinish
-	clearmonbg ANIM_ATK_PARTNER
+	playsewithpan SE_M_NIGHTMARE, SOUND_PAN_TARGET
+	createspriteontargets gCurseGhostSpriteTemplate, ANIM_TARGET, 3, 2, 8, -5, ANIM_TARGET, 0
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 2, 0, 5, 1
 	waitforvisualfinish
-	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 16, 0, RGB_BLACK
-	waitforvisualfinish
+	clearmonbg ANIM_TARGET
+	blendoff
 	end
 
 Move_VIGOR_ROOT::
