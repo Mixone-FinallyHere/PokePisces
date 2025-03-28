@@ -13556,9 +13556,16 @@ static inline uq4_12_t GetBurnOrFrostBiteOrPanicModifier(u32 battlerAtk, u32 mov
     return UQ_4_12(1.0);
 }
 
-static inline uq4_12_t GetCriticalModifier(bool32 isCrit)
+static inline uq4_12_t GetCriticalModifier(bool32 isCrit, u32 battlerAtk)
 {
-    return isCrit ? V_CRIT_MULTIPLIER : UQ_4_12(1.0);
+    if (isCrit)
+    {
+        if (GetBattlerAbility(battlerAtk) == ABILITY_PRODIGY)
+            return UQ_4_12(2.0);
+        else
+            return UQ_4_12(1.5);
+    }
+    return UQ_4_12(1.0);
 }
 
 static inline uq4_12_t GetGlaiveRushModifier(u32 battlerDef)
@@ -13775,10 +13782,6 @@ static inline uq4_12_t GetAttackerAbilitiesModifier(u32 battlerAtk, uq4_12_t typ
     case ABILITY_SNIPER:
         if (isCrit)
             return UQ_4_12(1.5);
-        break;
-    case ABILITY_PRODIGY:
-        if (isCrit)
-            return UQ_4_12(1.33);
         break;
     case ABILITY_TINTED_LENS:
         if (typeEffectivenessModifier <= UQ_4_12(0.5))
@@ -14092,7 +14095,7 @@ static inline s32 DoMoveDamageCalcVars(u32 move, u32 battlerAtk, u32 battlerDef,
     DAMAGE_APPLY_MODIFIER(GetTargetDamageModifier(move, battlerAtk, battlerDef));
     DAMAGE_APPLY_MODIFIER(GetParentalBondModifier(battlerAtk));
     DAMAGE_APPLY_MODIFIER(GetWeatherDamageModifier(battlerAtk, move, moveType, holdEffectAtk, holdEffectDef, weather));
-    DAMAGE_APPLY_MODIFIER(GetCriticalModifier(isCrit));
+    DAMAGE_APPLY_MODIFIER(GetCriticalModifier(isCrit, battlerAtk));
     DAMAGE_APPLY_MODIFIER(GetGlaiveRushModifier(battlerDef));
     DAMAGE_APPLY_MODIFIER(GetRechargeReduceModifier(battlerDef));
     DAMAGE_APPLY_MODIFIER(GetLuckyChantModifier(abilityAtk, battlerAtk, battlerDef, typeEffectivenessModifier));
@@ -14220,7 +14223,7 @@ static inline s32 DoFutureSightAttackDamageCalcVars(u32 move, u32 battlerAtk, u3
         userFinalAttack = GetMonData(partyMon, MON_DATA_SPATK, NULL);
     targetFinalDefense = CalcDefenseStat(move, battlerAtk, battlerDef, moveType, isCrit, updateFlags, ABILITY_NONE, abilityDef, holdEffectDef, weather);
     dmg = CalculateBaseDamage(gBattleMovePower, userFinalAttack, partyMonLevel, targetFinalDefense);
-    DAMAGE_APPLY_MODIFIER(GetCriticalModifier(isCrit));
+    DAMAGE_APPLY_MODIFIER(GetCriticalModifier(isCrit, battlerAtk));
     if (randomFactor)
     {
         dmg *= 100 - RandomUniform(RNG_DAMAGE_MODIFIER, 0, 15);
