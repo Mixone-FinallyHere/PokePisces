@@ -27759,7 +27759,52 @@ Move_SWEET_WHISPERS::
 	goto Move_GROWL
 
 Move_BABY_BLUES::
-	goto Move_LIGHT_SCREEN
+	loadspritegfx ANIM_TAG_MUD_SAND
+	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_MUD_SAND, 0, 12, 12, RGB_BLUE
+	createvisualtask AnimTask_Splash, 2, ANIM_ATTACKER, 6
+	delay 24
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 0, -4, -16
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 0, 4, -12
+	playsewithpan SE_M_DIG, SOUND_PAN_ATTACKER
+	delay 32
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 0, -3, -12
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 0, 5, -14
+	playsewithpan SE_M_DIG, SOUND_PAN_ATTACKER
+	delay 32
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 0, -5, -18
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 0, 3, -14
+	playsewithpan SE_M_DIG, SOUND_PAN_ATTACKER
+	delay 16
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 220, 60
+	waitplaysewithpan SE_M_BUBBLE2, 0, 15
+	delay 2
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 60, 100
+	waitplaysewithpan SE_M_BUBBLE2, 0, 25
+	delay 2
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 140, 55
+	waitplaysewithpan SE_M_BUBBLE2, 0, 14
+	delay 2
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 180, 50
+	waitplaysewithpan SE_M_BUBBLE2, 0, 10
+	delay 2
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 20, 90
+	waitplaysewithpan SE_M_BUBBLE2, 0, 22
+	delay 2
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 90, 90
+	waitplaysewithpan SE_M_BUBBLE2, 0, 22
+	delay 2
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 160, 60
+	waitplaysewithpan SE_M_BUBBLE2, 0, 15
+	delay 2
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 30, 90
+	waitplaysewithpan SE_M_BUBBLE2, 0, 22
+	delay 2
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 120, 60
+	waitplaysewithpan SE_M_BUBBLE2, 0, 15
+	delay 2
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 200, 40
+	waitplaysewithpan SE_M_BUBBLE2, 0, 10
+	end
 
 Move_SYRUP_BOMB::
 	loadspritegfx ANIM_TAG_SYRUP_BLOB_RED
