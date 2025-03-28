@@ -1133,6 +1133,8 @@ static bool8 ShouldUseItem(u32 battler)
                 shouldUse = TRUE;
             if (itemEffects[3] & ITEM3_BURN && gBattleMons[battler].status1 & STATUS1_BURN)
                 shouldUse = TRUE;
+            if (itemEffects[3] & ITEM3_PANIC && gBattleMons[battler].status1 & STATUS1_PANIC)
+                shouldUse = TRUE;
             if (itemEffects[3] & ITEM3_FREEZE && (gBattleMons[battler].status1 & STATUS1_FREEZE || gBattleMons[battler].status1 & STATUS1_FROSTBITE))
                 shouldUse = TRUE;
             if (itemEffects[3] & ITEM3_PARALYSIS && gBattleMons[battler].status1 & STATUS1_PARALYSIS)

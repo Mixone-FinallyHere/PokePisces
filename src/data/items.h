@@ -6720,8 +6720,9 @@ const struct Item gItems[] =
         .holdEffect = HOLD_EFFECT_CURE_PANIC,
         .description = sPamtreBerryDesc,
         .pocket = POCKET_BERRIES,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .flingPower = 10,
     },
 

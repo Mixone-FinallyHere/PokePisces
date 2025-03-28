@@ -391,6 +391,10 @@ const u8 gItemEffect_PechaBerry[6] = {
     [3] = ITEM3_POISON,
 };
 
+const u8 gItemEffect_PamtreBerry[6] = {
+    [3] = ITEM3_PANIC,
+};
+
 const u8 gItemEffect_RawstBerry[6] = {
     [3] = ITEM3_BURN,
 };
@@ -613,6 +617,7 @@ const u8 *const gItemEffectTable[ITEMS_COUNT] =
     [ITEM_ORAN_BERRY]         = gItemEffect_OranBerry,
     [ITEM_PERSIM_BERRY]       = gItemEffect_PersimBerry,
     [ITEM_LUM_BERRY]          = gItemEffect_FullHeal,
+    [ITEM_PAMTRE_BERRY]       = gItemEffect_PamtreBerry,
     [ITEM_SITRUS_BERRY]       = gItemEffect_SitrusBerry,
     [LAST_BERRY_INDEX]        = NULL,
 };
