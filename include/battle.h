@@ -70,6 +70,7 @@ struct DisableStruct
     u8 exhaustionCounter;
     u8 surpriseCounter;
     u8 daybreakCounter;
+    u8 gemstoneEvasionCounter;
     u8 stormBrewCounter;
     u8 allureCounter;
     u8 frenzyCounter;

@@ -976,7 +976,8 @@ static const u8 sText_PkmnPumpingPower[] = _("{B_ATK_NAME_WITH_PREFIX} began\npu
 static const u8 sText_CannonadeMalfunctioned[] = _("The {B_CURRENT_MOVE} has\nmalfunctioned!");
 static const u8 sText_PkmnSwitchedSpAtkAndSpDef[] = _("{B_ATK_NAME_WITH_PREFIX} switched its Sp.\nAttack and Sp. Defense!");
 static const u8 sText_ScarfWasChargedByBeingHit[] = _("Being hit by {B_CURRENT_MOVE} charged\n{B_DEF_NAME_WITH_PREFIX}'s {B_BUFF1} with power!");
-static const u8 sText_PkmnGemstoneMaxedEvasion[] = _("Gemstone maxed out\n{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s evasion!");
+static const u8 sText_PkmnGemstoneMaxedEvasion[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_LAST_ITEM}\nboosted its evasiveness!");
+static const u8 sText_PkmnGemstoneLostEvasion[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_LAST_ITEM}\nlowered its evasiveness.");
 static const u8 sText_UsingItemTheStatOfPkmnFell[] = _("Using {B_LAST_ITEM}, the {B_BUFF1}\nof {B_SCR_ACTIVE_NAME_WITH_PREFIX} {B_BUFF2}");
 static const u8 sText_AbilityLetItUseMove[] = _("{B_ATK_NAME_WITH_PREFIX}'s ability let it use\n{B_CURRENT_MOVE}!");
 static const u8 sText_AbilityLetItUseMoveTarget[] = _("{B_DEF_NAME_WITH_PREFIX}'s ability let it use\n{B_CURRENT_MOVE}!");
@@ -1902,6 +1903,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNPREVENTSINFATUATIONWITH - BATTLESTRINGS_TABLE_START] = sText_PkmnPreventsInfatuationWith,
     [STRINGID_GOOEYDISABLED - BATTLESTRINGS_TABLE_START] = sText_GooeyDisabled,
     [STRINGID_TARGETSTATWONTGOLOWER - BATTLESTRINGS_TABLE_START] = sText_TargetStatWontGoLower,
+    [STRINGID_PKMNGEMSTONELOSTEVASION - BATTLESTRINGS_TABLE_START] = sText_PkmnGemstoneLostEvasion,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

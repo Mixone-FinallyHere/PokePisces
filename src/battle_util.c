@@ -9391,8 +9391,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 {
                     effect = ITEM_EFFECT_OTHER;
                     gBattleScripting.battler = battler;
+                    gDisableStructs[battler].gemstoneEvasionCounter = 3;
                     BattleScriptPushCursorAndCallback(BattleScript_GemstoneEvasion);
                     RecordItemEffectBattle(battler, HOLD_EFFECT_GEMSTONE);
+                    PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
                 }
                 break;
             case HOLD_EFFECT_CRYPTIC_PLATE:
@@ -9551,16 +9553,10 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             case HOLD_EFFECT_GEMSTONE:
                 if (!moveTurn 
                 && gBattleMons[battler].species == SPECIES_HARACE 
-                && (CompareStat(battler, STAT_EVASION, MIN_STAT_STAGE, CMP_GREATER_THAN)))
+                && gDisableStructs[battler].gemstoneEvasionCounter > 0)
                 {
-                    BufferStatChange(battler, STAT_EVASION, STRINGID_STATFELL);
-                    gEffectBattler = battler;
-                    SET_STATCHANGER(STAT_EVASION, 2, TRUE);
-
-                    gBattleScripting.animArg1 = 14 + STAT_EVASION;
-                    gBattleScripting.animArg2 = 0;
-
-                    BattleScriptPushCursorAndCallback(BattleScript_GemstoneRet);
+                    gDisableStructs[battler].gemstoneEvasionCounter -= 1;
+                    BattleScriptPushCursorAndCallback(BattleScript_GemstoneEvasionDrop);
                     effect = ITEM_STATS_CHANGE;
                     RecordItemEffectBattle(battler, battlerHoldEffect);
                 }

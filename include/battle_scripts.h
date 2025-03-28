@@ -742,7 +742,7 @@ extern const u8 BattleScript_BloomingHpGain[];
 extern const u8 BattleScript_BloomingHpGainEnd[];
 extern const u8 BattleScript_BloomingHealBlockEnd[];
 extern const u8 BattleScript_GemstoneEvasion[];
-extern const u8 BattleScript_GemstoneRet[];
+extern const u8 BattleScript_GemstoneEvasionDrop[];
 extern const u8 BattleScript_CrypticPlateEntryEffect[];
 extern const u8 BattleScript_DefenderUsedAnExtraMove[];
 extern const u8 BattleScript_DefenderUsedCinderWaltz[];

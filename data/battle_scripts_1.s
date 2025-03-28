@@ -18981,13 +18981,17 @@ BattleScript_CrypticPlateFailed::
 	end3
 
 BattleScript_GemstoneEvasion::
-	jumpifstat BS_ATTACKER, CMP_EQUAL, STAT_EVASION, MAX_STAT_STAGE, BattleScript_GemstoneFailed
-	playstatchangeanimation BS_ATTACKER, BIT_EVASION, STAT_CHANGE_BY_TWO
-	setstatchanger STAT_EVASION, MAX_STAT_STAGE, FALSE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_GemstoneFailed
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
 	printstring STRINGID_PKMNGEMSTONEMAXEDEVASION
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_GemstoneFailed::
+	end3
+
+BattleScript_GemstoneEvasionDrop::
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
+	printstring STRINGID_PKMNGEMSTONELOSTEVASION
+	waitmessage B_WAIT_TIME_LONG
 	end3
 
 BattleScript_AirBaloonMsgIn::
@@ -19950,17 +19954,6 @@ BattleScript_BerserkGeneRet_OwnTempoPrevents:
 BattleScript_BerserkGeneRet_End:
 	restoretarget
 	removeitem BS_SCRIPTING
-	end3
-
-BattleScript_GemstoneRet::
-	savetarget
-	copybyte gBattlerTarget, sBATTLER
-	statbuffchange STAT_CHANGE_ALLOW_PTR, BattleScript_GemstoneRet_End
-	setgraphicalstatchangevalues
-	setbyte cMULTISTRING_CHOOSER, B_MSG_STAT_FELL_ITEM
-	call BattleScript_StatDown
-BattleScript_GemstoneRet_End:
-	restoretarget
 	end3
 
 BattleScript_EffectSnow::

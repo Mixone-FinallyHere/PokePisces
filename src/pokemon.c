@@ -7949,10 +7949,25 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
         if (totalEVs >= maxEVs)
             break;
 
-        if (CheckPartyHasHadPokerus(mon, 0))
+        if (FlagGet(FLAG_BADGE08_GET))
+            multiplier = 8;
+        else if (FlagGet(FLAG_BADGE07_GET))
+            multiplier = 7;
+        else if (FlagGet(FLAG_BADGE06_GET)) 
+            multiplier = 6;
+        else if (FlagGet(FLAG_BADGE05_GET))
+            multiplier = 5;
+        else if (FlagGet(FLAG_BADGE04_GET))
+            multiplier = 4;
+        else if (FlagGet(FLAG_BADGE03_GET))
+            multiplier = 3;
+        else if (FlagGet(FLAG_BADGE02_GET))
             multiplier = 2;
         else
             multiplier = 1;
+
+        if (CheckPartyHasHadPokerus(mon, 0))
+            multiplier += 1;
 
         switch (i)
         {

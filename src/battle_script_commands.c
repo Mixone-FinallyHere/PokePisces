@@ -1884,6 +1884,10 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
     case HOLD_EFFECT_EVASION_UP:
         calc = (calc * (100 - defParam)) / 100;
         break;
+    case HOLD_EFFECT_GEMSTONE:
+        if (gBattleMons[battlerDef].species == SPECIES_HARACE && gDisableStructs[battlerDef].gemstoneEvasionCounter != 0)
+        calc = (calc * (100 - (30 * gDisableStructs[battlerDef].gemstoneEvasionCounter))) / 100;
+        break;
     case HOLD_EFFECT_FAVOR_SCARF:
         calc = (calc * 90) / 100;
         break;
