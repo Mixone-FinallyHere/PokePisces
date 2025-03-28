@@ -10258,11 +10258,11 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             if ((!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
                 && IsBattlerAlive(gBattlerTarget)
                 && TARGET_TURN_DAMAGED
+                && !IS_MOVE_STATUS(gCurrentMove)
                 && CountBattlerStatIncreases(gBattlerTarget, TRUE) > 0
                 && !NoAliveMonsForEitherParty()) // Don't activate if battle will end
             {
                 gLastUsedItem = atkItem;
-                gBattleScripting.battler = gBattlerAttacker;
                 effect = ITEM_EFFECT_OTHER;
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_FlipCoinFlipStats;
@@ -10270,9 +10270,9 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
             break;
         case HOLD_EFFECT_HARD_STONE:    // if use rock type move, next attack on us does 20% less dmg (this turn only)
             if (IsBattlerAlive(gBattlerAttacker)
-                && gBattleMoves[gCurrentMove].type == TYPE_ROCK
-                && TARGET_TURN_DAMAGED
-                && !gProtectStructs[gBattlerAttacker].hardStoneBoost)
+            && gBattleMoves[gCurrentMove].type == TYPE_ROCK
+            && TARGET_TURN_DAMAGED
+            && (!(gProtectStructs[gBattlerAttacker].hardStoneBoost)))
                 gProtectStructs[gBattlerAttacker].hardStoneBoost = TRUE;
             break;
         case HOLD_EFFECT_MYSTIC_WATER:  // if using water move, 30% chance to undo negative stat changes
