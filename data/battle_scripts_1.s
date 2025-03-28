@@ -11762,8 +11762,15 @@ BattleScript_EffectSandstorm::
 	ppreduce
 	call BattleScript_CheckPrimalWeather
 	setsandstorm
+	attackanimation
+	waitanimation
+	printfromtable gMoveWeatherChangeStringIds
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_ActivateWeatherAbilities
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_WEATHER_FAILED, BattleScript_SandstormSkipTailwindCheck
 	call BattleScript_TryTailwindAbilitiesLoop
-	goto BattleScript_MoveWeatherChange
+BattleScript_SandstormSkipTailwindCheck::
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectRollout::
 	attackcanceler
