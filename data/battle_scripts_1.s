@@ -17086,41 +17086,56 @@ BattleScript_SolarPowerActivatesEveryone_HidePopUp:
 	goto BattleScript_SolarPowerActivatesEveryoneIncrement
 
 BattleScript_DelugeHurts::
+	savetarget
+	showabilitypopup BS_ATTACKER
+	pause B_WAIT_TIME_LONG
+	destroyabilitypopup
 	setbyte gBattlerTarget, 0
-BattleScript_DelugeHurtsLoop:
-	jumpiftargetally BattleScript_DelugeHurtsIncrement
-	jumpifability BS_TARGET, ABILITY_MAGIC_GUARD, BattleScript_DelugeHurtsIncrement
-	jumpifability BS_TARGET, ABILITY_SUGAR_COAT, BattleScript_DelugeHurtsIncrement
-	jumpifterucharmprotected BS_TARGET, BattleScript_DelugeHurtsIncrement
-	jumpifabsent BS_TARGET, BattleScript_ArbiterActivatesIncrement
-	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_DelugeHurts_ShowPopUp
-BattleScript_DelugeHurts_DmgAfterPopUp:
-	playanimation BS_TARGET, B_ANIM_WHIRLPOOL
-	waitanimation
-	printstring STRINGID_PKMNCUTSHPWITH2
+BattleScript_DelugeLoop:
+	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_DelugeLoopIncrement
+	jumpiftargetally BattleScript_DelugeLoopIncrement
+	jumpifabsent BS_TARGET, BattleScript_DelugeLoopIncrement
+	jumpifstatus2 BS_TARGET, STATUS2_SUBSTITUTE, BattleScript_DelugeLoopIncrement
+	jumpifability BS_TARGET, ABILITY_IGNORANT_BLISS, BattleScript_DelugePrevented
+BattleScript_DelugeEffect:
+	copybyte sBATTLER, gBattlerAttacker
+	setstatchanger STAT_SPEED, 2, TRUE
+	statbuffchange STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_DelugeLoopIncrement
+	setgraphicalstatchangevalues
+	jumpifability BS_TARGET, ABILITY_CONTRARY, BattleScript_DelugeContrary
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_DECREASE, BattleScript_DelugeWontDecrease
+	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printstring STRINGID_PKMNCUTSSPEEDWITH
+BattleScript_DelugeEffect_WaitString:
 	waitmessage B_WAIT_TIME_LONG
-	dmg_1_10_targethp
-	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	jumpifhasnohp BS_TARGET, BattleScript_DelugeHurts_HidePopUp
-BattleScript_DelugeHurtsIncrement:
+BattleScript_DelugeLoopIncrement:
 	addbyte gBattlerTarget, 1
-	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_DelugeHurtsLoop
-	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_DelugeHurtsEnd
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_DelugeLoop
+	copybyte sBATTLER, gBattlerAttacker
 	destroyabilitypopup
-	pause 15
-BattleScript_DelugeHurtsEnd:
+	restoretarget
+	pause B_WAIT_TIME_MED
 	end3
-BattleScript_DelugeHurts_ShowPopUp:
-	copybyte gBattlerAbility, gBattlerAttacker
+
+BattleScript_DelugePrevented::
+	copybyte sBATTLER, gBattlerTarget
 	call BattleScript_AbilityPopUp
-	setbyte sFIXED_ABILITY_POPUP, TRUE
-	goto BattleScript_DelugeHurts_DmgAfterPopUp
-BattleScript_DelugeHurts_HidePopUp:
-	destroyabilitypopup
-	tryfaintmon BS_TARGET
-	goto BattleScript_DelugeHurtsIncrement
+	printstring STRINGID_PKMNPREVENTSSTATLOSSWITH
+	goto BattleScript_DelugeEffect_WaitString
+
+BattleScript_DelugeContrary:
+	call BattleScript_AbilityPopUpTarget
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_DelugeContrary_WontIncrease
+	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printfromtable gStatUpStringIds
+	goto BattleScript_DelugeEffect_WaitString
+BattleScript_DelugeContrary_WontIncrease:
+	printstring STRINGID_TARGETSTATWONTGOHIGHER
+	goto BattleScript_DelugeEffect_WaitString
+
+BattleScript_DelugeWontDecrease:
+	printstring STRINGID_STATSWONTDECREASE
+	goto BattleScript_DelugeEffect_WaitString
 
 BattleScript_DroughtActivates::
 	pause B_WAIT_TIME_SHORT

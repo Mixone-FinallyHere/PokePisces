@@ -4803,7 +4803,7 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
             speed *= 2;
         else if (ability == ABILITY_CHLOROPHYLL && gBattleWeather & B_WEATHER_SUN)
             speed *= 2;
-        else if (ability == ABILITY_SUNRISE && gBattleWeather & B_WEATHER_RAIN)
+        else if (ability == ABILITY_SUNRISE && gBattleWeather & B_WEATHER_SUN && gBattleMons[battler].hp <= gBattleMons[battler].maxHP / 4)
             speed *= 1.3;
         else if (ability == ABILITY_SAND_RUSH && gBattleWeather & B_WEATHER_SANDSTORM)
             speed *= 2;

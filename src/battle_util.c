@@ -5572,7 +5572,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             switch (gLastUsedAbility)
             {
             case ABILITY_SUNRISE:
-                if (gBattleMons[battler].hp <= gBattleMons[battler].maxHP * 2 / 5)
+                if (gBattleMons[battler].hp <= gBattleMons[battler].maxHP / 2)
                 {
                     if (TryChangeBattleWeather(battler, ENUM_WEATHER_SUN, TRUE))
                     {
@@ -5592,7 +5592,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     BattleScriptPushCursorAndCallback(BattleScript_DelugeHurts);
                     effect++;
                 }
-                else if (gBattleMons[battler].hp <= gBattleMons[battler].maxHP * 2 / 5)
+                else if (gBattleMons[battler].hp <= gBattleMons[battler].maxHP / 2)
                 {
                     if (TryChangeBattleWeather(battler, ENUM_WEATHER_RAIN, TRUE))
                     {

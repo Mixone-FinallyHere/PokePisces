@@ -1728,14 +1728,14 @@ static const u8 sReformDescription[] = _(
     "to that type afterwards.");
 
 static const u8 sSunriseDescription[] = _(
-    "At 2/5 HP or less, turns the\n"
-    "sunlight harsh. Boosts the\n"
-    "Pokémon's Speed in it.");
+    "At half health, makes sunlight\n"
+    "harsh. At a quarter health and\n"
+    "in harsh sunlight, boosts Speed.");
 
 static const u8 sDelugeDescription[] = _(
-    "At 2/5 HP or less, makes it\n"
-    "rain. Traps opposing Pokémon and\n"
-    "damages them in rain.");
+    "At half health, makes it rain.\n"
+    "Traps opposing Pokémon and\n"
+    "harshly cuts their Speed in rain.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
