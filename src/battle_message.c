@@ -231,6 +231,7 @@ static const u8 sText_PkmnFellIntoNightmare[] = _("{B_DEF_NAME_WITH_PREFIX} fell
 static const u8 sText_PkmnLockedInNightmare[] = _("{B_ATK_NAME_WITH_PREFIX} is locked\nin a NIGHTMARE!");
 static const u8 sText_PkmnLaidCurse[] = _("{B_ATK_NAME_WITH_PREFIX} cut its own HP and\nlaid a CURSE on {B_DEF_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnLaidCurseGrippingNail[] = _("{B_ATK_NAME_WITH_PREFIX} laid a\nCURSE on {B_DEF_NAME_WITH_PREFIX}!");
+static const u8 sText_PkmnLaidCurseVigorRoot[] = _("{B_ATK_NAME_WITH_PREFIX} was CURSED\nwith power!");
 static const u8 sText_PkmnAfflictedByCurse[] = _("{B_ATK_NAME_WITH_PREFIX} is afflicted\nby the CURSE!");
 static const u8 sText_SpikesScattered[] = _("Spikes were scattered all around\n{B_DEF_TEAM2} team!");
 static const u8 sText_SpelonSpikesScattered[] = _("{B_LAST_ITEM} scattered Spikes all\naround {B_DEF_TEAM2} team!");
@@ -1904,6 +1905,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_GOOEYDISABLED - BATTLESTRINGS_TABLE_START] = sText_GooeyDisabled,
     [STRINGID_TARGETSTATWONTGOLOWER - BATTLESTRINGS_TABLE_START] = sText_TargetStatWontGoLower,
     [STRINGID_PKMNGEMSTONELOSTEVASION - BATTLESTRINGS_TABLE_START] = sText_PkmnGemstoneLostEvasion,
+    [STRINGID_PKMNLAIDCURSEVIGORROOT - BATTLESTRINGS_TABLE_START] = sText_PkmnLaidCurseVigorRoot,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
