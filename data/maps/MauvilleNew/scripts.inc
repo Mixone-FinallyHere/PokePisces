@@ -1,17 +1,26 @@
 .set LOCALID_P_MAN, 7
 .set LOCALID_BONDING, 8
 .set LOCALID_RAY, 9
+.set LOCALID_GABBY, 1
+.set LOCALID_TY, 2
 
 MauvilleNew_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, MauvilleNew_OnLoad
 	.byte 0
 
 MauvilleNew_OnLoad:
+	call_if_eq VAR_GABBY_AND_TY_STATE, 0, MauvilleNew_EventScript_RemoveInterviewers
 	call_if_gt VAR_RAY_STATE, 3, MauvilleNew_EventScript_RemoveRay
 	call_if_lt VAR_OLD_GUYS_STATE, 2, MauvilleNew_EventScript_RemovePowerlessMan
 	call_if_gt VAR_OLD_GUYS_STATE, 2, MauvilleNew_EventScript_RemovePowerlessMan
 	call_if_lt VAR_OLD_GUYS_STATE, 18, MauvilleNew_EventScript_RemoveMrBonding
 	end
+
+MauvilleNew_EventScript_RemoveInterviewers::
+	removeobject LOCALID_GABBY
+	removeobject LOCALID_TY
+	setflag FLAG_TEMP_19
+	return
 
 MauvilleNew_EventScript_RemoveRay::
 	removeobject LOCALID_RAY

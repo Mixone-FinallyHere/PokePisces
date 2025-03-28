@@ -1,8 +1,12 @@
+.set LOCALID_GABBY, 1
+.set LOCALID_TY, 2
+
 LilycoveMuseumNew_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, LilycoveMuseumNew_OnLoad
 	.byte 0
 
 LilycoveMuseumNew_OnLoad:
+	call_if_eq VAR_GABBY_AND_TY_STATE, 0, LilycoveMuseumNew_EventScript_RemoveInterviewers
 	call_if_ge VAR_BALL_QUEST_STATE, 1, LilycoveMuseumNew_EventScript_PlacePainting1
 	call_if_ge VAR_BALL_QUEST_STATE, 2, LilycoveMuseumNew_EventScript_PlacePainting2
 	call_if_ge VAR_BALL_QUEST_STATE, 3, LilycoveMuseumNew_EventScript_PlacePainting3
@@ -18,6 +22,12 @@ LilycoveMuseumNew_OnLoad:
 	call_if_ge VAR_BALL_QUEST_STATE, 13, LilycoveMuseumNew_EventScript_PlacePainting13
 	call_if_ge VAR_BALL_QUEST_STATE, 14, LilycoveMuseumNew_EventScript_PlacePainting14
 	end
+
+LilycoveMuseumNew_EventScript_RemoveInterviewers::
+	removeobject LOCALID_GABBY
+	removeobject LOCALID_TY
+	setflag FLAG_TEMP_19
+	return
 
 LilycoveMuseumNew_EventScript_PlacePainting1::
 	setmetatile 8, 10, METATILE_OldStoneBuildings_Painting1TopLeft, TRUE

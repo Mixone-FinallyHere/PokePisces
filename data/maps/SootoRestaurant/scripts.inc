@@ -1,5 +1,19 @@
+.set LOCALID_GABBY, 10
+.set LOCALID_TY, 9
+
 SootoRestaurant_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, SootoRestaurant_OnLoad
 	.byte 0
+
+SootoRestaurant_OnLoad:
+	call_if_eq VAR_GABBY_AND_TY_STATE, 0, SootoRestaurant_EventScript_RemoveInterviewers
+	end
+
+SootoRestaurant_EventScript_RemoveInterviewers::
+	removeobject LOCALID_GABBY
+	removeobject LOCALID_TY
+	setflag FLAG_TEMP_19
+	return
 
 SootoRestaurant_EventScript_Chef::
 	lock

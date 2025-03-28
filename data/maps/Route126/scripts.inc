@@ -1,6 +1,8 @@
 .set LOCALID_RAY, 5
 .set LOCALID_PARRYER, 21
 .set LOCALID_DIRECTOR, 32
+.set LOCALID_GABBY, 25
+.set LOCALID_TY, 24
 
 Route126_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route126_OnFrame
@@ -8,10 +10,17 @@ Route126_MapScripts::
 	.byte 0
 
 Route126_OnTransition:
+	call_if_eq VAR_GABBY_AND_TY_STATE, 0, Route126_EventScript_RemoveInterviewers
 	call_if_lt VAR_ORBS_QUEST_STATE, 7, Route126_EventScript_RemoveDirector
 	call_if_gt VAR_ORBS_QUEST_STATE, 7, Route126_EventScript_RemoveDirector
 	goto_if_lt VAR_SPACE_CENTER_QUEST_STATE, 3, Route126_EventScript_HideMeteors
 	end
+
+Route126_EventScript_RemoveInterviewers::
+	removeobject LOCALID_GABBY
+	removeobject LOCALID_TY
+	setflag FLAG_TEMP_19
+	return
 
 Route126_EventScript_RemoveDirector::
 	removeobject LOCALID_DIRECTOR
