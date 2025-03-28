@@ -14081,61 +14081,61 @@ BattleScript_SafeguardEnds::
 	waitmessage B_WAIT_TIME_LONG
 	end2
 
-BattleScript_TickedTurnDrainLiquidOoze::
-	call BattleScript_TickedTurnDrain
+BattleScript_TickedTurnDrain::
+	playanimation BS_ATTACKER, B_ANIM_LEECH_SEED_DRAIN, sB_ANIM_ARG1
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	copyword gBattleMoveDamage, gHpDealt
+	jumpifability BS_ATTACKER, ABILITY_LIQUID_OOZE, BattleScript_TickedTurnPrintLiquidOoze
+	setbyte cMULTISTRING_CHOOSER, B_MSG_LEECH_SEED_DRAIN
+	jumpifstatus3 BS_TARGET, STATUS3_HEAL_BLOCK, BattleScript_TickedHealBlock
+	manipulatedamage DMG_BIG_ROOT
+	goto BattleScript_TickedTurnPrintAndUpdateHp
+BattleScript_TickedTurnPrintLiquidOoze::
 	copybyte gBattlerAbility, gBattlerAttacker
 	call BattleScript_AbilityPopUp
-	copybyte gBattlerAttacker, gBattlerTarget   @ needed to get liquid ooze message correct
-	goto BattleScript_TickedTurnDrainGainHp
-
-BattleScript_TickedTurnDrainHealBlock::
-	call BattleScript_TickedTurnDrain
-	end2
-
-BattleScript_TickedTurnDrainRecovery::
-	call BattleScript_TickedTurnDrain
-BattleScript_TickedTurnDrainGainHp:
+	setbyte cMULTISTRING_CHOOSER, B_MSG_LEECH_SEED_OOZE
+BattleScript_TickedTurnPrintAndUpdateHp::
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_TARGET
 	datahpupdate BS_TARGET
 	printfromtable gTickedStringIds
 	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_ATTACKER
 	tryfaintmon BS_TARGET
 	end2
+BattleScript_TickedHealBlock:
+	setword gBattleMoveDamage, 0
+	goto BattleScript_TickedTurnPrintAndUpdateHp
 
-BattleScript_TickedTurnDrain:
+BattleScript_LeechSeedTurnDrain::
 	playanimation BS_ATTACKER, B_ANIM_LEECH_SEED_DRAIN, sB_ANIM_ARG1
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
-	tryfaintmon BS_ATTACKER
-	return
-
-BattleScript_LeechSeedTurnDrainLiquidOoze::
-	call BattleScript_LeechSeedTurnDrain
+	copyword gBattleMoveDamage, gHpDealt
+	jumpifability BS_ATTACKER, ABILITY_LIQUID_OOZE, BattleScript_LeechSeedTurnPrintLiquidOoze
+	setbyte cMULTISTRING_CHOOSER, B_MSG_LEECH_SEED_DRAIN
+	jumpifstatus3 BS_TARGET, STATUS3_HEAL_BLOCK, BattleScript_LeechSeedHealBlock
+	manipulatedamage DMG_BIG_ROOT
+	goto BattleScript_LeechSeedTurnPrintAndUpdateHp
+BattleScript_LeechSeedTurnPrintLiquidOoze::
 	copybyte gBattlerAbility, gBattlerAttacker
 	call BattleScript_AbilityPopUp
-	copybyte gBattlerAttacker, gBattlerTarget   @ needed to get liquid ooze message correct
-	goto BattleScript_LeechSeedTurnDrainGainHp
-
-BattleScript_LeechSeedTurnDrainHealBlock::
-	call BattleScript_LeechSeedTurnDrain
-	end2
-
-BattleScript_LeechSeedTurnDrainRecovery::
-	call BattleScript_LeechSeedTurnDrain
-BattleScript_LeechSeedTurnDrainGainHp:
+	setbyte cMULTISTRING_CHOOSER, B_MSG_LEECH_SEED_OOZE
+BattleScript_LeechSeedTurnPrintAndUpdateHp::
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_TARGET
 	datahpupdate BS_TARGET
 	printfromtable gLeechSeedStringIds
 	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_ATTACKER
 	tryfaintmon BS_TARGET
 	end2
-
-BattleScript_LeechSeedTurnDrain:
-	playanimation BS_ATTACKER, B_ANIM_LEECH_SEED_DRAIN, sB_ANIM_ARG1
-	healthbarupdate BS_ATTACKER
-	datahpupdate BS_ATTACKER
-	tryfaintmon BS_ATTACKER
-	return
+BattleScript_LeechSeedHealBlock:
+	setword gBattleMoveDamage, 0
+	goto BattleScript_LeechSeedTurnPrintAndUpdateHp
 
 BattleScript_BideStoringEnergy::
 	printstring STRINGID_PKMNSTORINGENERGY
