@@ -16730,6 +16730,7 @@ BattleScript_IntimidateLoopIncrement:
 	end3
 
 BattleScript_IntimidatePreventedByDragon:
+	copybyte sBATTLER, gBattlerTarget
 	printstring STRINGID_PKMNPREVENTSSTATLOSSDRAGON
 	goto BattleScript_IntimidateEffect_WaitString
 
@@ -20120,6 +20121,7 @@ BattleScript_DisturbLoopIncrement:
 	end3
 
 BattleScript_DisturbPreventedDragon:
+	copybyte sBATTLER, gBattlerTarget
 	printstring STRINGID_PKMNPREVENTSSTATLOSSDRAGON
 	goto BattleScript_DisturbEffect_WaitString
 
