@@ -4679,10 +4679,10 @@ static const u8 sGemstoneDesc[] = _(
     "turn. Ups Sp. Atk.");
 
 static const u8 sTeruCharmDesc[] = _(
-    "A special charm that\n"
-    "boosts a Chiroberra's\n"
-    "defenses and blocks\n"
-    "indirect damage.");
+    "Ups defenses. Blocks\n"
+    "indirect damage. Stops\n"
+    "all weather. For\n"
+    "Chiroberra.");
 
 static const u8 sMaxEggplantDesc[] = _(
     "A familiar-looking\n"

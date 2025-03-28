@@ -315,6 +315,7 @@ extern const u8 BattleScript_FavorScarfCuredStatusEnd2[];
 extern const u8 BattleScript_FavorScarfCuredStatusRet[];
 extern const u8 BattleScript_WhiteHerbEnd2[];
 extern const u8 BattleScript_WhiteHerbRet[];
+extern const u8 BattleScript_AnnounceTeruCharm[];
 extern const u8 BattleScript_ItemHealHP_RemoveItemRet[];
 extern const u8 BattleScript_ItemHealHP_RemoveItemEnd2[];
 extern const u8 BattleScript_BerryPPHealEnd2[];

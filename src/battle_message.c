@@ -787,6 +787,7 @@ static const u8 sText_DefensesWereNotLowered[] = _("{B_DEF_NAME_WITH_PREFIX}'s d
 static const u8 sText_AuraFlaredToLife[] = _("{B_DEF_NAME_WITH_PREFIX}'s aura flared to life!");
 static const u8 sText_CloudNineActivates[] = _("The effects of weather\ndisappeared.");
 static const u8 sText_AirLockActivates[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY}\ncleared the weather!");
+static const u8 sText_TeruCharmActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_LAST_ITEM}\ncleared the weather!");
 static const u8 sText_PressureActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is exerting its\npressure!");
 static const u8 sText_DarkAuraActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is radiating\nan evil aura!");
 static const u8 sText_FairyAuraActivates[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is radiating\na fairy aura!");
@@ -1906,6 +1907,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_TARGETSTATWONTGOLOWER - BATTLESTRINGS_TABLE_START] = sText_TargetStatWontGoLower,
     [STRINGID_PKMNGEMSTONELOSTEVASION - BATTLESTRINGS_TABLE_START] = sText_PkmnGemstoneLostEvasion,
     [STRINGID_PKMNLAIDCURSEVIGORROOT - BATTLESTRINGS_TABLE_START] = sText_PkmnLaidCurseVigorRoot,
+    [STRINGID_TERUCHARMACTIVATES - BATTLESTRINGS_TABLE_START] = sText_TeruCharmActivates,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

@@ -18881,6 +18881,13 @@ BattleScript_WhiteHerbRet::
 	removeitem BS_SCRIPTING
 	return
 
+BattleScript_AnnounceTeruCharm::
+	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT
+	printstring STRINGID_TERUCHARMACTIVATES
+	waitmessage B_WAIT_TIME_LONG
+	removeitem BS_SCRIPTING
+	end2
+
 BattleScript_ItemHealHP_RemoveItemRet::
 	jumpifability BS_SCRIPTING, ABILITY_RIPEN, BattleScript_ItemHealHP_RemoveItemRet_AbilityPopUp
 	goto BattleScript_ItemHealHP_RemoveItemRet_Anim

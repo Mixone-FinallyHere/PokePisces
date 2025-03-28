@@ -4414,6 +4414,14 @@ bool32 TryChangeBattleWeather(u32 battler, u32 weatherEnumId, bool32 viaAbility)
         }
     }
 
+    if (weatherEnumId != WEATHER_NONE)
+    {
+        if (IsTeruCharmOnField())
+        {
+            return FALSE;
+        }
+    }
+
     if (gBattleWeather & B_WEATHER_PRIMAL_ANY && battlerAbility != ABILITY_DESOLATE_LAND && battlerAbility != ABILITY_PRIMORDIAL_SEA && battlerAbility != ABILITY_DELTA_STREAM)
     {
         return FALSE;
@@ -8136,6 +8144,19 @@ u32 IsAbilityOnField(u32 ability)
     return 0;
 }
 
+u32 IsTeruCharmOnField(void)
+{
+    u32 i;
+
+    for (i = 0; i < gBattlersCount; i++)
+    {
+        if (IsBattlerAlive(i) && GetBattlerHoldEffect(i, FALSE) == HOLD_EFFECT_TERU_CHARM && gBattleMons[i].species == SPECIES_CHIROBERRA)
+            return i + 1;
+    }
+
+    return 0;
+}
+
 u32 IsAbilityOnFieldExcept(u32 battler, u32 ability)
 {
     u32 i;
@@ -9171,6 +9192,15 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 {
                     gBattleStruct->moneyMultiplier *= 2;
                     gBattleStruct->moneyMultiplierItem = 1;
+                }
+                break;
+            case HOLD_EFFECT_TERU_CHARM:
+                if (gBattleMons[battler].species == SPECIES_CHIROBERRA)
+                {
+                    gBattlerAttacker = battler;
+                    TryChangeBattleWeather(battler, WEATHER_NONE, TRUE);
+                    BattleScriptExecute(BattleScript_AnnounceTeruCharm);
+                    effect = ITEM_EFFECT_OTHER;
                 }
                 break;
             case HOLD_EFFECT_RESTORE_STATS:
