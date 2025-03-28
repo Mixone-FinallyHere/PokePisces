@@ -10553,12 +10553,12 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 if (IsBattlerAlive(gBattlerAttacker)
                 && IsBattlerAlive(gBattlerTarget)
                 && TARGET_TURN_DAMAGED
-                && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
-                && !gBattleMons[gBattlerAttacker].status2 & STATUS2_INFATUATION
                 && gMoveResultFlags & MOVE_RESULT_SUPER_EFFECTIVE
+                && (!(DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)))
+                && (!(gBattleMons[gBattlerAttacker].status2 & STATUS2_INFATUATION))
                 && GetBattlerAbility(gBattlerAttacker) != ABILITY_OBLIVIOUS
                 && GetBattlerAbility(gBattlerAttacker) != ABILITY_IGNORANT_BLISS
-                && !IsAbilityOnSide(gBattlerAttacker, ABILITY_AROMA_VEIL))
+                && (!(IsAbilityOnSide(gBattlerAttacker, ABILITY_AROMA_VEIL))))
                 {
                     effect = ITEM_EFFECT_OTHER;
                     gBattleMons[gBattlerAttacker].status2 |= STATUS2_INFATUATED_WITH(gBattlerTarget);
@@ -10566,6 +10566,25 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     gBattlescriptCurrInstr = BattleScript_RizzBerryActivatesRet;
                     PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
                     RecordItemEffectBattle(battler, HOLD_EFFECT_RIZZ_BERRY);
+                }
+                break;
+            case HOLD_EFFECT_RAZZ_BERRY:
+                if (IsBattlerAlive(gBattlerAttacker)
+                && IsBattlerAlive(gBattlerTarget)
+                && TARGET_TURN_DAMAGED
+                && AreBattlersOfOppositeGender(gBattlerAttacker, gBattlerTarget)
+                && (!(DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)))
+                && (!(gBattleMons[gBattlerAttacker].status2 & STATUS2_INFATUATION))
+                && GetBattlerAbility(gBattlerAttacker) != ABILITY_OBLIVIOUS
+                && GetBattlerAbility(gBattlerAttacker) != ABILITY_IGNORANT_BLISS
+                && (!(IsAbilityOnSide(gBattlerAttacker, ABILITY_AROMA_VEIL))))
+                {
+                    effect = ITEM_EFFECT_OTHER;
+                    gBattleMons[gBattlerAttacker].status2 |= STATUS2_INFATUATED_WITH(gBattlerTarget);
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_RizzBerryActivatesRet;
+                    PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
+                    RecordItemEffectBattle(battler, HOLD_EFFECT_RAZZ_BERRY);
                 }
                 break;
             case HOLD_EFFECT_RABUTA_BERRY:
@@ -14025,7 +14044,7 @@ static inline uq4_12_t GetDefenderItemsModifier(u32 move, u32 moveType, u32 batt
         {
             if (updateFlags)
                 gSpecialStatuses[battlerDef].berryReduced = TRUE;
-            return (abilityDef == ABILITY_RIPEN) ? UQ_4_12(0.1) : UQ_4_12(0.25);
+            return (abilityDef == ABILITY_RIPEN) ? UQ_4_12(0.15) : UQ_4_12(0.25);
         }
         break;
     case HOLD_EFFECT_DILATANT_MOD:
