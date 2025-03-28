@@ -9882,6 +9882,29 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 effect = ITEM_HP_CHANGE;
             }
             break;
+        case HOLD_EFFECT_LONG_NOSE:
+        {
+            u16 ability = GetBattlerAbility(gBattlerAttacker);
+            if (gBattleMoveDamage != 0 // Need to have done damage
+                && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+                && TARGET_TURN_DAMAGED 
+                && IsBattlerAlive(gBattlerTarget)
+                && !NoAliveMonsForEitherParty()
+                && (gMultiHitCounter == 1 || gMultiHitCounter == 0)
+                && (moveType ==  TYPE_BUG || moveType == TYPE_DARK)
+                && (CompareStat(gBattlerTarget, STAT_ATK, MIN_STAT_STAGE, CMP_GREATER_THAN) 
+                || CompareStat(gBattlerTarget, STAT_SPATK, MIN_STAT_STAGE, CMP_GREATER_THAN)
+                || CompareStat(gBattlerTarget, STAT_ACC, MIN_STAT_STAGE, CMP_GREATER_THAN)
+                || CompareStat(gBattlerTarget, STAT_EVASION, MIN_STAT_STAGE, CMP_GREATER_THAN))
+                && gBattleMons[gBattlerAttacker].species == SPECIES_MOSKOPO)
+            {
+                gBattleScripting.moveEffect = MOVE_EFFECT_LONG_NOSE;
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
+                effect++;
+            }
+        }
+        break;
         case HOLD_EFFECT_NANAB_BERRY:
             if (gBattleMoveDamage != 0 // Need to have done damage
                 && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
@@ -10199,27 +10222,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 effect = ITEM_HP_CHANGE;
             }
             break;
-        case HOLD_EFFECT_LONG_NOSE:
-        {
-            u16 ability = GetBattlerAbility(gBattlerAttacker);
-            if (gBattleMoveDamage != 0 // Need to have done damage
-                && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-                && TARGET_TURN_DAMAGED 
-                && IsBattlerAlive(gBattlerTarget)
-                && (moveType ==  TYPE_BUG || moveType == TYPE_DARK)
-                && (CompareStat(gBattlerTarget, STAT_ATK, MIN_STAT_STAGE, CMP_GREATER_THAN) 
-                || CompareStat(gBattlerTarget, STAT_SPATK, MIN_STAT_STAGE, CMP_GREATER_THAN)
-                || CompareStat(gBattlerTarget, STAT_ACC, MIN_STAT_STAGE, CMP_GREATER_THAN)
-                || CompareStat(gBattlerTarget, STAT_EVASION, MIN_STAT_STAGE, CMP_GREATER_THAN))
-                && gBattleMons[gBattlerAttacker].species == SPECIES_MOSKOPO)
-            {
-                gBattleScripting.moveEffect = MOVE_EFFECT_LONG_NOSE;
-                BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_ItemSecondaryEffect;
-                effect++;
-            }
-        }
-        break;
         case HOLD_EFFECT_LIFE_ORB:
             if (IsBattlerAlive(gBattlerAttacker)
                 && !(TestSheerForceFlag(gBattlerAttacker, gCurrentMove))
