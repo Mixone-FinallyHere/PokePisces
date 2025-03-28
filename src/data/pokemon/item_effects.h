@@ -499,6 +499,7 @@ const u8 *const gItemEffectTable[ITEMS_COUNT] =
     [ITEM_SACRED_ASH]         = gItemEffect_SacredAsh,
     [ITEM_SWEET_HEART]        = gItemEffect_Potion,
     [ITEM_MAX_HONEY]          = gItemEffect_MaxRevive,
+    [ITEM_MAX_EGGPLANT]       = gItemEffect_SacredAsh,
 
     // Regional Specialties
     [ITEM_PEWTER_CRUNCHIES]   = gItemEffect_FullHeal,

@@ -4960,7 +4960,8 @@ s8 GetMovePriority(u32 battler, u16 move)
         priority++;
     }
     //else if (ability == )
-    else if (ability == ABILITY_PRANKSTER && IS_MOVE_STATUS(move) 
+    else if (ability == ABILITY_PRANKSTER 
+    && IS_MOVE_STATUS(move) 
     && (!(IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_DARK))) 
     && (!(IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_FAIRY))))
     {
