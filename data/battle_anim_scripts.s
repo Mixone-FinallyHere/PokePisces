@@ -27860,9 +27860,13 @@ Move_PSYBLADE::
 	end @to do
 
 ANIM_MOVE_GOLD_PLAINS::
+    goto Move_CLANGOROUS_SOUL
+
 ANIM_MOVE_MT_SPLENDOR::
+    goto Move_EARTHQUAKE
+
 ANIM_MOVE_DOWNFALL::
-    goto Move_TACKLE
+    goto Move_CLOSE_COMBAT
 
 @@@@@@@@@@@@@@@@@@@@@@@ GEN 1-3 @@@@@@@@@@@@@@@@@@@@@@@
 Move_NONE:

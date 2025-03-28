@@ -6383,7 +6383,7 @@ static bool32 UpdateFriendshipFromItem(struct Pokemon *mon, const u8 *itemEffect
             if (holdEffect == HOLD_EFFECT_FRIENDSHIP_UP)
                 friendshipChange == 150 * friendshipChange / 100;
         }
-        if (friendshipChange > 0 && holdEffect == HOLD_EFFECT_SALTY_TEAR)
+        if (friendshipChange > 0 && holdEffect == HOLD_EFFECT_SALTY_TEAR && GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_SADSOD)
             friendship -= friendshipChange;
         else
             friendship += friendshipChange;
@@ -7892,7 +7892,7 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
                     mod == 150 * mod / 100;
             }
 
-            if (mod > 0 && holdEffect == HOLD_EFFECT_SALTY_TEAR)
+            if (mod > 0 && holdEffect == HOLD_EFFECT_SALTY_TEAR && GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_SADSOD)
                 friendship -= mod;
             else
                 friendship += mod;
