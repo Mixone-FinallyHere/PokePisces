@@ -157,14 +157,37 @@
       "x": 24,
       "y": 1,
       "elevation": 0,
-      "dest_map": "MAP_UNDURA_TUNNELS",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_RUSTBORO_NEW",
+      "dest_warp_id": "18"
     }
   ],
   "coord_events": [
 
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 5,
+      "y": 11,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "UnduraTunnels_EventScript_RustboroSign"
+    },
+    {
+      "type": "sign",
+      "x": 23,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "UnduraTunnels_EventScript_EtheorSign"
+    },
+    {
+      "type": "sign",
+      "x": 18,
+      "y": 56,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "UnduraTunnels_EventScript_RustburgSign"
+    }
   ]
 }

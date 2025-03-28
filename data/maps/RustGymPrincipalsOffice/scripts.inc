@@ -60,4 +60,12 @@ RustGymPrincipalsOffice_Text_NameRoxanne:
 	.string "Roxanne$"
 
 RustGymPrincipalsOffice_Text_YouAreNowADelinquent:
-	.string "$"
+	.string "Ah-ah-ah. A failed test, {PLAYER}?\n"
+	.string "This will not do... no, that will\l"
+	.string "not do in the least.\p"
+	.string "You have been marked for\n"
+	.string "delinquency. Until you complete the\l"
+	.string "delinquent remedial program, I\l"
+	.string "will not allow you to leave, let\l"
+	.string "alone re-take the exam.\p"
+	.string "Leave my sight, if you will.\n$"

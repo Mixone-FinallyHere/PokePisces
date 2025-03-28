@@ -66,122 +66,194 @@ NoviceWalk_EventScript_EthanAndKai::
     msgbox NoviceWalk_Text_EthanAndKaiPostBattle, MSGBOX_AUTOCLOSE
     end
 
+NoviceWalk_EventScript_NWSign::
+    msgbox NoviceWalk_Text_NWSign, MSGBOX_SIGN
+    end
+
+NoviceWalk_Text_NWSign:
+	.string "NOVICE'S WALK\n"
+	.string "A place for new trainers to\l"
+	.string "get their footing!\p"
+	.string "Head NORTH for OLDALE TOWN,\n"
+	.string "SOUTH for LITTLEROOT TOWN$"
+
 NoviceWalk_Text_JoeyIntro:
-	.string "intro$"
+	.string "ALL of my Pokemon are in the\n"
+	.string "top percentage of their species!\l"
+	.string "I think I have you beat!$"
 
 NoviceWalk_Text_JoeyDefeated:
-	.string "defeat$"
+	.string "Oh... I'm out of Pokemon\n"
+	.string "that can fight.$"
 
 NoviceWalk_Text_JoeyPostBattle:
-	.string "post$"
+	.string "I'll become the one percent OF\n"
+	.string "the one percent! Just you wait!$"
 
 NoviceWalk_Text_JosephineIntro:
-	.string "intro$"
+	.string "I like jackets! They're comfy\n"
+	.string "and easy to wear!$"
 
 NoviceWalk_Text_JosephineDefeated:
-	.string "defeat$"
+	.string "Are you stronger because you...\n"
+	.string "don't wear a jacket?$"
 
 NoviceWalk_Text_JosephinePostBattle:
-	.string "post$"
+	.string "I'll come back with a flowery,\n"
+	.string "colorful shirt like you!\l"
+	.string "Then, maybe I can win more.$"
 
 NoviceWalk_Text_LennyIntro:
-	.string "intro$"
+	.string "I like to pretend I'm a\n"
+	.string "grub that lives in the soil!$"
 
 NoviceWalk_Text_LennyDefeated:
-	.string "defeat$"
+	.string "(He's writhing uselessly.)$"
 
 NoviceWalk_Text_LennyPostBattle:
-	.string "post$"
+	.string "I'm merely in my larval stage\n"
+	.string "right now. Come back when I'm done\l"
+	.string "pupating, and you'll get a REAL\l"
+	.string "kick in the nose...$"
 
 NoviceWalk_Text_BridgetIntro:
-	.string "intro$"
+	.string "I just obtained these Pokemon\n"
+	.string "30 minutes ago! Let's try 'em\l"
+	.string "out in my first battle!$"
 
 NoviceWalk_Text_BridgetDefeated:
-	.string "defeat$"
+	.string "Awww! Well, I just gotta\n"
+	.string "learn from it!$"
 
 NoviceWalk_Text_BridgetPostBattle:
-	.string "post$"
+	.string "I got these Pokemon from my Mama!\n"
+	.string "She was training to be a Grass\l"
+	.string "type Gym Leader!$"
 
 NoviceWalk_Text_DarwinIntro:
-	.string "intro$"
+	.string "Darwin always wins.$"
 
 NoviceWalk_Text_DarwinDefeated:
-	.string "defeat$"
+	.string "I won.\p"
+	.string "(The kid is showing you a picture\n"
+	.string "of the faces of four bird Pokemon.)\p"
+	.string "(You don't know what this means.)$"
 
 NoviceWalk_Text_DarwinPostBattle:
-	.string "post$"
+	.string "Darwin... ALWAYS. Wins.$"
 
 NoviceWalk_Text_GumballIntro:
-	.string "intro$"
+	.string "I'll show you the amazing world\n"
+	.string "of Dragon types!$"
 
 NoviceWalk_Text_GumballDefeated:
-	.string "defeat$"
+	.string "Y-You chewed them up! And\n"
+	.string "s-spat them out!$"
 
 NoviceWalk_Text_GumballPostBattle:
-	.string "post$"
+	.string "Garzilla, are you ok, bud...?$"
 
 NoviceWalk_Text_JimmyIntro:
-	.string "intro$"
+	.string "It's the Jimmy-Timmy Power Hour!\n"
+	.string "Prepare to be annihilated!$"
 
 NoviceWalk_Text_JimmyDefeated:
-	.string "defeat$"
+	.string "From a Power Hour to a\n"
+	.string "Cower Hour...!$"
 
 NoviceWalk_Text_JimmyPostBattle:
-	.string "post$"
+	.string "History repeated itself, I see...\n"
+	.string "maybe Timmy and I still have one\l"
+	.string "more sequel in us?$"
 
 NoviceWalk_Text_TimmyIntro:
-	.string "intro$"
+	.string "We remember you from way back!\n"
+	.string "At Flotshore Trail!\p"
+	.string "You wiped the floor with us then,\n"
+	.string "but we've been training together\l"
+	.string "for a long time to eventually\l"
+	.string "take you out!$"
 
 NoviceWalk_Text_TimmyDefeated:
-	.string "defeat$"
+	.string "I wish everything was back to normal!$"
 
 NoviceWalk_Text_TimmyPostBattle:
-	.string "post$"
+	.string "Your Pokemon are really magical!\n"
+	.string "We were really not gonna stand\l"
+	.string "a chance.$"
 
 NoviceWalk_Text_JoeIntro:
-	.string "intro$"
+	.string "You really gotta show some spunk\n"
+	.string "to make it in the big leagues!\p"
+	.string "I'm ready to get there, are you!?$"
 
 NoviceWalk_Text_JoeDefeated:
-	.string "defeat$"
+	.string "YEAH! THAT'S what I'm talking about!$"
 
 NoviceWalk_Text_JoePostBattle:
-	.string "post$"
+	.string "Keep that energy going all the\n"
+	.string "way to the end!$"
 
 NoviceWalk_Text_SashaIntro:
-	.string "intro$"
+	.string "We've locked eyes. Time to\n"
+	.string "lay it all out on the battlefield.$"
 
 NoviceWalk_Text_SashaDefeated:
-	.string "defeat$"
+	.string "I still have a ways to go...\n"
+	.string "but my head will be held high\l"
+	.string "through it all.$"
 
 NoviceWalk_Text_SashaPostBattle:
-	.string "post$"
+	.string "You need guts and determination\n"
+	.string "to see your personal challenges\l"
+	.string "through to their conclusion.$"
 
 NoviceWalk_Text_ElleIntro:
-	.string "intro$"
+	.string "Heya! It's Elle! And I'm about\n"
+	.string "to make you take the L!$"
 
 NoviceWalk_Text_ElleDefeated:
-	.string "defeat$"
+	.string "Oh, you turned it into a W\n"
+	.string "along the way?$"
 
 NoviceWalk_Text_EllePostBattle:
-	.string "post$"
+	.string "Let every win fuel you, and let\n"
+	.string "every loss be something to learn\l"
+	.string "from for the future!$"
 
 NoviceWalk_Text_TayIntro:
-	.string "intro$"
+	.string "Have you been using held items\n"
+	.string "to the best of their caliber?\l"
+	.string "I know I try to. Lets see\l"
+	.string "if practice pays off.$"
 
 NoviceWalk_Text_TayDefeated:
-	.string "defeat$"
+	.string "You weathered everything I had\n"
+	.string "up my sleeves...$"
 
 NoviceWalk_Text_TayPostBattle:
-	.string "post$"
+	.string "Make sure your Pokemon have the\n"
+	.string "held item most suited for them.\l"
+	.string "Don't ever just leave that slot\l"
+	.string "open. A good item can make or\l"
+	.string "break a Pokemon's usefulness.$"
 
 NoviceWalk_Text_EthanAndKaiIntro:
-	.string "intro$"
+	.string "ETHAN: I am Kai's strongest soldier!\n"
+	.string "KAI: And I am his princess!$"
 
 NoviceWalk_Text_EthanAndKaiDefeated:
-	.string "defeat$"
+	.string "ETHAN: I'll protect you until\n"
+	.string "the end, Kai...\l"
+	.string "KAI: I'd want nothing more...$"
 
 NoviceWalk_Text_EthanAndKaiPostBattle:
-	.string "post$"
+	.string "KAI: Ethan, if a Karodoraug\n"
+	.string "kidnapped me and took me\l"
+	.string "to a castle, would you come\l"
+	.string "save me?\l"
+	.string "ETHAN: Without question.$"
 
 NoviceWalk_Text_EthanAndKaiNeedTwoMons:
-	.string "need 2 dood$"
+	.string "ETHAN: I can easily defend\n"
+	.string "my love against one Pokemon!$"

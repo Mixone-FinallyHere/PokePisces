@@ -14,11 +14,6 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_PETALBURG_WOODS_NEW",
-      "offset": -2,
-      "direction": "left"
-    },
-    {
       "map": "MAP_NOVICE_WALK",
       "offset": 8,
       "direction": "down"
@@ -125,6 +120,37 @@
 
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 9,
+      "y": 7,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "OldaleNew_EventScript_WoodsSign"
+    },
+    {
+      "type": "sign",
+      "x": 26,
+      "y": 4,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "OldaleNew_EventScript_HatchloamSign"
+    },
+    {
+      "type": "sign",
+      "x": 22,
+      "y": 20,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "OldaleNew_EventScript_OldaleSign"
+    },
+    {
+      "type": "sign",
+      "x": 22,
+      "y": 37,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "OldaleNew_EventScript_NovicesWalkSign"
+    }
   ]
 }

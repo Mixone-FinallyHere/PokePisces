@@ -201,8 +201,8 @@
       "x": 7,
       "y": 14,
       "elevation": 0,
-      "dest_map": "MAP_RUSTBORO_NEW",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_UNDURA_TUNNELS",
+      "dest_warp_id": "2"
     }
   ],
   "coord_events": [
@@ -289,6 +289,61 @@
     }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 47,
+      "y": 36,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "RustboroNew_EventScript_GymSign"
+    },
+    {
+      "type": "sign",
+      "x": 34,
+      "y": 41,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "RustboroNew_EventScript_RustboroSign"
+    },
+    {
+      "type": "sign",
+      "x": 60,
+      "y": 35,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "RustboroNew_EventScript_DevonSign"
+    },
+    {
+      "type": "sign",
+      "x": 63,
+      "y": 35,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "RustboroNew_EventScript_DevonSign"
+    },
+    {
+      "type": "sign",
+      "x": 17,
+      "y": 19,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "RustboroNew_EventScript_BridgeSign"
+    },
+    {
+      "type": "sign",
+      "x": 48,
+      "y": 4,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "RustboroNew_EventScript_WhisperCliffSign"
+    },
+    {
+      "type": "sign",
+      "x": 4,
+      "y": 29,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "RustboroNew_EventScript_UnduraSign"
+    }
   ]
 }

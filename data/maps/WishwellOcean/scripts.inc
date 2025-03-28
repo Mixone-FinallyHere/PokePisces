@@ -72,133 +72,191 @@ WishwellOcean_EventScript_Neil::
     end
 
 WishwellOcean_Text_XerxesIntro:
-	.string "intro$"
+	.string "Who needs luck when you have\n"
+	.string "PURE ARCANE AFFINITY!?$"
 
 WishwellOcean_Text_XerxesDefeated:
-	.string "defeat$"
+	.string "Maybe... I c-coulda used some luck!$"
 
 WishwellOcean_Text_XerxesPostBattle:
-	.string "post$"
+	.string "I'll make a wish here in these\n"
+	.string "waters, that my next Pokemon battle\l"
+	.string "ends in success for me.$"
 
 WishwellOcean_Text_YvetteIntro:
-	.string "intro$"
+	.string "I can summon the northern lights\n"
+	.string "at will... and I will do so for\l"
+	.string "this battle! Come, gods of\l"
+	.string "the northern winds! Aid me\l"
+	.string "in this upcoming brawl!$"
 
 WishwellOcean_Text_YvetteDefeated:
-	.string "defeat$"
+	.string "The northern lights did so appear...\n"
+	.string "though that does not aid me\l"
+	.string "very much in battle, I see...$"
 
 WishwellOcean_Text_YvettePostBattle:
-	.string "post$"
+	.string "Aurora borealis... at this time\n"
+	.string "of year... localized entirely\l"
+	.string "within this route...$"
 
 WishwellOcean_Text_PiAndSeesIntro:
-	.string "intro$"
+	.string "(This Lovey-Dovey couple are\n"
+	.string "kissing. Get a room!)$"
 
 WishwellOcean_Text_PiAndSeesDefeated:
-	.string "defeat$"
+	.string "PI: Have you ever experienced\n"
+	.string "    a true love's kiss?\l"
+	.string "SEES: Your worldview completely\l"
+	.string "      changes after that.$"
 
 WishwellOcean_Text_PiAndSeesPostBattle:
-	.string "post$"
+	.string "(They went back to the kissing.)$"
 
 WishwellOcean_Text_PiAndSeesNeedTwoMons:
-	.string "need 2 dood$"
+	.string "(This Lovey-Dovey couple are\n"
+	.string "kissing. Get a room!)$"
 
 WishwellOcean_Text_KuAndMoriIntro:
-	.string "intro$"
+	.string "KU: We whisper our orders\n"
+	.string "to each other in battle.\l"
+	.string "MORI: So our opponents can't hear!$"
 
 WishwellOcean_Text_KuAndMoriDefeated:
-	.string "defeat$"
+	.string "KU: AW, GOODY GUMDROPS!\n"
+	.string "MORI: HON! How about you calm down?\l"
+	.string "That was harsh language...$"
 
 WishwellOcean_Text_KuAndMoriPostBattle:
-	.string "post$"
+	.string "(They're whispering “I Love You”\n"
+	.string "to each other over and over.)$"
 
 WishwellOcean_Text_KuAndMoriNeedTwoMons:
-	.string "need 2 dood$"
+	.string "KU: What's that? We can't hear you!\n"
+	.string "MORI: You're too quiet to fight us.$"
 
 WishwellOcean_Text_PersephoneIntro:
-	.string "intro$"
+	.string "I just surfaced from a diving\n"
+	.string "expedition down real deep!\l"
+	.string "Here's some Pokemon I found!$"
 
 WishwellOcean_Text_PersephoneDefeated:
-	.string "defeat$"
+	.string "I took a dive...$"
 
 WishwellOcean_Text_PersephonePostBattle:
-	.string "post$"
+	.string "There are some Pokemon that\n"
+	.string "can only be found very deep\l"
+	.string "underwater! Try lookin' for them!$"
 
 WishwellOcean_Text_XavierIntro:
-	.string "intro$"
+	.string "Eh. Too much water.$"
 
 WishwellOcean_Text_XavierDefeated:
-	.string "defeat$"
+	.string "I'd rate that battle about\n"
+	.string "a seven point eight outta ten.$"
 
 WishwellOcean_Text_XavierPostBattle:
-	.string "post$"
+	.string "I'm drowning! Help!\p"
+	.string "...Just kidding! Hah!$"
 
 WishwellOcean_Text_NafiIntro:
-	.string "intro$"
+	.string "My top secret plan to freeze the\n"
+	.string "oceans of Hoenn is almost a go!\p"
+	.string "...What, you want to stop me!?$"
 
 WishwellOcean_Text_NafiDefeated:
-	.string "defeat$"
+	.string "FOILED!$"
 
 WishwellOcean_Text_NafiPostBattle:
-	.string "post$"
+	.string "Admittedly... I haven't figured out\n"
+	.string "yet how to get all the salt out\l"
+	.string "of the water, first...$"
 
 WishwellOcean_Text_MadelineIntro:
-	.string "intro$"
+	.string "Just breathe. You can do this.$"
 
 WishwellOcean_Text_MadelineDefeated:
-	.string "defeat$"
+	.string "That was as difficult as\n"
+	.string "climbing a mountain...!$"
 
 WishwellOcean_Text_MadelinePostBattle:
-	.string "post$"
+	.string "I once hiked for 3 days alone in\n"
+	.string "the Zotpyre Mountain Range area.\l"
+	.string "Long journeys like that tend to\l"
+	.string "have you find yourself.$"
 
 WishwellOcean_Text_EnriqueIntro:
-	.string "intro$"
+	.string "Where oh where do the ships I\n"
+	.string "see here end up?$"
 
 WishwellOcean_Text_EnriqueDefeated:
-	.string "defeat$"
+	.string "It's a mystery at sea!$"
 
 WishwellOcean_Text_EnriquePostBattle:
-	.string "post$"
+	.string "Well, I guess I COULD just look\n"
+	.string "up the boats' routes, but that\l"
+	.string "ruins the fun.$"
 
 WishwellOcean_Text_MariaIntro:
-	.string "intro$"
+	.string "There are so many fascinating\n"
+	.string "Pokemon in this world. Let me\l"
+	.string "show you some of my favorites.$"
 
 WishwellOcean_Text_MariaDefeated:
-	.string "defeat$"
+	.string "Did you see any you\n"
+	.string "particularly liked?$"
 
 WishwellOcean_Text_MariaPostBattle:
-	.string "post$"
+	.string "Dudunspars comes in multiple\n"
+	.string "variants, you see. I was lucky\l"
+	.string "enough to get a three-segmented one!$"
 
 WishwellOcean_Text_FernIntro:
-	.string "intro$"
+	.string "Those who visit this route do so\n"
+	.string "to make their wishes, and hope\l"
+	.string "that they come true.\p"
+	.string "I wish... that I shall win this!$"
 
 WishwellOcean_Text_FernDefeated:
-	.string "defeat$"
+	.string "Mayhaps I did not specify\n"
+	.string "clearly enough.$"
 
 WishwellOcean_Text_FernPostBattle:
-	.string "post$"
+	.string "My next wish shall be...\n"
+	.string "for eternal, unending happiness.$"
 
 WishwellOcean_Text_DudleyIntro:
-	.string "intro$"
+	.string "Ah, marvelous! I was JUST\n"
+	.string "looking for someone to shine\l"
+	.string "my shoes...$"
 
 WishwellOcean_Text_DudleyDefeated:
-	.string "defeat$"
+	.string "The audacity!$"
 
 WishwellOcean_Text_DudleyPostBattle:
-	.string "post$"
+	.string "And to think, I was to give\n"
+	.string "you the privelege to touch my\l"
+	.string "beloved footwear!$"
 
 WishwellOcean_Text_GustavoIntro:
-	.string "intro$"
+	.string "Was once baker... did not work out.\n"
+	.string "Now, I choose to grill...\l"
+	.string "and into fire you go.$"
 
 WishwellOcean_Text_GustavoDefeated:
-	.string "defeat$"
+	.string "Battle also... did not work out.$"
 
 WishwellOcean_Text_GustavoPostBattle:
-	.string "post$"
+	.string "Will try and learn life lesson.$"
 
 WishwellOcean_Text_NeilIntro:
-	.string "intro$"
+	.string "Ain't hard to catch some runt\n"
+	.string "like you faffin' about the beaches.$"
 
 WishwellOcean_Text_NeilDefeated:
-	.string "defeat$"
+	.string "Now, are ya gonna be buyin'\n"
+	.string "anything? If not, get outta here!$"
 
 WishwellOcean_Text_NeilPostBattle:
-	.string "post$"
+	.string "Always got window shoppin' eyes,\n"
+	.string "but no window shoppin' money, eh?$"

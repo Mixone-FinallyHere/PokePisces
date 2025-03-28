@@ -32,55 +32,79 @@ UnduraTunnelsDeep_EventScript_Gus::
     end
 
 UnduraTunnelsDeep_Text_CoheedIntro:
-	.string "intro$"
+	.string "(It's a diver! Without words,\n"
+	.string "they reach out their Pokeball\l"
+	.string "to start a battle...)$"
 
 UnduraTunnelsDeep_Text_CoheedDefeated:
-	.string "defeat$"
+	.string "(The diver hangs their head\n"
+	.string "in defeat...)$"
 
 UnduraTunnelsDeep_Text_CoheedPostBattle:
-	.string "post$"
+	.string "(No real way to communicate\n"
+	.string "with them. Best to move on.)$"
 
 UnduraTunnelsDeep_Text_CambriaIntro:
-	.string "intro$"
+	.string "(It's a diver! Without words,\n"
+	.string "they reach out their Pokeball\l"
+	.string "to start a battle...)$"
 
 UnduraTunnelsDeep_Text_CambriaDefeated:
-	.string "defeat$"
+	.string "(The diver hangs their head\n"
+	.string "in defeat...)$"
 
 UnduraTunnelsDeep_Text_CambriaPostBattle:
-	.string "post$"
+	.string "(No real way to communicate\n"
+	.string "with them. Best to move on.)$"
 
 UnduraTunnelsDeep_Text_SerlingIntro:
-	.string "intro$"
+	.string "(It's a diver! Without words,\n"
+	.string "they reach out their Pokeball\l"
+	.string "to start a battle...)$"
 
 UnduraTunnelsDeep_Text_SerlingDefeated:
-	.string "defeat$"
+	.string "(The diver hangs their head\n"
+	.string "in defeat...)$"
 
 UnduraTunnelsDeep_Text_SerlingPostBattle:
-	.string "post$"
+	.string "(No real way to communicate\n"
+	.string "with them. Best to move on.)$"
 
 UnduraTunnelsDeep_Text_MarianaIntro:
-	.string "intro$"
+	.string "(It's a diver! Without words,\n"
+	.string "they reach out their Pokeball\l"
+	.string "to start a battle...)$"
 
 UnduraTunnelsDeep_Text_MarianaDefeated:
-	.string "defeat$"
+	.string "(The diver hangs their head\n"
+	.string "in defeat...)$"
 
 UnduraTunnelsDeep_Text_MarianaPostBattle:
-	.string "post$"
+	.string "(No real way to communicate\n"
+	.string "with them. Best to move on.)$"
 
 UnduraTunnelsDeep_Text_CoralIntro:
-	.string "intro$"
+	.string "(It's a diver! Without words,\n"
+	.string "they reach out their Pokeball\l"
+	.string "to start a battle...)$"
 
 UnduraTunnelsDeep_Text_CoralDefeated:
-	.string "defeat$"
+	.string "(The diver hangs their head\n"
+	.string "in defeat...)$"
 
 UnduraTunnelsDeep_Text_CoralPostBattle:
-	.string "post$"
+	.string "(No real way to communicate\n"
+	.string "with them. Best to move on.)$"
 
 UnduraTunnelsDeep_Text_GusIntro:
-	.string "intro$"
+	.string "(It's a diver! Without words,\n"
+	.string "they reach out their Pokeball\l"
+	.string "to start a battle...)$"
 
 UnduraTunnelsDeep_Text_GusDefeated:
-	.string "defeat$"
+	.string "(The diver hangs their head\n"
+	.string "in defeat...)$"
 
 UnduraTunnelsDeep_Text_GusPostBattle:
-	.string "post$"
+	.string "(No real way to communicate\n"
+	.string "with them. Best to move on.)$"

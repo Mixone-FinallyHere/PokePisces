@@ -430,106 +430,148 @@ PetalburgWoodsNew_EventScript_InuAndPersia::
     end
 
 PetalburgWoodsNew_Text_TutuIntro:
-	.string "intro$"
+	.string "Happiness is a tale,\n"
+	.string "granted by fate.$"
 
 PetalburgWoodsNew_Text_TutuDefeated:
-	.string "defeat$"
+	.string "Happiness is a tale,\n"
+	.string "a dream so distant...$"
 
 PetalburgWoodsNew_Text_TutuPostBattle:
-	.string "post$"
+	.string "Go chase that happiness, little\n"
+	.string "goose. Go chase that fading dream.$"
 
 PetalburgWoodsNew_Text_DuckIntro:
-	.string "intro$"
+	.string "Fall, wallow in despair! This\n"
+	.string "story needs an ending most tragic!$"
 
 PetalburgWoodsNew_Text_DuckDefeated:
-	.string "defeat$"
+	.string "I, the tragic heroine, swallowed\n"
+	.string "by hardships!$"
 
 PetalburgWoodsNew_Text_DuckPostBattle:
-	.string "post$"
+	.string "A tale that ends in bliss is\n"
+	.string "the epitome of boredom.$"
 
 PetalburgWoodsNew_Text_VioletIntro:
-	.string "intro$"
+	.string "Behold, my regal indigo hue!$"
 
 PetalburgWoodsNew_Text_VioletDefeated:
-	.string "defeat$"
+	.string "What? You look as if you've\n"
+	.string "seen a ghost...$"
 
 PetalburgWoodsNew_Text_VioletPostBattle:
-	.string "post$"
+	.string "I'm a Hex Maniac! I especially\n"
+	.string "love the hex color 5548A6.\l"
+	.string "What is yours?$"
 
 PetalburgWoodsNew_Text_ElizabethIntro:
-	.string "intro$"
+	.string "My dynasty shall outlive yours!$"
 
 PetalburgWoodsNew_Text_ElizabethDefeated:
-	.string "defeat$"
+	.string "Conquered so soon...!?$"
 
 PetalburgWoodsNew_Text_ElizabethPostBattle:
-	.string "post$"
+	.string "My family line will\n"
+	.string "seek power, no matter the cost...$"
 
 PetalburgWoodsNew_Text_ArtieIntro:
-	.string "intro$"
+	.string "Let me guess, your Pokemon\n"
+	.string "were wild-caught, right?\l"
+	.string "Hmph, to be expected.$"
 
 PetalburgWoodsNew_Text_ArtieDefeated:
-	.string "defeat$"
+	.string "What!? No way... my finely\n"
+	.string "bred and raised team, taken down!?$"
 
 PetalburgWoodsNew_Text_ArtiePostBattle:
-	.string "post$"
+	.string "How could my Pokemon be trounced\n"
+	.string "by a bunch of wild savages? It\l"
+	.string "just doesn't make any sense!$"
 
 PetalburgWoodsNew_Text_GyomaruIntro:
-	.string "intro$"
+	.string "Many a malevolent entity resides\n"
+	.string "within this thicket... could\l"
+	.string "you be influenced by them?$"
 
 PetalburgWoodsNew_Text_GyomaruDefeated:
-	.string "defeat$"
+	.string "...My reconaissance remains\n"
+	.string "inconclusive.$"
 
 PetalburgWoodsNew_Text_GyomaruPostBattle:
-	.string "post$"
+	.string "Keep a level head, trainer, lest\n"
+	.string "you lose yourself in these woods...$"
 
 PetalburgWoodsNew_Text_SuzumeIntro:
-	.string "intro$"
+	.string "My younger sister and I... we\n"
+	.string "will show you true determination!$"
 
 PetalburgWoodsNew_Text_SuzumeDefeated:
-	.string "defeat$"
+	.string "Father, forgive us... we could\n"
+	.string "not win this melee...$"
 
 PetalburgWoodsNew_Text_SuzumePostBattle:
-	.string "post$"
+	.string "I wish that I could have the\n"
+	.string "carefree attitude of my sibling.\l"
+	.string "May she never grow up.$"
 
 PetalburgWoodsNew_Text_MioIntro:
-	.string "intro$"
+	.string "If I'm with my sister...\n"
+	.string "we can do anything!$"
 
 PetalburgWoodsNew_Text_MioDefeated:
-	.string "defeat$"
+	.string "We had on our rose-tinted glasses...$"
 
 PetalburgWoodsNew_Text_MioPostBattle:
-	.string "post$"
+	.string "I can't wait to be just like\n"
+	.string "Suzume when I get older!$"
 
 PetalburgWoodsNew_Text_LemmyIntro:
-	.string "intro$"
+	.string "With my brother and I on the prowl,\n"
+	.string "we'll collect every Pokemon\l"
+	.string "in Hoenn!$"
 
 PetalburgWoodsNew_Text_LemmyDefeated:
-	.string "defeat$"
+	.string "We didn't stay calm and collected!$"
 
 PetalburgWoodsNew_Text_LemmyPostBattle:
-	.string "post$"
+	.string "My brother and I really could\n"
+	.string "do better if he wasn't so obsessed\l"
+	.string "with hunting Shiny Pokemon.$"
 
 PetalburgWoodsNew_Text_IchiIntro:
-	.string "intro$"
+	.string "Nyee-hee...! I have a PARTICULARLY\n"
+	.string "rare Pokemon to show off!\l"
+	.string "It will look amazing as it\l"
+	.string "PUMMELS you!$"
 
 PetalburgWoodsNew_Text_IchiDefeated:
-	.string "defeat$"
+	.string "M-M-M-MY PRIZED POSSESSION!$"
 
 PetalburgWoodsNew_Text_IchiPostBattle:
-	.string "post$"
+	.string "Shiny Pokemon are the ONLY ONES\n"
+	.string "that really matter. Those common\l"
+	.string "colored variants... forget them!$"
 
 PetalburgWoodsNew_Text_InuAndPersiaIntro:
-	.string "intro$"
+	.string "INU: Canine Pokemon...\n"
+	.string "PERSIA: Feline Pokemon...\p"
+	.string "INU: Together...\n"
+	.string "PERSIA: They dominate!$"
 
 PetalburgWoodsNew_Text_InuAndPersiaDefeated:
-	.string "defeat$"
+	.string "INU: We're all bark, no bite...\n"
+	.string "PERSIA: And you were the cat's meow!$"
 
 PetalburgWoodsNew_Text_InuAndPersiaPostBattle:
-	.string "post$"
+	.string "INU: Maybe we should switch to\n"
+	.string "     training equine Pokemon instead.\l"
+	.string "PERSIA: I'll start looking!$"
 
 PetalburgWoodsNew_Text_InuAndPersiaNeedTwoMons:
-	.string "need 2 dood$"
+	.string "INU: It'll start raining cats\n"
+	.string "     and dogs before we fight\l"
+	.string "     you with only one 'mon!$"
 
 PetalburgWoodsNew_Text_NamePandou:
 	.string "Pandou$"

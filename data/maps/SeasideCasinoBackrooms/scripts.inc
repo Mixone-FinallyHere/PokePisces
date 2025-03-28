@@ -117,31 +117,42 @@ SeasideCasinoBackrooms_EventScript_Ari::
     end
 
 SeasideCasinoBackrooms_Text_LincolnIntro:
-	.string "intro$"
+	.string "I've never told a lie, and I\n"
+	.string "won't start now!\l"
+	.string "You're a horse with a limp,\l"
+	.string "I'll put you down!$"
 
 SeasideCasinoBackrooms_Text_LincolnDefeated:
-	.string "defeat$"
+	.string "Let it be known that I fought\n"
+	.string "for what was on my brain...$"
 
 SeasideCasinoBackrooms_Text_LincolnPostBattle:
-	.string "post$"
+	.string "That match was worth but a penny.$"
 
 SeasideCasinoBackrooms_Text_PennIntro:
-	.string "intro$"
+	.string "More battles means more prize money!\n"
+	.string "Let's take a shot...!$"
 
 SeasideCasinoBackrooms_Text_PennDefeated:
-	.string "defeat$"
+	.string "...Best 2 out of 3?$"
 
 SeasideCasinoBackrooms_Text_PennPostBattle:
-	.string "post$"
+	.string "...Eh. Alright. You beat me\n"
+	.string "fair and square.$"
 
 SeasideCasinoBackrooms_Text_AriIntro:
-	.string "intro$"
+	.string "Two, four, six, eight!\n"
+	.string "Who do we appreciate?\l"
+	.string "This guy! It's this guy!\l"
+	.string "Goooo... this... guy!$"
 
 SeasideCasinoBackrooms_Text_AriDefeated:
-	.string "defeat$"
+	.string "I didn't cheer hard enough...$"
 
 SeasideCasinoBackrooms_Text_AriPostBattle:
-	.string "post$"
+	.string "It's hard playing support when\n"
+	.string "all your partner wants to do\l"
+	.string "is gamble!$"
 
 SeasideCasinoBackrooms_Text_NameSteven:
 	.string "Steven$"
