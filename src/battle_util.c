@@ -14572,7 +14572,7 @@ static inline uq4_12_t CalcTypeEffectivenessMultiplierInternal(u32 move, u32 mov
     }
 
     // Empty
-    if ((gBattleMoves[move].type == TYPE_NORMAL || gBattleMoves[move].type == TYPE_FIGHTING) && defAbility == ABILITY_EMPTY)
+    if ((gBattleMoves[move].type == TYPE_NORMAL || gBattleMoves[move].type == TYPE_FIGHTING) && GetBattlerAbility(battlerAtk) != ABILITY_SCRAPPY && defAbility == ABILITY_EMPTY)
     {
         modifier = UQ_4_12(0.0);
         if (recordAbilities && defAbility == ABILITY_EMPTY)
