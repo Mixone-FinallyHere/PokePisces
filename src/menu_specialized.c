@@ -1560,7 +1560,7 @@ static const u8 *const sLvlUpStatStrings[NUM_STATS] =
 
 void DrawLevelUpWindowPg1(u16 windowId, u16 *statsBefore, u16 *statsAfter, u8 bgClr, u8 fgClr, u8 shadowClr)
 {
-    u16 i, x;
+    u16 i, numDigits, x;
     s16 statsDiff[NUM_STATS];
     u8 text[12];
     u8 color[3];
@@ -1602,7 +1602,14 @@ void DrawLevelUpWindowPg1(u16 windowId, u16 *statsBefore, u16 *statsAfter, u8 bg
         else
             x = 12;
 
-        ConvertIntToDecimalStringN(text, abs(statsDiff[i]), STR_CONV_MODE_LEFT_ALIGN, 2);
+        if (abs(statsDiff[i]) > 99)
+            numDigits = 3;
+        else if (abs(statsDiff[i]) > 9)
+            numDigits = 2;
+        else
+            numDigits = 1;
+
+        ConvertIntToDecimalStringN(text, abs(statsDiff[i]), STR_CONV_MODE_LEFT_ALIGN, numDigits);
         AddTextPrinterParameterized3(windowId,
                                      FONT_NORMAL,
                                      56 + x,
