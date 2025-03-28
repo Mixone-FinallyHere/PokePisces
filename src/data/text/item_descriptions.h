@@ -4510,8 +4510,8 @@ static const u8 sDoughStickDesc[] = _(
 
 static const u8 sYellowSodaDesc[] = _(
     "A berry soda for a\n"
-    "Voreon. It heals HP,\n"
-    "ups Speed/critical hit\n"
+    "Voreon. Heals HP, ups\n"
+    "Speed/critical hit\n"
     "ratio-but only once.");
 
 static const u8 sDripShoesDesc[] = _(
