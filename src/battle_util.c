@@ -3198,9 +3198,8 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_SALT_CURE:
-            if (gStatuses4[battler] & STATUS4_SALT_CURE && gBattleMons[battler].hp != 0
-            && !((GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_TERU_CHARM) 
-            && (gBattleMons[battler].species == SPECIES_CHIROBERRA)))
+            if (gStatuses4[battler] & STATUS4_SALT_CURE 
+            && gBattleMons[battler].hp != 0)
             {
                 MAGIC_GUARD_CHECK;
                 TERU_CHARM_CHECK;
@@ -13047,14 +13046,17 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         break;
     case HOLD_EFFECT_TRIUMPH_STAR:
-        if (atkBaseSpeciesId == SPECIES_LEDIAN
-        && IS_MOVE_PHYSICAL(move)
-        && gSideStatuses[atkSide] & (SIDE_STATUS_REFLECT | SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL | SIDE_STATUS_GOOGOO_SCREEN))
-            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
-        if (atkBaseSpeciesId == SPECIES_LEDIAN
-        && gBattleMoves[move].punchingMove
-        && gSideStatuses[atkSide] & (SIDE_STATUS_REFLECT | SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL | SIDE_STATUS_GOOGOO_SCREEN))
-            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
+        if (atkBaseSpeciesId == SPECIES_LEDIAN && gSideStatuses[atkSide] & (SIDE_STATUS_REFLECT | SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL | SIDE_STATUS_GOOGOO_SCREEN))
+        {
+            if (IS_MOVE_PHYSICAL(move))
+            {
+                modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
+            }
+            if (gBattleMoves[move].punchingMove)
+            {
+                modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
+            }
+        }
         break;
     case HOLD_EFFECT_VIBRANT_SCALE:
         if (gBattleMons[battlerAtk].species == SPECIES_BIVAGUE && IS_MOVE_SPECIAL(move))
@@ -13349,6 +13351,10 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
         if (gBattleMons[battlerDef].species == SPECIES_SNELFREND)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.5));
         break;
+    case HOLD_EFFECT_TERU_CHARM:
+        if (gBattleMons[battlerDef].species == SPECIES_CHIROBERRA)
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.3));
+        break;
     case HOLD_EFFECT_WINTAMEL_TEA:
         if (gBattleMons[battlerDef].species == SPECIES_POMELONIAN)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.5));
@@ -13405,10 +13411,10 @@ static inline u32 CalcDefenseStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 
     }
 
     // sandstorm sp.def boost for rock types
-    if (IS_BATTLER_OF_TYPE(battlerDef, TYPE_ROCK) && weather & B_WEATHER_SANDSTORM && !usesDefStat && (!(holdEffectDef == HOLD_EFFECT_UTILITY_UMBRELLA)))
+    if (IS_BATTLER_OF_TYPE(battlerDef, TYPE_ROCK) && weather & B_WEATHER_SANDSTORM && !usesDefStat && holdEffectDef != HOLD_EFFECT_UTILITY_UMBRELLA)
         modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
     // snow def boost for ice types
-    if (IS_BATTLER_OF_TYPE(battlerDef, TYPE_ICE) && weather & B_WEATHER_HAIL && usesDefStat && (!(holdEffectDef == HOLD_EFFECT_UTILITY_UMBRELLA)))
+    if (IS_BATTLER_OF_TYPE(battlerDef, TYPE_ICE) && weather & B_WEATHER_HAIL && usesDefStat && holdEffectDef != HOLD_EFFECT_UTILITY_UMBRELLA)
         modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
 
     // The defensive stats of a Player's Pok?mon are boosted by x1.1 (+10%) if they have the 5th badge and 7th badges.
