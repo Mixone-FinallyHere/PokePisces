@@ -55,7 +55,7 @@ static void OpponentHandleIntroTrainerBallThrow(u32 battler);
 static void OpponentHandleDrawPartyStatusSummary(u32 battler);
 static void OpponentHandleBattleAnimation(u32 battler);
 static void OpponentHandleEndLinkBattle(u32 battler);
-static u8 CountAIAliveNonEggMonsExcept(u8 slotToIgnore);
+static u8 CountAIAliveNonEggMonsExcept(u32 battler, u8 slotToIgnore);
 
 static void OpponentBufferRunCommand(u32 battler);
 static void OpponentBufferExecCompleted(u32 battler);
@@ -621,7 +621,7 @@ static inline bool32 IsAcePokemon(u32 chosenMonId, u32 pokemonInBattle, u32 batt
 {
     return AI_THINKING_STRUCT->aiFlags & AI_FLAG_ACE_POKEMON
         && (chosenMonId == CalculateEnemyPartyCountInSide(battler) - 1)
-        && CountAIAliveNonEggMonsExcept(PARTY_SIZE) != pokemonInBattle;
+        && CountAIAliveNonEggMonsExcept(battler, PARTY_SIZE) != pokemonInBattle;
 }
 
 static inline bool32 IsDoubleAcePokemon(u32 chosenMonId, u32 pokemonInBattle, u32 battler)
@@ -629,8 +629,8 @@ static inline bool32 IsDoubleAcePokemon(u32 chosenMonId, u32 pokemonInBattle, u3
     return AI_THINKING_STRUCT->aiFlags & AI_FLAG_DOUBLE_ACE_POKEMON
         && (chosenMonId == CalculateEnemyPartyCountInSide(battler) - 1)
         && (chosenMonId == CalculateEnemyPartyCountInSide(battler) - 2)
-        && CountAIAliveNonEggMonsExcept(PARTY_SIZE) != pokemonInBattle
-        && CountAIAliveNonEggMonsExcept(PARTY_SIZE - 1) != pokemonInBattle;
+        && CountAIAliveNonEggMonsExcept(battler, PARTY_SIZE) != pokemonInBattle
+        && CountAIAliveNonEggMonsExcept(battler, PARTY_SIZE - 1) != pokemonInBattle;
 }
 
 static void OpponentHandleChoosePokemon(u32 battler)
@@ -647,11 +647,12 @@ static void OpponentHandleChoosePokemon(u32 battler)
     else if (*(gBattleStruct->AI_monToSwitchIntoId + battler) == PARTY_SIZE)
     {
         chosenMonId = GetMostSuitableMonToSwitchInto(battler);
+        // DebugPrintfLevel(MGBA_LOG_WARN, "battler %d mostsuitable = %d", battler, chosenMonId);
         if (chosenMonId == PARTY_SIZE)
         {
             s32 battler1, battler2, firstId, lastId;
 
-            if (!(gBattleTypeFlags & BATTLE_TYPE_DOUBLE))
+            if (!(gBattleTypeFlags & BATTLE_TYPE_DOUBLE) || (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS))
             {
                 battler2 = battler1 = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
             }
@@ -663,6 +664,7 @@ static void OpponentHandleChoosePokemon(u32 battler)
             }
 
             GetAIPartyIndexes(battler, &firstId, &lastId);
+            // DebugPrintfLevel(MGBA_LOG_WARN, "battler %d firstId = %d, lastId = %d", battler,firstId, lastId);
 
             for (chosenMonId = (lastId-1); chosenMonId >= firstId; chosenMonId--)
             {
@@ -676,6 +678,7 @@ static void OpponentHandleChoosePokemon(u32 battler)
                     break;
             }
         }
+        // DebugPrintfLevel(MGBA_LOG_WARN, "battler %d chose %d", battler,chosenMonId);
         *(gBattleStruct->monToSwitchIntoId + battler) = chosenMonId;
     }
     else
@@ -689,11 +692,13 @@ static void OpponentHandleChoosePokemon(u32 battler)
 
 }
 
-static u8 CountAIAliveNonEggMonsExcept(u8 slotToIgnore)
+static u8 CountAIAliveNonEggMonsExcept(u32 battler, u8 slotToIgnore)
 {
     u16 i, count;
+    s32 firstId, lastId;
+    GetAIPartyIndexes(battler, &firstId, &lastId);
 
-    for (i = 0, count = 0; i < PARTY_SIZE; i++)
+    for (i = firstId, count = 0; i < lastId; i++)
     {
         if (i != slotToIgnore
             && IsValidForBattle(&gEnemyParty[i]))
