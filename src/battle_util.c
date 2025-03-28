@@ -5416,7 +5416,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 }
                 else
                 {
-                    // Removes Trick Room
+                    // Removes Inverse Room
                     gFieldTimers.inverseRoomTimer = 0;
                     gFieldStatuses &= ~(STATUS_FIELD_INVERSE_ROOM);
                     BattleScriptPushCursorAndCallback(BattleScript_ReversiDeactivated);
@@ -6595,7 +6595,10 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_PUNISHER:
-            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) && TARGET_TURN_DAMAGED && IsBattlerAlive(battler) && TryBattleFormChange(battler, FORM_CHANGE_BATTLE_TURN_END))
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
+            && TARGET_TURN_DAMAGED
+            && IsBattlerAlive(battler) 
+            && TryBattleFormChange(battler, FORM_CHANGE_BATTLE_TURN_END))
             {
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_DefenderFormChange;
