@@ -757,6 +757,88 @@ MossdeepCity_EventScript_MangrottoSign::
 	msgbox MossdeepCity_Text_MangrottoSign, MSGBOX_SIGN
 	end
 
+MossdeepCity_EventScript_Mossdeeper1::
+    msgbox MossdeepCity_Text_Mossdeeper1, MSGBOX_NPC
+    end
+
+MossdeepCity_EventScript_Mossdeeper2::
+    msgbox MossdeepCity_Text_Mossdeeper2, MSGBOX_NPC
+    end
+
+MossdeepCity_EventScript_Mossdeeper3::
+    msgbox MossdeepCity_Text_Mossdeeper3, MSGBOX_NPC
+    end
+
+MossdeepCity_EventScript_Mossdeeper4::
+    msgbox MossdeepCity_Text_Mossdeeper4, MSGBOX_NPC
+    end
+
+MossdeepCity_EventScript_Mossdeeper5::
+    msgbox MossdeepCity_Text_Mossdeeper5, MSGBOX_NPC
+    end
+
+MossdeepCity_EventScript_Mossdeeper6::
+    msgbox MossdeepCity_Text_Mossdeeper6, MSGBOX_NPC
+    end
+
+MossdeepCity_EventScript_Mossdeeper7::
+    msgbox MossdeepCity_Text_Mossdeeper7, MSGBOX_NPC
+    end
+
+MossdeepCity_Text_Mossdeeper1:
+	.string "Seems like everyone I know wants\n"
+	.string "to apply to be an astronaut!\l"
+	.string "Not gonna lie... it sounds mega cool!$"
+
+MossdeepCity_Text_Mossdeeper2:
+	.string "The gym here used to be a double\n"
+	.string "battle not too long ago. The\l"
+	.string "current leader, Liza, would battle\l"
+	.string "alongside her brother, Tate.\p"
+	.string "He ended up leaving on a journey to\n"
+	.string "find himself in the mountains.\l"
+	.string "So, Liza fights alone...\l"
+	.string "ironic, considering every other\l"
+	.string "Hoenn gym is now a double battle.$"
+
+MossdeepCity_Text_Mossdeeper3:
+	.string "Do you invest any time in\n"
+	.string "learning about erosion?\p"
+	.string "Over thousands and thousands\n"
+	.string "of years, water and ice will chisel\l"
+	.string "out even the hardest of rocks.\p"
+	.string "Perhaps, if the conditions are\n"
+	.string "right, a rock can be carved into a\l"
+	.string "perfect sculpture of a Pokemon\l"
+	.string "by nothing but the waves.$"
+
+MossdeepCity_Text_Mossdeeper4:
+	.string "One of these days, I'll be attuned\n"
+	.string "enough with my sixth sense that\l"
+	.string "I can bend a spoon with my mind!\p"
+	.string "The last guy I saw do that had his\n"
+	.string "hair turn white. But it's a price\l"
+	.string "I'm willing to pay!$"
+
+MossdeepCity_Text_Mossdeeper5:
+	.string "Seeking out a Good Rod, youngun'?\n"
+	.string "Pal'a mine set up a dwellin' at\l"
+	.string "Precipike Bluff. It's just north\l"
+	.string "of the city. He may be willin'\l"
+	.string "to give one out to ya.$"
+
+MossdeepCity_Text_Mossdeeper6:
+	.string "The mangrove trees of Mossdeep\n"
+	.string "are so very resilient! Some of\l"
+	.string "these plants have been around\l"
+	.string "for centuries.$"
+
+MossdeepCity_Text_Mossdeeper7:
+	.string "Such an inconvenient ledge...\n"
+	.string "Mossdeep City is RIGHT THERE!\l"
+	.string "Would it kill them to carve out\l"
+	.string "some simple stone stairs?$"
+
 MossdeepCity_Text_MangrottoSign:
 	.string "ENTRANCE TO MANGROTTO TUNNEL$"
 
