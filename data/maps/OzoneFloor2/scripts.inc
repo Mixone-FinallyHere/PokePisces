@@ -99,6 +99,8 @@ OzoneFloor2_EventScript_RayBattleStart::
 	end
 
 OzoneFloor2_EventScript_RayLeaves::
+	setseenmon SPECIES_NEOROACH
+	setcaughtmon SPECIES_NEOROACH
 	speakername OzoneFloor2_Text_NameRay
 	msgbox OzoneFloor2_Text_RayLeaves, MSGBOX_DEFAULT
 	closemessage

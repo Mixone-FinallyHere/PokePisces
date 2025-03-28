@@ -31,7 +31,7 @@ MeteorNadir_EventScript_LegendaryEncounter::
 	waitmoncry
 	msgbox MeteorNadir_Text_TimeToStepIn, MSGBOX_DEFAULT
 	closemessage
-	setwildbattle SPECIES_LUOSHAN, 75, ITEM_NONE, SPECIES_KYOGRE, 75, ITEM_NONE
+	setwildbattle SPECIES_LUOSHAN, 80, ITEM_WIDE_ARMOR, SPECIES_KYOGRE, 80, ITEM_WIDE_ARMOR
 	setflag FLAG_WILD_NO_CATCHING_FLAG
 	setflag FLAG_WILD_NO_RUNNING_FLAG
 	setflag FLAG_SMART_WILD_AI_FLAG

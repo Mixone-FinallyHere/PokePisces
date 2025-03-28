@@ -97,11 +97,27 @@ PacifidlogTown_PokemonCenter_2F_EventScript_Girl::
 	msgbox PacifidlogTown_PokemonCenter_2F_Text_Girl, MSGBOX_NPC
 	end
 
+PacifidlogTown_PokemonCenter_2F_EventScript_GoGetter::
+	msgbox PacifidlogTown_PokemonCenter_2F_Text_GoGetter, MSGBOX_NPC
+	end
+
+PacifidlogTown_PokemonCenter_2F_Text_GoGetter:
+	.string "My team is really starting to\n"
+	.string "slow to a crawl, experience-wise.\p"
+	.string "I can't see what's going wrong...?\n"
+	.string "What, are they not satisfied with\l"
+	.string "just fighting Gupspar I fish up\l"
+	.string "over n' over?$"
+
 PacifidlogTown_PokemonCenter_2F_Text_Guy:
-	.string "Route Pokemon Centers have a much\n"
-	.string "better vibe, man.\l"
-	.string "I could fall asleep in one of these.\p"
-	.string "And that may... just be what I do.$"
+	.string "You seem like you have grasped a\n"
+	.string "lot about the stats of your Pokemon.\l"
+	.string "Are you aware of Effort Values?\l"
+	.string "EVs, for short. They're gained by\l"
+	.string "your Pokemon over a long period\l"
+	.string "of time battling. EVs can impact\l"
+	.string "your stats in a big way.\l"
+	.string "Maybe keep that in mind!$"
 
 PacifidlogTown_PokemonCenter_2F_Text_Girl:
 	.string "The lady at the counter\n"

@@ -327,6 +327,62 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "EverGrandePeak_EventScript_LuoshanShrine"
+    },
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 73,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "EverGrandePeak_EventScript_EGREndsSign"
+    },
+    {
+      "type": "sign",
+      "x": 37,
+      "y": 50,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "EverGrandePeak_EventScript_GoldenPlainsSign"
+    },
+    {
+      "type": "sign",
+      "x": 41,
+      "y": 50,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "EverGrandePeak_EventScript_GoldenPlainsSign"
+    },
+    {
+      "type": "sign",
+      "x": 23,
+      "y": 55,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "EverGrandePeak_EventScript_PathToSYSign"
+    },
+    {
+      "type": "sign",
+      "x": 52,
+      "y": 16,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "EverGrandePeak_EventScript_PathToLSSign"
+    },
+    {
+      "type": "sign",
+      "x": 13,
+      "y": 25,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "EverGrandePeak_EventScript_ShaYonSign"
+    },
+    {
+      "type": "sign",
+      "x": 68,
+      "y": 72,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "EverGrandePeak_EventScript_LuoShanSign"
     }
   ]
 }

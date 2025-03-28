@@ -40,21 +40,51 @@ PacifidlogTown_EventScript_VisitSadFisher::
 	msgbox PacifidlogTown_Text_VisitSadFisher, MSGBOX_NPC
 	end
 
+PacifidlogTown_EventScript_MoveNerd::
+	msgbox PacifidlogTown_Text_MoveNerd, MSGBOX_NPC
+	end
+
+PacifidlogTown_Text_MoveNerd:
+	.string "Ever make your Pokemon forget\n"
+	.string "a move, and regret that decision\l"
+	.string "later? Boy have I!\p"
+	.string "You just gotta remember to check\n"
+	.string "the relearning menu in your party.\l"
+	.string "Your Pokemon are able to relearn\l"
+	.string "any move they could have gotten\l"
+	.string "via level-up. It comes in\l"
+	.string "super handy if you want to test\l"
+	.string "out many different movesets!$"
+
 PacifidlogTown_Text_BlackSheepWoman:
-	.string "Pacifidlog Town definitely used\n"
-	.string "to be the black sheep of Hoenn's\l"
-	.string "settlements.\p"
-	.string "I've seen the community really\n"
-	.string "blossom here as of late. They've\l"
-	.string "earned their place among\l"
-	.string "the other cities, I'd say.$"
+	.string "You look like you're about to\n"
+	.string "start a big journey! That's great!\l"
+	.string "Here, have some advice.\p"
+	.string "The absolute best way to find\n"
+	.string "consistent success in trainer\l"
+	.string "battles? Full preparation!\l"
+	.string "Whenever you put someone on your\l"
+	.string "team, read up on everything\l"
+	.string "about them! Their moves, their\l"
+	.string "ability, their stat spread.\l"
+	.string "Don't just assume you know\l"
+	.string "everything! A successful trainer\l"
+	.string "is a knowledgeable trainer.\p"
+	.string "Just make sure you read, okay?\n"
+	.string "Promise? Fortune will then\l"
+	.string "find you, no doubt.$"
 
 PacifidlogTown_Text_BoredKidsWoman:
-	.string "My little ones used to be more\n"
-	.string "easily entertained by the beach...\l"
-	.string "but now they're bored of it.\p"
-	.string "They want a vacation from\n"
-	.string "their vacation...$"
+	.string "My Pokemon are so eager to\n"
+	.string "evolve when their time comes!\l"
+	.string "They will signal to me when\l"
+	.string "they reach their requirement.\l"
+	.string "Nevertheless, it always helps\l"
+	.string "to check your party once in\l"
+	.string "a while to see if one of your\l"
+	.string "Pokemon can evolve. Especially\l"
+	.string "if they need high friendship,\l"
+	.string "like Saintisow!$"
 
 PacifidlogTown_Text_VisitSadFisher:
 	.string "You a trainer? Ya got that\n"
