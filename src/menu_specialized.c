@@ -1599,10 +1599,14 @@ void DrawLevelUpWindowPg1(u16 windowId, u16 *statsBefore, u16 *statsAfter, u8 bg
                                      text);
         if (abs(statsDiff[i]) <= 9)
             x = 18;
-        else
-            x = 12;
-
-        ConvertIntToDecimalStringN(text, abs(statsDiff[i]), STR_CONV_MODE_LEFT_ALIGN, 2);
+        else {
+            if (abs(statsDiff[i]) <= 99)
+                x = 12;
+            else
+                x = 6;
+        }
+        
+        ConvertIntToDecimalStringN(text, abs(statsDiff[i]), STR_CONV_MODE_LEFT_ALIGN, 3);
         AddTextPrinterParameterized3(windowId,
                                      FONT_NORMAL,
                                      56 + x,
