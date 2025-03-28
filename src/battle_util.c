@@ -11138,7 +11138,7 @@ bool32 IsMoveMakingContact(u32 move, u32 battlerAtk)
             return FALSE;
     }
     else if ((atkHoldEffect == HOLD_EFFECT_PUNCHING_GLOVE && gBattleMoves[move].punchingMove) 
-    || ((atkBaseSpeciesId == SPECIES_PAWNIARD || atkBaseSpeciesId == SPECIES_BISHARP || atkBaseSpeciesId == SPECIES_KINGAMBIT) && (gBattleMoves[move].slicingMove) && atkHoldEffect == HOLD_EFFECT_LEADERS_CREST) 
+    || ((atkBaseSpeciesId == SPECIES_PAWNIARD || atkBaseSpeciesId == SPECIES_BISHARP || atkBaseSpeciesId == SPECIES_KINGAMBIT) && (gBattleMoves[move].slicingMove) && atkHoldEffect == HOLD_EFFECT_LEADERS_CREST)
     || atkHoldEffect == HOLD_EFFECT_PROTECTIVE_PADS
     || GetBattlerAbility(battlerAtk) == ABILITY_LONG_REACH)
     {
@@ -14015,7 +14015,7 @@ static inline uq4_12_t GetDefenderItemsModifier(u32 move, u32 moveType, u32 batt
         {
             if (updateFlags)
                 gSpecialStatuses[battlerDef].berryReduced = TRUE;
-            return (abilityDef == ABILITY_RIPEN) ? UQ_4_12(0.5625) : UQ_4_12(0.75);
+            return (abilityDef == ABILITY_RIPEN) ? UQ_4_12(0.5) : UQ_4_12(0.75);
         }
         break;
     case HOLD_EFFECT_ENIGMA_BERRY:
@@ -14025,7 +14025,7 @@ static inline uq4_12_t GetDefenderItemsModifier(u32 move, u32 moveType, u32 batt
         {
             if (updateFlags)
                 gSpecialStatuses[battlerDef].berryReduced = TRUE;
-            return (abilityDef == ABILITY_RIPEN) ? UQ_4_12(0.0) : UQ_4_12(0.0);
+            return (abilityDef == ABILITY_RIPEN) ? UQ_4_12(0.1) : UQ_4_12(0.25);
         }
         break;
     case HOLD_EFFECT_DILATANT_MOD:
