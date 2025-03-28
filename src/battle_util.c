@@ -12556,9 +12556,7 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
     }
 
     if (IsAbilityOnField(ABILITY_DAMP) && (moveType == TYPE_FIRE || moveType == TYPE_GROUND || moveType == TYPE_ROCK))
-    {
         modifier = uq4_12_multiply(modifier, UQ_4_12(0.75));
-    }
 
     if (IsAbilityOnOpposingSide(battlerAtk, ABILITY_FALLING) && atkAbility != ABILITY_FALLING)
         modifier = uq4_12_multiply(modifier, UQ_4_12(0.75));
@@ -12571,6 +12569,37 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
 
     if (IsAbilityOnSide(battlerAtk, ABILITY_VICTORY_STAR))
         modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
+
+    if (IsAbilityOnField(ABILITY_DARK_AURA) && defAbility != ABILITY_DARK_AURA)
+        modifier = uq4_12_multiply_half_down(modifier, GetDarkAuraModifier(battlerDef));
+
+    if (IsAbilityOnSide(battlerAtk, ABILITY_PLUS)
+    && IsAbilityOnSide(battlerAtk, ABILITY_MINUS)
+    && (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_ELECTRIC) 
+    || IS_BATTLER_OF_TYPE(battlerAtk, TYPE_STEEL)))
+    {
+        modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
+    }
+    else if (IsAbilityOnSide(battlerAtk, ABILITY_PLUS) 
+    && (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_ELECTRIC) 
+    || IS_BATTLER_OF_TYPE(battlerAtk, TYPE_STEEL)))
+    {
+        modifier = uq4_12_multiply(modifier, UQ_4_12(1.15));
+    }
+
+    if (IsAbilityOnSide(battlerDef, ABILITY_MINUS)
+    && IsAbilityOnSide(battlerDef, ABILITY_PLUS)
+    && (IS_BATTLER_OF_TYPE(battlerDef, TYPE_ELECTRIC) 
+    || IS_BATTLER_OF_TYPE(battlerDef, TYPE_STEEL)))
+    {
+        modifier = uq4_12_multiply(modifier, UQ_4_12(0.5));
+    }
+    else if (IsAbilityOnSide(battlerDef, ABILITY_MINUS) 
+    && (IS_BATTLER_OF_TYPE(battlerDef, TYPE_ELECTRIC) 
+    || IS_BATTLER_OF_TYPE(battlerDef, TYPE_STEEL)))
+    {
+        modifier = uq4_12_multiply(modifier, UQ_4_12(0.75));
+    }
 
     // attacker partner's abilities
     if (IsBattlerAlive(BATTLE_PARTNER(battlerAtk)))
@@ -12588,14 +12617,6 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         case ABILITY_STEELY_SPIRIT:
             if (moveType == TYPE_STEEL)
                 modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
-            break;
-        case ABILITY_PLUS:
-            if (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_ELECTRIC) || IS_BATTLER_OF_TYPE(battlerAtk, TYPE_STEEL))
-                modifier = uq4_12_multiply(modifier, UQ_4_12(1.15));
-            break;
-        case ABILITY_MINUS:
-            if (IsAbilityOnSide(battlerAtk, ABILITY_PLUS) && (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_ELECTRIC) || IS_BATTLER_OF_TYPE(battlerAtk, TYPE_STEEL)))
-                modifier = uq4_12_multiply(modifier, UQ_4_12(1.15));
             break;
         }
     }
@@ -13103,9 +13124,6 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.1));
         break;
     }
-
-    if (IsAbilityOnField(ABILITY_DARK_AURA) && defAbility != ABILITY_DARK_AURA)
-        modifier = uq4_12_multiply_half_down(modifier, GetDarkAuraModifier(battlerDef));
 
     // The offensive stats of a Player's Pok?mon are boosted by x1.1 (+10%) if they have the 1st badge and 7th badges.
     // Having the 1st badge boosts physical attack while having the 7th badge boosts special attack.
@@ -13851,14 +13869,6 @@ static inline uq4_12_t GetDefenderPartnerAbilitiesModifier(u32 battlerPartnerDef
     case ABILITY_CACOPHONY:
         if (gBattleMoves[gCurrentMove].soundMove)
             return UQ_4_12(0.5);
-        break;
-    case ABILITY_MINUS:
-        if (IS_BATTLER_OF_TYPE(battlerDef, TYPE_ELECTRIC) || IS_BATTLER_OF_TYPE(battlerDef, TYPE_STEEL))
-            return UQ_4_12(0.75);
-        break;
-    case ABILITY_PLUS:
-        if (IsAbilityOnSide(battlerDef, ABILITY_MINUS) && (IS_BATTLER_OF_TYPE(battlerDef, TYPE_ELECTRIC) || IS_BATTLER_OF_TYPE(battlerDef, TYPE_STEEL)))
-            return UQ_4_12(0.75);
         break;
     }
     return UQ_4_12(1.0);
