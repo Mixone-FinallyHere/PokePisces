@@ -14529,12 +14529,13 @@ static inline uq4_12_t CalcTypeEffectivenessMultiplierInternal(u32 move, u32 mov
     if (gBattleMoves[move].type == TYPE_POISON && defAbility == ABILITY_IMMUNITY)
     {
         modifier = UQ_4_12(0.0);
-        if (recordAbilities)
+        if (recordAbilities && defAbility == ABILITY_IMMUNITY)
         {
             gLastUsedAbility = ABILITY_IMMUNITY;
             gMoveResultFlags |= (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE);
             gLastLandedMoves[battlerDef] = 0;
-            gBattleCommunication[MISS_TYPE] = B_MSG_POISON_MISS;
+            PREPARE_TYPE_BUFFER(gBattleTextBuff1, gBattleMoves[move].type);
+            gBattleCommunication[MISS_TYPE] = B_MSG_SPECIAL_MISS;
             RecordAbilityBattle(battlerDef, ABILITY_IMMUNITY);
         }
     }
@@ -14543,12 +14544,13 @@ static inline uq4_12_t CalcTypeEffectivenessMultiplierInternal(u32 move, u32 mov
     if ((gBattleMoves[move].type == TYPE_GROUND || gBattleMoves[move].type == TYPE_WATER) && defAbility == ABILITY_ALL_GAME)
     {
         modifier = UQ_4_12(0.0);
-        if (recordAbilities)
+        if (recordAbilities && defAbility == ABILITY_ALL_GAME)
         {
             gLastUsedAbility = ABILITY_ALL_GAME;
             gMoveResultFlags |= (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE);
             gLastLandedMoves[battlerDef] = 0;
-            gBattleCommunication[MISS_TYPE] = B_MSG_IMMUNE;
+            PREPARE_TYPE_BUFFER(gBattleTextBuff1, gBattleMoves[move].type);
+            gBattleCommunication[MISS_TYPE] = B_MSG_SPECIAL_MISS;
             RecordAbilityBattle(battlerDef, ABILITY_ALL_GAME);
         }
     }
@@ -14557,7 +14559,7 @@ static inline uq4_12_t CalcTypeEffectivenessMultiplierInternal(u32 move, u32 mov
     if ((gBattleMoves[move].type == TYPE_NORMAL || gBattleMoves[move].type == TYPE_FIGHTING) && defAbility == ABILITY_EMPTY)
     {
         modifier = UQ_4_12(0.0);
-        if (recordAbilities)
+        if (recordAbilities && defAbility == ABILITY_EMPTY)
         {
             gLastUsedAbility = ABILITY_EMPTY;
             gMoveResultFlags |= (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE);
@@ -14568,15 +14570,18 @@ static inline uq4_12_t CalcTypeEffectivenessMultiplierInternal(u32 move, u32 mov
     }
 
     // Pink Mist
-    if (gBattleMoves[move].type == TYPE_PSYCHIC && defAbility == ABILITY_PINK_MIST && gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN)
+    if (gBattleMoves[move].type == TYPE_PSYCHIC 
+        && defAbility == ABILITY_PINK_MIST 
+        && gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN)
     {
         modifier = UQ_4_12(0.0);
-        if (recordAbilities)
+        if (recordAbilities && defAbility == ABILITY_PINK_MIST)
         {
             gLastUsedAbility = ABILITY_PINK_MIST;
             gMoveResultFlags |= (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE);
             gLastLandedMoves[battlerDef] = 0;
-            gBattleCommunication[MISS_TYPE] = B_MSG_MISSED;
+            PREPARE_TYPE_BUFFER(gBattleTextBuff1, gBattleMoves[move].type);
+            gBattleCommunication[MISS_TYPE] = B_MSG_SPECIAL_MISS;
             RecordAbilityBattle(battlerDef, ABILITY_PINK_MIST);
         }
     }

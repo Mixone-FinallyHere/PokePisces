@@ -920,7 +920,7 @@
 #define B_MSG_AVOIDED_ATK  2
 #define B_MSG_AVOIDED_DMG  3
 #define B_MSG_GROUND_MISS  4
-#define B_MSG_POISON_MISS  5
+#define B_MSG_SPECIAL_MISS 5
 #define B_MSG_PSYCHIC_MISS 6
 #define B_MSG_IMMUNE       7
 #define B_MSG_IS_EMPTY     8
