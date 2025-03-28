@@ -17013,6 +17013,32 @@ BattleScript_WatcherLoopIncrement:
 	pause B_WAIT_TIME_MED
 	end3
 
+BattleScript_SolarPowerActivatesSunEveryone::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_USERGAINEDDAYBREAK
+	waitmessage B_WAIT_TIME_LONG
+	setbyte gBattlerTarget, 0
+BattleScript_SolarPowerActivatesSunEveryoneLoop:
+	jumpiftargetally BattleScript_SolarPowerActivatesSunEveryoneIncrement
+	jumpifability BS_TARGET, ABILITY_MAGIC_GUARD, BattleScript_SolarPowerActivatesSunEveryoneIncrement
+	jumpifability BS_TARGET, ABILITY_SUGAR_COAT, BattleScript_SolarPowerActivatesSunEveryoneIncrement
+	jumpifterucharmprotected BS_TARGET, BattleScript_SolarPowerActivatesSunEveryoneIncrement
+	jumpifabsent BS_TARGET, BattleScript_SolarPowerActivatesSunEveryoneIncrement
+	printstring STRINGID_PKMNCUTSHPWITH2
+	waitmessage B_WAIT_TIME_LONG
+	solarpowerdamage
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	jumpifhasnohp BS_TARGET, BattleScript_SolarPowerActivatesSunEveryone_TryFaintMon
+BattleScript_SolarPowerActivatesSunEveryoneIncrement:
+	addbyte gBattlerTarget, 1
+	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_SolarPowerActivatesSunEveryoneLoop
+	end3
+BattleScript_SolarPowerActivatesSunEveryone_TryFaintMon:
+	tryfaintmon BS_TARGET
+	goto BattleScript_SolarPowerActivatesSunEveryoneIncrement
+
 BattleScript_SolarPowerActivatesEveryone::
 	setbyte gBattlerTarget, 0
 BattleScript_SolarPowerActivatesEveryoneLoop:

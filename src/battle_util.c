@@ -5866,14 +5866,23 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 effect++;
                 break;
             case ABILITY_SOLAR_POWER:
-                if (IsBattlerWeatherAffected(battler, B_WEATHER_SUN) && gDisableStructs[battler].daybreakCounter < 3)
+                if (IsBattlerWeatherAffected(battler, B_WEATHER_SUN) 
+                && gDisableStructs[battler].daybreakCounter < 3
+                && gDisableStructs[battler].daybreakCounter != 0)
+                {
+                    gDisableStructs[gBattlerAttacker].daybreakCounter++;
+                    PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, gDisableStructs[gBattlerAttacker].daybreakCounter);
+                    BattleScriptPushCursorAndCallback(BattleScript_SolarPowerActivatesSunEveryone);
+                    effect++;
+                }
+                else if (IsBattlerWeatherAffected(battler, B_WEATHER_SUN) && gDisableStructs[battler].daybreakCounter < 3)
                 {
                     gDisableStructs[gBattlerAttacker].daybreakCounter++;
                     PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, gDisableStructs[gBattlerAttacker].daybreakCounter);
                     BattleScriptPushCursorAndCallback(BattleScript_SolarPowerActivatesSun);
                     effect++;
                 }
-                if (IsBattlerWeatherAffected(battler, B_WEATHER_SUN) && gDisableStructs[battler].daybreakCounter != 0)
+                else if (IsBattlerWeatherAffected(battler, B_WEATHER_SUN) && gDisableStructs[battler].daybreakCounter != 0)
                 {
                     BattleScriptPushCursorAndCallback(BattleScript_SolarPowerActivatesEveryone);
                     effect++;
@@ -12401,7 +12410,7 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
         break;
     case ABILITY_SHAMBLES:
-        if ((gFieldStatuses & STATUS_FIELD_TERRAIN_ANY || gFieldStatuses & STATUS_FIELD_TRICK_ROOM || gFieldStatuses & STATUS_FIELD_WONDER_ROOM || gFieldStatuses & STATUS_FIELD_MAGIC_ROOM || gFieldStatuses & STATUS_FIELD_INVERSE_ROOM) && (gBattleMoves[move].switchingMove))
+        if ((IsBattlerTerrainAffected(battlerAtk, STATUS_FIELD_TERRAIN_ANY) || gFieldStatuses & STATUS_FIELD_TRICK_ROOM || gFieldStatuses & STATUS_FIELD_WONDER_ROOM || gFieldStatuses & STATUS_FIELD_MAGIC_ROOM || gFieldStatuses & STATUS_FIELD_INVERSE_ROOM) && (gBattleMoves[move].switchingMove))
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
     case ABILITY_SHEER_FORCE:

@@ -429,6 +429,7 @@ extern const u8 BattleScript_ToxicSpikesAbsorbed[];
 extern const u8 BattleScript_StickyWebOnSwitchIn[];
 extern const u8 BattleScript_SolarPowerActivates[];
 extern const u8 BattleScript_SolarPowerActivatesEveryone[];
+extern const u8 BattleScript_SolarPowerActivatesSunEveryone[];
 extern const u8 BattleScript_CursedBodyActivatesDisable[];
 extern const u8 BattleScript_CursedBodyActivatesTorment[];
 extern const u8 BattleScript_CursedBodyActivatesCurse[];
