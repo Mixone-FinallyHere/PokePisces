@@ -2587,7 +2587,7 @@ enum
 s32 GetDrainedBigRootHp(u32 battler, s32 hp)
 {
     if (GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_BIG_ROOT)
-        hp = (hp * 1500) / 1000;
+        hp *= 2;
     if (hp == 0)
         hp = 1;
 
@@ -10075,7 +10075,8 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
         {
             if (gBattleMoveDamage != 0 // Need to have done damage
                 && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT) 
-                && TARGET_TURN_DAMAGED 
+                && TARGET_TURN_DAMAGED
+                && (!(IS_MOVE_STATUS(gCurrentMove)))
                 && gBattleMons[gBattlerTarget].hp 
                 && moveType == TYPE_BUG)
             {

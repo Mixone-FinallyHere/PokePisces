@@ -10041,7 +10041,7 @@ BattleScript_AbilityProtectsDoesntAffect:
 
 BattleScript_ItemProtectsDoesntAffect:
 	pause B_WAIT_TIME_SHORT
-	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
+	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
 	printstring STRINGID_ITDOESNTAFFECT
 	waitmessage B_WAIT_TIME_LONG
 	orhalfword gMoveResultFlags, MOVE_RESULT_FAILED
