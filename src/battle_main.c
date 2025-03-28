@@ -4824,21 +4824,23 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
         speed /= 2;
     else if (ability == ABILITY_STARS_GRACE && gDisableStructs[battler].slowStartTimer < 1)
         speed *= 2;
-    else if (gStatuses4[battler] & STATUS4_PHANTOM)
-        speed *= 2;
     else if (ability == ABILITY_PROTOSYNTHESIS && gBattleWeather & B_WEATHER_SUN && highestStat == STAT_SPEED)
         speed = (speed * 150) / 100;
     else if (ability == ABILITY_QUARK_DRIVE && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN && highestStat == STAT_SPEED)
         speed = (speed * 150) / 100;
-    else if (gDisableStructs[battler].frenzyCounter != 0)
-        speed = (speed * (100 + (30 * gDisableStructs[battler].frenzyCounter))) / 100;
     else if (ability == ABILITY_GOLDEN_MEAN && gBattleMons[battler].species == SPECIES_SHUNYONG_GOLDEN_OFFENSE)
         speed *= 2;
     else if (ability == ABILITY_GOLDEN_MEAN && gBattleMons[battler].species == SPECIES_SHUNYONG)
         speed *= 0.5;
     else if (ability == ABILITY_ONE_WAY_TRIP)
         speed *= 1.5;
-    
+
+    if (gDisableStructs[battler].frenzyCounter != 0)
+        speed *= (100 + (30 * gDisableStructs[battler].frenzyCounter)) / 100;
+
+    if (gStatuses4[battler] & STATUS4_PHANTOM)
+        speed *= 2;
+
     // abilities on field
     if (IsAbilityOnOpposingSide(battler, ABILITY_FALLING) && GetBattlerAbility(battler) != ABILITY_FALLING)
         speed *= 0.75;

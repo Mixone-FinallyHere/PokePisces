@@ -2050,8 +2050,19 @@ static void Cmd_ppreduce(void)
         if (gCurrentMove != gLastResultingMoves[gBattlerAttacker] || WasUnableToUseMove(gBattlerAttacker))
             gBattleStruct->sameMoveTurns[gBattlerAttacker] = 0;
 
-        if (gCurrentMove == gLastResultingMoves[gBattlerAttacker] || WasUnableToUseMove(gBattlerAttacker) || !gBattleMoves[gCurrentMove].danceMove)
+        if (gChosenMoveByBattler[gBattlerAttacker] == gLastResultingMoves[gBattlerAttacker]
+        || (!(gBattleMoves[gCurrentMove].danceMove))
+        || (gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+        || (gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE))
+        {
             gBattleStruct->dancingMoveTurns[gBattlerAttacker] = 0;
+        }
+        else if (gBattleMoves[gCurrentMove].danceMove 
+        && gChosenMoveByBattler[gBattlerAttacker] != gLastResultingMoves[gBattlerAttacker] 
+        && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT)
+        {
+            gBattleStruct->dancingMoveTurns[gBattlerAttacker]++;
+        }
 
         if (gBattleMons[gBattlerAttacker].pp[gCurrMovePos] > ppToDeduct)
             gBattleMons[gBattlerAttacker].pp[gCurrMovePos] -= ppToDeduct;
@@ -7435,18 +7446,6 @@ static void Cmd_moveend(void)
             && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
             && (!(gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE)))
                 gBattleStruct->slicingMoveTurns[gBattlerAttacker]++;
-            gBattleScripting.moveendState++;
-            break;
-        case MOVEEND_DANCING_MOVE_TURNS:
-            if (gCurrentMove == gLastResultingMoves[gBattlerAttacker]
-            || (!(gBattleMoves[gCurrentMove].danceMove))
-            || (gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
-            || (gHitMarker & HITMARKER_UNABLE_TO_USE_MOVE))
-                gBattleStruct->dancingMoveTurns[gBattlerAttacker] = 0;
-            else if (gBattleMoves[gCurrentMove].danceMove 
-            && gCurrentMove != gLastResultingMoves[gBattlerAttacker] 
-            && gSpecialStatuses[gBattlerAttacker].parentalBondState != PARENTAL_BOND_1ST_HIT)
-                gBattleStruct->dancingMoveTurns[gBattlerAttacker]++;
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_STORM_BREW:
