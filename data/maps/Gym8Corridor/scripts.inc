@@ -22,6 +22,8 @@ Gym8Corridor_EventScript_WantToGoIn::
 	end
 
 Gym8Corridor_EventScript_PrepForGym::
+	getdoublessizeforgym
+	goto_if_eq VAR_RESULT, 0, Gym8Corridor_EventScript_NotEnoughMons
 	clearflag FLAG_PISCES_A
 	clearflag FLAG_PISCES_B
 	clearflag FLAG_PISCES_C
@@ -41,6 +43,14 @@ Gym8Corridor_EventScript_PrepForGym::
 	msgbox Gym8Corridor_Text_TimeForGym, MSGBOX_DEFAULT
 	warp MAP_RUST_GYM_ENTRY_HALLWAYS, 1, 8
 	waitstate
+	release
+	end
+
+Gym8Corridor_EventScript_NotEnoughMons::
+	msgbox Gym8Corridor_Text_NotEnoughMons, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Gym8Corridor_Movement_MoveAway
+	waitmovement 0
 	release
 	end
 
@@ -89,3 +99,13 @@ Gym8Corridor_Text_YouAlreadyDidThis:
 	.string "Amber Badge.\p"
 	.string "Apologies, but this challenge is only\n"
 	.string "for those lacking said badge.$"
+
+Gym8Corridor_Text_NotEnoughMons:
+	.string "Oh? I am very sorry, but you\n"
+	.string "appear to only have one non-fainted\l"
+	.string "Pokemon in your party. As this is\l"
+	.string "a gym that culminates in a\l"
+	.string "double battle, having more than\l"
+	.string "one Pokemon is required.\p"
+	.string "Please come back with more than\n"
+	.string "one non-fainted Pokemon.$"

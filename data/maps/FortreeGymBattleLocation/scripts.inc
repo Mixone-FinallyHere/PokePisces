@@ -13,6 +13,8 @@ FortreeGymBattleLocation_EventScript_GymBattle::
 	lock
 	delay 4
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	getdoublessizeforgym
+	goto_if_eq VAR_RESULT, 0, FortreeGymBattleLocation_EventScript_NotEnoughPokemon
 	speakername FortreeGymBattleLocation_Text_NameWinona
 	msgbox FortreeGymBattleLocation_Text_NiceHops, MSGBOX_DEFAULT
 	speakername FortreeGymBattleLocation_Text_NameAarune
@@ -22,6 +24,16 @@ FortreeGymBattleLocation_EventScript_GymBattle::
 	speakername NULL
 	trainerbattle_two_trainers TRAINER_P_WINONA, FortreeGymBattleLocation_Text_WinonaDefeat, TRAINER_P_AARUNE, FortreeGymBattleLocation_Text_AaruneDefeat, FortreeGymBattleLocation_EventScript_LeadersDefeated, NO_MUSIC
 	goto FortreeGymBattleLocation_EventScript_LeadersDefeated
+	release
+	end
+
+FortreeGymBattleLocation_EventScript_NotEnoughPokemon::
+	clearflag FLAG_WITHIN_GYM
+	speakername FortreeGymBattleLocation_Text_NameAarune
+	msgbox FortreeGymBattleLocation_Text_NotEnoughPokemon, MSGBOX_DEFAULT
+	closemessage
+	warp MAP_FORTREE_GYM_NEW, 44, 27
+	waitstate
 	release
 	end
 
@@ -116,3 +128,16 @@ FortreeGymBattleLocation_Text_ByeBye:
 	.string "Hmm-hmm-hmm!\p"
 	.string "Go kill it some more out there\n"
 	.string "for us! Good luck!$"
+
+FortreeGymBattleLocation_Text_NotEnoughPokemon:
+	.string "Hey, little buddy! You went\n"
+	.string "and did exactly as I asked;\l"
+	.string "thanks and all, but... uh, you're\l"
+	.string "not lookin' in too good of\l"
+	.string "a shape, huh?\p"
+	.string "Only one healthy Pokemon? That\n"
+	.string "won't make for an epic gym battle!\p"
+	.string "Sorry, pal, but I am going to\n"
+	.string "have to send you away.\l"
+	.string "Get your team together for\l"
+	.string "next time!$"

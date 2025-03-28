@@ -246,11 +246,23 @@ DewfordGymNew_EventScript_GymBattle::
 	lock
 	speakername DewfordGymNew_Text_NameBrawly
 	msgbox DewfordGymNew_Text_LookWhatWashedUp, MSGBOX_DEFAULT
+	getdoublessizeforgym
+	goto_if_eq VAR_RESULT, 0, DewfordGymNew_EventScript_NotEnoughPokemon
 	speakername DewfordGymNew_Text_NameShelly
 	msgbox DewfordGymNew_Text_TimeToBattle, MSGBOX_DEFAULT
 	speakername NULL
 	trainerbattle_two_trainers TRAINER_P_BRAWLY, DewfordGymNew_Text_BrawlyDefeat, TRAINER_P_SHELLY_1, DewfordGymNew_Text_ShellyDefeat, DewfordGymNew_EventScript_LeadersDefeated, NO_MUSIC
 	goto DewfordGymNew_EventScript_LeadersDefeated
+	release
+	end
+
+DewfordGymNew_EventScript_NotEnoughPokemon::
+	clearflag FLAG_WITHIN_GYM
+	speakername DewfordGymNew_Text_NameBrawly
+	msgbox DewfordGymNew_Text_NotEnoughPokemon, MSGBOX_DEFAULT
+	closemessage
+	warp MAP_DEWFORD_NEW, 37, 26
+	waitstate
 	release
 	end
 
@@ -520,3 +532,12 @@ DewfordGymNew_Text_AndHeresTheTMs:
 DewfordGymNew_Text_ByeBye:
 	.string "Keep on surfin' and turfin', man!\n"
 	.string "Only one badge left to go!$"
+
+DewfordGymNew_Text_NotEnoughPokemon:
+	.string "But like, what gives?\n"
+	.string "You're outta Pokemon who\l"
+	.string "can fight? 'Cept one?\p"
+	.string "Bummer... like, yeah, I don't\n"
+	.string "think I'll be fightin' ya without\l"
+	.string "at least two. It'd be a\l"
+	.string "total wipeout! Try again later!$"

@@ -174,6 +174,8 @@ ZotpyreGym_EventScript_EncounterLeaders::
 	speakername ZotpyreGym_Text_NameSpenser
 	applymovement OBJ_EVENT_ID_PLAYER, ZotpyreGym_Movement_WalkUp
 	waitmovement 0
+	getdoublessizeforgym
+	goto_if_eq VAR_RESULT, 0, ZotpyreGym_EventScript_NotEnoughPokemon
 	applymovement LOCALID_SPENSER, ZotpyreGym_Movement_SpenserTalk
 	msgbox ZotpyreGym_Text_Spenser1, MSGBOX_DEFAULT
 	speakername ZotpyreGym_Text_NamePhoebe
@@ -188,6 +190,16 @@ ZotpyreGym_EventScript_EncounterLeaders::
 	speakername NULL
 	trainerbattle_two_trainers TRAINER_P_PHOEBE, ZotpyreGym_Text_PhoebeDefeat, TRAINER_P_SPENSER, ZotpyreGym_Text_SpenserDefeat, ZotpyreGym_EventScript_LeadersDefeated, NO_MUSIC
 	goto ZotpyreGym_EventScript_LeadersDefeated
+	release
+	end
+
+ZotpyreGym_EventScript_NotEnoughPokemon::
+	clearflag FLAG_WITHIN_GYM
+	speakername ZotpyreGym_Text_NameSpenser
+	msgbox ZotpyreGym_Text_NotEnoughPokemon, MSGBOX_DEFAULT
+	closemessage
+	warp MAP_ROUTE122, 42, 14
+	waitstate
 	release
 	end
 
@@ -517,3 +529,13 @@ ZotpyreGym_Text_AlreadyMovedColumns:
 ZotpyreGym_Text_TheFogIsComing:
 	.string "(The endless fog envelops you, until\n"
 	.string "your vision becomes a blur…)$"
+
+ZotpyreGym_Text_NotEnoughPokemon:
+	.string "Who is this mighty weak\n"
+	.string "lookin' youngin'?\p"
+	.string "Why, they've only got one\n"
+	.string "healthy Pokemon to their name!\l"
+	.string "Iddn't that laughable! Bah!\p"
+	.string "Get yer tuckus outta my gym!\n"
+	.string "Come back if ya manage to round\l"
+	.string "up more than just one Pokemon!$"

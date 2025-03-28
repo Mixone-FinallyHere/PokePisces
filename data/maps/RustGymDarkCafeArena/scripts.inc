@@ -8,6 +8,8 @@ RustGymDarkCafeArena_OnFrame:
 
 RustGymDarkCafeArena_EventScript_GymBattle::
 	lock
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	special HealPlayerParty
 	speakername RustGymDarkCafeArena_Text_NameRoxanne
 	msgbox RustGymDarkCafeArena_Text_YoureQuiteImpressive, MSGBOX_DEFAULT
 	speakername RustGymDarkCafeArena_Text_NameLanette

@@ -183,8 +183,20 @@ VerdanturfInteriors_EventScript_BattleWattsonAndScott::
 	speakername VerdanturfInteriors_Text_NameWattson
 	msgbox VerdanturfInteriors_Text_HowArrogant, MSGBOX_DEFAULT
 	speakername NULL
+	getdoublessizeforgym
+	goto_if_eq VAR_RESULT, 0, VerdanturfInteriors_EventScript_NotEnoughPokemon
 	trainerbattle_two_trainers TRAINER_P_WATTSON, VerdanturfInteriors_Text_WattsonDefeat, TRAINER_P_SCOTT, VerdanturfInteriors_Text_ScottDefeat, VerdanturfInteriors_EventScript_LeadersDefeated, NO_MUSIC
 	goto VerdanturfInteriors_EventScript_LeadersDefeated
+	release
+	end
+
+VerdanturfInteriors_EventScript_NotEnoughPokemon::
+	clearflag FLAG_WITHIN_GYM
+	speakername VerdanturfInteriors_Text_NameWattson
+	msgbox VerdanturfInteriors_Text_NotEnoughPokemon, MSGBOX_DEFAULT
+	closemessage
+	warp MAP_VERDANTURF_NEW, 32, 9
+	waitstate
 	release
 	end
 
@@ -407,3 +419,11 @@ VerdanturfInteriors_Text_ImOnMyOwnJourney:
 	.string "Oh, the time has f-flown by...\n"
 	.string "I'm supposed to be headed\l"
 	.string "out soon to the pharmacy...$"
+
+VerdanturfInteriors_Text_NotEnoughPokemon:
+	.string "...Is what I would say, if you\n"
+	.string "actually came here for a fight.\l"
+	.string "You make me laugh. One healthy\l"
+	.string "Pokemon, and you have the gall to\l"
+	.string "pester me to fight you? Bollocks.\p"
+	.string "Leave.$"

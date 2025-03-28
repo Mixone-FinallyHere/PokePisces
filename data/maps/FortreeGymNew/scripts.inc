@@ -38,6 +38,8 @@ FortreeGymNew_EventScript_WantToGoIn::
 	end
 
 FortreeGymNew_EventScript_PrepForGym::
+	getdoublessizeforgym
+	goto_if_eq VAR_RESULT, 0, FortreeGymNew_EventScript_NotEnoughMons
 	clearflag FLAG_PISCES_A
 	clearflag FLAG_PISCES_B
 	clearflag FLAG_PISCES_C
@@ -52,6 +54,14 @@ FortreeGymNew_EventScript_PrepForGym::
 	cleartrainerflag TRAINER_P_LHOTSE
 	msgbox FortreeGymNew_Text_TimeForGym, MSGBOX_DEFAULT
 	applymovement OBJ_EVENT_ID_PLAYER, FortreeGymNew_Movement_IntoGym
+	waitmovement 0
+	release
+	end
+
+FortreeGymNew_EventScript_NotEnoughMons::
+	msgbox FortreeGymNew_Text_NotEnoughMons, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, FortreeGymNew_Movement_MoveAway
 	waitmovement 0
 	release
 	end
@@ -264,3 +274,13 @@ FortreeGymNew_Text_TakeALeapOfFaith:
 
 FortreeGymNew_Text_NameWinona:
 	.string "Winona$"
+
+FortreeGymNew_Text_NotEnoughMons:
+	.string "Oh? I am very sorry, but you\n"
+	.string "appear to only have one non-fainted\l"
+	.string "Pokemon in your party. As this is\l"
+	.string "a gym that culminates in a\l"
+	.string "double battle, having more than\l"
+	.string "one Pokemon is required.\p"
+	.string "Please come back with more than\n"
+	.string "one non-fainted Pokemon.$"

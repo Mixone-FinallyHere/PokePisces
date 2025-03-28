@@ -6132,6 +6132,14 @@ u8 CalculatePlayerPartyCount(void)
     return gPlayerPartyCount;
 }
 
+u8 CalculateDoublesPartyForGym(void)
+{
+    if (GetMonsStateToDoubles_2() != PLAYER_HAS_TWO_USABLE_MONS)
+        return 0;
+    else
+        return 1;
+}
+
 u8 CalculateEnemyPartyCount(void)
 {
     gEnemyPartyCount = CalculatePartyCount(gEnemyParty);

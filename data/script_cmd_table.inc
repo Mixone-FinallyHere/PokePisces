@@ -236,6 +236,7 @@ gScriptCmdTable::
 	.4byte ScrCmd_giveuncommonegg                   @ 0xe9
 	.4byte ScrCmd_giverareegg                       @ 0xea
 	.4byte ScrCmd_givescarceegg                     @ 0xeb
+	.4byte ScrCmd_getdoublessizeforgym              @ 0xec
 
 gScriptCmdTableEnd::
 	.4byte ScrCmd_nop

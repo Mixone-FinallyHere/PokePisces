@@ -22,6 +22,12 @@ Gym7Corridor_EventScript_WantToGoIn::
 	end
 
 Gym7Corridor_EventScript_PrepForGym::
+	getdoublessizeforgym
+	goto_if_eq VAR_RESULT, 0, Gym7Corridor_EventScript_NotEnoughMons
+	checkpartymove MOVE_STRENGTH
+	goto_if_eq VAR_RESULT, PARTY_SIZE, Gym7Corridor_EventScript_NoStrengthSurf
+	checkpartymove MOVE_SURF
+	goto_if_eq VAR_RESULT, PARTY_SIZE, Gym7Corridor_EventScript_NoStrengthSurf
 	clearflag FLAG_PISCES_A
 	clearflag FLAG_PISCES_B
 	clearflag FLAG_PISCES_C
@@ -40,6 +46,22 @@ Gym7Corridor_EventScript_PrepForGym::
 	msgbox Gym7Corridor_Text_TimeForGym, MSGBOX_DEFAULT
 	warp MAP_DEWFORD_GYM_NEW, 33, 21
 	waitstate
+	release
+	end
+
+Gym7Corridor_EventScript_NotEnoughMons::
+	msgbox Gym7Corridor_Text_NotEnoughMons, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Gym7Corridor_Movement_MoveAway
+	waitmovement 0
+	release
+	end
+
+Gym7Corridor_EventScript_NoStrengthSurf::
+	msgbox Gym7Corridor_Text_NoStrengthSurf, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Gym7Corridor_Movement_MoveAway
+	waitmovement 0
 	release
 	end
 
@@ -88,3 +110,24 @@ Gym7Corridor_Text_YouAlreadyDidThis:
 	.string "Beach Badge.\p"
 	.string "Apologies, but this challenge is only\n"
 	.string "for those lacking said badge.$"
+
+Gym7Corridor_Text_NotEnoughMons:
+	.string "Oh? I am very sorry, but you\n"
+	.string "appear to only have one non-fainted\l"
+	.string "Pokemon in your party. As this is\l"
+	.string "a gym that culminates in a\l"
+	.string "double battle, having more than\l"
+	.string "one Pokemon is required.\p"
+	.string "Please come back with more than\n"
+	.string "one non-fainted Pokemon.$"
+
+Gym7Corridor_Text_NoStrengthSurf:
+	.string "Oh? I am very sorry, but you\n"
+	.string "appear to not have any Pokemon\l"
+	.string "in your party that can utilize\l"
+	.string "the Surf and Strength field moves.\p"
+	.string "This gym's puzzle makes use of\n"
+	.string "Surf and Strength, so if you do\l"
+	.string "not have a Pokemon that possesses\l"
+	.string "either, I must ask you to leave\l"
+	.string "and come back when you do.$"

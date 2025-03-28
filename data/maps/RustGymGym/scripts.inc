@@ -10,6 +10,7 @@ RustGymGym_EventScript_GymBattle::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, RustGymGym_EventScript_WalkToCenter
 	waitmovement 0
+	special HealPlayerParty
 	speakername RustGymGym_Text_NameRoxanne
 	msgbox RustGymGym_Text_YoureQuiteImpressive, MSGBOX_DEFAULT
 	speakername RustGymGym_Text_NameLanette

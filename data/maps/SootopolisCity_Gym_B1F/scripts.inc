@@ -22,6 +22,8 @@ SootopolisCity_Gym_B1F_EventScript_JuanBattleStart::
 	waitmovement 0
 	speakername SootopolisCity_Gym_B1F_Text_NameSebastian
 	msgbox SootopolisCity_Gym_B1F_Text_ImSebastian, MSGBOX_AUTOCLOSE
+	getdoublessizeforgym
+	goto_if_eq VAR_RESULT, 0, SootopolisCity_Gym_B1F_EventScript_NotEnoughPokemon
 	applymovement LOCALID_JUAN, SootopolisCity_Gym_B1F_Movement_Talking
 	speakername SootopolisCity_Gym_B1F_Text_NameJuan
 	msgbox SootopolisCity_Gym_B1F_Text_BattleBegins, MSGBOX_DEFAULT
@@ -35,6 +37,17 @@ SootopolisCity_Gym_B1F_EventScript_JuanBattleStart::
 	goto SootopolisCity_Gym_B1F_EventScript_JuanDefeated
 	goto_if_unset FLAG_RECEIVED_TM_WATER_PULSE, SootopolisCity_Gym_B1F_EventScript_GiveWaterPulse2
 	msgbox SootopolisCity_Gym_B1F_Text_JuanPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+SootopolisCity_Gym_B1F_EventScript_NotEnoughPokemon::
+	clearflag FLAG_WITHIN_GYM
+	applymovement LOCALID_JUAN, SootopolisCity_Gym_B1F_Movement_Talking
+	speakername SootopolisCity_Gym_B1F_Text_NameJuan
+	msgbox SootopolisCity_Gym_B1F_Text_NotEnoughPokemon, MSGBOX_DEFAULT
+	closemessage
+	warp MAP_NEW_SOOTO, 41, 16
+	waitstate
 	release
 	end
 
@@ -444,3 +457,16 @@ SootopolisCity_Gym_B1F_Text_DontGoOnStage:
 	.string "Watch it!\n"
 	.string "Master Juan is currently performing.\p"
 	.string "No way I'm lettin' you onstage!$"
+
+SootopolisCity_Gym_B1F_Text_NotEnoughPokemon:
+	.string "Ah! Hah-hah-hah! Sebastian,\n"
+	.string "are you seeing what I am seeing?\p"
+	.string "This cur dares to challenge us\n"
+	.string "with only one Pokemon?\l"
+	.string "A MOCKERY of this stage.\l"
+	.string "We would fell you in an instant.\p"
+	.string "Challenger, do not show your\n"
+	.string "face here again unless you are\l"
+	.string "able to face me with two Pokemon,\l"
+	.string "at the very least.\l"
+	.string "Guards, escort them away!$"

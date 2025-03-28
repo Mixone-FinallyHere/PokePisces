@@ -510,6 +510,11 @@
 	.byte 0x43
 	.endm
 
+	@ Retrieves the number of Pokemon in the player's party, and stores that number in VAR_RESULT.
+	.macro getdoublessizeforgym
+	.byte 0xec
+	.endm
+
 	@ Attempts to add quantity of the specified item to the player's Bag. If the player has enough room, the item will
 	@ be added and VAR_RESULT will be set to TRUE; otherwise, VAR_RESULT is set to FALSE.
 	.macro additem itemId:req, quantity=1

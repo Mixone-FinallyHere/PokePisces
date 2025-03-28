@@ -20,6 +20,7 @@ SeasideCasinoBattleRoom_EventScript_SidneyLucyBattle::
 	applymovement OBJ_EVENT_ID_PLAYER, SeasideCasinoBattleRoom_Movement_PlayerMeetSidney
 	waitmovement 0
 	turnobject LOCALID_STEVEN, DIR_WEST
+	special HealPlayerParty
 	speakername SeasideCasinoBattleRoom_Text_NameSteven
 	msgbox SeasideCasinoBattleRoom_Text_HelloPlayer, MSGBOX_DEFAULT
 	turnobject LOCALID_STEVEN, DIR_NORTH

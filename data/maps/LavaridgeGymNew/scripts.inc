@@ -367,6 +367,8 @@ LavaridgeGymNew_EventScript_InterrogationPart5::
 	waitmovement 0
 	speakername LavaridgeGymNew_Text_NameMoore
 	msgbox LavaridgeGymNew_Text_MooreFamilyHistory, MSGBOX_DEFAULT
+	getdoublessizeforgym
+	goto_if_eq VAR_RESULT, 0, LavaridgeGymNew_EventScript_NotEnoughPokemon
 	applymovement LOCALID_MOORE, LavaridgeGymNew_Movement_MooreGiveLava
 	waitmovement 0
 	delay 16
@@ -384,6 +386,16 @@ LavaridgeGymNew_EventScript_InterrogationPart5::
 	special DrawWholeMapView
 	msgbox LavaridgeGymNew_Text_ItBurns, MSGBOX_DEFAULT
 	goto LavaridgeGymNew_EventScript_InterrogationPart6
+	release
+	end
+
+LavaridgeGymNew_EventScript_NotEnoughPokemon::
+	clearflag FLAG_WITHIN_GYM
+	speakername LavaridgeGymNew_Text_NameMoore
+	msgbox LavaridgeGymNew_Text_NotEnoughPokemon, MSGBOX_DEFAULT
+	closemessage
+	warp MAP_LAVARIDGE_INT, 23, 11
+	waitstate
 	release
 	end
 
@@ -1176,3 +1188,15 @@ LavaridgeGymNew_Text_ByeBye:
 	.string "Go try it out.\l"
 	.string "Or don't. I don't really care.\p"
 	.string "See ya.\n$"
+
+LavaridgeGymNew_Text_NotEnoughPokemon:
+	.string "Oh... but you are not actually\n"
+	.string "prepared for this battle.\l"
+	.string "That is quite unfortunate.\p"
+	.string "Your Pokemon team is not nearly\n"
+	.string "healthy enough to fight...\p"
+	.string "No, we will not be healing you\n"
+	.string "before the battle. In fact, we\l"
+	.string "encourage you to try again.\l"
+	.string "And this time, do not let almost\l"
+	.string "your entire party faint.$"

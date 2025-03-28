@@ -560,3 +560,4 @@ gSpecials::
 	def_special SetMauvilleOldMan
 	def_special EnterCode
 	def_special GetCodeFeedback
+	def_special CalculateDoublesPartyForGym

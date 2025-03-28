@@ -127,6 +127,8 @@ OzoneLilycoveHQ_EventScript_NoMoreBrella::
 
 OzoneLilycoveHQ_EventScript_BoardroomMeeting::
 	lock
+	getdoublessizeforgym
+	goto_if_eq VAR_RESULT, 0, OzoneLilycoveHQ_EventScript_NotEnoughPokemon
 	msgbox OzoneLilycoveHQ_Text_Boardroom1, MSGBOX_DEFAULT
 	applymovement OBJ_EVENT_ID_PLAYER, OzoneLilycoveHQ_Movement_PlayerHide
 	waitmovement 0
@@ -252,6 +254,14 @@ OzoneLilycoveHQ_EventScript_AdminsDefeated::
 	setvar VAR_OZONE_ADMINS_STATE, 3
 	setvar VAR_PISCES_STORY_PROGRESS, 3
 	warp MAP_THE_COLD_MINES, 56, 35
+	waitstate
+	release
+	end
+
+OzoneLilycoveHQ_EventScript_NotEnoughPokemon::
+	msgbox OzoneLilycoveHQ_Text_NotEnoughPokemon, MSGBOX_DEFAULT
+	closemessage
+	warp MAP_OZONE_LILYCOVE_HQ, 2, 3
 	waitstate
 	release
 	end
@@ -869,3 +879,9 @@ OzoneLilycoveHQ_Text_SomeBusinessHere:
 	.string "the time to chat around.\p"
 	.string "I'll have the guards grant you access\n"
 	.string "to the upper floors.$"
+
+OzoneLilycoveHQ_Text_NotEnoughPokemon:
+	.string "(Your team may not be healthy\n"
+	.string "enough for what is to come, if\l"
+	.string "a battle is ahead.)\p"
+	.string "(May be best to heal up first.)$"

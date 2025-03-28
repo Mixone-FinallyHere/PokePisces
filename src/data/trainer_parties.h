@@ -5751,7 +5751,7 @@ static const struct TrainerMon sParty_PHedorah[] = {
     .ability = ABILITY_INTIMIDATE,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(52, 52, 52, 52, 52, 52),
-    .lvl = 37,
+    .lvl = 36,
     .moves = {MOVE_JAW_LOCK, MOVE_REVERSAL, MOVE_EXTREME_SPEED, MOVE_TAUNT},
     },
     {
@@ -5759,7 +5759,7 @@ static const struct TrainerMon sParty_PHedorah[] = {
     .ability = ABILITY_MEGA_LAUNCHER,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(52, 52, 52, 52, 52, 52),
-    .lvl = 38,
+    .lvl = 36,
     .moves = {MOVE_DRAGON_PULSE, MOVE_CHARGE_BEAM, MOVE_FLAMETHROWER, MOVE_AURA_SPHERE},
     }
 };
@@ -5779,7 +5779,7 @@ static const struct TrainerMon sParty_PGhidorah[] = {
     .ability = ABILITY_INTIMIDATE,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(52, 52, 52, 52, 52, 52),
-    .lvl = 37,
+    .lvl = 36,
     .moves = {MOVE_INFERNAL_PARADE, MOVE_TAUNT, MOVE_MEAN_LOOK, MOVE_FIRE_BLAST},
     },
     {
@@ -5787,7 +5787,7 @@ static const struct TrainerMon sParty_PGhidorah[] = {
     .ability = ABILITY_GHOULISH,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(52, 52, 52, 52, 52, 52),
-    .lvl = 38,
+    .lvl = 36,
     .moves = {MOVE_FIRE_LASH, MOVE_VENOM_DRAIN, MOVE_TORMENT, MOVE_ACID_ARMOR},
     }
 };
@@ -5798,7 +5798,7 @@ static const struct TrainerMon sParty_PGojira[] = {
     .ability = ABILITY_REGENERATOR,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(52, 52, 52, 52, 52, 52),
-    .lvl = 39,
+    .lvl = 38,
     .moves = {MOVE_AQUA_TAIL, MOVE_TRI_ATTACK, MOVE_FLIP_TURN, MOVE_THUNDERBOLT},
     },
     {
@@ -5806,7 +5806,7 @@ static const struct TrainerMon sParty_PGojira[] = {
     .ability = ABILITY_MARVEL_SCALE,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(52, 52, 52, 52, 52, 52),
-    .lvl = 39,
+    .lvl = 38,
     .moves = {MOVE_SCALD, MOVE_LIFE_DEW, MOVE_DRAGON_PULSE, MOVE_PROTECT},
     }
 };
@@ -5817,7 +5817,7 @@ static const struct TrainerMon sParty_PGamera[] = {
     .ability = ABILITY_INTIMIDATE,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(52, 52, 52, 52, 52, 52),
-    .lvl = 39,
+    .lvl = 38,
     .moves = {MOVE_SNARL, MOVE_OBLIVION_WING, MOVE_PARTING_SHOT, MOVE_WILL_O_WISP},
     },
     {
@@ -5826,7 +5826,7 @@ static const struct TrainerMon sParty_PGamera[] = {
     .heldItem = ITEM_BELUE_BERRY,
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(52, 52, 52, 52, 52, 52),
-    .lvl = 39,
+    .lvl = 38,
     .moves = {MOVE_PROTECT, MOVE_GEO_PULSE, MOVE_MAGMA_STORM, MOVE_SWIFT},
     }
 };

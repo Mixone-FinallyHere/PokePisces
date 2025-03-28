@@ -901,6 +901,12 @@ bool8 ScrCmd_getpartysize(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_getdoublessizeforgym(struct ScriptContext *ctx)
+{
+    gSpecialVar_Result = CalculateDoublesPartyForGym();
+    return FALSE;
+}
+
 bool8 ScrCmd_playse(struct ScriptContext *ctx)
 {
     PlaySE(ScriptReadHalfword(ctx));

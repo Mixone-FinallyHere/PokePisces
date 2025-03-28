@@ -234,6 +234,7 @@ EverGrandePeak_EventScript_StevenWallaceBattle::
 	turnobject LOCALID_WALLACE, DIR_SOUTH
 	turnobject LOCALID_STEVEN, DIR_SOUTH
 	delay 8
+	special HealPlayerParty
 	speakername EverGrandePeak_Text_NameWallace
 	msgbox EverGrandePeak_Text_Welcome, MSGBOX_DEFAULT
 	speakername EverGrandePeak_Text_NameSteven
