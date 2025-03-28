@@ -1386,6 +1386,7 @@ TechnicalMachines_EventScript_ItemPTMMoonblast::
 
 TechnicalMachines_EventScript_ItemPTMEarthquake::
 	finditem ITEM_TM_EARTHQUAKE
+	setflag FLAG_EVER_GRANDE_ROAD_TM_EARTHQUAKE
 	end
 
 TechnicalMachines_EventScript_ItemPTMZapCannon::

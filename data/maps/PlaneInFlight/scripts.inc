@@ -33,7 +33,7 @@ PlaneInFlight_Text_NameMaxie:
 
 PlaneInFlight_Text_BeenAWhileSinceWeFlied:
 	.string "It's been a while since we last\n"
-	.string "flied together, eh Maxie?$"
+	.string "flew together, eh Maxie?$"
 
 PlaneInFlight_Text_NeverThoughtWedBeFriends:
 	.string "Quite.\p"
