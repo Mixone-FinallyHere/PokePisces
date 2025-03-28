@@ -11376,7 +11376,7 @@ static void Cmd_various(void)
         {
             gSideStatuses[GetBattlerSide(battler)] |= SIDE_STATUS_LUCKY_CHANT;
             gSideTimers[GetBattlerSide(battler)].luckyChantBattlerId = battler;
-            gSideTimers[GetBattlerSide(battler)].luckyChantTimer = 3;
+            gSideTimers[GetBattlerSide(battler)].luckyChantTimer = 4;
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
         else
