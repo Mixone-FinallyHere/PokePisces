@@ -17728,7 +17728,7 @@ BattleScript_PurifiedNoStatChange::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_PURIFIEDNOSTATCHANGE
 	waitmessage B_WAIT_TIME_LONG
-	end2
+	end3
 
 BattleScript_BRNPrevention::
 	pause B_WAIT_TIME_SHORT
