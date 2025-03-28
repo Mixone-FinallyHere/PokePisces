@@ -6819,10 +6819,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             && IsBattlerAlive(gBattlerAttacker)
             && gBattlerAttacker != gBattlerTarget
             && !gProtectStructs[gBattlerTarget].confusionSelfDmg
-            && !gProtectStructs[gBattlerTarget].extraMoveUsed
-            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_SLEEP_ANY)
-            && !(gBattleMons[gBattlerTarget].status1 & STATUS1_FREEZE)
-            && (gMultiHitCounter == 0 || gMultiHitCounter == 1))
+            && !gProtectStructs[gBattlerTarget].extraMoveUsed)
             {
                 u16 extraMove = MOVE_BLOW_UP;  //The Extra Move to be used
                 u8 movePower = 0;                 //The Move power, leave at 0 if you want it to be the same as the normal move
