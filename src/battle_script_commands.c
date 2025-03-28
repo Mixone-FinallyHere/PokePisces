@@ -20536,7 +20536,8 @@ void BS_ItemRestoreHP(void)
         // Revived battlers on the field need to be brought back.
         if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE && battler != MAX_BATTLERS_COUNT)
         {
-            gAbsentBattlerFlags &= ~gBitTable[battler];
+            gAbsentBattlerFlags &= ~(1u << battler);
+            gBattleMons[battler].hp = hp;
             gBattleCommunication[MULTIUSE_STATE] = TRUE;
         }
     }
