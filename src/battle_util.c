@@ -14353,6 +14353,12 @@ static inline void MulByTypeEffectiveness(uq4_12_t *modifier, u32 move, u32 move
         if (recordAbilities)
             RecordItemEffectBattle(battlerDef, HOLD_EFFECT_KEYCHAIN);
     }
+    else if (GetBattlerHoldEffect(battlerDef, TRUE) == HOLD_EFFECT_FOCUS_BAND && (Random() % 5) == 0)
+    {
+        mod = UQ_4_12(0.5);
+        if (recordAbilities)
+            RecordItemEffectBattle(battlerDef, HOLD_EFFECT_FOCUS_BAND);
+    }
     else if ((moveType == TYPE_FIGHTING || moveType == TYPE_NORMAL) && defType == TYPE_GHOST && gBattleMons[battlerDef].status2 & STATUS2_FORESIGHT && mod == UQ_4_12(0.0))
     {
         mod = UQ_4_12(1.0);

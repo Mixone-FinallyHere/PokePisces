@@ -2340,11 +2340,6 @@ static void Cmd_adjustdamage(void)
             RecordItemEffectBattle(gBattlerTarget, holdEffect);
             gSpecialStatuses[gBattlerTarget].focusBanded = TRUE;
         }
-        if (rand < 20)
-        {
-            RecordItemEffectBattle(gBattlerTarget, holdEffect);
-            gSpecialStatuses[gBattlerTarget].focusBandEndured = TRUE;
-        }
     }
     #if B_STURDY >= GEN_5
     else if (GetBattlerAbility(gBattlerTarget) == ABILITY_STURDY && BATTLER_MAX_HP(gBattlerTarget))
@@ -2379,14 +2374,6 @@ static void Cmd_adjustdamage(void)
             gSpecialStatuses[gBattlerTarget].affectionEndured = TRUE;
     }
 #endif
-
-    if (gSpecialStatuses[gBattlerTarget].focusBandEndured)
-    {
-        gBattleMoveDamage = gBattleMoveDamage / 2;
-        gBattleStruct->enduredDamage |= 1u << gBattlerTarget;
-        gMoveResultFlags |= MOVE_RESULT_NOT_VERY_EFFECTIVE;
-        goto END;
-    }
 
     if (gBattleMoves[gCurrentMove].effect != EFFECT_FALSE_SWIPE
         && !gProtectStructs[gBattlerTarget].endured
@@ -6642,7 +6629,7 @@ static void Cmd_moveend(void)
                 case EFFECT_SUBMISSION: // differentiated for reasons
                 case EFFECT_FLYING_PRESS: // Flying Press, Fighting/Flying-type move
                     gBattleMoveDamage = max(1, gBattleScripting.savedDmg / 4);
-                    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_PROTECTIVE_PADS)
+                    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_PROTECTIVE_PADS && gBattleMoveDamage > 0)
                         gBattleMoveDamage /= 2;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_MoveEffectRecoil;
@@ -6651,7 +6638,7 @@ static void Cmd_moveend(void)
                 case EFFECT_RECOIL_33: // Double Edge, 33 % recoil
                 case EFFECT_WILD_CHARGE: // Volt Tackle - can paralyze, flame burst effect
                     gBattleMoveDamage = max(1, gBattleScripting.savedDmg / 3);
-                    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_PROTECTIVE_PADS)
+                    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_PROTECTIVE_PADS && gBattleMoveDamage > 0)
                         gBattleMoveDamage /= 2;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_MoveEffectRecoil;
@@ -6661,7 +6648,7 @@ static void Cmd_moveend(void)
                     if (gBattleMons[gBattlerAttacker].status1 & STATUS1_BLOOMING)
                         break;
                     gBattleMoveDamage = max(1, gBattleScripting.savedDmg / 3);
-                    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_PROTECTIVE_PADS)
+                    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_PROTECTIVE_PADS && gBattleMoveDamage > 0)
                         gBattleMoveDamage /= 2;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_MoveEffectRecoil;
@@ -6671,7 +6658,7 @@ static void Cmd_moveend(void)
                 case EFFECT_RECOIL_50_HAZARD: // Caustic Finale - sets toxic spikes
                 case EFFECT_CRASH_LAND: // Crash Land, is a Flying/Ground-type move
                     gBattleMoveDamage = max(1, gBattleScripting.savedDmg / 2);
-                    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_PROTECTIVE_PADS)
+                    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_PROTECTIVE_PADS && gBattleMoveDamage > 0)
                         gBattleMoveDamage /= 2;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_MoveEffectRecoil;
@@ -6679,7 +6666,7 @@ static void Cmd_moveend(void)
                     break;
                 case EFFECT_RECOIL_33_STATUS: // Flare Blitz - can burn
                     gBattleMoveDamage = max(1, gBattleScripting.savedDmg / 3);
-                    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_PROTECTIVE_PADS)
+                    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_PROTECTIVE_PADS && gBattleMoveDamage > 0)
                         gBattleMoveDamage /= 2;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_MoveEffectRecoilWithStatus;
@@ -6687,7 +6674,7 @@ static void Cmd_moveend(void)
                     break;
                 case EFFECT_RECOIL_50_STATUS: // Volt Tackle - can paralyze
                     gBattleMoveDamage = max(1, gBattleScripting.savedDmg / 2);
-                    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_PROTECTIVE_PADS)
+                    if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_PROTECTIVE_PADS && gBattleMoveDamage > 0)
                         gBattleMoveDamage /= 2;
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_MoveEffectRecoilWithStatus;

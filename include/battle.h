@@ -234,7 +234,6 @@ struct SpecialStatus
     u8 ppNotAffectedByPressure:1;
     u8 faintedHasReplacement:1;
     u8 focusBanded:1;
-    u8 focusBandEndured:1;
     u8 focusSashed:1;
     // End of byte
     u8 sturdied:1;

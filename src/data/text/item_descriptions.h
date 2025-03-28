@@ -2967,8 +2967,8 @@ static const u8 sGrepaBerryDesc[] = _(
     "move once.");
 
 static const u8 sTamatoBerryDesc[] = _(
-    "A stupidly spicy berry\n"
-    "that's loved by\n"
+    "A stupidly spicy\n"
+    "berry that's loved by\n"
     "certain bears for\n"
     "their jokes.");
 
@@ -4393,8 +4393,8 @@ static const u8 sPebbleriteDesc[] = _(
 
 static const u8 sCheeseDesc[] = _(
     "Some cheese that can\n"
-    "heal some HP and raise\n"
-    "a random stat.");
+    "heal some HP and\n"
+    "raise a random stat.");
 
 static const u8 sFrothyCheeseDesc[] = _(
     "The true cheese that\n"
