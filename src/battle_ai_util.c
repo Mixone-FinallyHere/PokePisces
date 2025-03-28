@@ -3390,7 +3390,7 @@ bool32 AI_CanBeInfatuated(u32 battlerAtk, u32 battlerDef, u32 defAbility)
 u32 ShouldTryToFlinch(u32 battlerAtk, u32 battlerDef, u32 atkAbility, u32 defAbility, u32 move)
 {
     if (((AI_DATA->abilities[battlerAtk] != ABILITY_MOLD_BREAKER 
-      && (defAbility == ABILITY_PROPELLER_TAIL || defAbility == ABILITY_SHIELD_DUST || (defAbility == ABILITY_INNER_FOCUS && gBattleMons[battlerDef].status2 & STATUS2_FOCUS_ENERGY) || defAbility == ABILITY_STEADFAST || defAbility == ABILITY_PROPELLER_TAIL))
+      && (defAbility == ABILITY_PROPELLER_TAIL || defAbility == ABILITY_SHIELD_DUST || (defAbility == ABILITY_INNER_FOCUS && gDisableStructs[battlerDef].focusEnergy) || defAbility == ABILITY_STEADFAST || defAbility == ABILITY_PROPELLER_TAIL))
       || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
       || AI_WhoStrikesFirst(battlerAtk, battlerDef, move) == AI_IS_SLOWER)) // Opponent goes first
@@ -3440,8 +3440,8 @@ bool32 ShouldFakeOut(u32 battlerAtk, u32 battlerDef, u32 move)
     || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
     || (!IsMoldBreakerTypeAbility(battlerAtk, AI_DATA->abilities[battlerAtk])
     && (AI_DATA->abilities[battlerDef] == ABILITY_SHIELD_DUST 
-        || (AI_DATA->abilities[battlerDef] == ABILITY_INNER_FOCUS && 
-        gBattleMons[battlerDef].status2 & STATUS2_FOCUS_ENERGY)
+        || (AI_DATA->abilities[battlerDef] == ABILITY_INNER_FOCUS 
+        && gDisableStructs[battlerDef].focusEnergy)
         || AI_DATA->abilities[battlerDef] == ABILITY_PROPELLER_TAIL
         || AI_DATA->abilities[battlerDef] == ABILITY_STEADFAST)))
         return FALSE;

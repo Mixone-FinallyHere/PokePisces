@@ -5544,6 +5544,16 @@ const u16 gEggMoves[] = {
         MOVE_IMPRISON,
         MOVE_MIND_GAP),
 
+    egg_moves(LYOLICA,
+        MOVE_MIRROR_COAT,
+        MOVE_BESTOW,
+        MOVE_GRAVITY,
+        MOVE_PSYCHO_SHIFT,
+        MOVE_HEART_SWAP,
+        MOVE_BRAIN_DAMAGE,
+        MOVE_IMPRISON,
+        MOVE_MIND_GAP),
+
     egg_moves(LUNATONE,
         MOVE_FUTURE_SIGHT,
         MOVE_DARK_TIDE,

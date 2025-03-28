@@ -1006,7 +1006,7 @@ u32 GetItemStatus1Mask(u16 itemId)
         case ITEM3_PANIC:
             return STATUS1_PANIC;
         case ITEM3_STATUS_ALL:
-            return STATUS1_ANY;
+            return STATUS1_ANY | STATUS1_EXPOSED;
     }
     return 0;
 }

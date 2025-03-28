@@ -2128,13 +2128,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             u32 otIdType = OT_ID_RANDOM_NO_SHINY;
             u32 fixedOtId = 0;
 
-            if (trainer->doubleBattle == TRUE)
-                personalityValue = 0x80;
-            else if (trainer->encounterMusic_gender & F_TRAINER_FEMALE)
-                personalityValue = 0x78; // Use personality more likely to result in a female Pok?mon
-            else
-                personalityValue = 0x88; // Use personality more likely to result in a male Pok?mon
-
+            personalityValue = 0x80;
             personalityValue += personalityHash << 8;
             if (partyData[i].gender == TRAINER_MON_MALE)
                 personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(MON_MALE, partyData[i].species);
@@ -4809,7 +4803,7 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
             speed *= 2;
         else if (ability == ABILITY_CHLOROPHYLL && gBattleWeather & B_WEATHER_SUN)
             speed *= 2;
-        else if (ability == ABILITY_SUNRISE && gBattleWeather & B_WEATHER_RAIN)
+        else if (ability == ABILITY_SUNRISE && gBattleWeather & B_WEATHER_SUN && gBattleMons[battler].hp <= gBattleMons[battler].maxHP / 4)
             speed *= 1.3;
         else if (ability == ABILITY_SAND_RUSH && gBattleWeather & B_WEATHER_SANDSTORM)
             speed *= 2;
@@ -4830,21 +4824,23 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
         speed /= 2;
     else if (ability == ABILITY_STARS_GRACE && gDisableStructs[battler].slowStartTimer < 1)
         speed *= 2;
-    else if (gStatuses4[battler] & STATUS4_PHANTOM)
-        speed *= 2;
     else if (ability == ABILITY_PROTOSYNTHESIS && gBattleWeather & B_WEATHER_SUN && highestStat == STAT_SPEED)
         speed = (speed * 150) / 100;
     else if (ability == ABILITY_QUARK_DRIVE && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN && highestStat == STAT_SPEED)
         speed = (speed * 150) / 100;
-    else if (gDisableStructs[battler].frenzyCounter != 0)
-        speed = (speed * (100 + (30 * gDisableStructs[battler].frenzyCounter))) / 100;
     else if (ability == ABILITY_GOLDEN_MEAN && gBattleMons[battler].species == SPECIES_SHUNYONG_GOLDEN_OFFENSE)
         speed *= 2;
     else if (ability == ABILITY_GOLDEN_MEAN && gBattleMons[battler].species == SPECIES_SHUNYONG)
         speed *= 0.5;
     else if (ability == ABILITY_ONE_WAY_TRIP)
         speed *= 1.5;
-    
+
+    if (gDisableStructs[battler].frenzyCounter != 0)
+        speed *= (100 + (30 * gDisableStructs[battler].frenzyCounter)) / 100;
+
+    if (gStatuses4[battler] & STATUS4_PHANTOM)
+        speed *= 2;
+
     // abilities on field
     if (IsAbilityOnOpposingSide(battler, ABILITY_FALLING) && GetBattlerAbility(battler) != ABILITY_FALLING)
         speed *= 0.75;
@@ -4964,7 +4960,8 @@ s8 GetMovePriority(u32 battler, u16 move)
         priority++;
     }
     //else if (ability == )
-    else if (ability == ABILITY_PRANKSTER && IS_MOVE_STATUS(move) 
+    else if (ability == ABILITY_PRANKSTER 
+    && IS_MOVE_STATUS(move) 
     && (!(IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_DARK))) 
     && (!(IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_FAIRY))))
     {
@@ -4987,7 +4984,7 @@ s8 GetMovePriority(u32 battler, u16 move)
     {
         priority++;
     }
-    else if ((ability == ABILITY_SHAMBLES) && (gFieldStatuses & STATUS_FIELD_TERRAIN_ANY || gFieldStatuses & STATUS_FIELD_TRICK_ROOM || gFieldStatuses & STATUS_FIELD_WONDER_ROOM || gFieldStatuses & STATUS_FIELD_MAGIC_ROOM || gFieldStatuses & STATUS_FIELD_INVERSE_ROOM) && (gBattleMoves[move].switchingMove))
+    else if ((ability == ABILITY_SHAMBLES) && (IsBattlerTerrainAffected(battler, STATUS_FIELD_TERRAIN_ANY) || gFieldStatuses & STATUS_FIELD_TRICK_ROOM || gFieldStatuses & STATUS_FIELD_WONDER_ROOM || gFieldStatuses & STATUS_FIELD_MAGIC_ROOM || gFieldStatuses & STATUS_FIELD_INVERSE_ROOM) && (gBattleMoves[move].switchingMove))
     {
         priority++;
     }

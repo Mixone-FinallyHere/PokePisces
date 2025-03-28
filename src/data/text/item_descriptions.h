@@ -2772,7 +2772,7 @@ static const u8 sAdrenalineOrbDesc[] = _(
     "mocked, or panicked.");
 
 static const u8 sTerrainExtenderDesc[] = _(
-    "A coating that ext\n"
+    "A coating that\n"
     "extends the duration\n"
     "of terrain created by\n"
     "the holder.");

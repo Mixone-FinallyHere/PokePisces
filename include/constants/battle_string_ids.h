@@ -878,8 +878,16 @@
 #define STRINGID_PKMNCUTSHPWITH2                      876
 #define STRINGID_GOTCHAPKMNCAUGHTPLAYERNOMUSIC        877
 #define STRINGID_AIRLOCKACTIVATES                     878
+#define STRINGID_ABILITYLETITUSEMOVETARGET            879
+#define STRINGID_PKMNMADEITRAIN2                      880
+#define STRINGID_PKMNSXINTENSIFIEDSUN2                881
+#define STRINGID_ABILITYCANTSWAPITEMS                 882
+#define STRINGID_ABILITYCANTINFATUATE                 883
+#define STRINGID_PKMNPREVENTSINFATUATIONWITH          884
+#define STRINGID_GOOEYDISABLED                        885
+#define STRINGID_TARGETSTATWONTGOLOWER                886
 
-#define BATTLESTRINGS_COUNT                           879
+#define BATTLESTRINGS_COUNT                           887
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -912,7 +920,7 @@
 #define B_MSG_AVOIDED_ATK  2
 #define B_MSG_AVOIDED_DMG  3
 #define B_MSG_GROUND_MISS  4
-#define B_MSG_POISON_MISS  5
+#define B_MSG_SPECIAL_MISS 5
 #define B_MSG_PSYCHIC_MISS 6
 #define B_MSG_IMMUNE       7
 #define B_MSG_IS_EMPTY     8

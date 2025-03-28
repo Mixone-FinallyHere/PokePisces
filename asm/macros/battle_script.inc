@@ -2418,6 +2418,11 @@
 	.4byte \failInstr
 	.endm
 
+	.macro jumpiffocusenergy battler:req, jumpInstr:req
+	various \battler, VARIOUS_JUMP_IF_FOCUS_ENERGY
+	.4byte \jumpInstr
+	.endm
+
 	.macro trysetimprison battler:req, failInstr:req, jumpInstr:req
 	various \battler, VARIOUS_TRY_SET_IMPRISON
 	.4byte \failInstr

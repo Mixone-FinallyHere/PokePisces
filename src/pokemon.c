@@ -6518,8 +6518,8 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                 retVal = FALSE;
             if ((itemEffect[i] & ITEM3_PARALYSIS) && HealStatusConditions(mon, partyIndex, STATUS1_PARALYSIS, battlerId) == 0)
                 retVal = FALSE;
-            //if ((itemEffect[i] & ITEM3_EXPOSED) && HealStatusConditions(mon, partyIndex, STATUS1_EXPOSED, battlerId) == 0)
-            //    retVal = FALSE;
+            if ((itemEffect[i] & ITEM3_STATUS_ALL) && HealStatusConditions(mon, partyIndex, STATUS1_EXPOSED, battlerId) == 0)
+                retVal = FALSE;
             if ((itemEffect[i] & ITEM3_PANIC) && HealStatusConditions(mon, partyIndex, STATUS1_PANIC, battlerId) == 0)
                 retVal = FALSE;
             break;
