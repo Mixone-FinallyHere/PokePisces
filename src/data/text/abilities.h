@@ -234,8 +234,8 @@ static const u8 sFlameBodyDescription[] = _(
     "burn the attacker.");
 
 static const u8 sRunAwayDescription[] = _(
-    "Enables a sure getaway from wild\n"
-    "Pokémon.");
+    "The Pokémon can always run away\n"
+    "or switch out.");
 
 static const u8 sKeenEyeDescription[] = _(
     "Prevents other Pokémon from\n"
