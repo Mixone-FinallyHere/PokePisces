@@ -110,6 +110,10 @@ enum {
 
 #define MOVE_SELECTOR_SPRITES_COUNT 10
 #define TYPE_ICON_SPRITE_COUNT (MAX_MON_MOVES + 1)
+
+// How many EV points to increase/decrease
+#define EV_POINTS_PER_CLICK 4
+
 // for the spriteIds field in PokemonSummaryScreenData
 enum
 {
@@ -1710,7 +1714,7 @@ static void Task_HandleInput(u8 taskId)
                 BeginCloseSummaryScreen(taskId);
                 break;
             case PSS_PAGE_SKILLS:
-                if (!gMain.inBattle)
+                if (!gMain.inBattle && sMonSummaryScreen->mode == SUMMARY_MODE_NORMAL)
                 {
                     // can edit evs anytime outside of battle
                     PlaySE(SE_SELECT);
@@ -3019,7 +3023,7 @@ static void PrintPageNamesAndStats(void)
     PrintAOrBButtonIcon(PSS_LABEL_WINDOW_PROMPT_SWITCH, FALSE, iconXPos);
     PrintTextOnWindow(PSS_LABEL_WINDOW_PROMPT_SWITCH, gText_Switch, stringXPos, 1, 0, 0);
     
-    if (!sMonSummaryScreen->lockMovesFlag)
+    if (!sMonSummaryScreen->lockMovesFlag && sMonSummaryScreen->mode == SUMMARY_MODE_NORMAL)
         PrintEditEVs();
 
     PrintTextOnWindow(PSS_LABEL_WINDOW_POKEMON_INFO_RENTAL, gText_RentalPkmn, 0, 1, 0, 1);
@@ -4752,6 +4756,7 @@ static void Task_HandleChangeEV(u8 taskId)
         u8 col = sMonSummaryScreen->firstMoveIndex;
         u16 evMax = sum->evMax;
         u8 *val = &sum->evs[row + 3*col];
+        u8 augment = EV_POINTS_PER_CLICK;
         if (JOY_NEW(DPAD_LEFT) || JOY_REPEAT(DPAD_LEFT))
         {
             // try to decrement
@@ -4761,8 +4766,14 @@ static void Task_HandleChangeEV(u8 taskId)
             }
             else
             {
-                (*val)--;
-                sum->evTotal--;
+                if (*val - augment < 0) {
+                    augment = *val;
+                    *val = 0;                    
+                }                    
+                else {
+                    *val -= augment;
+                }                    
+                sum->evTotal = sum->evTotal - augment;
                 PrintEvValuesInCol(taskId, col);
                 ScheduleBgCopyTilemapToVram(0);
             }
@@ -4777,8 +4788,20 @@ static void Task_HandleChangeEV(u8 taskId)
             }
             else
             {
-                (*val)++;
-                sum->evTotal++;
+                if (sum->evTotal + augment > evMax)
+                {
+                    augment = evMax - sum->evTotal;
+                }                 
+                if (*val + augment > MAX_PER_STAT_EVS)
+                {
+                    sum->evTotal = sum->evTotal + (MAX_PER_STAT_EVS - *val);
+                    *val = MAX_PER_STAT_EVS;                    
+                }
+                else
+                {
+                    *val += augment;
+                    sum->evTotal += augment;
+                }
                 PrintEvValuesInCol(taskId, col);
                 ScheduleBgCopyTilemapToVram(0);
             }
@@ -4798,4 +4821,7 @@ static void SaveMonEVs(u8 taskId)
         SetMonData(mon, MON_DATA_HP_EV + sStatIdMap[i], &val);
         //DebugPrintf("stat %d = %d", i, val);
     }
+    CalculateMonStats(mon);
+    sMonSummaryScreen->switchCounter = 2;
+    ExtractMonDataToSummaryStruct(mon);
 }
