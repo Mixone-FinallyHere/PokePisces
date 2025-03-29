@@ -4878,6 +4878,110 @@ BattleScript_HondewBerryActivatesReturn::
 	removeitem BS_SCRIPTING
 	return
 
+BattleScript_YellowSodaActivatesEnd2::
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	jumpifability BS_ATTACKER, ABILITY_RIPEN, BattleScript_YellowSodaActivatesEnd2Ripen
+	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_YellowSodaFocusEnergyEnd2
+	tryhealhalfhealth BattleScript_YellowSodaFocusEnergyEnd2, BS_ATTACKER
+	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	removeitem BS_ATTACKER
+BattleScript_YellowSodaFocusEnergyEnd2:
+	jumpifstatus2 BS_ATTACKER, STATUS2_FOCUS_ENERGY_ANY, BattleScript_YellowSodaSpeedBoostEnd2
+	setfocusenergy BS_ATTACKER
+	printfromtable gFocusEnergyUsedStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_YellowSodaSpeedBoostEnd2:
+	setstatchanger STAT_SPEED, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR | MOVE_EFFECT_AFFECTS_USER, BattleScript_YellowSodaEnd2
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_YellowSodaEnd2
+	setgraphicalstatchangevalues
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_YellowSodaEnd2:
+	end2
+BattleScript_YellowSodaActivatesEnd2Ripen:
+	call BattleScript_AbilityPopUp
+	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_YellowSodaFocusEnergyEnd2Ripen
+	tryhealallhealth BS_ATTACKER, BattleScript_YellowSodaFocusEnergyEnd2Ripen
+	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	removeitem BS_ATTACKER
+BattleScript_YellowSodaFocusEnergyEnd2Ripen:
+	jumpifstatus2 BS_ATTACKER, STATUS2_FOCUS_ENERGY_ANY, BattleScript_YellowSodaSpeedBoostEnd2Ripen
+	setfocusenergy BS_ATTACKER
+	printfromtable gFocusEnergyUsedStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_YellowSodaSpeedBoostEnd2Ripen:
+	setstatchanger STAT_SPEED, 2, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR | MOVE_EFFECT_AFFECTS_USER, BattleScript_YellowSodaEnd2Ripen
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_YellowSodaEnd2Ripen
+	setgraphicalstatchangevalues
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_YellowSodaEnd2Ripen:
+	end2
+
+BattleScript_YellowSodaActivatesReturn::
+	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	jumpifability BS_SCRIPTING, ABILITY_RIPEN, BattleScript_YellowSodaActivatesReturnRipen
+	jumpifstatus3 BS_SCRIPTING, STATUS3_HEAL_BLOCK, BattleScript_YellowSodaFocusEnergyReturn
+	tryhealhalfhealth BattleScript_YellowSodaFocusEnergyReturn, BS_SCRIPTING
+	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_SCRIPTING
+	datahpupdate BS_SCRIPTING
+	removeitem BS_SCRIPTING
+BattleScript_YellowSodaFocusEnergyReturn:
+	jumpifstatus2 BS_SCRIPTING, STATUS2_FOCUS_ENERGY_ANY, BattleScript_YellowSodaSpeedBoostReturn
+	setfocusenergy BS_SCRIPTING
+	printfromtable gFocusEnergyUsedStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_YellowSodaSpeedBoostReturn:
+	setstatchanger STAT_SPEED, 1, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR | MOVE_EFFECT_CERTAIN, BattleScript_YellowSodaReturn
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_YellowSodaReturn
+	setgraphicalstatchangevalues
+	playanimation BS_SCRIPTING, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_YellowSodaReturn:
+	return
+BattleScript_YellowSodaActivatesReturnRipen:
+	call BattleScript_AbilityPopUp
+	jumpifstatus3 BS_SCRIPTING, STATUS3_HEAL_BLOCK, BattleScript_YellowSodaFocusEnergyReturnRipen
+	tryhealallhealth BS_SCRIPTING, BattleScript_YellowSodaFocusEnergyReturnRipen
+	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_SCRIPTING
+	datahpupdate BS_SCRIPTING
+	removeitem BS_SCRIPTING
+BattleScript_YellowSodaFocusEnergyReturnRipen:
+	jumpifstatus2 BS_SCRIPTING, STATUS2_FOCUS_ENERGY_ANY, BattleScript_YellowSodaSpeedBoostReturnRipen
+	setfocusenergy BS_SCRIPTING
+	printfromtable gFocusEnergyUsedStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_YellowSodaSpeedBoostReturnRipen:
+	setstatchanger STAT_SPEED, 2, FALSE
+	statbuffchange STAT_CHANGE_ALLOW_PTR | MOVE_EFFECT_CERTAIN, BattleScript_YellowSodaReturnRipen
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_YellowSodaReturnRipen
+	setgraphicalstatchangevalues
+	playanimation BS_SCRIPTING, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_YellowSodaReturnRipen:
+	return
+
 BattleScript_EffectGunkFunk::
 	jumpifstatus BS_TARGET, STATUS1_PSN_ANY, BattleScript_AllStatsDownHitCertain
 	goto BattleScript_EffectAllStatsDownHit

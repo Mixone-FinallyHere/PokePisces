@@ -8690,7 +8690,7 @@ static u8 TryEjectPack(u32 battler, bool32 execute)
     return 0;
 }
 
-static u8 DamagedPomegBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
+static u8 DamagedPomegBerryEffect(u32 battler, u32 itemId, bool32 end2)
 {
     if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId)
     && CountBattlerStatDecreases(battler, TRUE) > 0)
@@ -8709,7 +8709,7 @@ static u8 DamagedPomegBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 en
     return 0;
 }
 
-static u8 DamagedHondewBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
+static u8 DamagedHondewBerryEffect(u32 battler, u32 itemId, bool32 end2)
 {
     if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) 
     && (!(gStatuses3[battler] & STATUS3_AQUA_RING)))
@@ -8727,6 +8727,35 @@ static u8 DamagedHondewBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 e
         return ITEM_EFFECT_OTHER;
     }
     return 0;
+}
+
+static u8 DamagedYellowSodaEffect(u32 battler, u32 itemId, bool32 end2)
+{
+    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) 
+    && ((!(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
+    || (!(gBattleMons[battler].status2 & STATUS2_FOCUS_ENERGY_ANY))
+    || (!(CompareStat(battler, STAT_SPEED, MAX_STAT_STAGE, CMP_EQUAL)))))
+    {
+        if (end2)
+        {
+            BattleScriptExecute(BattleScript_YellowSodaActivatesEnd2);
+        }
+        else
+        {
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_YellowSodaActivatesReturn;
+        }
+        return ITEM_EFFECT_OTHER;
+    }
+    return 0;
+}
+
+static u8 DamagedCheeseEffect(u32 battler, u32 itemId, bool32 end2)
+{
+}
+
+static u8 DamagedFrothyCheeseEffect(u32 battler, u32 itemId, bool32 end2)
+{
 }
 
 u8 TryHandleSeed(u32 battler, u32 terrainFlag, u8 statId, u16 itemId, bool32 execute)
@@ -8991,10 +9020,19 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
         effect = RandomStatRaiseBerry(battler, gLastUsedItem, FALSE);
         break;
     case HOLD_EFFECT_POMEG_BERRY:
-        effect = DamagedPomegBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
+        effect = DamagedPomegBerryEffect(battler, gLastUsedItem, FALSE);
         break;
     case HOLD_EFFECT_HONDEW_BERRY:
-        effect = DamagedHondewBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
+        effect = DamagedHondewBerryEffect(battler, gLastUsedItem, FALSE);
+        break;
+    case HOLD_EFFECT_YELLOW_SODA:
+        effect = DamagedYellowSodaEffect(battler, gLastUsedItem, FALSE);
+        break;
+    case HOLD_EFFECT_CHEESE:
+        effect = DamagedCheeseEffect(battler, gLastUsedItem, FALSE);
+        break;
+    case HOLD_EFFECT_FROTHY_CHEESE:
+        effect = DamagedFrothyCheeseEffect(battler, gLastUsedItem, FALSE);
         break;
 #endif
     case HOLD_EFFECT_CURE_PAR:
@@ -9240,10 +9278,19 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 effect = StatRaiseBerry(battler, gLastUsedItem, STAT_SPDEF, TRUE);
                 break;
             case HOLD_EFFECT_POMEG_BERRY:
-                effect = DamagedPomegBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
+                effect = DamagedPomegBerryEffect(battler, gLastUsedItem, TRUE);
                 break;
             case HOLD_EFFECT_HONDEW_BERRY:
-                effect = DamagedHondewBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
+                effect = DamagedHondewBerryEffect(battler, gLastUsedItem, TRUE);
+                break;
+            case HOLD_EFFECT_YELLOW_SODA:
+                effect = DamagedYellowSodaEffect(battler, gLastUsedItem, TRUE);
+                break;
+            case HOLD_EFFECT_CHEESE:
+                effect = DamagedCheeseEffect(battler, gLastUsedItem, TRUE);
+                break;
+            case HOLD_EFFECT_FROTHY_CHEESE:
+                effect = DamagedFrothyCheeseEffect(battler, gLastUsedItem, TRUE);
                 break;
             case HOLD_EFFECT_CRITICAL_UP:
                 if (!(gBattleMons[battler].status2 & STATUS2_FOCUS_ENERGY_ANY) && HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, gLastUsedItem), gLastUsedItem))
@@ -9615,11 +9662,23 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                 break;
             case HOLD_EFFECT_POMEG_BERRY:
                 if (!moveTurn)
-                    effect = DamagedPomegBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
+                    effect = DamagedPomegBerryEffect(battler, gLastUsedItem, TRUE);
                 break;
             case HOLD_EFFECT_HONDEW_BERRY:
                 if (!moveTurn)
-                    effect = DamagedHondewBerryEffect(battler, gLastUsedItem, STAT_ATK, FALSE);
+                    effect = DamagedHondewBerryEffect(battler, gLastUsedItem, TRUE);
+                break;
+            case HOLD_EFFECT_YELLOW_SODA:
+                if (!moveTurn)
+                    effect = DamagedYellowSodaEffect(battler, gLastUsedItem, TRUE);
+                break;
+            case HOLD_EFFECT_CHEESE:
+                if (!moveTurn)
+                    effect = DamagedCheeseEffect(battler, gLastUsedItem, TRUE);
+                break;
+            case HOLD_EFFECT_FROTHY_CHEESE:
+                if (!moveTurn)
+                    effect = DamagedFrothyCheeseEffect(battler, gLastUsedItem, TRUE);
                 break;
             case HOLD_EFFECT_CRITICAL_UP:
                 if (!moveTurn && !(gBattleMons[battler].status2 & STATUS2_FOCUS_ENERGY_ANY) && HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, gLastUsedItem), gLastUsedItem))
