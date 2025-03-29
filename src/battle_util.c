@@ -8692,18 +8692,18 @@ static u8 TryEjectPack(u32 battler, bool32 execute)
 
 static u8 DamagedPomegBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
 {
-    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId))
+    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId)
+    && CountBattlerStatDecreases(battler, TRUE) > 0)
     {
-        gEffectBattler = gBattleScripting.battler = battler;
-
+        gBattleScripting.battler = battler;
         if (end2)
         {
-            BattleScriptExecute(BattleScript_PomegBerryInvertRet);
+            BattleScriptExecute(BattleScript_PomegBerryInvertEnd2);
         }
         else
         {
             BattleScriptPushCursor();
-            gBattlescriptCurrInstr = BattleScript_PomegBerryInvert;
+            gBattlescriptCurrInstr = BattleScript_PomegBerryInvertReturn;
         }
         return ITEM_EFFECT_OTHER;
     }
@@ -8712,19 +8712,19 @@ static u8 DamagedPomegBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 en
 
 static u8 DamagedHondewBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 end2)
 {
-    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) && !(gStatuses3[battler] & STATUS3_AQUA_RING))
+    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) 
+    && (!(gStatuses3[battler] & STATUS3_AQUA_RING)))
     {
-        gEffectBattler = gBattleScripting.battler = battler;
-
+        gBattleScripting.battler = battler;
         if (end2)
         {
-            BattleScriptExecute(BattleScript_HondewBerryEnd);
+            BattleScriptExecute(BattleScript_HondewBerryActivatesEnd2);
         }
         else
         {
             gStatuses3[battler] |= STATUS3_AQUA_RING;
             BattleScriptPushCursor();
-            gBattlescriptCurrInstr = BattleScript_HondewBerryActivatesRet;
+            gBattlescriptCurrInstr = BattleScript_HondewBerryActivatesReturn;
         }
         return ITEM_EFFECT_OTHER;
     }
@@ -9558,38 +9558,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     gDisableStructs[battler].gemstoneEvasionCounter -= 1;
                     BattleScriptPushCursorAndCallback(BattleScript_GemstoneEvasionDrop);
                     effect = ITEM_STATS_CHANGE;
-                    RecordItemEffectBattle(battler, battlerHoldEffect);
-                }
-                break;
-            case HOLD_EFFECT_CHEESE:
-#if B_HEAL_BLOCKING >= GEN_5
-                if (gBattleMons[battler].hp < (gBattleMons[battler].maxHP / 2) && !moveTurn && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
-#else
-                if (gBattleMons[battler].hp < (gBattleMons[battler].maxHP / 2) && !moveTurn)
-#endif
-                {
-                    gBattleMoveDamage = gBattleMons[battler].maxHP / 3;
-                    if (gBattleMoveDamage == 0)
-                        gBattleMoveDamage = 1;
-                    gBattleMoveDamage *= -1;
-                    BattleScriptExecute(BattleScript_Cheese_End2);
-                    effect = ITEM_HP_STATS_CHANGE;
-                    RecordItemEffectBattle(battler, battlerHoldEffect);
-                }
-                break;
-            case HOLD_EFFECT_FROTHY_CHEESE:
-#if B_HEAL_BLOCKING >= GEN_5
-                if (gBattleMons[battler].hp < (gBattleMons[battler].maxHP / 2) && !moveTurn && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
-#else
-                if (gBattleMons[battler].hp < (gBattleMons[battler].maxHP / 2) && !moveTurn)
-#endif
-                {
-                    gBattleMoveDamage = gBattleMons[battler].maxHP / 6;
-                    if (gBattleMoveDamage == 0)
-                        gBattleMoveDamage = 1;
-                    gBattleMoveDamage *= -1;
-                    BattleScriptExecute(BattleScript_FrothyCheese_End2);
-                    effect = ITEM_HP_STATS_CHANGE;
                     RecordItemEffectBattle(battler, battlerHoldEffect);
                 }
                 break;
@@ -10522,25 +10490,6 @@ u8 ItemBattleEffects(u8 caseID, u32 battler, bool32 moveTurn)
                     RecordItemEffectBattle(battler, HOLD_EFFECT_DURIN_BERRY);
                 }
                 break;
-            case HOLD_EFFECT_YELLOW_SODA:
-                if (gBattleMons[battler].species == SPECIES_VOREON
-                && gBattleMons[battler].hp < gBattleMons[battler].maxHP / 2
-                && TARGET_TURN_DAMAGED
-                && IsBattlerAlive(battler)
-                && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
-                && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
-                {
-                    effect = ITEM_EFFECT_OTHER;
-                    gBattleMoveDamage = gBattleMons[gBattlerTarget].maxHP / 2;
-                    if (gBattleMoveDamage == 0)
-                        gBattleMoveDamage = 1;
-                    gBattleMoveDamage *= -1;
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_YellowSodaActivatesRet;
-                    PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
-                    RecordItemEffectBattle(battler, HOLD_EFFECT_YELLOW_SODA);
-                }
-                break;        
             case HOLD_EFFECT_RIZZ_BERRY:
                 if (IsBattlerAlive(gBattlerAttacker)
                 && IsBattlerAlive(gBattlerTarget)

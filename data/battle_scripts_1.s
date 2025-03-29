@@ -4848,13 +4848,27 @@ BattleScript_DurinBerryAllStatsDownEvasion::
 BattleScript_DurinBerryAllStatsDownRet::
 	return
 
-BattleScript_PomegBerryInvert::
+BattleScript_PomegBerryInvertEnd2::
+	call BattleScript_PomegBerryInvertReturn
+	end2
+
+BattleScript_PomegBerryInvertReturn::
 	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
 	invertnegativestatstages BS_SCRIPTING
 	printstring STRINGID_POMEGSWITCHEDNEGATIVESTATS
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_SCRIPTING
-BattleScript_PomegBerryInvertRet::
+	return
+
+BattleScript_HondewBerryInvertEnd2::
+	call BattleScript_HondewBerryActivatesReturn
+	end2
+
+BattleScript_HondewBerryActivatesReturn::
+	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	printstring STRINGID_PKMNSURROUNDEDWITHVEILS
+	waitmessage B_WAIT_TIME_LONG
+	removeitem BS_SCRIPTING
 	return
 
 BattleScript_EffectGunkFunk::
@@ -18948,63 +18962,6 @@ BattleScript_NormaliseBuffs::
 	waitmessage B_WAIT_TIME_LONG
 	end3
 
-BattleScript_Cheese_End2::
-	trycheesing BS_ATTACKER, BattleScript_Cheese_End2Part2
-	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
-	setgraphicalstatchangevalues
-	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-	statbuffchange MOVE_EFFECT_CERTAIN, BattleScript_Cheese_End2Part2
-	printstring STRINGID_DEFENDERSSTATROSE
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_Cheese_End2Part2:
-	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
-	waitmessage B_WAIT_TIME_LONG
-	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
-	healthbarupdate BS_ATTACKER
-	datahpupdate BS_TARGET
-	removeitem BS_TARGET
-	end2
-
-BattleScript_YellowSodaActivatesRet::
-	playanimation BS_TARGET, B_ANIM_HELD_ITEM_EFFECT
-	jumpifstatus2 BS_TARGET, STATUS2_FOCUS_ENERGY_ANY, BattleScript_YellowSodaActivatesRet2
-	setfocusenergy BS_TARGET
-	printfromtable gFocusEnergyUsedStringIds
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_YellowSodaActivatesRet2:
-	setstatchanger STAT_SPEED, 1, FALSE
-	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_YellowSodaActivatesRet3
-	jumpifbyte CMP_NOT_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_YellowSodaActivatesRet3
-	setgraphicalstatchangevalues
-	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-	printfromtable gStatUpStringIds
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_YellowSodaActivatesRet3:
-	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
-	waitmessage B_WAIT_TIME_LONG
-	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
-	healthbarupdate BS_ATTACKER
-	datahpupdate BS_TARGET
-	removeitem BS_TARGET
-	end2
-
-BattleScript_FrothyCheese_End2::
-	tryaccupressure BS_ATTACKER, BattleScript_ButItFailed
-	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
-	setgraphicalstatchangevalues
-	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-	statbuffchange MOVE_EFFECT_CERTAIN, BattleScript_FrothyCheese_End2Part2
-	printstring STRINGID_DEFENDERSSTATROSE
-	waitmessage B_WAIT_TIME_LONG
-BattleScript_FrothyCheese_End2Part2:
-	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
-	waitmessage B_WAIT_TIME_LONG
-	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
-	healthbarupdate BS_ATTACKER
-	datahpupdate BS_TARGET
-	removeitem BS_TARGET
-	end2
-
 BattleScript_A_Thing_Happened::
 	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
 	printstring STRINGID_ATHINGHAPPENED
@@ -19604,14 +19561,6 @@ BattleScript_NanabBerryActivatesRet::
 	printstring STRINGID_NANABMINIMIZE
 	waitmessage B_WAIT_TIME_LONG
 	removeitem BS_ATTACKER
-	return
-
-BattleScript_HondewBerryActivatesRet::
-	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
-	printstring STRINGID_PKMNSURROUNDEDWITHVEILS
-	waitmessage B_WAIT_TIME_LONG
-	removeitem BS_SCRIPTING
-BattleScript_HondewBerryEnd::
 	return
 
 @ z moves / effects
