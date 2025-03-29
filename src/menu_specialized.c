@@ -1560,7 +1560,7 @@ static const u8 *const sLvlUpStatStrings[NUM_STATS] =
 
 void DrawLevelUpWindowPg1(u16 windowId, u16 *statsBefore, u16 *statsAfter, u8 bgClr, u8 fgClr, u8 shadowClr)
 {
-    u16 i, x;
+    u16 i, numDigits, x;
     s16 statsDiff[NUM_STATS];
     u8 text[12];
     u8 color[3];

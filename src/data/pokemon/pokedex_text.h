@@ -2539,16 +2539,18 @@ const u8 gDrapionPokedexText[] = _(
     "out of a car.");
 
 const u8 gCroagunkPokedexText[] = _(
-    "Widely used in medicine, Croagunk is\n"
-    "highly valued for its poison.\n"
-    "Pharmacologists ordinarily take them as\n"
-    "partners.");
+    "Croagunk are highly valued for their poison.\n"
+    "Doctors often take them as partners, as their\n"
+    "laid-back nature makes them ideal for extracting\n"
+    "their poison. Their poison sacs are also a common\n"
+    "ingredient in various witchcraft ateliers.");
 
 const u8 gToxicroakPokedexText[] = _(
-    "With its red claws, it jabs opponents\n"
-    "and releases deadly toxins. Luckily, the\n"
-    "anti-venom is made from the same toxin\n"
-    "and is available in most clinics.");
+    "With their claws, they stab foes in their gut,\n"
+    "releasing toxins. They have an unusual fighting\n"
+    "style, jumping back to evade and lunging forward\n"
+    "to quickly strike. This deadly combo of strikes\n"
+    "and toxins makes them very dangerous in battle.");
 
 const u8 gCarnivinePokedexText[] = _(
     "Hanging from branches using its\n"
@@ -5925,15 +5927,18 @@ const u8 gKaprikolaPokedexText[] = _(
     "power to let the ordinary wield lightning.");
 
 const u8 gBlottaPokedexText[] = _(
-    "Blotta's malice oozes out like black ink\n"
-    "from its fur. Merely touching the ink\n"
-    "triggers a cascade of negative emotions.");
+    "A Blotta's malice oozes out like black ink from\n"
+    "its fur. Merely touching the ink triggers a\n"
+    "cascade of negative emotions that overwhelms\n"
+    "those affected. Currently a law is being\n"
+    "legislated to outright ban owning one.");
 
 const u8 gSchachttaPokedexText[] = _(
-    "Schachtta's own malice surrounds it at\n"
-    "all times. Schachtta sends out its\n"
-    "terrifying darkness to distort everyone\n"
-    "around it.");
+    "Incarnate of hatred. Contempt for humanity and\n"
+    "all. Black are their thoughts. Strong is their\n"
+    "hate. They'll harm you when they can. You may be\n"
+    "the master right now, but they're ever patient.\n"
+    "Evil flows slowly, seeping through the cracks.");
 
 const u8 gSylvreignPokedexText[] = _(
     "The martial prowess of this draconic\n"

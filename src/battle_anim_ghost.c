@@ -32,7 +32,6 @@ static void AnimDestinyBondWhiteShadow_Step(struct Sprite *);
 static void AnimTask_DestinyBondWhiteShadow_Step(u8 taskId);
 static void AnimTask_CurseStretchingBlackBg_Step1(u8 taskId);
 static void AnimTask_CurseStretchingBlackBg_Step2(u8 taskId);
-static void AnimGrippingNail(struct Sprite *);
 static void AnimCurseNail(struct Sprite *);
 static void AnimCurseNail_Step1(struct Sprite *);
 static void AnimCurseNail_Step2(struct Sprite *);
@@ -212,17 +211,6 @@ const struct SpriteTemplate gCurseNailSpriteTemplate =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimCurseNail,
-};
-
-const struct SpriteTemplate gGrippingNailSpriteTemplate =
-{
-    .tileTag = ANIM_TAG_NAIL,
-    .paletteTag = ANIM_TAG_NAIL,
-    .oam = &gOamData_AffineOff_ObjBlend_32x16,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = AnimGrippingNail,
 };
 
 const struct SpriteTemplate gCurseGhostSpriteTemplate =
@@ -1212,30 +1200,6 @@ static void AnimCurseNail(struct Sprite *sprite)
 
     InitSpritePosToAnimAttacker(sprite, TRUE);
     if (GetBattlerSide(gBattleAnimAttacker) == B_SIDE_PLAYER)
-    {
-        xDelta = 24;
-        xDelta2 = -2;
-        sprite->oam.matrixNum = ST_OAM_HFLIP;
-    }
-    else
-    {
-        xDelta = -24;
-        xDelta2 = 2;
-    }
-
-    sprite->x += xDelta;
-    sprite->data[1] = xDelta2;
-    sprite->data[0] = 60;
-    sprite->callback = AnimCurseNail_Step1;
-}
-
-static void AnimGrippingNail(struct Sprite *sprite)
-{
-    s16 xDelta;
-    s16 xDelta2;
-
-    InitSpritePosToAnimTarget(sprite, TRUE);
-    if (GetBattlerSide(gBattleAnimTarget) == B_SIDE_PLAYER)
     {
         xDelta = 24;
         xDelta2 = -2;

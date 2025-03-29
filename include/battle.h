@@ -70,6 +70,7 @@ struct DisableStruct
     u8 exhaustionCounter;
     u8 surpriseCounter;
     u8 daybreakCounter;
+    u8 gemstoneEvasionCounter;
     u8 stormBrewCounter;
     u8 allureCounter;
     u8 frenzyCounter;
@@ -233,7 +234,6 @@ struct SpecialStatus
     u8 ppNotAffectedByPressure:1;
     u8 faintedHasReplacement:1;
     u8 focusBanded:1;
-    u8 focusBandEndured:1;
     u8 focusSashed:1;
     // End of byte
     u8 sturdied:1;

@@ -2967,8 +2967,8 @@ static const u8 sGrepaBerryDesc[] = _(
     "move once.");
 
 static const u8 sTamatoBerryDesc[] = _(
-    "A stupidly spicy berry\n"
-    "that's loved by\n"
+    "A stupidly spicy\n"
+    "berry that's loved by\n"
     "certain bears for\n"
     "their jokes.");
 
@@ -4393,8 +4393,8 @@ static const u8 sPebbleriteDesc[] = _(
 
 static const u8 sCheeseDesc[] = _(
     "Some cheese that can\n"
-    "heal some HP and raise\n"
-    "a random stat.");
+    "heal some HP and\n"
+    "raise a random stat.");
 
 static const u8 sFrothyCheeseDesc[] = _(
     "The true cheese that\n"
@@ -4510,8 +4510,8 @@ static const u8 sDoughStickDesc[] = _(
 
 static const u8 sYellowSodaDesc[] = _(
     "A berry soda for a\n"
-    "Voreon. It heals HP,\n"
-    "ups Speed/critical hit\n"
+    "Voreon. Heals HP, ups\n"
+    "Speed/critical hit\n"
     "ratio-but only once.");
 
 static const u8 sDripShoesDesc[] = _(
@@ -4679,10 +4679,10 @@ static const u8 sGemstoneDesc[] = _(
     "turn. Ups Sp. Atk.");
 
 static const u8 sTeruCharmDesc[] = _(
-    "A special charm that\n"
-    "boosts a Chiroberra's\n"
-    "defenses and blocks\n"
-    "indirect damage.");
+    "Ups defenses. Blocks\n"
+    "indirect damage. Stops\n"
+    "all weather. For\n"
+    "Chiroberra.");
 
 static const u8 sMaxEggplantDesc[] = _(
     "A familiar-looking\n"
