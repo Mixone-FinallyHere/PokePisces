@@ -8752,10 +8752,52 @@ static u8 DamagedYellowSodaEffect(u32 battler, u32 itemId, bool32 end2)
 
 static u8 DamagedCheeseEffect(u32 battler, u32 itemId, bool32 end2)
 {
+    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) 
+    && ((!(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
+    || (!(CompareStat(battler, STAT_ATK, MAX_STAT_STAGE, CMP_EQUAL)))
+    || (!(CompareStat(battler, STAT_DEF, MAX_STAT_STAGE, CMP_EQUAL)))
+    || (!(CompareStat(battler, STAT_SPATK, MAX_STAT_STAGE, CMP_EQUAL)))
+    || (!(CompareStat(battler, STAT_SPDEF, MAX_STAT_STAGE, CMP_EQUAL)))
+    || (!(CompareStat(battler, STAT_SPEED, MAX_STAT_STAGE, CMP_EQUAL)))
+    || (!(CompareStat(battler, STAT_ACC, MAX_STAT_STAGE, CMP_EQUAL)))
+    || (!(CompareStat(battler, STAT_EVASION, MAX_STAT_STAGE, CMP_EQUAL)))))
+    {
+        if (end2)
+        {
+            BattleScriptExecute(BattleScript_CheeseActivatesEnd2);
+        }
+        else
+        {
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_CheeseActivatesReturn;
+        }
+        return ITEM_EFFECT_OTHER;
+    }
 }
 
 static u8 DamagedFrothyCheeseEffect(u32 battler, u32 itemId, bool32 end2)
 {
+    if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) 
+    && ((!(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
+    || (!(CompareStat(battler, STAT_ATK, MAX_STAT_STAGE, CMP_EQUAL)))
+    || (!(CompareStat(battler, STAT_DEF, MAX_STAT_STAGE, CMP_EQUAL)))
+    || (!(CompareStat(battler, STAT_SPATK, MAX_STAT_STAGE, CMP_EQUAL)))
+    || (!(CompareStat(battler, STAT_SPDEF, MAX_STAT_STAGE, CMP_EQUAL)))
+    || (!(CompareStat(battler, STAT_SPEED, MAX_STAT_STAGE, CMP_EQUAL)))
+    || (!(CompareStat(battler, STAT_ACC, MAX_STAT_STAGE, CMP_EQUAL)))
+    || (!(CompareStat(battler, STAT_EVASION, MAX_STAT_STAGE, CMP_EQUAL)))))
+    {
+        if (end2)
+        {
+            BattleScriptExecute(BattleScript_FrothyCheeseActivatesEnd2);
+        }
+        else
+        {
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_FrothyCheeseActivatesReturn;
+        }
+        return ITEM_EFFECT_OTHER;
+    }
 }
 
 u8 TryHandleSeed(u32 battler, u32 terrainFlag, u8 statId, u16 itemId, bool32 execute)

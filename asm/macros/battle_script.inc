@@ -2838,6 +2838,16 @@
 	.4byte \failInstr
 	.endm
 
+	.macro tryhealthirdhealth battler:req, failInstr:req
+	various \battler, VARIOUS_TRY_HEAL_THIRD_HEALTH
+	.4byte \failInstr
+	.endm
+
+	.macro tryhealsixthhealth battler:req, failInstr:req
+	various \battler, VARIOUS_TRY_HEAL_SIXTH_HEALTH
+	.4byte \failInstr
+	.endm
+
 	.macro trycriticalrepair battler:req, failInstr:req
 	various \battler, VARIOUS_TRY_CRITICAL_REPAIR
 	.4byte \failInstr

@@ -336,6 +336,8 @@
 #define VARIOUS_SET_SWITCH_IN_ABILITY_SUCCEED        244
 #define VARIOUS_JUMP_IF_SWITCH_IN_ABILITY_SUCCEED    245
 #define VARIOUS_JUMP_IF_FOCUS_ENERGY                 246
+#define VARIOUS_TRY_HEAL_THIRD_HEALTH                247
+#define VARIOUS_TRY_HEAL_SIXTH_HEALTH                248
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

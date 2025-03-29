@@ -1007,7 +1007,7 @@ BattleScript_Treat::
 	accuracycheck BattleScript_ButItFailed, NO_ACC_CALC_CHECK_LOCK_ON
 	jumpifsubstituteblocks BattleScript_ButItFailed
 	tryhealpulse BS_TARGET, BattleScript_TreatTryStatRaise
-	tryaccupressure BS_TARGET, BattleScript_TreatOnlyHeal
+	trycheesing BS_TARGET, BattleScript_TreatOnlyHeal
 	attackanimation
 	waitanimation
 	healthbarupdate BS_TARGET
@@ -1021,7 +1021,7 @@ BattleScript_Treat::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 BattleScript_TreatTryStatRaise::
-	tryaccupressure BS_TARGET, BattleScript_ButItFailed
+	trycheesing BS_TARGET, BattleScript_ButItFailed
 	attackanimation
 	waitanimation
 	setgraphicalstatchangevalues
@@ -1725,7 +1725,7 @@ BattleScript_EffectHealOrder::
 	attackcanceler
 	attackstring
 	ppreduce
-	tryhealquarterhealth BS_ATTACKER, BattleScript_AlreadyAtFullHp
+	tryhealthirdhealth BS_ATTACKER, BattleScript_AlreadyAtFullHp
 	storehealorder BS_ATTACKER, BattleScript_HealOrderJustHeal
 	attackanimation
 	waitanimation
@@ -4878,6 +4878,90 @@ BattleScript_HondewBerryActivatesReturn::
 	removeitem BS_SCRIPTING
 	return
 
+BattleScript_CheeseActivatesEnd2::
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_CheeseRandomStatBoostEnd2
+	tryhealthirdhealth BS_ATTACKER, BattleScript_CheeseRandomStatBoostEnd2
+	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+BattleScript_CheeseRandomStatBoostEnd2:
+	trycheesing BS_ATTACKER, BattleScript_CheeseReturn
+	statbuffchange STAT_CHANGE_ALLOW_PTR | MOVE_EFFECT_AFFECTS_USER, BattleScript_CheeseReturn
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_CheeseReturn
+	setgraphicalstatchangevalues
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_CheeseEnd2:
+	removeitem BS_ATTACKER
+	end2
+
+BattleScript_CheeseActivatesReturn::
+	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	jumpifstatus3 BS_SCRIPTING, STATUS3_HEAL_BLOCK, BattleScript_CheeseRandomStatBoostReturn
+	tryhealthirdhealth BS_SCRIPTING, BattleScript_CheeseRandomStatBoostReturn
+	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_SCRIPTING
+	datahpupdate BS_SCRIPTING
+BattleScript_CheeseRandomStatBoostReturn:
+	trycheesing BS_SCRIPTING, BattleScript_CheeseReturn
+	statbuffchange STAT_CHANGE_ALLOW_PTR | MOVE_EFFECT_CERTAIN, BattleScript_CheeseReturn
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_CheeseReturn
+	setgraphicalstatchangevalues
+	playanimation BS_SCRIPTING, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_CheeseReturn:
+	removeitem BS_SCRIPTING
+	return
+
+BattleScript_FrothyCheeseActivatesEnd2::
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	jumpifstatus3 BS_ATTACKER, STATUS3_HEAL_BLOCK, BattleScript_FrothyCheeseRandomStatBoostEnd2
+	tryhealsixthhealth BS_ATTACKER, BattleScript_FrothyCheeseRandomStatBoostEnd2
+	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+BattleScript_FrothyCheeseRandomStatBoostEnd2:
+	tryaccupressure BS_ATTACKER, BattleScript_FrothyCheeseReturn
+	statbuffchange STAT_CHANGE_ALLOW_PTR | MOVE_EFFECT_AFFECTS_USER, BattleScript_FrothyCheeseReturn
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_FrothyCheeseReturn
+	setgraphicalstatchangevalues
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_FrothyCheeseEnd2:
+	removeitem BS_ATTACKER
+	end2
+
+BattleScript_FrothyCheeseActivatesReturn::
+	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	jumpifstatus3 BS_SCRIPTING, STATUS3_HEAL_BLOCK, BattleScript_FrothyCheeseRandomStatBoostReturn
+	tryhealsixthhealth BS_SCRIPTING, BattleScript_FrothyCheeseRandomStatBoostReturn
+	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
+	healthbarupdate BS_SCRIPTING
+	datahpupdate BS_SCRIPTING
+BattleScript_FrothyCheeseRandomStatBoostReturn:
+	tryaccupressure BS_SCRIPTING, BattleScript_FrothyCheeseReturn
+	statbuffchange STAT_CHANGE_ALLOW_PTR | MOVE_EFFECT_CERTAIN, BattleScript_FrothyCheeseReturn
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_FrothyCheeseReturn
+	setgraphicalstatchangevalues
+	playanimation BS_SCRIPTING, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_FrothyCheeseReturn:
+	removeitem BS_SCRIPTING
+	return
+
 BattleScript_YellowSodaActivatesEnd2::
 	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
 	jumpifability BS_ATTACKER, ABILITY_RIPEN, BattleScript_YellowSodaActivatesEnd2Ripen
@@ -4888,7 +4972,6 @@ BattleScript_YellowSodaActivatesEnd2::
 	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
-	removeitem BS_ATTACKER
 BattleScript_YellowSodaFocusEnergyEnd2:
 	jumpifstatus2 BS_ATTACKER, STATUS2_FOCUS_ENERGY_ANY, BattleScript_YellowSodaSpeedBoostEnd2
 	setfocusenergy BS_ATTACKER
@@ -4903,6 +4986,7 @@ BattleScript_YellowSodaSpeedBoostEnd2:
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_YellowSodaEnd2:
+	removeitem BS_ATTACKER
 	end2
 BattleScript_YellowSodaActivatesEnd2Ripen:
 	call BattleScript_AbilityPopUp
@@ -4913,7 +4997,6 @@ BattleScript_YellowSodaActivatesEnd2Ripen:
 	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
-	removeitem BS_ATTACKER
 BattleScript_YellowSodaFocusEnergyEnd2Ripen:
 	jumpifstatus2 BS_ATTACKER, STATUS2_FOCUS_ENERGY_ANY, BattleScript_YellowSodaSpeedBoostEnd2Ripen
 	setfocusenergy BS_ATTACKER
@@ -4928,6 +5011,7 @@ BattleScript_YellowSodaSpeedBoostEnd2Ripen:
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_YellowSodaEnd2Ripen:
+	removeitem BS_ATTACKER
 	end2
 
 BattleScript_YellowSodaActivatesReturn::
@@ -4940,7 +5024,6 @@ BattleScript_YellowSodaActivatesReturn::
 	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_SCRIPTING
 	datahpupdate BS_SCRIPTING
-	removeitem BS_SCRIPTING
 BattleScript_YellowSodaFocusEnergyReturn:
 	jumpifstatus2 BS_SCRIPTING, STATUS2_FOCUS_ENERGY_ANY, BattleScript_YellowSodaSpeedBoostReturn
 	setfocusenergy BS_SCRIPTING
@@ -4955,6 +5038,7 @@ BattleScript_YellowSodaSpeedBoostReturn:
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_YellowSodaReturn:
+	removeitem BS_SCRIPTING
 	return
 BattleScript_YellowSodaActivatesReturnRipen:
 	call BattleScript_AbilityPopUp
@@ -4965,7 +5049,6 @@ BattleScript_YellowSodaActivatesReturnRipen:
 	orword gHitMarker, HITMARKER_SKIP_DMG_TRACK | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_SCRIPTING
 	datahpupdate BS_SCRIPTING
-	removeitem BS_SCRIPTING
 BattleScript_YellowSodaFocusEnergyReturnRipen:
 	jumpifstatus2 BS_SCRIPTING, STATUS2_FOCUS_ENERGY_ANY, BattleScript_YellowSodaSpeedBoostReturnRipen
 	setfocusenergy BS_SCRIPTING
@@ -4980,6 +5063,7 @@ BattleScript_YellowSodaSpeedBoostReturnRipen:
 	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_YellowSodaReturnRipen:
+	removeitem BS_SCRIPTING
 	return
 
 BattleScript_EffectGunkFunk::
@@ -6995,7 +7079,7 @@ BattleScript_EffectJungleHealing:
 	setbyte gBattleCommunication, 0
 JungleHealing_RestoreTargetHealth:
 	copybyte gBattlerAttacker, gBattlerTarget
-	tryhealquarterhealth BS_TARGET, BattleScript_JungleHealing_TryCureStatus
+	tryhealthirdhealth BS_TARGET, BattleScript_JungleHealing_TryCureStatus
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
 	healthbarupdate BS_TARGET
 	datahpupdate BS_TARGET
