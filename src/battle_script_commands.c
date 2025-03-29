@@ -10721,10 +10721,7 @@ static void Cmd_various(void)
                 statId = (Random() % (NUM_BATTLE_STATS - 1)) + 1;
             } while (!(bits & gBitTable[statId]));
 
-            if (gCurrentMove == MOVE_ACUPRESSURE)
-                SET_STATCHANGER(statId, 2, FALSE);
-            else
-                SET_STATCHANGER(statId, 1, FALSE);
+            SET_STATCHANGER(statId, 2, FALSE);
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
         else
@@ -12461,11 +12458,7 @@ static void Cmd_various(void)
     case VARIOUS_TRY_HEAL_QUARTER_HP:
     {
         VARIOUS_ARGS(const u8 *failInstr);
-        if (gCurrentMove == MOVE_LIFE_DEW || gCurrentMove == MOVE_HEAL_ORDER)
-        {
-            gBattleMoveDamage = gBattleMons[battler].maxHP / 3;
-        }
-        else if (gCurrentMove == MOVE_SHIELDS_UP)
+        if (gCurrentMove == MOVE_SHIELDS_UP)
         {
             gBattleMoveDamage = gBattleMons[battler].maxHP * 35 / 10;
         }
@@ -13980,6 +13973,40 @@ static void Cmd_various(void)
         else
         {
             gBattleMoveDamage = gBattleMons[battler].maxHP;
+            if (gBattleMoveDamage == 0)
+                gBattleMoveDamage = 1;
+            gBattleMoveDamage *= -1;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
+    case VARIOUS_TRY_HEAL_THIRD_HEALTH:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        if (BATTLER_MAX_HP(battler))
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        else
+        {
+            gBattleMoveDamage = gBattleMons[battler].maxHP / 3;
+            if (gBattleMoveDamage == 0)
+                gBattleMoveDamage = 1;
+            gBattleMoveDamage *= -1;
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
+    case VARIOUS_TRY_HEAL_SIXTH_HEALTH:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        if (BATTLER_MAX_HP(battler))
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        else
+        {
+            gBattleMoveDamage = gBattleMons[battler].maxHP / 6;
             if (gBattleMoveDamage == 0)
                 gBattleMoveDamage = 1;
             gBattleMoveDamage *= -1;
