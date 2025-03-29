@@ -1413,7 +1413,11 @@ bool8 Overworld_MapTypeAllowsTeleportAndFly(u8 mapType)
     if (mapType == MAP_TYPE_ROUTE
      || mapType == MAP_TYPE_TOWN
      || mapType == MAP_TYPE_OCEAN_ROUTE
-     || mapType == MAP_TYPE_CITY)
+     || mapType == MAP_TYPE_CITY
+     || mapType == MAP_TYPE_CHIMNEY_ROUTE
+     || mapType == MAP_TYPE_BLOSSOM_ROUTE
+     || mapType == MAP_TYPE_GOLD_ROUTE
+     || mapType == MAP_TYPE_SNOW_ROUTE)
         return TRUE;
     else
         return FALSE;
