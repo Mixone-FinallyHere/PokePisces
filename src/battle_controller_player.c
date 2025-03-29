@@ -2381,7 +2381,14 @@ static void MoveSelectionDisplayInfo(u32 battler)
     u32 accuracy = 0;
     if (B_UPDATED_BATTLE_MOVE_INFO == TRUE) // in include/config/battle.h
     {
-        power = CalcMoveBasePowerAfterModifiers(move, battlerAtk, battlerDef, moveType, updateFlags, atkAbility, defAbility, holdEffectAtk, weather);  // shows real base power after modifiers
+        if (move == MOVE_ROLLOUT || move == MOVE_ICE_BALL)
+        {
+            power = gBattleMoves[move].power;
+        }
+        else
+        {
+            power = CalcMoveBasePowerAfterModifiers(move, battlerAtk, battlerDef, moveType, updateFlags, atkAbility, defAbility, holdEffectAtk, weather);  // shows real base power after modifiers
+        }
         accuracy = GetTotalAccuracy(battlerAtk, battlerDef, move, atkAbility, defAbility, holdEffectAtk, holdEffectDef);                               // shows real accuracy after modifiers
     }
     else

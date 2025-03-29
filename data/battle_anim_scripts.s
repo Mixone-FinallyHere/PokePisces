@@ -23248,7 +23248,6 @@ Move_GATTLING_PINS::
 	delay 1
 	waitforvisualfinish
 	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 2, 0, 5, 1
-	createvisualtask AnimTask_ShakeMon2, 2, ANIM_DEF_PARTNER, 2, 0, 5, 1
 	playsewithpan SE_M_HORN_ATTACK, SOUND_PAN_TARGET
 	waitforvisualfinish
 	clearmonbg ANIM_TARGET
@@ -24976,27 +24975,27 @@ Move_POWER_DRAIN::
 	end
 
 Move_GRIPPING_NAIL::
-	loadspritegfx ANIM_TAG_NAIL
+	loadspritegfx ANIM_TAG_SHOOTING_NAIL
 	loadspritegfx ANIM_TAG_GHOSTLY_SPIRIT
-	monbg ANIM_ATK_PARTNER
-	createvisualtask AnimTask_CurseStretchingBlackBg, 5
-	waitforvisualfinish
-	delay 20
-	createsprite gGrippingNailSpriteTemplate, ANIM_ATTACKER, 2
-	delay 60
-	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 4, 0, 10, 0
+	monbg ANIM_TARGET
+	splitbgprio ANIM_TARGET
+	setalpha 12, 8
 	playsewithpan SE_M_BIND, SOUND_PAN_ATTACKER
-	delay 41
-	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 4, 0, 10, 0
+	createsprite gGrippingNailSpriteTemplate, 2, ANIM_TARGET, 20, 0, -8, 0, 10, 1
+	delay 1
 	playsewithpan SE_M_BIND, SOUND_PAN_ATTACKER
-	delay 41
-	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 4, 0, 10, 0
+	createsprite gGrippingNailSpriteTemplate, 2, ANIM_TARGET, 20, 0, -8, 0, 10, 1
+	delay 1
 	playsewithpan SE_M_BIND, SOUND_PAN_ATTACKER
+	createsprite gGrippingNailSpriteTemplate, 2, ANIM_TARGET, 20, 0, -8, 0, 10, 1
+	delay 1
 	waitforvisualfinish
-	clearmonbg ANIM_ATK_PARTNER
+	playsewithpan SE_M_NIGHTMARE, SOUND_PAN_TARGET
+	createspriteontargets gCurseGhostSpriteTemplate, ANIM_TARGET, 3, 2, 8, -5, ANIM_TARGET, 0
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 2, 0, 5, 1
 	waitforvisualfinish
-	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 16, 0, RGB_BLACK
-	waitforvisualfinish
+	clearmonbg ANIM_TARGET
+	blendoff
 	end
 
 Move_VIGOR_ROOT::
@@ -27760,7 +27759,52 @@ Move_SWEET_WHISPERS::
 	goto Move_GROWL
 
 Move_BABY_BLUES::
-	goto Move_LIGHT_SCREEN
+	loadspritegfx ANIM_TAG_MUD_SAND
+	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_MUD_SAND, 0, 12, 12, RGB_BLUE
+	createvisualtask AnimTask_Splash, 2, ANIM_ATTACKER, 6
+	delay 24
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 0, -4, -16
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 0, 4, -12
+	playsewithpan SE_M_DIG, SOUND_PAN_ATTACKER
+	delay 32
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 0, -3, -12
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 0, 5, -14
+	playsewithpan SE_M_DIG, SOUND_PAN_ATTACKER
+	delay 32
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 0, -5, -18
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 0, 3, -14
+	playsewithpan SE_M_DIG, SOUND_PAN_ATTACKER
+	delay 16
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 220, 60
+	waitplaysewithpan SE_M_BUBBLE2, 0, 15
+	delay 2
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 60, 100
+	waitplaysewithpan SE_M_BUBBLE2, 0, 25
+	delay 2
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 140, 55
+	waitplaysewithpan SE_M_BUBBLE2, 0, 14
+	delay 2
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 180, 50
+	waitplaysewithpan SE_M_BUBBLE2, 0, 10
+	delay 2
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 20, 90
+	waitplaysewithpan SE_M_BUBBLE2, 0, 22
+	delay 2
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 90, 90
+	waitplaysewithpan SE_M_BUBBLE2, 0, 22
+	delay 2
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 160, 60
+	waitplaysewithpan SE_M_BUBBLE2, 0, 15
+	delay 2
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 30, 90
+	waitplaysewithpan SE_M_BUBBLE2, 0, 22
+	delay 2
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 120, 60
+	waitplaysewithpan SE_M_BUBBLE2, 0, 15
+	delay 2
+	createsprite gMudsportMudSpriteTemplate, ANIM_TARGET, 2, 1, 200, 40
+	waitplaysewithpan SE_M_BUBBLE2, 0, 10
+	end
 
 Move_SYRUP_BOMB::
 	loadspritegfx ANIM_TAG_SYRUP_BLOB_RED
@@ -27816,9 +27860,13 @@ Move_PSYBLADE::
 	end @to do
 
 ANIM_MOVE_GOLD_PLAINS::
+    goto Move_CLANGOROUS_SOUL
+
 ANIM_MOVE_MT_SPLENDOR::
+    goto Move_EARTHQUAKE
+
 ANIM_MOVE_DOWNFALL::
-    goto Move_TACKLE
+    goto Move_CLOSE_COMBAT
 
 @@@@@@@@@@@@@@@@@@@@@@@ GEN 1-3 @@@@@@@@@@@@@@@@@@@@@@@
 Move_NONE:

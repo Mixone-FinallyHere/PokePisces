@@ -25146,7 +25146,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = {ABILITY_FAST_TALKER, ABILITY_NONE, ABILITY_NONE},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
-        .flags = SPECIES_FLAG_UNCOMMON,
+        .flags = SPECIES_FLAG_MYSTICAL,
     },
 
     [SPECIES_RAPSCALEON] =
