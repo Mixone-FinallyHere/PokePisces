@@ -4440,7 +4440,7 @@ bool32 TryChangeBattleWeather(u32 battler, u32 weatherEnumId, bool32 viaAbility)
         gBattleWeather = (sWeatherFlagsInfo[weatherEnumId][0]);
         if (GetBattlerHoldEffect(battler, TRUE) == sWeatherFlagsInfo[weatherEnumId][2])
             gWishFutureKnock.weatherDuration = 8;
-        else if (gCurrentMove == MOVE_SOLAR_FLARE && GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_SOLAR_SWORD && gBattleWeather & B_WEATHER_SUN)
+        else if (gCurrentMove == MOVE_SOLAR_FLARE && GetBattlerHoldEffect(battler, TRUE) == HOLD_EFFECT_SOLAR_SWORD && gBattleWeather & B_WEATHER_SUN && gBattleMons[battler].species == SPECIES_SOLROCK)
             gWishFutureKnock.weatherDuration = 6;
         else
             gWishFutureKnock.weatherDuration = 5;
