@@ -628,6 +628,19 @@ MangrottoTunnel_EventScript_ToCosmossBridge::
 	msgbox MangrottoTunnel_Text_ToCosmossBridge, MSGBOX_SIGN
 	end
 
+MangrottoTunnel_EventScript_RockSmashKid::
+	msgbox MangrottoTunnel_Text_RockSmashKid, MSGBOX_NPC
+	end
+
+MangrottoTunnel_Text_RockSmashKid:
+	.string "Yo! Didja just roll in from\n"
+	.string "the Sootopolis Gym? Huh?\p"
+	.string "You can use Rock Smash now, right?\n"
+	.string "So, try and use it on those\l"
+	.string "breakable rocks! There's sometimes\l"
+	.string "Pokemon inside that you can't\l"
+	.string "find anywhere else!$"
+
 MangrottoTunnel_Text_ToSootopolis:
 	.string "TO SOOTOPOLIS CITY$"
 

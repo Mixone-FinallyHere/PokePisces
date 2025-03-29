@@ -83,6 +83,66 @@ SootopolisCity_PokemonCenter_2F_EventScript_NoMoreQuest::
 	release
 	end
 
+SootopolisCity_PokemonCenter_2F_EventScript_ConfusionTut::
+    msgbox SootopolisCity_PokemonCenter_2F_Text_ConfusionTut, MSGBOX_NPC
+    end
+
+SootopolisCity_PokemonCenter_2F_EventScript_SleepRestTut::
+    msgbox SootopolisCity_PokemonCenter_2F_Text_SleepRestTut, MSGBOX_NPC
+    end
+
+SootopolisCity_PokemonCenter_2F_EventScript_EXPCatchUpTut::
+    msgbox SootopolisCity_PokemonCenter_2F_Text_EXPCatchUpTut, MSGBOX_NPC
+    end
+
+SootopolisCity_PokemonCenter_2F_Text_ConfusionTut:
+	.string "Are you maybe confused about\n"
+	.string "the confusion status? Let me\l"
+	.string "clear that up!\p"
+	.string "When a Pokemon is confused by\n"
+	.string "a move like Confuse Ray, that\l"
+	.string "Pokemon has a chance to hit itself.\p"
+	.string "The damage is physical or special,\n"
+	.string "depending on which related stat is\l"
+	.string "higher for the afflicted.\p"
+	.string "Try confusing foes' Pokemon, and\n"
+	.string "they'll find themselves, well,\l"
+	.string "confused about why they can't\l"
+	.string "stop receiving damage!$"
+
+SootopolisCity_PokemonCenter_2F_Text_SleepRestTut:
+	.string "Yawn...\p"
+	.string "...Oh, huh. Sorry I seem so tired...\n"
+	.string "It's from battling a lot.\p"
+	.string "My favorite strategy... is sleeping\n"
+	.string "moves... like Minote's Sing...\p"
+	.string "It puts the enemy to sleep for\n"
+	.string "a couple turns... then, when I hit\l"
+	.string "'em... boom... automatic\l"
+	.string "critical hit...\p"
+	.string "...But that makes the sleeper\n"
+	.string "wake right up...\p"
+	.string "Now, with TM01...\n"
+	.string "some Pokémon can use Rest...\p"
+	.string "A Resting Pokémon is different\n"
+	.string "than a Sleeping Pokémon...\l"
+	.string "...They stay asleep longer...\l"
+	.string "and can't be woken up\l"
+	.string "by attacks...\p"
+	.string "...Yawn. I'm boring myself...$"
+
+SootopolisCity_PokemonCenter_2F_Text_EXPCatchUpTut:
+	.string "My Snelfrend that I had caught\n"
+	.string "way back in Flotshore Trail\l"
+	.string "is gaining an awful lot of\l"
+	.string "experience points now that I've\l"
+	.string "brought it out of the box.\p"
+	.string "I believe studies have shown that\n"
+	.string "Pokemon will gain more experience\l"
+	.string "points the further behind they are\l"
+	.string "to the levels of the upcoming gym.\p"
+	.string "They must really want to catch up!$"
+
 SootopolisCity_PokemonCenter_2F_Text_NamePhillipe:
 	.string "Phillipe$"
 
