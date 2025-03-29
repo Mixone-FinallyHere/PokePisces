@@ -4849,7 +4849,11 @@ BattleScript_DurinBerryAllStatsDownRet::
 	return
 
 BattleScript_PomegBerryInvertEnd2::
-	call BattleScript_PomegBerryInvertReturn
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	invertnegativestatstages BS_ATTACKER
+	printstring STRINGID_POMEGSWITCHEDNEGATIVESTATS
+	waitmessage B_WAIT_TIME_LONG
+	removeitem BS_ATTACKER
 	end2
 
 BattleScript_PomegBerryInvertReturn::
@@ -4860,8 +4864,11 @@ BattleScript_PomegBerryInvertReturn::
 	removeitem BS_SCRIPTING
 	return
 
-BattleScript_HondewBerryInvertEnd2::
-	call BattleScript_HondewBerryActivatesReturn
+BattleScript_HondewBerryActivatesEnd2::
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT, sB_ANIM_ARG1
+	printstring STRINGID_PKMNSURROUNDEDWITHVEILS
+	waitmessage B_WAIT_TIME_LONG
+	removeitem BS_ATTACKER
 	end2
 
 BattleScript_HondewBerryActivatesReturn::

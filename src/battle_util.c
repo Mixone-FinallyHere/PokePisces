@@ -8695,7 +8695,6 @@ static u8 DamagedPomegBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 en
     if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId)
     && CountBattlerStatDecreases(battler, TRUE) > 0)
     {
-        gBattleScripting.battler = battler;
         if (end2)
         {
             BattleScriptExecute(BattleScript_PomegBerryInvertEnd2);
@@ -8715,7 +8714,6 @@ static u8 DamagedHondewBerryEffect(u32 battler, u32 itemId, u32 statId, bool32 e
     if (HasEnoughHpToEatBerry(battler, GetBattlerItemHoldEffectParam(battler, itemId), itemId) 
     && (!(gStatuses3[battler] & STATUS3_AQUA_RING)))
     {
-        gBattleScripting.battler = battler;
         if (end2)
         {
             BattleScriptExecute(BattleScript_HondewBerryActivatesEnd2);
